@@ -58,16 +58,6 @@
         done();
       });
     });
-    describe('subscriptionUsersGetUserGroups', function() {
-      it('should call subscriptionUsersGetUserGroups successfully', function(done) {
-        //uncomment below and update the code to test subscriptionUsersGetUserGroups
-        //instance.subscriptionUsersGetUserGroups(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
     describe('subscriptionUsersGetUsers', function() {
       it('should call subscriptionUsersGetUsers successfully', function(done) {
         //uncomment below and update the code to test subscriptionUsersGetUsers

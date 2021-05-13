@@ -37,21 +37,25 @@ export default class SubscriptionGroupsApi {
 
 
     /**
-     * returns list of groups in the subscription
-     * @param {String} id subscripiton id
+     * returns groups of the subscription or subscription user
+     * @param {String} subscriptionId subscripiton id
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.userId user Id (optional)
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/GroupsVM} and HTTP response
      */
-    subscriptionGroupsGetGroupListWithHttpInfo(id) {
+    subscriptionGroupsGetGroupsListWithHttpInfo(subscriptionId, opts) {
+      opts = opts || {};
       let postBody = null;
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling subscriptionGroupsGetGroupList");
+      // verify the required parameter 'subscriptionId' is set
+      if (subscriptionId === undefined || subscriptionId === null) {
+        throw new Error("Missing the required parameter 'subscriptionId' when calling subscriptionGroupsGetGroupsList");
       }
 
       let pathParams = {
-        'id': id
+        'subscriptionId': subscriptionId
       };
       let queryParams = {
+        'userId': opts['userId']
       };
       let headerParams = {
       };
@@ -63,19 +67,21 @@ export default class SubscriptionGroupsApi {
       let accepts = ['text/plain', 'application/json', 'text/json'];
       let returnType = GroupsVM;
       return this.apiClient.callApi(
-        '/api/manage/v1/Subscriptions/{id}/groups', 'GET',
+        '/api/manage/v1/Subscriptions/{subscriptionId}/groups', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * returns list of groups in the subscription
-     * @param {String} id subscripiton id
+     * returns groups of the subscription or subscription user
+     * @param {String} subscriptionId subscripiton id
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.userId user Id (optional)
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/GroupsVM}
      */
-    subscriptionGroupsGetGroupList(id) {
-      return this.subscriptionGroupsGetGroupListWithHttpInfo(id)
+    subscriptionGroupsGetGroupsList(subscriptionId, opts) {
+      return this.subscriptionGroupsGetGroupsListWithHttpInfo(subscriptionId, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

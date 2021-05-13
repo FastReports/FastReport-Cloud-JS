@@ -4,15 +4,15 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**subscriptionGroupsGetGroupList**](SubscriptionGroupsApi.md#subscriptionGroupsGetGroupList) | **GET** /api/manage/v1/Subscriptions/{id}/groups | returns list of groups in the subscription
+[**subscriptionGroupsGetGroupsList**](SubscriptionGroupsApi.md#subscriptionGroupsGetGroupsList) | **GET** /api/manage/v1/Subscriptions/{subscriptionId}/groups | returns groups of the subscription or subscription user
 
 
 
-## subscriptionGroupsGetGroupList
+## subscriptionGroupsGetGroupsList
 
-> GroupsVM subscriptionGroupsGetGroupList(id)
+> GroupsVM subscriptionGroupsGetGroupsList(subscriptionId, opts)
 
-returns list of groups in the subscription
+returns groups of the subscription or subscription user
 
 ### Example
 
@@ -30,8 +30,11 @@ JWT.apiKey = 'YOUR API KEY';
 //JWT.apiKeyPrefix = 'Token';
 
 let apiInstance = new FastreportCloudSdk.SubscriptionGroupsApi();
-let id = "id_example"; // String | subscripiton id
-apiInstance.subscriptionGroupsGetGroupList(id).then((data) => {
+let subscriptionId = "subscriptionId_example"; // String | subscripiton id
+let opts = {
+  'userId': "userId_example" // String | user Id (optional)
+};
+apiInstance.subscriptionGroupsGetGroupsList(subscriptionId, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -44,7 +47,8 @@ apiInstance.subscriptionGroupsGetGroupList(id).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| subscripiton id | 
+ **subscriptionId** | **String**| subscripiton id | 
+ **userId** | **String**| user Id (optional) | [optional] 
 
 ### Return type
 

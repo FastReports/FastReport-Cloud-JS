@@ -13,7 +13,6 @@
 
 
 import ApiClient from "../ApiClient";
-import GroupsVM from '../models/GroupsVM';
 import ProblemDetails from '../models/ProblemDetails';
 import SubscriptionUsersVM from '../models/SubscriptionUsersVM';
 
@@ -84,59 +83,6 @@ export default class SubscriptionUsersApi {
      */
     subscriptionUsersAddUser(subscriptionId, userId) {
       return this.subscriptionUsersAddUserWithHttpInfo(subscriptionId, userId)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
-
-    /**
-     * Returns all users of subscription
-     * @param {String} subscriptionId Idenitifier of subscription
-     * @param {String} userId user id
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/GroupsVM} and HTTP response
-     */
-    subscriptionUsersGetUserGroupsWithHttpInfo(subscriptionId, userId) {
-      let postBody = null;
-      // verify the required parameter 'subscriptionId' is set
-      if (subscriptionId === undefined || subscriptionId === null) {
-        throw new Error("Missing the required parameter 'subscriptionId' when calling subscriptionUsersGetUserGroups");
-      }
-      // verify the required parameter 'userId' is set
-      if (userId === undefined || userId === null) {
-        throw new Error("Missing the required parameter 'userId' when calling subscriptionUsersGetUserGroups");
-      }
-
-      let pathParams = {
-        'subscriptionId': subscriptionId,
-        'userId': userId
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['ApiKey', 'JWT'];
-      let contentTypes = [];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
-      let returnType = GroupsVM;
-      return this.apiClient.callApi(
-        '/api/manage/v1/Subscriptions/{subscriptionId}/user/{userId}/groups', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null
-      );
-    }
-
-    /**
-     * Returns all users of subscription
-     * @param {String} subscriptionId Idenitifier of subscription
-     * @param {String} userId user id
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/GroupsVM}
-     */
-    subscriptionUsersGetUserGroups(subscriptionId, userId) {
-      return this.subscriptionUsersGetUserGroupsWithHttpInfo(subscriptionId, userId)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

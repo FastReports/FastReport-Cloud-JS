@@ -48,10 +48,10 @@
   }
 
   describe('SubscriptionGroupsApi', function() {
-    describe('subscriptionGroupsGetGroupList', function() {
-      it('should call subscriptionGroupsGetGroupList successfully', function(done) {
-        //uncomment below and update the code to test subscriptionGroupsGetGroupList
-        //instance.subscriptionGroupsGetGroupList(function(error) {
+    describe('subscriptionGroupsGetGroupsList', function() {
+      it('should call subscriptionGroupsGetGroupsList successfully', function(done) {
+        //uncomment below and update the code to test subscriptionGroupsGetGroupsList
+        //instance.subscriptionGroupsGetGroupsList(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

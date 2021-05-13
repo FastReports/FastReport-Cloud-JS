@@ -2,7 +2,9 @@
 .gitignore
 .openapi-generator-ignore
 .travis.yml
+LICENSE
 README.md
+VERSION
 docs/AdminApiKeysApi.md
 docs/AdminDataSourceApi.md
 docs/AdminExportFolderCreateVM.md
