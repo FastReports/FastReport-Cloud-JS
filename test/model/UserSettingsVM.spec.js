@@ -28,7 +28,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new FastreportCloudSdk.HealthCheckApi();
+    instance = new FastreportCloudSdk.UserSettingsVM();
   });
 
   var getProperty = function(object, getter, property) {
@@ -47,17 +47,25 @@
       object[property] = value;
   }
 
-  describe('HealthCheckApi', function() {
-    describe('healthCheckDataGet', function() {
-      it('should call healthCheckDataGet successfully', function(done) {
-        //uncomment below and update the code to test healthCheckDataGet
-        //instance.healthCheckDataGet(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
+  describe('UserSettingsVM', function() {
+    it('should create an instance of UserSettingsVM', function() {
+      // uncomment below and update the code to test UserSettingsVM
+      //var instane = new FastreportCloudSdk.UserSettingsVM();
+      //expect(instance).to.be.a(FastreportCloudSdk.UserSettingsVM);
     });
+
+    it('should have the property profileVisibility (base name: "profileVisibility")', function() {
+      // uncomment below and update the code to test the property profileVisibility
+      //var instance = new FastreportCloudSdk.UserSettingsVM();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property defaultSubscription (base name: "defaultSubscription")', function() {
+      // uncomment below and update the code to test the property defaultSubscription
+      //var instance = new FastreportCloudSdk.UserSettingsVM();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

@@ -48,7 +48,7 @@ class FileIconVM {
             obj = obj || new FileIconVM();
 
             if (data.hasOwnProperty('icon')) {
-                obj['icon'] = ApiClient.convertToType(data['icon'], 'String');
+                obj['icon'] = ApiClient.convertToType(data['icon'], 'Blob');
             }
         }
         return obj;
@@ -58,7 +58,7 @@ class FileIconVM {
 }
 
 /**
- * @member {String} icon
+ * @member {Blob} icon
  */
 FileIconVM.prototype['icon'] = undefined;
 

@@ -54,8 +54,9 @@ export default class HealthCheckApi {
       let contentTypes = [];
       let accepts = [];
       let returnType = null;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
-        '/api/data/v1/HealthCheck', 'GET',
+        '/api/backend/v1/HealthCheck', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null
       );
@@ -67,130 +68,6 @@ export default class HealthCheckApi {
      */
     healthCheckDataGet() {
       return this.healthCheckDataGetWithHttpInfo()
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
-
-    /**
-     * healthcheck
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
-     */
-    healthCheckManagementGetWithHttpInfo() {
-      let postBody = null;
-
-      let pathParams = {
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['ApiKey', 'JWT'];
-      let contentTypes = [];
-      let accepts = [];
-      let returnType = null;
-      return this.apiClient.callApi(
-        '/api/manage/v1/HealthCheck', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null
-      );
-    }
-
-    /**
-     * healthcheck
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
-     */
-    healthCheckManagementGet() {
-      return this.healthCheckManagementGetWithHttpInfo()
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
-
-    /**
-     * healthcheck
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
-     */
-    healthCheckReportProcessorGetWithHttpInfo() {
-      let postBody = null;
-
-      let pathParams = {
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['ApiKey', 'JWT'];
-      let contentTypes = [];
-      let accepts = [];
-      let returnType = null;
-      return this.apiClient.callApi(
-        '/api/rp/v1/HealthCheck', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null
-      );
-    }
-
-    /**
-     * healthcheck
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
-     */
-    healthCheckReportProcessorGet() {
-      return this.healthCheckReportProcessorGetWithHttpInfo()
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
-
-    /**
-     * Returns Ok
-     * @param {String} version 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
-     */
-    healthCheckResultsProviderGetWithHttpInfo(version) {
-      let postBody = null;
-      // verify the required parameter 'version' is set
-      if (version === undefined || version === null) {
-        throw new Error("Missing the required parameter 'version' when calling healthCheckResultsProviderGet");
-      }
-
-      let pathParams = {
-        'version': version
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['ApiKey', 'JWT'];
-      let contentTypes = [];
-      let accepts = [];
-      let returnType = null;
-      return this.apiClient.callApi(
-        '/download/v{version}/HealthCheck', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null
-      );
-    }
-
-    /**
-     * Returns Ok
-     * @param {String} version 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
-     */
-    healthCheckResultsProviderGet(version) {
-      return this.healthCheckResultsProviderGetWithHttpInfo(version)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

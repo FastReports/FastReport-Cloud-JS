@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**filePermissions** | [**FilePermissions**](FilePermissions.md) |  | [optional] 
-**groupPermissions** | [**GroupPermissions**](GroupPermissions.md) |  | [optional] 
-**dataSourcePermissions** | [**DataSourcePermissions**](DataSourcePermissions.md) |  | [optional] 
+**filePermissions** | [**UpdateFilePermissionsVM**](UpdateFilePermissionsVM.md) |  | [optional] 
+**groupPermissions** | [**UpdateGroupPermissionsVM**](UpdateGroupPermissionsVM.md) |  | [optional] 
+**dataSourcePermissions** | [**UpdateDataSourcePermissionsVM**](UpdateDataSourcePermissionsVM.md) |  | [optional] 
 
 

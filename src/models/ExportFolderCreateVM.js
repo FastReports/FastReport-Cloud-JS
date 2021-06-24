@@ -54,7 +54,7 @@ class ExportFolderCreateVM {
                 obj['tags'] = ApiClient.convertToType(data['tags'], ['String']);
             }
             if (data.hasOwnProperty('icon')) {
-                obj['icon'] = ApiClient.convertToType(data['icon'], 'String');
+                obj['icon'] = ApiClient.convertToType(data['icon'], 'Blob');
             }
         }
         return obj;
@@ -74,7 +74,7 @@ ExportFolderCreateVM.prototype['name'] = undefined;
 ExportFolderCreateVM.prototype['tags'] = undefined;
 
 /**
- * @member {String} icon
+ * @member {Blob} icon
  */
 ExportFolderCreateVM.prototype['icon'] = undefined;
 

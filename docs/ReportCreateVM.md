@@ -5,9 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **templateId** | **String** |  | [optional] 
+**reportInfo** | [**ReportInfo**](ReportInfo.md) |  | [optional] 
 **name** | **String** |  | [optional] 
 **tags** | **[String]** |  | [optional] 
-**icon** | **String** |  | [optional] 
-**content** | **String** |  | [optional] 
+**icon** | **Blob** |  | [optional] 
+**content** | **Blob** |  | [optional] 
 
 

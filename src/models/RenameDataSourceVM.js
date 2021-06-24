@@ -22,10 +22,11 @@ class RenameDataSourceVM {
     /**
      * Constructs a new <code>RenameDataSourceVM</code>.
      * @alias module:models/RenameDataSourceVM
+     * @param name {String} 
      */
-    constructor() { 
+    constructor(name) { 
         
-        RenameDataSourceVM.initialize(this);
+        RenameDataSourceVM.initialize(this, name);
     }
 
     /**
@@ -33,7 +34,8 @@ class RenameDataSourceVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, name) { 
+        obj['name'] = name;
     }
 
     /**

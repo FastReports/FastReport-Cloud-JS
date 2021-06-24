@@ -12,9 +12,9 @@
  */
 
 import ApiClient from '../ApiClient';
-import DataSourcePermissions from './DataSourcePermissions';
-import FilePermissions from './FilePermissions';
-import GroupPermissions from './GroupPermissions';
+import UpdateDataSourcePermissionsVM from './UpdateDataSourcePermissionsVM';
+import UpdateFilePermissionsVM from './UpdateFilePermissionsVM';
+import UpdateGroupPermissionsVM from './UpdateGroupPermissionsVM';
 
 /**
  * The UpdateDefaultPermissionsVM model module.
@@ -51,13 +51,13 @@ class UpdateDefaultPermissionsVM {
             obj = obj || new UpdateDefaultPermissionsVM();
 
             if (data.hasOwnProperty('filePermissions')) {
-                obj['filePermissions'] = FilePermissions.constructFromObject(data['filePermissions']);
+                obj['filePermissions'] = UpdateFilePermissionsVM.constructFromObject(data['filePermissions']);
             }
             if (data.hasOwnProperty('groupPermissions')) {
-                obj['groupPermissions'] = GroupPermissions.constructFromObject(data['groupPermissions']);
+                obj['groupPermissions'] = UpdateGroupPermissionsVM.constructFromObject(data['groupPermissions']);
             }
             if (data.hasOwnProperty('dataSourcePermissions')) {
-                obj['dataSourcePermissions'] = DataSourcePermissions.constructFromObject(data['dataSourcePermissions']);
+                obj['dataSourcePermissions'] = UpdateDataSourcePermissionsVM.constructFromObject(data['dataSourcePermissions']);
             }
         }
         return obj;
@@ -67,17 +67,17 @@ class UpdateDefaultPermissionsVM {
 }
 
 /**
- * @member {module:models/FilePermissions} filePermissions
+ * @member {module:models/UpdateFilePermissionsVM} filePermissions
  */
 UpdateDefaultPermissionsVM.prototype['filePermissions'] = undefined;
 
 /**
- * @member {module:models/GroupPermissions} groupPermissions
+ * @member {module:models/UpdateGroupPermissionsVM} groupPermissions
  */
 UpdateDefaultPermissionsVM.prototype['groupPermissions'] = undefined;
 
 /**
- * @member {module:models/DataSourcePermissions} dataSourcePermissions
+ * @member {module:models/UpdateDataSourcePermissionsVM} dataSourcePermissions
  */
 UpdateDefaultPermissionsVM.prototype['dataSourcePermissions'] = undefined;
 

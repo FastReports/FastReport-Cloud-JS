@@ -22,10 +22,11 @@ class FolderRenameVM {
     /**
      * Constructs a new <code>FolderRenameVM</code>.
      * @alias module:models/FolderRenameVM
+     * @param name {String} 
      */
-    constructor() { 
+    constructor(name) { 
         
-        FolderRenameVM.initialize(this);
+        FolderRenameVM.initialize(this, name);
     }
 
     /**
@@ -33,7 +34,8 @@ class FolderRenameVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, name) { 
+        obj['name'] = name;
     }
 
     /**

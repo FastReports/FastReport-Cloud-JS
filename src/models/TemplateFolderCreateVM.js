@@ -54,7 +54,7 @@ class TemplateFolderCreateVM {
                 obj['tags'] = ApiClient.convertToType(data['tags'], ['String']);
             }
             if (data.hasOwnProperty('icon')) {
-                obj['icon'] = ApiClient.convertToType(data['icon'], 'String');
+                obj['icon'] = ApiClient.convertToType(data['icon'], 'Blob');
             }
         }
         return obj;
@@ -74,7 +74,7 @@ TemplateFolderCreateVM.prototype['name'] = undefined;
 TemplateFolderCreateVM.prototype['tags'] = undefined;
 
 /**
- * @member {String} icon
+ * @member {Blob} icon
  */
 TemplateFolderCreateVM.prototype['icon'] = undefined;
 

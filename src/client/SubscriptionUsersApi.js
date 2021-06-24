@@ -66,8 +66,9 @@ export default class SubscriptionUsersApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = null;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/manage/v1/Subscriptions/{subscriptionId}/users/{userId}', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -119,8 +120,9 @@ export default class SubscriptionUsersApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = SubscriptionUsersVM;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/manage/v1/Subscriptions/{subscriptionId}/users', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -168,8 +170,9 @@ export default class SubscriptionUsersApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = null;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/manage/v1/Subscriptions/{subscriptionId}/leave', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -220,8 +223,9 @@ export default class SubscriptionUsersApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = null;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/manage/v1/Subscriptions/{subscriptionId}/users/{userId}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,

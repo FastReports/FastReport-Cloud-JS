@@ -9,8 +9,8 @@ Name | Type | Description | Notes
 **locale** | **String** |  | [optional] 
 **pagesCount** | **Number** |  | [optional] 
 **format** | **String** |  | [optional] 
-**exportParameters** | **{String: Object}** |  | [optional] 
-**reportParameters** | **{String: Object}** |  | [optional] 
+**exportParameters** | **{String: String}** |  | [optional] 
+**reportParameters** | **{String: String}** |  | [optional] 
 
 
 

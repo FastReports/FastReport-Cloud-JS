@@ -62,8 +62,9 @@ export default class GroupsApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = ['application/json-patch+json', 'application/json', 'text/json', 'application/_*+json'];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = GroupVM;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/manage/v1/Groups', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -109,8 +110,9 @@ export default class GroupsApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = null;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/manage/v1/Groups/{id}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -155,8 +157,9 @@ export default class GroupsApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = GroupVM;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/manage/v1/Groups/{id}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -201,8 +204,9 @@ export default class GroupsApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = GroupsVM;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/manage/v1/Groups', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -249,8 +253,9 @@ export default class GroupsApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = GroupPermissionsVM;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/manage/v1/Groups/{id}/permissions', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -300,8 +305,9 @@ export default class GroupsApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = ['application/json-patch+json', 'application/json', 'text/json', 'application/_*+json'];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = GroupVM;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/manage/v1/Groups/{id}/rename', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -350,8 +356,9 @@ export default class GroupsApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = ['application/json-patch+json', 'application/json', 'text/json', 'application/_*+json'];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = null;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/manage/v1/Groups/{id}/permissions', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,

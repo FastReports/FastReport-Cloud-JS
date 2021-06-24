@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import ReportInfo from './ReportInfo';
 
 /**
  * The ReportCreateVM model module.
@@ -50,6 +51,9 @@ class ReportCreateVM {
             if (data.hasOwnProperty('templateId')) {
                 obj['templateId'] = ApiClient.convertToType(data['templateId'], 'String');
             }
+            if (data.hasOwnProperty('reportInfo')) {
+                obj['reportInfo'] = ReportInfo.constructFromObject(data['reportInfo']);
+            }
             if (data.hasOwnProperty('name')) {
                 obj['name'] = ApiClient.convertToType(data['name'], 'String');
             }
@@ -57,10 +61,10 @@ class ReportCreateVM {
                 obj['tags'] = ApiClient.convertToType(data['tags'], ['String']);
             }
             if (data.hasOwnProperty('icon')) {
-                obj['icon'] = ApiClient.convertToType(data['icon'], 'String');
+                obj['icon'] = ApiClient.convertToType(data['icon'], 'Blob');
             }
             if (data.hasOwnProperty('content')) {
-                obj['content'] = ApiClient.convertToType(data['content'], 'String');
+                obj['content'] = ApiClient.convertToType(data['content'], 'Blob');
             }
         }
         return obj;
@@ -75,6 +79,11 @@ class ReportCreateVM {
 ReportCreateVM.prototype['templateId'] = undefined;
 
 /**
+ * @member {module:models/ReportInfo} reportInfo
+ */
+ReportCreateVM.prototype['reportInfo'] = undefined;
+
+/**
  * @member {String} name
  */
 ReportCreateVM.prototype['name'] = undefined;
@@ -85,12 +94,12 @@ ReportCreateVM.prototype['name'] = undefined;
 ReportCreateVM.prototype['tags'] = undefined;
 
 /**
- * @member {String} icon
+ * @member {Blob} icon
  */
 ReportCreateVM.prototype['icon'] = undefined;
 
 /**
- * @member {String} content
+ * @member {Blob} content
  */
 ReportCreateVM.prototype['content'] = undefined;
 

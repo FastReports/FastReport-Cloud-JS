@@ -59,7 +59,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
-- **Accept**: text/plain, application/json, text/json
+- **Accept**: application/json, text/json, text/plain
 
 
 ## apiKeysDeleteApiKey
@@ -111,7 +111,7 @@ null (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
-- **Accept**: text/plain, application/json, text/json
+- **Accept**: application/json, text/json, text/plain
 
 
 ## apiKeysGetApiKeys
@@ -120,7 +120,7 @@ null (empty response body)
 
 Returns list with all api keys of current user
 
-Always work, it should make only 200 response.
+Always work, it should make only 200 response (except if user is not authorized).
 
 ### Example
 
@@ -161,5 +161,5 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/plain, application/json, text/json
+- **Accept**: application/json, text/json, text/plain
 

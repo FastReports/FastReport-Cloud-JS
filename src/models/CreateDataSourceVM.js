@@ -22,10 +22,12 @@ class CreateDataSourceVM {
     /**
      * Constructs a new <code>CreateDataSourceVM</code>.
      * @alias module:models/CreateDataSourceVM
+     * @param connectionString {String} 
+     * @param subscriptionId {String} 
      */
-    constructor() { 
+    constructor(connectionString, subscriptionId) { 
         
-        CreateDataSourceVM.initialize(this);
+        CreateDataSourceVM.initialize(this, connectionString, subscriptionId);
     }
 
     /**
@@ -33,7 +35,9 @@ class CreateDataSourceVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, connectionString, subscriptionId) { 
+        obj['connectionString'] = connectionString;
+        obj['subscriptionId'] = subscriptionId;
     }
 
     /**

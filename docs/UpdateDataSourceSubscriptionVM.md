@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**subscriptionId** | **String** |  | [optional] 
+**subscriptionId** | **String** |  | 
 
 

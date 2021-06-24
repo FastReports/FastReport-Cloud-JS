@@ -68,8 +68,9 @@ export default class SubscriptionsApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = DefaultPermissions;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/manage/v1/Subscriptions/{subscriptionId}/defaultPermissions', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -114,8 +115,9 @@ export default class SubscriptionsApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = SubscriptionPermissionsVM;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/manage/v1/Subscriptions/{id}/permissions', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -160,8 +162,9 @@ export default class SubscriptionsApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = SubscriptionVM;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/manage/v1/Subscriptions/{id}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -206,8 +209,9 @@ export default class SubscriptionsApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = SubscriptionsVM;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/manage/v1/Subscriptions', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -259,8 +263,9 @@ export default class SubscriptionsApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = ['application/json-patch+json', 'application/json', 'text/json', 'application/_*+json'];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = SubscriptionVM;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/manage/v1/Subscriptions/{subscriptionId}/rename', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -311,8 +316,9 @@ export default class SubscriptionsApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = ['application/json-patch+json', 'application/json', 'text/json', 'application/_*+json'];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = DefaultPermissionsVM;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/manage/v1/Subscriptions/{subscriptionId}/defaultPermissions', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -363,8 +369,9 @@ export default class SubscriptionsApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = ['application/json-patch+json', 'application/json', 'text/json', 'application/_*+json'];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = SubscriptionVM;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/manage/v1/Subscriptions/{subscriptionId}/Locale', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -413,8 +420,9 @@ export default class SubscriptionsApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = ['application/json-patch+json', 'application/json', 'text/json', 'application/_*+json'];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = null;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/manage/v1/Subscriptions/{id}/permissions', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,

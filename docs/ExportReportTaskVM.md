@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **locale** | **String** |  | [optional] 
 **pagesCount** | **Number** |  | [optional] 
 **format** | **String** |  | [optional] 
-**exportParameters** | **{String: Object}** |  | [optional] 
+**exportParameters** | **{String: String}** |  | [optional] 
 
 
 

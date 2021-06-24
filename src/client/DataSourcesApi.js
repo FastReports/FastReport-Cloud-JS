@@ -64,8 +64,9 @@ export default class DataSourcesApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = ['application/json-patch+json', 'application/json', 'text/json', 'application/_*+json'];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = DataSourceVM;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/data/v1/DataSources', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -111,8 +112,9 @@ export default class DataSourcesApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = null;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/data/v1/DataSources/{id}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -157,8 +159,9 @@ export default class DataSourcesApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = null;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/data/v1/DataSources/{id}/fetch', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -205,8 +208,9 @@ export default class DataSourcesApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = DataSourcesVM;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/data/v1/DataSources', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -254,8 +258,9 @@ export default class DataSourcesApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = DataSourceVM;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/data/v1/DataSources/{id}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -300,8 +305,9 @@ export default class DataSourcesApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = DataSourcePermissionsVM;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/data/v1/DataSources/{id}/permissions', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -349,8 +355,9 @@ export default class DataSourcesApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = ['application/json-patch+json', 'application/json', 'text/json', 'application/_*+json'];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = DataSourceVM;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/data/v1/DataSources/{id}/rename', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -400,8 +407,9 @@ export default class DataSourcesApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = ['application/json-patch+json', 'application/json', 'text/json', 'application/_*+json'];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = DataSourceVM;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/data/v1/DataSources/{id}/ConnectionString', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -451,8 +459,9 @@ export default class DataSourcesApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = ['application/json-patch+json', 'application/json', 'text/json', 'application/_*+json'];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = null;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/data/v1/DataSources/{id}/permissions', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -502,8 +511,9 @@ export default class DataSourcesApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = ['application/json-patch+json', 'application/json', 'text/json', 'application/_*+json'];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = null;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/data/v1/DataSources/{id}/updateSubscription', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,

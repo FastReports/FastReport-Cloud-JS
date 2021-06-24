@@ -63,7 +63,7 @@ class ExportReportTaskVM {
                 obj['format'] = ApiClient.convertToType(data['format'], 'String');
             }
             if (data.hasOwnProperty('exportParameters')) {
-                obj['exportParameters'] = ApiClient.convertToType(data['exportParameters'], {'String': Object});
+                obj['exportParameters'] = ApiClient.convertToType(data['exportParameters'], {'String': 'String'});
             }
         }
         return obj;
@@ -98,7 +98,7 @@ ExportReportTaskVM.prototype['pagesCount'] = undefined;
 ExportReportTaskVM.prototype['format'] = undefined;
 
 /**
- * @member {Object.<String, Object>} exportParameters
+ * @member {Object.<String, String>} exportParameters
  */
 ExportReportTaskVM.prototype['exportParameters'] = undefined;
 

@@ -54,10 +54,10 @@ class TemplateCreateVM {
                 obj['tags'] = ApiClient.convertToType(data['tags'], ['String']);
             }
             if (data.hasOwnProperty('icon')) {
-                obj['icon'] = ApiClient.convertToType(data['icon'], 'String');
+                obj['icon'] = ApiClient.convertToType(data['icon'], 'Blob');
             }
             if (data.hasOwnProperty('content')) {
-                obj['content'] = ApiClient.convertToType(data['content'], 'String');
+                obj['content'] = ApiClient.convertToType(data['content'], 'Blob');
             }
         }
         return obj;
@@ -77,12 +77,12 @@ TemplateCreateVM.prototype['name'] = undefined;
 TemplateCreateVM.prototype['tags'] = undefined;
 
 /**
- * @member {String} icon
+ * @member {Blob} icon
  */
 TemplateCreateVM.prototype['icon'] = undefined;
 
 /**
- * @member {String} content
+ * @member {Blob} content
  */
 TemplateCreateVM.prototype['content'] = undefined;
 

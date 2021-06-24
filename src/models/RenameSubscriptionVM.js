@@ -22,10 +22,11 @@ class RenameSubscriptionVM {
     /**
      * Constructs a new <code>RenameSubscriptionVM</code>.
      * @alias module:models/RenameSubscriptionVM
+     * @param name {String} 
      */
-    constructor() { 
+    constructor(name) { 
         
-        RenameSubscriptionVM.initialize(this);
+        RenameSubscriptionVM.initialize(this, name);
     }
 
     /**
@@ -33,7 +34,8 @@ class RenameSubscriptionVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, name) { 
+        obj['name'] = name;
     }
 
     /**

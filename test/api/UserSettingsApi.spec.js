@@ -28,7 +28,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new FastreportCloudSdk.HealthCheckApi();
+    instance = new FastreportCloudSdk.UserSettingsApi();
   });
 
   var getProperty = function(object, getter, property) {
@@ -47,11 +47,21 @@
       object[property] = value;
   }
 
-  describe('HealthCheckApi', function() {
-    describe('healthCheckDataGet', function() {
-      it('should call healthCheckDataGet successfully', function(done) {
-        //uncomment below and update the code to test healthCheckDataGet
-        //instance.healthCheckDataGet(function(error) {
+  describe('UserSettingsApi', function() {
+    describe('userSettingsGetCurrentUserSettings', function() {
+      it('should call userSettingsGetCurrentUserSettings successfully', function(done) {
+        //uncomment below and update the code to test userSettingsGetCurrentUserSettings
+        //instance.userSettingsGetCurrentUserSettings(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('userSettingsUpdateMySettings', function() {
+      it('should call userSettingsUpdateMySettings successfully', function(done) {
+        //uncomment below and update the code to test userSettingsUpdateMySettings
+        //instance.userSettingsUpdateMySettings(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

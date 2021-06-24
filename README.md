@@ -71,98 +71,6 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*FastreportCloudSdk.AdminApiKeysApi* | [**adminApiKeysCreateApiKey**](docs/AdminApiKeysApi.md#adminApiKeysCreateApiKey) | **POST** /api/admin/v1/ApiKeys/{userId} | Create a new apikey, 5 apikeys for user. Hardcoded for ddos.
-*FastreportCloudSdk.AdminApiKeysApi* | [**adminApiKeysDeleteApiKey**](docs/AdminApiKeysApi.md#adminApiKeysDeleteApiKey) | **DELETE** /api/admin/v1/ApiKeys/{userId} | Delete an apikey
-*FastreportCloudSdk.AdminApiKeysApi* | [**adminApiKeysGetApiKeys**](docs/AdminApiKeysApi.md#adminApiKeysGetApiKeys) | **GET** /api/admin/v1/ApiKeys/{userId} | Returns list with all api keys of a specified user
-*FastreportCloudSdk.AdminDataSourceApi* | [**adminDataSourceCreateDataSource**](docs/AdminDataSourceApi.md#adminDataSourceCreateDataSource) | **POST** /api/admin/v1/DataSource | Create new data source
-*FastreportCloudSdk.AdminDataSourceApi* | [**adminDataSourceDeleteDataSource**](docs/AdminDataSourceApi.md#adminDataSourceDeleteDataSource) | **DELETE** /api/admin/v1/DataSource/{id} | Delete datasource by id
-*FastreportCloudSdk.AdminDataSourceApi* | [**adminDataSourceFetchData**](docs/AdminDataSourceApi.md#adminDataSourceFetchData) | **GET** /api/admin/v1/DataSource/{id}/fetch | This should connect to a database and set data structure
-*FastreportCloudSdk.AdminDataSourceApi* | [**adminDataSourceGetDataSource**](docs/AdminDataSourceApi.md#adminDataSourceGetDataSource) | **GET** /api/admin/v1/DataSource/{id} | Get datasource by id
-*FastreportCloudSdk.AdminDataSourceApi* | [**adminDataSourceGetDataSources**](docs/AdminDataSourceApi.md#adminDataSourceGetDataSources) | **GET** /api/admin/v1/DataSource | Get list of datasources from database
-*FastreportCloudSdk.AdminDataSourceApi* | [**adminDataSourceGetPermissions**](docs/AdminDataSourceApi.md#adminDataSourceGetPermissions) | **GET** /api/admin/v1/DataSource/{id}/permissions | Get all Data source permissions
-*FastreportCloudSdk.AdminDataSourceApi* | [**adminDataSourceUpdateDataSource**](docs/AdminDataSourceApi.md#adminDataSourceUpdateDataSource) | **PUT** /api/admin/v1/DataSource/{id} | Update datasource with update VM
-*FastreportCloudSdk.AdminDataSourceApi* | [**adminDataSourceUpdatePermissions**](docs/AdminDataSourceApi.md#adminDataSourceUpdatePermissions) | **POST** /api/admin/v1/DataSource/{dataSourceId}/permissions | Update permissions to datasource
-*FastreportCloudSdk.AdminExportsApi* | [**adminExportFoldersDeleteFolder**](docs/AdminExportsApi.md#adminExportFoldersDeleteFolder) | **DELETE** /api/admin/v1/ExportFolders/{id} | Delete specified folder
-*FastreportCloudSdk.AdminExportsApi* | [**adminExportFoldersGetFolder**](docs/AdminExportsApi.md#adminExportFoldersGetFolder) | **GET** /api/admin/v1/ExportFolders/{id} | Returns a folder by id
-*FastreportCloudSdk.AdminExportsApi* | [**adminExportFoldersGetFolders**](docs/AdminExportsApi.md#adminExportFoldersGetFolders) | **GET** /api/admin/v1/ExportFolders | Returns a list of folders
-*FastreportCloudSdk.AdminExportsApi* | [**adminExportFoldersGetPermissions**](docs/AdminExportsApi.md#adminExportFoldersGetPermissions) | **GET** /api/admin/v1/ExportFolders/{id}/permissions | Get all folder permissions
-*FastreportCloudSdk.AdminExportsApi* | [**adminExportFoldersPostFolder**](docs/AdminExportsApi.md#adminExportFoldersPostFolder) | **POST** /api/admin/v1/ExportFolders | Create a folder
-*FastreportCloudSdk.AdminExportsApi* | [**adminExportFoldersUpdateFolder**](docs/AdminExportsApi.md#adminExportFoldersUpdateFolder) | **PUT** /api/admin/v1/ExportFolders/{id} | Update a folder
-*FastreportCloudSdk.AdminExportsApi* | [**adminExportFoldersUpdatePermissions**](docs/AdminExportsApi.md#adminExportFoldersUpdatePermissions) | **POST** /api/admin/v1/ExportFolders/{id}/permissions | Revoke permission
-*FastreportCloudSdk.AdminExportsApi* | [**adminExportsDeleteFile**](docs/AdminExportsApi.md#adminExportsDeleteFile) | **DELETE** /api/admin/v1/Exports/{id} | Delete specified file
-*FastreportCloudSdk.AdminExportsApi* | [**adminExportsGetFile**](docs/AdminExportsApi.md#adminExportsGetFile) | **GET** /api/admin/v1/Exports/{id} | Returns a file by id
-*FastreportCloudSdk.AdminExportsApi* | [**adminExportsGetFiles**](docs/AdminExportsApi.md#adminExportsGetFiles) | **GET** /api/admin/v1/Exports | Returns a list of files
-*FastreportCloudSdk.AdminExportsApi* | [**adminExportsGetPermissions**](docs/AdminExportsApi.md#adminExportsGetPermissions) | **GET** /api/admin/v1/Exports/{id}/permissions | Get all file permissions
-*FastreportCloudSdk.AdminExportsApi* | [**adminExportsUpdateFile**](docs/AdminExportsApi.md#adminExportsUpdateFile) | **PUT** /api/admin/v1/Exports/{id} | Update a file
-*FastreportCloudSdk.AdminExportsApi* | [**adminExportsUpdatePermissions**](docs/AdminExportsApi.md#adminExportsUpdatePermissions) | **POST** /api/admin/v1/Exports/{id}/permissions | Update permissions to file
-*FastreportCloudSdk.AdminExportsApi* | [**adminExportsUploadFile**](docs/AdminExportsApi.md#adminExportsUploadFile) | **POST** /api/admin/v1/Exports | Upload a file to the specified folder
-*FastreportCloudSdk.AdminGroupsApi* | [**adminGroupsCreateGroup**](docs/AdminGroupsApi.md#adminGroupsCreateGroup) | **POST** /api/admin/v1/Groups | Create a new group, returns a new model
-*FastreportCloudSdk.AdminGroupsApi* | [**adminGroupsDeleteGroup**](docs/AdminGroupsApi.md#adminGroupsDeleteGroup) | **DELETE** /api/admin/v1/Groups/{id} | Delete a group by id
-*FastreportCloudSdk.AdminGroupsApi* | [**adminGroupsGetGroup**](docs/AdminGroupsApi.md#adminGroupsGetGroup) | **GET** /api/admin/v1/Groups/{id} | Returns a group by id
-*FastreportCloudSdk.AdminGroupsApi* | [**adminGroupsGetGroups**](docs/AdminGroupsApi.md#adminGroupsGetGroups) | **GET** /api/admin/v1/Groups | Returns a list of groups
-*FastreportCloudSdk.AdminGroupsApi* | [**adminGroupsGetPermissions**](docs/AdminGroupsApi.md#adminGroupsGetPermissions) | **GET** /api/admin/v1/Groups/{id}/permissions | Gets group permissions by identifier
-*FastreportCloudSdk.AdminGroupsApi* | [**adminGroupsUpdateGroup**](docs/AdminGroupsApi.md#adminGroupsUpdateGroup) | **PUT** /api/admin/v1/Groups/{id} | Update a group by id
-*FastreportCloudSdk.AdminGroupsApi* | [**adminGroupsUpdatePermissions**](docs/AdminGroupsApi.md#adminGroupsUpdatePermissions) | **POST** /api/admin/v1/Groups/{id}/permissions | Update permissions in user group by identifier
-*FastreportCloudSdk.AdminHealthCheckApi* | [**adminHealthCheckAdminGet**](docs/AdminHealthCheckApi.md#adminHealthCheckAdminGet) | **GET** /api/admin/v1/HealthCheck | healthcheck
-*FastreportCloudSdk.AdminReportsApi* | [**adminReportFoldersDeleteFolder**](docs/AdminReportsApi.md#adminReportFoldersDeleteFolder) | **DELETE** /api/admin/v1/ReportFolders/{id} | Delete specified folder
-*FastreportCloudSdk.AdminReportsApi* | [**adminReportFoldersGetFolder**](docs/AdminReportsApi.md#adminReportFoldersGetFolder) | **GET** /api/admin/v1/ReportFolders/{id} | Returns a folder by id
-*FastreportCloudSdk.AdminReportsApi* | [**adminReportFoldersGetFolders**](docs/AdminReportsApi.md#adminReportFoldersGetFolders) | **GET** /api/admin/v1/ReportFolders | Returns a list of folders
-*FastreportCloudSdk.AdminReportsApi* | [**adminReportFoldersGetPermissions**](docs/AdminReportsApi.md#adminReportFoldersGetPermissions) | **GET** /api/admin/v1/ReportFolders/{id}/permissions | Get all folder permissions
-*FastreportCloudSdk.AdminReportsApi* | [**adminReportFoldersPostFolder**](docs/AdminReportsApi.md#adminReportFoldersPostFolder) | **POST** /api/admin/v1/ReportFolders | Create a folder
-*FastreportCloudSdk.AdminReportsApi* | [**adminReportFoldersUpdateFolder**](docs/AdminReportsApi.md#adminReportFoldersUpdateFolder) | **PUT** /api/admin/v1/ReportFolders/{id} | Update a folder
-*FastreportCloudSdk.AdminReportsApi* | [**adminReportFoldersUpdatePermissions**](docs/AdminReportsApi.md#adminReportFoldersUpdatePermissions) | **POST** /api/admin/v1/ReportFolders/{id}/permissions | Revoke permission
-*FastreportCloudSdk.AdminReportsApi* | [**adminReportsDeleteFile**](docs/AdminReportsApi.md#adminReportsDeleteFile) | **DELETE** /api/admin/v1/Reports/{id} | Delete specified file
-*FastreportCloudSdk.AdminReportsApi* | [**adminReportsGetFile**](docs/AdminReportsApi.md#adminReportsGetFile) | **GET** /api/admin/v1/Reports/{id} | Returns a file by id
-*FastreportCloudSdk.AdminReportsApi* | [**adminReportsGetFiles**](docs/AdminReportsApi.md#adminReportsGetFiles) | **GET** /api/admin/v1/Reports | Returns a list of files
-*FastreportCloudSdk.AdminReportsApi* | [**adminReportsGetPermissions**](docs/AdminReportsApi.md#adminReportsGetPermissions) | **GET** /api/admin/v1/Reports/{id}/permissions | Get all file permissions
-*FastreportCloudSdk.AdminReportsApi* | [**adminReportsUpdateFile**](docs/AdminReportsApi.md#adminReportsUpdateFile) | **PUT** /api/admin/v1/Reports/{id} | Update a file
-*FastreportCloudSdk.AdminReportsApi* | [**adminReportsUpdatePermissions**](docs/AdminReportsApi.md#adminReportsUpdatePermissions) | **POST** /api/admin/v1/Reports/{id}/permissions | Update permissions to file
-*FastreportCloudSdk.AdminReportsApi* | [**adminReportsUploadFile**](docs/AdminReportsApi.md#adminReportsUploadFile) | **POST** /api/admin/v1/Reports | Upload a file to the specified folder
-*FastreportCloudSdk.AdminSubscriptionAnalyticsApi* | [**adminSubscriptionAnalyticsCheckAnonPermissions**](docs/AdminSubscriptionAnalyticsApi.md#adminSubscriptionAnalyticsCheckAnonPermissions) | **GET** /api/admin/v1/Analytics/Subscriptions/{subscriptionId}/AnonCheck | This will check if there are any files, related to subscription that available for anonymous users
-*FastreportCloudSdk.AdminSubscriptionAnalyticsApi* | [**adminSubscriptionAnalyticsCheckOtherPermissions**](docs/AdminSubscriptionAnalyticsApi.md#adminSubscriptionAnalyticsCheckOtherPermissions) | **GET** /api/admin/v1/Analytics/Subscriptions/{subscriptionId}/OtherCheck | This will check if there are any files, related to subscription that not available for subscription users
-*FastreportCloudSdk.AdminSubscriptionAnalyticsApi* | [**adminSubscriptionAnalyticsGetDeadSubsInUsers**](docs/AdminSubscriptionAnalyticsApi.md#adminSubscriptionAnalyticsGetDeadSubsInUsers) | **GET** /api/admin/v1/Analytics/Subscriptions/DeadSubsInUsers | This will check if there are any deleted subscriptions in users sub lists
-*FastreportCloudSdk.AdminSubscriptionAnalyticsApi* | [**adminSubscriptionAnalyticsGetEmptySubs**](docs/AdminSubscriptionAnalyticsApi.md#adminSubscriptionAnalyticsGetEmptySubs) | **GET** /api/admin/v1/Analytics/Subscriptions/EmptySubs | This will check if there are any subscriptions without users
-*FastreportCloudSdk.AdminSubscriptionAnalyticsApi* | [**adminSubscriptionAnalyticsGetLostFileChunks**](docs/AdminSubscriptionAnalyticsApi.md#adminSubscriptionAnalyticsGetLostFileChunks) | **GET** /api/admin/v1/Analytics/Subscriptions/LostFileChunks | This will check if there are any files in gridFS, which not related to any file model
-*FastreportCloudSdk.AdminSubscriptionAnalyticsApi* | [**adminSubscriptionAnalyticsGetUnrelatedDocuments**](docs/AdminSubscriptionAnalyticsApi.md#adminSubscriptionAnalyticsGetUnrelatedDocuments) | **GET** /api/admin/v1/Analytics/Subscriptions/UnrelatedDocuments | This will check if there are any files, that not related to any existing subscription
-*FastreportCloudSdk.AdminSubscriptionInvitesApi* | [**adminSubscriptionInvitesCreateInvite**](docs/AdminSubscriptionInvitesApi.md#adminSubscriptionInvitesCreateInvite) | **POST** /api/admin/v1/Subscriptions/{subscriptionId}/invite | Create invite to subscription
-*FastreportCloudSdk.AdminSubscriptionInvitesApi* | [**adminSubscriptionInvitesDeleteInvite**](docs/AdminSubscriptionInvitesApi.md#adminSubscriptionInvitesDeleteInvite) | **DELETE** /api/admin/v1/Subscriptions/{subscriptionId}/invite/{accesstoken} | Rename subscription
-*FastreportCloudSdk.AdminSubscriptionInvitesApi* | [**adminSubscriptionInvitesGetInvites**](docs/AdminSubscriptionInvitesApi.md#adminSubscriptionInvitesGetInvites) | **GET** /api/admin/v1/Subscriptions/{subscriptionId}/invites | Get list of invites in a subscription,  the added users will be displayed in the list of users of the subscription,  and these users will also have an active subscription.
-*FastreportCloudSdk.AdminSubscriptionPeriodApi* | [**adminSubscriptionPeriodRenewSubscription**](docs/AdminSubscriptionPeriodApi.md#adminSubscriptionPeriodRenewSubscription) | **POST** /api/admin/v1/Subscriptions/{id}/Renew | Create a new subscripiton period, move current period to old
-*FastreportCloudSdk.AdminSubscriptionPlansApi* | [**adminSubscriptionPlansCreateSubscriptionPlan**](docs/AdminSubscriptionPlansApi.md#adminSubscriptionPlansCreateSubscriptionPlan) | **POST** /api/admin/v1/SubscriptionPlans | Create a new subscription plan, returns a new model
-*FastreportCloudSdk.AdminSubscriptionPlansApi* | [**adminSubscriptionPlansDeleteSubscriptionPlan**](docs/AdminSubscriptionPlansApi.md#adminSubscriptionPlansDeleteSubscriptionPlan) | **DELETE** /api/admin/v1/SubscriptionPlans/{id} | Delete a subscription plan.
-*FastreportCloudSdk.AdminSubscriptionPlansApi* | [**adminSubscriptionPlansGetSubscriptionPlan**](docs/AdminSubscriptionPlansApi.md#adminSubscriptionPlansGetSubscriptionPlan) | **GET** /api/admin/v1/SubscriptionPlans/{id} | Returns a subscription plan. Not all subscriptions can be issued for customer.
-*FastreportCloudSdk.AdminSubscriptionPlansApi* | [**adminSubscriptionPlansGetSubscriptionPlans**](docs/AdminSubscriptionPlansApi.md#adminSubscriptionPlansGetSubscriptionPlans) | **GET** /api/admin/v1/SubscriptionPlans | Returns a list of active subscription plans that can be issued to the user.
-*FastreportCloudSdk.AdminSubscriptionPlansApi* | [**adminSubscriptionPlansUpdateSubscriptionPlan**](docs/AdminSubscriptionPlansApi.md#adminSubscriptionPlansUpdateSubscriptionPlan) | **PUT** /api/admin/v1/SubscriptionPlans/{id} | Update a subscription plan.
-*FastreportCloudSdk.AdminSubscriptionProblemSolvingApi* | [**adminSubscriptionProblemSolvingSolveProblems**](docs/AdminSubscriptionProblemSolvingApi.md#adminSubscriptionProblemSolvingSolveProblems) | **POST** /api/admin/v1/Analytics/Solve | Solve problems provided by FastReport.Cloud.Admin.Controllers.SubscriptionAnalyticsController
-*FastreportCloudSdk.AdminSubscriptionsApi* | [**adminSubscriptionsCreateSubscription**](docs/AdminSubscriptionsApi.md#adminSubscriptionsCreateSubscription) | **POST** /api/admin/v1/Subscriptions | Create a new subscription based on some plan
-*FastreportCloudSdk.AdminSubscriptionsApi* | [**adminSubscriptionsDeleteSubscription**](docs/AdminSubscriptionsApi.md#adminSubscriptionsDeleteSubscription) | **DELETE** /api/admin/v1/Subscriptions/{id} | Delete the subscription by id
-*FastreportCloudSdk.AdminSubscriptionsApi* | [**adminSubscriptionsGetNewSibscriptionsPerMonth**](docs/AdminSubscriptionsApi.md#adminSubscriptionsGetNewSibscriptionsPerMonth) | **GET** /api/admin/v1/Subscriptions/stat/new/{from}/{to} | Returns a key-value pair of new(renew) subscriptions count per month for a specified time span: (month, number of new subscriptions)
-*FastreportCloudSdk.AdminSubscriptionsApi* | [**adminSubscriptionsGetPermissions**](docs/AdminSubscriptionsApi.md#adminSubscriptionsGetPermissions) | **GET** /api/admin/v1/Subscriptions/{id}/permissions | Get all subscription permissions
-*FastreportCloudSdk.AdminSubscriptionsApi* | [**adminSubscriptionsGetSubscription**](docs/AdminSubscriptionsApi.md#adminSubscriptionsGetSubscription) | **GET** /api/admin/v1/Subscriptions/{id} | Returns the subscription by id
-*FastreportCloudSdk.AdminSubscriptionsApi* | [**adminSubscriptionsGetSubscriptions**](docs/AdminSubscriptionsApi.md#adminSubscriptionsGetSubscriptions) | **GET** /api/admin/v1/Subscriptions | Returns a list of all subscriptions
-*FastreportCloudSdk.AdminSubscriptionsApi* | [**adminSubscriptionsReCountSubscription**](docs/AdminSubscriptionsApi.md#adminSubscriptionsReCountSubscription) | **GET** /api/admin/v1/Subscriptions/{id}/recount | Recount subscription&#39;s files and folders sizes.
-*FastreportCloudSdk.AdminSubscriptionsApi* | [**adminSubscriptionsUpdatePermissions**](docs/AdminSubscriptionsApi.md#adminSubscriptionsUpdatePermissions) | **POST** /api/admin/v1/Subscriptions/{id}/permissions | Update permissions to subscription
-*FastreportCloudSdk.AdminSubscriptionsApi* | [**adminSubscriptionsUpdateSubscription**](docs/AdminSubscriptionsApi.md#adminSubscriptionsUpdateSubscription) | **PUT** /api/admin/v1/Subscriptions/{id} | Update the subscription by id
-*FastreportCloudSdk.AdminTemplatesApi* | [**adminTemplateFoldersDeleteFolder**](docs/AdminTemplatesApi.md#adminTemplateFoldersDeleteFolder) | **DELETE** /api/admin/v1/TemplateFolders/{id} | Delete specified folder
-*FastreportCloudSdk.AdminTemplatesApi* | [**adminTemplateFoldersGetFolder**](docs/AdminTemplatesApi.md#adminTemplateFoldersGetFolder) | **GET** /api/admin/v1/TemplateFolders/{id} | Returns a folder by id
-*FastreportCloudSdk.AdminTemplatesApi* | [**adminTemplateFoldersGetFolders**](docs/AdminTemplatesApi.md#adminTemplateFoldersGetFolders) | **GET** /api/admin/v1/TemplateFolders | Returns a list of folders
-*FastreportCloudSdk.AdminTemplatesApi* | [**adminTemplateFoldersGetPermissions**](docs/AdminTemplatesApi.md#adminTemplateFoldersGetPermissions) | **GET** /api/admin/v1/TemplateFolders/{id}/permissions | Get all folder permissions
-*FastreportCloudSdk.AdminTemplatesApi* | [**adminTemplateFoldersPostFolder**](docs/AdminTemplatesApi.md#adminTemplateFoldersPostFolder) | **POST** /api/admin/v1/TemplateFolders | Create a folder
-*FastreportCloudSdk.AdminTemplatesApi* | [**adminTemplateFoldersUpdateFolder**](docs/AdminTemplatesApi.md#adminTemplateFoldersUpdateFolder) | **PUT** /api/admin/v1/TemplateFolders/{id} | Update a folder
-*FastreportCloudSdk.AdminTemplatesApi* | [**adminTemplateFoldersUpdatePermissions**](docs/AdminTemplatesApi.md#adminTemplateFoldersUpdatePermissions) | **POST** /api/admin/v1/TemplateFolders/{id}/permissions | Revoke permission
-*FastreportCloudSdk.AdminTemplatesApi* | [**adminTemplatesDeleteFile**](docs/AdminTemplatesApi.md#adminTemplatesDeleteFile) | **DELETE** /api/admin/v1/Templates/{id} | Delete specified file
-*FastreportCloudSdk.AdminTemplatesApi* | [**adminTemplatesGetFile**](docs/AdminTemplatesApi.md#adminTemplatesGetFile) | **GET** /api/admin/v1/Templates/{id} | Returns a file by id
-*FastreportCloudSdk.AdminTemplatesApi* | [**adminTemplatesGetFiles**](docs/AdminTemplatesApi.md#adminTemplatesGetFiles) | **GET** /api/admin/v1/Templates | Returns a list of files
-*FastreportCloudSdk.AdminTemplatesApi* | [**adminTemplatesGetPermissions**](docs/AdminTemplatesApi.md#adminTemplatesGetPermissions) | **GET** /api/admin/v1/Templates/{id}/permissions | Get all file permissions
-*FastreportCloudSdk.AdminTemplatesApi* | [**adminTemplatesUpdateFile**](docs/AdminTemplatesApi.md#adminTemplatesUpdateFile) | **PUT** /api/admin/v1/Templates/{id} | Update a file
-*FastreportCloudSdk.AdminTemplatesApi* | [**adminTemplatesUpdatePermissions**](docs/AdminTemplatesApi.md#adminTemplatesUpdatePermissions) | **POST** /api/admin/v1/Templates/{id}/permissions | Update permissions to file
-*FastreportCloudSdk.AdminTemplatesApi* | [**adminTemplatesUploadFile**](docs/AdminTemplatesApi.md#adminTemplatesUploadFile) | **POST** /api/admin/v1/Templates | Upload a file to the specified folder
-*FastreportCloudSdk.AdminUsersApi* | [**adminUsersDeleteUser**](docs/AdminUsersApi.md#adminUsersDeleteUser) | **DELETE** /api/admin/v1/Users/{id} | Delete a user from cloud database by id
-*FastreportCloudSdk.AdminUsersApi* | [**adminUsersGetNewUsersPerMonth**](docs/AdminUsersApi.md#adminUsersGetNewUsersPerMonth) | **GET** /api/admin/v1/Users/stat/new/{from}/{to} | Returns a key-value pair of new users count per month for a specified time span: (month, number of new users)
-*FastreportCloudSdk.AdminUsersApi* | [**adminUsersGetUser**](docs/AdminUsersApi.md#adminUsersGetUser) | **GET** /api/admin/v1/Users/{id} | Returns a user view model by id
-*FastreportCloudSdk.AdminUsersApi* | [**adminUsersGetUsers**](docs/AdminUsersApi.md#adminUsersGetUsers) | **GET** /api/admin/v1/Users | Returns a list of users
-*FastreportCloudSdk.AdminUsersApi* | [**adminUsersRegisterUser**](docs/AdminUsersApi.md#adminUsersRegisterUser) | **POST** /api/admin/v1/Users | Register a new user in the cloud with specified id, returns a new model
-*FastreportCloudSdk.AdminUsersApi* | [**adminUsersUpdateUser**](docs/AdminUsersApi.md#adminUsersUpdateUser) | **PUT** /api/admin/v1/Users/{id} | Update an user by id
 *FastreportCloudSdk.ApiKeysApi* | [**apiKeysCreateApiKey**](docs/ApiKeysApi.md#apiKeysCreateApiKey) | **POST** /api/manage/v1/ApiKeys | Create a new apikey, 5 apikeys for user. Hardcoded for ddos.
 *FastreportCloudSdk.ApiKeysApi* | [**apiKeysDeleteApiKey**](docs/ApiKeysApi.md#apiKeysDeleteApiKey) | **DELETE** /api/manage/v1/ApiKeys | Delete an apikey
 *FastreportCloudSdk.ApiKeysApi* | [**apiKeysGetApiKeys**](docs/ApiKeysApi.md#apiKeysGetApiKeys) | **GET** /api/manage/v1/ApiKeys | Returns list with all api keys of current user
@@ -222,10 +130,7 @@ Class | Method | HTTP request | Description
 *FastreportCloudSdk.GroupsApi* | [**groupsGetPermissions**](docs/GroupsApi.md#groupsGetPermissions) | **GET** /api/manage/v1/Groups/{id}/permissions | Gets group permissions by identifier
 *FastreportCloudSdk.GroupsApi* | [**groupsRenameGroup**](docs/GroupsApi.md#groupsRenameGroup) | **PUT** /api/manage/v1/Groups/{id}/rename | Rename group by identifier
 *FastreportCloudSdk.GroupsApi* | [**groupsUpdatePermissions**](docs/GroupsApi.md#groupsUpdatePermissions) | **POST** /api/manage/v1/Groups/{id}/permissions | Update permissions
-*FastreportCloudSdk.HealthCheckApi* | [**healthCheckDataGet**](docs/HealthCheckApi.md#healthCheckDataGet) | **GET** /api/data/v1/HealthCheck | healthcheck
-*FastreportCloudSdk.HealthCheckApi* | [**healthCheckManagementGet**](docs/HealthCheckApi.md#healthCheckManagementGet) | **GET** /api/manage/v1/HealthCheck | healthcheck
-*FastreportCloudSdk.HealthCheckApi* | [**healthCheckReportProcessorGet**](docs/HealthCheckApi.md#healthCheckReportProcessorGet) | **GET** /api/rp/v1/HealthCheck | healthcheck
-*FastreportCloudSdk.HealthCheckApi* | [**healthCheckResultsProviderGet**](docs/HealthCheckApi.md#healthCheckResultsProviderGet) | **GET** /download/v{version}/HealthCheck | Returns Ok
+*FastreportCloudSdk.HealthCheckApi* | [**healthCheckDataGet**](docs/HealthCheckApi.md#healthCheckDataGet) | **GET** /api/backend/v1/HealthCheck | healthcheck
 *FastreportCloudSdk.ReportsApi* | [**reportFolderAndFileGetCount**](docs/ReportsApi.md#reportFolderAndFileGetCount) | **GET** /api/rp/v1/Reports/Folder/{id}/CountFolderAndFiles | Get count of files and folders what contains in a specified folder
 *FastreportCloudSdk.ReportsApi* | [**reportFolderAndFileGetFoldersAndFiles**](docs/ReportsApi.md#reportFolderAndFileGetFoldersAndFiles) | **GET** /api/rp/v1/Reports/Folder/{id}/ListFolderAndFiles | Get all folders and files from specified folder
 *FastreportCloudSdk.ReportsApi* | [**reportFoldersCopyFolder**](docs/ReportsApi.md#reportFoldersCopyFolder) | **POST** /api/rp/v1/Reports/Folder/{id}/Copy/{folderId} | Move folder to a specified folder
@@ -307,32 +212,21 @@ Class | Method | HTTP request | Description
 *FastreportCloudSdk.UserProfileApi* | [**userProfileGetMyProfile**](docs/UserProfileApi.md#userProfileGetMyProfile) | **GET** /api/manage/v1/UserProfile | Return current profile of the current user
 *FastreportCloudSdk.UserProfileApi* | [**userProfileGetUserProfile**](docs/UserProfileApi.md#userProfileGetUserProfile) | **GET** /api/manage/v1/UserProfile/{userId} | Return user profile by user identifier.  If the user did not provide information about himself or blocked, then the endpoint will return an empty model. (only id)
 *FastreportCloudSdk.UserProfileApi* | [**userProfileUpdateMyProfile**](docs/UserProfileApi.md#userProfileUpdateMyProfile) | **PUT** /api/manage/v1/UserProfile | Update profile of the current user
+*FastreportCloudSdk.UserSettingsApi* | [**userSettingsGetCurrentUserSettings**](docs/UserSettingsApi.md#userSettingsGetCurrentUserSettings) | **GET** /api/manage/v1/UserSettings | Return current user settings.
+*FastreportCloudSdk.UserSettingsApi* | [**userSettingsUpdateMySettings**](docs/UserSettingsApi.md#userSettingsUpdateMySettings) | **PUT** /api/manage/v1/UserSettings | Update settings of the current user
 
 
 ## Documentation for Models
 
- - [FastreportCloudSdk.AdminExportFolderCreateVM](docs/AdminExportFolderCreateVM.md)
- - [FastreportCloudSdk.AdminPermission](docs/AdminPermission.md)
- - [FastreportCloudSdk.AdminReportFolderCreateVM](docs/AdminReportFolderCreateVM.md)
- - [FastreportCloudSdk.AdminSubscriptionVM](docs/AdminSubscriptionVM.md)
- - [FastreportCloudSdk.AdminSubscriptionsVM](docs/AdminSubscriptionsVM.md)
- - [FastreportCloudSdk.AdminTemplateFolderCreateVM](docs/AdminTemplateFolderCreateVM.md)
- - [FastreportCloudSdk.AnalysisResultVM](docs/AnalysisResultVM.md)
- - [FastreportCloudSdk.AnalysisResultsVM](docs/AnalysisResultsVM.md)
  - [FastreportCloudSdk.ApiKeyVM](docs/ApiKeyVM.md)
  - [FastreportCloudSdk.ApiKeysVM](docs/ApiKeysVM.md)
  - [FastreportCloudSdk.BreadcrumbsModel](docs/BreadcrumbsModel.md)
  - [FastreportCloudSdk.BreadcrumbsVM](docs/BreadcrumbsVM.md)
  - [FastreportCloudSdk.CountVM](docs/CountVM.md)
  - [FastreportCloudSdk.CreateApiKeyVM](docs/CreateApiKeyVM.md)
- - [FastreportCloudSdk.CreateDataSourceAdminVM](docs/CreateDataSourceAdminVM.md)
  - [FastreportCloudSdk.CreateDataSourceVM](docs/CreateDataSourceVM.md)
- - [FastreportCloudSdk.CreateGroupAdminVM](docs/CreateGroupAdminVM.md)
  - [FastreportCloudSdk.CreateGroupVM](docs/CreateGroupVM.md)
  - [FastreportCloudSdk.CreateSubscriptionInviteVM](docs/CreateSubscriptionInviteVM.md)
- - [FastreportCloudSdk.CreateSubscriptionPeriodVM](docs/CreateSubscriptionPeriodVM.md)
- - [FastreportCloudSdk.CreateSubscriptionPlanVM](docs/CreateSubscriptionPlanVM.md)
- - [FastreportCloudSdk.CreateSubscriptionVM](docs/CreateSubscriptionVM.md)
  - [FastreportCloudSdk.DataSourcePermission](docs/DataSourcePermission.md)
  - [FastreportCloudSdk.DataSourcePermissions](docs/DataSourcePermissions.md)
  - [FastreportCloudSdk.DataSourcePermissionsVM](docs/DataSourcePermissionsVM.md)
@@ -341,7 +235,6 @@ Class | Method | HTTP request | Description
  - [FastreportCloudSdk.DefaultPermissions](docs/DefaultPermissions.md)
  - [FastreportCloudSdk.DefaultPermissionsVM](docs/DefaultPermissionsVM.md)
  - [FastreportCloudSdk.DeleteApiKeyVM](docs/DeleteApiKeyVM.md)
- - [FastreportCloudSdk.ExportCreateAdminVM](docs/ExportCreateAdminVM.md)
  - [FastreportCloudSdk.ExportFolderCreateVM](docs/ExportFolderCreateVM.md)
  - [FastreportCloudSdk.ExportReportTaskVM](docs/ExportReportTaskVM.md)
  - [FastreportCloudSdk.ExportTemplateTaskVM](docs/ExportTemplateTaskVM.md)
@@ -353,7 +246,6 @@ Class | Method | HTTP request | Description
  - [FastreportCloudSdk.FilePermissionsVM](docs/FilePermissionsVM.md)
  - [FastreportCloudSdk.FileRenameVM](docs/FileRenameVM.md)
  - [FastreportCloudSdk.FileTagsUpdateVM](docs/FileTagsUpdateVM.md)
- - [FastreportCloudSdk.FileUpdateVM](docs/FileUpdateVM.md)
  - [FastreportCloudSdk.FileVM](docs/FileVM.md)
  - [FastreportCloudSdk.FilesVM](docs/FilesVM.md)
  - [FastreportCloudSdk.FolderIconVM](docs/FolderIconVM.md)
@@ -369,11 +261,9 @@ Class | Method | HTTP request | Description
  - [FastreportCloudSdk.InvitedUser](docs/InvitedUser.md)
  - [FastreportCloudSdk.PrepareTemplateTaskVM](docs/PrepareTemplateTaskVM.md)
  - [FastreportCloudSdk.ProblemDetails](docs/ProblemDetails.md)
- - [FastreportCloudSdk.RegisterUserVM](docs/RegisterUserVM.md)
  - [FastreportCloudSdk.RenameDataSourceVM](docs/RenameDataSourceVM.md)
  - [FastreportCloudSdk.RenameGroupVM](docs/RenameGroupVM.md)
  - [FastreportCloudSdk.RenameSubscriptionVM](docs/RenameSubscriptionVM.md)
- - [FastreportCloudSdk.ReportCreateAdminVM](docs/ReportCreateAdminVM.md)
  - [FastreportCloudSdk.ReportCreateVM](docs/ReportCreateVM.md)
  - [FastreportCloudSdk.ReportFolderCreateVM](docs/ReportFolderCreateVM.md)
  - [FastreportCloudSdk.ReportInfo](docs/ReportInfo.md)
@@ -392,7 +282,6 @@ Class | Method | HTTP request | Description
  - [FastreportCloudSdk.SubscriptionUsersVM](docs/SubscriptionUsersVM.md)
  - [FastreportCloudSdk.SubscriptionVM](docs/SubscriptionVM.md)
  - [FastreportCloudSdk.SubscriptionsVM](docs/SubscriptionsVM.md)
- - [FastreportCloudSdk.TemplateCreateAdminVM](docs/TemplateCreateAdminVM.md)
  - [FastreportCloudSdk.TemplateCreateVM](docs/TemplateCreateVM.md)
  - [FastreportCloudSdk.TemplateFolderCreateVM](docs/TemplateFolderCreateVM.md)
  - [FastreportCloudSdk.TemplateVM](docs/TemplateVM.md)
@@ -400,20 +289,15 @@ Class | Method | HTTP request | Description
  - [FastreportCloudSdk.UpdateDataSourceConnectionStringVM](docs/UpdateDataSourceConnectionStringVM.md)
  - [FastreportCloudSdk.UpdateDataSourcePermissionsVM](docs/UpdateDataSourcePermissionsVM.md)
  - [FastreportCloudSdk.UpdateDataSourceSubscriptionVM](docs/UpdateDataSourceSubscriptionVM.md)
- - [FastreportCloudSdk.UpdateDataSourceVM](docs/UpdateDataSourceVM.md)
  - [FastreportCloudSdk.UpdateDefaultPermissionsVM](docs/UpdateDefaultPermissionsVM.md)
  - [FastreportCloudSdk.UpdateFilePermissionsVM](docs/UpdateFilePermissionsVM.md)
  - [FastreportCloudSdk.UpdateGroupPermissionsVM](docs/UpdateGroupPermissionsVM.md)
- - [FastreportCloudSdk.UpdateGroupVM](docs/UpdateGroupVM.md)
  - [FastreportCloudSdk.UpdateSubscriptionLocaleVM](docs/UpdateSubscriptionLocaleVM.md)
  - [FastreportCloudSdk.UpdateSubscriptionPermissionsVM](docs/UpdateSubscriptionPermissionsVM.md)
- - [FastreportCloudSdk.UpdateSubscriptionPlanVM](docs/UpdateSubscriptionPlanVM.md)
- - [FastreportCloudSdk.UpdateSubscriptionVM](docs/UpdateSubscriptionVM.md)
- - [FastreportCloudSdk.UpdateUserVM](docs/UpdateUserVM.md)
- - [FastreportCloudSdk.UserProfileUpdateVM](docs/UserProfileUpdateVM.md)
+ - [FastreportCloudSdk.UpdateUserProfileVM](docs/UpdateUserProfileVM.md)
+ - [FastreportCloudSdk.UpdateUserSettingsVM](docs/UpdateUserSettingsVM.md)
  - [FastreportCloudSdk.UserProfileVM](docs/UserProfileVM.md)
- - [FastreportCloudSdk.UserVM](docs/UserVM.md)
- - [FastreportCloudSdk.UsersVM](docs/UsersVM.md)
+ - [FastreportCloudSdk.UserSettingsVM](docs/UserSettingsVM.md)
 
 
 ## Documentation for Authorization

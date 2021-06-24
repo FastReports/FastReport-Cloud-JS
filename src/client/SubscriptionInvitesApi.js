@@ -15,8 +15,8 @@
 import ApiClient from "../ApiClient";
 import CreateSubscriptionInviteVM from '../models/CreateSubscriptionInviteVM';
 import ProblemDetails from '../models/ProblemDetails';
+import SubscriptionInviteVM from '../models/SubscriptionInviteVM';
 import SubscriptionInvitesVM from '../models/SubscriptionInvitesVM';
-import SubscriptionVM from '../models/SubscriptionVM';
 
 /**
 * SubscriptionInvites service.
@@ -68,8 +68,9 @@ export default class SubscriptionInvitesApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = null;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/manage/v1/Subscriptions/{subscriptionId}/invite/{accessToken}/accept', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -96,7 +97,7 @@ export default class SubscriptionInvitesApi {
      * @param {String} subscriptionId id
      * @param {Object} opts Optional parameters
      * @param {module:models/CreateSubscriptionInviteVM} opts.createInviteVM create VM
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/SubscriptionVM} and HTTP response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/SubscriptionInviteVM} and HTTP response
      */
     subscriptionInvitesCreateInviteWithHttpInfo(subscriptionId, opts) {
       opts = opts || {};
@@ -118,8 +119,9 @@ export default class SubscriptionInvitesApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = ['application/json-patch+json', 'application/json', 'text/json', 'application/_*+json'];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
-      let returnType = SubscriptionVM;
+      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let returnType = SubscriptionInviteVM;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/manage/v1/Subscriptions/{subscriptionId}/invite', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -132,7 +134,7 @@ export default class SubscriptionInvitesApi {
      * @param {String} subscriptionId id
      * @param {Object} opts Optional parameters
      * @param {module:models/CreateSubscriptionInviteVM} opts.createInviteVM create VM
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/SubscriptionVM}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/SubscriptionInviteVM}
      */
     subscriptionInvitesCreateInvite(subscriptionId, opts) {
       return this.subscriptionInvitesCreateInviteWithHttpInfo(subscriptionId, opts)
@@ -172,8 +174,9 @@ export default class SubscriptionInvitesApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = null;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/manage/v1/Subscriptions/{subscriptionId}/invite/{accesstoken}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -219,8 +222,9 @@ export default class SubscriptionInvitesApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = SubscriptionInvitesVM;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/manage/v1/Subscriptions/{subscriptionId}/invites', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,

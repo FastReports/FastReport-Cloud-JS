@@ -62,8 +62,9 @@ export default class ApiKeysApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = ['application/json-patch+json', 'application/json', 'text/json', 'application/_*+json'];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = ApiKeyVM;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/manage/v1/ApiKeys', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -107,8 +108,9 @@ export default class ApiKeysApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = ['application/json-patch+json', 'application/json', 'text/json', 'application/_*+json'];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = null;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/manage/v1/ApiKeys', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -131,7 +133,7 @@ export default class ApiKeysApi {
 
     /**
      * Returns list with all api keys of current user
-     * Always work, it should make only 200 response.
+     * Always work, it should make only 200 response (except if user is not authorized).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/ApiKeysVM} and HTTP response
      */
     apiKeysGetApiKeysWithHttpInfo() {
@@ -148,8 +150,9 @@ export default class ApiKeysApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = ApiKeysVM;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/manage/v1/ApiKeys', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -159,7 +162,7 @@ export default class ApiKeysApi {
 
     /**
      * Returns list with all api keys of current user
-     * Always work, it should make only 200 response.
+     * Always work, it should make only 200 response (except if user is not authorized).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/ApiKeysVM}
      */
     apiKeysGetApiKeys() {

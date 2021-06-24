@@ -80,8 +80,9 @@ export default class TemplatesApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = CountVM;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/rp/v1/Templates/Folder/{id}/CountFolderAndFiles', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -134,8 +135,9 @@ export default class TemplatesApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = FilesVM;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/rp/v1/Templates/Folder/{id}/ListFolderAndFiles', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -191,8 +193,9 @@ export default class TemplatesApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = FileVM;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/rp/v1/Templates/Folder/{id}/Copy/{folderId}', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -244,8 +247,9 @@ export default class TemplatesApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = null;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/rp/v1/Templates/Folder/{id}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -294,8 +298,9 @@ export default class TemplatesApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = BreadcrumbsVM;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/rp/v1/Templates/Folder/{id}/Breadcrumbs', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -342,8 +347,9 @@ export default class TemplatesApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = FileVM;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/rp/v1/Templates/Folder/{id}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -396,8 +402,9 @@ export default class TemplatesApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = FilesVM;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/rp/v1/Templates/Folder/{id}/ListFolders', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -447,8 +454,9 @@ export default class TemplatesApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = CountVM;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/rp/v1/Templates/Folder/{id}/CountFolders', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -494,8 +502,9 @@ export default class TemplatesApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = FilePermissionsVM;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/rp/v1/Templates/Folder/{id}/permissions', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -539,8 +548,9 @@ export default class TemplatesApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = FileVM;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/rp/v1/Templates/Root', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -594,8 +604,9 @@ export default class TemplatesApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = FileVM;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/rp/v1/Templates/Folder/{id}/Move/{folderId}', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -646,8 +657,9 @@ export default class TemplatesApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = ['application/json-patch+json', 'application/json', 'text/json', 'application/_*+json'];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = FileVM;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/rp/v1/Templates/Folder/{id}/Folder', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -699,8 +711,9 @@ export default class TemplatesApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = ['application/json-patch+json', 'application/json', 'text/json', 'application/_*+json'];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = FileVM;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/rp/v1/Templates/Folder/{id}/Rename', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -752,8 +765,9 @@ export default class TemplatesApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = ['application/json-patch+json', 'application/json', 'text/json', 'application/_*+json'];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = FileVM;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/rp/v1/Templates/Folder/{id}/Icon', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -804,8 +818,9 @@ export default class TemplatesApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = ['application/json-patch+json', 'application/json', 'text/json', 'application/_*+json'];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = null;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/rp/v1/Templates/{id}/permissions', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -856,8 +871,9 @@ export default class TemplatesApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = ['application/json-patch+json', 'application/json', 'text/json', 'application/_*+json'];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = FileVM;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/rp/v1/Templates/Folder/{id}/UpdateTags', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -911,8 +927,9 @@ export default class TemplatesApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = TemplateVM;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/rp/v1/Templates/File/{id}/Copy/{folderId}', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -959,8 +976,9 @@ export default class TemplatesApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = null;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/rp/v1/Templates/File/{id}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -1010,8 +1028,9 @@ export default class TemplatesApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = ['application/json-patch+json', 'application/json', 'text/json', 'application/_*+json'];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = ExportVM;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/rp/v1/Templates/File/{id}/Export', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -1060,8 +1079,9 @@ export default class TemplatesApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = TemplateVM;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/rp/v1/Templates/File/{id}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -1108,8 +1128,9 @@ export default class TemplatesApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = CountVM;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/rp/v1/Templates/Folder/{id}/CountFiles', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -1162,8 +1183,9 @@ export default class TemplatesApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = TemplatesVM;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/rp/v1/Templates/Folder/{id}/ListFiles', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -1212,8 +1234,9 @@ export default class TemplatesApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = FilePermissionsVM;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/rp/v1/Templates/File/{id}/permissions', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -1265,8 +1288,9 @@ export default class TemplatesApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = TemplateVM;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/rp/v1/Templates/File/{id}/Move/{folderId}', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -1317,8 +1341,9 @@ export default class TemplatesApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = ['application/json-patch+json', 'application/json', 'text/json', 'application/_*+json'];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = ReportVM;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/rp/v1/Templates/File/{id}/Prepare', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -1370,8 +1395,9 @@ export default class TemplatesApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = ['application/json-patch+json', 'application/json', 'text/json', 'application/_*+json'];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = TemplateVM;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/rp/v1/Templates/File/{id}/Rename', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -1423,8 +1449,9 @@ export default class TemplatesApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = ['application/json-patch+json', 'application/json', 'text/json', 'application/_*+json'];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = TemplateVM;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/rp/v1/Templates/File/{id}/Icon', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -1475,8 +1502,9 @@ export default class TemplatesApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = ['application/json-patch+json', 'application/json', 'text/json', 'application/_*+json'];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = null;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/rp/v1/Templates/File/{id}/permissions', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -1527,8 +1555,9 @@ export default class TemplatesApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = ['application/json-patch+json', 'application/json', 'text/json', 'application/_*+json'];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = TemplateVM;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/rp/v1/Templates/File/{id}/UpdateTags', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -1580,8 +1609,9 @@ export default class TemplatesApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = ['application/json-patch+json', 'application/json', 'text/json', 'application/_*+json'];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = TemplateVM;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/rp/v1/Templates/Folder/{id}/File', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,

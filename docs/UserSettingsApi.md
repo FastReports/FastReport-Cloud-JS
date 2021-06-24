@@ -1,19 +1,19 @@
-# FastreportCloudSdk.SubscriptionPlansApi
+# FastreportCloudSdk.UserSettingsApi
 
 All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**subscriptionPlansGetSubscriptionPlan**](SubscriptionPlansApi.md#subscriptionPlansGetSubscriptionPlan) | **GET** /api/manage/v1/SubscriptionPlans/{id} | Returns a subscription plan. Not all subscriptions can be issued for customer.
-[**subscriptionPlansGetSubscriptionPlans**](SubscriptionPlansApi.md#subscriptionPlansGetSubscriptionPlans) | **GET** /api/manage/v1/SubscriptionPlans | Returns a list of active subscription plans that can be issued to the user.
+[**userSettingsGetCurrentUserSettings**](UserSettingsApi.md#userSettingsGetCurrentUserSettings) | **GET** /api/manage/v1/UserSettings | Return current user settings.
+[**userSettingsUpdateMySettings**](UserSettingsApi.md#userSettingsUpdateMySettings) | **PUT** /api/manage/v1/UserSettings | Update settings of the current user
 
 
 
-## subscriptionPlansGetSubscriptionPlan
+## userSettingsGetCurrentUserSettings
 
-> SubscriptionPlanVM subscriptionPlansGetSubscriptionPlan(id)
+> UserSettingsVM userSettingsGetCurrentUserSettings()
 
-Returns a subscription plan. Not all subscriptions can be issued for customer.
+Return current user settings.
 
 ### Example
 
@@ -30,9 +30,8 @@ JWT.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //JWT.apiKeyPrefix = 'Token';
 
-let apiInstance = new FastreportCloudSdk.SubscriptionPlansApi();
-let id = "id_example"; // String | Identifier of subsctiption plan
-apiInstance.subscriptionPlansGetSubscriptionPlan(id).then((data) => {
+let apiInstance = new FastreportCloudSdk.UserSettingsApi();
+apiInstance.userSettingsGetCurrentUserSettings().then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -42,14 +41,11 @@ apiInstance.subscriptionPlansGetSubscriptionPlan(id).then((data) => {
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String**| Identifier of subsctiption plan | 
+This endpoint does not need any parameter.
 
 ### Return type
 
-[**SubscriptionPlanVM**](SubscriptionPlanVM.md)
+[**UserSettingsVM**](UserSettingsVM.md)
 
 ### Authorization
 
@@ -61,13 +57,11 @@ Name | Type | Description  | Notes
 - **Accept**: application/json, text/json, text/plain
 
 
-## subscriptionPlansGetSubscriptionPlans
+## userSettingsUpdateMySettings
 
-> SubscriptionPlansVM subscriptionPlansGetSubscriptionPlans(opts)
+> UserSettingsVM userSettingsUpdateMySettings(opts)
 
-Returns a list of active subscription plans that can be issued to the user.
-
-If no active subscription plans, then the endpoint will return empty list
+Update settings of the current user
 
 ### Example
 
@@ -84,12 +78,11 @@ JWT.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //JWT.apiKeyPrefix = 'Token';
 
-let apiInstance = new FastreportCloudSdk.SubscriptionPlansApi();
+let apiInstance = new FastreportCloudSdk.UserSettingsApi();
 let opts = {
-  'skip': 0, // Number | Variable for pagination, defautl value is 0
-  'take': 10 // Number | Variable for pagination, default value is 10
+  'model': new FastreportCloudSdk.UpdateUserSettingsVM() // UpdateUserSettingsVM | 
 };
-apiInstance.subscriptionPlansGetSubscriptionPlans(opts).then((data) => {
+apiInstance.userSettingsUpdateMySettings(opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -102,12 +95,11 @@ apiInstance.subscriptionPlansGetSubscriptionPlans(opts).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **skip** | **Number**| Variable for pagination, defautl value is 0 | [optional] [default to 0]
- **take** | **Number**| Variable for pagination, default value is 10 | [optional] [default to 10]
+ **model** | [**UpdateUserSettingsVM**](UpdateUserSettingsVM.md)|  | [optional] 
 
 ### Return type
 
-[**SubscriptionPlansVM**](SubscriptionPlansVM.md)
+[**UserSettingsVM**](UserSettingsVM.md)
 
 ### Authorization
 
@@ -115,6 +107,6 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
 - **Accept**: application/json, text/json, text/plain
 

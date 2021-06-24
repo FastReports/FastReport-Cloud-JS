@@ -54,7 +54,7 @@ class ReportFolderCreateVM {
                 obj['tags'] = ApiClient.convertToType(data['tags'], ['String']);
             }
             if (data.hasOwnProperty('icon')) {
-                obj['icon'] = ApiClient.convertToType(data['icon'], 'String');
+                obj['icon'] = ApiClient.convertToType(data['icon'], 'Blob');
             }
         }
         return obj;
@@ -74,7 +74,7 @@ ReportFolderCreateVM.prototype['name'] = undefined;
 ReportFolderCreateVM.prototype['tags'] = undefined;
 
 /**
- * @member {String} icon
+ * @member {Blob} icon
  */
 ReportFolderCreateVM.prototype['icon'] = undefined;
 

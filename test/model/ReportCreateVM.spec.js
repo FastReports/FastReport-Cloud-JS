@@ -60,6 +60,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property reportInfo (base name: "reportInfo")', function() {
+      // uncomment below and update the code to test the property reportInfo
+      //var instance = new FastreportCloudSdk.ReportCreateVM();
+      //expect(instance).to.be();
+    });
+
     it('should have the property name (base name: "name")', function() {
       // uncomment below and update the code to test the property name
       //var instance = new FastreportCloudSdk.ReportCreateVM();

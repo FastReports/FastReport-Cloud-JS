@@ -14,7 +14,7 @@
 
 import ApiClient from "../ApiClient";
 import ProblemDetails from '../models/ProblemDetails';
-import UserProfileUpdateVM from '../models/UserProfileUpdateVM';
+import UpdateUserProfileVM from '../models/UpdateUserProfileVM';
 import UserProfileVM from '../models/UserProfileVM';
 
 /**
@@ -55,8 +55,9 @@ export default class UserProfileApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = UserProfileVM;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/manage/v1/UserProfile', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -100,8 +101,9 @@ export default class UserProfileApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = UserProfileVM;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/manage/v1/UserProfile/{userId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -126,7 +128,7 @@ export default class UserProfileApi {
      * Update profile of the current user
      * This method is only allowed for local sign in via intranet
      * @param {Object} opts Optional parameters
-     * @param {module:models/UserProfileUpdateVM} opts.model 
+     * @param {module:models/UpdateUserProfileVM} opts.model 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
     userProfileUpdateMyProfileWithHttpInfo(opts) {
@@ -144,8 +146,9 @@ export default class UserProfileApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = ['application/json-patch+json', 'application/json', 'text/json', 'application/_*+json'];
-      let accepts = ['text/plain', 'application/json', 'text/json'];
+      let accepts = ['application/json', 'text/json', 'text/plain'];
       let returnType = null;
+      if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/manage/v1/UserProfile', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -157,7 +160,7 @@ export default class UserProfileApi {
      * Update profile of the current user
      * This method is only allowed for local sign in via intranet
      * @param {Object} opts Optional parameters
-     * @param {module:models/UserProfileUpdateVM} opts.model 
+     * @param {module:models/UpdateUserProfileVM} opts.model 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
     userProfileUpdateMyProfile(opts) {

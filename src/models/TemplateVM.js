@@ -292,7 +292,13 @@ TemplateVM['StatusReasonEnum'] = {
      * value: "PreparationStarted"
      * @const
      */
-    "PreparationStarted": "PreparationStarted"
+    "PreparationStarted": "PreparationStarted",
+
+    /**
+     * value: "CrashLoop"
+     * @const
+     */
+    "CrashLoop": "CrashLoop"
 };
 
 

@@ -13,28 +13,15 @@
 
 
 import ApiClient from './ApiClient';
-import AdminExportFolderCreateVM from './models/AdminExportFolderCreateVM';
-import AdminPermission from './models/AdminPermission';
-import AdminReportFolderCreateVM from './models/AdminReportFolderCreateVM';
-import AdminSubscriptionVM from './models/AdminSubscriptionVM';
-import AdminSubscriptionsVM from './models/AdminSubscriptionsVM';
-import AdminTemplateFolderCreateVM from './models/AdminTemplateFolderCreateVM';
-import AnalysisResultVM from './models/AnalysisResultVM';
-import AnalysisResultsVM from './models/AnalysisResultsVM';
 import ApiKeyVM from './models/ApiKeyVM';
 import ApiKeysVM from './models/ApiKeysVM';
 import BreadcrumbsModel from './models/BreadcrumbsModel';
 import BreadcrumbsVM from './models/BreadcrumbsVM';
 import CountVM from './models/CountVM';
 import CreateApiKeyVM from './models/CreateApiKeyVM';
-import CreateDataSourceAdminVM from './models/CreateDataSourceAdminVM';
 import CreateDataSourceVM from './models/CreateDataSourceVM';
-import CreateGroupAdminVM from './models/CreateGroupAdminVM';
 import CreateGroupVM from './models/CreateGroupVM';
 import CreateSubscriptionInviteVM from './models/CreateSubscriptionInviteVM';
-import CreateSubscriptionPeriodVM from './models/CreateSubscriptionPeriodVM';
-import CreateSubscriptionPlanVM from './models/CreateSubscriptionPlanVM';
-import CreateSubscriptionVM from './models/CreateSubscriptionVM';
 import DataSourcePermission from './models/DataSourcePermission';
 import DataSourcePermissions from './models/DataSourcePermissions';
 import DataSourcePermissionsVM from './models/DataSourcePermissionsVM';
@@ -43,7 +30,6 @@ import DataSourcesVM from './models/DataSourcesVM';
 import DefaultPermissions from './models/DefaultPermissions';
 import DefaultPermissionsVM from './models/DefaultPermissionsVM';
 import DeleteApiKeyVM from './models/DeleteApiKeyVM';
-import ExportCreateAdminVM from './models/ExportCreateAdminVM';
 import ExportFolderCreateVM from './models/ExportFolderCreateVM';
 import ExportReportTaskVM from './models/ExportReportTaskVM';
 import ExportTemplateTaskVM from './models/ExportTemplateTaskVM';
@@ -55,7 +41,6 @@ import FilePermissions from './models/FilePermissions';
 import FilePermissionsVM from './models/FilePermissionsVM';
 import FileRenameVM from './models/FileRenameVM';
 import FileTagsUpdateVM from './models/FileTagsUpdateVM';
-import FileUpdateVM from './models/FileUpdateVM';
 import FileVM from './models/FileVM';
 import FilesVM from './models/FilesVM';
 import FolderIconVM from './models/FolderIconVM';
@@ -71,11 +56,9 @@ import GroupsVM from './models/GroupsVM';
 import InvitedUser from './models/InvitedUser';
 import PrepareTemplateTaskVM from './models/PrepareTemplateTaskVM';
 import ProblemDetails from './models/ProblemDetails';
-import RegisterUserVM from './models/RegisterUserVM';
 import RenameDataSourceVM from './models/RenameDataSourceVM';
 import RenameGroupVM from './models/RenameGroupVM';
 import RenameSubscriptionVM from './models/RenameSubscriptionVM';
-import ReportCreateAdminVM from './models/ReportCreateAdminVM';
 import ReportCreateVM from './models/ReportCreateVM';
 import ReportFolderCreateVM from './models/ReportFolderCreateVM';
 import ReportInfo from './models/ReportInfo';
@@ -94,7 +77,6 @@ import SubscriptionUserVM from './models/SubscriptionUserVM';
 import SubscriptionUsersVM from './models/SubscriptionUsersVM';
 import SubscriptionVM from './models/SubscriptionVM';
 import SubscriptionsVM from './models/SubscriptionsVM';
-import TemplateCreateAdminVM from './models/TemplateCreateAdminVM';
 import TemplateCreateVM from './models/TemplateCreateVM';
 import TemplateFolderCreateVM from './models/TemplateFolderCreateVM';
 import TemplateVM from './models/TemplateVM';
@@ -102,34 +84,15 @@ import TemplatesVM from './models/TemplatesVM';
 import UpdateDataSourceConnectionStringVM from './models/UpdateDataSourceConnectionStringVM';
 import UpdateDataSourcePermissionsVM from './models/UpdateDataSourcePermissionsVM';
 import UpdateDataSourceSubscriptionVM from './models/UpdateDataSourceSubscriptionVM';
-import UpdateDataSourceVM from './models/UpdateDataSourceVM';
 import UpdateDefaultPermissionsVM from './models/UpdateDefaultPermissionsVM';
 import UpdateFilePermissionsVM from './models/UpdateFilePermissionsVM';
 import UpdateGroupPermissionsVM from './models/UpdateGroupPermissionsVM';
-import UpdateGroupVM from './models/UpdateGroupVM';
 import UpdateSubscriptionLocaleVM from './models/UpdateSubscriptionLocaleVM';
 import UpdateSubscriptionPermissionsVM from './models/UpdateSubscriptionPermissionsVM';
-import UpdateSubscriptionPlanVM from './models/UpdateSubscriptionPlanVM';
-import UpdateSubscriptionVM from './models/UpdateSubscriptionVM';
-import UpdateUserVM from './models/UpdateUserVM';
-import UserProfileUpdateVM from './models/UserProfileUpdateVM';
+import UpdateUserProfileVM from './models/UpdateUserProfileVM';
+import UpdateUserSettingsVM from './models/UpdateUserSettingsVM';
 import UserProfileVM from './models/UserProfileVM';
-import UserVM from './models/UserVM';
-import UsersVM from './models/UsersVM';
-import AdminApiKeysApi from './client/AdminApiKeysApi';
-import AdminDataSourceApi from './client/AdminDataSourceApi';
-import AdminExportsApi from './client/AdminExportsApi';
-import AdminGroupsApi from './client/AdminGroupsApi';
-import AdminHealthCheckApi from './client/AdminHealthCheckApi';
-import AdminReportsApi from './client/AdminReportsApi';
-import AdminSubscriptionAnalyticsApi from './client/AdminSubscriptionAnalyticsApi';
-import AdminSubscriptionInvitesApi from './client/AdminSubscriptionInvitesApi';
-import AdminSubscriptionPeriodApi from './client/AdminSubscriptionPeriodApi';
-import AdminSubscriptionPlansApi from './client/AdminSubscriptionPlansApi';
-import AdminSubscriptionProblemSolvingApi from './client/AdminSubscriptionProblemSolvingApi';
-import AdminSubscriptionsApi from './client/AdminSubscriptionsApi';
-import AdminTemplatesApi from './client/AdminTemplatesApi';
-import AdminUsersApi from './client/AdminUsersApi';
+import UserSettingsVM from './models/UserSettingsVM';
 import ApiKeysApi from './client/ApiKeysApi';
 import DataSourcesApi from './client/DataSourcesApi';
 import DownloadApi from './client/DownloadApi';
@@ -145,6 +108,7 @@ import SubscriptionUsersApi from './client/SubscriptionUsersApi';
 import SubscriptionsApi from './client/SubscriptionsApi';
 import TemplatesApi from './client/TemplatesApi';
 import UserProfileApi from './client/UserProfileApi';
+import UserSettingsApi from './client/UserSettingsApi';
 
 
 /**
@@ -186,54 +150,6 @@ export {
     ApiClient,
 
     /**
-     * The AdminExportFolderCreateVM model constructor.
-     * @property {module:models/AdminExportFolderCreateVM}
-     */
-    AdminExportFolderCreateVM,
-
-    /**
-     * The AdminPermission model constructor.
-     * @property {module:models/AdminPermission}
-     */
-    AdminPermission,
-
-    /**
-     * The AdminReportFolderCreateVM model constructor.
-     * @property {module:models/AdminReportFolderCreateVM}
-     */
-    AdminReportFolderCreateVM,
-
-    /**
-     * The AdminSubscriptionVM model constructor.
-     * @property {module:models/AdminSubscriptionVM}
-     */
-    AdminSubscriptionVM,
-
-    /**
-     * The AdminSubscriptionsVM model constructor.
-     * @property {module:models/AdminSubscriptionsVM}
-     */
-    AdminSubscriptionsVM,
-
-    /**
-     * The AdminTemplateFolderCreateVM model constructor.
-     * @property {module:models/AdminTemplateFolderCreateVM}
-     */
-    AdminTemplateFolderCreateVM,
-
-    /**
-     * The AnalysisResultVM model constructor.
-     * @property {module:models/AnalysisResultVM}
-     */
-    AnalysisResultVM,
-
-    /**
-     * The AnalysisResultsVM model constructor.
-     * @property {module:models/AnalysisResultsVM}
-     */
-    AnalysisResultsVM,
-
-    /**
      * The ApiKeyVM model constructor.
      * @property {module:models/ApiKeyVM}
      */
@@ -270,22 +186,10 @@ export {
     CreateApiKeyVM,
 
     /**
-     * The CreateDataSourceAdminVM model constructor.
-     * @property {module:models/CreateDataSourceAdminVM}
-     */
-    CreateDataSourceAdminVM,
-
-    /**
      * The CreateDataSourceVM model constructor.
      * @property {module:models/CreateDataSourceVM}
      */
     CreateDataSourceVM,
-
-    /**
-     * The CreateGroupAdminVM model constructor.
-     * @property {module:models/CreateGroupAdminVM}
-     */
-    CreateGroupAdminVM,
 
     /**
      * The CreateGroupVM model constructor.
@@ -298,24 +202,6 @@ export {
      * @property {module:models/CreateSubscriptionInviteVM}
      */
     CreateSubscriptionInviteVM,
-
-    /**
-     * The CreateSubscriptionPeriodVM model constructor.
-     * @property {module:models/CreateSubscriptionPeriodVM}
-     */
-    CreateSubscriptionPeriodVM,
-
-    /**
-     * The CreateSubscriptionPlanVM model constructor.
-     * @property {module:models/CreateSubscriptionPlanVM}
-     */
-    CreateSubscriptionPlanVM,
-
-    /**
-     * The CreateSubscriptionVM model constructor.
-     * @property {module:models/CreateSubscriptionVM}
-     */
-    CreateSubscriptionVM,
 
     /**
      * The DataSourcePermission model constructor.
@@ -364,12 +250,6 @@ export {
      * @property {module:models/DeleteApiKeyVM}
      */
     DeleteApiKeyVM,
-
-    /**
-     * The ExportCreateAdminVM model constructor.
-     * @property {module:models/ExportCreateAdminVM}
-     */
-    ExportCreateAdminVM,
 
     /**
      * The ExportFolderCreateVM model constructor.
@@ -436,12 +316,6 @@ export {
      * @property {module:models/FileTagsUpdateVM}
      */
     FileTagsUpdateVM,
-
-    /**
-     * The FileUpdateVM model constructor.
-     * @property {module:models/FileUpdateVM}
-     */
-    FileUpdateVM,
 
     /**
      * The FileVM model constructor.
@@ -534,12 +408,6 @@ export {
     ProblemDetails,
 
     /**
-     * The RegisterUserVM model constructor.
-     * @property {module:models/RegisterUserVM}
-     */
-    RegisterUserVM,
-
-    /**
      * The RenameDataSourceVM model constructor.
      * @property {module:models/RenameDataSourceVM}
      */
@@ -556,12 +424,6 @@ export {
      * @property {module:models/RenameSubscriptionVM}
      */
     RenameSubscriptionVM,
-
-    /**
-     * The ReportCreateAdminVM model constructor.
-     * @property {module:models/ReportCreateAdminVM}
-     */
-    ReportCreateAdminVM,
 
     /**
      * The ReportCreateVM model constructor.
@@ -672,12 +534,6 @@ export {
     SubscriptionsVM,
 
     /**
-     * The TemplateCreateAdminVM model constructor.
-     * @property {module:models/TemplateCreateAdminVM}
-     */
-    TemplateCreateAdminVM,
-
-    /**
      * The TemplateCreateVM model constructor.
      * @property {module:models/TemplateCreateVM}
      */
@@ -720,12 +576,6 @@ export {
     UpdateDataSourceSubscriptionVM,
 
     /**
-     * The UpdateDataSourceVM model constructor.
-     * @property {module:models/UpdateDataSourceVM}
-     */
-    UpdateDataSourceVM,
-
-    /**
      * The UpdateDefaultPermissionsVM model constructor.
      * @property {module:models/UpdateDefaultPermissionsVM}
      */
@@ -744,12 +594,6 @@ export {
     UpdateGroupPermissionsVM,
 
     /**
-     * The UpdateGroupVM model constructor.
-     * @property {module:models/UpdateGroupVM}
-     */
-    UpdateGroupVM,
-
-    /**
      * The UpdateSubscriptionLocaleVM model constructor.
      * @property {module:models/UpdateSubscriptionLocaleVM}
      */
@@ -762,28 +606,16 @@ export {
     UpdateSubscriptionPermissionsVM,
 
     /**
-     * The UpdateSubscriptionPlanVM model constructor.
-     * @property {module:models/UpdateSubscriptionPlanVM}
+     * The UpdateUserProfileVM model constructor.
+     * @property {module:models/UpdateUserProfileVM}
      */
-    UpdateSubscriptionPlanVM,
+    UpdateUserProfileVM,
 
     /**
-     * The UpdateSubscriptionVM model constructor.
-     * @property {module:models/UpdateSubscriptionVM}
+     * The UpdateUserSettingsVM model constructor.
+     * @property {module:models/UpdateUserSettingsVM}
      */
-    UpdateSubscriptionVM,
-
-    /**
-     * The UpdateUserVM model constructor.
-     * @property {module:models/UpdateUserVM}
-     */
-    UpdateUserVM,
-
-    /**
-     * The UserProfileUpdateVM model constructor.
-     * @property {module:models/UserProfileUpdateVM}
-     */
-    UserProfileUpdateVM,
+    UpdateUserSettingsVM,
 
     /**
      * The UserProfileVM model constructor.
@@ -792,100 +624,10 @@ export {
     UserProfileVM,
 
     /**
-     * The UserVM model constructor.
-     * @property {module:models/UserVM}
+     * The UserSettingsVM model constructor.
+     * @property {module:models/UserSettingsVM}
      */
-    UserVM,
-
-    /**
-     * The UsersVM model constructor.
-     * @property {module:models/UsersVM}
-     */
-    UsersVM,
-
-    /**
-    * The AdminApiKeysApi service constructor.
-    * @property {module:client/AdminApiKeysApi}
-    */
-    AdminApiKeysApi,
-
-    /**
-    * The AdminDataSourceApi service constructor.
-    * @property {module:client/AdminDataSourceApi}
-    */
-    AdminDataSourceApi,
-
-    /**
-    * The AdminExportsApi service constructor.
-    * @property {module:client/AdminExportsApi}
-    */
-    AdminExportsApi,
-
-    /**
-    * The AdminGroupsApi service constructor.
-    * @property {module:client/AdminGroupsApi}
-    */
-    AdminGroupsApi,
-
-    /**
-    * The AdminHealthCheckApi service constructor.
-    * @property {module:client/AdminHealthCheckApi}
-    */
-    AdminHealthCheckApi,
-
-    /**
-    * The AdminReportsApi service constructor.
-    * @property {module:client/AdminReportsApi}
-    */
-    AdminReportsApi,
-
-    /**
-    * The AdminSubscriptionAnalyticsApi service constructor.
-    * @property {module:client/AdminSubscriptionAnalyticsApi}
-    */
-    AdminSubscriptionAnalyticsApi,
-
-    /**
-    * The AdminSubscriptionInvitesApi service constructor.
-    * @property {module:client/AdminSubscriptionInvitesApi}
-    */
-    AdminSubscriptionInvitesApi,
-
-    /**
-    * The AdminSubscriptionPeriodApi service constructor.
-    * @property {module:client/AdminSubscriptionPeriodApi}
-    */
-    AdminSubscriptionPeriodApi,
-
-    /**
-    * The AdminSubscriptionPlansApi service constructor.
-    * @property {module:client/AdminSubscriptionPlansApi}
-    */
-    AdminSubscriptionPlansApi,
-
-    /**
-    * The AdminSubscriptionProblemSolvingApi service constructor.
-    * @property {module:client/AdminSubscriptionProblemSolvingApi}
-    */
-    AdminSubscriptionProblemSolvingApi,
-
-    /**
-    * The AdminSubscriptionsApi service constructor.
-    * @property {module:client/AdminSubscriptionsApi}
-    */
-    AdminSubscriptionsApi,
-
-    /**
-    * The AdminTemplatesApi service constructor.
-    * @property {module:client/AdminTemplatesApi}
-    */
-    AdminTemplatesApi,
-
-    /**
-    * The AdminUsersApi service constructor.
-    * @property {module:client/AdminUsersApi}
-    */
-    AdminUsersApi,
+    UserSettingsVM,
 
     /**
     * The ApiKeysApi service constructor.
@@ -975,5 +717,11 @@ export {
     * The UserProfileApi service constructor.
     * @property {module:client/UserProfileApi}
     */
-    UserProfileApi
+    UserProfileApi,
+
+    /**
+    * The UserSettingsApi service constructor.
+    * @property {module:client/UserSettingsApi}
+    */
+    UserSettingsApi
 };

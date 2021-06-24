@@ -22,10 +22,11 @@ class UpdateDataSourceConnectionStringVM {
     /**
      * Constructs a new <code>UpdateDataSourceConnectionStringVM</code>.
      * @alias module:models/UpdateDataSourceConnectionStringVM
+     * @param connectionString {String} 
      */
-    constructor() { 
+    constructor(connectionString) { 
         
-        UpdateDataSourceConnectionStringVM.initialize(this);
+        UpdateDataSourceConnectionStringVM.initialize(this, connectionString);
     }
 
     /**
@@ -33,7 +34,8 @@ class UpdateDataSourceConnectionStringVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, connectionString) { 
+        obj['connectionString'] = connectionString;
     }
 
     /**

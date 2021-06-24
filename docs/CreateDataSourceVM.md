@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **String** |  | [optional] 
-**connectionString** | **String** |  | [optional] 
-**subscriptionId** | **String** |  | [optional] 
+**connectionString** | **String** |  | 
+**subscriptionId** | **String** |  | 
 **connectionType** | **String** |  | [optional] 
 
 

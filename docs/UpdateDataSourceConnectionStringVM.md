@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**connectionString** | **String** |  | [optional] 
+**connectionString** | **String** |  | 
 
 

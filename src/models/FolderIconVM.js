@@ -22,10 +22,11 @@ class FolderIconVM {
     /**
      * Constructs a new <code>FolderIconVM</code>.
      * @alias module:models/FolderIconVM
+     * @param icon {Blob} 
      */
-    constructor() { 
+    constructor(icon) { 
         
-        FolderIconVM.initialize(this);
+        FolderIconVM.initialize(this, icon);
     }
 
     /**
@@ -33,7 +34,8 @@ class FolderIconVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, icon) { 
+        obj['icon'] = icon;
     }
 
     /**
@@ -48,7 +50,7 @@ class FolderIconVM {
             obj = obj || new FolderIconVM();
 
             if (data.hasOwnProperty('icon')) {
-                obj['icon'] = ApiClient.convertToType(data['icon'], 'String');
+                obj['icon'] = ApiClient.convertToType(data['icon'], 'Blob');
             }
         }
         return obj;
@@ -58,7 +60,7 @@ class FolderIconVM {
 }
 
 /**
- * @member {String} icon
+ * @member {Blob} icon
  */
 FolderIconVM.prototype['icon'] = undefined;
 

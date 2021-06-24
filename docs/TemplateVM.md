@@ -69,6 +69,8 @@ Name | Type | Description | Notes
 
 * `PreparationStarted` (value: `"PreparationStarted"`)
 
+* `CrashLoop` (value: `"CrashLoop"`)
+
 
 
 

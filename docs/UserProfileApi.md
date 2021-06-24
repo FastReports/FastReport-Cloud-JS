@@ -55,7 +55,7 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/plain, application/json, text/json
+- **Accept**: application/json, text/json, text/plain
 
 
 ## userProfileGetUserProfile
@@ -107,7 +107,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/plain, application/json, text/json
+- **Accept**: application/json, text/json, text/plain
 
 
 ## userProfileUpdateMyProfile
@@ -135,7 +135,7 @@ JWT.apiKey = 'YOUR API KEY';
 
 let apiInstance = new FastreportCloudSdk.UserProfileApi();
 let opts = {
-  'model': new FastreportCloudSdk.UserProfileUpdateVM() // UserProfileUpdateVM | 
+  'model': new FastreportCloudSdk.UpdateUserProfileVM() // UpdateUserProfileVM | 
 };
 apiInstance.userProfileUpdateMyProfile(opts).then(() => {
   console.log('API called successfully.');
@@ -150,7 +150,7 @@ apiInstance.userProfileUpdateMyProfile(opts).then(() => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model** | [**UserProfileUpdateVM**](UserProfileUpdateVM.md)|  | [optional] 
+ **model** | [**UpdateUserProfileVM**](UpdateUserProfileVM.md)|  | [optional] 
 
 ### Return type
 
@@ -163,5 +163,5 @@ null (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
-- **Accept**: text/plain, application/json, text/json
+- **Accept**: application/json, text/json, text/plain
 
