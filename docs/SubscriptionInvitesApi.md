@@ -26,11 +26,9 @@ let defaultClient = FastreportCloudSdk.ApiClient.instance;
 let ApiKey = defaultClient.authentications['ApiKey'];
 ApiKey.username = 'YOUR USERNAME';
 ApiKey.password = 'YOUR PASSWORD';
-// Configure API key authorization: JWT
+// Configure Bearer (JWT) access token for authorization: JWT
 let JWT = defaultClient.authentications['JWT'];
-JWT.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//JWT.apiKeyPrefix = 'Token';
+JWT.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new FastreportCloudSdk.SubscriptionInvitesApi();
 let subscriptionId = "subscriptionId_example"; // String | Idenitifier of subscription
@@ -62,7 +60,7 @@ null (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, text/json, text/plain
+- **Accept**: application/json
 
 
 ## subscriptionInvitesCreateInvite
@@ -80,16 +78,14 @@ let defaultClient = FastreportCloudSdk.ApiClient.instance;
 let ApiKey = defaultClient.authentications['ApiKey'];
 ApiKey.username = 'YOUR USERNAME';
 ApiKey.password = 'YOUR PASSWORD';
-// Configure API key authorization: JWT
+// Configure Bearer (JWT) access token for authorization: JWT
 let JWT = defaultClient.authentications['JWT'];
-JWT.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//JWT.apiKeyPrefix = 'Token';
+JWT.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new FastreportCloudSdk.SubscriptionInvitesApi();
 let subscriptionId = "subscriptionId_example"; // String | id
 let opts = {
-  'createInviteVM': new FastreportCloudSdk.CreateSubscriptionInviteVM() // CreateSubscriptionInviteVM | create VM
+  'createSubscriptionInviteVM': new FastreportCloudSdk.CreateSubscriptionInviteVM() // CreateSubscriptionInviteVM | create VM
 };
 apiInstance.subscriptionInvitesCreateInvite(subscriptionId, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -105,7 +101,7 @@ apiInstance.subscriptionInvitesCreateInvite(subscriptionId, opts).then((data) =>
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **subscriptionId** | **String**| id | 
- **createInviteVM** | [**CreateSubscriptionInviteVM**](CreateSubscriptionInviteVM.md)| create VM | [optional] 
+ **createSubscriptionInviteVM** | [**CreateSubscriptionInviteVM**](CreateSubscriptionInviteVM.md)| create VM | [optional] 
 
 ### Return type
 
@@ -117,8 +113,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
-- **Accept**: application/json, text/json, text/plain
+- **Content-Type**: application/json, text/json, application/_*+json
+- **Accept**: application/json
 
 
 ## subscriptionInvitesDeleteInvite
@@ -136,11 +132,9 @@ let defaultClient = FastreportCloudSdk.ApiClient.instance;
 let ApiKey = defaultClient.authentications['ApiKey'];
 ApiKey.username = 'YOUR USERNAME';
 ApiKey.password = 'YOUR PASSWORD';
-// Configure API key authorization: JWT
+// Configure Bearer (JWT) access token for authorization: JWT
 let JWT = defaultClient.authentications['JWT'];
-JWT.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//JWT.apiKeyPrefix = 'Token';
+JWT.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new FastreportCloudSdk.SubscriptionInvitesApi();
 let subscriptionId = "subscriptionId_example"; // String | id
@@ -172,7 +166,7 @@ null (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, text/json, text/plain
+- **Accept**: application/json
 
 
 ## subscriptionInvitesGetInvites
@@ -190,11 +184,9 @@ let defaultClient = FastreportCloudSdk.ApiClient.instance;
 let ApiKey = defaultClient.authentications['ApiKey'];
 ApiKey.username = 'YOUR USERNAME';
 ApiKey.password = 'YOUR PASSWORD';
-// Configure API key authorization: JWT
+// Configure Bearer (JWT) access token for authorization: JWT
 let JWT = defaultClient.authentications['JWT'];
-JWT.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//JWT.apiKeyPrefix = 'Token';
+JWT.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new FastreportCloudSdk.SubscriptionInvitesApi();
 let subscriptionId = "subscriptionId_example"; // String | Idenitifier of subscription
@@ -224,5 +216,5 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, text/json, text/plain
+- **Accept**: application/json
 

@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import SubscriptionAdministrate from './SubscriptionAdministrate';
 import SubscriptionPermissions from './SubscriptionPermissions';
 
 /**
@@ -24,7 +25,7 @@ class UpdateSubscriptionPermissionsVM {
      * Constructs a new <code>UpdateSubscriptionPermissionsVM</code>.
      * @alias module:models/UpdateSubscriptionPermissionsVM
      * @param newPermissions {module:models/SubscriptionPermissions} 
-     * @param administrate {module:models/UpdateSubscriptionPermissionsVM.AdministrateEnum} 
+     * @param administrate {module:models/SubscriptionAdministrate} 
      */
     constructor(newPermissions, administrate) { 
         
@@ -56,7 +57,7 @@ class UpdateSubscriptionPermissionsVM {
                 obj['newPermissions'] = SubscriptionPermissions.constructFromObject(data['newPermissions']);
             }
             if (data.hasOwnProperty('administrate')) {
-                obj['administrate'] = ApiClient.convertToType(data['administrate'], 'Number');
+                obj['administrate'] = SubscriptionAdministrate.constructFromObject(data['administrate']);
             }
         }
         return obj;
@@ -71,57 +72,12 @@ class UpdateSubscriptionPermissionsVM {
 UpdateSubscriptionPermissionsVM.prototype['newPermissions'] = undefined;
 
 /**
- * @member {module:models/UpdateSubscriptionPermissionsVM.AdministrateEnum} administrate
+ * @member {module:models/SubscriptionAdministrate} administrate
  */
 UpdateSubscriptionPermissionsVM.prototype['administrate'] = undefined;
 
 
 
-
-
-/**
- * Allowed values for the <code>administrate</code> property.
- * @enum {Number}
- * @readonly
- */
-UpdateSubscriptionPermissionsVM['AdministrateEnum'] = {
-
-    /**
-     * value: 0
-     * @const
-     */
-    "0": 0,
-
-    /**
-     * value: 1
-     * @const
-     */
-    "1": 1,
-
-    /**
-     * value: 2
-     * @const
-     */
-    "2": 2,
-
-    /**
-     * value: 4
-     * @const
-     */
-    "4": 4,
-
-    /**
-     * value: 8
-     * @const
-     */
-    "8": 8,
-
-    /**
-     * value: -1
-     * @const
-     */
-    "-1": -1
-};
 
 
 

@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import FileVM from './FileVM';
 import ReportInfo from './ReportInfo';
 
 /**
@@ -23,9 +24,10 @@ class TemplateVM {
     /**
      * Constructs a new <code>TemplateVM</code>.
      * @alias module:models/TemplateVM
+     * @implements module:models/FileVM
      */
     constructor() { 
-        
+        FileVM.initialize(this);
         TemplateVM.initialize(this);
     }
 
@@ -47,36 +49,10 @@ class TemplateVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new TemplateVM();
+            FileVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('reportInfo')) {
                 obj['reportInfo'] = ReportInfo.constructFromObject(data['reportInfo']);
-            }
-            if (data.hasOwnProperty('name')) {
-                obj['name'] = ApiClient.convertToType(data['name'], 'String');
-            }
-            if (data.hasOwnProperty('parentId')) {
-                obj['parentId'] = ApiClient.convertToType(data['parentId'], 'String');
-            }
-            if (data.hasOwnProperty('tags')) {
-                obj['tags'] = ApiClient.convertToType(data['tags'], ['String']);
-            }
-            if (data.hasOwnProperty('icon')) {
-                obj['icon'] = ApiClient.convertToType(data['icon'], 'Blob');
-            }
-            if (data.hasOwnProperty('type')) {
-                obj['type'] = ApiClient.convertToType(data['type'], 'String');
-            }
-            if (data.hasOwnProperty('size')) {
-                obj['size'] = ApiClient.convertToType(data['size'], 'Number');
-            }
-            if (data.hasOwnProperty('subscriptionId')) {
-                obj['subscriptionId'] = ApiClient.convertToType(data['subscriptionId'], 'String');
-            }
-            if (data.hasOwnProperty('status')) {
-                obj['status'] = ApiClient.convertToType(data['status'], 'String');
-            }
-            if (data.hasOwnProperty('statusReason')) {
-                obj['statusReason'] = ApiClient.convertToType(data['statusReason'], 'String');
             }
             if (data.hasOwnProperty('id')) {
                 obj['id'] = ApiClient.convertToType(data['id'], 'String');
@@ -106,51 +82,6 @@ class TemplateVM {
 TemplateVM.prototype['reportInfo'] = undefined;
 
 /**
- * @member {String} name
- */
-TemplateVM.prototype['name'] = undefined;
-
-/**
- * @member {String} parentId
- */
-TemplateVM.prototype['parentId'] = undefined;
-
-/**
- * @member {Array.<String>} tags
- */
-TemplateVM.prototype['tags'] = undefined;
-
-/**
- * @member {Blob} icon
- */
-TemplateVM.prototype['icon'] = undefined;
-
-/**
- * @member {module:models/TemplateVM.TypeEnum} type
- */
-TemplateVM.prototype['type'] = undefined;
-
-/**
- * @member {Number} size
- */
-TemplateVM.prototype['size'] = undefined;
-
-/**
- * @member {String} subscriptionId
- */
-TemplateVM.prototype['subscriptionId'] = undefined;
-
-/**
- * @member {module:models/TemplateVM.StatusEnum} status
- */
-TemplateVM.prototype['status'] = undefined;
-
-/**
- * @member {module:models/TemplateVM.StatusReasonEnum} statusReason
- */
-TemplateVM.prototype['statusReason'] = undefined;
-
-/**
  * @member {String} id
  */
 TemplateVM.prototype['id'] = undefined;
@@ -176,130 +107,28 @@ TemplateVM.prototype['editedTime'] = undefined;
 TemplateVM.prototype['editorUserId'] = undefined;
 
 
-
-
-
+// Implement FileVM interface:
 /**
- * Allowed values for the <code>type</code> property.
- * @enum {String}
- * @readonly
+ * @member {String} id
  */
-TemplateVM['TypeEnum'] = {
-
-    /**
-     * value: "File"
-     * @const
-     */
-    "File": "File",
-
-    /**
-     * value: "Folder"
-     * @const
-     */
-    "Folder": "Folder"
-};
-
-
+FileVM.prototype['id'] = undefined;
 /**
- * Allowed values for the <code>status</code> property.
- * @enum {String}
- * @readonly
+ * @member {Date} createdTime
  */
-TemplateVM['StatusEnum'] = {
-
-    /**
-     * value: "None"
-     * @const
-     */
-    "None": "None",
-
-    /**
-     * value: "InQueue"
-     * @const
-     */
-    "InQueue": "InQueue",
-
-    /**
-     * value: "InProcess"
-     * @const
-     */
-    "InProcess": "InProcess",
-
-    /**
-     * value: "Success"
-     * @const
-     */
-    "Success": "Success",
-
-    /**
-     * value: "Failed"
-     * @const
-     */
-    "Failed": "Failed"
-};
-
-
+FileVM.prototype['createdTime'] = undefined;
 /**
- * Allowed values for the <code>statusReason</code> property.
- * @enum {String}
- * @readonly
+ * @member {String} creatorUserId
  */
-TemplateVM['StatusReasonEnum'] = {
+FileVM.prototype['creatorUserId'] = undefined;
+/**
+ * @member {Date} editedTime
+ */
+FileVM.prototype['editedTime'] = undefined;
+/**
+ * @member {String} editorUserId
+ */
+FileVM.prototype['editorUserId'] = undefined;
 
-    /**
-     * value: "None"
-     * @const
-     */
-    "None": "None",
-
-    /**
-     * value: "AllRight"
-     * @const
-     */
-    "AllRight": "AllRight",
-
-    /**
-     * value: "Hang"
-     * @const
-     */
-    "Hang": "Hang",
-
-    /**
-     * value: "Error"
-     * @const
-     */
-    "Error": "Error",
-
-    /**
-     * value: "NotFound"
-     * @const
-     */
-    "NotFound": "NotFound",
-
-    /**
-     * value: "NotEnoughSpace"
-     * @const
-     */
-    "NotEnoughSpace": "NotEnoughSpace",
-
-    /**
-     * value: "ExportStarted"
-     * @const
-     */
-    "ExportStarted": "ExportStarted",
-
-    /**
-     * value: "PreparationStarted"
-     * @const
-     */
-    "PreparationStarted": "PreparationStarted",
-
-    /**
-     * value: "CrashLoop"
-     * @const
-     */
-    "CrashLoop": "CrashLoop"
-};
 
 
 

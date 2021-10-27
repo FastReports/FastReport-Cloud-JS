@@ -23,11 +23,9 @@ let defaultClient = FastreportCloudSdk.ApiClient.instance;
 let ApiKey = defaultClient.authentications['ApiKey'];
 ApiKey.username = 'YOUR USERNAME';
 ApiKey.password = 'YOUR PASSWORD';
-// Configure API key authorization: JWT
+// Configure Bearer (JWT) access token for authorization: JWT
 let JWT = defaultClient.authentications['JWT'];
-JWT.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//JWT.apiKeyPrefix = 'Token';
+JWT.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new FastreportCloudSdk.HealthCheckApi();
 apiInstance.healthCheckDataGet().then(() => {

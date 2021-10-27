@@ -25,7 +25,7 @@ Method | HTTP request | Description
 [**templatesExport**](TemplatesApi.md#templatesExport) | **POST** /api/rp/v1/Templates/File/{id}/Export | Export specified report template to a specified format
 [**templatesGetFile**](TemplatesApi.md#templatesGetFile) | **GET** /api/rp/v1/Templates/File/{id} | Get specified file
 [**templatesGetFilesCount**](TemplatesApi.md#templatesGetFilesCount) | **GET** /api/rp/v1/Templates/Folder/{id}/CountFiles | Get count of files what contains in a specified folder
-[**templatesGetFilesList**](TemplatesApi.md#templatesGetFilesList) | **GET** /api/rp/v1/Templates/Folder/{id}/ListFiles | Get all files from specified folder
+[**templatesGetFilesList**](TemplatesApi.md#templatesGetFilesList) | **GET** /api/rp/v1/Templates/Folder/{id}/ListFiles | Get all files from specified folder. &lt;br /&gt;  User with Get Entity permission can access this method. &lt;br /&gt;  The method will returns minimal infomration about the file: &lt;br /&gt;  id, name, size, editedTime, createdTime, tags, status, statusReason.
 [**templatesGetPermissions**](TemplatesApi.md#templatesGetPermissions) | **GET** /api/rp/v1/Templates/File/{id}/permissions | Get all file permissions
 [**templatesMoveFile**](TemplatesApi.md#templatesMoveFile) | **POST** /api/rp/v1/Templates/File/{id}/Move/{folderId} | Move file to a specified folder
 [**templatesPrepare**](TemplatesApi.md#templatesPrepare) | **POST** /api/rp/v1/Templates/File/{id}/Prepare | Prepare specified template to report
@@ -54,11 +54,9 @@ let defaultClient = FastreportCloudSdk.ApiClient.instance;
 let ApiKey = defaultClient.authentications['ApiKey'];
 ApiKey.username = 'YOUR USERNAME';
 ApiKey.password = 'YOUR PASSWORD';
-// Configure API key authorization: JWT
+// Configure Bearer (JWT) access token for authorization: JWT
 let JWT = defaultClient.authentications['JWT'];
-JWT.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//JWT.apiKeyPrefix = 'Token';
+JWT.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new FastreportCloudSdk.TemplatesApi();
 let id = "id_example"; // String | folder id
@@ -88,7 +86,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, text/json, text/plain
+- **Accept**: application/json
 
 
 ## templateFolderAndFileGetFoldersAndFiles
@@ -108,17 +106,18 @@ let defaultClient = FastreportCloudSdk.ApiClient.instance;
 let ApiKey = defaultClient.authentications['ApiKey'];
 ApiKey.username = 'YOUR USERNAME';
 ApiKey.password = 'YOUR PASSWORD';
-// Configure API key authorization: JWT
+// Configure Bearer (JWT) access token for authorization: JWT
 let JWT = defaultClient.authentications['JWT'];
-JWT.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//JWT.apiKeyPrefix = 'Token';
+JWT.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new FastreportCloudSdk.TemplatesApi();
 let id = "id_example"; // String | folder id
 let opts = {
   'skip': 0, // Number | number of folder and files, that have to be skipped
-  'take': 10 // Number | number of folder and files, that have to be returned
+  'take': 10, // Number | number of folder and files, that have to be returned
+  'orderBy': new FastreportCloudSdk.FileSorting(), // FileSorting | indicates a field to sort by
+  'desc': false, // Boolean | indicates if sorting is descending
+  'searchPattern': "''" // String | 
 };
 apiInstance.templateFolderAndFileGetFoldersAndFiles(id, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -136,6 +135,9 @@ Name | Type | Description  | Notes
  **id** | **String**| folder id | 
  **skip** | **Number**| number of folder and files, that have to be skipped | [optional] [default to 0]
  **take** | **Number**| number of folder and files, that have to be returned | [optional] [default to 10]
+ **orderBy** | [**FileSorting**](.md)| indicates a field to sort by | [optional] 
+ **desc** | **Boolean**| indicates if sorting is descending | [optional] [default to false]
+ **searchPattern** | **String**|  | [optional] [default to &#39;&#39;]
 
 ### Return type
 
@@ -148,7 +150,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, text/json, text/plain
+- **Accept**: application/json
 
 
 ## templateFoldersCopyFolder
@@ -168,11 +170,9 @@ let defaultClient = FastreportCloudSdk.ApiClient.instance;
 let ApiKey = defaultClient.authentications['ApiKey'];
 ApiKey.username = 'YOUR USERNAME';
 ApiKey.password = 'YOUR PASSWORD';
-// Configure API key authorization: JWT
+// Configure Bearer (JWT) access token for authorization: JWT
 let JWT = defaultClient.authentications['JWT'];
-JWT.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//JWT.apiKeyPrefix = 'Token';
+JWT.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new FastreportCloudSdk.TemplatesApi();
 let id = "id_example"; // String | moving folder id
@@ -204,7 +204,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, text/json, text/plain
+- **Accept**: application/json
 
 
 ## templateFoldersDeleteFolder
@@ -224,11 +224,9 @@ let defaultClient = FastreportCloudSdk.ApiClient.instance;
 let ApiKey = defaultClient.authentications['ApiKey'];
 ApiKey.username = 'YOUR USERNAME';
 ApiKey.password = 'YOUR PASSWORD';
-// Configure API key authorization: JWT
+// Configure Bearer (JWT) access token for authorization: JWT
 let JWT = defaultClient.authentications['JWT'];
-JWT.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//JWT.apiKeyPrefix = 'Token';
+JWT.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new FastreportCloudSdk.TemplatesApi();
 let id = "id_example"; // String | folder id
@@ -262,7 +260,7 @@ null (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, text/json, text/plain
+- **Accept**: application/json
 
 
 ## templateFoldersGetBreadcrumbs
@@ -282,11 +280,9 @@ let defaultClient = FastreportCloudSdk.ApiClient.instance;
 let ApiKey = defaultClient.authentications['ApiKey'];
 ApiKey.username = 'YOUR USERNAME';
 ApiKey.password = 'YOUR PASSWORD';
-// Configure API key authorization: JWT
+// Configure Bearer (JWT) access token for authorization: JWT
 let JWT = defaultClient.authentications['JWT'];
-JWT.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//JWT.apiKeyPrefix = 'Token';
+JWT.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new FastreportCloudSdk.TemplatesApi();
 let id = "id_example"; // String | folder id
@@ -316,7 +312,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, text/json, text/plain
+- **Accept**: application/json
 
 
 ## templateFoldersGetFolder
@@ -336,11 +332,9 @@ let defaultClient = FastreportCloudSdk.ApiClient.instance;
 let ApiKey = defaultClient.authentications['ApiKey'];
 ApiKey.username = 'YOUR USERNAME';
 ApiKey.password = 'YOUR PASSWORD';
-// Configure API key authorization: JWT
+// Configure Bearer (JWT) access token for authorization: JWT
 let JWT = defaultClient.authentications['JWT'];
-JWT.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//JWT.apiKeyPrefix = 'Token';
+JWT.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new FastreportCloudSdk.TemplatesApi();
 let id = "id_example"; // String | folder id
@@ -370,7 +364,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, text/json, text/plain
+- **Accept**: application/json
 
 
 ## templateFoldersGetFolders
@@ -390,11 +384,9 @@ let defaultClient = FastreportCloudSdk.ApiClient.instance;
 let ApiKey = defaultClient.authentications['ApiKey'];
 ApiKey.username = 'YOUR USERNAME';
 ApiKey.password = 'YOUR PASSWORD';
-// Configure API key authorization: JWT
+// Configure Bearer (JWT) access token for authorization: JWT
 let JWT = defaultClient.authentications['JWT'];
-JWT.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//JWT.apiKeyPrefix = 'Token';
+JWT.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new FastreportCloudSdk.TemplatesApi();
 let id = "id_example"; // String | folder id
@@ -430,7 +422,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, text/json, text/plain
+- **Accept**: application/json
 
 
 ## templateFoldersGetFoldersCount
@@ -450,11 +442,9 @@ let defaultClient = FastreportCloudSdk.ApiClient.instance;
 let ApiKey = defaultClient.authentications['ApiKey'];
 ApiKey.username = 'YOUR USERNAME';
 ApiKey.password = 'YOUR PASSWORD';
-// Configure API key authorization: JWT
+// Configure Bearer (JWT) access token for authorization: JWT
 let JWT = defaultClient.authentications['JWT'];
-JWT.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//JWT.apiKeyPrefix = 'Token';
+JWT.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new FastreportCloudSdk.TemplatesApi();
 let id = "id_example"; // String | folder id
@@ -484,7 +474,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, text/json, text/plain
+- **Accept**: application/json
 
 
 ## templateFoldersGetPermissions
@@ -502,11 +492,9 @@ let defaultClient = FastreportCloudSdk.ApiClient.instance;
 let ApiKey = defaultClient.authentications['ApiKey'];
 ApiKey.username = 'YOUR USERNAME';
 ApiKey.password = 'YOUR PASSWORD';
-// Configure API key authorization: JWT
+// Configure Bearer (JWT) access token for authorization: JWT
 let JWT = defaultClient.authentications['JWT'];
-JWT.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//JWT.apiKeyPrefix = 'Token';
+JWT.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new FastreportCloudSdk.TemplatesApi();
 let id = "id_example"; // String | 
@@ -536,7 +524,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, text/json, text/plain
+- **Accept**: application/json
 
 
 ## templateFoldersGetRootFolder
@@ -545,7 +533,7 @@ Name | Type | Description  | Notes
 
 Get user&#39;s root folder (without parents)
 
-&amp;gt; Breakchange. Now user model doesn&#39;t contain a root folders.  This method can return error 400 and 404 when subscription is not found.
+&gt; Breakchange. Now user model doesn&#39;t contain a root folders.  This method can return error 400 and 404 when subscription is not found.
 
 ### Example
 
@@ -556,11 +544,9 @@ let defaultClient = FastreportCloudSdk.ApiClient.instance;
 let ApiKey = defaultClient.authentications['ApiKey'];
 ApiKey.username = 'YOUR USERNAME';
 ApiKey.password = 'YOUR PASSWORD';
-// Configure API key authorization: JWT
+// Configure Bearer (JWT) access token for authorization: JWT
 let JWT = defaultClient.authentications['JWT'];
-JWT.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//JWT.apiKeyPrefix = 'Token';
+JWT.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new FastreportCloudSdk.TemplatesApi();
 let opts = {
@@ -592,7 +578,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, text/json, text/plain
+- **Accept**: application/json
 
 
 ## templateFoldersMoveFolder
@@ -612,11 +598,9 @@ let defaultClient = FastreportCloudSdk.ApiClient.instance;
 let ApiKey = defaultClient.authentications['ApiKey'];
 ApiKey.username = 'YOUR USERNAME';
 ApiKey.password = 'YOUR PASSWORD';
-// Configure API key authorization: JWT
+// Configure Bearer (JWT) access token for authorization: JWT
 let JWT = defaultClient.authentications['JWT'];
-JWT.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//JWT.apiKeyPrefix = 'Token';
+JWT.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new FastreportCloudSdk.TemplatesApi();
 let id = "id_example"; // String | moving folder id
@@ -648,7 +632,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, text/json, text/plain
+- **Accept**: application/json
 
 
 ## templateFoldersPostFolder
@@ -668,16 +652,14 @@ let defaultClient = FastreportCloudSdk.ApiClient.instance;
 let ApiKey = defaultClient.authentications['ApiKey'];
 ApiKey.username = 'YOUR USERNAME';
 ApiKey.password = 'YOUR PASSWORD';
-// Configure API key authorization: JWT
+// Configure Bearer (JWT) access token for authorization: JWT
 let JWT = defaultClient.authentications['JWT'];
-JWT.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//JWT.apiKeyPrefix = 'Token';
+JWT.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new FastreportCloudSdk.TemplatesApi();
 let id = "id_example"; // String | Identifier of parent folder id
 let opts = {
-  'folderVm': new FastreportCloudSdk.TemplateFolderCreateVM() // TemplateFolderCreateVM | create VM
+  'templateFolderCreateVM': new FastreportCloudSdk.TemplateFolderCreateVM() // TemplateFolderCreateVM | create VM
 };
 apiInstance.templateFoldersPostFolder(id, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -693,7 +675,7 @@ apiInstance.templateFoldersPostFolder(id, opts).then((data) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| Identifier of parent folder id | 
- **folderVm** | [**TemplateFolderCreateVM**](TemplateFolderCreateVM.md)| create VM | [optional] 
+ **templateFolderCreateVM** | [**TemplateFolderCreateVM**](TemplateFolderCreateVM.md)| create VM | [optional] 
 
 ### Return type
 
@@ -705,8 +687,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
-- **Accept**: application/json, text/json, text/plain
+- **Content-Type**: application/json, text/json, application/_*+json
+- **Accept**: application/json
 
 
 ## templateFoldersRenameFolder
@@ -726,16 +708,14 @@ let defaultClient = FastreportCloudSdk.ApiClient.instance;
 let ApiKey = defaultClient.authentications['ApiKey'];
 ApiKey.username = 'YOUR USERNAME';
 ApiKey.password = 'YOUR PASSWORD';
-// Configure API key authorization: JWT
+// Configure Bearer (JWT) access token for authorization: JWT
 let JWT = defaultClient.authentications['JWT'];
-JWT.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//JWT.apiKeyPrefix = 'Token';
+JWT.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new FastreportCloudSdk.TemplatesApi();
 let id = "id_example"; // String | 
 let opts = {
-  'nameModel': new FastreportCloudSdk.FolderRenameVM() // FolderRenameVM | 
+  'folderRenameVM': new FastreportCloudSdk.FolderRenameVM() // FolderRenameVM | 
 };
 apiInstance.templateFoldersRenameFolder(id, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -751,7 +731,7 @@ apiInstance.templateFoldersRenameFolder(id, opts).then((data) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**|  | 
- **nameModel** | [**FolderRenameVM**](FolderRenameVM.md)|  | [optional] 
+ **folderRenameVM** | [**FolderRenameVM**](FolderRenameVM.md)|  | [optional] 
 
 ### Return type
 
@@ -763,8 +743,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
-- **Accept**: application/json, text/json, text/plain
+- **Content-Type**: application/json, text/json, application/_*+json
+- **Accept**: application/json
 
 
 ## templateFoldersUpdateIcon
@@ -784,16 +764,14 @@ let defaultClient = FastreportCloudSdk.ApiClient.instance;
 let ApiKey = defaultClient.authentications['ApiKey'];
 ApiKey.username = 'YOUR USERNAME';
 ApiKey.password = 'YOUR PASSWORD';
-// Configure API key authorization: JWT
+// Configure Bearer (JWT) access token for authorization: JWT
 let JWT = defaultClient.authentications['JWT'];
-JWT.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//JWT.apiKeyPrefix = 'Token';
+JWT.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new FastreportCloudSdk.TemplatesApi();
 let id = "id_example"; // String | Identifier of folder
 let opts = {
-  'iconModel': new FastreportCloudSdk.FolderIconVM() // FolderIconVM | Update icon model
+  'folderIconVM': new FastreportCloudSdk.FolderIconVM() // FolderIconVM | Update icon model
 };
 apiInstance.templateFoldersUpdateIcon(id, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -809,7 +787,7 @@ apiInstance.templateFoldersUpdateIcon(id, opts).then((data) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| Identifier of folder | 
- **iconModel** | [**FolderIconVM**](FolderIconVM.md)| Update icon model | [optional] 
+ **folderIconVM** | [**FolderIconVM**](FolderIconVM.md)| Update icon model | [optional] 
 
 ### Return type
 
@@ -821,8 +799,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
-- **Accept**: application/json, text/json, text/plain
+- **Content-Type**: application/json, text/json, application/_*+json
+- **Accept**: application/json
 
 
 ## templateFoldersUpdatePermissions
@@ -840,16 +818,14 @@ let defaultClient = FastreportCloudSdk.ApiClient.instance;
 let ApiKey = defaultClient.authentications['ApiKey'];
 ApiKey.username = 'YOUR USERNAME';
 ApiKey.password = 'YOUR PASSWORD';
-// Configure API key authorization: JWT
+// Configure Bearer (JWT) access token for authorization: JWT
 let JWT = defaultClient.authentications['JWT'];
-JWT.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//JWT.apiKeyPrefix = 'Token';
+JWT.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new FastreportCloudSdk.TemplatesApi();
 let id = "id_example"; // String | 
 let opts = {
-  'permissionsVM': new FastreportCloudSdk.UpdateFilePermissionsVM() // UpdateFilePermissionsVM | 
+  'updateFilePermissionsVM': new FastreportCloudSdk.UpdateFilePermissionsVM() // UpdateFilePermissionsVM | 
 };
 apiInstance.templateFoldersUpdatePermissions(id, opts).then(() => {
   console.log('API called successfully.');
@@ -865,7 +841,7 @@ apiInstance.templateFoldersUpdatePermissions(id, opts).then(() => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**|  | 
- **permissionsVM** | [**UpdateFilePermissionsVM**](UpdateFilePermissionsVM.md)|  | [optional] 
+ **updateFilePermissionsVM** | [**UpdateFilePermissionsVM**](UpdateFilePermissionsVM.md)|  | [optional] 
 
 ### Return type
 
@@ -877,8 +853,8 @@ null (empty response body)
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
-- **Accept**: application/json, text/json, text/plain
+- **Content-Type**: application/json, text/json, application/_*+json
+- **Accept**: application/json
 
 
 ## templateFoldersUpdateTags
@@ -898,16 +874,14 @@ let defaultClient = FastreportCloudSdk.ApiClient.instance;
 let ApiKey = defaultClient.authentications['ApiKey'];
 ApiKey.username = 'YOUR USERNAME';
 ApiKey.password = 'YOUR PASSWORD';
-// Configure API key authorization: JWT
+// Configure Bearer (JWT) access token for authorization: JWT
 let JWT = defaultClient.authentications['JWT'];
-JWT.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//JWT.apiKeyPrefix = 'Token';
+JWT.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new FastreportCloudSdk.TemplatesApi();
 let id = "id_example"; // String | 
 let opts = {
-  'tagsModel': new FastreportCloudSdk.FolderTagsUpdateVM() // FolderTagsUpdateVM | 
+  'folderTagsUpdateVM': new FastreportCloudSdk.FolderTagsUpdateVM() // FolderTagsUpdateVM | 
 };
 apiInstance.templateFoldersUpdateTags(id, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -923,7 +897,7 @@ apiInstance.templateFoldersUpdateTags(id, opts).then((data) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**|  | 
- **tagsModel** | [**FolderTagsUpdateVM**](FolderTagsUpdateVM.md)|  | [optional] 
+ **folderTagsUpdateVM** | [**FolderTagsUpdateVM**](FolderTagsUpdateVM.md)|  | [optional] 
 
 ### Return type
 
@@ -935,8 +909,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
-- **Accept**: application/json, text/json, text/plain
+- **Content-Type**: application/json, text/json, application/_*+json
+- **Accept**: application/json
 
 
 ## templatesCopyFile
@@ -954,11 +928,9 @@ let defaultClient = FastreportCloudSdk.ApiClient.instance;
 let ApiKey = defaultClient.authentications['ApiKey'];
 ApiKey.username = 'YOUR USERNAME';
 ApiKey.password = 'YOUR PASSWORD';
-// Configure API key authorization: JWT
+// Configure Bearer (JWT) access token for authorization: JWT
 let JWT = defaultClient.authentications['JWT'];
-JWT.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//JWT.apiKeyPrefix = 'Token';
+JWT.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new FastreportCloudSdk.TemplatesApi();
 let id = "id_example"; // String | file id
@@ -990,7 +962,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, text/json, text/plain
+- **Accept**: application/json
 
 
 ## templatesDeleteFile
@@ -1010,11 +982,9 @@ let defaultClient = FastreportCloudSdk.ApiClient.instance;
 let ApiKey = defaultClient.authentications['ApiKey'];
 ApiKey.username = 'YOUR USERNAME';
 ApiKey.password = 'YOUR PASSWORD';
-// Configure API key authorization: JWT
+// Configure Bearer (JWT) access token for authorization: JWT
 let JWT = defaultClient.authentications['JWT'];
-JWT.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//JWT.apiKeyPrefix = 'Token';
+JWT.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new FastreportCloudSdk.TemplatesApi();
 let id = "id_example"; // String | file id
@@ -1044,7 +1014,7 @@ null (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, text/json, text/plain
+- **Accept**: application/json
 
 
 ## templatesExport
@@ -1064,16 +1034,14 @@ let defaultClient = FastreportCloudSdk.ApiClient.instance;
 let ApiKey = defaultClient.authentications['ApiKey'];
 ApiKey.username = 'YOUR USERNAME';
 ApiKey.password = 'YOUR PASSWORD';
-// Configure API key authorization: JWT
+// Configure Bearer (JWT) access token for authorization: JWT
 let JWT = defaultClient.authentications['JWT'];
-JWT.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//JWT.apiKeyPrefix = 'Token';
+JWT.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new FastreportCloudSdk.TemplatesApi();
 let id = "id_example"; // String | report id
 let opts = {
-  'exportTask': new FastreportCloudSdk.ExportTemplateTaskVM() // ExportTemplateTaskVM | export parameters (string only)
+  'exportTemplateVM': new FastreportCloudSdk.ExportTemplateVM() // ExportTemplateVM | export parameters (string only)
 };
 apiInstance.templatesExport(id, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -1089,7 +1057,7 @@ apiInstance.templatesExport(id, opts).then((data) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| report id | 
- **exportTask** | [**ExportTemplateTaskVM**](ExportTemplateTaskVM.md)| export parameters (string only) | [optional] 
+ **exportTemplateVM** | [**ExportTemplateVM**](ExportTemplateVM.md)| export parameters (string only) | [optional] 
 
 ### Return type
 
@@ -1101,8 +1069,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
-- **Accept**: application/json, text/json, text/plain
+- **Content-Type**: application/json, text/json, application/_*+json
+- **Accept**: application/json
 
 
 ## templatesGetFile
@@ -1122,11 +1090,9 @@ let defaultClient = FastreportCloudSdk.ApiClient.instance;
 let ApiKey = defaultClient.authentications['ApiKey'];
 ApiKey.username = 'YOUR USERNAME';
 ApiKey.password = 'YOUR PASSWORD';
-// Configure API key authorization: JWT
+// Configure Bearer (JWT) access token for authorization: JWT
 let JWT = defaultClient.authentications['JWT'];
-JWT.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//JWT.apiKeyPrefix = 'Token';
+JWT.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new FastreportCloudSdk.TemplatesApi();
 let id = "id_example"; // String | file id
@@ -1156,7 +1122,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, text/json, text/plain
+- **Accept**: application/json
 
 
 ## templatesGetFilesCount
@@ -1176,11 +1142,9 @@ let defaultClient = FastreportCloudSdk.ApiClient.instance;
 let ApiKey = defaultClient.authentications['ApiKey'];
 ApiKey.username = 'YOUR USERNAME';
 ApiKey.password = 'YOUR PASSWORD';
-// Configure API key authorization: JWT
+// Configure Bearer (JWT) access token for authorization: JWT
 let JWT = defaultClient.authentications['JWT'];
-JWT.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//JWT.apiKeyPrefix = 'Token';
+JWT.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new FastreportCloudSdk.TemplatesApi();
 let id = "id_example"; // String | folder id
@@ -1210,16 +1174,14 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, text/json, text/plain
+- **Accept**: application/json
 
 
 ## templatesGetFilesList
 
 > TemplatesVM templatesGetFilesList(id, opts)
 
-Get all files from specified folder
-
-User with Get Entity permission can access this method.
+Get all files from specified folder. &lt;br /&gt;  User with Get Entity permission can access this method. &lt;br /&gt;  The method will returns minimal infomration about the file: &lt;br /&gt;  id, name, size, editedTime, createdTime, tags, status, statusReason.
 
 ### Example
 
@@ -1230,11 +1192,9 @@ let defaultClient = FastreportCloudSdk.ApiClient.instance;
 let ApiKey = defaultClient.authentications['ApiKey'];
 ApiKey.username = 'YOUR USERNAME';
 ApiKey.password = 'YOUR PASSWORD';
-// Configure API key authorization: JWT
+// Configure Bearer (JWT) access token for authorization: JWT
 let JWT = defaultClient.authentications['JWT'];
-JWT.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//JWT.apiKeyPrefix = 'Token';
+JWT.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new FastreportCloudSdk.TemplatesApi();
 let id = "id_example"; // String | folder id
@@ -1270,7 +1230,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, text/json, text/plain
+- **Accept**: application/json
 
 
 ## templatesGetPermissions
@@ -1288,11 +1248,9 @@ let defaultClient = FastreportCloudSdk.ApiClient.instance;
 let ApiKey = defaultClient.authentications['ApiKey'];
 ApiKey.username = 'YOUR USERNAME';
 ApiKey.password = 'YOUR PASSWORD';
-// Configure API key authorization: JWT
+// Configure Bearer (JWT) access token for authorization: JWT
 let JWT = defaultClient.authentications['JWT'];
-JWT.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//JWT.apiKeyPrefix = 'Token';
+JWT.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new FastreportCloudSdk.TemplatesApi();
 let id = "id_example"; // String | 
@@ -1322,7 +1280,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, text/json, text/plain
+- **Accept**: application/json
 
 
 ## templatesMoveFile
@@ -1342,11 +1300,9 @@ let defaultClient = FastreportCloudSdk.ApiClient.instance;
 let ApiKey = defaultClient.authentications['ApiKey'];
 ApiKey.username = 'YOUR USERNAME';
 ApiKey.password = 'YOUR PASSWORD';
-// Configure API key authorization: JWT
+// Configure Bearer (JWT) access token for authorization: JWT
 let JWT = defaultClient.authentications['JWT'];
-JWT.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//JWT.apiKeyPrefix = 'Token';
+JWT.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new FastreportCloudSdk.TemplatesApi();
 let id = "id_example"; // String | file id
@@ -1378,7 +1334,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, text/json, text/plain
+- **Accept**: application/json
 
 
 ## templatesPrepare
@@ -1387,7 +1343,7 @@ Name | Type | Description  | Notes
 
 Prepare specified template to report
 
-User with Execute Prepare permission on report and   Create Entity on a prepared report folder can access this method.
+User with Execute Prepare permission on report and  Create Entity on a prepared report folder can access this method.
 
 ### Example
 
@@ -1398,16 +1354,14 @@ let defaultClient = FastreportCloudSdk.ApiClient.instance;
 let ApiKey = defaultClient.authentications['ApiKey'];
 ApiKey.username = 'YOUR USERNAME';
 ApiKey.password = 'YOUR PASSWORD';
-// Configure API key authorization: JWT
+// Configure Bearer (JWT) access token for authorization: JWT
 let JWT = defaultClient.authentications['JWT'];
-JWT.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//JWT.apiKeyPrefix = 'Token';
+JWT.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new FastreportCloudSdk.TemplatesApi();
 let id = "id_example"; // String | template id
 let opts = {
-  'prepareTask': new FastreportCloudSdk.PrepareTemplateTaskVM() // PrepareTemplateTaskVM | Template prepare view model
+  'prepareTemplateVM': new FastreportCloudSdk.PrepareTemplateVM() // PrepareTemplateVM | Template prepare view model
 };
 apiInstance.templatesPrepare(id, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -1423,7 +1377,7 @@ apiInstance.templatesPrepare(id, opts).then((data) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| template id | 
- **prepareTask** | [**PrepareTemplateTaskVM**](PrepareTemplateTaskVM.md)| Template prepare view model | [optional] 
+ **prepareTemplateVM** | [**PrepareTemplateVM**](PrepareTemplateVM.md)| Template prepare view model | [optional] 
 
 ### Return type
 
@@ -1435,8 +1389,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
-- **Accept**: application/json, text/json, text/plain
+- **Content-Type**: application/json, text/json, application/_*+json
+- **Accept**: application/json
 
 
 ## templatesRenameFile
@@ -1456,16 +1410,14 @@ let defaultClient = FastreportCloudSdk.ApiClient.instance;
 let ApiKey = defaultClient.authentications['ApiKey'];
 ApiKey.username = 'YOUR USERNAME';
 ApiKey.password = 'YOUR PASSWORD';
-// Configure API key authorization: JWT
+// Configure Bearer (JWT) access token for authorization: JWT
 let JWT = defaultClient.authentications['JWT'];
-JWT.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//JWT.apiKeyPrefix = 'Token';
+JWT.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new FastreportCloudSdk.TemplatesApi();
 let id = "id_example"; // String | 
 let opts = {
-  'nameModel': new FastreportCloudSdk.FileRenameVM() // FileRenameVM | 
+  'fileRenameVM': new FastreportCloudSdk.FileRenameVM() // FileRenameVM | 
 };
 apiInstance.templatesRenameFile(id, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -1481,7 +1433,7 @@ apiInstance.templatesRenameFile(id, opts).then((data) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**|  | 
- **nameModel** | [**FileRenameVM**](FileRenameVM.md)|  | [optional] 
+ **fileRenameVM** | [**FileRenameVM**](FileRenameVM.md)|  | [optional] 
 
 ### Return type
 
@@ -1493,8 +1445,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
-- **Accept**: application/json, text/json, text/plain
+- **Content-Type**: application/json, text/json, application/_*+json
+- **Accept**: application/json
 
 
 ## templatesUpdateIcon
@@ -1514,16 +1466,14 @@ let defaultClient = FastreportCloudSdk.ApiClient.instance;
 let ApiKey = defaultClient.authentications['ApiKey'];
 ApiKey.username = 'YOUR USERNAME';
 ApiKey.password = 'YOUR PASSWORD';
-// Configure API key authorization: JWT
+// Configure Bearer (JWT) access token for authorization: JWT
 let JWT = defaultClient.authentications['JWT'];
-JWT.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//JWT.apiKeyPrefix = 'Token';
+JWT.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new FastreportCloudSdk.TemplatesApi();
 let id = "id_example"; // String | 
 let opts = {
-  'iconModel': new FastreportCloudSdk.FileIconVM() // FileIconVM | 
+  'fileIconVM': new FastreportCloudSdk.FileIconVM() // FileIconVM | 
 };
 apiInstance.templatesUpdateIcon(id, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -1539,7 +1489,7 @@ apiInstance.templatesUpdateIcon(id, opts).then((data) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**|  | 
- **iconModel** | [**FileIconVM**](FileIconVM.md)|  | [optional] 
+ **fileIconVM** | [**FileIconVM**](FileIconVM.md)|  | [optional] 
 
 ### Return type
 
@@ -1551,8 +1501,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
-- **Accept**: application/json, text/json, text/plain
+- **Content-Type**: application/json, text/json, application/_*+json
+- **Accept**: application/json
 
 
 ## templatesUpdatePermissions
@@ -1570,16 +1520,14 @@ let defaultClient = FastreportCloudSdk.ApiClient.instance;
 let ApiKey = defaultClient.authentications['ApiKey'];
 ApiKey.username = 'YOUR USERNAME';
 ApiKey.password = 'YOUR PASSWORD';
-// Configure API key authorization: JWT
+// Configure Bearer (JWT) access token for authorization: JWT
 let JWT = defaultClient.authentications['JWT'];
-JWT.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//JWT.apiKeyPrefix = 'Token';
+JWT.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new FastreportCloudSdk.TemplatesApi();
 let id = "id_example"; // String | 
 let opts = {
-  'permissionsVM': new FastreportCloudSdk.UpdateFilePermissionsVM() // UpdateFilePermissionsVM | 
+  'updateFilePermissionsVM': new FastreportCloudSdk.UpdateFilePermissionsVM() // UpdateFilePermissionsVM | 
 };
 apiInstance.templatesUpdatePermissions(id, opts).then(() => {
   console.log('API called successfully.');
@@ -1595,7 +1543,7 @@ apiInstance.templatesUpdatePermissions(id, opts).then(() => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**|  | 
- **permissionsVM** | [**UpdateFilePermissionsVM**](UpdateFilePermissionsVM.md)|  | [optional] 
+ **updateFilePermissionsVM** | [**UpdateFilePermissionsVM**](UpdateFilePermissionsVM.md)|  | [optional] 
 
 ### Return type
 
@@ -1607,8 +1555,8 @@ null (empty response body)
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
-- **Accept**: application/json, text/json, text/plain
+- **Content-Type**: application/json, text/json, application/_*+json
+- **Accept**: application/json
 
 
 ## templatesUpdateTags
@@ -1628,16 +1576,14 @@ let defaultClient = FastreportCloudSdk.ApiClient.instance;
 let ApiKey = defaultClient.authentications['ApiKey'];
 ApiKey.username = 'YOUR USERNAME';
 ApiKey.password = 'YOUR PASSWORD';
-// Configure API key authorization: JWT
+// Configure Bearer (JWT) access token for authorization: JWT
 let JWT = defaultClient.authentications['JWT'];
-JWT.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//JWT.apiKeyPrefix = 'Token';
+JWT.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new FastreportCloudSdk.TemplatesApi();
 let id = "id_example"; // String | 
 let opts = {
-  'tagsModel': new FastreportCloudSdk.FileTagsUpdateVM() // FileTagsUpdateVM | 
+  'fileTagsUpdateVM': new FastreportCloudSdk.FileTagsUpdateVM() // FileTagsUpdateVM | 
 };
 apiInstance.templatesUpdateTags(id, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -1653,7 +1599,7 @@ apiInstance.templatesUpdateTags(id, opts).then((data) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**|  | 
- **tagsModel** | [**FileTagsUpdateVM**](FileTagsUpdateVM.md)|  | [optional] 
+ **fileTagsUpdateVM** | [**FileTagsUpdateVM**](FileTagsUpdateVM.md)|  | [optional] 
 
 ### Return type
 
@@ -1665,8 +1611,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
-- **Accept**: application/json, text/json, text/plain
+- **Content-Type**: application/json, text/json, application/_*+json
+- **Accept**: application/json
 
 
 ## templatesUploadFile
@@ -1686,16 +1632,14 @@ let defaultClient = FastreportCloudSdk.ApiClient.instance;
 let ApiKey = defaultClient.authentications['ApiKey'];
 ApiKey.username = 'YOUR USERNAME';
 ApiKey.password = 'YOUR PASSWORD';
-// Configure API key authorization: JWT
+// Configure Bearer (JWT) access token for authorization: JWT
 let JWT = defaultClient.authentications['JWT'];
-JWT.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//JWT.apiKeyPrefix = 'Token';
+JWT.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new FastreportCloudSdk.TemplatesApi();
 let id = "id_example"; // String | Identifier of folder
 let opts = {
-  'fileVM': new FastreportCloudSdk.TemplateCreateVM() // TemplateCreateVM | file's view model
+  'templateCreateVM': new FastreportCloudSdk.TemplateCreateVM() // TemplateCreateVM | file's view model
 };
 apiInstance.templatesUploadFile(id, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -1711,7 +1655,7 @@ apiInstance.templatesUploadFile(id, opts).then((data) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| Identifier of folder | 
- **fileVM** | [**TemplateCreateVM**](TemplateCreateVM.md)| file&#39;s view model | [optional] 
+ **templateCreateVM** | [**TemplateCreateVM**](TemplateCreateVM.md)| file&#39;s view model | [optional] 
 
 ### Return type
 
@@ -1723,6 +1667,6 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
-- **Accept**: application/json, text/json, text/plain
+- **Content-Type**: application/json, text/json, application/_*+json
+- **Accept**: application/json
 

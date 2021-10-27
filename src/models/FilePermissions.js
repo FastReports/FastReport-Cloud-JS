@@ -13,6 +13,7 @@
 
 import ApiClient from '../ApiClient';
 import FilePermission from './FilePermission';
+import FilePermissionFileCreateFileGetFileUpdateFileDeleteFileExecuteFileAdministratePermissions from './FilePermissionFileCreateFileGetFileUpdateFileDeleteFileExecuteFileAdministratePermissions';
 
 /**
  * The FilePermissions model module.
@@ -23,9 +24,10 @@ class FilePermissions {
     /**
      * Constructs a new <code>FilePermissions</code>.
      * @alias module:models/FilePermissions
+     * @implements module:models/FilePermissionFileCreateFileGetFileUpdateFileDeleteFileExecuteFileAdministratePermissions
      */
     constructor() { 
-        
+        FilePermissionFileCreateFileGetFileUpdateFileDeleteFileExecuteFileAdministratePermissions.initialize(this);
         FilePermissions.initialize(this);
     }
 
@@ -47,6 +49,7 @@ class FilePermissions {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new FilePermissions();
+            FilePermissionFileCreateFileGetFileUpdateFileDeleteFileExecuteFileAdministratePermissions.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('ownerId')) {
                 obj['ownerId'] = ApiClient.convertToType(data['ownerId'], 'String');
@@ -96,6 +99,27 @@ FilePermissions.prototype['other'] = undefined;
 FilePermissions.prototype['anon'] = undefined;
 
 
+// Implement FilePermissionFileCreateFileGetFileUpdateFileDeleteFileExecuteFileAdministratePermissions interface:
+/**
+ * @member {String} ownerId
+ */
+FilePermissionFileCreateFileGetFileUpdateFileDeleteFileExecuteFileAdministratePermissions.prototype['ownerId'] = undefined;
+/**
+ * @member {module:models/FilePermission} owner
+ */
+FilePermissionFileCreateFileGetFileUpdateFileDeleteFileExecuteFileAdministratePermissions.prototype['owner'] = undefined;
+/**
+ * @member {Object.<String, module:models/FilePermission>} groups
+ */
+FilePermissionFileCreateFileGetFileUpdateFileDeleteFileExecuteFileAdministratePermissions.prototype['groups'] = undefined;
+/**
+ * @member {module:models/FilePermission} other
+ */
+FilePermissionFileCreateFileGetFileUpdateFileDeleteFileExecuteFileAdministratePermissions.prototype['other'] = undefined;
+/**
+ * @member {module:models/FilePermission} anon
+ */
+FilePermissionFileCreateFileGetFileUpdateFileDeleteFileExecuteFileAdministratePermissions.prototype['anon'] = undefined;
 
 
 

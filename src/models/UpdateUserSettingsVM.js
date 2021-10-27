@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import ProfileVisibility from './ProfileVisibility';
 
 /**
  * The UpdateUserSettingsVM model module.
@@ -48,7 +49,7 @@ class UpdateUserSettingsVM {
             obj = obj || new UpdateUserSettingsVM();
 
             if (data.hasOwnProperty('profileVisibility')) {
-                obj['profileVisibility'] = ApiClient.convertToType(data['profileVisibility'], 'Number');
+                obj['profileVisibility'] = ProfileVisibility.constructFromObject(data['profileVisibility']);
             }
             if (data.hasOwnProperty('defaultSubscription')) {
                 obj['defaultSubscription'] = ApiClient.convertToType(data['defaultSubscription'], 'String');
@@ -61,7 +62,7 @@ class UpdateUserSettingsVM {
 }
 
 /**
- * @member {module:models/UpdateUserSettingsVM.ProfileVisibilityEnum} profileVisibility
+ * @member {module:models/ProfileVisibility} profileVisibility
  */
 UpdateUserSettingsVM.prototype['profileVisibility'] = undefined;
 
@@ -72,39 +73,6 @@ UpdateUserSettingsVM.prototype['defaultSubscription'] = undefined;
 
 
 
-
-
-/**
- * Allowed values for the <code>profileVisibility</code> property.
- * @enum {Number}
- * @readonly
- */
-UpdateUserSettingsVM['ProfileVisibilityEnum'] = {
-
-    /**
-     * value: 0
-     * @const
-     */
-    "0": 0,
-
-    /**
-     * value: 1
-     * @const
-     */
-    "1": 1,
-
-    /**
-     * value: 2
-     * @const
-     */
-    "2": 2,
-
-    /**
-     * value: 4
-     * @const
-     */
-    "4": 4
-};
 
 
 

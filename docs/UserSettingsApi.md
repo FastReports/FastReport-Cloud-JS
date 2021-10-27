@@ -24,11 +24,9 @@ let defaultClient = FastreportCloudSdk.ApiClient.instance;
 let ApiKey = defaultClient.authentications['ApiKey'];
 ApiKey.username = 'YOUR USERNAME';
 ApiKey.password = 'YOUR PASSWORD';
-// Configure API key authorization: JWT
+// Configure Bearer (JWT) access token for authorization: JWT
 let JWT = defaultClient.authentications['JWT'];
-JWT.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//JWT.apiKeyPrefix = 'Token';
+JWT.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new FastreportCloudSdk.UserSettingsApi();
 apiInstance.userSettingsGetCurrentUserSettings().then((data) => {
@@ -54,7 +52,7 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, text/json, text/plain
+- **Accept**: application/json
 
 
 ## userSettingsUpdateMySettings
@@ -72,15 +70,13 @@ let defaultClient = FastreportCloudSdk.ApiClient.instance;
 let ApiKey = defaultClient.authentications['ApiKey'];
 ApiKey.username = 'YOUR USERNAME';
 ApiKey.password = 'YOUR PASSWORD';
-// Configure API key authorization: JWT
+// Configure Bearer (JWT) access token for authorization: JWT
 let JWT = defaultClient.authentications['JWT'];
-JWT.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//JWT.apiKeyPrefix = 'Token';
+JWT.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new FastreportCloudSdk.UserSettingsApi();
 let opts = {
-  'model': new FastreportCloudSdk.UpdateUserSettingsVM() // UpdateUserSettingsVM | 
+  'updateUserSettingsVM': new FastreportCloudSdk.UpdateUserSettingsVM() // UpdateUserSettingsVM | 
 };
 apiInstance.userSettingsUpdateMySettings(opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -95,7 +91,7 @@ apiInstance.userSettingsUpdateMySettings(opts).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model** | [**UpdateUserSettingsVM**](UpdateUserSettingsVM.md)|  | [optional] 
+ **updateUserSettingsVM** | [**UpdateUserSettingsVM**](UpdateUserSettingsVM.md)|  | [optional] 
 
 ### Return type
 
@@ -107,6 +103,6 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
-- **Accept**: application/json, text/json, text/plain
+- **Content-Type**: application/json, text/json, application/_*+json
+- **Accept**: application/json
 

@@ -13,6 +13,7 @@
 
 import ApiClient from '../ApiClient';
 import ReportVM from './ReportVM';
+import ReportVMFilesVMBase from './ReportVMFilesVMBase';
 
 /**
  * The ReportsVM model module.
@@ -23,9 +24,10 @@ class ReportsVM {
     /**
      * Constructs a new <code>ReportsVM</code>.
      * @alias module:models/ReportsVM
+     * @implements module:models/ReportVMFilesVMBase
      */
     constructor() { 
-        
+        ReportVMFilesVMBase.initialize(this);
         ReportsVM.initialize(this);
     }
 
@@ -47,6 +49,7 @@ class ReportsVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new ReportsVM();
+            ReportVMFilesVMBase.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('files')) {
                 obj['files'] = ApiClient.convertToType(data['files'], [ReportVM]);
@@ -88,6 +91,23 @@ ReportsVM.prototype['skip'] = undefined;
 ReportsVM.prototype['take'] = undefined;
 
 
+// Implement ReportVMFilesVMBase interface:
+/**
+ * @member {Array.<module:models/ReportVM>} files
+ */
+ReportVMFilesVMBase.prototype['files'] = undefined;
+/**
+ * @member {Number} count
+ */
+ReportVMFilesVMBase.prototype['count'] = undefined;
+/**
+ * @member {Number} skip
+ */
+ReportVMFilesVMBase.prototype['skip'] = undefined;
+/**
+ * @member {Number} take
+ */
+ReportVMFilesVMBase.prototype['take'] = undefined;
 
 
 

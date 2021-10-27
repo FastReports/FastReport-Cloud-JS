@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import DataSourceConnectionType from './DataSourceConnectionType';
 
 /**
  * The CreateDataSourceVM model module.
@@ -61,7 +62,7 @@ class CreateDataSourceVM {
                 obj['subscriptionId'] = ApiClient.convertToType(data['subscriptionId'], 'String');
             }
             if (data.hasOwnProperty('connectionType')) {
-                obj['connectionType'] = ApiClient.convertToType(data['connectionType'], 'String');
+                obj['connectionType'] = DataSourceConnectionType.constructFromObject(data['connectionType']);
             }
         }
         return obj;
@@ -86,57 +87,12 @@ CreateDataSourceVM.prototype['connectionString'] = undefined;
 CreateDataSourceVM.prototype['subscriptionId'] = undefined;
 
 /**
- * @member {module:models/CreateDataSourceVM.ConnectionTypeEnum} connectionType
+ * @member {module:models/DataSourceConnectionType} connectionType
  */
 CreateDataSourceVM.prototype['connectionType'] = undefined;
 
 
 
-
-
-/**
- * Allowed values for the <code>connectionType</code> property.
- * @enum {String}
- * @readonly
- */
-CreateDataSourceVM['ConnectionTypeEnum'] = {
-
-    /**
-     * value: "JSON"
-     * @const
-     */
-    "JSON": "JSON",
-
-    /**
-     * value: "MSSQL"
-     * @const
-     */
-    "MSSQL": "MSSQL",
-
-    /**
-     * value: "CSV"
-     * @const
-     */
-    "CSV": "CSV",
-
-    /**
-     * value: "XML"
-     * @const
-     */
-    "XML": "XML",
-
-    /**
-     * value: "MySQL"
-     * @const
-     */
-    "MySQL": "MySQL",
-
-    /**
-     * value: "Postgres"
-     * @const
-     */
-    "Postgres": "Postgres"
-};
 
 
 

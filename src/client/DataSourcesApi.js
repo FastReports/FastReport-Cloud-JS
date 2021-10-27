@@ -15,6 +15,7 @@
 import ApiClient from "../ApiClient";
 import CreateDataSourceVM from '../models/CreateDataSourceVM';
 import DataSourcePermissionsVM from '../models/DataSourcePermissionsVM';
+import DataSourceSorting from '../models/DataSourceSorting';
 import DataSourceVM from '../models/DataSourceVM';
 import DataSourcesVM from '../models/DataSourcesVM';
 import ProblemDetails from '../models/ProblemDetails';
@@ -46,12 +47,12 @@ export default class DataSourcesApi {
     /**
      * Create new data source
      * @param {Object} opts Optional parameters
-     * @param {module:models/CreateDataSourceVM} opts.viewModel create viewmodel
+     * @param {module:models/CreateDataSourceVM} opts.createDataSourceVM create viewmodel
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/DataSourceVM} and HTTP response
      */
     dataSourcesCreateDataSourceWithHttpInfo(opts) {
       opts = opts || {};
-      let postBody = opts['viewModel'];
+      let postBody = opts['createDataSourceVM'];
 
       let pathParams = {
       };
@@ -63,8 +64,8 @@ export default class DataSourcesApi {
       };
 
       let authNames = ['ApiKey', 'JWT'];
-      let contentTypes = ['application/json-patch+json', 'application/json', 'text/json', 'application/_*+json'];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let contentTypes = ['application/json', 'text/json', 'application/_*+json'];
+      let accepts = ['application/json'];
       let returnType = DataSourceVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -77,7 +78,7 @@ export default class DataSourcesApi {
     /**
      * Create new data source
      * @param {Object} opts Optional parameters
-     * @param {module:models/CreateDataSourceVM} opts.viewModel create viewmodel
+     * @param {module:models/CreateDataSourceVM} opts.createDataSourceVM create viewmodel
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/DataSourceVM}
      */
     dataSourcesCreateDataSource(opts) {
@@ -112,7 +113,7 @@ export default class DataSourcesApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let accepts = ['application/json'];
       let returnType = null;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -159,7 +160,7 @@ export default class DataSourcesApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let accepts = ['application/json'];
       let returnType = null;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -183,11 +184,13 @@ export default class DataSourcesApi {
 
 
     /**
-     * Returns all of the data sources, that current user have permission for in a subscription  if subscription id is null, returns all data sources, that current user have permission for
+     * Returns all of the data sources, that current user have permission for in a subscription <br />  The method will return minimal infomration about the datasources: <br />  id, name, editedTime, status.
      * @param {Object} opts Optional parameters
      * @param {String} opts.subscriptionId subscription id
      * @param {Number} opts.skip how many data sources will be skipped (default to 0)
      * @param {Number} opts.take how many data sources will be taken (default to 10)
+     * @param {module:models/DataSourceSorting} opts.orderBy field to order by
+     * @param {Boolean} opts.desc descending sort (default to false)
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/DataSourcesVM} and HTTP response
      */
     dataSourcesGetAvailableDataSourcesWithHttpInfo(opts) {
@@ -199,7 +202,9 @@ export default class DataSourcesApi {
       let queryParams = {
         'subscriptionId': opts['subscriptionId'],
         'skip': opts['skip'],
-        'take': opts['take']
+        'take': opts['take'],
+        'orderBy': opts['orderBy'],
+        'desc': opts['desc']
       };
       let headerParams = {
       };
@@ -208,7 +213,7 @@ export default class DataSourcesApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let accepts = ['application/json'];
       let returnType = DataSourcesVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -219,11 +224,13 @@ export default class DataSourcesApi {
     }
 
     /**
-     * Returns all of the data sources, that current user have permission for in a subscription  if subscription id is null, returns all data sources, that current user have permission for
+     * Returns all of the data sources, that current user have permission for in a subscription <br />  The method will return minimal infomration about the datasources: <br />  id, name, editedTime, status.
      * @param {Object} opts Optional parameters
      * @param {String} opts.subscriptionId subscription id
      * @param {Number} opts.skip how many data sources will be skipped (default to 0)
      * @param {Number} opts.take how many data sources will be taken (default to 10)
+     * @param {module:models/DataSourceSorting} opts.orderBy field to order by
+     * @param {Boolean} opts.desc descending sort (default to false)
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/DataSourcesVM}
      */
     dataSourcesGetAvailableDataSources(opts) {
@@ -258,7 +265,7 @@ export default class DataSourcesApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let accepts = ['application/json'];
       let returnType = DataSourceVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -305,7 +312,7 @@ export default class DataSourcesApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let accepts = ['application/json'];
       let returnType = DataSourcePermissionsVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -332,12 +339,12 @@ export default class DataSourcesApi {
      * Rename data source by id
      * @param {String} id data source id
      * @param {Object} opts Optional parameters
-     * @param {module:models/RenameDataSourceVM} opts.renameModel rename viewmodel
+     * @param {module:models/RenameDataSourceVM} opts.renameDataSourceVM rename viewmodel
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/DataSourceVM} and HTTP response
      */
     dataSourcesRenameDataSourceWithHttpInfo(id, opts) {
       opts = opts || {};
-      let postBody = opts['renameModel'];
+      let postBody = opts['renameDataSourceVM'];
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
         throw new Error("Missing the required parameter 'id' when calling dataSourcesRenameDataSource");
@@ -354,8 +361,8 @@ export default class DataSourcesApi {
       };
 
       let authNames = ['ApiKey', 'JWT'];
-      let contentTypes = ['application/json-patch+json', 'application/json', 'text/json', 'application/_*+json'];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let contentTypes = ['application/json', 'text/json', 'application/_*+json'];
+      let accepts = ['application/json'];
       let returnType = DataSourceVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -369,7 +376,7 @@ export default class DataSourcesApi {
      * Rename data source by id
      * @param {String} id data source id
      * @param {Object} opts Optional parameters
-     * @param {module:models/RenameDataSourceVM} opts.renameModel rename viewmodel
+     * @param {module:models/RenameDataSourceVM} opts.renameDataSourceVM rename viewmodel
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/DataSourceVM}
      */
     dataSourcesRenameDataSource(id, opts) {
@@ -384,12 +391,12 @@ export default class DataSourcesApi {
      * Update data source's connection string by id
      * @param {String} id data source id
      * @param {Object} opts Optional parameters
-     * @param {module:models/UpdateDataSourceConnectionStringVM} opts.updateModel update viewmodel
+     * @param {module:models/UpdateDataSourceConnectionStringVM} opts.updateDataSourceConnectionStringVM update viewmodel
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/DataSourceVM} and HTTP response
      */
     dataSourcesUpdateConnectionStringWithHttpInfo(id, opts) {
       opts = opts || {};
-      let postBody = opts['updateModel'];
+      let postBody = opts['updateDataSourceConnectionStringVM'];
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
         throw new Error("Missing the required parameter 'id' when calling dataSourcesUpdateConnectionString");
@@ -406,8 +413,8 @@ export default class DataSourcesApi {
       };
 
       let authNames = ['ApiKey', 'JWT'];
-      let contentTypes = ['application/json-patch+json', 'application/json', 'text/json', 'application/_*+json'];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let contentTypes = ['application/json', 'text/json', 'application/_*+json'];
+      let accepts = ['application/json'];
       let returnType = DataSourceVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -421,7 +428,7 @@ export default class DataSourcesApi {
      * Update data source's connection string by id
      * @param {String} id data source id
      * @param {Object} opts Optional parameters
-     * @param {module:models/UpdateDataSourceConnectionStringVM} opts.updateModel update viewmodel
+     * @param {module:models/UpdateDataSourceConnectionStringVM} opts.updateDataSourceConnectionStringVM update viewmodel
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/DataSourceVM}
      */
     dataSourcesUpdateConnectionString(id, opts) {
@@ -436,12 +443,12 @@ export default class DataSourcesApi {
      * Update permissions
      * @param {String} id 
      * @param {Object} opts Optional parameters
-     * @param {module:models/UpdateDataSourcePermissionsVM} opts.permissionsVM 
+     * @param {module:models/UpdateDataSourcePermissionsVM} opts.updateDataSourcePermissionsVM 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
     dataSourcesUpdatePermissionsWithHttpInfo(id, opts) {
       opts = opts || {};
-      let postBody = opts['permissionsVM'];
+      let postBody = opts['updateDataSourcePermissionsVM'];
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
         throw new Error("Missing the required parameter 'id' when calling dataSourcesUpdatePermissions");
@@ -458,8 +465,8 @@ export default class DataSourcesApi {
       };
 
       let authNames = ['ApiKey', 'JWT'];
-      let contentTypes = ['application/json-patch+json', 'application/json', 'text/json', 'application/_*+json'];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let contentTypes = ['application/json', 'text/json', 'application/_*+json'];
+      let accepts = ['application/json'];
       let returnType = null;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -473,7 +480,7 @@ export default class DataSourcesApi {
      * Update permissions
      * @param {String} id 
      * @param {Object} opts Optional parameters
-     * @param {module:models/UpdateDataSourcePermissionsVM} opts.permissionsVM 
+     * @param {module:models/UpdateDataSourcePermissionsVM} opts.updateDataSourcePermissionsVM 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
     dataSourcesUpdatePermissions(id, opts) {
@@ -488,12 +495,12 @@ export default class DataSourcesApi {
      * Update data source's subscription
      * @param {String} id data source id
      * @param {Object} opts Optional parameters
-     * @param {module:models/UpdateDataSourceSubscriptionVM} opts.updatesubscriptionModel update subscription viewmodel
+     * @param {module:models/UpdateDataSourceSubscriptionVM} opts.updateDataSourceSubscriptionVM update subscription viewmodel
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
     dataSourcesUpdateSubscriptionDataSourceWithHttpInfo(id, opts) {
       opts = opts || {};
-      let postBody = opts['updatesubscriptionModel'];
+      let postBody = opts['updateDataSourceSubscriptionVM'];
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
         throw new Error("Missing the required parameter 'id' when calling dataSourcesUpdateSubscriptionDataSource");
@@ -510,8 +517,8 @@ export default class DataSourcesApi {
       };
 
       let authNames = ['ApiKey', 'JWT'];
-      let contentTypes = ['application/json-patch+json', 'application/json', 'text/json', 'application/_*+json'];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let contentTypes = ['application/json', 'text/json', 'application/_*+json'];
+      let accepts = ['application/json'];
       let returnType = null;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -525,7 +532,7 @@ export default class DataSourcesApi {
      * Update data source's subscription
      * @param {String} id data source id
      * @param {Object} opts Optional parameters
-     * @param {module:models/UpdateDataSourceSubscriptionVM} opts.updatesubscriptionModel update subscription viewmodel
+     * @param {module:models/UpdateDataSourceSubscriptionVM} opts.updateDataSourceSubscriptionVM update subscription viewmodel
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
     dataSourcesUpdateSubscriptionDataSource(id, opts) {

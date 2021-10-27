@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import FileCreateVM from './FileCreateVM';
 
 /**
  * The TemplateCreateVM model module.
@@ -22,9 +23,10 @@ class TemplateCreateVM {
     /**
      * Constructs a new <code>TemplateCreateVM</code>.
      * @alias module:models/TemplateCreateVM
+     * @implements module:models/FileCreateVM
      */
     constructor() { 
-        
+        FileCreateVM.initialize(this);
         TemplateCreateVM.initialize(this);
     }
 
@@ -46,6 +48,7 @@ class TemplateCreateVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new TemplateCreateVM();
+            FileCreateVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('name')) {
                 obj['name'] = ApiClient.convertToType(data['name'], 'String');
@@ -87,6 +90,23 @@ TemplateCreateVM.prototype['icon'] = undefined;
 TemplateCreateVM.prototype['content'] = undefined;
 
 
+// Implement FileCreateVM interface:
+/**
+ * @member {String} name
+ */
+FileCreateVM.prototype['name'] = undefined;
+/**
+ * @member {Array.<String>} tags
+ */
+FileCreateVM.prototype['tags'] = undefined;
+/**
+ * @member {Blob} icon
+ */
+FileCreateVM.prototype['icon'] = undefined;
+/**
+ * @member {Blob} content
+ */
+FileCreateVM.prototype['content'] = undefined;
 
 
 

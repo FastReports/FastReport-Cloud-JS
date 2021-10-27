@@ -12,6 +12,10 @@
  */
 
 import ApiClient from '../ApiClient';
+import EntityVM from './EntityVM';
+import FileStatus from './FileStatus';
+import FileStatusReason from './FileStatusReason';
+import FileType from './FileType';
 
 /**
  * The FileVM model module.
@@ -22,9 +26,10 @@ class FileVM {
     /**
      * Constructs a new <code>FileVM</code>.
      * @alias module:models/FileVM
+     * @implements module:models/EntityVM
      */
     constructor() { 
-        
+        EntityVM.initialize(this);
         FileVM.initialize(this);
     }
 
@@ -46,6 +51,7 @@ class FileVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new FileVM();
+            EntityVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('name')) {
                 obj['name'] = ApiClient.convertToType(data['name'], 'String');
@@ -60,7 +66,7 @@ class FileVM {
                 obj['icon'] = ApiClient.convertToType(data['icon'], 'Blob');
             }
             if (data.hasOwnProperty('type')) {
-                obj['type'] = ApiClient.convertToType(data['type'], 'String');
+                obj['type'] = FileType.constructFromObject(data['type']);
             }
             if (data.hasOwnProperty('size')) {
                 obj['size'] = ApiClient.convertToType(data['size'], 'Number');
@@ -69,10 +75,10 @@ class FileVM {
                 obj['subscriptionId'] = ApiClient.convertToType(data['subscriptionId'], 'String');
             }
             if (data.hasOwnProperty('status')) {
-                obj['status'] = ApiClient.convertToType(data['status'], 'String');
+                obj['status'] = FileStatus.constructFromObject(data['status']);
             }
             if (data.hasOwnProperty('statusReason')) {
-                obj['statusReason'] = ApiClient.convertToType(data['statusReason'], 'String');
+                obj['statusReason'] = FileStatusReason.constructFromObject(data['statusReason']);
             }
             if (data.hasOwnProperty('id')) {
                 obj['id'] = ApiClient.convertToType(data['id'], 'String');
@@ -117,7 +123,7 @@ FileVM.prototype['tags'] = undefined;
 FileVM.prototype['icon'] = undefined;
 
 /**
- * @member {module:models/FileVM.TypeEnum} type
+ * @member {module:models/FileType} type
  */
 FileVM.prototype['type'] = undefined;
 
@@ -132,12 +138,12 @@ FileVM.prototype['size'] = undefined;
 FileVM.prototype['subscriptionId'] = undefined;
 
 /**
- * @member {module:models/FileVM.StatusEnum} status
+ * @member {module:models/FileStatus} status
  */
 FileVM.prototype['status'] = undefined;
 
 /**
- * @member {module:models/FileVM.StatusReasonEnum} statusReason
+ * @member {module:models/FileStatusReason} statusReason
  */
 FileVM.prototype['statusReason'] = undefined;
 
@@ -167,130 +173,28 @@ FileVM.prototype['editedTime'] = undefined;
 FileVM.prototype['editorUserId'] = undefined;
 
 
-
-
-
+// Implement EntityVM interface:
 /**
- * Allowed values for the <code>type</code> property.
- * @enum {String}
- * @readonly
+ * @member {String} id
  */
-FileVM['TypeEnum'] = {
-
-    /**
-     * value: "File"
-     * @const
-     */
-    "File": "File",
-
-    /**
-     * value: "Folder"
-     * @const
-     */
-    "Folder": "Folder"
-};
-
-
+EntityVM.prototype['id'] = undefined;
 /**
- * Allowed values for the <code>status</code> property.
- * @enum {String}
- * @readonly
+ * @member {Date} createdTime
  */
-FileVM['StatusEnum'] = {
-
-    /**
-     * value: "None"
-     * @const
-     */
-    "None": "None",
-
-    /**
-     * value: "InQueue"
-     * @const
-     */
-    "InQueue": "InQueue",
-
-    /**
-     * value: "InProcess"
-     * @const
-     */
-    "InProcess": "InProcess",
-
-    /**
-     * value: "Success"
-     * @const
-     */
-    "Success": "Success",
-
-    /**
-     * value: "Failed"
-     * @const
-     */
-    "Failed": "Failed"
-};
-
-
+EntityVM.prototype['createdTime'] = undefined;
 /**
- * Allowed values for the <code>statusReason</code> property.
- * @enum {String}
- * @readonly
+ * @member {String} creatorUserId
  */
-FileVM['StatusReasonEnum'] = {
+EntityVM.prototype['creatorUserId'] = undefined;
+/**
+ * @member {Date} editedTime
+ */
+EntityVM.prototype['editedTime'] = undefined;
+/**
+ * @member {String} editorUserId
+ */
+EntityVM.prototype['editorUserId'] = undefined;
 
-    /**
-     * value: "None"
-     * @const
-     */
-    "None": "None",
-
-    /**
-     * value: "AllRight"
-     * @const
-     */
-    "AllRight": "AllRight",
-
-    /**
-     * value: "Hang"
-     * @const
-     */
-    "Hang": "Hang",
-
-    /**
-     * value: "Error"
-     * @const
-     */
-    "Error": "Error",
-
-    /**
-     * value: "NotFound"
-     * @const
-     */
-    "NotFound": "NotFound",
-
-    /**
-     * value: "NotEnoughSpace"
-     * @const
-     */
-    "NotEnoughSpace": "NotEnoughSpace",
-
-    /**
-     * value: "ExportStarted"
-     * @const
-     */
-    "ExportStarted": "ExportStarted",
-
-    /**
-     * value: "PreparationStarted"
-     * @const
-     */
-    "PreparationStarted": "PreparationStarted",
-
-    /**
-     * value: "CrashLoop"
-     * @const
-     */
-    "CrashLoop": "CrashLoop"
-};
 
 
 

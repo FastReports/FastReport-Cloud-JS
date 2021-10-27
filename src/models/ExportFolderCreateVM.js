@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import FolderCreateVM from './FolderCreateVM';
 
 /**
  * The ExportFolderCreateVM model module.
@@ -22,9 +23,10 @@ class ExportFolderCreateVM {
     /**
      * Constructs a new <code>ExportFolderCreateVM</code>.
      * @alias module:models/ExportFolderCreateVM
+     * @implements module:models/FolderCreateVM
      */
     constructor() { 
-        
+        FolderCreateVM.initialize(this);
         ExportFolderCreateVM.initialize(this);
     }
 
@@ -46,6 +48,7 @@ class ExportFolderCreateVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new ExportFolderCreateVM();
+            FolderCreateVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('name')) {
                 obj['name'] = ApiClient.convertToType(data['name'], 'String');
@@ -79,6 +82,19 @@ ExportFolderCreateVM.prototype['tags'] = undefined;
 ExportFolderCreateVM.prototype['icon'] = undefined;
 
 
+// Implement FolderCreateVM interface:
+/**
+ * @member {String} name
+ */
+FolderCreateVM.prototype['name'] = undefined;
+/**
+ * @member {Array.<String>} tags
+ */
+FolderCreateVM.prototype['tags'] = undefined;
+/**
+ * @member {Blob} icon
+ */
+FolderCreateVM.prototype['icon'] = undefined;
 
 
 

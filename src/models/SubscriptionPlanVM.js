@@ -12,6 +12,8 @@
  */
 
 import ApiClient from '../ApiClient';
+import TaskSettingsVM from './TaskSettingsVM';
+import TimePeriodType from './TimePeriodType';
 
 /**
  * The SubscriptionPlanVM model module.
@@ -57,13 +59,13 @@ class SubscriptionPlanVM {
                 obj['displayName'] = ApiClient.convertToType(data['displayName'], 'String');
             }
             if (data.hasOwnProperty('timePeriodType')) {
-                obj['timePeriodType'] = ApiClient.convertToType(data['timePeriodType'], 'String');
+                obj['timePeriodType'] = TimePeriodType.constructFromObject(data['timePeriodType']);
             }
             if (data.hasOwnProperty('timePeriod')) {
                 obj['timePeriod'] = ApiClient.convertToType(data['timePeriod'], 'Number');
             }
             if (data.hasOwnProperty('readonlyTimeLimitType')) {
-                obj['readonlyTimeLimitType'] = ApiClient.convertToType(data['readonlyTimeLimitType'], 'String');
+                obj['readonlyTimeLimitType'] = TimePeriodType.constructFromObject(data['readonlyTimeLimitType']);
             }
             if (data.hasOwnProperty('readonlyTimeLimit')) {
                 obj['readonlyTimeLimit'] = ApiClient.convertToType(data['readonlyTimeLimit'], 'Number');
@@ -107,6 +109,9 @@ class SubscriptionPlanVM {
             if (data.hasOwnProperty('pageLimit')) {
                 obj['pageLimit'] = ApiClient.convertToType(data['pageLimit'], 'Number');
             }
+            if (data.hasOwnProperty('tasks')) {
+                obj['tasks'] = TaskSettingsVM.constructFromObject(data['tasks']);
+            }
         }
         return obj;
     }
@@ -130,7 +135,7 @@ SubscriptionPlanVM.prototype['isActive'] = undefined;
 SubscriptionPlanVM.prototype['displayName'] = undefined;
 
 /**
- * @member {module:models/SubscriptionPlanVM.TimePeriodTypeEnum} timePeriodType
+ * @member {module:models/TimePeriodType} timePeriodType
  */
 SubscriptionPlanVM.prototype['timePeriodType'] = undefined;
 
@@ -140,7 +145,7 @@ SubscriptionPlanVM.prototype['timePeriodType'] = undefined;
 SubscriptionPlanVM.prototype['timePeriod'] = undefined;
 
 /**
- * @member {module:models/SubscriptionPlanVM.ReadonlyTimeLimitTypeEnum} readonlyTimeLimitType
+ * @member {module:models/TimePeriodType} readonlyTimeLimitType
  */
 SubscriptionPlanVM.prototype['readonlyTimeLimitType'] = undefined;
 
@@ -214,110 +219,13 @@ SubscriptionPlanVM.prototype['unlimitedPage'] = undefined;
  */
 SubscriptionPlanVM.prototype['pageLimit'] = undefined;
 
-
-
-
-
 /**
- * Allowed values for the <code>timePeriodType</code> property.
- * @enum {String}
- * @readonly
+ * @member {module:models/TaskSettingsVM} tasks
  */
-SubscriptionPlanVM['TimePeriodTypeEnum'] = {
-
-    /**
-     * value: "Second"
-     * @const
-     */
-    "Second": "Second",
-
-    /**
-     * value: "Minute"
-     * @const
-     */
-    "Minute": "Minute",
-
-    /**
-     * value: "Hour"
-     * @const
-     */
-    "Hour": "Hour",
-
-    /**
-     * value: "Day"
-     * @const
-     */
-    "Day": "Day",
-
-    /**
-     * value: "Week"
-     * @const
-     */
-    "Week": "Week",
-
-    /**
-     * value: "Month"
-     * @const
-     */
-    "Month": "Month",
-
-    /**
-     * value: "Year"
-     * @const
-     */
-    "Year": "Year"
-};
+SubscriptionPlanVM.prototype['tasks'] = undefined;
 
 
-/**
- * Allowed values for the <code>readonlyTimeLimitType</code> property.
- * @enum {String}
- * @readonly
- */
-SubscriptionPlanVM['ReadonlyTimeLimitTypeEnum'] = {
 
-    /**
-     * value: "Second"
-     * @const
-     */
-    "Second": "Second",
-
-    /**
-     * value: "Minute"
-     * @const
-     */
-    "Minute": "Minute",
-
-    /**
-     * value: "Hour"
-     * @const
-     */
-    "Hour": "Hour",
-
-    /**
-     * value: "Day"
-     * @const
-     */
-    "Day": "Day",
-
-    /**
-     * value: "Week"
-     * @const
-     */
-    "Week": "Week",
-
-    /**
-     * value: "Month"
-     * @const
-     */
-    "Month": "Month",
-
-    /**
-     * value: "Year"
-     * @const
-     */
-    "Year": "Year"
-};
 
 
 

@@ -41,14 +41,14 @@ export default class ApiKeysApi {
 
     /**
      * Create a new apikey, 5 apikeys for user. Hardcoded for ddos.
-     * @param {module:models/CreateApiKeyVM} model 
+     * @param {module:models/CreateApiKeyVM} createApiKeyVM 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/ApiKeyVM} and HTTP response
      */
-    apiKeysCreateApiKeyWithHttpInfo(model) {
-      let postBody = model;
-      // verify the required parameter 'model' is set
-      if (model === undefined || model === null) {
-        throw new Error("Missing the required parameter 'model' when calling apiKeysCreateApiKey");
+    apiKeysCreateApiKeyWithHttpInfo(createApiKeyVM) {
+      let postBody = createApiKeyVM;
+      // verify the required parameter 'createApiKeyVM' is set
+      if (createApiKeyVM === undefined || createApiKeyVM === null) {
+        throw new Error("Missing the required parameter 'createApiKeyVM' when calling apiKeysCreateApiKey");
       }
 
       let pathParams = {
@@ -61,8 +61,8 @@ export default class ApiKeysApi {
       };
 
       let authNames = ['ApiKey', 'JWT'];
-      let contentTypes = ['application/json-patch+json', 'application/json', 'text/json', 'application/_*+json'];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let contentTypes = ['application/json', 'text/json', 'application/_*+json'];
+      let accepts = ['application/json'];
       let returnType = ApiKeyVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -74,11 +74,11 @@ export default class ApiKeysApi {
 
     /**
      * Create a new apikey, 5 apikeys for user. Hardcoded for ddos.
-     * @param {module:models/CreateApiKeyVM} model 
+     * @param {module:models/CreateApiKeyVM} createApiKeyVM 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/ApiKeyVM}
      */
-    apiKeysCreateApiKey(model) {
-      return this.apiKeysCreateApiKeyWithHttpInfo(model)
+    apiKeysCreateApiKey(createApiKeyVM) {
+      return this.apiKeysCreateApiKeyWithHttpInfo(createApiKeyVM)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -87,14 +87,14 @@ export default class ApiKeysApi {
 
     /**
      * Delete an apikey
-     * @param {module:models/DeleteApiKeyVM} model 
+     * @param {module:models/DeleteApiKeyVM} deleteApiKeyVM 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
-    apiKeysDeleteApiKeyWithHttpInfo(model) {
-      let postBody = model;
-      // verify the required parameter 'model' is set
-      if (model === undefined || model === null) {
-        throw new Error("Missing the required parameter 'model' when calling apiKeysDeleteApiKey");
+    apiKeysDeleteApiKeyWithHttpInfo(deleteApiKeyVM) {
+      let postBody = deleteApiKeyVM;
+      // verify the required parameter 'deleteApiKeyVM' is set
+      if (deleteApiKeyVM === undefined || deleteApiKeyVM === null) {
+        throw new Error("Missing the required parameter 'deleteApiKeyVM' when calling apiKeysDeleteApiKey");
       }
 
       let pathParams = {
@@ -107,8 +107,8 @@ export default class ApiKeysApi {
       };
 
       let authNames = ['ApiKey', 'JWT'];
-      let contentTypes = ['application/json-patch+json', 'application/json', 'text/json', 'application/_*+json'];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let contentTypes = ['application/json', 'text/json', 'application/_*+json'];
+      let accepts = ['application/json'];
       let returnType = null;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -120,11 +120,11 @@ export default class ApiKeysApi {
 
     /**
      * Delete an apikey
-     * @param {module:models/DeleteApiKeyVM} model 
+     * @param {module:models/DeleteApiKeyVM} deleteApiKeyVM 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
-    apiKeysDeleteApiKey(model) {
-      return this.apiKeysDeleteApiKeyWithHttpInfo(model)
+    apiKeysDeleteApiKey(deleteApiKeyVM) {
+      return this.apiKeysDeleteApiKeyWithHttpInfo(deleteApiKeyVM)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -150,7 +150,7 @@ export default class ApiKeysApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let accepts = ['application/json'];
       let returnType = ApiKeysVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(

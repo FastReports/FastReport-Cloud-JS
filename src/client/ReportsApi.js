@@ -15,11 +15,12 @@
 import ApiClient from "../ApiClient";
 import BreadcrumbsVM from '../models/BreadcrumbsVM';
 import CountVM from '../models/CountVM';
-import ExportReportTaskVM from '../models/ExportReportTaskVM';
+import ExportReportVM from '../models/ExportReportVM';
 import ExportVM from '../models/ExportVM';
 import FileIconVM from '../models/FileIconVM';
 import FilePermissionsVM from '../models/FilePermissionsVM';
 import FileRenameVM from '../models/FileRenameVM';
+import FileSorting from '../models/FileSorting';
 import FileTagsUpdateVM from '../models/FileTagsUpdateVM';
 import FileVM from '../models/FileVM';
 import FilesVM from '../models/FilesVM';
@@ -78,7 +79,7 @@ export default class ReportsApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let accepts = ['application/json'];
       let returnType = CountVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -109,6 +110,9 @@ export default class ReportsApi {
      * @param {Object} opts Optional parameters
      * @param {Number} opts.skip number of folder and files, that have to be skipped (default to 0)
      * @param {Number} opts.take number of folder and files, that have to be returned (default to 10)
+     * @param {module:models/FileSorting} opts.orderBy indicates a field to sort by
+     * @param {Boolean} opts.desc indicates if sorting is descending (default to false)
+     * @param {String} opts.searchPattern  (default to '')
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/FilesVM} and HTTP response
      */
     reportFolderAndFileGetFoldersAndFilesWithHttpInfo(id, opts) {
@@ -124,7 +128,10 @@ export default class ReportsApi {
       };
       let queryParams = {
         'skip': opts['skip'],
-        'take': opts['take']
+        'take': opts['take'],
+        'orderBy': opts['orderBy'],
+        'desc': opts['desc'],
+        'searchPattern': opts['searchPattern']
       };
       let headerParams = {
       };
@@ -133,7 +140,7 @@ export default class ReportsApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let accepts = ['application/json'];
       let returnType = FilesVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -150,6 +157,9 @@ export default class ReportsApi {
      * @param {Object} opts Optional parameters
      * @param {Number} opts.skip number of folder and files, that have to be skipped (default to 0)
      * @param {Number} opts.take number of folder and files, that have to be returned (default to 10)
+     * @param {module:models/FileSorting} opts.orderBy indicates a field to sort by
+     * @param {Boolean} opts.desc indicates if sorting is descending (default to false)
+     * @param {String} opts.searchPattern  (default to '')
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/FilesVM}
      */
     reportFolderAndFileGetFoldersAndFiles(id, opts) {
@@ -191,7 +201,7 @@ export default class ReportsApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let accepts = ['application/json'];
       let returnType = FileVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -245,7 +255,7 @@ export default class ReportsApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let accepts = ['application/json'];
       let returnType = null;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -296,7 +306,7 @@ export default class ReportsApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let accepts = ['application/json'];
       let returnType = BreadcrumbsVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -345,7 +355,7 @@ export default class ReportsApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let accepts = ['application/json'];
       let returnType = FileVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -400,7 +410,7 @@ export default class ReportsApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let accepts = ['application/json'];
       let returnType = FilesVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -452,7 +462,7 @@ export default class ReportsApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let accepts = ['application/json'];
       let returnType = CountVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -500,7 +510,7 @@ export default class ReportsApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let accepts = ['application/json'];
       let returnType = FilePermissionsVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -525,7 +535,7 @@ export default class ReportsApi {
 
     /**
      * Get user's root folder (without parents)
-     * &gt; Breakchange. Now user model doesn't contain a root folders.  This method can return error 400 and 404 when subscription is not found.
+     * > Breakchange. Now user model doesn't contain a root folders.  This method can return error 400 and 404 when subscription is not found.
      * @param {Object} opts Optional parameters
      * @param {String} opts.subscriptionId 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/FileVM} and HTTP response
@@ -546,7 +556,7 @@ export default class ReportsApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let accepts = ['application/json'];
       let returnType = FileVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -558,7 +568,7 @@ export default class ReportsApi {
 
     /**
      * Get user's root folder (without parents)
-     * &gt; Breakchange. Now user model doesn't contain a root folders.  This method can return error 400 and 404 when subscription is not found.
+     * > Breakchange. Now user model doesn't contain a root folders.  This method can return error 400 and 404 when subscription is not found.
      * @param {Object} opts Optional parameters
      * @param {String} opts.subscriptionId 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/FileVM}
@@ -602,7 +612,7 @@ export default class ReportsApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let accepts = ['application/json'];
       let returnType = FileVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -632,12 +642,12 @@ export default class ReportsApi {
      * User with a Create Entity permisison can access this method.
      * @param {String} id Identifier of parent folder id
      * @param {Object} opts Optional parameters
-     * @param {module:models/ReportFolderCreateVM} opts.folderVm create VM
+     * @param {module:models/ReportFolderCreateVM} opts.reportFolderCreateVM create VM
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/FileVM} and HTTP response
      */
     reportFoldersPostFolderWithHttpInfo(id, opts) {
       opts = opts || {};
-      let postBody = opts['folderVm'];
+      let postBody = opts['reportFolderCreateVM'];
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
         throw new Error("Missing the required parameter 'id' when calling reportFoldersPostFolder");
@@ -654,8 +664,8 @@ export default class ReportsApi {
       };
 
       let authNames = ['ApiKey', 'JWT'];
-      let contentTypes = ['application/json-patch+json', 'application/json', 'text/json', 'application/_*+json'];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let contentTypes = ['application/json', 'text/json', 'application/_*+json'];
+      let accepts = ['application/json'];
       let returnType = FileVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -670,7 +680,7 @@ export default class ReportsApi {
      * User with a Create Entity permisison can access this method.
      * @param {String} id Identifier of parent folder id
      * @param {Object} opts Optional parameters
-     * @param {module:models/ReportFolderCreateVM} opts.folderVm create VM
+     * @param {module:models/ReportFolderCreateVM} opts.reportFolderCreateVM create VM
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/FileVM}
      */
     reportFoldersPostFolder(id, opts) {
@@ -686,12 +696,12 @@ export default class ReportsApi {
      * User with a Update Name permision can access this method.
      * @param {String} id 
      * @param {Object} opts Optional parameters
-     * @param {module:models/FolderRenameVM} opts.nameModel 
+     * @param {module:models/FolderRenameVM} opts.folderRenameVM 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/FileVM} and HTTP response
      */
     reportFoldersRenameFolderWithHttpInfo(id, opts) {
       opts = opts || {};
-      let postBody = opts['nameModel'];
+      let postBody = opts['folderRenameVM'];
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
         throw new Error("Missing the required parameter 'id' when calling reportFoldersRenameFolder");
@@ -708,8 +718,8 @@ export default class ReportsApi {
       };
 
       let authNames = ['ApiKey', 'JWT'];
-      let contentTypes = ['application/json-patch+json', 'application/json', 'text/json', 'application/_*+json'];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let contentTypes = ['application/json', 'text/json', 'application/_*+json'];
+      let accepts = ['application/json'];
       let returnType = FileVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -724,7 +734,7 @@ export default class ReportsApi {
      * User with a Update Name permision can access this method.
      * @param {String} id 
      * @param {Object} opts Optional parameters
-     * @param {module:models/FolderRenameVM} opts.nameModel 
+     * @param {module:models/FolderRenameVM} opts.folderRenameVM 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/FileVM}
      */
     reportFoldersRenameFolder(id, opts) {
@@ -740,12 +750,12 @@ export default class ReportsApi {
      * User with a Update Icon permission can access this method.
      * @param {String} id Identifier of folder
      * @param {Object} opts Optional parameters
-     * @param {module:models/FolderIconVM} opts.iconModel Update icon model
+     * @param {module:models/FolderIconVM} opts.folderIconVM Update icon model
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/FileVM} and HTTP response
      */
     reportFoldersUpdateIconWithHttpInfo(id, opts) {
       opts = opts || {};
-      let postBody = opts['iconModel'];
+      let postBody = opts['folderIconVM'];
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
         throw new Error("Missing the required parameter 'id' when calling reportFoldersUpdateIcon");
@@ -762,8 +772,8 @@ export default class ReportsApi {
       };
 
       let authNames = ['ApiKey', 'JWT'];
-      let contentTypes = ['application/json-patch+json', 'application/json', 'text/json', 'application/_*+json'];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let contentTypes = ['application/json', 'text/json', 'application/_*+json'];
+      let accepts = ['application/json'];
       let returnType = FileVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -778,7 +788,7 @@ export default class ReportsApi {
      * User with a Update Icon permission can access this method.
      * @param {String} id Identifier of folder
      * @param {Object} opts Optional parameters
-     * @param {module:models/FolderIconVM} opts.iconModel Update icon model
+     * @param {module:models/FolderIconVM} opts.folderIconVM Update icon model
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/FileVM}
      */
     reportFoldersUpdateIcon(id, opts) {
@@ -793,12 +803,12 @@ export default class ReportsApi {
      * Update permissions
      * @param {String} id 
      * @param {Object} opts Optional parameters
-     * @param {module:models/UpdateFilePermissionsVM} opts.permissionsVM 
+     * @param {module:models/UpdateFilePermissionsVM} opts.updateFilePermissionsVM 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
     reportFoldersUpdatePermissionsWithHttpInfo(id, opts) {
       opts = opts || {};
-      let postBody = opts['permissionsVM'];
+      let postBody = opts['updateFilePermissionsVM'];
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
         throw new Error("Missing the required parameter 'id' when calling reportFoldersUpdatePermissions");
@@ -815,8 +825,8 @@ export default class ReportsApi {
       };
 
       let authNames = ['ApiKey', 'JWT'];
-      let contentTypes = ['application/json-patch+json', 'application/json', 'text/json', 'application/_*+json'];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let contentTypes = ['application/json', 'text/json', 'application/_*+json'];
+      let accepts = ['application/json'];
       let returnType = null;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -830,7 +840,7 @@ export default class ReportsApi {
      * Update permissions
      * @param {String} id 
      * @param {Object} opts Optional parameters
-     * @param {module:models/UpdateFilePermissionsVM} opts.permissionsVM 
+     * @param {module:models/UpdateFilePermissionsVM} opts.updateFilePermissionsVM 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
     reportFoldersUpdatePermissions(id, opts) {
@@ -846,12 +856,12 @@ export default class ReportsApi {
      * User with a Update Tags permission can access this method.
      * @param {String} id 
      * @param {Object} opts Optional parameters
-     * @param {module:models/FolderTagsUpdateVM} opts.tagsModel 
+     * @param {module:models/FolderTagsUpdateVM} opts.folderTagsUpdateVM 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/FileVM} and HTTP response
      */
     reportFoldersUpdateTagsWithHttpInfo(id, opts) {
       opts = opts || {};
-      let postBody = opts['tagsModel'];
+      let postBody = opts['folderTagsUpdateVM'];
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
         throw new Error("Missing the required parameter 'id' when calling reportFoldersUpdateTags");
@@ -868,8 +878,8 @@ export default class ReportsApi {
       };
 
       let authNames = ['ApiKey', 'JWT'];
-      let contentTypes = ['application/json-patch+json', 'application/json', 'text/json', 'application/_*+json'];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let contentTypes = ['application/json', 'text/json', 'application/_*+json'];
+      let accepts = ['application/json'];
       let returnType = FileVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -884,7 +894,7 @@ export default class ReportsApi {
      * User with a Update Tags permission can access this method.
      * @param {String} id 
      * @param {Object} opts Optional parameters
-     * @param {module:models/FolderTagsUpdateVM} opts.tagsModel 
+     * @param {module:models/FolderTagsUpdateVM} opts.folderTagsUpdateVM 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/FileVM}
      */
     reportFoldersUpdateTags(id, opts) {
@@ -925,7 +935,7 @@ export default class ReportsApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let accepts = ['application/json'];
       let returnType = ReportVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -974,7 +984,7 @@ export default class ReportsApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let accepts = ['application/json'];
       let returnType = null;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -1003,12 +1013,12 @@ export default class ReportsApi {
      * User with Execute Export permission on prepared report and  Create Entity on an export folder can access this method.
      * @param {String} id report id
      * @param {Object} opts Optional parameters
-     * @param {module:models/ExportReportTaskVM} opts.exportTask export parameters
+     * @param {module:models/ExportReportVM} opts.exportReportVM export parameters
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/ExportVM} and HTTP response
      */
     reportsExportWithHttpInfo(id, opts) {
       opts = opts || {};
-      let postBody = opts['exportTask'];
+      let postBody = opts['exportReportVM'];
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
         throw new Error("Missing the required parameter 'id' when calling reportsExport");
@@ -1025,8 +1035,8 @@ export default class ReportsApi {
       };
 
       let authNames = ['ApiKey', 'JWT'];
-      let contentTypes = ['application/json-patch+json', 'application/json', 'text/json', 'application/_*+json'];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let contentTypes = ['application/json', 'text/json', 'application/_*+json'];
+      let accepts = ['application/json'];
       let returnType = ExportVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -1041,7 +1051,7 @@ export default class ReportsApi {
      * User with Execute Export permission on prepared report and  Create Entity on an export folder can access this method.
      * @param {String} id report id
      * @param {Object} opts Optional parameters
-     * @param {module:models/ExportReportTaskVM} opts.exportTask export parameters
+     * @param {module:models/ExportReportVM} opts.exportReportVM export parameters
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/ExportVM}
      */
     reportsExport(id, opts) {
@@ -1077,7 +1087,7 @@ export default class ReportsApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let accepts = ['application/json'];
       let returnType = ReportVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -1126,7 +1136,7 @@ export default class ReportsApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let accepts = ['application/json'];
       let returnType = CountVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -1151,8 +1161,7 @@ export default class ReportsApi {
 
 
     /**
-     * Get all files from specified folder
-     * User with Get Entity permission can access this method.
+     * Get all files from specified folder. <br />  User with Get Entity permission can access this method. <br />  The method will returns minimal infomration about the file: <br />  id, name, size, editedTime, createdTime, tags, status, statusReason.
      * @param {String} id folder id
      * @param {Object} opts Optional parameters
      * @param {Number} opts.skip number of files, that have to be skipped (default to 0)
@@ -1181,7 +1190,7 @@ export default class ReportsApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let accepts = ['application/json'];
       let returnType = ReportsVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -1192,8 +1201,7 @@ export default class ReportsApi {
     }
 
     /**
-     * Get all files from specified folder
-     * User with Get Entity permission can access this method.
+     * Get all files from specified folder. <br />  User with Get Entity permission can access this method. <br />  The method will returns minimal infomration about the file: <br />  id, name, size, editedTime, createdTime, tags, status, statusReason.
      * @param {String} id folder id
      * @param {Object} opts Optional parameters
      * @param {Number} opts.skip number of files, that have to be skipped (default to 0)
@@ -1232,7 +1240,7 @@ export default class ReportsApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let accepts = ['application/json'];
       let returnType = FilePermissionsVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -1286,7 +1294,7 @@ export default class ReportsApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let accepts = ['application/json'];
       let returnType = ReportVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -1316,12 +1324,12 @@ export default class ReportsApi {
      * User with Update Name permission can access this method.
      * @param {String} id 
      * @param {Object} opts Optional parameters
-     * @param {module:models/FileRenameVM} opts.nameModel 
+     * @param {module:models/FileRenameVM} opts.fileRenameVM 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/ReportVM} and HTTP response
      */
     reportsRenameFileWithHttpInfo(id, opts) {
       opts = opts || {};
-      let postBody = opts['nameModel'];
+      let postBody = opts['fileRenameVM'];
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
         throw new Error("Missing the required parameter 'id' when calling reportsRenameFile");
@@ -1338,8 +1346,8 @@ export default class ReportsApi {
       };
 
       let authNames = ['ApiKey', 'JWT'];
-      let contentTypes = ['application/json-patch+json', 'application/json', 'text/json', 'application/_*+json'];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let contentTypes = ['application/json', 'text/json', 'application/_*+json'];
+      let accepts = ['application/json'];
       let returnType = ReportVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -1354,7 +1362,7 @@ export default class ReportsApi {
      * User with Update Name permission can access this method.
      * @param {String} id 
      * @param {Object} opts Optional parameters
-     * @param {module:models/FileRenameVM} opts.nameModel 
+     * @param {module:models/FileRenameVM} opts.fileRenameVM 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/ReportVM}
      */
     reportsRenameFile(id, opts) {
@@ -1370,12 +1378,12 @@ export default class ReportsApi {
      * User with Update Icon permission can access this method.
      * @param {String} id 
      * @param {Object} opts Optional parameters
-     * @param {module:models/FileIconVM} opts.iconModel 
+     * @param {module:models/FileIconVM} opts.fileIconVM 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/ReportVM} and HTTP response
      */
     reportsUpdateIconWithHttpInfo(id, opts) {
       opts = opts || {};
-      let postBody = opts['iconModel'];
+      let postBody = opts['fileIconVM'];
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
         throw new Error("Missing the required parameter 'id' when calling reportsUpdateIcon");
@@ -1392,8 +1400,8 @@ export default class ReportsApi {
       };
 
       let authNames = ['ApiKey', 'JWT'];
-      let contentTypes = ['application/json-patch+json', 'application/json', 'text/json', 'application/_*+json'];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let contentTypes = ['application/json', 'text/json', 'application/_*+json'];
+      let accepts = ['application/json'];
       let returnType = ReportVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -1408,7 +1416,7 @@ export default class ReportsApi {
      * User with Update Icon permission can access this method.
      * @param {String} id 
      * @param {Object} opts Optional parameters
-     * @param {module:models/FileIconVM} opts.iconModel 
+     * @param {module:models/FileIconVM} opts.fileIconVM 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/ReportVM}
      */
     reportsUpdateIcon(id, opts) {
@@ -1423,12 +1431,12 @@ export default class ReportsApi {
      * Update permissions
      * @param {String} id 
      * @param {Object} opts Optional parameters
-     * @param {module:models/UpdateFilePermissionsVM} opts.permissionsVM 
+     * @param {module:models/UpdateFilePermissionsVM} opts.updateFilePermissionsVM 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
     reportsUpdatePermissionsWithHttpInfo(id, opts) {
       opts = opts || {};
-      let postBody = opts['permissionsVM'];
+      let postBody = opts['updateFilePermissionsVM'];
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
         throw new Error("Missing the required parameter 'id' when calling reportsUpdatePermissions");
@@ -1445,8 +1453,8 @@ export default class ReportsApi {
       };
 
       let authNames = ['ApiKey', 'JWT'];
-      let contentTypes = ['application/json-patch+json', 'application/json', 'text/json', 'application/_*+json'];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let contentTypes = ['application/json', 'text/json', 'application/_*+json'];
+      let accepts = ['application/json'];
       let returnType = null;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -1460,7 +1468,7 @@ export default class ReportsApi {
      * Update permissions
      * @param {String} id 
      * @param {Object} opts Optional parameters
-     * @param {module:models/UpdateFilePermissionsVM} opts.permissionsVM 
+     * @param {module:models/UpdateFilePermissionsVM} opts.updateFilePermissionsVM 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
     reportsUpdatePermissions(id, opts) {
@@ -1476,12 +1484,12 @@ export default class ReportsApi {
      * User with Update Tags permission can access this method.
      * @param {String} id 
      * @param {Object} opts Optional parameters
-     * @param {module:models/FileTagsUpdateVM} opts.tagsModel 
+     * @param {module:models/FileTagsUpdateVM} opts.fileTagsUpdateVM 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/ReportVM} and HTTP response
      */
     reportsUpdateTagsWithHttpInfo(id, opts) {
       opts = opts || {};
-      let postBody = opts['tagsModel'];
+      let postBody = opts['fileTagsUpdateVM'];
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
         throw new Error("Missing the required parameter 'id' when calling reportsUpdateTags");
@@ -1498,8 +1506,8 @@ export default class ReportsApi {
       };
 
       let authNames = ['ApiKey', 'JWT'];
-      let contentTypes = ['application/json-patch+json', 'application/json', 'text/json', 'application/_*+json'];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let contentTypes = ['application/json', 'text/json', 'application/_*+json'];
+      let accepts = ['application/json'];
       let returnType = ReportVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -1514,7 +1522,7 @@ export default class ReportsApi {
      * User with Update Tags permission can access this method.
      * @param {String} id 
      * @param {Object} opts Optional parameters
-     * @param {module:models/FileTagsUpdateVM} opts.tagsModel 
+     * @param {module:models/FileTagsUpdateVM} opts.fileTagsUpdateVM 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/ReportVM}
      */
     reportsUpdateTags(id, opts) {
@@ -1526,15 +1534,16 @@ export default class ReportsApi {
 
 
     /**
-     * Allows to upload reports into specified folder
-     * @param {String} id folder id
+     * Upload a file to the specified folder  !
+     * User with Create Entity permission can access this method.
+     * @param {String} id Identifier of folder
      * @param {Object} opts Optional parameters
-     * @param {module:models/ReportCreateVM} opts.fileVM create VM
+     * @param {module:models/ReportCreateVM} opts.reportCreateVM file's view model
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/ReportVM} and HTTP response
      */
     reportsUploadFileWithHttpInfo(id, opts) {
       opts = opts || {};
-      let postBody = opts['fileVM'];
+      let postBody = opts['reportCreateVM'];
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
         throw new Error("Missing the required parameter 'id' when calling reportsUploadFile");
@@ -1551,8 +1560,8 @@ export default class ReportsApi {
       };
 
       let authNames = ['ApiKey', 'JWT'];
-      let contentTypes = ['application/json-patch+json', 'application/json', 'text/json', 'application/_*+json'];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let contentTypes = ['application/json', 'text/json', 'application/_*+json'];
+      let accepts = ['application/json'];
       let returnType = ReportVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -1563,10 +1572,11 @@ export default class ReportsApi {
     }
 
     /**
-     * Allows to upload reports into specified folder
-     * @param {String} id folder id
+     * Upload a file to the specified folder  !
+     * User with Create Entity permission can access this method.
+     * @param {String} id Identifier of folder
      * @param {Object} opts Optional parameters
-     * @param {module:models/ReportCreateVM} opts.fileVM create VM
+     * @param {module:models/ReportCreateVM} opts.reportCreateVM file's view model
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/ReportVM}
      */
     reportsUploadFile(id, opts) {

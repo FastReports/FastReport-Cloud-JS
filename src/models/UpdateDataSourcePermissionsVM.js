@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import DataSourceAdministrate from './DataSourceAdministrate';
 import DataSourcePermissions from './DataSourcePermissions';
 
 /**
@@ -24,7 +25,7 @@ class UpdateDataSourcePermissionsVM {
      * Constructs a new <code>UpdateDataSourcePermissionsVM</code>.
      * @alias module:models/UpdateDataSourcePermissionsVM
      * @param newPermissions {module:models/DataSourcePermissions} 
-     * @param administrate {module:models/UpdateDataSourcePermissionsVM.AdministrateEnum} 
+     * @param administrate {module:models/DataSourceAdministrate} 
      */
     constructor(newPermissions, administrate) { 
         
@@ -56,7 +57,7 @@ class UpdateDataSourcePermissionsVM {
                 obj['newPermissions'] = DataSourcePermissions.constructFromObject(data['newPermissions']);
             }
             if (data.hasOwnProperty('administrate')) {
-                obj['administrate'] = ApiClient.convertToType(data['administrate'], 'Number');
+                obj['administrate'] = DataSourceAdministrate.constructFromObject(data['administrate']);
             }
         }
         return obj;
@@ -71,57 +72,12 @@ class UpdateDataSourcePermissionsVM {
 UpdateDataSourcePermissionsVM.prototype['newPermissions'] = undefined;
 
 /**
- * @member {module:models/UpdateDataSourcePermissionsVM.AdministrateEnum} administrate
+ * @member {module:models/DataSourceAdministrate} administrate
  */
 UpdateDataSourcePermissionsVM.prototype['administrate'] = undefined;
 
 
 
-
-
-/**
- * Allowed values for the <code>administrate</code> property.
- * @enum {Number}
- * @readonly
- */
-UpdateDataSourcePermissionsVM['AdministrateEnum'] = {
-
-    /**
-     * value: 0
-     * @const
-     */
-    "0": 0,
-
-    /**
-     * value: 1
-     * @const
-     */
-    "1": 1,
-
-    /**
-     * value: 2
-     * @const
-     */
-    "2": 2,
-
-    /**
-     * value: 4
-     * @const
-     */
-    "4": 4,
-
-    /**
-     * value: 8
-     * @const
-     */
-    "8": 8,
-
-    /**
-     * value: -1
-     * @const
-     */
-    "-1": -1
-};
 
 
 

@@ -55,7 +55,7 @@ export default class UserProfileApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let accepts = ['application/json'];
       let returnType = UserProfileVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -101,7 +101,7 @@ export default class UserProfileApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let accepts = ['application/json'];
       let returnType = UserProfileVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -128,12 +128,12 @@ export default class UserProfileApi {
      * Update profile of the current user
      * This method is only allowed for local sign in via intranet
      * @param {Object} opts Optional parameters
-     * @param {module:models/UpdateUserProfileVM} opts.model 
+     * @param {module:models/UpdateUserProfileVM} opts.updateUserProfileVM 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
     userProfileUpdateMyProfileWithHttpInfo(opts) {
       opts = opts || {};
-      let postBody = opts['model'];
+      let postBody = opts['updateUserProfileVM'];
 
       let pathParams = {
       };
@@ -145,8 +145,8 @@ export default class UserProfileApi {
       };
 
       let authNames = ['ApiKey', 'JWT'];
-      let contentTypes = ['application/json-patch+json', 'application/json', 'text/json', 'application/_*+json'];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let contentTypes = ['application/json', 'text/json', 'application/_*+json'];
+      let accepts = ['application/json'];
       let returnType = null;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -160,7 +160,7 @@ export default class UserProfileApi {
      * Update profile of the current user
      * This method is only allowed for local sign in via intranet
      * @param {Object} opts Optional parameters
-     * @param {module:models/UpdateUserProfileVM} opts.model 
+     * @param {module:models/UpdateUserProfileVM} opts.updateUserProfileVM 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
     userProfileUpdateMyProfile(opts) {

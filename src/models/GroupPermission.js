@@ -12,6 +12,13 @@
  */
 
 import ApiClient from '../ApiClient';
+import GroupAdministrate from './GroupAdministrate';
+import GroupCreate from './GroupCreate';
+import GroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupAdministratePermission from './GroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupAdministratePermission';
+import GroupDelete from './GroupDelete';
+import GroupExecute from './GroupExecute';
+import GroupGet from './GroupGet';
+import GroupUpdate from './GroupUpdate';
 
 /**
  * The GroupPermission model module.
@@ -22,9 +29,10 @@ class GroupPermission {
     /**
      * Constructs a new <code>GroupPermission</code>.
      * @alias module:models/GroupPermission
+     * @implements module:models/GroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupAdministratePermission
      */
     constructor() { 
-        
+        GroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupAdministratePermission.initialize(this);
         GroupPermission.initialize(this);
     }
 
@@ -46,24 +54,25 @@ class GroupPermission {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new GroupPermission();
+            GroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupAdministratePermission.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('create')) {
-                obj['create'] = ApiClient.convertToType(data['create'], 'Number');
+                obj['create'] = GroupCreate.constructFromObject(data['create']);
             }
             if (data.hasOwnProperty('delete')) {
-                obj['delete'] = ApiClient.convertToType(data['delete'], 'Number');
+                obj['delete'] = GroupDelete.constructFromObject(data['delete']);
             }
             if (data.hasOwnProperty('execute')) {
-                obj['execute'] = ApiClient.convertToType(data['execute'], 'Number');
+                obj['execute'] = GroupExecute.constructFromObject(data['execute']);
             }
             if (data.hasOwnProperty('get')) {
-                obj['get'] = ApiClient.convertToType(data['get'], 'Number');
+                obj['get'] = GroupGet.constructFromObject(data['get']);
             }
             if (data.hasOwnProperty('update')) {
-                obj['update'] = ApiClient.convertToType(data['update'], 'Number');
+                obj['update'] = GroupUpdate.constructFromObject(data['update']);
             }
             if (data.hasOwnProperty('administrate')) {
-                obj['administrate'] = ApiClient.convertToType(data['administrate'], 'Number');
+                obj['administrate'] = GroupAdministrate.constructFromObject(data['administrate']);
             }
         }
         return obj;
@@ -73,229 +82,62 @@ class GroupPermission {
 }
 
 /**
- * @member {module:models/GroupPermission.CreateEnum} create
+ * @member {module:models/GroupCreate} create
  */
 GroupPermission.prototype['create'] = undefined;
 
 /**
- * @member {module:models/GroupPermission.DeleteEnum} delete
+ * @member {module:models/GroupDelete} delete
  */
 GroupPermission.prototype['delete'] = undefined;
 
 /**
- * @member {module:models/GroupPermission.ExecuteEnum} execute
+ * @member {module:models/GroupExecute} execute
  */
 GroupPermission.prototype['execute'] = undefined;
 
 /**
- * @member {module:models/GroupPermission.GetEnum} get
+ * @member {module:models/GroupGet} get
  */
 GroupPermission.prototype['get'] = undefined;
 
 /**
- * @member {module:models/GroupPermission.UpdateEnum} update
+ * @member {module:models/GroupUpdate} update
  */
 GroupPermission.prototype['update'] = undefined;
 
 /**
- * @member {module:models/GroupPermission.AdministrateEnum} administrate
+ * @member {module:models/GroupAdministrate} administrate
  */
 GroupPermission.prototype['administrate'] = undefined;
 
 
-
-
-
+// Implement GroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupAdministratePermission interface:
 /**
- * Allowed values for the <code>create</code> property.
- * @enum {Number}
- * @readonly
+ * @member {module:models/GroupCreate} create
  */
-GroupPermission['CreateEnum'] = {
-
-    /**
-     * value: 0
-     * @const
-     */
-    "0": 0,
-
-    /**
-     * value: 1
-     * @const
-     */
-    "1": 1,
-
-    /**
-     * value: -1
-     * @const
-     */
-    "-1": -1
-};
-
-
+GroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupAdministratePermission.prototype['create'] = undefined;
 /**
- * Allowed values for the <code>delete</code> property.
- * @enum {Number}
- * @readonly
+ * @member {module:models/GroupDelete} delete
  */
-GroupPermission['DeleteEnum'] = {
-
-    /**
-     * value: 0
-     * @const
-     */
-    "0": 0,
-
-    /**
-     * value: 1
-     * @const
-     */
-    "1": 1,
-
-    /**
-     * value: 2
-     * @const
-     */
-    "2": 2,
-
-    /**
-     * value: -1
-     * @const
-     */
-    "-1": -1
-};
-
-
+GroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupAdministratePermission.prototype['delete'] = undefined;
 /**
- * Allowed values for the <code>execute</code> property.
- * @enum {Number}
- * @readonly
+ * @member {module:models/GroupExecute} execute
  */
-GroupPermission['ExecuteEnum'] = {
-
-    /**
-     * value: 0
-     * @const
-     */
-    "0": 0,
-
-    /**
-     * value: -1
-     * @const
-     */
-    "-1": -1
-};
-
-
+GroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupAdministratePermission.prototype['execute'] = undefined;
 /**
- * Allowed values for the <code>get</code> property.
- * @enum {Number}
- * @readonly
+ * @member {module:models/GroupGet} get
  */
-GroupPermission['GetEnum'] = {
-
-    /**
-     * value: 0
-     * @const
-     */
-    "0": 0,
-
-    /**
-     * value: 1
-     * @const
-     */
-    "1": 1,
-
-    /**
-     * value: 2
-     * @const
-     */
-    "2": 2,
-
-    /**
-     * value: 4
-     * @const
-     */
-    "4": 4,
-
-    /**
-     * value: -1
-     * @const
-     */
-    "-1": -1
-};
-
-
+GroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupAdministratePermission.prototype['get'] = undefined;
 /**
- * Allowed values for the <code>update</code> property.
- * @enum {Number}
- * @readonly
+ * @member {module:models/GroupUpdate} update
  */
-GroupPermission['UpdateEnum'] = {
-
-    /**
-     * value: 0
-     * @const
-     */
-    "0": 0,
-
-    /**
-     * value: 1
-     * @const
-     */
-    "1": 1,
-
-    /**
-     * value: -1
-     * @const
-     */
-    "-1": -1
-};
-
-
+GroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupAdministratePermission.prototype['update'] = undefined;
 /**
- * Allowed values for the <code>administrate</code> property.
- * @enum {Number}
- * @readonly
+ * @member {module:models/GroupAdministrate} administrate
  */
-GroupPermission['AdministrateEnum'] = {
+GroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupAdministratePermission.prototype['administrate'] = undefined;
 
-    /**
-     * value: 0
-     * @const
-     */
-    "0": 0,
-
-    /**
-     * value: 1
-     * @const
-     */
-    "1": 1,
-
-    /**
-     * value: 2
-     * @const
-     */
-    "2": 2,
-
-    /**
-     * value: 4
-     * @const
-     */
-    "4": 4,
-
-    /**
-     * value: 8
-     * @const
-     */
-    "8": 8,
-
-    /**
-     * value: -1
-     * @const
-     */
-    "-1": -1
-};
 
 
 

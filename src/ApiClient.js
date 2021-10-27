@@ -42,7 +42,7 @@ class ApiClient {
          */
         this.authentications = {
             'ApiKey': {type: 'basic'},
-            'JWT': {type: 'apiKey', 'in': 'header', name: 'Authorization'}
+            'JWT': {type: 'bearer'} // JWT
         }
 
         /**

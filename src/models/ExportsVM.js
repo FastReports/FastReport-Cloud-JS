@@ -13,6 +13,7 @@
 
 import ApiClient from '../ApiClient';
 import ExportVM from './ExportVM';
+import ExportVMFilesVMBase from './ExportVMFilesVMBase';
 
 /**
  * The ExportsVM model module.
@@ -23,9 +24,10 @@ class ExportsVM {
     /**
      * Constructs a new <code>ExportsVM</code>.
      * @alias module:models/ExportsVM
+     * @implements module:models/ExportVMFilesVMBase
      */
     constructor() { 
-        
+        ExportVMFilesVMBase.initialize(this);
         ExportsVM.initialize(this);
     }
 
@@ -47,6 +49,7 @@ class ExportsVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new ExportsVM();
+            ExportVMFilesVMBase.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('files')) {
                 obj['files'] = ApiClient.convertToType(data['files'], [ExportVM]);
@@ -88,6 +91,23 @@ ExportsVM.prototype['skip'] = undefined;
 ExportsVM.prototype['take'] = undefined;
 
 
+// Implement ExportVMFilesVMBase interface:
+/**
+ * @member {Array.<module:models/ExportVM>} files
+ */
+ExportVMFilesVMBase.prototype['files'] = undefined;
+/**
+ * @member {Number} count
+ */
+ExportVMFilesVMBase.prototype['count'] = undefined;
+/**
+ * @member {Number} skip
+ */
+ExportVMFilesVMBase.prototype['skip'] = undefined;
+/**
+ * @member {Number} take
+ */
+ExportVMFilesVMBase.prototype['take'] = undefined;
 
 
 

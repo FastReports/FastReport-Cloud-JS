@@ -60,60 +60,6 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property name (base name: "name")', function() {
-      // uncomment below and update the code to test the property name
-      //var instance = new FastreportCloudSdk.TemplateVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property parentId (base name: "parentId")', function() {
-      // uncomment below and update the code to test the property parentId
-      //var instance = new FastreportCloudSdk.TemplateVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property tags (base name: "tags")', function() {
-      // uncomment below and update the code to test the property tags
-      //var instance = new FastreportCloudSdk.TemplateVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property icon (base name: "icon")', function() {
-      // uncomment below and update the code to test the property icon
-      //var instance = new FastreportCloudSdk.TemplateVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property type (base name: "type")', function() {
-      // uncomment below and update the code to test the property type
-      //var instance = new FastreportCloudSdk.TemplateVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property size (base name: "size")', function() {
-      // uncomment below and update the code to test the property size
-      //var instance = new FastreportCloudSdk.TemplateVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property subscriptionId (base name: "subscriptionId")', function() {
-      // uncomment below and update the code to test the property subscriptionId
-      //var instance = new FastreportCloudSdk.TemplateVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property status (base name: "status")', function() {
-      // uncomment below and update the code to test the property status
-      //var instance = new FastreportCloudSdk.TemplateVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property statusReason (base name: "statusReason")', function() {
-      // uncomment below and update the code to test the property statusReason
-      //var instance = new FastreportCloudSdk.TemplateVM();
-      //expect(instance).to.be();
-    });
-
     it('should have the property id (base name: "id")', function() {
       // uncomment below and update the code to test the property id
       //var instance = new FastreportCloudSdk.TemplateVM();

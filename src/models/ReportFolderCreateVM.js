@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import FolderCreateVM from './FolderCreateVM';
 
 /**
  * The ReportFolderCreateVM model module.
@@ -22,9 +23,10 @@ class ReportFolderCreateVM {
     /**
      * Constructs a new <code>ReportFolderCreateVM</code>.
      * @alias module:models/ReportFolderCreateVM
+     * @implements module:models/FolderCreateVM
      */
     constructor() { 
-        
+        FolderCreateVM.initialize(this);
         ReportFolderCreateVM.initialize(this);
     }
 
@@ -46,6 +48,7 @@ class ReportFolderCreateVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new ReportFolderCreateVM();
+            FolderCreateVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('name')) {
                 obj['name'] = ApiClient.convertToType(data['name'], 'String');
@@ -79,6 +82,19 @@ ReportFolderCreateVM.prototype['tags'] = undefined;
 ReportFolderCreateVM.prototype['icon'] = undefined;
 
 
+// Implement FolderCreateVM interface:
+/**
+ * @member {String} name
+ */
+FolderCreateVM.prototype['name'] = undefined;
+/**
+ * @member {Array.<String>} tags
+ */
+FolderCreateVM.prototype['tags'] = undefined;
+/**
+ * @member {Blob} icon
+ */
+FolderCreateVM.prototype['icon'] = undefined;
 
 
 

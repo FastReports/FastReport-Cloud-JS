@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## apiKeysCreateApiKey
 
-> ApiKeyVM apiKeysCreateApiKey(model)
+> ApiKeyVM apiKeysCreateApiKey(createApiKeyVM)
 
 Create a new apikey, 5 apikeys for user. Hardcoded for ddos.
 
@@ -25,15 +25,13 @@ let defaultClient = FastreportCloudSdk.ApiClient.instance;
 let ApiKey = defaultClient.authentications['ApiKey'];
 ApiKey.username = 'YOUR USERNAME';
 ApiKey.password = 'YOUR PASSWORD';
-// Configure API key authorization: JWT
+// Configure Bearer (JWT) access token for authorization: JWT
 let JWT = defaultClient.authentications['JWT'];
-JWT.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//JWT.apiKeyPrefix = 'Token';
+JWT.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new FastreportCloudSdk.ApiKeysApi();
-let model = new FastreportCloudSdk.CreateApiKeyVM(); // CreateApiKeyVM | 
-apiInstance.apiKeysCreateApiKey(model).then((data) => {
+let createApiKeyVM = new FastreportCloudSdk.CreateApiKeyVM(); // CreateApiKeyVM | 
+apiInstance.apiKeysCreateApiKey(createApiKeyVM).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -46,7 +44,7 @@ apiInstance.apiKeysCreateApiKey(model).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model** | [**CreateApiKeyVM**](CreateApiKeyVM.md)|  | 
+ **createApiKeyVM** | [**CreateApiKeyVM**](CreateApiKeyVM.md)|  | 
 
 ### Return type
 
@@ -58,13 +56,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
-- **Accept**: application/json, text/json, text/plain
+- **Content-Type**: application/json, text/json, application/_*+json
+- **Accept**: application/json
 
 
 ## apiKeysDeleteApiKey
 
-> apiKeysDeleteApiKey(model)
+> apiKeysDeleteApiKey(deleteApiKeyVM)
 
 Delete an apikey
 
@@ -77,15 +75,13 @@ let defaultClient = FastreportCloudSdk.ApiClient.instance;
 let ApiKey = defaultClient.authentications['ApiKey'];
 ApiKey.username = 'YOUR USERNAME';
 ApiKey.password = 'YOUR PASSWORD';
-// Configure API key authorization: JWT
+// Configure Bearer (JWT) access token for authorization: JWT
 let JWT = defaultClient.authentications['JWT'];
-JWT.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//JWT.apiKeyPrefix = 'Token';
+JWT.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new FastreportCloudSdk.ApiKeysApi();
-let model = new FastreportCloudSdk.DeleteApiKeyVM(); // DeleteApiKeyVM | 
-apiInstance.apiKeysDeleteApiKey(model).then(() => {
+let deleteApiKeyVM = new FastreportCloudSdk.DeleteApiKeyVM(); // DeleteApiKeyVM | 
+apiInstance.apiKeysDeleteApiKey(deleteApiKeyVM).then(() => {
   console.log('API called successfully.');
 }, (error) => {
   console.error(error);
@@ -98,7 +94,7 @@ apiInstance.apiKeysDeleteApiKey(model).then(() => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model** | [**DeleteApiKeyVM**](DeleteApiKeyVM.md)|  | 
+ **deleteApiKeyVM** | [**DeleteApiKeyVM**](DeleteApiKeyVM.md)|  | 
 
 ### Return type
 
@@ -110,8 +106,8 @@ null (empty response body)
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
-- **Accept**: application/json, text/json, text/plain
+- **Content-Type**: application/json, text/json, application/_*+json
+- **Accept**: application/json
 
 
 ## apiKeysGetApiKeys
@@ -131,11 +127,9 @@ let defaultClient = FastreportCloudSdk.ApiClient.instance;
 let ApiKey = defaultClient.authentications['ApiKey'];
 ApiKey.username = 'YOUR USERNAME';
 ApiKey.password = 'YOUR PASSWORD';
-// Configure API key authorization: JWT
+// Configure Bearer (JWT) access token for authorization: JWT
 let JWT = defaultClient.authentications['JWT'];
-JWT.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//JWT.apiKeyPrefix = 'Token';
+JWT.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new FastreportCloudSdk.ApiKeysApi();
 apiInstance.apiKeysGetApiKeys().then((data) => {
@@ -161,5 +155,5 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, text/json, text/plain
+- **Accept**: application/json
 

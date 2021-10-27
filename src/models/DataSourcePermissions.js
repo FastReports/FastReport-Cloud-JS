@@ -13,6 +13,7 @@
 
 import ApiClient from '../ApiClient';
 import DataSourcePermission from './DataSourcePermission';
+import DataSourcePermissionDataSourceCreateDataSourceGetDataSourceUpdateDataSourceDeleteDataSourceExecuteDataSourceAdministratePermissions from './DataSourcePermissionDataSourceCreateDataSourceGetDataSourceUpdateDataSourceDeleteDataSourceExecuteDataSourceAdministratePermissions';
 
 /**
  * The DataSourcePermissions model module.
@@ -23,9 +24,10 @@ class DataSourcePermissions {
     /**
      * Constructs a new <code>DataSourcePermissions</code>.
      * @alias module:models/DataSourcePermissions
+     * @implements module:models/DataSourcePermissionDataSourceCreateDataSourceGetDataSourceUpdateDataSourceDeleteDataSourceExecuteDataSourceAdministratePermissions
      */
     constructor() { 
-        
+        DataSourcePermissionDataSourceCreateDataSourceGetDataSourceUpdateDataSourceDeleteDataSourceExecuteDataSourceAdministratePermissions.initialize(this);
         DataSourcePermissions.initialize(this);
     }
 
@@ -47,6 +49,7 @@ class DataSourcePermissions {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new DataSourcePermissions();
+            DataSourcePermissionDataSourceCreateDataSourceGetDataSourceUpdateDataSourceDeleteDataSourceExecuteDataSourceAdministratePermissions.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('ownerId')) {
                 obj['ownerId'] = ApiClient.convertToType(data['ownerId'], 'String');
@@ -96,6 +99,27 @@ DataSourcePermissions.prototype['other'] = undefined;
 DataSourcePermissions.prototype['anon'] = undefined;
 
 
+// Implement DataSourcePermissionDataSourceCreateDataSourceGetDataSourceUpdateDataSourceDeleteDataSourceExecuteDataSourceAdministratePermissions interface:
+/**
+ * @member {String} ownerId
+ */
+DataSourcePermissionDataSourceCreateDataSourceGetDataSourceUpdateDataSourceDeleteDataSourceExecuteDataSourceAdministratePermissions.prototype['ownerId'] = undefined;
+/**
+ * @member {module:models/DataSourcePermission} owner
+ */
+DataSourcePermissionDataSourceCreateDataSourceGetDataSourceUpdateDataSourceDeleteDataSourceExecuteDataSourceAdministratePermissions.prototype['owner'] = undefined;
+/**
+ * @member {Object.<String, module:models/DataSourcePermission>} groups
+ */
+DataSourcePermissionDataSourceCreateDataSourceGetDataSourceUpdateDataSourceDeleteDataSourceExecuteDataSourceAdministratePermissions.prototype['groups'] = undefined;
+/**
+ * @member {module:models/DataSourcePermission} other
+ */
+DataSourcePermissionDataSourceCreateDataSourceGetDataSourceUpdateDataSourceDeleteDataSourceExecuteDataSourceAdministratePermissions.prototype['other'] = undefined;
+/**
+ * @member {module:models/DataSourcePermission} anon
+ */
+DataSourcePermissionDataSourceCreateDataSourceGetDataSourceUpdateDataSourceDeleteDataSourceExecuteDataSourceAdministratePermissions.prototype['anon'] = undefined;
 
 
 

@@ -68,7 +68,7 @@ export default class SubscriptionInvitesApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let accepts = ['application/json'];
       let returnType = null;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -96,12 +96,12 @@ export default class SubscriptionInvitesApi {
      * Create invite to subscription
      * @param {String} subscriptionId id
      * @param {Object} opts Optional parameters
-     * @param {module:models/CreateSubscriptionInviteVM} opts.createInviteVM create VM
+     * @param {module:models/CreateSubscriptionInviteVM} opts.createSubscriptionInviteVM create VM
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/SubscriptionInviteVM} and HTTP response
      */
     subscriptionInvitesCreateInviteWithHttpInfo(subscriptionId, opts) {
       opts = opts || {};
-      let postBody = opts['createInviteVM'];
+      let postBody = opts['createSubscriptionInviteVM'];
       // verify the required parameter 'subscriptionId' is set
       if (subscriptionId === undefined || subscriptionId === null) {
         throw new Error("Missing the required parameter 'subscriptionId' when calling subscriptionInvitesCreateInvite");
@@ -118,8 +118,8 @@ export default class SubscriptionInvitesApi {
       };
 
       let authNames = ['ApiKey', 'JWT'];
-      let contentTypes = ['application/json-patch+json', 'application/json', 'text/json', 'application/_*+json'];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let contentTypes = ['application/json', 'text/json', 'application/_*+json'];
+      let accepts = ['application/json'];
       let returnType = SubscriptionInviteVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -133,7 +133,7 @@ export default class SubscriptionInvitesApi {
      * Create invite to subscription
      * @param {String} subscriptionId id
      * @param {Object} opts Optional parameters
-     * @param {module:models/CreateSubscriptionInviteVM} opts.createInviteVM create VM
+     * @param {module:models/CreateSubscriptionInviteVM} opts.createSubscriptionInviteVM create VM
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/SubscriptionInviteVM}
      */
     subscriptionInvitesCreateInvite(subscriptionId, opts) {
@@ -174,7 +174,7 @@ export default class SubscriptionInvitesApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let accepts = ['application/json'];
       let returnType = null;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -222,7 +222,7 @@ export default class SubscriptionInvitesApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let accepts = ['application/json'];
       let returnType = SubscriptionInvitesVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(

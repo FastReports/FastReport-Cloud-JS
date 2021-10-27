@@ -54,44 +54,26 @@
       //expect(instance).to.be.a(FastreportCloudSdk.ExportTemplateTaskVM);
     });
 
-    it('should have the property fileName (base name: "fileName")', function() {
-      // uncomment below and update the code to test the property fileName
-      //var instance = new FastreportCloudSdk.ExportTemplateTaskVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property folderId (base name: "folderId")', function() {
-      // uncomment below and update the code to test the property folderId
-      //var instance = new FastreportCloudSdk.ExportTemplateTaskVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property locale (base name: "locale")', function() {
-      // uncomment below and update the code to test the property locale
-      //var instance = new FastreportCloudSdk.ExportTemplateTaskVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property pagesCount (base name: "pagesCount")', function() {
-      // uncomment below and update the code to test the property pagesCount
-      //var instance = new FastreportCloudSdk.ExportTemplateTaskVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property format (base name: "format")', function() {
-      // uncomment below and update the code to test the property format
-      //var instance = new FastreportCloudSdk.ExportTemplateTaskVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property exportParameters (base name: "exportParameters")', function() {
-      // uncomment below and update the code to test the property exportParameters
-      //var instance = new FastreportCloudSdk.ExportTemplateTaskVM();
-      //expect(instance).to.be();
-    });
-
     it('should have the property reportParameters (base name: "reportParameters")', function() {
       // uncomment below and update the code to test the property reportParameters
+      //var instance = new FastreportCloudSdk.ExportTemplateTaskVM();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property name (base name: "name")', function() {
+      // uncomment below and update the code to test the property name
+      //var instance = new FastreportCloudSdk.ExportTemplateTaskVM();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property subscriptionId (base name: "subscriptionId")', function() {
+      // uncomment below and update the code to test the property subscriptionId
+      //var instance = new FastreportCloudSdk.ExportTemplateTaskVM();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property type (base name: "type")', function() {
+      // uncomment below and update the code to test the property type
       //var instance = new FastreportCloudSdk.ExportTemplateTaskVM();
       //expect(instance).to.be();
     });

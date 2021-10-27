@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import SaveMode from './SaveMode';
 
 /**
  * The ReportInfo model module.
@@ -72,7 +73,7 @@ class ReportInfo {
                 obj['previewPictureRatio'] = ApiClient.convertToType(data['previewPictureRatio'], 'Number');
             }
             if (data.hasOwnProperty('saveMode')) {
-                obj['saveMode'] = ApiClient.convertToType(data['saveMode'], 'String');
+                obj['saveMode'] = SaveMode.constructFromObject(data['saveMode']);
             }
             if (data.hasOwnProperty('savePreviewPicture')) {
                 obj['savePreviewPicture'] = ApiClient.convertToType(data['savePreviewPicture'], 'Boolean');
@@ -131,7 +132,7 @@ ReportInfo.prototype['picture'] = undefined;
 ReportInfo.prototype['previewPictureRatio'] = undefined;
 
 /**
- * @member {module:models/ReportInfo.SaveModeEnum} saveMode
+ * @member {module:models/SaveMode} saveMode
  */
 ReportInfo.prototype['saveMode'] = undefined;
 
@@ -152,57 +153,6 @@ ReportInfo.prototype['version'] = undefined;
 
 
 
-
-
-/**
- * Allowed values for the <code>saveMode</code> property.
- * @enum {String}
- * @readonly
- */
-ReportInfo['SaveModeEnum'] = {
-
-    /**
-     * value: "All"
-     * @const
-     */
-    "All": "All",
-
-    /**
-     * value: "Original"
-     * @const
-     */
-    "Original": "Original",
-
-    /**
-     * value: "User"
-     * @const
-     */
-    "User": "User",
-
-    /**
-     * value: "Role"
-     * @const
-     */
-    "Role": "Role",
-
-    /**
-     * value: "Security"
-     * @const
-     */
-    "Security": "Security",
-
-    /**
-     * value: "Deny"
-     * @const
-     */
-    "Deny": "Deny",
-
-    /**
-     * value: "Custom"
-     * @const
-     */
-    "Custom": "Custom"
-};
 
 
 

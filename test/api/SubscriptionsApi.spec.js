@@ -58,6 +58,16 @@
         done();
       });
     });
+    describe('subscriptionsGetMyPermissions', function() {
+      it('should call subscriptionsGetMyPermissions successfully', function(done) {
+        //uncomment below and update the code to test subscriptionsGetMyPermissions
+        //instance.subscriptionsGetMyPermissions(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('subscriptionsGetPermissions', function() {
       it('should call subscriptionsGetPermissions successfully', function(done) {
         //uncomment below and update the code to test subscriptionsGetPermissions

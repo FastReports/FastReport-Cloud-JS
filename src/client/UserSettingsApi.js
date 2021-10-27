@@ -55,7 +55,7 @@ export default class UserSettingsApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let accepts = ['application/json'];
       let returnType = UserSettingsVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -80,12 +80,12 @@ export default class UserSettingsApi {
     /**
      * Update settings of the current user
      * @param {Object} opts Optional parameters
-     * @param {module:models/UpdateUserSettingsVM} opts.model 
+     * @param {module:models/UpdateUserSettingsVM} opts.updateUserSettingsVM 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/UserSettingsVM} and HTTP response
      */
     userSettingsUpdateMySettingsWithHttpInfo(opts) {
       opts = opts || {};
-      let postBody = opts['model'];
+      let postBody = opts['updateUserSettingsVM'];
 
       let pathParams = {
       };
@@ -97,8 +97,8 @@ export default class UserSettingsApi {
       };
 
       let authNames = ['ApiKey', 'JWT'];
-      let contentTypes = ['application/json-patch+json', 'application/json', 'text/json', 'application/_*+json'];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let contentTypes = ['application/json', 'text/json', 'application/_*+json'];
+      let accepts = ['application/json'];
       let returnType = UserSettingsVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -111,7 +111,7 @@ export default class UserSettingsApi {
     /**
      * Update settings of the current user
      * @param {Object} opts Optional parameters
-     * @param {module:models/UpdateUserSettingsVM} opts.model 
+     * @param {module:models/UpdateUserSettingsVM} opts.updateUserSettingsVM 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/UserSettingsVM}
      */
     userSettingsUpdateMySettings(opts) {

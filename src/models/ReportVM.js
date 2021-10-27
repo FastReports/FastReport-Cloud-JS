@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import FileVM from './FileVM';
 import ReportInfo from './ReportInfo';
 
 /**
@@ -23,9 +24,10 @@ class ReportVM {
     /**
      * Constructs a new <code>ReportVM</code>.
      * @alias module:models/ReportVM
+     * @implements module:models/FileVM
      */
     constructor() { 
-        
+        FileVM.initialize(this);
         ReportVM.initialize(this);
     }
 
@@ -47,39 +49,13 @@ class ReportVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new ReportVM();
+            FileVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('templateId')) {
                 obj['templateId'] = ApiClient.convertToType(data['templateId'], 'String');
             }
             if (data.hasOwnProperty('reportInfo')) {
                 obj['reportInfo'] = ReportInfo.constructFromObject(data['reportInfo']);
-            }
-            if (data.hasOwnProperty('name')) {
-                obj['name'] = ApiClient.convertToType(data['name'], 'String');
-            }
-            if (data.hasOwnProperty('parentId')) {
-                obj['parentId'] = ApiClient.convertToType(data['parentId'], 'String');
-            }
-            if (data.hasOwnProperty('tags')) {
-                obj['tags'] = ApiClient.convertToType(data['tags'], ['String']);
-            }
-            if (data.hasOwnProperty('icon')) {
-                obj['icon'] = ApiClient.convertToType(data['icon'], 'Blob');
-            }
-            if (data.hasOwnProperty('type')) {
-                obj['type'] = ApiClient.convertToType(data['type'], 'String');
-            }
-            if (data.hasOwnProperty('size')) {
-                obj['size'] = ApiClient.convertToType(data['size'], 'Number');
-            }
-            if (data.hasOwnProperty('subscriptionId')) {
-                obj['subscriptionId'] = ApiClient.convertToType(data['subscriptionId'], 'String');
-            }
-            if (data.hasOwnProperty('status')) {
-                obj['status'] = ApiClient.convertToType(data['status'], 'String');
-            }
-            if (data.hasOwnProperty('statusReason')) {
-                obj['statusReason'] = ApiClient.convertToType(data['statusReason'], 'String');
             }
             if (data.hasOwnProperty('id')) {
                 obj['id'] = ApiClient.convertToType(data['id'], 'String');
@@ -114,51 +90,6 @@ ReportVM.prototype['templateId'] = undefined;
 ReportVM.prototype['reportInfo'] = undefined;
 
 /**
- * @member {String} name
- */
-ReportVM.prototype['name'] = undefined;
-
-/**
- * @member {String} parentId
- */
-ReportVM.prototype['parentId'] = undefined;
-
-/**
- * @member {Array.<String>} tags
- */
-ReportVM.prototype['tags'] = undefined;
-
-/**
- * @member {Blob} icon
- */
-ReportVM.prototype['icon'] = undefined;
-
-/**
- * @member {module:models/ReportVM.TypeEnum} type
- */
-ReportVM.prototype['type'] = undefined;
-
-/**
- * @member {Number} size
- */
-ReportVM.prototype['size'] = undefined;
-
-/**
- * @member {String} subscriptionId
- */
-ReportVM.prototype['subscriptionId'] = undefined;
-
-/**
- * @member {module:models/ReportVM.StatusEnum} status
- */
-ReportVM.prototype['status'] = undefined;
-
-/**
- * @member {module:models/ReportVM.StatusReasonEnum} statusReason
- */
-ReportVM.prototype['statusReason'] = undefined;
-
-/**
  * @member {String} id
  */
 ReportVM.prototype['id'] = undefined;
@@ -184,130 +115,28 @@ ReportVM.prototype['editedTime'] = undefined;
 ReportVM.prototype['editorUserId'] = undefined;
 
 
-
-
-
+// Implement FileVM interface:
 /**
- * Allowed values for the <code>type</code> property.
- * @enum {String}
- * @readonly
+ * @member {String} id
  */
-ReportVM['TypeEnum'] = {
-
-    /**
-     * value: "File"
-     * @const
-     */
-    "File": "File",
-
-    /**
-     * value: "Folder"
-     * @const
-     */
-    "Folder": "Folder"
-};
-
-
+FileVM.prototype['id'] = undefined;
 /**
- * Allowed values for the <code>status</code> property.
- * @enum {String}
- * @readonly
+ * @member {Date} createdTime
  */
-ReportVM['StatusEnum'] = {
-
-    /**
-     * value: "None"
-     * @const
-     */
-    "None": "None",
-
-    /**
-     * value: "InQueue"
-     * @const
-     */
-    "InQueue": "InQueue",
-
-    /**
-     * value: "InProcess"
-     * @const
-     */
-    "InProcess": "InProcess",
-
-    /**
-     * value: "Success"
-     * @const
-     */
-    "Success": "Success",
-
-    /**
-     * value: "Failed"
-     * @const
-     */
-    "Failed": "Failed"
-};
-
-
+FileVM.prototype['createdTime'] = undefined;
 /**
- * Allowed values for the <code>statusReason</code> property.
- * @enum {String}
- * @readonly
+ * @member {String} creatorUserId
  */
-ReportVM['StatusReasonEnum'] = {
+FileVM.prototype['creatorUserId'] = undefined;
+/**
+ * @member {Date} editedTime
+ */
+FileVM.prototype['editedTime'] = undefined;
+/**
+ * @member {String} editorUserId
+ */
+FileVM.prototype['editorUserId'] = undefined;
 
-    /**
-     * value: "None"
-     * @const
-     */
-    "None": "None",
-
-    /**
-     * value: "AllRight"
-     * @const
-     */
-    "AllRight": "AllRight",
-
-    /**
-     * value: "Hang"
-     * @const
-     */
-    "Hang": "Hang",
-
-    /**
-     * value: "Error"
-     * @const
-     */
-    "Error": "Error",
-
-    /**
-     * value: "NotFound"
-     * @const
-     */
-    "NotFound": "NotFound",
-
-    /**
-     * value: "NotEnoughSpace"
-     * @const
-     */
-    "NotEnoughSpace": "NotEnoughSpace",
-
-    /**
-     * value: "ExportStarted"
-     * @const
-     */
-    "ExportStarted": "ExportStarted",
-
-    /**
-     * value: "PreparationStarted"
-     * @const
-     */
-    "PreparationStarted": "PreparationStarted",
-
-    /**
-     * value: "CrashLoop"
-     * @const
-     */
-    "CrashLoop": "CrashLoop"
-};
 
 
 

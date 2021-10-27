@@ -13,6 +13,7 @@
 
 import ApiClient from '../ApiClient';
 import TemplateVM from './TemplateVM';
+import TemplateVMFilesVMBase from './TemplateVMFilesVMBase';
 
 /**
  * The TemplatesVM model module.
@@ -23,9 +24,10 @@ class TemplatesVM {
     /**
      * Constructs a new <code>TemplatesVM</code>.
      * @alias module:models/TemplatesVM
+     * @implements module:models/TemplateVMFilesVMBase
      */
     constructor() { 
-        
+        TemplateVMFilesVMBase.initialize(this);
         TemplatesVM.initialize(this);
     }
 
@@ -47,6 +49,7 @@ class TemplatesVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new TemplatesVM();
+            TemplateVMFilesVMBase.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('files')) {
                 obj['files'] = ApiClient.convertToType(data['files'], [TemplateVM]);
@@ -88,6 +91,23 @@ TemplatesVM.prototype['skip'] = undefined;
 TemplatesVM.prototype['take'] = undefined;
 
 
+// Implement TemplateVMFilesVMBase interface:
+/**
+ * @member {Array.<module:models/TemplateVM>} files
+ */
+TemplateVMFilesVMBase.prototype['files'] = undefined;
+/**
+ * @member {Number} count
+ */
+TemplateVMFilesVMBase.prototype['count'] = undefined;
+/**
+ * @member {Number} skip
+ */
+TemplateVMFilesVMBase.prototype['skip'] = undefined;
+/**
+ * @member {Number} take
+ */
+TemplateVMFilesVMBase.prototype['take'] = undefined;
 
 
 

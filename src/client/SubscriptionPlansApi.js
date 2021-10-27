@@ -61,7 +61,7 @@ export default class SubscriptionPlansApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let accepts = ['application/json'];
       let returnType = SubscriptionPlanVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -109,7 +109,7 @@ export default class SubscriptionPlansApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let accepts = ['application/json'];
       let returnType = SubscriptionPlansVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(

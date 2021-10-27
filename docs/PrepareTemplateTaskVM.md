@@ -4,10 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **String** |  | [optional] 
-**locale** | **String** |  | [optional] 
-**parentFolderId** | **String** |  | [optional] 
+**exports** | [**[ExportReportTaskVM]**](ExportReportTaskVM.md) |  | [optional] 
 **pagesCount** | **Number** |  | [optional] 
 **reportParameters** | **{String: String}** |  | [optional] 
+**name** | **String** |  | [optional] 
+**subscriptionId** | **String** |  | [optional] 
+**type** | [**TaskType**](TaskType.md) |  | [optional] 
 
 

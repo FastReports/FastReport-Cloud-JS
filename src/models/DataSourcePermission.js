@@ -12,6 +12,13 @@
  */
 
 import ApiClient from '../ApiClient';
+import DataSourceAdministrate from './DataSourceAdministrate';
+import DataSourceCreate from './DataSourceCreate';
+import DataSourceCreateDataSourceGetDataSourceUpdateDataSourceDeleteDataSourceExecuteDataSourceAdministratePermission from './DataSourceCreateDataSourceGetDataSourceUpdateDataSourceDeleteDataSourceExecuteDataSourceAdministratePermission';
+import DataSourceDelete from './DataSourceDelete';
+import DataSourceExecute from './DataSourceExecute';
+import DataSourceGet from './DataSourceGet';
+import DataSourceUpdate from './DataSourceUpdate';
 
 /**
  * The DataSourcePermission model module.
@@ -22,9 +29,10 @@ class DataSourcePermission {
     /**
      * Constructs a new <code>DataSourcePermission</code>.
      * @alias module:models/DataSourcePermission
+     * @implements module:models/DataSourceCreateDataSourceGetDataSourceUpdateDataSourceDeleteDataSourceExecuteDataSourceAdministratePermission
      */
     constructor() { 
-        
+        DataSourceCreateDataSourceGetDataSourceUpdateDataSourceDeleteDataSourceExecuteDataSourceAdministratePermission.initialize(this);
         DataSourcePermission.initialize(this);
     }
 
@@ -46,24 +54,25 @@ class DataSourcePermission {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new DataSourcePermission();
+            DataSourceCreateDataSourceGetDataSourceUpdateDataSourceDeleteDataSourceExecuteDataSourceAdministratePermission.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('create')) {
-                obj['create'] = ApiClient.convertToType(data['create'], 'Number');
+                obj['create'] = DataSourceCreate.constructFromObject(data['create']);
             }
             if (data.hasOwnProperty('delete')) {
-                obj['delete'] = ApiClient.convertToType(data['delete'], 'Number');
+                obj['delete'] = DataSourceDelete.constructFromObject(data['delete']);
             }
             if (data.hasOwnProperty('execute')) {
-                obj['execute'] = ApiClient.convertToType(data['execute'], 'Number');
+                obj['execute'] = DataSourceExecute.constructFromObject(data['execute']);
             }
             if (data.hasOwnProperty('get')) {
-                obj['get'] = ApiClient.convertToType(data['get'], 'Number');
+                obj['get'] = DataSourceGet.constructFromObject(data['get']);
             }
             if (data.hasOwnProperty('update')) {
-                obj['update'] = ApiClient.convertToType(data['update'], 'Number');
+                obj['update'] = DataSourceUpdate.constructFromObject(data['update']);
             }
             if (data.hasOwnProperty('administrate')) {
-                obj['administrate'] = ApiClient.convertToType(data['administrate'], 'Number');
+                obj['administrate'] = DataSourceAdministrate.constructFromObject(data['administrate']);
             }
         }
         return obj;
@@ -73,229 +82,62 @@ class DataSourcePermission {
 }
 
 /**
- * @member {module:models/DataSourcePermission.CreateEnum} create
+ * @member {module:models/DataSourceCreate} create
  */
 DataSourcePermission.prototype['create'] = undefined;
 
 /**
- * @member {module:models/DataSourcePermission.DeleteEnum} delete
+ * @member {module:models/DataSourceDelete} delete
  */
 DataSourcePermission.prototype['delete'] = undefined;
 
 /**
- * @member {module:models/DataSourcePermission.ExecuteEnum} execute
+ * @member {module:models/DataSourceExecute} execute
  */
 DataSourcePermission.prototype['execute'] = undefined;
 
 /**
- * @member {module:models/DataSourcePermission.GetEnum} get
+ * @member {module:models/DataSourceGet} get
  */
 DataSourcePermission.prototype['get'] = undefined;
 
 /**
- * @member {module:models/DataSourcePermission.UpdateEnum} update
+ * @member {module:models/DataSourceUpdate} update
  */
 DataSourcePermission.prototype['update'] = undefined;
 
 /**
- * @member {module:models/DataSourcePermission.AdministrateEnum} administrate
+ * @member {module:models/DataSourceAdministrate} administrate
  */
 DataSourcePermission.prototype['administrate'] = undefined;
 
 
-
-
-
+// Implement DataSourceCreateDataSourceGetDataSourceUpdateDataSourceDeleteDataSourceExecuteDataSourceAdministratePermission interface:
 /**
- * Allowed values for the <code>create</code> property.
- * @enum {Number}
- * @readonly
+ * @member {module:models/DataSourceCreate} create
  */
-DataSourcePermission['CreateEnum'] = {
-
-    /**
-     * value: 0
-     * @const
-     */
-    "0": 0,
-
-    /**
-     * value: -1
-     * @const
-     */
-    "-1": -1
-};
-
-
+DataSourceCreateDataSourceGetDataSourceUpdateDataSourceDeleteDataSourceExecuteDataSourceAdministratePermission.prototype['create'] = undefined;
 /**
- * Allowed values for the <code>delete</code> property.
- * @enum {Number}
- * @readonly
+ * @member {module:models/DataSourceDelete} delete
  */
-DataSourcePermission['DeleteEnum'] = {
-
-    /**
-     * value: 0
-     * @const
-     */
-    "0": 0,
-
-    /**
-     * value: 1
-     * @const
-     */
-    "1": 1,
-
-    /**
-     * value: -1
-     * @const
-     */
-    "-1": -1
-};
-
-
+DataSourceCreateDataSourceGetDataSourceUpdateDataSourceDeleteDataSourceExecuteDataSourceAdministratePermission.prototype['delete'] = undefined;
 /**
- * Allowed values for the <code>execute</code> property.
- * @enum {Number}
- * @readonly
+ * @member {module:models/DataSourceExecute} execute
  */
-DataSourcePermission['ExecuteEnum'] = {
-
-    /**
-     * value: 0
-     * @const
-     */
-    "0": 0,
-
-    /**
-     * value: -1
-     * @const
-     */
-    "-1": -1
-};
-
-
+DataSourceCreateDataSourceGetDataSourceUpdateDataSourceDeleteDataSourceExecuteDataSourceAdministratePermission.prototype['execute'] = undefined;
 /**
- * Allowed values for the <code>get</code> property.
- * @enum {Number}
- * @readonly
+ * @member {module:models/DataSourceGet} get
  */
-DataSourcePermission['GetEnum'] = {
-
-    /**
-     * value: 0
-     * @const
-     */
-    "0": 0,
-
-    /**
-     * value: 1
-     * @const
-     */
-    "1": 1,
-
-    /**
-     * value: 2
-     * @const
-     */
-    "2": 2,
-
-    /**
-     * value: -1
-     * @const
-     */
-    "-1": -1
-};
-
-
+DataSourceCreateDataSourceGetDataSourceUpdateDataSourceDeleteDataSourceExecuteDataSourceAdministratePermission.prototype['get'] = undefined;
 /**
- * Allowed values for the <code>update</code> property.
- * @enum {Number}
- * @readonly
+ * @member {module:models/DataSourceUpdate} update
  */
-DataSourcePermission['UpdateEnum'] = {
-
-    /**
-     * value: 0
-     * @const
-     */
-    "0": 0,
-
-    /**
-     * value: 1
-     * @const
-     */
-    "1": 1,
-
-    /**
-     * value: 2
-     * @const
-     */
-    "2": 2,
-
-    /**
-     * value: 4
-     * @const
-     */
-    "4": 4,
-
-    /**
-     * value: 8
-     * @const
-     */
-    "8": 8,
-
-    /**
-     * value: -1
-     * @const
-     */
-    "-1": -1
-};
-
-
+DataSourceCreateDataSourceGetDataSourceUpdateDataSourceDeleteDataSourceExecuteDataSourceAdministratePermission.prototype['update'] = undefined;
 /**
- * Allowed values for the <code>administrate</code> property.
- * @enum {Number}
- * @readonly
+ * @member {module:models/DataSourceAdministrate} administrate
  */
-DataSourcePermission['AdministrateEnum'] = {
+DataSourceCreateDataSourceGetDataSourceUpdateDataSourceDeleteDataSourceExecuteDataSourceAdministratePermission.prototype['administrate'] = undefined;
 
-    /**
-     * value: 0
-     * @const
-     */
-    "0": 0,
-
-    /**
-     * value: 1
-     * @const
-     */
-    "1": 1,
-
-    /**
-     * value: 2
-     * @const
-     */
-    "2": 2,
-
-    /**
-     * value: 4
-     * @const
-     */
-    "4": 4,
-
-    /**
-     * value: 8
-     * @const
-     */
-    "8": 8,
-
-    /**
-     * value: -1
-     * @const
-     */
-    "-1": -1
-};
 
 
 

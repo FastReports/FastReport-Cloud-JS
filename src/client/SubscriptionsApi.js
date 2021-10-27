@@ -15,6 +15,7 @@
 import ApiClient from "../ApiClient";
 import DefaultPermissions from '../models/DefaultPermissions';
 import DefaultPermissionsVM from '../models/DefaultPermissionsVM';
+import MyPermissionsVM from '../models/MyPermissionsVM';
 import ProblemDetails from '../models/ProblemDetails';
 import RenameSubscriptionVM from '../models/RenameSubscriptionVM';
 import SubscriptionPermissionsVM from '../models/SubscriptionPermissionsVM';
@@ -68,7 +69,7 @@ export default class SubscriptionsApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let accepts = ['application/json'];
       let returnType = DefaultPermissions;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -85,6 +86,53 @@ export default class SubscriptionsApi {
      */
     subscriptionsGetDefaultPermissions(subscriptionId) {
       return this.subscriptionsGetDefaultPermissionsWithHttpInfo(subscriptionId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Get user's permissions for a subscription by id
+     * @param {String} subId subscription id
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/MyPermissionsVM} and HTTP response
+     */
+    subscriptionsGetMyPermissionsWithHttpInfo(subId) {
+      let postBody = null;
+      // verify the required parameter 'subId' is set
+      if (subId === undefined || subId === null) {
+        throw new Error("Missing the required parameter 'subId' when calling subscriptionsGetMyPermissions");
+      }
+
+      let pathParams = {
+        'subId': subId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKey', 'JWT'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = MyPermissionsVM;
+      if(!returnType) returnType = 'Blob';
+      return this.apiClient.callApi(
+        '/api/manage/v1/Subscriptions/{subId}/mypermissions', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Get user's permissions for a subscription by id
+     * @param {String} subId subscription id
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/MyPermissionsVM}
+     */
+    subscriptionsGetMyPermissions(subId) {
+      return this.subscriptionsGetMyPermissionsWithHttpInfo(subId)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -115,7 +163,7 @@ export default class SubscriptionsApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let accepts = ['application/json'];
       let returnType = SubscriptionPermissionsVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -162,7 +210,7 @@ export default class SubscriptionsApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let accepts = ['application/json'];
       let returnType = SubscriptionVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -209,7 +257,7 @@ export default class SubscriptionsApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let accepts = ['application/json'];
       let returnType = SubscriptionsVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -262,8 +310,8 @@ export default class SubscriptionsApi {
       };
 
       let authNames = ['ApiKey', 'JWT'];
-      let contentTypes = ['application/json-patch+json', 'application/json', 'text/json', 'application/_*+json'];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let contentTypes = ['application/json', 'text/json', 'application/_*+json'];
+      let accepts = ['application/json'];
       let returnType = SubscriptionVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -290,18 +338,18 @@ export default class SubscriptionsApi {
     /**
      * Change subscription's default permissions for new entities
      * @param {String} subscriptionId id
-     * @param {module:models/UpdateDefaultPermissionsVM} permissionsVM update default permissions VM
+     * @param {module:models/UpdateDefaultPermissionsVM} updateDefaultPermissionsVM update default permissions VM
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/DefaultPermissionsVM} and HTTP response
      */
-    subscriptionsUpdateDefaultPermissionsWithHttpInfo(subscriptionId, permissionsVM) {
-      let postBody = permissionsVM;
+    subscriptionsUpdateDefaultPermissionsWithHttpInfo(subscriptionId, updateDefaultPermissionsVM) {
+      let postBody = updateDefaultPermissionsVM;
       // verify the required parameter 'subscriptionId' is set
       if (subscriptionId === undefined || subscriptionId === null) {
         throw new Error("Missing the required parameter 'subscriptionId' when calling subscriptionsUpdateDefaultPermissions");
       }
-      // verify the required parameter 'permissionsVM' is set
-      if (permissionsVM === undefined || permissionsVM === null) {
-        throw new Error("Missing the required parameter 'permissionsVM' when calling subscriptionsUpdateDefaultPermissions");
+      // verify the required parameter 'updateDefaultPermissionsVM' is set
+      if (updateDefaultPermissionsVM === undefined || updateDefaultPermissionsVM === null) {
+        throw new Error("Missing the required parameter 'updateDefaultPermissionsVM' when calling subscriptionsUpdateDefaultPermissions");
       }
 
       let pathParams = {
@@ -315,8 +363,8 @@ export default class SubscriptionsApi {
       };
 
       let authNames = ['ApiKey', 'JWT'];
-      let contentTypes = ['application/json-patch+json', 'application/json', 'text/json', 'application/_*+json'];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let contentTypes = ['application/json', 'text/json', 'application/_*+json'];
+      let accepts = ['application/json'];
       let returnType = DefaultPermissionsVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -329,11 +377,11 @@ export default class SubscriptionsApi {
     /**
      * Change subscription's default permissions for new entities
      * @param {String} subscriptionId id
-     * @param {module:models/UpdateDefaultPermissionsVM} permissionsVM update default permissions VM
+     * @param {module:models/UpdateDefaultPermissionsVM} updateDefaultPermissionsVM update default permissions VM
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/DefaultPermissionsVM}
      */
-    subscriptionsUpdateDefaultPermissions(subscriptionId, permissionsVM) {
-      return this.subscriptionsUpdateDefaultPermissionsWithHttpInfo(subscriptionId, permissionsVM)
+    subscriptionsUpdateDefaultPermissions(subscriptionId, updateDefaultPermissionsVM) {
+      return this.subscriptionsUpdateDefaultPermissionsWithHttpInfo(subscriptionId, updateDefaultPermissionsVM)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -343,18 +391,18 @@ export default class SubscriptionsApi {
     /**
      * Update subscription's default locale
      * @param {String} subscriptionId id
-     * @param {module:models/UpdateSubscriptionLocaleVM} updateModel update VM
+     * @param {module:models/UpdateSubscriptionLocaleVM} updateSubscriptionLocaleVM update VM
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/SubscriptionVM} and HTTP response
      */
-    subscriptionsUpdateLocaleWithHttpInfo(subscriptionId, updateModel) {
-      let postBody = updateModel;
+    subscriptionsUpdateLocaleWithHttpInfo(subscriptionId, updateSubscriptionLocaleVM) {
+      let postBody = updateSubscriptionLocaleVM;
       // verify the required parameter 'subscriptionId' is set
       if (subscriptionId === undefined || subscriptionId === null) {
         throw new Error("Missing the required parameter 'subscriptionId' when calling subscriptionsUpdateLocale");
       }
-      // verify the required parameter 'updateModel' is set
-      if (updateModel === undefined || updateModel === null) {
-        throw new Error("Missing the required parameter 'updateModel' when calling subscriptionsUpdateLocale");
+      // verify the required parameter 'updateSubscriptionLocaleVM' is set
+      if (updateSubscriptionLocaleVM === undefined || updateSubscriptionLocaleVM === null) {
+        throw new Error("Missing the required parameter 'updateSubscriptionLocaleVM' when calling subscriptionsUpdateLocale");
       }
 
       let pathParams = {
@@ -368,8 +416,8 @@ export default class SubscriptionsApi {
       };
 
       let authNames = ['ApiKey', 'JWT'];
-      let contentTypes = ['application/json-patch+json', 'application/json', 'text/json', 'application/_*+json'];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let contentTypes = ['application/json', 'text/json', 'application/_*+json'];
+      let accepts = ['application/json'];
       let returnType = SubscriptionVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -382,11 +430,11 @@ export default class SubscriptionsApi {
     /**
      * Update subscription's default locale
      * @param {String} subscriptionId id
-     * @param {module:models/UpdateSubscriptionLocaleVM} updateModel update VM
+     * @param {module:models/UpdateSubscriptionLocaleVM} updateSubscriptionLocaleVM update VM
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/SubscriptionVM}
      */
-    subscriptionsUpdateLocale(subscriptionId, updateModel) {
-      return this.subscriptionsUpdateLocaleWithHttpInfo(subscriptionId, updateModel)
+    subscriptionsUpdateLocale(subscriptionId, updateSubscriptionLocaleVM) {
+      return this.subscriptionsUpdateLocaleWithHttpInfo(subscriptionId, updateSubscriptionLocaleVM)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -397,12 +445,12 @@ export default class SubscriptionsApi {
      * Update permissions
      * @param {String} id 
      * @param {Object} opts Optional parameters
-     * @param {module:models/UpdateSubscriptionPermissionsVM} opts.permissionsVM 
+     * @param {module:models/UpdateSubscriptionPermissionsVM} opts.updateSubscriptionPermissionsVM 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
     subscriptionsUpdatePermissionsWithHttpInfo(id, opts) {
       opts = opts || {};
-      let postBody = opts['permissionsVM'];
+      let postBody = opts['updateSubscriptionPermissionsVM'];
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
         throw new Error("Missing the required parameter 'id' when calling subscriptionsUpdatePermissions");
@@ -419,8 +467,8 @@ export default class SubscriptionsApi {
       };
 
       let authNames = ['ApiKey', 'JWT'];
-      let contentTypes = ['application/json-patch+json', 'application/json', 'text/json', 'application/_*+json'];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let contentTypes = ['application/json', 'text/json', 'application/_*+json'];
+      let accepts = ['application/json'];
       let returnType = null;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -434,7 +482,7 @@ export default class SubscriptionsApi {
      * Update permissions
      * @param {String} id 
      * @param {Object} opts Optional parameters
-     * @param {module:models/UpdateSubscriptionPermissionsVM} opts.permissionsVM 
+     * @param {module:models/UpdateSubscriptionPermissionsVM} opts.updateSubscriptionPermissionsVM 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
     subscriptionsUpdatePermissions(id, opts) {

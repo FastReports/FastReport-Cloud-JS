@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import GroupAdministrate from './GroupAdministrate';
 import GroupPermissions from './GroupPermissions';
 
 /**
@@ -24,7 +25,7 @@ class UpdateGroupPermissionsVM {
      * Constructs a new <code>UpdateGroupPermissionsVM</code>.
      * @alias module:models/UpdateGroupPermissionsVM
      * @param newPermissions {module:models/GroupPermissions} 
-     * @param administrate {module:models/UpdateGroupPermissionsVM.AdministrateEnum} 
+     * @param administrate {module:models/GroupAdministrate} 
      */
     constructor(newPermissions, administrate) { 
         
@@ -56,7 +57,7 @@ class UpdateGroupPermissionsVM {
                 obj['newPermissions'] = GroupPermissions.constructFromObject(data['newPermissions']);
             }
             if (data.hasOwnProperty('administrate')) {
-                obj['administrate'] = ApiClient.convertToType(data['administrate'], 'Number');
+                obj['administrate'] = GroupAdministrate.constructFromObject(data['administrate']);
             }
         }
         return obj;
@@ -71,57 +72,12 @@ class UpdateGroupPermissionsVM {
 UpdateGroupPermissionsVM.prototype['newPermissions'] = undefined;
 
 /**
- * @member {module:models/UpdateGroupPermissionsVM.AdministrateEnum} administrate
+ * @member {module:models/GroupAdministrate} administrate
  */
 UpdateGroupPermissionsVM.prototype['administrate'] = undefined;
 
 
 
-
-
-/**
- * Allowed values for the <code>administrate</code> property.
- * @enum {Number}
- * @readonly
- */
-UpdateGroupPermissionsVM['AdministrateEnum'] = {
-
-    /**
-     * value: 0
-     * @const
-     */
-    "0": 0,
-
-    /**
-     * value: 1
-     * @const
-     */
-    "1": 1,
-
-    /**
-     * value: 2
-     * @const
-     */
-    "2": 2,
-
-    /**
-     * value: 4
-     * @const
-     */
-    "4": 4,
-
-    /**
-     * value: 8
-     * @const
-     */
-    "8": 8,
-
-    /**
-     * value: -1
-     * @const
-     */
-    "-1": -1
-};
 
 
 

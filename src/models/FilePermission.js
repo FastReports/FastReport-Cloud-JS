@@ -12,6 +12,13 @@
  */
 
 import ApiClient from '../ApiClient';
+import FileAdministrate from './FileAdministrate';
+import FileCreate from './FileCreate';
+import FileCreateFileGetFileUpdateFileDeleteFileExecuteFileAdministratePermission from './FileCreateFileGetFileUpdateFileDeleteFileExecuteFileAdministratePermission';
+import FileDelete from './FileDelete';
+import FileExecute from './FileExecute';
+import FileGet from './FileGet';
+import FileUpdate from './FileUpdate';
 
 /**
  * The FilePermission model module.
@@ -22,9 +29,10 @@ class FilePermission {
     /**
      * Constructs a new <code>FilePermission</code>.
      * @alias module:models/FilePermission
+     * @implements module:models/FileCreateFileGetFileUpdateFileDeleteFileExecuteFileAdministratePermission
      */
     constructor() { 
-        
+        FileCreateFileGetFileUpdateFileDeleteFileExecuteFileAdministratePermission.initialize(this);
         FilePermission.initialize(this);
     }
 
@@ -46,24 +54,25 @@ class FilePermission {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new FilePermission();
+            FileCreateFileGetFileUpdateFileDeleteFileExecuteFileAdministratePermission.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('create')) {
-                obj['create'] = ApiClient.convertToType(data['create'], 'Number');
+                obj['create'] = FileCreate.constructFromObject(data['create']);
             }
             if (data.hasOwnProperty('delete')) {
-                obj['delete'] = ApiClient.convertToType(data['delete'], 'Number');
+                obj['delete'] = FileDelete.constructFromObject(data['delete']);
             }
             if (data.hasOwnProperty('execute')) {
-                obj['execute'] = ApiClient.convertToType(data['execute'], 'Number');
+                obj['execute'] = FileExecute.constructFromObject(data['execute']);
             }
             if (data.hasOwnProperty('get')) {
-                obj['get'] = ApiClient.convertToType(data['get'], 'Number');
+                obj['get'] = FileGet.constructFromObject(data['get']);
             }
             if (data.hasOwnProperty('update')) {
-                obj['update'] = ApiClient.convertToType(data['update'], 'Number');
+                obj['update'] = FileUpdate.constructFromObject(data['update']);
             }
             if (data.hasOwnProperty('administrate')) {
-                obj['administrate'] = ApiClient.convertToType(data['administrate'], 'Number');
+                obj['administrate'] = FileAdministrate.constructFromObject(data['administrate']);
             }
         }
         return obj;
@@ -73,271 +82,62 @@ class FilePermission {
 }
 
 /**
- * @member {module:models/FilePermission.CreateEnum} create
+ * @member {module:models/FileCreate} create
  */
 FilePermission.prototype['create'] = undefined;
 
 /**
- * @member {module:models/FilePermission.DeleteEnum} delete
+ * @member {module:models/FileDelete} delete
  */
 FilePermission.prototype['delete'] = undefined;
 
 /**
- * @member {module:models/FilePermission.ExecuteEnum} execute
+ * @member {module:models/FileExecute} execute
  */
 FilePermission.prototype['execute'] = undefined;
 
 /**
- * @member {module:models/FilePermission.GetEnum} get
+ * @member {module:models/FileGet} get
  */
 FilePermission.prototype['get'] = undefined;
 
 /**
- * @member {module:models/FilePermission.UpdateEnum} update
+ * @member {module:models/FileUpdate} update
  */
 FilePermission.prototype['update'] = undefined;
 
 /**
- * @member {module:models/FilePermission.AdministrateEnum} administrate
+ * @member {module:models/FileAdministrate} administrate
  */
 FilePermission.prototype['administrate'] = undefined;
 
 
-
-
-
+// Implement FileCreateFileGetFileUpdateFileDeleteFileExecuteFileAdministratePermission interface:
 /**
- * Allowed values for the <code>create</code> property.
- * @enum {Number}
- * @readonly
+ * @member {module:models/FileCreate} create
  */
-FilePermission['CreateEnum'] = {
-
-    /**
-     * value: 0
-     * @const
-     */
-    "0": 0,
-
-    /**
-     * value: 1
-     * @const
-     */
-    "1": 1,
-
-    /**
-     * value: -1
-     * @const
-     */
-    "-1": -1
-};
-
-
+FileCreateFileGetFileUpdateFileDeleteFileExecuteFileAdministratePermission.prototype['create'] = undefined;
 /**
- * Allowed values for the <code>delete</code> property.
- * @enum {Number}
- * @readonly
+ * @member {module:models/FileDelete} delete
  */
-FilePermission['DeleteEnum'] = {
-
-    /**
-     * value: 0
-     * @const
-     */
-    "0": 0,
-
-    /**
-     * value: 1
-     * @const
-     */
-    "1": 1,
-
-    /**
-     * value: -1
-     * @const
-     */
-    "-1": -1
-};
-
-
+FileCreateFileGetFileUpdateFileDeleteFileExecuteFileAdministratePermission.prototype['delete'] = undefined;
 /**
- * Allowed values for the <code>execute</code> property.
- * @enum {Number}
- * @readonly
+ * @member {module:models/FileExecute} execute
  */
-FilePermission['ExecuteEnum'] = {
-
-    /**
-     * value: 0
-     * @const
-     */
-    "0": 0,
-
-    /**
-     * value: 1
-     * @const
-     */
-    "1": 1,
-
-    /**
-     * value: 2
-     * @const
-     */
-    "2": 2,
-
-    /**
-     * value: 4
-     * @const
-     */
-    "4": 4,
-
-    /**
-     * value: -1
-     * @const
-     */
-    "-1": -1
-};
-
-
+FileCreateFileGetFileUpdateFileDeleteFileExecuteFileAdministratePermission.prototype['execute'] = undefined;
 /**
- * Allowed values for the <code>get</code> property.
- * @enum {Number}
- * @readonly
+ * @member {module:models/FileGet} get
  */
-FilePermission['GetEnum'] = {
-
-    /**
-     * value: 0
-     * @const
-     */
-    "0": 0,
-
-    /**
-     * value: 1
-     * @const
-     */
-    "1": 1,
-
-    /**
-     * value: 2
-     * @const
-     */
-    "2": 2,
-
-    /**
-     * value: 4
-     * @const
-     */
-    "4": 4,
-
-    /**
-     * value: 8
-     * @const
-     */
-    "8": 8,
-
-    /**
-     * value: 16
-     * @const
-     */
-    "16": 16,
-
-    /**
-     * value: -1
-     * @const
-     */
-    "-1": -1
-};
-
-
+FileCreateFileGetFileUpdateFileDeleteFileExecuteFileAdministratePermission.prototype['get'] = undefined;
 /**
- * Allowed values for the <code>update</code> property.
- * @enum {Number}
- * @readonly
+ * @member {module:models/FileUpdate} update
  */
-FilePermission['UpdateEnum'] = {
-
-    /**
-     * value: 0
-     * @const
-     */
-    "0": 0,
-
-    /**
-     * value: 1
-     * @const
-     */
-    "1": 1,
-
-    /**
-     * value: 2
-     * @const
-     */
-    "2": 2,
-
-    /**
-     * value: 4
-     * @const
-     */
-    "4": 4,
-
-    /**
-     * value: 8
-     * @const
-     */
-    "8": 8,
-
-    /**
-     * value: -1
-     * @const
-     */
-    "-1": -1
-};
-
-
+FileCreateFileGetFileUpdateFileDeleteFileExecuteFileAdministratePermission.prototype['update'] = undefined;
 /**
- * Allowed values for the <code>administrate</code> property.
- * @enum {Number}
- * @readonly
+ * @member {module:models/FileAdministrate} administrate
  */
-FilePermission['AdministrateEnum'] = {
+FileCreateFileGetFileUpdateFileDeleteFileExecuteFileAdministratePermission.prototype['administrate'] = undefined;
 
-    /**
-     * value: 0
-     * @const
-     */
-    "0": 0,
-
-    /**
-     * value: 1
-     * @const
-     */
-    "1": 1,
-
-    /**
-     * value: 2
-     * @const
-     */
-    "2": 2,
-
-    /**
-     * value: 4
-     * @const
-     */
-    "4": 4,
-
-    /**
-     * value: 8
-     * @const
-     */
-    "8": 8,
-
-    /**
-     * value: -1
-     * @const
-     */
-    "-1": -1
-};
 
 
 

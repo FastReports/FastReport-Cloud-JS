@@ -12,6 +12,13 @@
  */
 
 import ApiClient from '../ApiClient';
+import SubscriptionAdministrate from './SubscriptionAdministrate';
+import SubscriptionCreate from './SubscriptionCreate';
+import SubscriptionCreateSubscriptionGetSubscriptionUpdateSubscriptionDeleteSubscriptionExecuteSubscriptionAdministratePermission from './SubscriptionCreateSubscriptionGetSubscriptionUpdateSubscriptionDeleteSubscriptionExecuteSubscriptionAdministratePermission';
+import SubscriptionDelete from './SubscriptionDelete';
+import SubscriptionExecute from './SubscriptionExecute';
+import SubscriptionGet from './SubscriptionGet';
+import SubscriptionUpdate from './SubscriptionUpdate';
 
 /**
  * The SubscriptionPermission model module.
@@ -22,9 +29,10 @@ class SubscriptionPermission {
     /**
      * Constructs a new <code>SubscriptionPermission</code>.
      * @alias module:models/SubscriptionPermission
+     * @implements module:models/SubscriptionCreateSubscriptionGetSubscriptionUpdateSubscriptionDeleteSubscriptionExecuteSubscriptionAdministratePermission
      */
     constructor() { 
-        
+        SubscriptionCreateSubscriptionGetSubscriptionUpdateSubscriptionDeleteSubscriptionExecuteSubscriptionAdministratePermission.initialize(this);
         SubscriptionPermission.initialize(this);
     }
 
@@ -46,24 +54,25 @@ class SubscriptionPermission {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new SubscriptionPermission();
+            SubscriptionCreateSubscriptionGetSubscriptionUpdateSubscriptionDeleteSubscriptionExecuteSubscriptionAdministratePermission.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('create')) {
-                obj['create'] = ApiClient.convertToType(data['create'], 'Number');
+                obj['create'] = SubscriptionCreate.constructFromObject(data['create']);
             }
             if (data.hasOwnProperty('delete')) {
-                obj['delete'] = ApiClient.convertToType(data['delete'], 'Number');
+                obj['delete'] = SubscriptionDelete.constructFromObject(data['delete']);
             }
             if (data.hasOwnProperty('execute')) {
-                obj['execute'] = ApiClient.convertToType(data['execute'], 'Number');
+                obj['execute'] = SubscriptionExecute.constructFromObject(data['execute']);
             }
             if (data.hasOwnProperty('get')) {
-                obj['get'] = ApiClient.convertToType(data['get'], 'Number');
+                obj['get'] = SubscriptionGet.constructFromObject(data['get']);
             }
             if (data.hasOwnProperty('update')) {
-                obj['update'] = ApiClient.convertToType(data['update'], 'Number');
+                obj['update'] = SubscriptionUpdate.constructFromObject(data['update']);
             }
             if (data.hasOwnProperty('administrate')) {
-                obj['administrate'] = ApiClient.convertToType(data['administrate'], 'Number');
+                obj['administrate'] = SubscriptionAdministrate.constructFromObject(data['administrate']);
             }
         }
         return obj;
@@ -73,289 +82,62 @@ class SubscriptionPermission {
 }
 
 /**
- * @member {module:models/SubscriptionPermission.CreateEnum} create
+ * @member {module:models/SubscriptionCreate} create
  */
 SubscriptionPermission.prototype['create'] = undefined;
 
 /**
- * @member {module:models/SubscriptionPermission.DeleteEnum} delete
+ * @member {module:models/SubscriptionDelete} delete
  */
 SubscriptionPermission.prototype['delete'] = undefined;
 
 /**
- * @member {module:models/SubscriptionPermission.ExecuteEnum} execute
+ * @member {module:models/SubscriptionExecute} execute
  */
 SubscriptionPermission.prototype['execute'] = undefined;
 
 /**
- * @member {module:models/SubscriptionPermission.GetEnum} get
+ * @member {module:models/SubscriptionGet} get
  */
 SubscriptionPermission.prototype['get'] = undefined;
 
 /**
- * @member {module:models/SubscriptionPermission.UpdateEnum} update
+ * @member {module:models/SubscriptionUpdate} update
  */
 SubscriptionPermission.prototype['update'] = undefined;
 
 /**
- * @member {module:models/SubscriptionPermission.AdministrateEnum} administrate
+ * @member {module:models/SubscriptionAdministrate} administrate
  */
 SubscriptionPermission.prototype['administrate'] = undefined;
 
 
-
-
-
+// Implement SubscriptionCreateSubscriptionGetSubscriptionUpdateSubscriptionDeleteSubscriptionExecuteSubscriptionAdministratePermission interface:
 /**
- * Allowed values for the <code>create</code> property.
- * @enum {Number}
- * @readonly
+ * @member {module:models/SubscriptionCreate} create
  */
-SubscriptionPermission['CreateEnum'] = {
-
-    /**
-     * value: 0
-     * @const
-     */
-    "0": 0,
-
-    /**
-     * value: 1
-     * @const
-     */
-    "1": 1,
-
-    /**
-     * value: 2
-     * @const
-     */
-    "2": 2,
-
-    /**
-     * value: 4
-     * @const
-     */
-    "4": 4,
-
-    /**
-     * value: 8
-     * @const
-     */
-    "8": 8,
-
-    /**
-     * value: -1
-     * @const
-     */
-    "-1": -1
-};
-
-
+SubscriptionCreateSubscriptionGetSubscriptionUpdateSubscriptionDeleteSubscriptionExecuteSubscriptionAdministratePermission.prototype['create'] = undefined;
 /**
- * Allowed values for the <code>delete</code> property.
- * @enum {Number}
- * @readonly
+ * @member {module:models/SubscriptionDelete} delete
  */
-SubscriptionPermission['DeleteEnum'] = {
-
-    /**
-     * value: 0
-     * @const
-     */
-    "0": 0,
-
-    /**
-     * value: 1
-     * @const
-     */
-    "1": 1,
-
-    /**
-     * value: 2
-     * @const
-     */
-    "2": 2,
-
-    /**
-     * value: -1
-     * @const
-     */
-    "-1": -1
-};
-
-
+SubscriptionCreateSubscriptionGetSubscriptionUpdateSubscriptionDeleteSubscriptionExecuteSubscriptionAdministratePermission.prototype['delete'] = undefined;
 /**
- * Allowed values for the <code>execute</code> property.
- * @enum {Number}
- * @readonly
+ * @member {module:models/SubscriptionExecute} execute
  */
-SubscriptionPermission['ExecuteEnum'] = {
-
-    /**
-     * value: 0
-     * @const
-     */
-    "0": 0,
-
-    /**
-     * value: -1
-     * @const
-     */
-    "-1": -1
-};
-
-
+SubscriptionCreateSubscriptionGetSubscriptionUpdateSubscriptionDeleteSubscriptionExecuteSubscriptionAdministratePermission.prototype['execute'] = undefined;
 /**
- * Allowed values for the <code>get</code> property.
- * @enum {Number}
- * @readonly
+ * @member {module:models/SubscriptionGet} get
  */
-SubscriptionPermission['GetEnum'] = {
-
-    /**
-     * value: 0
-     * @const
-     */
-    "0": 0,
-
-    /**
-     * value: 1
-     * @const
-     */
-    "1": 1,
-
-    /**
-     * value: 2
-     * @const
-     */
-    "2": 2,
-
-    /**
-     * value: 4
-     * @const
-     */
-    "4": 4,
-
-    /**
-     * value: 8
-     * @const
-     */
-    "8": 8,
-
-    /**
-     * value: 16
-     * @const
-     */
-    "16": 16,
-
-    /**
-     * value: 32
-     * @const
-     */
-    "32": 32,
-
-    /**
-     * value: 64
-     * @const
-     */
-    "64": 64,
-
-    /**
-     * value: 128
-     * @const
-     */
-    "128": 128,
-
-    /**
-     * value: -1
-     * @const
-     */
-    "-1": -1
-};
-
-
+SubscriptionCreateSubscriptionGetSubscriptionUpdateSubscriptionDeleteSubscriptionExecuteSubscriptionAdministratePermission.prototype['get'] = undefined;
 /**
- * Allowed values for the <code>update</code> property.
- * @enum {Number}
- * @readonly
+ * @member {module:models/SubscriptionUpdate} update
  */
-SubscriptionPermission['UpdateEnum'] = {
-
-    /**
-     * value: 0
-     * @const
-     */
-    "0": 0,
-
-    /**
-     * value: 1
-     * @const
-     */
-    "1": 1,
-
-    /**
-     * value: 4
-     * @const
-     */
-    "4": 4,
-
-    /**
-     * value: 8
-     * @const
-     */
-    "8": 8,
-
-    /**
-     * value: -1
-     * @const
-     */
-    "-1": -1
-};
-
-
+SubscriptionCreateSubscriptionGetSubscriptionUpdateSubscriptionDeleteSubscriptionExecuteSubscriptionAdministratePermission.prototype['update'] = undefined;
 /**
- * Allowed values for the <code>administrate</code> property.
- * @enum {Number}
- * @readonly
+ * @member {module:models/SubscriptionAdministrate} administrate
  */
-SubscriptionPermission['AdministrateEnum'] = {
+SubscriptionCreateSubscriptionGetSubscriptionUpdateSubscriptionDeleteSubscriptionExecuteSubscriptionAdministratePermission.prototype['administrate'] = undefined;
 
-    /**
-     * value: 0
-     * @const
-     */
-    "0": 0,
-
-    /**
-     * value: 1
-     * @const
-     */
-    "1": 1,
-
-    /**
-     * value: 2
-     * @const
-     */
-    "2": 2,
-
-    /**
-     * value: 4
-     * @const
-     */
-    "4": 4,
-
-    /**
-     * value: 8
-     * @const
-     */
-    "8": 8,
-
-    /**
-     * value: -1
-     * @const
-     */
-    "-1": -1
-};
 
 
 

@@ -12,6 +12,8 @@
  */
 
 import ApiClient from '../ApiClient';
+import DataSourceConnectionType from './DataSourceConnectionType';
+import DataSourceStatus from './DataSourceStatus';
 
 /**
  * The DataSourceVM model module.
@@ -54,7 +56,7 @@ class DataSourceVM {
                 obj['name'] = ApiClient.convertToType(data['name'], 'String');
             }
             if (data.hasOwnProperty('connectionType')) {
-                obj['connectionType'] = ApiClient.convertToType(data['connectionType'], 'String');
+                obj['connectionType'] = DataSourceConnectionType.constructFromObject(data['connectionType']);
             }
             if (data.hasOwnProperty('connectionString')) {
                 obj['connectionString'] = ApiClient.convertToType(data['connectionString'], 'String');
@@ -77,8 +79,8 @@ class DataSourceVM {
             if (data.hasOwnProperty('creatorUserId')) {
                 obj['creatorUserId'] = ApiClient.convertToType(data['creatorUserId'], 'String');
             }
-            if (data.hasOwnProperty('isConnected')) {
-                obj['isConnected'] = ApiClient.convertToType(data['isConnected'], 'Boolean');
+            if (data.hasOwnProperty('status')) {
+                obj['status'] = DataSourceStatus.constructFromObject(data['status']);
             }
         }
         return obj;
@@ -98,7 +100,7 @@ DataSourceVM.prototype['id'] = undefined;
 DataSourceVM.prototype['name'] = undefined;
 
 /**
- * @member {module:models/DataSourceVM.ConnectionTypeEnum} connectionType
+ * @member {module:models/DataSourceConnectionType} connectionType
  */
 DataSourceVM.prototype['connectionType'] = undefined;
 
@@ -138,57 +140,12 @@ DataSourceVM.prototype['createdTime'] = undefined;
 DataSourceVM.prototype['creatorUserId'] = undefined;
 
 /**
- * @member {Boolean} isConnected
+ * @member {module:models/DataSourceStatus} status
  */
-DataSourceVM.prototype['isConnected'] = undefined;
+DataSourceVM.prototype['status'] = undefined;
 
 
 
-
-
-/**
- * Allowed values for the <code>connectionType</code> property.
- * @enum {String}
- * @readonly
- */
-DataSourceVM['ConnectionTypeEnum'] = {
-
-    /**
-     * value: "JSON"
-     * @const
-     */
-    "JSON": "JSON",
-
-    /**
-     * value: "MSSQL"
-     * @const
-     */
-    "MSSQL": "MSSQL",
-
-    /**
-     * value: "CSV"
-     * @const
-     */
-    "CSV": "CSV",
-
-    /**
-     * value: "XML"
-     * @const
-     */
-    "XML": "XML",
-
-    /**
-     * value: "MySQL"
-     * @const
-     */
-    "MySQL": "MySQL",
-
-    /**
-     * value: "Postgres"
-     * @const
-     */
-    "Postgres": "Postgres"
-};
 
 
 

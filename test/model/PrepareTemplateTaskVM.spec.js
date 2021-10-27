@@ -54,20 +54,8 @@
       //expect(instance).to.be.a(FastreportCloudSdk.PrepareTemplateTaskVM);
     });
 
-    it('should have the property name (base name: "name")', function() {
-      // uncomment below and update the code to test the property name
-      //var instance = new FastreportCloudSdk.PrepareTemplateTaskVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property locale (base name: "locale")', function() {
-      // uncomment below and update the code to test the property locale
-      //var instance = new FastreportCloudSdk.PrepareTemplateTaskVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property parentFolderId (base name: "parentFolderId")', function() {
-      // uncomment below and update the code to test the property parentFolderId
+    it('should have the property exports (base name: "exports")', function() {
+      // uncomment below and update the code to test the property exports
       //var instance = new FastreportCloudSdk.PrepareTemplateTaskVM();
       //expect(instance).to.be();
     });
@@ -80,6 +68,24 @@
 
     it('should have the property reportParameters (base name: "reportParameters")', function() {
       // uncomment below and update the code to test the property reportParameters
+      //var instance = new FastreportCloudSdk.PrepareTemplateTaskVM();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property name (base name: "name")', function() {
+      // uncomment below and update the code to test the property name
+      //var instance = new FastreportCloudSdk.PrepareTemplateTaskVM();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property subscriptionId (base name: "subscriptionId")', function() {
+      // uncomment below and update the code to test the property subscriptionId
+      //var instance = new FastreportCloudSdk.PrepareTemplateTaskVM();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property type (base name: "type")', function() {
+      // uncomment below and update the code to test the property type
       //var instance = new FastreportCloudSdk.PrepareTemplateTaskVM();
       //expect(instance).to.be();
     });

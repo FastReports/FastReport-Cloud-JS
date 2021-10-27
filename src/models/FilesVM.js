@@ -13,6 +13,7 @@
 
 import ApiClient from '../ApiClient';
 import FileVM from './FileVM';
+import FileVMFilesVMBase from './FileVMFilesVMBase';
 
 /**
  * The FilesVM model module.
@@ -23,9 +24,10 @@ class FilesVM {
     /**
      * Constructs a new <code>FilesVM</code>.
      * @alias module:models/FilesVM
+     * @implements module:models/FileVMFilesVMBase
      */
     constructor() { 
-        
+        FileVMFilesVMBase.initialize(this);
         FilesVM.initialize(this);
     }
 
@@ -47,6 +49,7 @@ class FilesVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new FilesVM();
+            FileVMFilesVMBase.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('files')) {
                 obj['files'] = ApiClient.convertToType(data['files'], [FileVM]);
@@ -88,6 +91,23 @@ FilesVM.prototype['skip'] = undefined;
 FilesVM.prototype['take'] = undefined;
 
 
+// Implement FileVMFilesVMBase interface:
+/**
+ * @member {Array.<module:models/FileVM>} files
+ */
+FileVMFilesVMBase.prototype['files'] = undefined;
+/**
+ * @member {Number} count
+ */
+FileVMFilesVMBase.prototype['count'] = undefined;
+/**
+ * @member {Number} skip
+ */
+FileVMFilesVMBase.prototype['skip'] = undefined;
+/**
+ * @member {Number} take
+ */
+FileVMFilesVMBase.prototype['take'] = undefined;
 
 
 

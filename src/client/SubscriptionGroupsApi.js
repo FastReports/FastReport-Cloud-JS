@@ -64,7 +64,7 @@ export default class SubscriptionGroupsApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let accepts = ['application/json'];
       let returnType = GroupsVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(

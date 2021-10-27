@@ -174,6 +174,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property tasks (base name: "tasks")', function() {
+      // uncomment below and update the code to test the property tasks
+      //var instance = new FastreportCloudSdk.SubscriptionPlanVM();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

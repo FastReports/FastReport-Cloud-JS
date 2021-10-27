@@ -13,6 +13,7 @@
 
 import ApiClient from '../ApiClient';
 import GroupPermission from './GroupPermission';
+import GroupPermissionGroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupAdministratePermissions from './GroupPermissionGroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupAdministratePermissions';
 
 /**
  * The GroupPermissions model module.
@@ -23,9 +24,10 @@ class GroupPermissions {
     /**
      * Constructs a new <code>GroupPermissions</code>.
      * @alias module:models/GroupPermissions
+     * @implements module:models/GroupPermissionGroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupAdministratePermissions
      */
     constructor() { 
-        
+        GroupPermissionGroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupAdministratePermissions.initialize(this);
         GroupPermissions.initialize(this);
     }
 
@@ -47,6 +49,7 @@ class GroupPermissions {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new GroupPermissions();
+            GroupPermissionGroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupAdministratePermissions.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('ownerId')) {
                 obj['ownerId'] = ApiClient.convertToType(data['ownerId'], 'String');
@@ -96,6 +99,27 @@ GroupPermissions.prototype['other'] = undefined;
 GroupPermissions.prototype['anon'] = undefined;
 
 
+// Implement GroupPermissionGroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupAdministratePermissions interface:
+/**
+ * @member {String} ownerId
+ */
+GroupPermissionGroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupAdministratePermissions.prototype['ownerId'] = undefined;
+/**
+ * @member {module:models/GroupPermission} owner
+ */
+GroupPermissionGroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupAdministratePermissions.prototype['owner'] = undefined;
+/**
+ * @member {Object.<String, module:models/GroupPermission>} groups
+ */
+GroupPermissionGroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupAdministratePermissions.prototype['groups'] = undefined;
+/**
+ * @member {module:models/GroupPermission} other
+ */
+GroupPermissionGroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupAdministratePermissions.prototype['other'] = undefined;
+/**
+ * @member {module:models/GroupPermission} anon
+ */
+GroupPermissionGroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupAdministratePermissions.prototype['anon'] = undefined;
 
 
 

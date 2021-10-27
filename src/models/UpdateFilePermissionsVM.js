@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import FileAdministrate from './FileAdministrate';
 import FilePermissions from './FilePermissions';
 
 /**
@@ -24,7 +25,7 @@ class UpdateFilePermissionsVM {
      * Constructs a new <code>UpdateFilePermissionsVM</code>.
      * @alias module:models/UpdateFilePermissionsVM
      * @param newPermissions {module:models/FilePermissions} 
-     * @param administrate {module:models/UpdateFilePermissionsVM.AdministrateEnum} 
+     * @param administrate {module:models/FileAdministrate} 
      */
     constructor(newPermissions, administrate) { 
         
@@ -56,7 +57,7 @@ class UpdateFilePermissionsVM {
                 obj['newPermissions'] = FilePermissions.constructFromObject(data['newPermissions']);
             }
             if (data.hasOwnProperty('administrate')) {
-                obj['administrate'] = ApiClient.convertToType(data['administrate'], 'Number');
+                obj['administrate'] = FileAdministrate.constructFromObject(data['administrate']);
             }
         }
         return obj;
@@ -71,57 +72,12 @@ class UpdateFilePermissionsVM {
 UpdateFilePermissionsVM.prototype['newPermissions'] = undefined;
 
 /**
- * @member {module:models/UpdateFilePermissionsVM.AdministrateEnum} administrate
+ * @member {module:models/FileAdministrate} administrate
  */
 UpdateFilePermissionsVM.prototype['administrate'] = undefined;
 
 
 
-
-
-/**
- * Allowed values for the <code>administrate</code> property.
- * @enum {Number}
- * @readonly
- */
-UpdateFilePermissionsVM['AdministrateEnum'] = {
-
-    /**
-     * value: 0
-     * @const
-     */
-    "0": 0,
-
-    /**
-     * value: 1
-     * @const
-     */
-    "1": 1,
-
-    /**
-     * value: 2
-     * @const
-     */
-    "2": 2,
-
-    /**
-     * value: 4
-     * @const
-     */
-    "4": 4,
-
-    /**
-     * value: 8
-     * @const
-     */
-    "8": 8,
-
-    /**
-     * value: -1
-     * @const
-     */
-    "-1": -1
-};
 
 
 

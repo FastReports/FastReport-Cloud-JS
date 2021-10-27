@@ -12,6 +12,9 @@
  */
 
 import ApiClient from '../ApiClient';
+import ExportReportTaskVM from './ExportReportTaskVM';
+import TaskType from './TaskType';
+import TransformTaskBaseVM from './TransformTaskBaseVM';
 
 /**
  * The PrepareTemplateTaskVM model module.
@@ -22,9 +25,10 @@ class PrepareTemplateTaskVM {
     /**
      * Constructs a new <code>PrepareTemplateTaskVM</code>.
      * @alias module:models/PrepareTemplateTaskVM
+     * @implements module:models/TransformTaskBaseVM
      */
     constructor() { 
-        
+        TransformTaskBaseVM.initialize(this);
         PrepareTemplateTaskVM.initialize(this);
     }
 
@@ -46,21 +50,25 @@ class PrepareTemplateTaskVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new PrepareTemplateTaskVM();
+            TransformTaskBaseVM.constructFromObject(data, obj);
 
-            if (data.hasOwnProperty('name')) {
-                obj['name'] = ApiClient.convertToType(data['name'], 'String');
-            }
-            if (data.hasOwnProperty('locale')) {
-                obj['locale'] = ApiClient.convertToType(data['locale'], 'String');
-            }
-            if (data.hasOwnProperty('parentFolderId')) {
-                obj['parentFolderId'] = ApiClient.convertToType(data['parentFolderId'], 'String');
+            if (data.hasOwnProperty('exports')) {
+                obj['exports'] = ApiClient.convertToType(data['exports'], [ExportReportTaskVM]);
             }
             if (data.hasOwnProperty('pagesCount')) {
                 obj['pagesCount'] = ApiClient.convertToType(data['pagesCount'], 'Number');
             }
             if (data.hasOwnProperty('reportParameters')) {
                 obj['reportParameters'] = ApiClient.convertToType(data['reportParameters'], {'String': 'String'});
+            }
+            if (data.hasOwnProperty('name')) {
+                obj['name'] = ApiClient.convertToType(data['name'], 'String');
+            }
+            if (data.hasOwnProperty('subscriptionId')) {
+                obj['subscriptionId'] = ApiClient.convertToType(data['subscriptionId'], 'String');
+            }
+            if (data.hasOwnProperty('type')) {
+                obj['type'] = TaskType.constructFromObject(data['type']);
             }
         }
         return obj;
@@ -70,19 +78,9 @@ class PrepareTemplateTaskVM {
 }
 
 /**
- * @member {String} name
+ * @member {Array.<module:models/ExportReportTaskVM>} exports
  */
-PrepareTemplateTaskVM.prototype['name'] = undefined;
-
-/**
- * @member {String} locale
- */
-PrepareTemplateTaskVM.prototype['locale'] = undefined;
-
-/**
- * @member {String} parentFolderId
- */
-PrepareTemplateTaskVM.prototype['parentFolderId'] = undefined;
+PrepareTemplateTaskVM.prototype['exports'] = undefined;
 
 /**
  * @member {Number} pagesCount
@@ -94,7 +92,35 @@ PrepareTemplateTaskVM.prototype['pagesCount'] = undefined;
  */
 PrepareTemplateTaskVM.prototype['reportParameters'] = undefined;
 
+/**
+ * @member {String} name
+ */
+PrepareTemplateTaskVM.prototype['name'] = undefined;
 
+/**
+ * @member {String} subscriptionId
+ */
+PrepareTemplateTaskVM.prototype['subscriptionId'] = undefined;
+
+/**
+ * @member {module:models/TaskType} type
+ */
+PrepareTemplateTaskVM.prototype['type'] = undefined;
+
+
+// Implement TransformTaskBaseVM interface:
+/**
+ * @member {String} name
+ */
+TransformTaskBaseVM.prototype['name'] = undefined;
+/**
+ * @member {String} subscriptionId
+ */
+TransformTaskBaseVM.prototype['subscriptionId'] = undefined;
+/**
+ * @member {module:models/TaskType} type
+ */
+TransformTaskBaseVM.prototype['type'] = undefined;
 
 
 

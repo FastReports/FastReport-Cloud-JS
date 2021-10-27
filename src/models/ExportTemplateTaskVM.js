@@ -12,6 +12,8 @@
  */
 
 import ApiClient from '../ApiClient';
+import ExportReportTaskVM from './ExportReportTaskVM';
+import TaskType from './TaskType';
 
 /**
  * The ExportTemplateTaskVM model module.
@@ -22,9 +24,10 @@ class ExportTemplateTaskVM {
     /**
      * Constructs a new <code>ExportTemplateTaskVM</code>.
      * @alias module:models/ExportTemplateTaskVM
+     * @implements module:models/ExportReportTaskVM
      */
     constructor() { 
-        
+        ExportReportTaskVM.initialize(this);
         ExportTemplateTaskVM.initialize(this);
     }
 
@@ -46,27 +49,19 @@ class ExportTemplateTaskVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new ExportTemplateTaskVM();
+            ExportReportTaskVM.constructFromObject(data, obj);
 
-            if (data.hasOwnProperty('fileName')) {
-                obj['fileName'] = ApiClient.convertToType(data['fileName'], 'String');
-            }
-            if (data.hasOwnProperty('folderId')) {
-                obj['folderId'] = ApiClient.convertToType(data['folderId'], 'String');
-            }
-            if (data.hasOwnProperty('locale')) {
-                obj['locale'] = ApiClient.convertToType(data['locale'], 'String');
-            }
-            if (data.hasOwnProperty('pagesCount')) {
-                obj['pagesCount'] = ApiClient.convertToType(data['pagesCount'], 'Number');
-            }
-            if (data.hasOwnProperty('format')) {
-                obj['format'] = ApiClient.convertToType(data['format'], 'String');
-            }
-            if (data.hasOwnProperty('exportParameters')) {
-                obj['exportParameters'] = ApiClient.convertToType(data['exportParameters'], {'String': 'String'});
-            }
             if (data.hasOwnProperty('reportParameters')) {
                 obj['reportParameters'] = ApiClient.convertToType(data['reportParameters'], {'String': 'String'});
+            }
+            if (data.hasOwnProperty('name')) {
+                obj['name'] = ApiClient.convertToType(data['name'], 'String');
+            }
+            if (data.hasOwnProperty('subscriptionId')) {
+                obj['subscriptionId'] = ApiClient.convertToType(data['subscriptionId'], 'String');
+            }
+            if (data.hasOwnProperty('type')) {
+                obj['type'] = TaskType.constructFromObject(data['type']);
             }
         }
         return obj;
@@ -76,189 +71,40 @@ class ExportTemplateTaskVM {
 }
 
 /**
- * @member {String} fileName
- */
-ExportTemplateTaskVM.prototype['fileName'] = undefined;
-
-/**
- * @member {String} folderId
- */
-ExportTemplateTaskVM.prototype['folderId'] = undefined;
-
-/**
- * @member {String} locale
- */
-ExportTemplateTaskVM.prototype['locale'] = undefined;
-
-/**
- * @member {Number} pagesCount
- */
-ExportTemplateTaskVM.prototype['pagesCount'] = undefined;
-
-/**
- * @member {module:models/ExportTemplateTaskVM.FormatEnum} format
- */
-ExportTemplateTaskVM.prototype['format'] = undefined;
-
-/**
- * @member {Object.<String, String>} exportParameters
- */
-ExportTemplateTaskVM.prototype['exportParameters'] = undefined;
-
-/**
  * @member {Object.<String, String>} reportParameters
  */
 ExportTemplateTaskVM.prototype['reportParameters'] = undefined;
 
-
-
-
+/**
+ * @member {String} name
+ */
+ExportTemplateTaskVM.prototype['name'] = undefined;
 
 /**
- * Allowed values for the <code>format</code> property.
- * @enum {String}
- * @readonly
+ * @member {String} subscriptionId
  */
-ExportTemplateTaskVM['FormatEnum'] = {
+ExportTemplateTaskVM.prototype['subscriptionId'] = undefined;
 
-    /**
-     * value: "Pdf"
-     * @const
-     */
-    "Pdf": "Pdf",
+/**
+ * @member {module:models/TaskType} type
+ */
+ExportTemplateTaskVM.prototype['type'] = undefined;
 
-    /**
-     * value: "Html"
-     * @const
-     */
-    "Html": "Html",
 
-    /**
-     * value: "Mht"
-     * @const
-     */
-    "Mht": "Mht",
+// Implement ExportReportTaskVM interface:
+/**
+ * @member {String} name
+ */
+ExportReportTaskVM.prototype['name'] = undefined;
+/**
+ * @member {String} subscriptionId
+ */
+ExportReportTaskVM.prototype['subscriptionId'] = undefined;
+/**
+ * @member {module:models/TaskType} type
+ */
+ExportReportTaskVM.prototype['type'] = undefined;
 
-    /**
-     * value: "Image"
-     * @const
-     */
-    "Image": "Image",
-
-    /**
-     * value: "Biff8"
-     * @const
-     */
-    "Biff8": "Biff8",
-
-    /**
-     * value: "Csv"
-     * @const
-     */
-    "Csv": "Csv",
-
-    /**
-     * value: "Dbf"
-     * @const
-     */
-    "Dbf": "Dbf",
-
-    /**
-     * value: "Json"
-     * @const
-     */
-    "Json": "Json",
-
-    /**
-     * value: "LaTeX"
-     * @const
-     */
-    "LaTeX": "LaTeX",
-
-    /**
-     * value: "Odt"
-     * @const
-     */
-    "Odt": "Odt",
-
-    /**
-     * value: "Ods"
-     * @const
-     */
-    "Ods": "Ods",
-
-    /**
-     * value: "Docx"
-     * @const
-     */
-    "Docx": "Docx",
-
-    /**
-     * value: "Pptx"
-     * @const
-     */
-    "Pptx": "Pptx",
-
-    /**
-     * value: "Xlsx"
-     * @const
-     */
-    "Xlsx": "Xlsx",
-
-    /**
-     * value: "Xps"
-     * @const
-     */
-    "Xps": "Xps",
-
-    /**
-     * value: "Ppml"
-     * @const
-     */
-    "Ppml": "Ppml",
-
-    /**
-     * value: "PS"
-     * @const
-     */
-    "PS": "PS",
-
-    /**
-     * value: "Richtext"
-     * @const
-     */
-    "Richtext": "Richtext",
-
-    /**
-     * value: "Svg"
-     * @const
-     */
-    "Svg": "Svg",
-
-    /**
-     * value: "Text"
-     * @const
-     */
-    "Text": "Text",
-
-    /**
-     * value: "Xaml"
-     * @const
-     */
-    "Xaml": "Xaml",
-
-    /**
-     * value: "Xml"
-     * @const
-     */
-    "Xml": "Xml",
-
-    /**
-     * value: "Zpl"
-     * @const
-     */
-    "Zpl": "Zpl"
-};
 
 
 

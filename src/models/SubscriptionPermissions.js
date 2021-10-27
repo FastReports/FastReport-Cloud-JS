@@ -13,6 +13,7 @@
 
 import ApiClient from '../ApiClient';
 import SubscriptionPermission from './SubscriptionPermission';
+import SubscriptionPermissionSubscriptionCreateSubscriptionGetSubscriptionUpdateSubscriptionDeleteSubscriptionExecuteSubscriptionAdministratePermissions from './SubscriptionPermissionSubscriptionCreateSubscriptionGetSubscriptionUpdateSubscriptionDeleteSubscriptionExecuteSubscriptionAdministratePermissions';
 
 /**
  * The SubscriptionPermissions model module.
@@ -23,9 +24,10 @@ class SubscriptionPermissions {
     /**
      * Constructs a new <code>SubscriptionPermissions</code>.
      * @alias module:models/SubscriptionPermissions
+     * @implements module:models/SubscriptionPermissionSubscriptionCreateSubscriptionGetSubscriptionUpdateSubscriptionDeleteSubscriptionExecuteSubscriptionAdministratePermissions
      */
     constructor() { 
-        
+        SubscriptionPermissionSubscriptionCreateSubscriptionGetSubscriptionUpdateSubscriptionDeleteSubscriptionExecuteSubscriptionAdministratePermissions.initialize(this);
         SubscriptionPermissions.initialize(this);
     }
 
@@ -47,6 +49,7 @@ class SubscriptionPermissions {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new SubscriptionPermissions();
+            SubscriptionPermissionSubscriptionCreateSubscriptionGetSubscriptionUpdateSubscriptionDeleteSubscriptionExecuteSubscriptionAdministratePermissions.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('ownerId')) {
                 obj['ownerId'] = ApiClient.convertToType(data['ownerId'], 'String');
@@ -96,6 +99,27 @@ SubscriptionPermissions.prototype['other'] = undefined;
 SubscriptionPermissions.prototype['anon'] = undefined;
 
 
+// Implement SubscriptionPermissionSubscriptionCreateSubscriptionGetSubscriptionUpdateSubscriptionDeleteSubscriptionExecuteSubscriptionAdministratePermissions interface:
+/**
+ * @member {String} ownerId
+ */
+SubscriptionPermissionSubscriptionCreateSubscriptionGetSubscriptionUpdateSubscriptionDeleteSubscriptionExecuteSubscriptionAdministratePermissions.prototype['ownerId'] = undefined;
+/**
+ * @member {module:models/SubscriptionPermission} owner
+ */
+SubscriptionPermissionSubscriptionCreateSubscriptionGetSubscriptionUpdateSubscriptionDeleteSubscriptionExecuteSubscriptionAdministratePermissions.prototype['owner'] = undefined;
+/**
+ * @member {Object.<String, module:models/SubscriptionPermission>} groups
+ */
+SubscriptionPermissionSubscriptionCreateSubscriptionGetSubscriptionUpdateSubscriptionDeleteSubscriptionExecuteSubscriptionAdministratePermissions.prototype['groups'] = undefined;
+/**
+ * @member {module:models/SubscriptionPermission} other
+ */
+SubscriptionPermissionSubscriptionCreateSubscriptionGetSubscriptionUpdateSubscriptionDeleteSubscriptionExecuteSubscriptionAdministratePermissions.prototype['other'] = undefined;
+/**
+ * @member {module:models/SubscriptionPermission} anon
+ */
+SubscriptionPermissionSubscriptionCreateSubscriptionGetSubscriptionUpdateSubscriptionDeleteSubscriptionExecuteSubscriptionAdministratePermissions.prototype['anon'] = undefined;
 
 
 

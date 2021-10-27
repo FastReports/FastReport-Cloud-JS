@@ -12,6 +12,8 @@
  */
 
 import ApiClient from '../ApiClient';
+import ExportFormat from './ExportFormat';
+import FileVM from './FileVM';
 
 /**
  * The ExportVM model module.
@@ -22,9 +24,10 @@ class ExportVM {
     /**
      * Constructs a new <code>ExportVM</code>.
      * @alias module:models/ExportVM
+     * @implements module:models/FileVM
      */
     constructor() { 
-        
+        FileVM.initialize(this);
         ExportVM.initialize(this);
     }
 
@@ -46,39 +49,13 @@ class ExportVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new ExportVM();
+            FileVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('format')) {
-                obj['format'] = ApiClient.convertToType(data['format'], 'String');
+                obj['format'] = ExportFormat.constructFromObject(data['format']);
             }
             if (data.hasOwnProperty('reportId')) {
                 obj['reportId'] = ApiClient.convertToType(data['reportId'], 'String');
-            }
-            if (data.hasOwnProperty('name')) {
-                obj['name'] = ApiClient.convertToType(data['name'], 'String');
-            }
-            if (data.hasOwnProperty('parentId')) {
-                obj['parentId'] = ApiClient.convertToType(data['parentId'], 'String');
-            }
-            if (data.hasOwnProperty('tags')) {
-                obj['tags'] = ApiClient.convertToType(data['tags'], ['String']);
-            }
-            if (data.hasOwnProperty('icon')) {
-                obj['icon'] = ApiClient.convertToType(data['icon'], 'Blob');
-            }
-            if (data.hasOwnProperty('type')) {
-                obj['type'] = ApiClient.convertToType(data['type'], 'String');
-            }
-            if (data.hasOwnProperty('size')) {
-                obj['size'] = ApiClient.convertToType(data['size'], 'Number');
-            }
-            if (data.hasOwnProperty('subscriptionId')) {
-                obj['subscriptionId'] = ApiClient.convertToType(data['subscriptionId'], 'String');
-            }
-            if (data.hasOwnProperty('status')) {
-                obj['status'] = ApiClient.convertToType(data['status'], 'String');
-            }
-            if (data.hasOwnProperty('statusReason')) {
-                obj['statusReason'] = ApiClient.convertToType(data['statusReason'], 'String');
             }
             if (data.hasOwnProperty('id')) {
                 obj['id'] = ApiClient.convertToType(data['id'], 'String');
@@ -103,7 +80,7 @@ class ExportVM {
 }
 
 /**
- * @member {module:models/ExportVM.FormatEnum} format
+ * @member {module:models/ExportFormat} format
  */
 ExportVM.prototype['format'] = undefined;
 
@@ -111,51 +88,6 @@ ExportVM.prototype['format'] = undefined;
  * @member {String} reportId
  */
 ExportVM.prototype['reportId'] = undefined;
-
-/**
- * @member {String} name
- */
-ExportVM.prototype['name'] = undefined;
-
-/**
- * @member {String} parentId
- */
-ExportVM.prototype['parentId'] = undefined;
-
-/**
- * @member {Array.<String>} tags
- */
-ExportVM.prototype['tags'] = undefined;
-
-/**
- * @member {Blob} icon
- */
-ExportVM.prototype['icon'] = undefined;
-
-/**
- * @member {module:models/ExportVM.TypeEnum} type
- */
-ExportVM.prototype['type'] = undefined;
-
-/**
- * @member {Number} size
- */
-ExportVM.prototype['size'] = undefined;
-
-/**
- * @member {String} subscriptionId
- */
-ExportVM.prototype['subscriptionId'] = undefined;
-
-/**
- * @member {module:models/ExportVM.StatusEnum} status
- */
-ExportVM.prototype['status'] = undefined;
-
-/**
- * @member {module:models/ExportVM.StatusReasonEnum} statusReason
- */
-ExportVM.prototype['statusReason'] = undefined;
 
 /**
  * @member {String} id
@@ -183,277 +115,28 @@ ExportVM.prototype['editedTime'] = undefined;
 ExportVM.prototype['editorUserId'] = undefined;
 
 
-
-
-
+// Implement FileVM interface:
 /**
- * Allowed values for the <code>format</code> property.
- * @enum {String}
- * @readonly
+ * @member {String} id
  */
-ExportVM['FormatEnum'] = {
-
-    /**
-     * value: "Pdf"
-     * @const
-     */
-    "Pdf": "Pdf",
-
-    /**
-     * value: "Html"
-     * @const
-     */
-    "Html": "Html",
-
-    /**
-     * value: "Mht"
-     * @const
-     */
-    "Mht": "Mht",
-
-    /**
-     * value: "Image"
-     * @const
-     */
-    "Image": "Image",
-
-    /**
-     * value: "Biff8"
-     * @const
-     */
-    "Biff8": "Biff8",
-
-    /**
-     * value: "Csv"
-     * @const
-     */
-    "Csv": "Csv",
-
-    /**
-     * value: "Dbf"
-     * @const
-     */
-    "Dbf": "Dbf",
-
-    /**
-     * value: "Json"
-     * @const
-     */
-    "Json": "Json",
-
-    /**
-     * value: "LaTeX"
-     * @const
-     */
-    "LaTeX": "LaTeX",
-
-    /**
-     * value: "Odt"
-     * @const
-     */
-    "Odt": "Odt",
-
-    /**
-     * value: "Ods"
-     * @const
-     */
-    "Ods": "Ods",
-
-    /**
-     * value: "Docx"
-     * @const
-     */
-    "Docx": "Docx",
-
-    /**
-     * value: "Pptx"
-     * @const
-     */
-    "Pptx": "Pptx",
-
-    /**
-     * value: "Xlsx"
-     * @const
-     */
-    "Xlsx": "Xlsx",
-
-    /**
-     * value: "Xps"
-     * @const
-     */
-    "Xps": "Xps",
-
-    /**
-     * value: "Ppml"
-     * @const
-     */
-    "Ppml": "Ppml",
-
-    /**
-     * value: "PS"
-     * @const
-     */
-    "PS": "PS",
-
-    /**
-     * value: "Richtext"
-     * @const
-     */
-    "Richtext": "Richtext",
-
-    /**
-     * value: "Svg"
-     * @const
-     */
-    "Svg": "Svg",
-
-    /**
-     * value: "Text"
-     * @const
-     */
-    "Text": "Text",
-
-    /**
-     * value: "Xaml"
-     * @const
-     */
-    "Xaml": "Xaml",
-
-    /**
-     * value: "Xml"
-     * @const
-     */
-    "Xml": "Xml",
-
-    /**
-     * value: "Zpl"
-     * @const
-     */
-    "Zpl": "Zpl"
-};
-
-
+FileVM.prototype['id'] = undefined;
 /**
- * Allowed values for the <code>type</code> property.
- * @enum {String}
- * @readonly
+ * @member {Date} createdTime
  */
-ExportVM['TypeEnum'] = {
-
-    /**
-     * value: "File"
-     * @const
-     */
-    "File": "File",
-
-    /**
-     * value: "Folder"
-     * @const
-     */
-    "Folder": "Folder"
-};
-
-
+FileVM.prototype['createdTime'] = undefined;
 /**
- * Allowed values for the <code>status</code> property.
- * @enum {String}
- * @readonly
+ * @member {String} creatorUserId
  */
-ExportVM['StatusEnum'] = {
-
-    /**
-     * value: "None"
-     * @const
-     */
-    "None": "None",
-
-    /**
-     * value: "InQueue"
-     * @const
-     */
-    "InQueue": "InQueue",
-
-    /**
-     * value: "InProcess"
-     * @const
-     */
-    "InProcess": "InProcess",
-
-    /**
-     * value: "Success"
-     * @const
-     */
-    "Success": "Success",
-
-    /**
-     * value: "Failed"
-     * @const
-     */
-    "Failed": "Failed"
-};
-
-
+FileVM.prototype['creatorUserId'] = undefined;
 /**
- * Allowed values for the <code>statusReason</code> property.
- * @enum {String}
- * @readonly
+ * @member {Date} editedTime
  */
-ExportVM['StatusReasonEnum'] = {
+FileVM.prototype['editedTime'] = undefined;
+/**
+ * @member {String} editorUserId
+ */
+FileVM.prototype['editorUserId'] = undefined;
 
-    /**
-     * value: "None"
-     * @const
-     */
-    "None": "None",
-
-    /**
-     * value: "AllRight"
-     * @const
-     */
-    "AllRight": "AllRight",
-
-    /**
-     * value: "Hang"
-     * @const
-     */
-    "Hang": "Hang",
-
-    /**
-     * value: "Error"
-     * @const
-     */
-    "Error": "Error",
-
-    /**
-     * value: "NotFound"
-     * @const
-     */
-    "NotFound": "NotFound",
-
-    /**
-     * value: "NotEnoughSpace"
-     * @const
-     */
-    "NotEnoughSpace": "NotEnoughSpace",
-
-    /**
-     * value: "ExportStarted"
-     * @const
-     */
-    "ExportStarted": "ExportStarted",
-
-    /**
-     * value: "PreparationStarted"
-     * @const
-     */
-    "PreparationStarted": "PreparationStarted",
-
-    /**
-     * value: "CrashLoop"
-     * @const
-     */
-    "CrashLoop": "CrashLoop"
-};
 
 
 

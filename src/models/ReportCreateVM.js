@@ -12,7 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
-import ReportInfo from './ReportInfo';
+import FileCreateVM from './FileCreateVM';
 
 /**
  * The ReportCreateVM model module.
@@ -23,9 +23,10 @@ class ReportCreateVM {
     /**
      * Constructs a new <code>ReportCreateVM</code>.
      * @alias module:models/ReportCreateVM
+     * @implements module:models/FileCreateVM
      */
     constructor() { 
-        
+        FileCreateVM.initialize(this);
         ReportCreateVM.initialize(this);
     }
 
@@ -47,12 +48,10 @@ class ReportCreateVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new ReportCreateVM();
+            FileCreateVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('templateId')) {
                 obj['templateId'] = ApiClient.convertToType(data['templateId'], 'String');
-            }
-            if (data.hasOwnProperty('reportInfo')) {
-                obj['reportInfo'] = ReportInfo.constructFromObject(data['reportInfo']);
             }
             if (data.hasOwnProperty('name')) {
                 obj['name'] = ApiClient.convertToType(data['name'], 'String');
@@ -79,11 +78,6 @@ class ReportCreateVM {
 ReportCreateVM.prototype['templateId'] = undefined;
 
 /**
- * @member {module:models/ReportInfo} reportInfo
- */
-ReportCreateVM.prototype['reportInfo'] = undefined;
-
-/**
  * @member {String} name
  */
 ReportCreateVM.prototype['name'] = undefined;
@@ -104,6 +98,23 @@ ReportCreateVM.prototype['icon'] = undefined;
 ReportCreateVM.prototype['content'] = undefined;
 
 
+// Implement FileCreateVM interface:
+/**
+ * @member {String} name
+ */
+FileCreateVM.prototype['name'] = undefined;
+/**
+ * @member {Array.<String>} tags
+ */
+FileCreateVM.prototype['tags'] = undefined;
+/**
+ * @member {Blob} icon
+ */
+FileCreateVM.prototype['icon'] = undefined;
+/**
+ * @member {Blob} content
+ */
+FileCreateVM.prototype['content'] = undefined;
 
 
 

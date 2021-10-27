@@ -44,12 +44,12 @@ export default class GroupsApi {
     /**
      * Create a new user group
      * @param {Object} opts Optional parameters
-     * @param {module:models/CreateGroupVM} opts.viewModel Model for creating
+     * @param {module:models/CreateGroupVM} opts.createGroupVM Model for creating
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/GroupVM} and HTTP response
      */
     groupsCreateGroupWithHttpInfo(opts) {
       opts = opts || {};
-      let postBody = opts['viewModel'];
+      let postBody = opts['createGroupVM'];
 
       let pathParams = {
       };
@@ -61,8 +61,8 @@ export default class GroupsApi {
       };
 
       let authNames = ['ApiKey', 'JWT'];
-      let contentTypes = ['application/json-patch+json', 'application/json', 'text/json', 'application/_*+json'];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let contentTypes = ['application/json', 'text/json', 'application/_*+json'];
+      let accepts = ['application/json'];
       let returnType = GroupVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -75,7 +75,7 @@ export default class GroupsApi {
     /**
      * Create a new user group
      * @param {Object} opts Optional parameters
-     * @param {module:models/CreateGroupVM} opts.viewModel Model for creating
+     * @param {module:models/CreateGroupVM} opts.createGroupVM Model for creating
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/GroupVM}
      */
     groupsCreateGroup(opts) {
@@ -110,7 +110,7 @@ export default class GroupsApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let accepts = ['application/json'];
       let returnType = null;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -157,7 +157,7 @@ export default class GroupsApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let accepts = ['application/json'];
       let returnType = GroupVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -204,7 +204,7 @@ export default class GroupsApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let accepts = ['application/json'];
       let returnType = GroupsVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -253,7 +253,7 @@ export default class GroupsApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let accepts = ['application/json'];
       let returnType = GroupPermissionsVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -279,18 +279,18 @@ export default class GroupsApi {
     /**
      * Rename group by identifier
      * @param {String} id Identifier of group
-     * @param {module:models/RenameGroupVM} viewModel Model for renaming
+     * @param {module:models/RenameGroupVM} renameGroupVM Model for renaming
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/GroupVM} and HTTP response
      */
-    groupsRenameGroupWithHttpInfo(id, viewModel) {
-      let postBody = viewModel;
+    groupsRenameGroupWithHttpInfo(id, renameGroupVM) {
+      let postBody = renameGroupVM;
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
         throw new Error("Missing the required parameter 'id' when calling groupsRenameGroup");
       }
-      // verify the required parameter 'viewModel' is set
-      if (viewModel === undefined || viewModel === null) {
-        throw new Error("Missing the required parameter 'viewModel' when calling groupsRenameGroup");
+      // verify the required parameter 'renameGroupVM' is set
+      if (renameGroupVM === undefined || renameGroupVM === null) {
+        throw new Error("Missing the required parameter 'renameGroupVM' when calling groupsRenameGroup");
       }
 
       let pathParams = {
@@ -304,8 +304,8 @@ export default class GroupsApi {
       };
 
       let authNames = ['ApiKey', 'JWT'];
-      let contentTypes = ['application/json-patch+json', 'application/json', 'text/json', 'application/_*+json'];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let contentTypes = ['application/json', 'text/json', 'application/_*+json'];
+      let accepts = ['application/json'];
       let returnType = GroupVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -318,11 +318,11 @@ export default class GroupsApi {
     /**
      * Rename group by identifier
      * @param {String} id Identifier of group
-     * @param {module:models/RenameGroupVM} viewModel Model for renaming
+     * @param {module:models/RenameGroupVM} renameGroupVM Model for renaming
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/GroupVM}
      */
-    groupsRenameGroup(id, viewModel) {
-      return this.groupsRenameGroupWithHttpInfo(id, viewModel)
+    groupsRenameGroup(id, renameGroupVM) {
+      return this.groupsRenameGroupWithHttpInfo(id, renameGroupVM)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -333,12 +333,12 @@ export default class GroupsApi {
      * Update permissions
      * @param {String} id 
      * @param {Object} opts Optional parameters
-     * @param {module:models/UpdateGroupPermissionsVM} opts.permissionsVM 
+     * @param {module:models/UpdateGroupPermissionsVM} opts.updateGroupPermissionsVM 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
     groupsUpdatePermissionsWithHttpInfo(id, opts) {
       opts = opts || {};
-      let postBody = opts['permissionsVM'];
+      let postBody = opts['updateGroupPermissionsVM'];
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
         throw new Error("Missing the required parameter 'id' when calling groupsUpdatePermissions");
@@ -355,8 +355,8 @@ export default class GroupsApi {
       };
 
       let authNames = ['ApiKey', 'JWT'];
-      let contentTypes = ['application/json-patch+json', 'application/json', 'text/json', 'application/_*+json'];
-      let accepts = ['application/json', 'text/json', 'text/plain'];
+      let contentTypes = ['application/json', 'text/json', 'application/_*+json'];
+      let accepts = ['application/json'];
       let returnType = null;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -370,7 +370,7 @@ export default class GroupsApi {
      * Update permissions
      * @param {String} id 
      * @param {Object} opts Optional parameters
-     * @param {module:models/UpdateGroupPermissionsVM} opts.permissionsVM 
+     * @param {module:models/UpdateGroupPermissionsVM} opts.updateGroupPermissionsVM 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
     groupsUpdatePermissions(id, opts) {
