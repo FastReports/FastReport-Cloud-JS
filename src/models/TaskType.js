@@ -61,6 +61,20 @@ export default class TaskType {
         "Webhook" = "Webhook";
 
     
+        /**
+         * value: "ThumbnailTemplate"
+         * @const
+         */
+        "ThumbnailTemplate" = "ThumbnailTemplate";
+
+    
+        /**
+         * value: "ThumbnailReport"
+         * @const
+         */
+        "ThumbnailReport" = "ThumbnailReport";
+
+    
 
     /**
     * Returns a <code>TaskType</code> enum value from a Javascript object name.

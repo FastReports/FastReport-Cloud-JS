@@ -12,23 +12,23 @@
  */
 
 import ApiClient from '../ApiClient';
+import RunTransformTaskBaseVM from './RunTransformTaskBaseVM';
 import TaskType from './TaskType';
-import TransformTaskBaseVM from './TransformTaskBaseVM';
 
 /**
- * The FetchTaskVM model module.
- * @module models/FetchTaskVM
+ * The RunThumbnailReportTaskVM model module.
+ * @module models/RunThumbnailReportTaskVM
  * @version v1
  */
-class FetchTaskVM {
+class RunThumbnailReportTaskVM {
     /**
-     * Constructs a new <code>FetchTaskVM</code>.
-     * @alias module:models/FetchTaskVM
-     * @implements module:models/TransformTaskBaseVM
+     * Constructs a new <code>RunThumbnailReportTaskVM</code>.
+     * @alias module:models/RunThumbnailReportTaskVM
+     * @implements module:models/RunTransformTaskBaseVM
      */
     constructor() { 
-        TransformTaskBaseVM.initialize(this);
-        FetchTaskVM.initialize(this);
+        RunTransformTaskBaseVM.initialize(this);
+        RunThumbnailReportTaskVM.initialize(this);
     }
 
     /**
@@ -40,20 +40,17 @@ class FetchTaskVM {
     }
 
     /**
-     * Constructs a <code>FetchTaskVM</code> from a plain JavaScript object, optionally creating a new instance.
+     * Constructs a <code>RunThumbnailReportTaskVM</code> from a plain JavaScript object, optionally creating a new instance.
      * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:models/FetchTaskVM} obj Optional instance to populate.
-     * @return {module:models/FetchTaskVM} The populated <code>FetchTaskVM</code> instance.
+     * @param {module:models/RunThumbnailReportTaskVM} obj Optional instance to populate.
+     * @return {module:models/RunThumbnailReportTaskVM} The populated <code>RunThumbnailReportTaskVM</code> instance.
      */
     static constructFromObject(data, obj) {
         if (data) {
-            obj = obj || new FetchTaskVM();
-            TransformTaskBaseVM.constructFromObject(data, obj);
+            obj = obj || new RunThumbnailReportTaskVM();
+            RunTransformTaskBaseVM.constructFromObject(data, obj);
 
-            if (data.hasOwnProperty('name')) {
-                obj['name'] = ApiClient.convertToType(data['name'], 'String');
-            }
             if (data.hasOwnProperty('subscriptionId')) {
                 obj['subscriptionId'] = ApiClient.convertToType(data['subscriptionId'], 'String');
             }
@@ -68,37 +65,28 @@ class FetchTaskVM {
 }
 
 /**
- * @member {String} name
- */
-FetchTaskVM.prototype['name'] = undefined;
-
-/**
  * @member {String} subscriptionId
  */
-FetchTaskVM.prototype['subscriptionId'] = undefined;
+RunThumbnailReportTaskVM.prototype['subscriptionId'] = undefined;
 
 /**
  * @member {module:models/TaskType} type
  */
-FetchTaskVM.prototype['type'] = undefined;
+RunThumbnailReportTaskVM.prototype['type'] = undefined;
 
 
-// Implement TransformTaskBaseVM interface:
-/**
- * @member {String} name
- */
-TransformTaskBaseVM.prototype['name'] = undefined;
+// Implement RunTransformTaskBaseVM interface:
 /**
  * @member {String} subscriptionId
  */
-TransformTaskBaseVM.prototype['subscriptionId'] = undefined;
+RunTransformTaskBaseVM.prototype['subscriptionId'] = undefined;
 /**
  * @member {module:models/TaskType} type
  */
-TransformTaskBaseVM.prototype['type'] = undefined;
+RunTransformTaskBaseVM.prototype['type'] = undefined;
 
 
 
 
-export default FetchTaskVM;
+export default RunThumbnailReportTaskVM;
 

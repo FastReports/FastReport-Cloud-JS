@@ -1,4 +1,4 @@
-# FastreportCloudSdk.FetchTaskVM
+# FastreportCloudSdk.ThumbnailTemplateTaskVM
 
 ## Properties
 

@@ -10,14 +10,15 @@ Method | HTTP request | Description
 [**downloadGetReport**](DownloadApi.md#downloadGetReport) | **GET** /download/r/{id} | Returns a prepared file with specified id
 [**downloadGetReportThumbnail**](DownloadApi.md#downloadGetReportThumbnail) | **GET** /download/r/{id}/thumbnail | Returns report&#39;s thumbnail
 [**downloadGetReports**](DownloadApi.md#downloadGetReports) | **GET** /download/rs/{archiveName} | Returns a zip archive with selected files
-[**downloadGetTemplate**](DownloadApi.md#downloadGetTemplate) | **GET** /download/t/{id} | Returns a report file with specified id
+[**downloadGetTemplate**](DownloadApi.md#downloadGetTemplate) | **GET** /download/t/{id} | Returns a Template file with specified id
+[**downloadGetTemplateThumbnail**](DownloadApi.md#downloadGetTemplateThumbnail) | **GET** /download/t/{id}/thumbnail | Returns template&#39;s thumbnail
 [**downloadGetTemplates**](DownloadApi.md#downloadGetTemplates) | **GET** /download/ts/{archiveName} | Returns a zip archive with selected files
 
 
 
 ## downloadGetExport
 
-> File downloadGetExport(id)
+> File downloadGetExport(id, opts)
 
 Returns a export file with specified id
 
@@ -36,7 +37,10 @@ JWT.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new FastreportCloudSdk.DownloadApi();
 let id = "id_example"; // String | 
-apiInstance.downloadGetExport(id).then((data) => {
+let opts = {
+  'preview': false // Boolean | 
+};
+apiInstance.downloadGetExport(id, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -50,6 +54,7 @@ apiInstance.downloadGetExport(id).then((data) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**|  | 
+ **preview** | **Boolean**|  | [optional] [default to false]
 
 ### Return type
 
@@ -62,7 +67,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/octet-stream, application/json
+- **Accept**: application/octet-stream, application/pdf, application/json
 
 
 ## downloadGetExportThumbnail
@@ -112,7 +117,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: image/jpeg, application/json
+- **Accept**: image/png, image/jpeg, application/json
 
 
 ## downloadGetExports
@@ -266,7 +271,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: image/jpeg, application/json
+- **Accept**: image/png, image/jpeg, application/json
 
 
 ## downloadGetReports
@@ -327,7 +332,7 @@ Name | Type | Description  | Notes
 
 > File downloadGetTemplate(id)
 
-Returns a report file with specified id
+Returns a Template file with specified id
 
 ### Example
 
@@ -371,6 +376,56 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/octet-stream, application/json
+
+
+## downloadGetTemplateThumbnail
+
+> File downloadGetTemplateThumbnail(id)
+
+Returns template&#39;s thumbnail
+
+### Example
+
+```javascript
+import FastreportCloudSdk from 'fastreport-cloud-sdk';
+let defaultClient = FastreportCloudSdk.ApiClient.instance;
+// Configure HTTP basic authorization: ApiKey
+let ApiKey = defaultClient.authentications['ApiKey'];
+ApiKey.username = 'YOUR USERNAME';
+ApiKey.password = 'YOUR PASSWORD';
+// Configure Bearer (JWT) access token for authorization: JWT
+let JWT = defaultClient.authentications['JWT'];
+JWT.accessToken = "YOUR ACCESS TOKEN"
+
+let apiInstance = new FastreportCloudSdk.DownloadApi();
+let id = "id_example"; // String | 
+apiInstance.downloadGetTemplateThumbnail(id).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**|  | 
+
+### Return type
+
+**File**
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [JWT](../README.md#JWT)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: image/png, image/jpeg, application/json
 
 
 ## downloadGetTemplates

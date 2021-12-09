@@ -28,7 +28,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new FastreportCloudSdk.RunFetchTaskVM();
+    instance = new FastreportCloudSdk.AuthConfigVM();
   });
 
   var getProperty = function(object, getter, property) {
@@ -47,22 +47,28 @@
       object[property] = value;
   }
 
-  describe('RunFetchTaskVM', function() {
-    it('should create an instance of RunFetchTaskVM', function() {
-      // uncomment below and update the code to test RunFetchTaskVM
-      //var instane = new FastreportCloudSdk.RunFetchTaskVM();
-      //expect(instance).to.be.a(FastreportCloudSdk.RunFetchTaskVM);
+  describe('AuthConfigVM', function() {
+    it('should create an instance of AuthConfigVM', function() {
+      // uncomment below and update the code to test AuthConfigVM
+      //var instane = new FastreportCloudSdk.AuthConfigVM();
+      //expect(instance).to.be.a(FastreportCloudSdk.AuthConfigVM);
     });
 
-    it('should have the property subscriptionId (base name: "subscriptionId")', function() {
-      // uncomment below and update the code to test the property subscriptionId
-      //var instance = new FastreportCloudSdk.RunFetchTaskVM();
+    it('should have the property useLocal (base name: "useLocal")', function() {
+      // uncomment below and update the code to test the property useLocal
+      //var instance = new FastreportCloudSdk.AuthConfigVM();
       //expect(instance).to.be();
     });
 
-    it('should have the property type (base name: "type")', function() {
-      // uncomment below and update the code to test the property type
-      //var instance = new FastreportCloudSdk.RunFetchTaskVM();
+    it('should have the property useOpenId (base name: "useOpenId")', function() {
+      // uncomment below and update the code to test the property useOpenId
+      //var instance = new FastreportCloudSdk.AuthConfigVM();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property authority (base name: "authority")', function() {
+      // uncomment below and update the code to test the property authority
+      //var instance = new FastreportCloudSdk.AuthConfigVM();
       //expect(instance).to.be();
     });
 

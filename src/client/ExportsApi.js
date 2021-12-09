@@ -55,9 +55,12 @@ export default class ExportsApi {
      * Get count of files and folders what contains in a specified folder
      * User with a Get Count permission can access this method.
      * @param {String} id folder id
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.searchPattern string, that must be incuded in file or folder name to be counted <br />              (leave undefined to count all files and folders)
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/CountVM} and HTTP response
      */
-    exportFolderAndFileGetCountWithHttpInfo(id) {
+    exportFolderAndFileGetCountWithHttpInfo(id, opts) {
+      opts = opts || {};
       let postBody = null;
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
@@ -68,6 +71,7 @@ export default class ExportsApi {
         'id': id
       };
       let queryParams = {
+        'searchPattern': opts['searchPattern']
       };
       let headerParams = {
       };
@@ -90,10 +94,12 @@ export default class ExportsApi {
      * Get count of files and folders what contains in a specified folder
      * User with a Get Count permission can access this method.
      * @param {String} id folder id
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.searchPattern string, that must be incuded in file or folder name to be counted <br />              (leave undefined to count all files and folders)
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/CountVM}
      */
-    exportFolderAndFileGetCount(id) {
-      return this.exportFolderAndFileGetCountWithHttpInfo(id)
+    exportFolderAndFileGetCount(id, opts) {
+      return this.exportFolderAndFileGetCountWithHttpInfo(id, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -1109,6 +1115,7 @@ export default class ExportsApi {
      * @param {Object} opts Optional parameters
      * @param {Number} opts.skip number of files, that have to be skipped (default to 0)
      * @param {Number} opts.take number of files, that have to be returned (default to 10)
+     * @param {String} opts.searchPattern 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/ExportsVM} and HTTP response
      */
     exportsGetFilesListWithHttpInfo(id, opts) {
@@ -1124,7 +1131,8 @@ export default class ExportsApi {
       };
       let queryParams = {
         'skip': opts['skip'],
-        'take': opts['take']
+        'take': opts['take'],
+        'searchPattern': opts['searchPattern']
       };
       let headerParams = {
       };
@@ -1149,6 +1157,7 @@ export default class ExportsApi {
      * @param {Object} opts Optional parameters
      * @param {Number} opts.skip number of files, that have to be skipped (default to 0)
      * @param {Number} opts.take number of files, that have to be returned (default to 10)
+     * @param {String} opts.searchPattern 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/ExportsVM}
      */
     exportsGetFilesList(id, opts) {

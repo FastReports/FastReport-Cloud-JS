@@ -38,9 +38,12 @@ export default class DownloadApi {
     /**
      * Returns a export file with specified id
      * @param {String} id 
+     * @param {Object} opts Optional parameters
+     * @param {Boolean} opts.preview  (default to false)
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link File} and HTTP response
      */
-    downloadGetExportWithHttpInfo(id) {
+    downloadGetExportWithHttpInfo(id, opts) {
+      opts = opts || {};
       let postBody = null;
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
@@ -51,6 +54,7 @@ export default class DownloadApi {
         'id': id
       };
       let queryParams = {
+        'preview': opts['preview']
       };
       let headerParams = {
       };
@@ -59,7 +63,7 @@ export default class DownloadApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['application/octet-stream', 'application/json'];
+      let accepts = ['application/octet-stream', 'application/pdf', 'application/json'];
       let returnType = File;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -72,10 +76,12 @@ export default class DownloadApi {
     /**
      * Returns a export file with specified id
      * @param {String} id 
+     * @param {Object} opts Optional parameters
+     * @param {Boolean} opts.preview  (default to false)
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link File}
      */
-    downloadGetExport(id) {
-      return this.downloadGetExportWithHttpInfo(id)
+    downloadGetExport(id, opts) {
+      return this.downloadGetExportWithHttpInfo(id, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -106,7 +112,7 @@ export default class DownloadApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['image/jpeg', 'application/json'];
+      let accepts = ['image/png', 'image/jpeg', 'application/json'];
       let returnType = File;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -253,7 +259,7 @@ export default class DownloadApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['image/jpeg', 'application/json'];
+      let accepts = ['image/png', 'image/jpeg', 'application/json'];
       let returnType = File;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -330,7 +336,7 @@ export default class DownloadApi {
 
 
     /**
-     * Returns a report file with specified id
+     * Returns a Template file with specified id
      * @param {String} id template id
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link File} and HTTP response
      */
@@ -364,12 +370,59 @@ export default class DownloadApi {
     }
 
     /**
-     * Returns a report file with specified id
+     * Returns a Template file with specified id
      * @param {String} id template id
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link File}
      */
     downloadGetTemplate(id) {
       return this.downloadGetTemplateWithHttpInfo(id)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Returns template's thumbnail
+     * @param {String} id 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link File} and HTTP response
+     */
+    downloadGetTemplateThumbnailWithHttpInfo(id) {
+      let postBody = null;
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling downloadGetTemplateThumbnail");
+      }
+
+      let pathParams = {
+        'id': id
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKey', 'JWT'];
+      let contentTypes = [];
+      let accepts = ['image/png', 'image/jpeg', 'application/json'];
+      let returnType = File;
+      if(!returnType) returnType = 'Blob';
+      return this.apiClient.callApi(
+        '/download/t/{id}/thumbnail', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Returns template's thumbnail
+     * @param {String} id 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link File}
+     */
+    downloadGetTemplateThumbnail(id) {
+      return this.downloadGetTemplateThumbnailWithHttpInfo(id)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

@@ -65,6 +65,12 @@ class TaskSettingsVM {
             if (data.hasOwnProperty('fetchData')) {
                 obj['fetchData'] = ApiClient.convertToType(data['fetchData'], 'Boolean');
             }
+            if (data.hasOwnProperty('thumbnailReport')) {
+                obj['thumbnailReport'] = ApiClient.convertToType(data['thumbnailReport'], 'Boolean');
+            }
+            if (data.hasOwnProperty('thumbnailTemplate')) {
+                obj['thumbnailTemplate'] = ApiClient.convertToType(data['thumbnailTemplate'], 'Boolean');
+            }
         }
         return obj;
     }
@@ -101,6 +107,16 @@ TaskSettingsVM.prototype['sendViaWebhook'] = undefined;
  * @member {Boolean} fetchData
  */
 TaskSettingsVM.prototype['fetchData'] = undefined;
+
+/**
+ * @member {Boolean} thumbnailReport
+ */
+TaskSettingsVM.prototype['thumbnailReport'] = undefined;
+
+/**
+ * @member {Boolean} thumbnailTemplate
+ */
+TaskSettingsVM.prototype['thumbnailTemplate'] = undefined;
 
 
 

@@ -10,5 +10,7 @@ Name | Type | Description | Notes
 **sendViaEmail** | **Boolean** |  | [optional] 
 **sendViaWebhook** | **Boolean** |  | [optional] 
 **fetchData** | **Boolean** |  | [optional] 
+**thumbnailReport** | **Boolean** |  | [optional] 
+**thumbnailTemplate** | **Boolean** |  | [optional] 
 
 

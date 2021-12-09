@@ -58,9 +58,6 @@ class ExportCreateAdminVM {
             if (data.hasOwnProperty('parentId')) {
                 obj['parentId'] = ApiClient.convertToType(data['parentId'], 'String');
             }
-            if (data.hasOwnProperty('templateId')) {
-                obj['templateId'] = ApiClient.convertToType(data['templateId'], 'String');
-            }
             if (data.hasOwnProperty('name')) {
                 obj['name'] = ApiClient.convertToType(data['name'], 'String');
             }
@@ -89,11 +86,6 @@ ExportCreateAdminVM.prototype['ownerId'] = undefined;
  * @member {String} parentId
  */
 ExportCreateAdminVM.prototype['parentId'] = undefined;
-
-/**
- * @member {String} templateId
- */
-ExportCreateAdminVM.prototype['templateId'] = undefined;
 
 /**
  * @member {String} name

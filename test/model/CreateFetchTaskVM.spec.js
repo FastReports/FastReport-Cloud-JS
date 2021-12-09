@@ -54,18 +54,6 @@
       //expect(instance).to.be.a(FastreportCloudSdk.CreateFetchTaskVM);
     });
 
-    it('should have the property connectionType (base name: "connectionType")', function() {
-      // uncomment below and update the code to test the property connectionType
-      //var instance = new FastreportCloudSdk.CreateFetchTaskVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property connectionString (base name: "connectionString")', function() {
-      // uncomment below and update the code to test the property connectionString
-      //var instance = new FastreportCloudSdk.CreateFetchTaskVM();
-      //expect(instance).to.be();
-    });
-
     it('should have the property name (base name: "name")', function() {
       // uncomment below and update the code to test the property name
       //var instance = new FastreportCloudSdk.CreateFetchTaskVM();

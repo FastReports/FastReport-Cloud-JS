@@ -13,7 +13,6 @@
 
 import ApiClient from '../ApiClient';
 import CreateTransformTaskBaseVM from './CreateTransformTaskBaseVM';
-import DataSourceConnectionType from './DataSourceConnectionType';
 import TaskType from './TaskType';
 
 /**
@@ -38,7 +37,6 @@ class CreateFetchTaskVM {
      * Only for internal use.
      */
     static initialize(obj) { 
-        obj['connectionString'] = connectionString;
     }
 
     /**
@@ -53,12 +51,6 @@ class CreateFetchTaskVM {
             obj = obj || new CreateFetchTaskVM();
             CreateTransformTaskBaseVM.constructFromObject(data, obj);
 
-            if (data.hasOwnProperty('connectionType')) {
-                obj['connectionType'] = DataSourceConnectionType.constructFromObject(data['connectionType']);
-            }
-            if (data.hasOwnProperty('connectionString')) {
-                obj['connectionString'] = ApiClient.convertToType(data['connectionString'], 'String');
-            }
             if (data.hasOwnProperty('name')) {
                 obj['name'] = ApiClient.convertToType(data['name'], 'String');
             }
@@ -74,16 +66,6 @@ class CreateFetchTaskVM {
 
 
 }
-
-/**
- * @member {module:models/DataSourceConnectionType} connectionType
- */
-CreateFetchTaskVM.prototype['connectionType'] = undefined;
-
-/**
- * @member {String} connectionString
- */
-CreateFetchTaskVM.prototype['connectionString'] = undefined;
 
 /**
  * @member {String} name

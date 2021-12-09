@@ -28,7 +28,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new FastreportCloudSdk.RunFetchTaskVM();
+    instance = new FastreportCloudSdk.RunThumbnailReportTaskVM();
   });
 
   var getProperty = function(object, getter, property) {
@@ -47,22 +47,22 @@
       object[property] = value;
   }
 
-  describe('RunFetchTaskVM', function() {
-    it('should create an instance of RunFetchTaskVM', function() {
-      // uncomment below and update the code to test RunFetchTaskVM
-      //var instane = new FastreportCloudSdk.RunFetchTaskVM();
-      //expect(instance).to.be.a(FastreportCloudSdk.RunFetchTaskVM);
+  describe('RunThumbnailReportTaskVM', function() {
+    it('should create an instance of RunThumbnailReportTaskVM', function() {
+      // uncomment below and update the code to test RunThumbnailReportTaskVM
+      //var instane = new FastreportCloudSdk.RunThumbnailReportTaskVM();
+      //expect(instance).to.be.a(FastreportCloudSdk.RunThumbnailReportTaskVM);
     });
 
     it('should have the property subscriptionId (base name: "subscriptionId")', function() {
       // uncomment below and update the code to test the property subscriptionId
-      //var instance = new FastreportCloudSdk.RunFetchTaskVM();
+      //var instance = new FastreportCloudSdk.RunThumbnailReportTaskVM();
       //expect(instance).to.be();
     });
 
     it('should have the property type (base name: "type")', function() {
       // uncomment below and update the code to test the property type
-      //var instance = new FastreportCloudSdk.RunFetchTaskVM();
+      //var instance = new FastreportCloudSdk.RunThumbnailReportTaskVM();
       //expect(instance).to.be();
     });
 

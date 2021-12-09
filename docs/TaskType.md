@@ -15,4 +15,8 @@
 
 * `Webhook` (value: `"Webhook"`)
 
+* `ThumbnailTemplate` (value: `"ThumbnailTemplate"`)
+
+* `ThumbnailReport` (value: `"ThumbnailReport"`)
+
 

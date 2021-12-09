@@ -14,6 +14,7 @@ docs/ApiKeyVM.md
 docs/ApiKeysApi.md
 docs/ApiKeysVM.md
 docs/AppMixins.md
+docs/AuthConfigVM.md
 docs/BreadcrumbsModel.md
 docs/BreadcrumbsVM.md
 docs/ConfigurationApi.md
@@ -31,6 +32,8 @@ docs/CreateGroupVM.md
 docs/CreatePrepareTemplateTaskVM.md
 docs/CreateSubscriptionInviteVM.md
 docs/CreateTaskBaseVM.md
+docs/CreateThumbnailReportTaskVM.md
+docs/CreateThumbnailTemplateTaskVM.md
 docs/CreateTransformTaskBaseVM.md
 docs/CreateTransportTaskBaseVM.md
 docs/CreateWebhookTaskVM.md
@@ -143,6 +146,8 @@ docs/RunFetchTaskVM.md
 docs/RunInputFileVM.md
 docs/RunPrepareTemplateTaskVM.md
 docs/RunTaskBaseVM.md
+docs/RunThumbnailReportTaskVM.md
+docs/RunThumbnailTemplateTaskVM.md
 docs/RunTransformTaskBaseVM.md
 docs/RunTransportTaskBaseVM.md
 docs/RunWebhookTaskVM.md
@@ -186,6 +191,8 @@ docs/TemplateVM.md
 docs/TemplateVMFilesVMBase.md
 docs/TemplatesApi.md
 docs/TemplatesVM.md
+docs/ThumbnailReportTaskVM.md
+docs/ThumbnailTemplateTaskVM.md
 docs/TimePeriodType.md
 docs/TransformTaskBaseVM.md
 docs/TransportTaskBaseVM.md
@@ -236,6 +243,7 @@ src/models/AdminTemplateFolderCreateVM.js
 src/models/ApiKeyVM.js
 src/models/ApiKeysVM.js
 src/models/AppMixins.js
+src/models/AuthConfigVM.js
 src/models/BreadcrumbsModel.js
 src/models/BreadcrumbsVM.js
 src/models/CountVM.js
@@ -252,6 +260,8 @@ src/models/CreateGroupVM.js
 src/models/CreatePrepareTemplateTaskVM.js
 src/models/CreateSubscriptionInviteVM.js
 src/models/CreateTaskBaseVM.js
+src/models/CreateThumbnailReportTaskVM.js
+src/models/CreateThumbnailTemplateTaskVM.js
 src/models/CreateTransformTaskBaseVM.js
 src/models/CreateTransportTaskBaseVM.js
 src/models/CreateWebhookTaskVM.js
@@ -357,6 +367,8 @@ src/models/RunFetchTaskVM.js
 src/models/RunInputFileVM.js
 src/models/RunPrepareTemplateTaskVM.js
 src/models/RunTaskBaseVM.js
+src/models/RunThumbnailReportTaskVM.js
+src/models/RunThumbnailTemplateTaskVM.js
 src/models/RunTransformTaskBaseVM.js
 src/models/RunTransportTaskBaseVM.js
 src/models/RunWebhookTaskVM.js
@@ -393,6 +405,8 @@ src/models/TemplateFolderCreateVM.js
 src/models/TemplateVM.js
 src/models/TemplateVMFilesVMBase.js
 src/models/TemplatesVM.js
+src/models/ThumbnailReportTaskVM.js
+src/models/ThumbnailTemplateTaskVM.js
 src/models/TimePeriodType.js
 src/models/TransformTaskBaseVM.js
 src/models/TransportTaskBaseVM.js
@@ -436,6 +450,7 @@ test/model/AdminTemplateFolderCreateVM.spec.js
 test/model/ApiKeyVM.spec.js
 test/model/ApiKeysVM.spec.js
 test/model/AppMixins.spec.js
+test/model/AuthConfigVM.spec.js
 test/model/BreadcrumbsModel.spec.js
 test/model/BreadcrumbsVM.spec.js
 test/model/CountVM.spec.js
@@ -452,6 +467,8 @@ test/model/CreateGroupVM.spec.js
 test/model/CreatePrepareTemplateTaskVM.spec.js
 test/model/CreateSubscriptionInviteVM.spec.js
 test/model/CreateTaskBaseVM.spec.js
+test/model/CreateThumbnailReportTaskVM.spec.js
+test/model/CreateThumbnailTemplateTaskVM.spec.js
 test/model/CreateTransformTaskBaseVM.spec.js
 test/model/CreateTransportTaskBaseVM.spec.js
 test/model/CreateWebhookTaskVM.spec.js
@@ -557,6 +574,8 @@ test/model/RunFetchTaskVM.spec.js
 test/model/RunInputFileVM.spec.js
 test/model/RunPrepareTemplateTaskVM.spec.js
 test/model/RunTaskBaseVM.spec.js
+test/model/RunThumbnailReportTaskVM.spec.js
+test/model/RunThumbnailTemplateTaskVM.spec.js
 test/model/RunTransformTaskBaseVM.spec.js
 test/model/RunTransportTaskBaseVM.spec.js
 test/model/RunWebhookTaskVM.spec.js
@@ -593,6 +612,8 @@ test/model/TemplateFolderCreateVM.spec.js
 test/model/TemplateVM.spec.js
 test/model/TemplateVMFilesVMBase.spec.js
 test/model/TemplatesVM.spec.js
+test/model/ThumbnailReportTaskVM.spec.js
+test/model/ThumbnailTemplateTaskVM.spec.js
 test/model/TimePeriodType.spec.js
 test/model/TransformTaskBaseVM.spec.js
 test/model/TransportTaskBaseVM.spec.js

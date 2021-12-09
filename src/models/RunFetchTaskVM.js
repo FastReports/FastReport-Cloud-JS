@@ -12,7 +12,6 @@
  */
 
 import ApiClient from '../ApiClient';
-import DataSourceConnectionType from './DataSourceConnectionType';
 import RunTransformTaskBaseVM from './RunTransformTaskBaseVM';
 import TaskType from './TaskType';
 
@@ -38,7 +37,6 @@ class RunFetchTaskVM {
      * Only for internal use.
      */
     static initialize(obj) { 
-        obj['connectionString'] = connectionString;
     }
 
     /**
@@ -53,12 +51,6 @@ class RunFetchTaskVM {
             obj = obj || new RunFetchTaskVM();
             RunTransformTaskBaseVM.constructFromObject(data, obj);
 
-            if (data.hasOwnProperty('connectionType')) {
-                obj['connectionType'] = DataSourceConnectionType.constructFromObject(data['connectionType']);
-            }
-            if (data.hasOwnProperty('connectionString')) {
-                obj['connectionString'] = ApiClient.convertToType(data['connectionString'], 'String');
-            }
             if (data.hasOwnProperty('subscriptionId')) {
                 obj['subscriptionId'] = ApiClient.convertToType(data['subscriptionId'], 'String');
             }
@@ -71,16 +63,6 @@ class RunFetchTaskVM {
 
 
 }
-
-/**
- * @member {module:models/DataSourceConnectionType} connectionType
- */
-RunFetchTaskVM.prototype['connectionType'] = undefined;
-
-/**
- * @member {String} connectionString
- */
-RunFetchTaskVM.prototype['connectionString'] = undefined;
 
 /**
  * @member {String} subscriptionId

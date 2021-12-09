@@ -118,6 +118,16 @@
         done();
       });
     });
+    describe('downloadGetTemplateThumbnail', function() {
+      it('should call downloadGetTemplateThumbnail successfully', function(done) {
+        //uncomment below and update the code to test downloadGetTemplateThumbnail
+        //instance.downloadGetTemplateThumbnail(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('downloadGetTemplates', function() {
       it('should call downloadGetTemplates successfully', function(done) {
         //uncomment below and update the code to test downloadGetTemplates

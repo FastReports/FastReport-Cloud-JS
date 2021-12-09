@@ -36,7 +36,7 @@ Method | HTTP request | Description
 
 ## exportFolderAndFileGetCount
 
-> CountVM exportFolderAndFileGetCount(id)
+> CountVM exportFolderAndFileGetCount(id, opts)
 
 Get count of files and folders what contains in a specified folder
 
@@ -57,7 +57,10 @@ JWT.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new FastreportCloudSdk.ExportsApi();
 let id = "id_example"; // String | folder id
-apiInstance.exportFolderAndFileGetCount(id).then((data) => {
+let opts = {
+  'searchPattern': "searchPattern_example" // String | string, that must be incuded in file or folder name to be counted <br />              (leave undefined to count all files and folders)
+};
+apiInstance.exportFolderAndFileGetCount(id, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -71,6 +74,7 @@ apiInstance.exportFolderAndFileGetCount(id).then((data) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| folder id | 
+ **searchPattern** | **String**| string, that must be incuded in file or folder name to be counted &lt;br /&gt;              (leave undefined to count all files and folders) | [optional] 
 
 ### Return type
 
@@ -1141,7 +1145,8 @@ let apiInstance = new FastreportCloudSdk.ExportsApi();
 let id = "id_example"; // String | folder id
 let opts = {
   'skip': 0, // Number | number of files, that have to be skipped
-  'take': 10 // Number | number of files, that have to be returned
+  'take': 10, // Number | number of files, that have to be returned
+  'searchPattern': "searchPattern_example" // String | 
 };
 apiInstance.exportsGetFilesList(id, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -1159,6 +1164,7 @@ Name | Type | Description  | Notes
  **id** | **String**| folder id | 
  **skip** | **Number**| number of files, that have to be skipped | [optional] [default to 0]
  **take** | **Number**| number of files, that have to be returned | [optional] [default to 10]
+ **searchPattern** | **String**|  | [optional] 
 
 ### Return type
 

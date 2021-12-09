@@ -21,6 +21,7 @@ import AdminTemplateFolderCreateVM from './models/AdminTemplateFolderCreateVM';
 import ApiKeyVM from './models/ApiKeyVM';
 import ApiKeysVM from './models/ApiKeysVM';
 import AppMixins from './models/AppMixins';
+import AuthConfigVM from './models/AuthConfigVM';
 import BreadcrumbsModel from './models/BreadcrumbsModel';
 import BreadcrumbsVM from './models/BreadcrumbsVM';
 import CountVM from './models/CountVM';
@@ -37,6 +38,8 @@ import CreateGroupVM from './models/CreateGroupVM';
 import CreatePrepareTemplateTaskVM from './models/CreatePrepareTemplateTaskVM';
 import CreateSubscriptionInviteVM from './models/CreateSubscriptionInviteVM';
 import CreateTaskBaseVM from './models/CreateTaskBaseVM';
+import CreateThumbnailReportTaskVM from './models/CreateThumbnailReportTaskVM';
+import CreateThumbnailTemplateTaskVM from './models/CreateThumbnailTemplateTaskVM';
 import CreateTransformTaskBaseVM from './models/CreateTransformTaskBaseVM';
 import CreateTransportTaskBaseVM from './models/CreateTransportTaskBaseVM';
 import CreateWebhookTaskVM from './models/CreateWebhookTaskVM';
@@ -142,6 +145,8 @@ import RunFetchTaskVM from './models/RunFetchTaskVM';
 import RunInputFileVM from './models/RunInputFileVM';
 import RunPrepareTemplateTaskVM from './models/RunPrepareTemplateTaskVM';
 import RunTaskBaseVM from './models/RunTaskBaseVM';
+import RunThumbnailReportTaskVM from './models/RunThumbnailReportTaskVM';
+import RunThumbnailTemplateTaskVM from './models/RunThumbnailTemplateTaskVM';
 import RunTransformTaskBaseVM from './models/RunTransformTaskBaseVM';
 import RunTransportTaskBaseVM from './models/RunTransportTaskBaseVM';
 import RunWebhookTaskVM from './models/RunWebhookTaskVM';
@@ -178,6 +183,8 @@ import TemplateFolderCreateVM from './models/TemplateFolderCreateVM';
 import TemplateVM from './models/TemplateVM';
 import TemplateVMFilesVMBase from './models/TemplateVMFilesVMBase';
 import TemplatesVM from './models/TemplatesVM';
+import ThumbnailReportTaskVM from './models/ThumbnailReportTaskVM';
+import ThumbnailTemplateTaskVM from './models/ThumbnailTemplateTaskVM';
 import TimePeriodType from './models/TimePeriodType';
 import TransformTaskBaseVM from './models/TransformTaskBaseVM';
 import TransportTaskBaseVM from './models/TransportTaskBaseVM';
@@ -302,6 +309,12 @@ export {
     AppMixins,
 
     /**
+     * The AuthConfigVM model constructor.
+     * @property {module:models/AuthConfigVM}
+     */
+    AuthConfigVM,
+
+    /**
      * The BreadcrumbsModel model constructor.
      * @property {module:models/BreadcrumbsModel}
      */
@@ -396,6 +409,18 @@ export {
      * @property {module:models/CreateTaskBaseVM}
      */
     CreateTaskBaseVM,
+
+    /**
+     * The CreateThumbnailReportTaskVM model constructor.
+     * @property {module:models/CreateThumbnailReportTaskVM}
+     */
+    CreateThumbnailReportTaskVM,
+
+    /**
+     * The CreateThumbnailTemplateTaskVM model constructor.
+     * @property {module:models/CreateThumbnailTemplateTaskVM}
+     */
+    CreateThumbnailTemplateTaskVM,
 
     /**
      * The CreateTransformTaskBaseVM model constructor.
@@ -1028,6 +1053,18 @@ export {
     RunTaskBaseVM,
 
     /**
+     * The RunThumbnailReportTaskVM model constructor.
+     * @property {module:models/RunThumbnailReportTaskVM}
+     */
+    RunThumbnailReportTaskVM,
+
+    /**
+     * The RunThumbnailTemplateTaskVM model constructor.
+     * @property {module:models/RunThumbnailTemplateTaskVM}
+     */
+    RunThumbnailTemplateTaskVM,
+
+    /**
      * The RunTransformTaskBaseVM model constructor.
      * @property {module:models/RunTransformTaskBaseVM}
      */
@@ -1242,6 +1279,18 @@ export {
      * @property {module:models/TemplatesVM}
      */
     TemplatesVM,
+
+    /**
+     * The ThumbnailReportTaskVM model constructor.
+     * @property {module:models/ThumbnailReportTaskVM}
+     */
+    ThumbnailReportTaskVM,
+
+    /**
+     * The ThumbnailTemplateTaskVM model constructor.
+     * @property {module:models/ThumbnailTemplateTaskVM}
+     */
+    ThumbnailTemplateTaskVM,
 
     /**
      * The TimePeriodType model constructor.

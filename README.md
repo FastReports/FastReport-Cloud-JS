@@ -91,7 +91,8 @@ Class | Method | HTTP request | Description
 *FastreportCloudSdk.DownloadApi* | [**downloadGetReport**](docs/DownloadApi.md#downloadGetReport) | **GET** /download/r/{id} | Returns a prepared file with specified id
 *FastreportCloudSdk.DownloadApi* | [**downloadGetReportThumbnail**](docs/DownloadApi.md#downloadGetReportThumbnail) | **GET** /download/r/{id}/thumbnail | Returns report&#39;s thumbnail
 *FastreportCloudSdk.DownloadApi* | [**downloadGetReports**](docs/DownloadApi.md#downloadGetReports) | **GET** /download/rs/{archiveName} | Returns a zip archive with selected files
-*FastreportCloudSdk.DownloadApi* | [**downloadGetTemplate**](docs/DownloadApi.md#downloadGetTemplate) | **GET** /download/t/{id} | Returns a report file with specified id
+*FastreportCloudSdk.DownloadApi* | [**downloadGetTemplate**](docs/DownloadApi.md#downloadGetTemplate) | **GET** /download/t/{id} | Returns a Template file with specified id
+*FastreportCloudSdk.DownloadApi* | [**downloadGetTemplateThumbnail**](docs/DownloadApi.md#downloadGetTemplateThumbnail) | **GET** /download/t/{id}/thumbnail | Returns template&#39;s thumbnail
 *FastreportCloudSdk.DownloadApi* | [**downloadGetTemplates**](docs/DownloadApi.md#downloadGetTemplates) | **GET** /download/ts/{archiveName} | Returns a zip archive with selected files
 *FastreportCloudSdk.ExportsApi* | [**exportFolderAndFileGetCount**](docs/ExportsApi.md#exportFolderAndFileGetCount) | **GET** /api/rp/v1/Exports/Folder/{id}/CountFolderAndFiles | Get count of files and folders what contains in a specified folder
 *FastreportCloudSdk.ExportsApi* | [**exportFolderAndFileGetFoldersAndFiles**](docs/ExportsApi.md#exportFolderAndFileGetFoldersAndFiles) | **GET** /api/rp/v1/Exports/Folder/{id}/ListFolderAndFiles | Get all folders and files from specified folder
@@ -127,7 +128,7 @@ Class | Method | HTTP request | Description
 *FastreportCloudSdk.GroupsApi* | [**groupsCreateGroup**](docs/GroupsApi.md#groupsCreateGroup) | **POST** /api/manage/v1/Groups | Create a new user group
 *FastreportCloudSdk.GroupsApi* | [**groupsDeleteGroup**](docs/GroupsApi.md#groupsDeleteGroup) | **DELETE** /api/manage/v1/Groups/{id} | Delete group by identifier
 *FastreportCloudSdk.GroupsApi* | [**groupsGetGroup**](docs/GroupsApi.md#groupsGetGroup) | **GET** /api/manage/v1/Groups/{id} | Gets group by identifier
-*FastreportCloudSdk.GroupsApi* | [**groupsGetGroupList**](docs/GroupsApi.md#groupsGetGroupList) | **GET** /api/manage/v1/Groups | Gets list of user groups
+*FastreportCloudSdk.GroupsApi* | [**groupsGetGroupList**](docs/GroupsApi.md#groupsGetGroupList) | **GET** /api/manage/v1/Groups | Returns a list of current user&#39;s groups&lt;br /&gt;  This method will return following data about groups : &lt;br /&gt;  Id, Name, Created time (UTC), Edited time (UTC), creator id, &lt;br /&gt;  editor id, subscription id
 *FastreportCloudSdk.GroupsApi* | [**groupsGetPermissions**](docs/GroupsApi.md#groupsGetPermissions) | **GET** /api/manage/v1/Groups/{id}/permissions | Gets group permissions by identifier
 *FastreportCloudSdk.GroupsApi* | [**groupsRenameGroup**](docs/GroupsApi.md#groupsRenameGroup) | **PUT** /api/manage/v1/Groups/{id}/rename | Rename group by identifier
 *FastreportCloudSdk.GroupsApi* | [**groupsUpdatePermissions**](docs/GroupsApi.md#groupsUpdatePermissions) | **POST** /api/manage/v1/Groups/{id}/permissions | Update permissions
@@ -234,6 +235,7 @@ Class | Method | HTTP request | Description
  - [FastreportCloudSdk.ApiKeyVM](docs/ApiKeyVM.md)
  - [FastreportCloudSdk.ApiKeysVM](docs/ApiKeysVM.md)
  - [FastreportCloudSdk.AppMixins](docs/AppMixins.md)
+ - [FastreportCloudSdk.AuthConfigVM](docs/AuthConfigVM.md)
  - [FastreportCloudSdk.BreadcrumbsModel](docs/BreadcrumbsModel.md)
  - [FastreportCloudSdk.BreadcrumbsVM](docs/BreadcrumbsVM.md)
  - [FastreportCloudSdk.CountVM](docs/CountVM.md)
@@ -250,6 +252,8 @@ Class | Method | HTTP request | Description
  - [FastreportCloudSdk.CreatePrepareTemplateTaskVM](docs/CreatePrepareTemplateTaskVM.md)
  - [FastreportCloudSdk.CreateSubscriptionInviteVM](docs/CreateSubscriptionInviteVM.md)
  - [FastreportCloudSdk.CreateTaskBaseVM](docs/CreateTaskBaseVM.md)
+ - [FastreportCloudSdk.CreateThumbnailReportTaskVM](docs/CreateThumbnailReportTaskVM.md)
+ - [FastreportCloudSdk.CreateThumbnailTemplateTaskVM](docs/CreateThumbnailTemplateTaskVM.md)
  - [FastreportCloudSdk.CreateTransformTaskBaseVM](docs/CreateTransformTaskBaseVM.md)
  - [FastreportCloudSdk.CreateTransportTaskBaseVM](docs/CreateTransportTaskBaseVM.md)
  - [FastreportCloudSdk.CreateWebhookTaskVM](docs/CreateWebhookTaskVM.md)
@@ -355,6 +359,8 @@ Class | Method | HTTP request | Description
  - [FastreportCloudSdk.RunInputFileVM](docs/RunInputFileVM.md)
  - [FastreportCloudSdk.RunPrepareTemplateTaskVM](docs/RunPrepareTemplateTaskVM.md)
  - [FastreportCloudSdk.RunTaskBaseVM](docs/RunTaskBaseVM.md)
+ - [FastreportCloudSdk.RunThumbnailReportTaskVM](docs/RunThumbnailReportTaskVM.md)
+ - [FastreportCloudSdk.RunThumbnailTemplateTaskVM](docs/RunThumbnailTemplateTaskVM.md)
  - [FastreportCloudSdk.RunTransformTaskBaseVM](docs/RunTransformTaskBaseVM.md)
  - [FastreportCloudSdk.RunTransportTaskBaseVM](docs/RunTransportTaskBaseVM.md)
  - [FastreportCloudSdk.RunWebhookTaskVM](docs/RunWebhookTaskVM.md)
@@ -391,6 +397,8 @@ Class | Method | HTTP request | Description
  - [FastreportCloudSdk.TemplateVM](docs/TemplateVM.md)
  - [FastreportCloudSdk.TemplateVMFilesVMBase](docs/TemplateVMFilesVMBase.md)
  - [FastreportCloudSdk.TemplatesVM](docs/TemplatesVM.md)
+ - [FastreportCloudSdk.ThumbnailReportTaskVM](docs/ThumbnailReportTaskVM.md)
+ - [FastreportCloudSdk.ThumbnailTemplateTaskVM](docs/ThumbnailTemplateTaskVM.md)
  - [FastreportCloudSdk.TimePeriodType](docs/TimePeriodType.md)
  - [FastreportCloudSdk.TransformTaskBaseVM](docs/TransformTaskBaseVM.md)
  - [FastreportCloudSdk.TransportTaskBaseVM](docs/TransportTaskBaseVM.md)

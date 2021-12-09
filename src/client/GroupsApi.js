@@ -181,7 +181,7 @@ export default class GroupsApi {
 
 
     /**
-     * Gets list of user groups
+     * Returns a list of current user's groups<br />  This method will return following data about groups : <br />  Id, Name, Created time (UTC), Edited time (UTC), creator id, <br />  editor id, subscription id
      * @param {Object} opts Optional parameters
      * @param {Number} opts.skip How many groups need to skip (default to 0)
      * @param {Number} opts.take How many groups need to take (default to 10)
@@ -215,7 +215,7 @@ export default class GroupsApi {
     }
 
     /**
-     * Gets list of user groups
+     * Returns a list of current user's groups<br />  This method will return following data about groups : <br />  Id, Name, Created time (UTC), Edited time (UTC), creator id, <br />  editor id, subscription id
      * @param {Object} opts Optional parameters
      * @param {Number} opts.skip How many groups need to skip (default to 0)
      * @param {Number} opts.take How many groups need to take (default to 10)

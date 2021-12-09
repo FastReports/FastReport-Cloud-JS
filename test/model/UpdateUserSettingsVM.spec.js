@@ -66,6 +66,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property showHiddenFilesAndFolders (base name: "showHiddenFilesAndFolders")', function() {
+      // uncomment below and update the code to test the property showHiddenFilesAndFolders
+      //var instance = new FastreportCloudSdk.UpdateUserSettingsVM();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

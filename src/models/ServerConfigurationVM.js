@@ -13,6 +13,7 @@
 
 import ApiClient from '../ApiClient';
 import AppMixins from './AppMixins';
+import AuthConfigVM from './AuthConfigVM';
 
 /**
  * The ServerConfigurationVM model module.
@@ -54,8 +55,14 @@ class ServerConfigurationVM {
             if (data.hasOwnProperty('corporateServerMode')) {
                 obj['corporateServerMode'] = ApiClient.convertToType(data['corporateServerMode'], 'Boolean');
             }
+            if (data.hasOwnProperty('isDisabled')) {
+                obj['isDisabled'] = ApiClient.convertToType(data['isDisabled'], 'Boolean');
+            }
             if (data.hasOwnProperty('appMixins')) {
                 obj['appMixins'] = AppMixins.constructFromObject(data['appMixins']);
+            }
+            if (data.hasOwnProperty('auth')) {
+                obj['auth'] = AuthConfigVM.constructFromObject(data['auth']);
             }
         }
         return obj;
@@ -75,9 +82,19 @@ ServerConfigurationVM.prototype['title'] = undefined;
 ServerConfigurationVM.prototype['corporateServerMode'] = undefined;
 
 /**
+ * @member {Boolean} isDisabled
+ */
+ServerConfigurationVM.prototype['isDisabled'] = undefined;
+
+/**
  * @member {module:models/AppMixins} appMixins
  */
 ServerConfigurationVM.prototype['appMixins'] = undefined;
+
+/**
+ * @member {module:models/AuthConfigVM} auth
+ */
+ServerConfigurationVM.prototype['auth'] = undefined;
 
 
 

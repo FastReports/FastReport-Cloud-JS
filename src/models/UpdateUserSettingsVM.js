@@ -54,6 +54,9 @@ class UpdateUserSettingsVM {
             if (data.hasOwnProperty('defaultSubscription')) {
                 obj['defaultSubscription'] = ApiClient.convertToType(data['defaultSubscription'], 'String');
             }
+            if (data.hasOwnProperty('showHiddenFilesAndFolders')) {
+                obj['showHiddenFilesAndFolders'] = ApiClient.convertToType(data['showHiddenFilesAndFolders'], 'Boolean');
+            }
         }
         return obj;
     }
@@ -70,6 +73,11 @@ UpdateUserSettingsVM.prototype['profileVisibility'] = undefined;
  * @member {String} defaultSubscription
  */
 UpdateUserSettingsVM.prototype['defaultSubscription'] = undefined;
+
+/**
+ * @member {Boolean} showHiddenFilesAndFolders
+ */
+UpdateUserSettingsVM.prototype['showHiddenFilesAndFolders'] = undefined;
 
 
 

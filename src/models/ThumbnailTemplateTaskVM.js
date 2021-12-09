@@ -16,19 +16,19 @@ import TaskType from './TaskType';
 import TransformTaskBaseVM from './TransformTaskBaseVM';
 
 /**
- * The FetchTaskVM model module.
- * @module models/FetchTaskVM
+ * The ThumbnailTemplateTaskVM model module.
+ * @module models/ThumbnailTemplateTaskVM
  * @version v1
  */
-class FetchTaskVM {
+class ThumbnailTemplateTaskVM {
     /**
-     * Constructs a new <code>FetchTaskVM</code>.
-     * @alias module:models/FetchTaskVM
+     * Constructs a new <code>ThumbnailTemplateTaskVM</code>.
+     * @alias module:models/ThumbnailTemplateTaskVM
      * @implements module:models/TransformTaskBaseVM
      */
     constructor() { 
         TransformTaskBaseVM.initialize(this);
-        FetchTaskVM.initialize(this);
+        ThumbnailTemplateTaskVM.initialize(this);
     }
 
     /**
@@ -40,15 +40,15 @@ class FetchTaskVM {
     }
 
     /**
-     * Constructs a <code>FetchTaskVM</code> from a plain JavaScript object, optionally creating a new instance.
+     * Constructs a <code>ThumbnailTemplateTaskVM</code> from a plain JavaScript object, optionally creating a new instance.
      * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:models/FetchTaskVM} obj Optional instance to populate.
-     * @return {module:models/FetchTaskVM} The populated <code>FetchTaskVM</code> instance.
+     * @param {module:models/ThumbnailTemplateTaskVM} obj Optional instance to populate.
+     * @return {module:models/ThumbnailTemplateTaskVM} The populated <code>ThumbnailTemplateTaskVM</code> instance.
      */
     static constructFromObject(data, obj) {
         if (data) {
-            obj = obj || new FetchTaskVM();
+            obj = obj || new ThumbnailTemplateTaskVM();
             TransformTaskBaseVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('name')) {
@@ -70,17 +70,17 @@ class FetchTaskVM {
 /**
  * @member {String} name
  */
-FetchTaskVM.prototype['name'] = undefined;
+ThumbnailTemplateTaskVM.prototype['name'] = undefined;
 
 /**
  * @member {String} subscriptionId
  */
-FetchTaskVM.prototype['subscriptionId'] = undefined;
+ThumbnailTemplateTaskVM.prototype['subscriptionId'] = undefined;
 
 /**
  * @member {module:models/TaskType} type
  */
-FetchTaskVM.prototype['type'] = undefined;
+ThumbnailTemplateTaskVM.prototype['type'] = undefined;
 
 
 // Implement TransformTaskBaseVM interface:
@@ -100,5 +100,5 @@ TransformTaskBaseVM.prototype['type'] = undefined;
 
 
 
-export default FetchTaskVM;
+export default ThumbnailTemplateTaskVM;
 

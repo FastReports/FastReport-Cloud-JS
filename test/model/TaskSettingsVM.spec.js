@@ -90,6 +90,18 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property thumbnailReport (base name: "thumbnailReport")', function() {
+      // uncomment below and update the code to test the property thumbnailReport
+      //var instance = new FastreportCloudSdk.TaskSettingsVM();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property thumbnailTemplate (base name: "thumbnailTemplate")', function() {
+      // uncomment below and update the code to test the property thumbnailTemplate
+      //var instance = new FastreportCloudSdk.TaskSettingsVM();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

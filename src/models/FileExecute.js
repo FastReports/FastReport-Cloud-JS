@@ -48,6 +48,13 @@ export default class FileExecute {
 
     
         /**
+         * value: 8
+         * @const
+         */
+        "8" = 8;
+
+    
+        /**
          * value: -1
          * @const
          */

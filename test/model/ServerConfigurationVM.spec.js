@@ -66,8 +66,20 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property isDisabled (base name: "isDisabled")', function() {
+      // uncomment below and update the code to test the property isDisabled
+      //var instance = new FastreportCloudSdk.ServerConfigurationVM();
+      //expect(instance).to.be();
+    });
+
     it('should have the property appMixins (base name: "appMixins")', function() {
       // uncomment below and update the code to test the property appMixins
+      //var instance = new FastreportCloudSdk.ServerConfigurationVM();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property auth (base name: "auth")', function() {
+      // uncomment below and update the code to test the property auth
       //var instance = new FastreportCloudSdk.ServerConfigurationVM();
       //expect(instance).to.be();
     });
