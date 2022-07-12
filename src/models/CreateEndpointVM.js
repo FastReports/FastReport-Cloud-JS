@@ -53,6 +53,9 @@ class CreateEndpointVM {
             if (data.hasOwnProperty('bearerToken')) {
                 obj['bearerToken'] = ApiClient.convertToType(data['bearerToken'], 'String');
             }
+            if (data.hasOwnProperty('headers')) {
+                obj['headers'] = ApiClient.convertToType(data['headers'], {'String': 'String'});
+            }
             if (data.hasOwnProperty('url')) {
                 obj['url'] = ApiClient.convertToType(data['url'], 'String');
             }
@@ -67,6 +70,11 @@ class CreateEndpointVM {
  * @member {String} bearerToken
  */
 CreateEndpointVM.prototype['bearerToken'] = undefined;
+
+/**
+ * @member {Object.<String, String>} headers
+ */
+CreateEndpointVM.prototype['headers'] = undefined;
 
 /**
  * @member {String} url

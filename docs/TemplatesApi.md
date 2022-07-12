@@ -61,7 +61,8 @@ JWT.accessToken = "YOUR ACCESS TOKEN"
 let apiInstance = new FastreportCloudSdk.TemplatesApi();
 let id = "id_example"; // String | folder id
 let opts = {
-  'searchPattern': "searchPattern_example" // String | string, that must be incuded in file or folder name to be counted <br />              (leave undefined to count all files and folders)
+  'searchPattern': "searchPattern_example", // String | string, that must be incuded in file or folder name to be counted <br />              (leave undefined to count all files and folders)
+  'useRegex': false // Boolean | set this to true if you want to use regular expression to search
 };
 apiInstance.templateFolderAndFileGetCount(id, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -78,6 +79,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| folder id | 
  **searchPattern** | **String**| string, that must be incuded in file or folder name to be counted &lt;br /&gt;              (leave undefined to count all files and folders) | [optional] 
+ **useRegex** | **Boolean**| set this to true if you want to use regular expression to search | [optional] [default to false]
 
 ### Return type
 
@@ -121,7 +123,8 @@ let opts = {
   'take': 10, // Number | number of folder and files, that have to be returned
   'orderBy': new FastreportCloudSdk.FileSorting(), // FileSorting | indicates a field to sort by
   'desc': false, // Boolean | indicates if sorting is descending
-  'searchPattern': "''" // String | 
+  'searchPattern': "''", // String | 
+  'useRegex': false // Boolean | 
 };
 apiInstance.templateFolderAndFileGetFoldersAndFiles(id, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -142,6 +145,7 @@ Name | Type | Description  | Notes
  **orderBy** | [**FileSorting**](.md)| indicates a field to sort by | [optional] 
  **desc** | **Boolean**| indicates if sorting is descending | [optional] [default to false]
  **searchPattern** | **String**|  | [optional] [default to &#39;&#39;]
+ **useRegex** | **Boolean**|  | [optional] [default to false]
 
 ### Return type
 
@@ -1205,7 +1209,10 @@ let id = "id_example"; // String | folder id
 let opts = {
   'skip': 0, // Number | number of files, that have to be skipped
   'take': 10, // Number | number of files, that have to be returned
-  'searchPattern': "searchPattern_example" // String | 
+  'searchPattern': "searchPattern_example", // String | 
+  'orderBy': new FastreportCloudSdk.FileSorting(), // FileSorting | 
+  'desc': false, // Boolean | 
+  'useRegex': false // Boolean | 
 };
 apiInstance.templatesGetFilesList(id, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -1224,6 +1231,9 @@ Name | Type | Description  | Notes
  **skip** | **Number**| number of files, that have to be skipped | [optional] [default to 0]
  **take** | **Number**| number of files, that have to be returned | [optional] [default to 10]
  **searchPattern** | **String**|  | [optional] 
+ **orderBy** | [**FileSorting**](.md)|  | [optional] 
+ **desc** | **Boolean**|  | [optional] [default to false]
+ **useRegex** | **Boolean**|  | [optional] [default to false]
 
 ### Return type
 

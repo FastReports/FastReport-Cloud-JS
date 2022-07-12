@@ -59,7 +59,7 @@ class SubscriptionPlanVM {
                 obj['displayName'] = ApiClient.convertToType(data['displayName'], 'String');
             }
             if (data.hasOwnProperty('timePeriodType')) {
-                obj['timePeriodType'] = TimePeriodType.constructFromObject(data['timePeriodType']);
+                obj['timePeriodType'] = ApiClient.convertToType(data['timePeriodType'], TimePeriodType);
             }
             if (data.hasOwnProperty('timePeriod')) {
                 obj['timePeriod'] = ApiClient.convertToType(data['timePeriod'], 'Number');
@@ -87,9 +87,6 @@ class SubscriptionPlanVM {
             }
             if (data.hasOwnProperty('maxUsersCount')) {
                 obj['maxUsersCount'] = ApiClient.convertToType(data['maxUsersCount'], 'Number');
-            }
-            if (data.hasOwnProperty('hasSpaceOverdraft')) {
-                obj['hasSpaceOverdraft'] = ApiClient.convertToType(data['hasSpaceOverdraft'], 'Boolean');
             }
             if (data.hasOwnProperty('groupLimit')) {
                 obj['groupLimit'] = ApiClient.convertToType(data['groupLimit'], 'Number');
@@ -183,11 +180,6 @@ SubscriptionPlanVM.prototype['dataSourceLimit'] = undefined;
  * @member {Number} maxUsersCount
  */
 SubscriptionPlanVM.prototype['maxUsersCount'] = undefined;
-
-/**
- * @member {Boolean} hasSpaceOverdraft
- */
-SubscriptionPlanVM.prototype['hasSpaceOverdraft'] = undefined;
 
 /**
  * @member {Number} groupLimit

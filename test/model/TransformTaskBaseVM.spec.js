@@ -96,6 +96,18 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property delayedRunTime (base name: "delayedRunTime")', function() {
+      // uncomment below and update the code to test the property delayedRunTime
+      //var instance = new FastreportCloudSdk.TransformTaskBaseVM();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property cronExpression (base name: "cronExpression")', function() {
+      // uncomment below and update the code to test the property cronExpression
+      //var instance = new FastreportCloudSdk.TransformTaskBaseVM();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

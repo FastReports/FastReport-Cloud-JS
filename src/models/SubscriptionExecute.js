@@ -27,6 +27,13 @@ export default class SubscriptionExecute {
 
     
         /**
+         * value: 4
+         * @const
+         */
+        "4" = 4;
+
+    
+        /**
          * value: -1
          * @const
          */

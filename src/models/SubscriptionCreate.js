@@ -55,6 +55,13 @@ export default class SubscriptionCreate {
 
     
         /**
+         * value: 16
+         * @const
+         */
+        "16" = 16;
+
+    
+        /**
          * value: -1
          * @const
          */

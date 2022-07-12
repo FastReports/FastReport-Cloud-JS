@@ -8,8 +8,12 @@ Method | HTTP request | Description
 [**tasksDeleteTask**](TasksApi.md#tasksDeleteTask) | **DELETE** /api/tasks/{taskId} | Delete a task from a storage
 [**tasksGet**](TasksApi.md#tasksGet) | **GET** /api/tasks/{taskId} | Get a task by a specified id
 [**tasksGetList**](TasksApi.md#tasksGetList) | **GET** /api/tasks | Get tasks list
+[**tasksGetPermissions**](TasksApi.md#tasksGetPermissions) | **GET** /api/tasks/{id}/permissions | Get all Task permissions
+[**tasksRenameTask**](TasksApi.md#tasksRenameTask) | **PUT** /api/tasks/{taskId}/rename | Rename a task
 [**tasksRunTask**](TasksApi.md#tasksRunTask) | **POST** /api/tasks/run | Run a task from request body
 [**tasksRunTaskById**](TasksApi.md#tasksRunTaskById) | **POST** /api/tasks/{taskId}/run | Run a task by id
+[**tasksUpdatePermissions**](TasksApi.md#tasksUpdatePermissions) | **POST** /api/tasks/{id}/permissions | Update permissions
+[**tasksUpdateTask**](TasksApi.md#tasksUpdateTask) | **PUT** /api/tasks/{taskId} | Update a task
 
 
 
@@ -221,6 +225,110 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
+## tasksGetPermissions
+
+> TaskPermissionsVM tasksGetPermissions(id)
+
+Get all Task permissions
+
+### Example
+
+```javascript
+import FastreportCloudSdk from 'fastreport-cloud-sdk';
+let defaultClient = FastreportCloudSdk.ApiClient.instance;
+// Configure HTTP basic authorization: ApiKey
+let ApiKey = defaultClient.authentications['ApiKey'];
+ApiKey.username = 'YOUR USERNAME';
+ApiKey.password = 'YOUR PASSWORD';
+// Configure Bearer (JWT) access token for authorization: JWT
+let JWT = defaultClient.authentications['JWT'];
+JWT.accessToken = "YOUR ACCESS TOKEN"
+
+let apiInstance = new FastreportCloudSdk.TasksApi();
+let id = "id_example"; // String | task id
+apiInstance.tasksGetPermissions(id).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| task id | 
+
+### Return type
+
+[**TaskPermissionsVM**](TaskPermissionsVM.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [JWT](../README.md#JWT)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## tasksRenameTask
+
+> TaskBaseVM tasksRenameTask(taskId, opts)
+
+Rename a task
+
+### Example
+
+```javascript
+import FastreportCloudSdk from 'fastreport-cloud-sdk';
+let defaultClient = FastreportCloudSdk.ApiClient.instance;
+// Configure HTTP basic authorization: ApiKey
+let ApiKey = defaultClient.authentications['ApiKey'];
+ApiKey.username = 'YOUR USERNAME';
+ApiKey.password = 'YOUR PASSWORD';
+// Configure Bearer (JWT) access token for authorization: JWT
+let JWT = defaultClient.authentications['JWT'];
+JWT.accessToken = "YOUR ACCESS TOKEN"
+
+let apiInstance = new FastreportCloudSdk.TasksApi();
+let taskId = "taskId_example"; // String | renaming task id
+let opts = {
+  'newName': "newName_example" // String | task's new Name
+};
+apiInstance.tasksRenameTask(taskId, opts).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **taskId** | **String**| renaming task id | 
+ **newName** | **String**| task&#39;s new Name | [optional] 
+
+### Return type
+
+[**TaskBaseVM**](TaskBaseVM.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [JWT](../README.md#JWT)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## tasksRunTask
 
 > tasksRunTask(opts)
@@ -320,5 +428,113 @@ null (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## tasksUpdatePermissions
+
+> tasksUpdatePermissions(id, opts)
+
+Update permissions
+
+### Example
+
+```javascript
+import FastreportCloudSdk from 'fastreport-cloud-sdk';
+let defaultClient = FastreportCloudSdk.ApiClient.instance;
+// Configure HTTP basic authorization: ApiKey
+let ApiKey = defaultClient.authentications['ApiKey'];
+ApiKey.username = 'YOUR USERNAME';
+ApiKey.password = 'YOUR PASSWORD';
+// Configure Bearer (JWT) access token for authorization: JWT
+let JWT = defaultClient.authentications['JWT'];
+JWT.accessToken = "YOUR ACCESS TOKEN"
+
+let apiInstance = new FastreportCloudSdk.TasksApi();
+let id = "id_example"; // String | task id
+let opts = {
+  'updateTaskPermissionsVM': new FastreportCloudSdk.UpdateTaskPermissionsVM() // UpdateTaskPermissionsVM | new permissions
+};
+apiInstance.tasksUpdatePermissions(id, opts).then(() => {
+  console.log('API called successfully.');
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| task id | 
+ **updateTaskPermissionsVM** | [**UpdateTaskPermissionsVM**](UpdateTaskPermissionsVM.md)| new permissions | [optional] 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [JWT](../README.md#JWT)
+
+### HTTP request headers
+
+- **Content-Type**: application/json, text/json, application/_*+json
+- **Accept**: application/json
+
+
+## tasksUpdateTask
+
+> TaskBaseVM tasksUpdateTask(taskId, opts)
+
+Update a task
+
+### Example
+
+```javascript
+import FastreportCloudSdk from 'fastreport-cloud-sdk';
+let defaultClient = FastreportCloudSdk.ApiClient.instance;
+// Configure HTTP basic authorization: ApiKey
+let ApiKey = defaultClient.authentications['ApiKey'];
+ApiKey.username = 'YOUR USERNAME';
+ApiKey.password = 'YOUR PASSWORD';
+// Configure Bearer (JWT) access token for authorization: JWT
+let JWT = defaultClient.authentications['JWT'];
+JWT.accessToken = "YOUR ACCESS TOKEN"
+
+let apiInstance = new FastreportCloudSdk.TasksApi();
+let taskId = "taskId_example"; // String | updating task id
+let opts = {
+  'updateTaskBaseVM': new FastreportCloudSdk.UpdateTaskBaseVM() // UpdateTaskBaseVM | task's view model. You have to specify task type (type: \"ExportTemplate\")
+};
+apiInstance.tasksUpdateTask(taskId, opts).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **taskId** | **String**| updating task id | 
+ **updateTaskBaseVM** | [**UpdateTaskBaseVM**](UpdateTaskBaseVM.md)| task&#39;s view model. You have to specify task type (type: \&quot;ExportTemplate\&quot;) | [optional] 
+
+### Return type
+
+[**TaskBaseVM**](TaskBaseVM.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [JWT](../README.md#JWT)
+
+### HTTP request headers
+
+- **Content-Type**: application/json, text/json, application/_*+json
 - **Accept**: application/json
 

@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **subscriptionId** | **String** |  | [optional] 
 **status** | [**FileStatus**](FileStatus.md) |  | [optional] 
 **statusReason** | [**FileStatusReason**](FileStatusReason.md) |  | [optional] 
+**errorMessage** | **String** |  | [optional] 
 **id** | **String** |  | [optional] 
 **createdTime** | **Date** |  | [optional] 
 **creatorUserId** | **String** |  | [optional] 

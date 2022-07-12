@@ -68,6 +68,20 @@ export default class DataSourceConnectionType {
         "OracleDB" = "OracleDB";
 
     
+        /**
+         * value: "FirebirdDB"
+         * @const
+         */
+        "FirebirdDB" = "FirebirdDB";
+
+    
+        /**
+         * value: "MongoDB"
+         * @const
+         */
+        "MongoDB" = "MongoDB";
+
+    
 
     /**
     * Returns a <code>DataSourceConnectionType</code> enum value from a Javascript object name.

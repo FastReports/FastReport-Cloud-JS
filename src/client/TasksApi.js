@@ -17,7 +17,10 @@ import CreateTaskBaseVM from '../models/CreateTaskBaseVM';
 import ProblemDetails from '../models/ProblemDetails';
 import RunTaskBaseVM from '../models/RunTaskBaseVM';
 import TaskBaseVM from '../models/TaskBaseVM';
+import TaskPermissionsVM from '../models/TaskPermissionsVM';
 import TasksVM from '../models/TasksVM';
+import UpdateTaskBaseVM from '../models/UpdateTaskBaseVM';
+import UpdateTaskPermissionsVM from '../models/UpdateTaskPermissionsVM';
 
 /**
 * Tasks service.
@@ -231,6 +234,106 @@ export default class TasksApi {
 
 
     /**
+     * Get all Task permissions
+     * @param {String} id task id
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/TaskPermissionsVM} and HTTP response
+     */
+    tasksGetPermissionsWithHttpInfo(id) {
+      let postBody = null;
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling tasksGetPermissions");
+      }
+
+      let pathParams = {
+        'id': id
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKey', 'JWT'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = TaskPermissionsVM;
+      if(!returnType) returnType = 'Blob';
+      return this.apiClient.callApi(
+        '/api/tasks/{id}/permissions', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Get all Task permissions
+     * @param {String} id task id
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/TaskPermissionsVM}
+     */
+    tasksGetPermissions(id) {
+      return this.tasksGetPermissionsWithHttpInfo(id)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Rename a task
+     * @param {String} taskId renaming task id
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.newName task's new Name
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/TaskBaseVM} and HTTP response
+     */
+    tasksRenameTaskWithHttpInfo(taskId, opts) {
+      opts = opts || {};
+      let postBody = null;
+      // verify the required parameter 'taskId' is set
+      if (taskId === undefined || taskId === null) {
+        throw new Error("Missing the required parameter 'taskId' when calling tasksRenameTask");
+      }
+
+      let pathParams = {
+        'taskId': taskId
+      };
+      let queryParams = {
+        'newName': opts['newName']
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKey', 'JWT'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = TaskBaseVM;
+      if(!returnType) returnType = 'Blob';
+      return this.apiClient.callApi(
+        '/api/tasks/{taskId}/rename', 'PUT',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Rename a task
+     * @param {String} taskId renaming task id
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.newName task's new Name
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/TaskBaseVM}
+     */
+    tasksRenameTask(taskId, opts) {
+      return this.tasksRenameTaskWithHttpInfo(taskId, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Run a task from request body
      * @param {Object} opts Optional parameters
      * @param {module:models/RunTaskBaseVM} opts.runTaskBaseVM task's view model
@@ -316,6 +419,110 @@ export default class TasksApi {
      */
     tasksRunTaskById(taskId) {
       return this.tasksRunTaskByIdWithHttpInfo(taskId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Update permissions
+     * @param {String} id task id
+     * @param {Object} opts Optional parameters
+     * @param {module:models/UpdateTaskPermissionsVM} opts.updateTaskPermissionsVM new permissions
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     */
+    tasksUpdatePermissionsWithHttpInfo(id, opts) {
+      opts = opts || {};
+      let postBody = opts['updateTaskPermissionsVM'];
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling tasksUpdatePermissions");
+      }
+
+      let pathParams = {
+        'id': id
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKey', 'JWT'];
+      let contentTypes = ['application/json', 'text/json', 'application/_*+json'];
+      let accepts = ['application/json'];
+      let returnType = null;
+      if(!returnType) returnType = 'Blob';
+      return this.apiClient.callApi(
+        '/api/tasks/{id}/permissions', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Update permissions
+     * @param {String} id task id
+     * @param {Object} opts Optional parameters
+     * @param {module:models/UpdateTaskPermissionsVM} opts.updateTaskPermissionsVM new permissions
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     */
+    tasksUpdatePermissions(id, opts) {
+      return this.tasksUpdatePermissionsWithHttpInfo(id, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Update a task
+     * @param {String} taskId updating task id
+     * @param {Object} opts Optional parameters
+     * @param {module:models/UpdateTaskBaseVM} opts.updateTaskBaseVM task's view model. You have to specify task type (type: \"ExportTemplate\")
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/TaskBaseVM} and HTTP response
+     */
+    tasksUpdateTaskWithHttpInfo(taskId, opts) {
+      opts = opts || {};
+      let postBody = opts['updateTaskBaseVM'];
+      // verify the required parameter 'taskId' is set
+      if (taskId === undefined || taskId === null) {
+        throw new Error("Missing the required parameter 'taskId' when calling tasksUpdateTask");
+      }
+
+      let pathParams = {
+        'taskId': taskId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKey', 'JWT'];
+      let contentTypes = ['application/json', 'text/json', 'application/_*+json'];
+      let accepts = ['application/json'];
+      let returnType = TaskBaseVM;
+      if(!returnType) returnType = 'Blob';
+      return this.apiClient.callApi(
+        '/api/tasks/{taskId}', 'PUT',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Update a task
+     * @param {String} taskId updating task id
+     * @param {Object} opts Optional parameters
+     * @param {module:models/UpdateTaskBaseVM} opts.updateTaskBaseVM task's view model. You have to specify task type (type: \"ExportTemplate\")
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/TaskBaseVM}
+     */
+    tasksUpdateTask(taskId, opts) {
+      return this.tasksUpdateTaskWithHttpInfo(taskId, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

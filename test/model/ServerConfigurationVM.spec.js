@@ -60,6 +60,18 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property logoLink (base name: "logoLink")', function() {
+      // uncomment below and update the code to test the property logoLink
+      //var instance = new FastreportCloudSdk.ServerConfigurationVM();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property copyright (base name: "copyright")', function() {
+      // uncomment below and update the code to test the property copyright
+      //var instance = new FastreportCloudSdk.ServerConfigurationVM();
+      //expect(instance).to.be();
+    });
+
     it('should have the property corporateServerMode (base name: "corporateServerMode")', function() {
       // uncomment below and update the code to test the property corporateServerMode
       //var instance = new FastreportCloudSdk.ServerConfigurationVM();
@@ -72,14 +84,20 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property appMixins (base name: "appMixins")', function() {
-      // uncomment below and update the code to test the property appMixins
+    it('should have the property frontend (base name: "frontend")', function() {
+      // uncomment below and update the code to test the property frontend
       //var instance = new FastreportCloudSdk.ServerConfigurationVM();
       //expect(instance).to.be();
     });
 
     it('should have the property auth (base name: "auth")', function() {
       // uncomment below and update the code to test the property auth
+      //var instance = new FastreportCloudSdk.ServerConfigurationVM();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property designerForAnons (base name: "designerForAnons")', function() {
+      // uncomment below and update the code to test the property designerForAnons
       //var instance = new FastreportCloudSdk.ServerConfigurationVM();
       //expect(instance).to.be();
     });

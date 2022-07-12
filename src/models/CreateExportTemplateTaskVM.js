@@ -63,6 +63,12 @@ class CreateExportTemplateTaskVM {
             if (data.hasOwnProperty('type')) {
                 obj['type'] = TaskType.constructFromObject(data['type']);
             }
+            if (data.hasOwnProperty('delayedRunTime')) {
+                obj['delayedRunTime'] = ApiClient.convertToType(data['delayedRunTime'], 'Date');
+            }
+            if (data.hasOwnProperty('cronExpression')) {
+                obj['cronExpression'] = ApiClient.convertToType(data['cronExpression'], 'String');
+            }
         }
         return obj;
     }
@@ -90,6 +96,16 @@ CreateExportTemplateTaskVM.prototype['subscriptionId'] = undefined;
  */
 CreateExportTemplateTaskVM.prototype['type'] = undefined;
 
+/**
+ * @member {Date} delayedRunTime
+ */
+CreateExportTemplateTaskVM.prototype['delayedRunTime'] = undefined;
+
+/**
+ * @member {String} cronExpression
+ */
+CreateExportTemplateTaskVM.prototype['cronExpression'] = undefined;
+
 
 // Implement CreateExportReportTaskVM interface:
 /**
@@ -104,6 +120,14 @@ CreateExportReportTaskVM.prototype['subscriptionId'] = undefined;
  * @member {module:models/TaskType} type
  */
 CreateExportReportTaskVM.prototype['type'] = undefined;
+/**
+ * @member {Date} delayedRunTime
+ */
+CreateExportReportTaskVM.prototype['delayedRunTime'] = undefined;
+/**
+ * @member {String} cronExpression
+ */
+CreateExportReportTaskVM.prototype['cronExpression'] = undefined;
 
 
 

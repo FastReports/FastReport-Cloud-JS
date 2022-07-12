@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **parentId** | **String** |  | 
 **ownerId** | **String** |  | 
+**force** | **Boolean** |  | [optional] 
 **name** | **String** |  | [optional] 
 **tags** | **[String]** |  | [optional] 
 **icon** | **Blob** |  | [optional] 

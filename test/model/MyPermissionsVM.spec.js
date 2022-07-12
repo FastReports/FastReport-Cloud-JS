@@ -78,6 +78,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property tasks (base name: "tasks")', function() {
+      // uncomment below and update the code to test the property tasks
+      //var instance = new FastreportCloudSdk.MyPermissionsVM();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

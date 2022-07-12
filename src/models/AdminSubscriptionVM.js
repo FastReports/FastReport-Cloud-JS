@@ -12,7 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
-import DefaultPermissions from './DefaultPermissions';
+import DefaultPermissionsVM from './DefaultPermissionsVM';
 import SubscriptionFolder from './SubscriptionFolder';
 import SubscriptionPeriodVM from './SubscriptionPeriodVM';
 import SubscriptionVM from './SubscriptionVM';
@@ -54,7 +54,7 @@ class AdminSubscriptionVM {
             SubscriptionVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('defaultPermissions')) {
-                obj['defaultPermissions'] = DefaultPermissions.constructFromObject(data['defaultPermissions']);
+                obj['defaultPermissions'] = DefaultPermissionsVM.constructFromObject(data['defaultPermissions']);
             }
             if (data.hasOwnProperty('id')) {
                 obj['id'] = ApiClient.convertToType(data['id'], 'String');
@@ -88,7 +88,7 @@ class AdminSubscriptionVM {
 }
 
 /**
- * @member {module:models/DefaultPermissions} defaultPermissions
+ * @member {module:models/DefaultPermissionsVM} defaultPermissions
  */
 AdminSubscriptionVM.prototype['defaultPermissions'] = undefined;
 

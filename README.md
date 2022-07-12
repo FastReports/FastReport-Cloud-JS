@@ -186,8 +186,12 @@ Class | Method | HTTP request | Description
 *FastreportCloudSdk.TasksApi* | [**tasksDeleteTask**](docs/TasksApi.md#tasksDeleteTask) | **DELETE** /api/tasks/{taskId} | Delete a task from a storage
 *FastreportCloudSdk.TasksApi* | [**tasksGet**](docs/TasksApi.md#tasksGet) | **GET** /api/tasks/{taskId} | Get a task by a specified id
 *FastreportCloudSdk.TasksApi* | [**tasksGetList**](docs/TasksApi.md#tasksGetList) | **GET** /api/tasks | Get tasks list
+*FastreportCloudSdk.TasksApi* | [**tasksGetPermissions**](docs/TasksApi.md#tasksGetPermissions) | **GET** /api/tasks/{id}/permissions | Get all Task permissions
+*FastreportCloudSdk.TasksApi* | [**tasksRenameTask**](docs/TasksApi.md#tasksRenameTask) | **PUT** /api/tasks/{taskId}/rename | Rename a task
 *FastreportCloudSdk.TasksApi* | [**tasksRunTask**](docs/TasksApi.md#tasksRunTask) | **POST** /api/tasks/run | Run a task from request body
 *FastreportCloudSdk.TasksApi* | [**tasksRunTaskById**](docs/TasksApi.md#tasksRunTaskById) | **POST** /api/tasks/{taskId}/run | Run a task by id
+*FastreportCloudSdk.TasksApi* | [**tasksUpdatePermissions**](docs/TasksApi.md#tasksUpdatePermissions) | **POST** /api/tasks/{id}/permissions | Update permissions
+*FastreportCloudSdk.TasksApi* | [**tasksUpdateTask**](docs/TasksApi.md#tasksUpdateTask) | **PUT** /api/tasks/{taskId} | Update a task
 *FastreportCloudSdk.TemplatesApi* | [**templateFolderAndFileGetCount**](docs/TemplatesApi.md#templateFolderAndFileGetCount) | **GET** /api/rp/v1/Templates/Folder/{id}/CountFolderAndFiles | Get count of files and folders what contains in a specified folder
 *FastreportCloudSdk.TemplatesApi* | [**templateFolderAndFileGetFoldersAndFiles**](docs/TemplatesApi.md#templateFolderAndFileGetFoldersAndFiles) | **GET** /api/rp/v1/Templates/Folder/{id}/ListFolderAndFiles | Get all folders and files from specified folder
 *FastreportCloudSdk.TemplatesApi* | [**templateFoldersCopyFolder**](docs/TemplatesApi.md#templateFoldersCopyFolder) | **POST** /api/rp/v1/Templates/Folder/{id}/Copy/{folderId} | Move folder to a specified folder
@@ -273,7 +277,6 @@ Class | Method | HTTP request | Description
  - [FastreportCloudSdk.DataSourceUpdate](docs/DataSourceUpdate.md)
  - [FastreportCloudSdk.DataSourceVM](docs/DataSourceVM.md)
  - [FastreportCloudSdk.DataSourcesVM](docs/DataSourcesVM.md)
- - [FastreportCloudSdk.DefaultPermissions](docs/DefaultPermissions.md)
  - [FastreportCloudSdk.DefaultPermissionsVM](docs/DefaultPermissionsVM.md)
  - [FastreportCloudSdk.DeleteApiKeyVM](docs/DeleteApiKeyVM.md)
  - [FastreportCloudSdk.EmailTaskVM](docs/EmailTaskVM.md)
@@ -318,6 +321,7 @@ Class | Method | HTTP request | Description
  - [FastreportCloudSdk.FolderIconVM](docs/FolderIconVM.md)
  - [FastreportCloudSdk.FolderRenameVM](docs/FolderRenameVM.md)
  - [FastreportCloudSdk.FolderTagsUpdateVM](docs/FolderTagsUpdateVM.md)
+ - [FastreportCloudSdk.FrontendApp](docs/FrontendApp.md)
  - [FastreportCloudSdk.GroupAdministrate](docs/GroupAdministrate.md)
  - [FastreportCloudSdk.GroupCreate](docs/GroupCreate.md)
  - [FastreportCloudSdk.GroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupAdministratePermission](docs/GroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupAdministratePermission.md)
@@ -387,9 +391,20 @@ Class | Method | HTTP request | Description
  - [FastreportCloudSdk.SubscriptionUsersVM](docs/SubscriptionUsersVM.md)
  - [FastreportCloudSdk.SubscriptionVM](docs/SubscriptionVM.md)
  - [FastreportCloudSdk.SubscriptionsVM](docs/SubscriptionsVM.md)
+ - [FastreportCloudSdk.TaskAdministrate](docs/TaskAdministrate.md)
  - [FastreportCloudSdk.TaskBaseVM](docs/TaskBaseVM.md)
+ - [FastreportCloudSdk.TaskCreate](docs/TaskCreate.md)
+ - [FastreportCloudSdk.TaskCreateTaskGetTaskUpdateTaskDeleteTaskExecuteTaskAdministratePermission](docs/TaskCreateTaskGetTaskUpdateTaskDeleteTaskExecuteTaskAdministratePermission.md)
+ - [FastreportCloudSdk.TaskDelete](docs/TaskDelete.md)
+ - [FastreportCloudSdk.TaskExecute](docs/TaskExecute.md)
+ - [FastreportCloudSdk.TaskGet](docs/TaskGet.md)
+ - [FastreportCloudSdk.TaskPermission](docs/TaskPermission.md)
+ - [FastreportCloudSdk.TaskPermissionTaskCreateTaskGetTaskUpdateTaskDeleteTaskExecuteTaskAdministratePermissions](docs/TaskPermissionTaskCreateTaskGetTaskUpdateTaskDeleteTaskExecuteTaskAdministratePermissions.md)
+ - [FastreportCloudSdk.TaskPermissions](docs/TaskPermissions.md)
+ - [FastreportCloudSdk.TaskPermissionsVM](docs/TaskPermissionsVM.md)
  - [FastreportCloudSdk.TaskSettingsVM](docs/TaskSettingsVM.md)
  - [FastreportCloudSdk.TaskType](docs/TaskType.md)
+ - [FastreportCloudSdk.TaskUpdate](docs/TaskUpdate.md)
  - [FastreportCloudSdk.TasksVM](docs/TasksVM.md)
  - [FastreportCloudSdk.TemplateCreateAdminVM](docs/TemplateCreateAdminVM.md)
  - [FastreportCloudSdk.TemplateCreateVM](docs/TemplateCreateVM.md)
@@ -406,12 +421,25 @@ Class | Method | HTTP request | Description
  - [FastreportCloudSdk.UpdateDataSourcePermissionsVM](docs/UpdateDataSourcePermissionsVM.md)
  - [FastreportCloudSdk.UpdateDataSourceSubscriptionVM](docs/UpdateDataSourceSubscriptionVM.md)
  - [FastreportCloudSdk.UpdateDefaultPermissionsVM](docs/UpdateDefaultPermissionsVM.md)
+ - [FastreportCloudSdk.UpdateEmailTaskVM](docs/UpdateEmailTaskVM.md)
+ - [FastreportCloudSdk.UpdateEndpointVM](docs/UpdateEndpointVM.md)
+ - [FastreportCloudSdk.UpdateExportReportTaskVM](docs/UpdateExportReportTaskVM.md)
+ - [FastreportCloudSdk.UpdateExportTemplateTaskVM](docs/UpdateExportTemplateTaskVM.md)
+ - [FastreportCloudSdk.UpdateFetchTaskVM](docs/UpdateFetchTaskVM.md)
  - [FastreportCloudSdk.UpdateFilePermissionsVM](docs/UpdateFilePermissionsVM.md)
  - [FastreportCloudSdk.UpdateGroupPermissionsVM](docs/UpdateGroupPermissionsVM.md)
+ - [FastreportCloudSdk.UpdatePrepareTemplateTaskVM](docs/UpdatePrepareTemplateTaskVM.md)
  - [FastreportCloudSdk.UpdateSubscriptionLocaleVM](docs/UpdateSubscriptionLocaleVM.md)
  - [FastreportCloudSdk.UpdateSubscriptionPermissionsVM](docs/UpdateSubscriptionPermissionsVM.md)
+ - [FastreportCloudSdk.UpdateTaskBaseVM](docs/UpdateTaskBaseVM.md)
+ - [FastreportCloudSdk.UpdateTaskPermissionsVM](docs/UpdateTaskPermissionsVM.md)
+ - [FastreportCloudSdk.UpdateThumbnailReportTaskVM](docs/UpdateThumbnailReportTaskVM.md)
+ - [FastreportCloudSdk.UpdateThumbnailTemplateTaskVM](docs/UpdateThumbnailTemplateTaskVM.md)
+ - [FastreportCloudSdk.UpdateTransformTaskBaseVM](docs/UpdateTransformTaskBaseVM.md)
+ - [FastreportCloudSdk.UpdateTransportTaskBaseVM](docs/UpdateTransportTaskBaseVM.md)
  - [FastreportCloudSdk.UpdateUserProfileVM](docs/UpdateUserProfileVM.md)
  - [FastreportCloudSdk.UpdateUserSettingsVM](docs/UpdateUserSettingsVM.md)
+ - [FastreportCloudSdk.UpdateWebhookTaskVM](docs/UpdateWebhookTaskVM.md)
  - [FastreportCloudSdk.UserProfileVM](docs/UserProfileVM.md)
  - [FastreportCloudSdk.UserSettingsVM](docs/UserSettingsVM.md)
  - [FastreportCloudSdk.ValidationProblemDetails](docs/ValidationProblemDetails.md)

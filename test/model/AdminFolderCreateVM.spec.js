@@ -66,6 +66,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property force (base name: "force")', function() {
+      // uncomment below and update the code to test the property force
+      //var instance = new FastreportCloudSdk.AdminFolderCreateVM();
+      //expect(instance).to.be();
+    });
+
     it('should have the property name (base name: "name")', function() {
       // uncomment below and update the code to test the property name
       //var instance = new FastreportCloudSdk.AdminFolderCreateVM();

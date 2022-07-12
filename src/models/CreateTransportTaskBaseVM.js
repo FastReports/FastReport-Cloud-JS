@@ -64,6 +64,12 @@ class CreateTransportTaskBaseVM {
             if (data.hasOwnProperty('type')) {
                 obj['type'] = TaskType.constructFromObject(data['type']);
             }
+            if (data.hasOwnProperty('delayedRunTime')) {
+                obj['delayedRunTime'] = ApiClient.convertToType(data['delayedRunTime'], 'Date');
+            }
+            if (data.hasOwnProperty('cronExpression')) {
+                obj['cronExpression'] = ApiClient.convertToType(data['cronExpression'], 'String');
+            }
         }
         return obj;
     }
@@ -91,6 +97,16 @@ CreateTransportTaskBaseVM.prototype['subscriptionId'] = undefined;
  */
 CreateTransportTaskBaseVM.prototype['type'] = undefined;
 
+/**
+ * @member {Date} delayedRunTime
+ */
+CreateTransportTaskBaseVM.prototype['delayedRunTime'] = undefined;
+
+/**
+ * @member {String} cronExpression
+ */
+CreateTransportTaskBaseVM.prototype['cronExpression'] = undefined;
+
 
 // Implement CreateTaskBaseVM interface:
 /**
@@ -105,6 +121,14 @@ CreateTaskBaseVM.prototype['subscriptionId'] = undefined;
  * @member {module:models/TaskType} type
  */
 CreateTaskBaseVM.prototype['type'] = undefined;
+/**
+ * @member {Date} delayedRunTime
+ */
+CreateTaskBaseVM.prototype['delayedRunTime'] = undefined;
+/**
+ * @member {String} cronExpression
+ */
+CreateTaskBaseVM.prototype['cronExpression'] = undefined;
 
 
 

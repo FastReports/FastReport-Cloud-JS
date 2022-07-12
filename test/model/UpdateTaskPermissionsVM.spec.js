@@ -28,7 +28,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new FastreportCloudSdk.DefaultPermissions();
+    instance = new FastreportCloudSdk.UpdateTaskPermissionsVM();
   });
 
   var getProperty = function(object, getter, property) {
@@ -47,28 +47,22 @@
       object[property] = value;
   }
 
-  describe('DefaultPermissions', function() {
-    it('should create an instance of DefaultPermissions', function() {
-      // uncomment below and update the code to test DefaultPermissions
-      //var instane = new FastreportCloudSdk.DefaultPermissions();
-      //expect(instance).to.be.a(FastreportCloudSdk.DefaultPermissions);
+  describe('UpdateTaskPermissionsVM', function() {
+    it('should create an instance of UpdateTaskPermissionsVM', function() {
+      // uncomment below and update the code to test UpdateTaskPermissionsVM
+      //var instane = new FastreportCloudSdk.UpdateTaskPermissionsVM();
+      //expect(instance).to.be.a(FastreportCloudSdk.UpdateTaskPermissionsVM);
     });
 
-    it('should have the property filePermissions (base name: "filePermissions")', function() {
-      // uncomment below and update the code to test the property filePermissions
-      //var instance = new FastreportCloudSdk.DefaultPermissions();
+    it('should have the property newPermissions (base name: "newPermissions")', function() {
+      // uncomment below and update the code to test the property newPermissions
+      //var instance = new FastreportCloudSdk.UpdateTaskPermissionsVM();
       //expect(instance).to.be();
     });
 
-    it('should have the property groupPermissions (base name: "groupPermissions")', function() {
-      // uncomment below and update the code to test the property groupPermissions
-      //var instance = new FastreportCloudSdk.DefaultPermissions();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property dataSourcePermissions (base name: "dataSourcePermissions")', function() {
-      // uncomment below and update the code to test the property dataSourcePermissions
-      //var instance = new FastreportCloudSdk.DefaultPermissions();
+    it('should have the property administrate (base name: "administrate")', function() {
+      // uncomment below and update the code to test the property administrate
+      //var instance = new FastreportCloudSdk.UpdateTaskPermissionsVM();
       //expect(instance).to.be();
     });
 

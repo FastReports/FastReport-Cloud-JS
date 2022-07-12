@@ -15,6 +15,7 @@ import ApiClient from '../ApiClient';
 import DataSourcePermissions from './DataSourcePermissions';
 import FilePermissions from './FilePermissions';
 import GroupPermissions from './GroupPermissions';
+import TaskPermissions from './TaskPermissions';
 
 /**
  * The DefaultPermissionsVM model module.
@@ -59,6 +60,9 @@ class DefaultPermissionsVM {
             if (data.hasOwnProperty('groupPermissions')) {
                 obj['groupPermissions'] = GroupPermissions.constructFromObject(data['groupPermissions']);
             }
+            if (data.hasOwnProperty('taskPermissions')) {
+                obj['taskPermissions'] = TaskPermissions.constructFromObject(data['taskPermissions']);
+            }
         }
         return obj;
     }
@@ -80,6 +84,11 @@ DefaultPermissionsVM.prototype['dataSourcePermissions'] = undefined;
  * @member {module:models/GroupPermissions} groupPermissions
  */
 DefaultPermissionsVM.prototype['groupPermissions'] = undefined;
+
+/**
+ * @member {module:models/TaskPermissions} taskPermissions
+ */
+DefaultPermissionsVM.prototype['taskPermissions'] = undefined;
 
 
 

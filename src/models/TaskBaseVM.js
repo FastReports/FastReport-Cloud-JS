@@ -54,6 +54,15 @@ class TaskBaseVM {
             if (data.hasOwnProperty('id')) {
                 obj['id'] = ApiClient.convertToType(data['id'], 'String');
             }
+            if (data.hasOwnProperty('delayedWasRunTime')) {
+                obj['delayedWasRunTime'] = ApiClient.convertToType(data['delayedWasRunTime'], 'Date');
+            }
+            if (data.hasOwnProperty('recurrentRunTime')) {
+                obj['recurrentRunTime'] = ApiClient.convertToType(data['recurrentRunTime'], 'Date');
+            }
+            if (data.hasOwnProperty('recurrentWasRunTime')) {
+                obj['recurrentWasRunTime'] = ApiClient.convertToType(data['recurrentWasRunTime'], 'Date');
+            }
             if (data.hasOwnProperty('name')) {
                 obj['name'] = ApiClient.convertToType(data['name'], 'String');
             }
@@ -62,6 +71,12 @@ class TaskBaseVM {
             }
             if (data.hasOwnProperty('type')) {
                 obj['type'] = TaskType.constructFromObject(data['type']);
+            }
+            if (data.hasOwnProperty('delayedRunTime')) {
+                obj['delayedRunTime'] = ApiClient.convertToType(data['delayedRunTime'], 'Date');
+            }
+            if (data.hasOwnProperty('cronExpression')) {
+                obj['cronExpression'] = ApiClient.convertToType(data['cronExpression'], 'String');
             }
         }
         return obj;
@@ -74,6 +89,21 @@ class TaskBaseVM {
  * @member {String} id
  */
 TaskBaseVM.prototype['id'] = undefined;
+
+/**
+ * @member {Date} delayedWasRunTime
+ */
+TaskBaseVM.prototype['delayedWasRunTime'] = undefined;
+
+/**
+ * @member {Date} recurrentRunTime
+ */
+TaskBaseVM.prototype['recurrentRunTime'] = undefined;
+
+/**
+ * @member {Date} recurrentWasRunTime
+ */
+TaskBaseVM.prototype['recurrentWasRunTime'] = undefined;
 
 /**
  * @member {String} name
@@ -90,6 +120,16 @@ TaskBaseVM.prototype['subscriptionId'] = undefined;
  */
 TaskBaseVM.prototype['type'] = undefined;
 
+/**
+ * @member {Date} delayedRunTime
+ */
+TaskBaseVM.prototype['delayedRunTime'] = undefined;
+
+/**
+ * @member {String} cronExpression
+ */
+TaskBaseVM.prototype['cronExpression'] = undefined;
+
 
 // Implement CreateTaskBaseVM interface:
 /**
@@ -104,6 +144,14 @@ CreateTaskBaseVM.prototype['subscriptionId'] = undefined;
  * @member {module:models/TaskType} type
  */
 CreateTaskBaseVM.prototype['type'] = undefined;
+/**
+ * @member {Date} delayedRunTime
+ */
+CreateTaskBaseVM.prototype['delayedRunTime'] = undefined;
+/**
+ * @member {String} cronExpression
+ */
+CreateTaskBaseVM.prototype['cronExpression'] = undefined;
 
 
 

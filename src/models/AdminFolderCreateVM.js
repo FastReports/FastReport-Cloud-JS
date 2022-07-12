@@ -58,6 +58,9 @@ class AdminFolderCreateVM {
             if (data.hasOwnProperty('ownerId')) {
                 obj['ownerId'] = ApiClient.convertToType(data['ownerId'], 'String');
             }
+            if (data.hasOwnProperty('force')) {
+                obj['force'] = ApiClient.convertToType(data['force'], 'Boolean');
+            }
             if (data.hasOwnProperty('name')) {
                 obj['name'] = ApiClient.convertToType(data['name'], 'String');
             }
@@ -83,6 +86,11 @@ AdminFolderCreateVM.prototype['parentId'] = undefined;
  * @member {String} ownerId
  */
 AdminFolderCreateVM.prototype['ownerId'] = undefined;
+
+/**
+ * @member {Boolean} force
+ */
+AdminFolderCreateVM.prototype['force'] = undefined;
 
 /**
  * @member {String} name

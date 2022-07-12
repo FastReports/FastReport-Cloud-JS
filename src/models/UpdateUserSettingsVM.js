@@ -49,7 +49,7 @@ class UpdateUserSettingsVM {
             obj = obj || new UpdateUserSettingsVM();
 
             if (data.hasOwnProperty('profileVisibility')) {
-                obj['profileVisibility'] = ProfileVisibility.constructFromObject(data['profileVisibility']);
+                obj['profileVisibility'] = ApiClient.convertToType(data['profileVisibility'], ProfileVisibility);
             }
             if (data.hasOwnProperty('defaultSubscription')) {
                 obj['defaultSubscription'] = ApiClient.convertToType(data['defaultSubscription'], 'String');

@@ -80,6 +80,9 @@ class FileVM {
             if (data.hasOwnProperty('statusReason')) {
                 obj['statusReason'] = FileStatusReason.constructFromObject(data['statusReason']);
             }
+            if (data.hasOwnProperty('errorMessage')) {
+                obj['errorMessage'] = ApiClient.convertToType(data['errorMessage'], 'String');
+            }
             if (data.hasOwnProperty('id')) {
                 obj['id'] = ApiClient.convertToType(data['id'], 'String');
             }
@@ -146,6 +149,11 @@ FileVM.prototype['status'] = undefined;
  * @member {module:models/FileStatusReason} statusReason
  */
 FileVM.prototype['statusReason'] = undefined;
+
+/**
+ * @member {String} errorMessage
+ */
+FileVM.prototype['errorMessage'] = undefined;
 
 /**
  * @member {String} id

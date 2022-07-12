@@ -16,6 +16,7 @@ import DataSourcePermission from './DataSourcePermission';
 import FilePermission from './FilePermission';
 import GroupPermission from './GroupPermission';
 import SubscriptionPermission from './SubscriptionPermission';
+import TaskPermission from './TaskPermission';
 
 /**
  * The MyPermissionsVM model module.
@@ -63,6 +64,9 @@ class MyPermissionsVM {
             if (data.hasOwnProperty('groups')) {
                 obj['groups'] = GroupPermission.constructFromObject(data['groups']);
             }
+            if (data.hasOwnProperty('tasks')) {
+                obj['tasks'] = TaskPermission.constructFromObject(data['tasks']);
+            }
         }
         return obj;
     }
@@ -89,6 +93,11 @@ MyPermissionsVM.prototype['datasources'] = undefined;
  * @member {module:models/GroupPermission} groups
  */
 MyPermissionsVM.prototype['groups'] = undefined;
+
+/**
+ * @member {module:models/TaskPermission} tasks
+ */
+MyPermissionsVM.prototype['tasks'] = undefined;
 
 
 

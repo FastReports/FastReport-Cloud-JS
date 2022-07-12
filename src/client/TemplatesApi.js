@@ -62,6 +62,7 @@ export default class TemplatesApi {
      * @param {String} id folder id
      * @param {Object} opts Optional parameters
      * @param {String} opts.searchPattern string, that must be incuded in file or folder name to be counted <br />              (leave undefined to count all files and folders)
+     * @param {Boolean} opts.useRegex set this to true if you want to use regular expression to search (default to false)
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/CountVM} and HTTP response
      */
     templateFolderAndFileGetCountWithHttpInfo(id, opts) {
@@ -76,7 +77,8 @@ export default class TemplatesApi {
         'id': id
       };
       let queryParams = {
-        'searchPattern': opts['searchPattern']
+        'searchPattern': opts['searchPattern'],
+        'useRegex': opts['useRegex']
       };
       let headerParams = {
       };
@@ -101,6 +103,7 @@ export default class TemplatesApi {
      * @param {String} id folder id
      * @param {Object} opts Optional parameters
      * @param {String} opts.searchPattern string, that must be incuded in file or folder name to be counted <br />              (leave undefined to count all files and folders)
+     * @param {Boolean} opts.useRegex set this to true if you want to use regular expression to search (default to false)
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/CountVM}
      */
     templateFolderAndFileGetCount(id, opts) {
@@ -121,6 +124,7 @@ export default class TemplatesApi {
      * @param {module:models/FileSorting} opts.orderBy indicates a field to sort by
      * @param {Boolean} opts.desc indicates if sorting is descending (default to false)
      * @param {String} opts.searchPattern  (default to '')
+     * @param {Boolean} opts.useRegex  (default to false)
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/FilesVM} and HTTP response
      */
     templateFolderAndFileGetFoldersAndFilesWithHttpInfo(id, opts) {
@@ -139,7 +143,8 @@ export default class TemplatesApi {
         'take': opts['take'],
         'orderBy': opts['orderBy'],
         'desc': opts['desc'],
-        'searchPattern': opts['searchPattern']
+        'searchPattern': opts['searchPattern'],
+        'useRegex': opts['useRegex']
       };
       let headerParams = {
       };
@@ -168,6 +173,7 @@ export default class TemplatesApi {
      * @param {module:models/FileSorting} opts.orderBy indicates a field to sort by
      * @param {Boolean} opts.desc indicates if sorting is descending (default to false)
      * @param {String} opts.searchPattern  (default to '')
+     * @param {Boolean} opts.useRegex  (default to false)
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/FilesVM}
      */
     templateFolderAndFileGetFoldersAndFiles(id, opts) {
@@ -1175,6 +1181,9 @@ export default class TemplatesApi {
      * @param {Number} opts.skip number of files, that have to be skipped (default to 0)
      * @param {Number} opts.take number of files, that have to be returned (default to 10)
      * @param {String} opts.searchPattern 
+     * @param {module:models/FileSorting} opts.orderBy 
+     * @param {Boolean} opts.desc  (default to false)
+     * @param {Boolean} opts.useRegex  (default to false)
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/TemplatesVM} and HTTP response
      */
     templatesGetFilesListWithHttpInfo(id, opts) {
@@ -1191,7 +1200,10 @@ export default class TemplatesApi {
       let queryParams = {
         'skip': opts['skip'],
         'take': opts['take'],
-        'searchPattern': opts['searchPattern']
+        'searchPattern': opts['searchPattern'],
+        'orderBy': opts['orderBy'],
+        'desc': opts['desc'],
+        'useRegex': opts['useRegex']
       };
       let headerParams = {
       };
@@ -1217,6 +1229,9 @@ export default class TemplatesApi {
      * @param {Number} opts.skip number of files, that have to be skipped (default to 0)
      * @param {Number} opts.take number of files, that have to be returned (default to 10)
      * @param {String} opts.searchPattern 
+     * @param {module:models/FileSorting} opts.orderBy 
+     * @param {Boolean} opts.desc  (default to false)
+     * @param {Boolean} opts.useRegex  (default to false)
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/TemplatesVM}
      */
     templatesGetFilesList(id, opts) {

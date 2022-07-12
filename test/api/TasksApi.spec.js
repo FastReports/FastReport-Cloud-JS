@@ -88,6 +88,26 @@
         done();
       });
     });
+    describe('tasksGetPermissions', function() {
+      it('should call tasksGetPermissions successfully', function(done) {
+        //uncomment below and update the code to test tasksGetPermissions
+        //instance.tasksGetPermissions(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('tasksRenameTask', function() {
+      it('should call tasksRenameTask successfully', function(done) {
+        //uncomment below and update the code to test tasksRenameTask
+        //instance.tasksRenameTask(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('tasksRunTask', function() {
       it('should call tasksRunTask successfully', function(done) {
         //uncomment below and update the code to test tasksRunTask
@@ -102,6 +122,26 @@
       it('should call tasksRunTaskById successfully', function(done) {
         //uncomment below and update the code to test tasksRunTaskById
         //instance.tasksRunTaskById(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('tasksUpdatePermissions', function() {
+      it('should call tasksUpdatePermissions successfully', function(done) {
+        //uncomment below and update the code to test tasksUpdatePermissions
+        //instance.tasksUpdatePermissions(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('tasksUpdateTask', function() {
+      it('should call tasksUpdateTask successfully', function(done) {
+        //uncomment below and update the code to test tasksUpdateTask
+        //instance.tasksUpdateTask(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

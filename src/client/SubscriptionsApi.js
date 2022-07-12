@@ -13,7 +13,6 @@
 
 
 import ApiClient from "../ApiClient";
-import DefaultPermissions from '../models/DefaultPermissions';
 import DefaultPermissionsVM from '../models/DefaultPermissionsVM';
 import MyPermissionsVM from '../models/MyPermissionsVM';
 import ProblemDetails from '../models/ProblemDetails';
@@ -48,7 +47,7 @@ export default class SubscriptionsApi {
     /**
      * Get subscription's default permissions for new entities
      * @param {String} subscriptionId id
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/DefaultPermissions} and HTTP response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/DefaultPermissionsVM} and HTTP response
      */
     subscriptionsGetDefaultPermissionsWithHttpInfo(subscriptionId) {
       let postBody = null;
@@ -70,7 +69,7 @@ export default class SubscriptionsApi {
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = DefaultPermissions;
+      let returnType = DefaultPermissionsVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/manage/v1/Subscriptions/{subscriptionId}/defaultPermissions', 'GET',
@@ -82,7 +81,7 @@ export default class SubscriptionsApi {
     /**
      * Get subscription's default permissions for new entities
      * @param {String} subscriptionId id
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/DefaultPermissions}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/DefaultPermissionsVM}
      */
     subscriptionsGetDefaultPermissions(subscriptionId) {
       return this.subscriptionsGetDefaultPermissionsWithHttpInfo(subscriptionId)

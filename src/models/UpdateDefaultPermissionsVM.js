@@ -15,6 +15,7 @@ import ApiClient from '../ApiClient';
 import UpdateDataSourcePermissionsVM from './UpdateDataSourcePermissionsVM';
 import UpdateFilePermissionsVM from './UpdateFilePermissionsVM';
 import UpdateGroupPermissionsVM from './UpdateGroupPermissionsVM';
+import UpdateTaskPermissionsVM from './UpdateTaskPermissionsVM';
 
 /**
  * The UpdateDefaultPermissionsVM model module.
@@ -59,6 +60,9 @@ class UpdateDefaultPermissionsVM {
             if (data.hasOwnProperty('dataSourcePermissions')) {
                 obj['dataSourcePermissions'] = UpdateDataSourcePermissionsVM.constructFromObject(data['dataSourcePermissions']);
             }
+            if (data.hasOwnProperty('taskPermissions')) {
+                obj['taskPermissions'] = UpdateTaskPermissionsVM.constructFromObject(data['taskPermissions']);
+            }
         }
         return obj;
     }
@@ -80,6 +84,11 @@ UpdateDefaultPermissionsVM.prototype['groupPermissions'] = undefined;
  * @member {module:models/UpdateDataSourcePermissionsVM} dataSourcePermissions
  */
 UpdateDefaultPermissionsVM.prototype['dataSourcePermissions'] = undefined;
+
+/**
+ * @member {module:models/UpdateTaskPermissionsVM} taskPermissions
+ */
+UpdateDefaultPermissionsVM.prototype['taskPermissions'] = undefined;
 
 
 

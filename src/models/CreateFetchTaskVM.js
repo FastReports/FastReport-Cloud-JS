@@ -60,6 +60,12 @@ class CreateFetchTaskVM {
             if (data.hasOwnProperty('type')) {
                 obj['type'] = TaskType.constructFromObject(data['type']);
             }
+            if (data.hasOwnProperty('delayedRunTime')) {
+                obj['delayedRunTime'] = ApiClient.convertToType(data['delayedRunTime'], 'Date');
+            }
+            if (data.hasOwnProperty('cronExpression')) {
+                obj['cronExpression'] = ApiClient.convertToType(data['cronExpression'], 'String');
+            }
         }
         return obj;
     }
@@ -82,6 +88,16 @@ CreateFetchTaskVM.prototype['subscriptionId'] = undefined;
  */
 CreateFetchTaskVM.prototype['type'] = undefined;
 
+/**
+ * @member {Date} delayedRunTime
+ */
+CreateFetchTaskVM.prototype['delayedRunTime'] = undefined;
+
+/**
+ * @member {String} cronExpression
+ */
+CreateFetchTaskVM.prototype['cronExpression'] = undefined;
+
 
 // Implement CreateTransformTaskBaseVM interface:
 /**
@@ -96,6 +112,14 @@ CreateTransformTaskBaseVM.prototype['subscriptionId'] = undefined;
  * @member {module:models/TaskType} type
  */
 CreateTransformTaskBaseVM.prototype['type'] = undefined;
+/**
+ * @member {Date} delayedRunTime
+ */
+CreateTransformTaskBaseVM.prototype['delayedRunTime'] = undefined;
+/**
+ * @member {String} cronExpression
+ */
+CreateTransformTaskBaseVM.prototype['cronExpression'] = undefined;
 
 
 

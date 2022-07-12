@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**defaultPermissions** | [**DefaultPermissions**](DefaultPermissions.md) |  | [optional] 
+**defaultPermissions** | [**DefaultPermissionsVM**](DefaultPermissionsVM.md) |  | [optional] 
 **id** | **String** |  | [optional] 
 **name** | **String** |  | [optional] 
 **locale** | **String** |  | [optional] 

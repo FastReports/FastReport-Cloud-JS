@@ -70,6 +70,12 @@ class PrepareTemplateTaskVM {
             if (data.hasOwnProperty('type')) {
                 obj['type'] = TaskType.constructFromObject(data['type']);
             }
+            if (data.hasOwnProperty('delayedRunTime')) {
+                obj['delayedRunTime'] = ApiClient.convertToType(data['delayedRunTime'], 'Date');
+            }
+            if (data.hasOwnProperty('cronExpression')) {
+                obj['cronExpression'] = ApiClient.convertToType(data['cronExpression'], 'String');
+            }
         }
         return obj;
     }
@@ -107,6 +113,16 @@ PrepareTemplateTaskVM.prototype['subscriptionId'] = undefined;
  */
 PrepareTemplateTaskVM.prototype['type'] = undefined;
 
+/**
+ * @member {Date} delayedRunTime
+ */
+PrepareTemplateTaskVM.prototype['delayedRunTime'] = undefined;
+
+/**
+ * @member {String} cronExpression
+ */
+PrepareTemplateTaskVM.prototype['cronExpression'] = undefined;
+
 
 // Implement TransformTaskBaseVM interface:
 /**
@@ -121,6 +137,14 @@ TransformTaskBaseVM.prototype['subscriptionId'] = undefined;
  * @member {module:models/TaskType} type
  */
 TransformTaskBaseVM.prototype['type'] = undefined;
+/**
+ * @member {Date} delayedRunTime
+ */
+TransformTaskBaseVM.prototype['delayedRunTime'] = undefined;
+/**
+ * @member {String} cronExpression
+ */
+TransformTaskBaseVM.prototype['cronExpression'] = undefined;
 
 
 

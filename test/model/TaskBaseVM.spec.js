@@ -60,6 +60,24 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property delayedWasRunTime (base name: "delayedWasRunTime")', function() {
+      // uncomment below and update the code to test the property delayedWasRunTime
+      //var instance = new FastreportCloudSdk.TaskBaseVM();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property recurrentRunTime (base name: "recurrentRunTime")', function() {
+      // uncomment below and update the code to test the property recurrentRunTime
+      //var instance = new FastreportCloudSdk.TaskBaseVM();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property recurrentWasRunTime (base name: "recurrentWasRunTime")', function() {
+      // uncomment below and update the code to test the property recurrentWasRunTime
+      //var instance = new FastreportCloudSdk.TaskBaseVM();
+      //expect(instance).to.be();
+    });
+
     it('should have the property name (base name: "name")', function() {
       // uncomment below and update the code to test the property name
       //var instance = new FastreportCloudSdk.TaskBaseVM();
@@ -74,6 +92,18 @@
 
     it('should have the property type (base name: "type")', function() {
       // uncomment below and update the code to test the property type
+      //var instance = new FastreportCloudSdk.TaskBaseVM();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property delayedRunTime (base name: "delayedRunTime")', function() {
+      // uncomment below and update the code to test the property delayedRunTime
+      //var instance = new FastreportCloudSdk.TaskBaseVM();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property cronExpression (base name: "cronExpression")', function() {
+      // uncomment below and update the code to test the property cronExpression
       //var instance = new FastreportCloudSdk.TaskBaseVM();
       //expect(instance).to.be();
     });

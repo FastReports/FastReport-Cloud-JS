@@ -83,6 +83,13 @@ export default class SubscriptionGet {
 
     
         /**
+         * value: 256
+         * @const
+         */
+        "256" = 256;
+
+    
+        /**
          * value: -1
          * @const
          */

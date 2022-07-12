@@ -67,7 +67,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/octet-stream, application/pdf, application/json
+- **Accept**: text/plain, application/json, application/octet-stream, application/pdf
 
 
 ## downloadGetExportThumbnail
@@ -117,7 +117,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: image/png, image/jpeg, application/json
+- **Accept**: text/plain, application/json, image/png, image/jpeg
 
 
 ## downloadGetExports
@@ -171,7 +171,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/zip, application/json
+- **Accept**: text/plain, application/json, application/zip
 
 
 ## downloadGetReport
@@ -221,7 +221,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/octet-stream, application/json
+- **Accept**: text/plain, application/json, application/octet-stream
 
 
 ## downloadGetReportThumbnail
@@ -271,7 +271,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: image/png, image/jpeg, application/json
+- **Accept**: text/plain, application/json, image/png, image/jpeg
 
 
 ## downloadGetReports
@@ -325,7 +325,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/zip, application/json
+- **Accept**: text/plain, application/json, application/zip
 
 
 ## downloadGetTemplate
@@ -375,7 +375,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/octet-stream, application/json
+- **Accept**: text/plain, application/json, application/octet-stream
 
 
 ## downloadGetTemplateThumbnail
@@ -425,7 +425,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: image/png, image/jpeg, application/json
+- **Accept**: text/plain, application/json, image/png, image/jpeg
 
 
 ## downloadGetTemplates
@@ -479,5 +479,5 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/zip, application/json
+- **Accept**: text/plain, application/json, application/zip
 

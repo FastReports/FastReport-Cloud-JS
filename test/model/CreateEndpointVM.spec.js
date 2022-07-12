@@ -60,6 +60,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property headers (base name: "headers")', function() {
+      // uncomment below and update the code to test the property headers
+      //var instance = new FastreportCloudSdk.CreateEndpointVM();
+      //expect(instance).to.be();
+    });
+
     it('should have the property url (base name: "url")', function() {
       // uncomment below and update the code to test the property url
       //var instance = new FastreportCloudSdk.CreateEndpointVM();

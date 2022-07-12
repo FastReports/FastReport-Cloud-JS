@@ -59,7 +59,6 @@ import DataSourceStatus from './models/DataSourceStatus';
 import DataSourceUpdate from './models/DataSourceUpdate';
 import DataSourceVM from './models/DataSourceVM';
 import DataSourcesVM from './models/DataSourcesVM';
-import DefaultPermissions from './models/DefaultPermissions';
 import DefaultPermissionsVM from './models/DefaultPermissionsVM';
 import DeleteApiKeyVM from './models/DeleteApiKeyVM';
 import EmailTaskVM from './models/EmailTaskVM';
@@ -104,6 +103,7 @@ import FolderCreateVM from './models/FolderCreateVM';
 import FolderIconVM from './models/FolderIconVM';
 import FolderRenameVM from './models/FolderRenameVM';
 import FolderTagsUpdateVM from './models/FolderTagsUpdateVM';
+import FrontendApp from './models/FrontendApp';
 import GroupAdministrate from './models/GroupAdministrate';
 import GroupCreate from './models/GroupCreate';
 import GroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupAdministratePermission from './models/GroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupAdministratePermission';
@@ -173,9 +173,20 @@ import SubscriptionUserVM from './models/SubscriptionUserVM';
 import SubscriptionUsersVM from './models/SubscriptionUsersVM';
 import SubscriptionVM from './models/SubscriptionVM';
 import SubscriptionsVM from './models/SubscriptionsVM';
+import TaskAdministrate from './models/TaskAdministrate';
 import TaskBaseVM from './models/TaskBaseVM';
+import TaskCreate from './models/TaskCreate';
+import TaskCreateTaskGetTaskUpdateTaskDeleteTaskExecuteTaskAdministratePermission from './models/TaskCreateTaskGetTaskUpdateTaskDeleteTaskExecuteTaskAdministratePermission';
+import TaskDelete from './models/TaskDelete';
+import TaskExecute from './models/TaskExecute';
+import TaskGet from './models/TaskGet';
+import TaskPermission from './models/TaskPermission';
+import TaskPermissionTaskCreateTaskGetTaskUpdateTaskDeleteTaskExecuteTaskAdministratePermissions from './models/TaskPermissionTaskCreateTaskGetTaskUpdateTaskDeleteTaskExecuteTaskAdministratePermissions';
+import TaskPermissions from './models/TaskPermissions';
+import TaskPermissionsVM from './models/TaskPermissionsVM';
 import TaskSettingsVM from './models/TaskSettingsVM';
 import TaskType from './models/TaskType';
+import TaskUpdate from './models/TaskUpdate';
 import TasksVM from './models/TasksVM';
 import TemplateCreateAdminVM from './models/TemplateCreateAdminVM';
 import TemplateCreateVM from './models/TemplateCreateVM';
@@ -192,12 +203,25 @@ import UpdateDataSourceConnectionStringVM from './models/UpdateDataSourceConnect
 import UpdateDataSourcePermissionsVM from './models/UpdateDataSourcePermissionsVM';
 import UpdateDataSourceSubscriptionVM from './models/UpdateDataSourceSubscriptionVM';
 import UpdateDefaultPermissionsVM from './models/UpdateDefaultPermissionsVM';
+import UpdateEmailTaskVM from './models/UpdateEmailTaskVM';
+import UpdateEndpointVM from './models/UpdateEndpointVM';
+import UpdateExportReportTaskVM from './models/UpdateExportReportTaskVM';
+import UpdateExportTemplateTaskVM from './models/UpdateExportTemplateTaskVM';
+import UpdateFetchTaskVM from './models/UpdateFetchTaskVM';
 import UpdateFilePermissionsVM from './models/UpdateFilePermissionsVM';
 import UpdateGroupPermissionsVM from './models/UpdateGroupPermissionsVM';
+import UpdatePrepareTemplateTaskVM from './models/UpdatePrepareTemplateTaskVM';
 import UpdateSubscriptionLocaleVM from './models/UpdateSubscriptionLocaleVM';
 import UpdateSubscriptionPermissionsVM from './models/UpdateSubscriptionPermissionsVM';
+import UpdateTaskBaseVM from './models/UpdateTaskBaseVM';
+import UpdateTaskPermissionsVM from './models/UpdateTaskPermissionsVM';
+import UpdateThumbnailReportTaskVM from './models/UpdateThumbnailReportTaskVM';
+import UpdateThumbnailTemplateTaskVM from './models/UpdateThumbnailTemplateTaskVM';
+import UpdateTransformTaskBaseVM from './models/UpdateTransformTaskBaseVM';
+import UpdateTransportTaskBaseVM from './models/UpdateTransportTaskBaseVM';
 import UpdateUserProfileVM from './models/UpdateUserProfileVM';
 import UpdateUserSettingsVM from './models/UpdateUserSettingsVM';
+import UpdateWebhookTaskVM from './models/UpdateWebhookTaskVM';
 import UserProfileVM from './models/UserProfileVM';
 import UserSettingsVM from './models/UserSettingsVM';
 import ValidationProblemDetails from './models/ValidationProblemDetails';
@@ -537,12 +561,6 @@ export {
     DataSourcesVM,
 
     /**
-     * The DefaultPermissions model constructor.
-     * @property {module:models/DefaultPermissions}
-     */
-    DefaultPermissions,
-
-    /**
      * The DefaultPermissionsVM model constructor.
      * @property {module:models/DefaultPermissionsVM}
      */
@@ -805,6 +823,12 @@ export {
      * @property {module:models/FolderTagsUpdateVM}
      */
     FolderTagsUpdateVM,
+
+    /**
+     * The FrontendApp model constructor.
+     * @property {module:models/FrontendApp}
+     */
+    FrontendApp,
 
     /**
      * The GroupAdministrate model constructor.
@@ -1221,10 +1245,70 @@ export {
     SubscriptionsVM,
 
     /**
+     * The TaskAdministrate model constructor.
+     * @property {module:models/TaskAdministrate}
+     */
+    TaskAdministrate,
+
+    /**
      * The TaskBaseVM model constructor.
      * @property {module:models/TaskBaseVM}
      */
     TaskBaseVM,
+
+    /**
+     * The TaskCreate model constructor.
+     * @property {module:models/TaskCreate}
+     */
+    TaskCreate,
+
+    /**
+     * The TaskCreateTaskGetTaskUpdateTaskDeleteTaskExecuteTaskAdministratePermission model constructor.
+     * @property {module:models/TaskCreateTaskGetTaskUpdateTaskDeleteTaskExecuteTaskAdministratePermission}
+     */
+    TaskCreateTaskGetTaskUpdateTaskDeleteTaskExecuteTaskAdministratePermission,
+
+    /**
+     * The TaskDelete model constructor.
+     * @property {module:models/TaskDelete}
+     */
+    TaskDelete,
+
+    /**
+     * The TaskExecute model constructor.
+     * @property {module:models/TaskExecute}
+     */
+    TaskExecute,
+
+    /**
+     * The TaskGet model constructor.
+     * @property {module:models/TaskGet}
+     */
+    TaskGet,
+
+    /**
+     * The TaskPermission model constructor.
+     * @property {module:models/TaskPermission}
+     */
+    TaskPermission,
+
+    /**
+     * The TaskPermissionTaskCreateTaskGetTaskUpdateTaskDeleteTaskExecuteTaskAdministratePermissions model constructor.
+     * @property {module:models/TaskPermissionTaskCreateTaskGetTaskUpdateTaskDeleteTaskExecuteTaskAdministratePermissions}
+     */
+    TaskPermissionTaskCreateTaskGetTaskUpdateTaskDeleteTaskExecuteTaskAdministratePermissions,
+
+    /**
+     * The TaskPermissions model constructor.
+     * @property {module:models/TaskPermissions}
+     */
+    TaskPermissions,
+
+    /**
+     * The TaskPermissionsVM model constructor.
+     * @property {module:models/TaskPermissionsVM}
+     */
+    TaskPermissionsVM,
 
     /**
      * The TaskSettingsVM model constructor.
@@ -1237,6 +1321,12 @@ export {
      * @property {module:models/TaskType}
      */
     TaskType,
+
+    /**
+     * The TaskUpdate model constructor.
+     * @property {module:models/TaskUpdate}
+     */
+    TaskUpdate,
 
     /**
      * The TasksVM model constructor.
@@ -1335,6 +1425,36 @@ export {
     UpdateDefaultPermissionsVM,
 
     /**
+     * The UpdateEmailTaskVM model constructor.
+     * @property {module:models/UpdateEmailTaskVM}
+     */
+    UpdateEmailTaskVM,
+
+    /**
+     * The UpdateEndpointVM model constructor.
+     * @property {module:models/UpdateEndpointVM}
+     */
+    UpdateEndpointVM,
+
+    /**
+     * The UpdateExportReportTaskVM model constructor.
+     * @property {module:models/UpdateExportReportTaskVM}
+     */
+    UpdateExportReportTaskVM,
+
+    /**
+     * The UpdateExportTemplateTaskVM model constructor.
+     * @property {module:models/UpdateExportTemplateTaskVM}
+     */
+    UpdateExportTemplateTaskVM,
+
+    /**
+     * The UpdateFetchTaskVM model constructor.
+     * @property {module:models/UpdateFetchTaskVM}
+     */
+    UpdateFetchTaskVM,
+
+    /**
      * The UpdateFilePermissionsVM model constructor.
      * @property {module:models/UpdateFilePermissionsVM}
      */
@@ -1345,6 +1465,12 @@ export {
      * @property {module:models/UpdateGroupPermissionsVM}
      */
     UpdateGroupPermissionsVM,
+
+    /**
+     * The UpdatePrepareTemplateTaskVM model constructor.
+     * @property {module:models/UpdatePrepareTemplateTaskVM}
+     */
+    UpdatePrepareTemplateTaskVM,
 
     /**
      * The UpdateSubscriptionLocaleVM model constructor.
@@ -1359,6 +1485,42 @@ export {
     UpdateSubscriptionPermissionsVM,
 
     /**
+     * The UpdateTaskBaseVM model constructor.
+     * @property {module:models/UpdateTaskBaseVM}
+     */
+    UpdateTaskBaseVM,
+
+    /**
+     * The UpdateTaskPermissionsVM model constructor.
+     * @property {module:models/UpdateTaskPermissionsVM}
+     */
+    UpdateTaskPermissionsVM,
+
+    /**
+     * The UpdateThumbnailReportTaskVM model constructor.
+     * @property {module:models/UpdateThumbnailReportTaskVM}
+     */
+    UpdateThumbnailReportTaskVM,
+
+    /**
+     * The UpdateThumbnailTemplateTaskVM model constructor.
+     * @property {module:models/UpdateThumbnailTemplateTaskVM}
+     */
+    UpdateThumbnailTemplateTaskVM,
+
+    /**
+     * The UpdateTransformTaskBaseVM model constructor.
+     * @property {module:models/UpdateTransformTaskBaseVM}
+     */
+    UpdateTransformTaskBaseVM,
+
+    /**
+     * The UpdateTransportTaskBaseVM model constructor.
+     * @property {module:models/UpdateTransportTaskBaseVM}
+     */
+    UpdateTransportTaskBaseVM,
+
+    /**
      * The UpdateUserProfileVM model constructor.
      * @property {module:models/UpdateUserProfileVM}
      */
@@ -1369,6 +1531,12 @@ export {
      * @property {module:models/UpdateUserSettingsVM}
      */
     UpdateUserSettingsVM,
+
+    /**
+     * The UpdateWebhookTaskVM model constructor.
+     * @property {module:models/UpdateWebhookTaskVM}
+     */
+    UpdateWebhookTaskVM,
 
     /**
      * The UserProfileVM model constructor.

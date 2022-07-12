@@ -12,8 +12,8 @@
  */
 
 import ApiClient from '../ApiClient';
-import AppMixins from './AppMixins';
 import AuthConfigVM from './AuthConfigVM';
+import FrontendApp from './FrontendApp';
 
 /**
  * The ServerConfigurationVM model module.
@@ -52,17 +52,26 @@ class ServerConfigurationVM {
             if (data.hasOwnProperty('title')) {
                 obj['title'] = ApiClient.convertToType(data['title'], 'String');
             }
+            if (data.hasOwnProperty('logoLink')) {
+                obj['logoLink'] = ApiClient.convertToType(data['logoLink'], 'String');
+            }
+            if (data.hasOwnProperty('copyright')) {
+                obj['copyright'] = ApiClient.convertToType(data['copyright'], 'String');
+            }
             if (data.hasOwnProperty('corporateServerMode')) {
                 obj['corporateServerMode'] = ApiClient.convertToType(data['corporateServerMode'], 'Boolean');
             }
             if (data.hasOwnProperty('isDisabled')) {
                 obj['isDisabled'] = ApiClient.convertToType(data['isDisabled'], 'Boolean');
             }
-            if (data.hasOwnProperty('appMixins')) {
-                obj['appMixins'] = AppMixins.constructFromObject(data['appMixins']);
+            if (data.hasOwnProperty('frontend')) {
+                obj['frontend'] = FrontendApp.constructFromObject(data['frontend']);
             }
             if (data.hasOwnProperty('auth')) {
                 obj['auth'] = AuthConfigVM.constructFromObject(data['auth']);
+            }
+            if (data.hasOwnProperty('designerForAnons')) {
+                obj['designerForAnons'] = ApiClient.convertToType(data['designerForAnons'], 'Boolean');
             }
         }
         return obj;
@@ -77,6 +86,16 @@ class ServerConfigurationVM {
 ServerConfigurationVM.prototype['title'] = undefined;
 
 /**
+ * @member {String} logoLink
+ */
+ServerConfigurationVM.prototype['logoLink'] = undefined;
+
+/**
+ * @member {String} copyright
+ */
+ServerConfigurationVM.prototype['copyright'] = undefined;
+
+/**
  * @member {Boolean} corporateServerMode
  */
 ServerConfigurationVM.prototype['corporateServerMode'] = undefined;
@@ -87,14 +106,19 @@ ServerConfigurationVM.prototype['corporateServerMode'] = undefined;
 ServerConfigurationVM.prototype['isDisabled'] = undefined;
 
 /**
- * @member {module:models/AppMixins} appMixins
+ * @member {module:models/FrontendApp} frontend
  */
-ServerConfigurationVM.prototype['appMixins'] = undefined;
+ServerConfigurationVM.prototype['frontend'] = undefined;
 
 /**
  * @member {module:models/AuthConfigVM} auth
  */
 ServerConfigurationVM.prototype['auth'] = undefined;
+
+/**
+ * @member {Boolean} designerForAnons
+ */
+ServerConfigurationVM.prototype['designerForAnons'] = undefined;
 
 
 

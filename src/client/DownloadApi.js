@@ -63,7 +63,7 @@ export default class DownloadApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['application/octet-stream', 'application/pdf', 'application/json'];
+      let accepts = ['text/plain', 'application/json', 'application/octet-stream', 'application/pdf'];
       let returnType = File;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -112,7 +112,7 @@ export default class DownloadApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['image/png', 'image/jpeg', 'application/json'];
+      let accepts = ['text/plain', 'application/json', 'image/png', 'image/jpeg'];
       let returnType = File;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -163,7 +163,7 @@ export default class DownloadApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['application/zip', 'application/json'];
+      let accepts = ['text/plain', 'application/json', 'application/zip'];
       let returnType = File;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -212,7 +212,7 @@ export default class DownloadApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['application/octet-stream', 'application/json'];
+      let accepts = ['text/plain', 'application/json', 'application/octet-stream'];
       let returnType = File;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -259,7 +259,7 @@ export default class DownloadApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['image/png', 'image/jpeg', 'application/json'];
+      let accepts = ['text/plain', 'application/json', 'image/png', 'image/jpeg'];
       let returnType = File;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -310,7 +310,7 @@ export default class DownloadApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['application/zip', 'application/json'];
+      let accepts = ['text/plain', 'application/json', 'application/zip'];
       let returnType = File;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -359,7 +359,7 @@ export default class DownloadApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['application/octet-stream', 'application/json'];
+      let accepts = ['text/plain', 'application/json', 'application/octet-stream'];
       let returnType = File;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -406,7 +406,7 @@ export default class DownloadApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['image/png', 'image/jpeg', 'application/json'];
+      let accepts = ['text/plain', 'application/json', 'image/png', 'image/jpeg'];
       let returnType = File;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
@@ -457,7 +457,7 @@ export default class DownloadApi {
 
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = [];
-      let accepts = ['application/zip', 'application/json'];
+      let accepts = ['text/plain', 'application/json', 'application/zip'];
       let returnType = File;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(

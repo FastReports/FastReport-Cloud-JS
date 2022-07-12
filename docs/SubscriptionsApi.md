@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 ## subscriptionsGetDefaultPermissions
 
-> DefaultPermissions subscriptionsGetDefaultPermissions(subscriptionId)
+> DefaultPermissionsVM subscriptionsGetDefaultPermissions(subscriptionId)
 
 Get subscription&#39;s default permissions for new entities
 
@@ -54,7 +54,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DefaultPermissions**](DefaultPermissions.md)
+[**DefaultPermissionsVM**](DefaultPermissionsVM.md)
 
 ### Authorization
 

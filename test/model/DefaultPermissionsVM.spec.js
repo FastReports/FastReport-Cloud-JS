@@ -72,6 +72,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property taskPermissions (base name: "taskPermissions")', function() {
+      // uncomment below and update the code to test the property taskPermissions
+      //var instance = new FastreportCloudSdk.DefaultPermissionsVM();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

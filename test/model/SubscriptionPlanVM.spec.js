@@ -132,12 +132,6 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property hasSpaceOverdraft (base name: "hasSpaceOverdraft")', function() {
-      // uncomment below and update the code to test the property hasSpaceOverdraft
-      //var instance = new FastreportCloudSdk.SubscriptionPlanVM();
-      //expect(instance).to.be();
-    });
-
     it('should have the property groupLimit (base name: "groupLimit")', function() {
       // uncomment below and update the code to test the property groupLimit
       //var instance = new FastreportCloudSdk.SubscriptionPlanVM();

@@ -17,7 +17,6 @@ Name | Type | Description | Notes
 **fileUploadSizeLimit** | **Number** |  | [optional] 
 **dataSourceLimit** | **Number** |  | [optional] 
 **maxUsersCount** | **Number** |  | [optional] 
-**hasSpaceOverdraft** | **Boolean** |  | [optional] 
 **groupLimit** | **Number** |  | [optional] 
 **onlineDesigner** | **Boolean** |  | [optional] 
 **isDemo** | **Boolean** |  | [optional] 
