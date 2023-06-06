@@ -50,24 +50,12 @@
   describe('RunExportTemplateTaskVM', function() {
     it('should create an instance of RunExportTemplateTaskVM', function() {
       // uncomment below and update the code to test RunExportTemplateTaskVM
-      //var instane = new FastreportCloudSdk.RunExportTemplateTaskVM();
+      //var instance = new FastreportCloudSdk.RunExportTemplateTaskVM();
       //expect(instance).to.be.a(FastreportCloudSdk.RunExportTemplateTaskVM);
     });
 
     it('should have the property reportParameters (base name: "reportParameters")', function() {
       // uncomment below and update the code to test the property reportParameters
-      //var instance = new FastreportCloudSdk.RunExportTemplateTaskVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property subscriptionId (base name: "subscriptionId")', function() {
-      // uncomment below and update the code to test the property subscriptionId
-      //var instance = new FastreportCloudSdk.RunExportTemplateTaskVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property type (base name: "type")', function() {
-      // uncomment below and update the code to test the property type
       //var instance = new FastreportCloudSdk.RunExportTemplateTaskVM();
       //expect(instance).to.be();
     });

@@ -49,7 +49,7 @@
   describe('FileAdministrate', function() {
     it('should create an instance of FileAdministrate', function() {
       // uncomment below and update the code to test FileAdministrate
-      //var instane = new FastreportCloudSdk.FileAdministrate();
+      //var instance = new FastreportCloudSdk.FileAdministrate();
       //expect(instance).to.be.a(FastreportCloudSdk.FileAdministrate);
     });
 

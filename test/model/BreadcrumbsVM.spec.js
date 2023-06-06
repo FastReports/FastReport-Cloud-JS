@@ -50,7 +50,7 @@
   describe('BreadcrumbsVM', function() {
     it('should create an instance of BreadcrumbsVM', function() {
       // uncomment below and update the code to test BreadcrumbsVM
-      //var instane = new FastreportCloudSdk.BreadcrumbsVM();
+      //var instance = new FastreportCloudSdk.BreadcrumbsVM();
       //expect(instance).to.be.a(FastreportCloudSdk.BreadcrumbsVM);
     });
 

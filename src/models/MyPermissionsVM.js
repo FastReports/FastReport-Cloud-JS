@@ -71,8 +71,40 @@ class MyPermissionsVM {
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>MyPermissionsVM</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>MyPermissionsVM</code>.
+     */
+    static validateJSON(data) {
+        // validate the optional field `subscription`
+        if (data['subscription']) { // data not null
+          SubscriptionPermission.validateJSON(data['subscription']);
+        }
+        // validate the optional field `files`
+        if (data['files']) { // data not null
+          FilePermission.validateJSON(data['files']);
+        }
+        // validate the optional field `datasources`
+        if (data['datasources']) { // data not null
+          DataSourcePermission.validateJSON(data['datasources']);
+        }
+        // validate the optional field `groups`
+        if (data['groups']) { // data not null
+          GroupPermission.validateJSON(data['groups']);
+        }
+        // validate the optional field `tasks`
+        if (data['tasks']) { // data not null
+          TaskPermission.validateJSON(data['tasks']);
+        }
+
+        return true;
+    }
+
 
 }
+
+
 
 /**
  * @member {module:models/SubscriptionPermission} subscription

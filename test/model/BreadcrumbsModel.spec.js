@@ -50,7 +50,7 @@
   describe('BreadcrumbsModel', function() {
     it('should create an instance of BreadcrumbsModel', function() {
       // uncomment below and update the code to test BreadcrumbsModel
-      //var instane = new FastreportCloudSdk.BreadcrumbsModel();
+      //var instance = new FastreportCloudSdk.BreadcrumbsModel();
       //expect(instance).to.be.a(FastreportCloudSdk.BreadcrumbsModel);
     });
 

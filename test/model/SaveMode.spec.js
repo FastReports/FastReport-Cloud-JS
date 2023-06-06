@@ -49,7 +49,7 @@
   describe('SaveMode', function() {
     it('should create an instance of SaveMode', function() {
       // uncomment below and update the code to test SaveMode
-      //var instane = new FastreportCloudSdk.SaveMode();
+      //var instance = new FastreportCloudSdk.SaveMode();
       //expect(instance).to.be.a(FastreportCloudSdk.SaveMode);
     });
 

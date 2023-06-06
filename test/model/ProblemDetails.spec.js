@@ -50,7 +50,7 @@
   describe('ProblemDetails', function() {
     it('should create an instance of ProblemDetails', function() {
       // uncomment below and update the code to test ProblemDetails
-      //var instane = new FastreportCloudSdk.ProblemDetails();
+      //var instance = new FastreportCloudSdk.ProblemDetails();
       //expect(instance).to.be.a(FastreportCloudSdk.ProblemDetails);
     });
 

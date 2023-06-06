@@ -45,6 +45,53 @@ export default class DataSourcesApi {
 
 
     /**
+     * Returns a number of data sources in subscription
+     * @param {String} subscriptionId subscripiton id
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Number} and HTTP response
+     */
+    dataSourcesCountDataSourcesAsyncWithHttpInfo(subscriptionId) {
+      let postBody = null;
+      // verify the required parameter 'subscriptionId' is set
+      if (subscriptionId === undefined || subscriptionId === null) {
+        throw new Error("Missing the required parameter 'subscriptionId' when calling dataSourcesCountDataSourcesAsync");
+      }
+
+      let pathParams = {
+        'subscriptionId': subscriptionId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKey', 'JWT'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = 'Number';
+      if(!returnType) returnType = 'Blob';
+      return this.apiClient.callApi(
+        '/api/data/v1/DataSources/{subscriptionId}/count', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Returns a number of data sources in subscription
+     * @param {String} subscriptionId subscripiton id
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Number}
+     */
+    dataSourcesCountDataSourcesAsync(subscriptionId) {
+      return this.dataSourcesCountDataSourcesAsyncWithHttpInfo(subscriptionId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Create new data source
      * @param {Object} opts Optional parameters
      * @param {module:models/CreateDataSourceVM} opts.createDataSourceVM create viewmodel
@@ -64,7 +111,7 @@ export default class DataSourcesApi {
       };
 
       let authNames = ['ApiKey', 'JWT'];
-      let contentTypes = ['application/json', 'text/json', 'application/_*+json'];
+      let contentTypes = ['application/json', 'text/json', 'application/*+json'];
       let accepts = ['application/json'];
       let returnType = DataSourceVM;
       if(!returnType) returnType = 'Blob';
@@ -361,7 +408,7 @@ export default class DataSourcesApi {
       };
 
       let authNames = ['ApiKey', 'JWT'];
-      let contentTypes = ['application/json', 'text/json', 'application/_*+json'];
+      let contentTypes = ['application/json', 'text/json', 'application/*+json'];
       let accepts = ['application/json'];
       let returnType = DataSourceVM;
       if(!returnType) returnType = 'Blob';
@@ -413,7 +460,7 @@ export default class DataSourcesApi {
       };
 
       let authNames = ['ApiKey', 'JWT'];
-      let contentTypes = ['application/json', 'text/json', 'application/_*+json'];
+      let contentTypes = ['application/json', 'text/json', 'application/*+json'];
       let accepts = ['application/json'];
       let returnType = DataSourceVM;
       if(!returnType) returnType = 'Blob';
@@ -465,7 +512,7 @@ export default class DataSourcesApi {
       };
 
       let authNames = ['ApiKey', 'JWT'];
-      let contentTypes = ['application/json', 'text/json', 'application/_*+json'];
+      let contentTypes = ['application/json', 'text/json', 'application/*+json'];
       let accepts = ['application/json'];
       let returnType = null;
       if(!returnType) returnType = 'Blob';
@@ -517,7 +564,7 @@ export default class DataSourcesApi {
       };
 
       let authNames = ['ApiKey', 'JWT'];
-      let contentTypes = ['application/json', 'text/json', 'application/_*+json'];
+      let contentTypes = ['application/json', 'text/json', 'application/*+json'];
       let accepts = ['application/json'];
       let returnType = null;
       if(!returnType) returnType = 'Blob';

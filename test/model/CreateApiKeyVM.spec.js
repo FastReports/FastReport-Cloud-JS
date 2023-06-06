@@ -50,7 +50,7 @@
   describe('CreateApiKeyVM', function() {
     it('should create an instance of CreateApiKeyVM', function() {
       // uncomment below and update the code to test CreateApiKeyVM
-      //var instane = new FastreportCloudSdk.CreateApiKeyVM();
+      //var instance = new FastreportCloudSdk.CreateApiKeyVM();
       //expect(instance).to.be.a(FastreportCloudSdk.CreateApiKeyVM);
     });
 

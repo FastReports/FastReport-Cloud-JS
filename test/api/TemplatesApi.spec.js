@@ -48,6 +48,16 @@
   }
 
   describe('TemplatesApi', function() {
+    describe('templateFolderAndFileClearRecycleBin', function() {
+      it('should call templateFolderAndFileClearRecycleBin successfully', function(done) {
+        //uncomment below and update the code to test templateFolderAndFileClearRecycleBin
+        //instance.templateFolderAndFileClearRecycleBin(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('templateFolderAndFileGetCount', function() {
       it('should call templateFolderAndFileGetCount successfully', function(done) {
         //uncomment below and update the code to test templateFolderAndFileGetCount
@@ -68,6 +78,26 @@
         done();
       });
     });
+    describe('templateFolderAndFileGetRecycleBinFoldersAndFiles', function() {
+      it('should call templateFolderAndFileGetRecycleBinFoldersAndFiles successfully', function(done) {
+        //uncomment below and update the code to test templateFolderAndFileGetRecycleBinFoldersAndFiles
+        //instance.templateFolderAndFileGetRecycleBinFoldersAndFiles(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('templateFolderAndFileRecoverAllFromRecycleBin', function() {
+      it('should call templateFolderAndFileRecoverAllFromRecycleBin successfully', function(done) {
+        //uncomment below and update the code to test templateFolderAndFileRecoverAllFromRecycleBin
+        //instance.templateFolderAndFileRecoverAllFromRecycleBin(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('templateFoldersCopyFolder', function() {
       it('should call templateFoldersCopyFolder successfully', function(done) {
         //uncomment below and update the code to test templateFoldersCopyFolder
@@ -82,6 +112,16 @@
       it('should call templateFoldersDeleteFolder successfully', function(done) {
         //uncomment below and update the code to test templateFoldersDeleteFolder
         //instance.templateFoldersDeleteFolder(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('templateFoldersExport', function() {
+      it('should call templateFoldersExport successfully', function(done) {
+        //uncomment below and update the code to test templateFoldersExport
+        //instance.templateFoldersExport(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -128,6 +168,16 @@
         done();
       });
     });
+    describe('templateFoldersGetOrCreate', function() {
+      it('should call templateFoldersGetOrCreate successfully', function(done) {
+        //uncomment below and update the code to test templateFoldersGetOrCreate
+        //instance.templateFoldersGetOrCreate(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('templateFoldersGetPermissions', function() {
       it('should call templateFoldersGetPermissions successfully', function(done) {
         //uncomment below and update the code to test templateFoldersGetPermissions
@@ -158,10 +208,40 @@
         done();
       });
     });
+    describe('templateFoldersMoveFolderToBin', function() {
+      it('should call templateFoldersMoveFolderToBin successfully', function(done) {
+        //uncomment below and update the code to test templateFoldersMoveFolderToBin
+        //instance.templateFoldersMoveFolderToBin(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('templateFoldersPostFolder', function() {
       it('should call templateFoldersPostFolder successfully', function(done) {
         //uncomment below and update the code to test templateFoldersPostFolder
         //instance.templateFoldersPostFolder(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('templateFoldersPrepare', function() {
+      it('should call templateFoldersPrepare successfully', function(done) {
+        //uncomment below and update the code to test templateFoldersPrepare
+        //instance.templateFoldersPrepare(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('templateFoldersRecoverFolder', function() {
+      it('should call templateFoldersRecoverFolder successfully', function(done) {
+        //uncomment below and update the code to test templateFoldersRecoverFolder
+        //instance.templateFoldersRecoverFolder(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -248,6 +328,16 @@
         done();
       });
     });
+    describe('templatesGetFileHistory', function() {
+      it('should call templatesGetFileHistory successfully', function(done) {
+        //uncomment below and update the code to test templatesGetFileHistory
+        //instance.templatesGetFileHistory(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('templatesGetFilesCount', function() {
       it('should call templatesGetFilesCount successfully', function(done) {
         //uncomment below and update the code to test templatesGetFilesCount
@@ -288,6 +378,16 @@
         done();
       });
     });
+    describe('templatesMoveFileToBin', function() {
+      it('should call templatesMoveFileToBin successfully', function(done) {
+        //uncomment below and update the code to test templatesMoveFileToBin
+        //instance.templatesMoveFileToBin(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('templatesPrepare', function() {
       it('should call templatesPrepare successfully', function(done) {
         //uncomment below and update the code to test templatesPrepare
@@ -298,10 +398,40 @@
         done();
       });
     });
+    describe('templatesRecoverFile', function() {
+      it('should call templatesRecoverFile successfully', function(done) {
+        //uncomment below and update the code to test templatesRecoverFile
+        //instance.templatesRecoverFile(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('templatesRenameFile', function() {
       it('should call templatesRenameFile successfully', function(done) {
         //uncomment below and update the code to test templatesRenameFile
         //instance.templatesRenameFile(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('templatesStaticPreview', function() {
+      it('should call templatesStaticPreview successfully', function(done) {
+        //uncomment below and update the code to test templatesStaticPreview
+        //instance.templatesStaticPreview(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('templatesUpdateContent', function() {
+      it('should call templatesUpdateContent successfully', function(done) {
+        //uncomment below and update the code to test templatesUpdateContent
+        //instance.templatesUpdateContent(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

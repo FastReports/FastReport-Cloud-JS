@@ -49,7 +49,7 @@
   describe('DataSourceDelete', function() {
     it('should create an instance of DataSourceDelete', function() {
       // uncomment below and update the code to test DataSourceDelete
-      //var instane = new FastreportCloudSdk.DataSourceDelete();
+      //var instance = new FastreportCloudSdk.DataSourceDelete();
       //expect(instance).to.be.a(FastreportCloudSdk.DataSourceDelete);
     });
 

@@ -49,7 +49,7 @@
   describe('FileUpdate', function() {
     it('should create an instance of FileUpdate', function() {
       // uncomment below and update the code to test FileUpdate
-      //var instane = new FastreportCloudSdk.FileUpdate();
+      //var instance = new FastreportCloudSdk.FileUpdate();
       //expect(instance).to.be.a(FastreportCloudSdk.FileUpdate);
     });
 

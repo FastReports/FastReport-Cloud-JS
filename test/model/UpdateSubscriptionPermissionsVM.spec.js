@@ -50,7 +50,7 @@
   describe('UpdateSubscriptionPermissionsVM', function() {
     it('should create an instance of UpdateSubscriptionPermissionsVM', function() {
       // uncomment below and update the code to test UpdateSubscriptionPermissionsVM
-      //var instane = new FastreportCloudSdk.UpdateSubscriptionPermissionsVM();
+      //var instance = new FastreportCloudSdk.UpdateSubscriptionPermissionsVM();
       //expect(instance).to.be.a(FastreportCloudSdk.UpdateSubscriptionPermissionsVM);
     });
 

@@ -50,18 +50,12 @@
   describe('FrontendApp', function() {
     it('should create an instance of FrontendApp', function() {
       // uncomment below and update the code to test FrontendApp
-      //var instane = new FastreportCloudSdk.FrontendApp();
+      //var instance = new FastreportCloudSdk.FrontendApp();
       //expect(instance).to.be.a(FastreportCloudSdk.FrontendApp);
     });
 
     it('should have the property mixins (base name: "mixins")', function() {
       // uncomment below and update the code to test the property mixins
-      //var instance = new FastreportCloudSdk.FrontendApp();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property invariantLocale (base name: "invariantLocale")', function() {
-      // uncomment below and update the code to test the property invariantLocale
       //var instance = new FastreportCloudSdk.FrontendApp();
       //expect(instance).to.be();
     });

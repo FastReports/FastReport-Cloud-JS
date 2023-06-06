@@ -113,8 +113,40 @@ class SubscriptionPlanVM {
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>SubscriptionPlanVM</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>SubscriptionPlanVM</code>.
+     */
+    static validateJSON(data) {
+        // ensure the json data is a string
+        if (data['id'] && !(typeof data['id'] === 'string' || data['id'] instanceof String)) {
+            throw new Error("Expected the field `id` to be a primitive type in the JSON string but got " + data['id']);
+        }
+        // ensure the json data is a string
+        if (data['displayName'] && !(typeof data['displayName'] === 'string' || data['displayName'] instanceof String)) {
+            throw new Error("Expected the field `displayName` to be a primitive type in the JSON string but got " + data['displayName']);
+        }
+        // validate the optional field `timePeriodType`
+        if (data['timePeriodType']) { // data not null
+          TimePeriodType.validateJSON(data['timePeriodType']);
+        }
+        // ensure the json data is a string
+        if (data['urlToBuy'] && !(typeof data['urlToBuy'] === 'string' || data['urlToBuy'] instanceof String)) {
+            throw new Error("Expected the field `urlToBuy` to be a primitive type in the JSON string but got " + data['urlToBuy']);
+        }
+        // validate the optional field `tasks`
+        if (data['tasks']) { // data not null
+          TaskSettingsVM.validateJSON(data['tasks']);
+        }
+
+        return true;
+    }
+
 
 }
+
+
 
 /**
  * @member {String} id

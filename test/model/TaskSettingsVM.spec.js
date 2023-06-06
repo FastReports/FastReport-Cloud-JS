@@ -50,7 +50,7 @@
   describe('TaskSettingsVM', function() {
     it('should create an instance of TaskSettingsVM', function() {
       // uncomment below and update the code to test TaskSettingsVM
-      //var instane = new FastreportCloudSdk.TaskSettingsVM();
+      //var instance = new FastreportCloudSdk.TaskSettingsVM();
       //expect(instance).to.be.a(FastreportCloudSdk.TaskSettingsVM);
     });
 
@@ -74,6 +74,12 @@
 
     it('should have the property sendViaEmail (base name: "sendViaEmail")', function() {
       // uncomment below and update the code to test the property sendViaEmail
+      //var instance = new FastreportCloudSdk.TaskSettingsVM();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property uploadToFTP (base name: "uploadToFTP")', function() {
+      // uncomment below and update the code to test the property uploadToFTP
       //var instance = new FastreportCloudSdk.TaskSettingsVM();
       //expect(instance).to.be();
     });

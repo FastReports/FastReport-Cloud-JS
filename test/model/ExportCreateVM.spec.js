@@ -50,7 +50,7 @@
   describe('ExportCreateVM', function() {
     it('should create an instance of ExportCreateVM', function() {
       // uncomment below and update the code to test ExportCreateVM
-      //var instane = new FastreportCloudSdk.ExportCreateVM();
+      //var instance = new FastreportCloudSdk.ExportCreateVM();
       //expect(instance).to.be.a(FastreportCloudSdk.ExportCreateVM);
     });
 
@@ -60,26 +60,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property name (base name: "name")', function() {
-      // uncomment below and update the code to test the property name
-      //var instance = new FastreportCloudSdk.ExportCreateVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property tags (base name: "tags")', function() {
-      // uncomment below and update the code to test the property tags
-      //var instance = new FastreportCloudSdk.ExportCreateVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property icon (base name: "icon")', function() {
-      // uncomment below and update the code to test the property icon
-      //var instance = new FastreportCloudSdk.ExportCreateVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property content (base name: "content")', function() {
-      // uncomment below and update the code to test the property content
+    it('should have the property reportId (base name: "reportId")', function() {
+      // uncomment below and update the code to test the property reportId
       //var instance = new FastreportCloudSdk.ExportCreateVM();
       //expect(instance).to.be();
     });

@@ -16,7 +16,6 @@ import OutputFileVM from './OutputFileVM';
 import RunInputFileVM from './RunInputFileVM';
 import RunTaskBaseVM from './RunTaskBaseVM';
 import RunTransportTaskBaseVM from './RunTransportTaskBaseVM';
-import TaskType from './TaskType';
 
 /**
  * The RunTransformTaskBaseVM model module.
@@ -27,11 +26,13 @@ class RunTransformTaskBaseVM {
     /**
      * Constructs a new <code>RunTransformTaskBaseVM</code>.
      * @alias module:models/RunTransformTaskBaseVM
+     * @extends module:models/RunTaskBaseVM
      * @implements module:models/RunTaskBaseVM
+     * @param t {String} 
      */
-    constructor() { 
-        RunTaskBaseVM.initialize(this);
-        RunTransformTaskBaseVM.initialize(this);
+    constructor(t) { 
+        RunTaskBaseVM.initialize(this, t);
+        RunTransformTaskBaseVM.initialize(this, t);
     }
 
     /**
@@ -39,7 +40,8 @@ class RunTransformTaskBaseVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -53,12 +55,13 @@ class RunTransformTaskBaseVM {
         if (data) {
             obj = obj || new RunTransformTaskBaseVM();
             RunTaskBaseVM.constructFromObject(data, obj);
+            RunTaskBaseVM.constructFromObject(data, obj);
 
-            if (data.hasOwnProperty('locale')) {
-                obj['locale'] = ApiClient.convertToType(data['locale'], 'String');
-            }
             if (data.hasOwnProperty('inputFile')) {
                 obj['inputFile'] = RunInputFileVM.constructFromObject(data['inputFile']);
+            }
+            if (data.hasOwnProperty('locale')) {
+                obj['locale'] = ApiClient.convertToType(data['locale'], 'String');
             }
             if (data.hasOwnProperty('outputFile')) {
                 obj['outputFile'] = OutputFileVM.constructFromObject(data['outputFile']);
@@ -66,28 +69,69 @@ class RunTransformTaskBaseVM {
             if (data.hasOwnProperty('transports')) {
                 obj['transports'] = ApiClient.convertToType(data['transports'], [RunTransportTaskBaseVM]);
             }
-            if (data.hasOwnProperty('subscriptionId')) {
-                obj['subscriptionId'] = ApiClient.convertToType(data['subscriptionId'], 'String');
-            }
-            if (data.hasOwnProperty('type')) {
-                obj['type'] = TaskType.constructFromObject(data['type']);
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
             }
         }
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>RunTransformTaskBaseVM</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>RunTransformTaskBaseVM</code>.
+     */
+    static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of RunTransformTaskBaseVM.RequiredProperties) {
+            if (!data[property]) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
+        // validate the optional field `inputFile`
+        if (data['inputFile']) { // data not null
+          RunInputFileVM.validateJSON(data['inputFile']);
+        }
+        // ensure the json data is a string
+        if (data['locale'] && !(typeof data['locale'] === 'string' || data['locale'] instanceof String)) {
+            throw new Error("Expected the field `locale` to be a primitive type in the JSON string but got " + data['locale']);
+        }
+        // validate the optional field `outputFile`
+        if (data['outputFile']) { // data not null
+          OutputFileVM.validateJSON(data['outputFile']);
+        }
+        if (data['transports']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['transports'])) {
+                throw new Error("Expected the field `transports` to be an array in the JSON data but got " + data['transports']);
+            }
+            // validate the optional field `transports` (array)
+            for (const item of data['transports']) {
+                RunTransportTaskBaseVM.validateJSON(item);
+            };
+        }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
+        }
+
+        return true;
+    }
+
 
 }
 
-/**
- * @member {String} locale
- */
-RunTransformTaskBaseVM.prototype['locale'] = undefined;
+RunTransformTaskBaseVM.RequiredProperties = ["$t"];
 
 /**
  * @member {module:models/RunInputFileVM} inputFile
  */
 RunTransformTaskBaseVM.prototype['inputFile'] = undefined;
+
+/**
+ * @member {String} locale
+ */
+RunTransformTaskBaseVM.prototype['locale'] = undefined;
 
 /**
  * @member {module:models/OutputFileVM} outputFile
@@ -100,14 +144,9 @@ RunTransformTaskBaseVM.prototype['outputFile'] = undefined;
 RunTransformTaskBaseVM.prototype['transports'] = undefined;
 
 /**
- * @member {String} subscriptionId
+ * @member {String} $t
  */
-RunTransformTaskBaseVM.prototype['subscriptionId'] = undefined;
-
-/**
- * @member {module:models/TaskType} type
- */
-RunTransformTaskBaseVM.prototype['type'] = undefined;
+RunTransformTaskBaseVM.prototype['$t'] = undefined;
 
 
 // Implement RunTaskBaseVM interface:
@@ -116,9 +155,9 @@ RunTransformTaskBaseVM.prototype['type'] = undefined;
  */
 RunTaskBaseVM.prototype['subscriptionId'] = undefined;
 /**
- * @member {module:models/TaskType} type
+ * @member {String} $t
  */
-RunTaskBaseVM.prototype['type'] = undefined;
+RunTaskBaseVM.prototype['$t'] = undefined;
 
 
 

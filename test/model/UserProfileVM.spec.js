@@ -50,7 +50,7 @@
   describe('UserProfileVM', function() {
     it('should create an instance of UserProfileVM', function() {
       // uncomment below and update the code to test UserProfileVM
-      //var instane = new FastreportCloudSdk.UserProfileVM();
+      //var instance = new FastreportCloudSdk.UserProfileVM();
       //expect(instance).to.be.a(FastreportCloudSdk.UserProfileVM);
     });
 

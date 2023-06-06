@@ -50,38 +50,8 @@
   describe('FilePermissions', function() {
     it('should create an instance of FilePermissions', function() {
       // uncomment below and update the code to test FilePermissions
-      //var instane = new FastreportCloudSdk.FilePermissions();
+      //var instance = new FastreportCloudSdk.FilePermissions();
       //expect(instance).to.be.a(FastreportCloudSdk.FilePermissions);
-    });
-
-    it('should have the property ownerId (base name: "ownerId")', function() {
-      // uncomment below and update the code to test the property ownerId
-      //var instance = new FastreportCloudSdk.FilePermissions();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property owner (base name: "owner")', function() {
-      // uncomment below and update the code to test the property owner
-      //var instance = new FastreportCloudSdk.FilePermissions();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property groups (base name: "groups")', function() {
-      // uncomment below and update the code to test the property groups
-      //var instance = new FastreportCloudSdk.FilePermissions();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property other (base name: "other")', function() {
-      // uncomment below and update the code to test the property other
-      //var instance = new FastreportCloudSdk.FilePermissions();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property anon (base name: "anon")', function() {
-      // uncomment below and update the code to test the property anon
-      //var instance = new FastreportCloudSdk.FilePermissions();
-      //expect(instance).to.be();
     });
 
   });

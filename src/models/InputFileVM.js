@@ -51,9 +51,6 @@ class InputFileVM {
             if (data.hasOwnProperty('entityId')) {
                 obj['entityId'] = ApiClient.convertToType(data['entityId'], 'String');
             }
-            if (data.hasOwnProperty('fileName')) {
-                obj['fileName'] = ApiClient.convertToType(data['fileName'], 'String');
-            }
             if (data.hasOwnProperty('type')) {
                 obj['type'] = FileKind.constructFromObject(data['type']);
             }
@@ -61,18 +58,29 @@ class InputFileVM {
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>InputFileVM</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>InputFileVM</code>.
+     */
+    static validateJSON(data) {
+        // ensure the json data is a string
+        if (data['entityId'] && !(typeof data['entityId'] === 'string' || data['entityId'] instanceof String)) {
+            throw new Error("Expected the field `entityId` to be a primitive type in the JSON string but got " + data['entityId']);
+        }
+
+        return true;
+    }
+
 
 }
+
+
 
 /**
  * @member {String} entityId
  */
 InputFileVM.prototype['entityId'] = undefined;
-
-/**
- * @member {String} fileName
- */
-InputFileVM.prototype['fileName'] = undefined;
 
 /**
  * @member {module:models/FileKind} type

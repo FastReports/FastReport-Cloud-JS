@@ -50,7 +50,7 @@
   describe('GroupPermissionsVM', function() {
     it('should create an instance of GroupPermissionsVM', function() {
       // uncomment below and update the code to test GroupPermissionsVM
-      //var instane = new FastreportCloudSdk.GroupPermissionsVM();
+      //var instance = new FastreportCloudSdk.GroupPermissionsVM();
       //expect(instance).to.be.a(FastreportCloudSdk.GroupPermissionsVM);
     });
 

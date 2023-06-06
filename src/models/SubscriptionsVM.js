@@ -64,8 +64,30 @@ class SubscriptionsVM {
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>SubscriptionsVM</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>SubscriptionsVM</code>.
+     */
+    static validateJSON(data) {
+        if (data['subscriptions']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['subscriptions'])) {
+                throw new Error("Expected the field `subscriptions` to be an array in the JSON data but got " + data['subscriptions']);
+            }
+            // validate the optional field `subscriptions` (array)
+            for (const item of data['subscriptions']) {
+                SubscriptionVM.validateJSON(item);
+            };
+        }
+
+        return true;
+    }
+
 
 }
+
+
 
 /**
  * @member {Array.<module:models/SubscriptionVM>} subscriptions

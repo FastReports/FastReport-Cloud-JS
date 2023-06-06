@@ -49,7 +49,7 @@
   describe('FileSorting', function() {
     it('should create an instance of FileSorting', function() {
       // uncomment below and update the code to test FileSorting
-      //var instane = new FastreportCloudSdk.FileSorting();
+      //var instance = new FastreportCloudSdk.FileSorting();
       //expect(instance).to.be.a(FastreportCloudSdk.FileSorting);
     });
 

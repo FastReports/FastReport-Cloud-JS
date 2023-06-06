@@ -12,8 +12,6 @@
  */
 
 import ApiClient from '../ApiClient';
-import CreateTaskBaseVM from './CreateTaskBaseVM';
-import TaskType from './TaskType';
 
 /**
  * The TaskBaseVM model module.
@@ -24,11 +22,11 @@ class TaskBaseVM {
     /**
      * Constructs a new <code>TaskBaseVM</code>.
      * @alias module:models/TaskBaseVM
-     * @implements module:models/CreateTaskBaseVM
+     * @param t {String} 
      */
-    constructor() { 
-        CreateTaskBaseVM.initialize(this);
-        TaskBaseVM.initialize(this);
+    constructor(t) { 
+        
+        TaskBaseVM.initialize(this, t);
     }
 
     /**
@@ -36,7 +34,8 @@ class TaskBaseVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -49,13 +48,21 @@ class TaskBaseVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new TaskBaseVM();
-            CreateTaskBaseVM.constructFromObject(data, obj);
 
-            if (data.hasOwnProperty('id')) {
-                obj['id'] = ApiClient.convertToType(data['id'], 'String');
+            if (data.hasOwnProperty('cronExpression')) {
+                obj['cronExpression'] = ApiClient.convertToType(data['cronExpression'], 'String');
+            }
+            if (data.hasOwnProperty('delayedRunTime')) {
+                obj['delayedRunTime'] = ApiClient.convertToType(data['delayedRunTime'], 'Date');
             }
             if (data.hasOwnProperty('delayedWasRunTime')) {
                 obj['delayedWasRunTime'] = ApiClient.convertToType(data['delayedWasRunTime'], 'Date');
+            }
+            if (data.hasOwnProperty('id')) {
+                obj['id'] = ApiClient.convertToType(data['id'], 'String');
+            }
+            if (data.hasOwnProperty('name')) {
+                obj['name'] = ApiClient.convertToType(data['name'], 'String');
             }
             if (data.hasOwnProperty('recurrentRunTime')) {
                 obj['recurrentRunTime'] = ApiClient.convertToType(data['recurrentRunTime'], 'Date');
@@ -63,27 +70,71 @@ class TaskBaseVM {
             if (data.hasOwnProperty('recurrentWasRunTime')) {
                 obj['recurrentWasRunTime'] = ApiClient.convertToType(data['recurrentWasRunTime'], 'Date');
             }
-            if (data.hasOwnProperty('name')) {
-                obj['name'] = ApiClient.convertToType(data['name'], 'String');
-            }
             if (data.hasOwnProperty('subscriptionId')) {
                 obj['subscriptionId'] = ApiClient.convertToType(data['subscriptionId'], 'String');
             }
-            if (data.hasOwnProperty('type')) {
-                obj['type'] = TaskType.constructFromObject(data['type']);
-            }
-            if (data.hasOwnProperty('delayedRunTime')) {
-                obj['delayedRunTime'] = ApiClient.convertToType(data['delayedRunTime'], 'Date');
-            }
-            if (data.hasOwnProperty('cronExpression')) {
-                obj['cronExpression'] = ApiClient.convertToType(data['cronExpression'], 'String');
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
             }
         }
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>TaskBaseVM</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>TaskBaseVM</code>.
+     */
+    static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of TaskBaseVM.RequiredProperties) {
+            if (!data[property]) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
+        // ensure the json data is a string
+        if (data['cronExpression'] && !(typeof data['cronExpression'] === 'string' || data['cronExpression'] instanceof String)) {
+            throw new Error("Expected the field `cronExpression` to be a primitive type in the JSON string but got " + data['cronExpression']);
+        }
+        // ensure the json data is a string
+        if (data['id'] && !(typeof data['id'] === 'string' || data['id'] instanceof String)) {
+            throw new Error("Expected the field `id` to be a primitive type in the JSON string but got " + data['id']);
+        }
+        // ensure the json data is a string
+        if (data['name'] && !(typeof data['name'] === 'string' || data['name'] instanceof String)) {
+            throw new Error("Expected the field `name` to be a primitive type in the JSON string but got " + data['name']);
+        }
+        // ensure the json data is a string
+        if (data['subscriptionId'] && !(typeof data['subscriptionId'] === 'string' || data['subscriptionId'] instanceof String)) {
+            throw new Error("Expected the field `subscriptionId` to be a primitive type in the JSON string but got " + data['subscriptionId']);
+        }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
+        }
+
+        return true;
+    }
+
 
 }
+
+TaskBaseVM.RequiredProperties = ["$t"];
+
+/**
+ * @member {String} cronExpression
+ */
+TaskBaseVM.prototype['cronExpression'] = undefined;
+
+/**
+ * @member {Date} delayedRunTime
+ */
+TaskBaseVM.prototype['delayedRunTime'] = undefined;
+
+/**
+ * @member {Date} delayedWasRunTime
+ */
+TaskBaseVM.prototype['delayedWasRunTime'] = undefined;
 
 /**
  * @member {String} id
@@ -91,9 +142,9 @@ class TaskBaseVM {
 TaskBaseVM.prototype['id'] = undefined;
 
 /**
- * @member {Date} delayedWasRunTime
+ * @member {String} name
  */
-TaskBaseVM.prototype['delayedWasRunTime'] = undefined;
+TaskBaseVM.prototype['name'] = undefined;
 
 /**
  * @member {Date} recurrentRunTime
@@ -106,52 +157,16 @@ TaskBaseVM.prototype['recurrentRunTime'] = undefined;
 TaskBaseVM.prototype['recurrentWasRunTime'] = undefined;
 
 /**
- * @member {String} name
- */
-TaskBaseVM.prototype['name'] = undefined;
-
-/**
  * @member {String} subscriptionId
  */
 TaskBaseVM.prototype['subscriptionId'] = undefined;
 
 /**
- * @member {module:models/TaskType} type
+ * @member {String} $t
  */
-TaskBaseVM.prototype['type'] = undefined;
-
-/**
- * @member {Date} delayedRunTime
- */
-TaskBaseVM.prototype['delayedRunTime'] = undefined;
-
-/**
- * @member {String} cronExpression
- */
-TaskBaseVM.prototype['cronExpression'] = undefined;
+TaskBaseVM.prototype['$t'] = undefined;
 
 
-// Implement CreateTaskBaseVM interface:
-/**
- * @member {String} name
- */
-CreateTaskBaseVM.prototype['name'] = undefined;
-/**
- * @member {String} subscriptionId
- */
-CreateTaskBaseVM.prototype['subscriptionId'] = undefined;
-/**
- * @member {module:models/TaskType} type
- */
-CreateTaskBaseVM.prototype['type'] = undefined;
-/**
- * @member {Date} delayedRunTime
- */
-CreateTaskBaseVM.prototype['delayedRunTime'] = undefined;
-/**
- * @member {String} cronExpression
- */
-CreateTaskBaseVM.prototype['cronExpression'] = undefined;
 
 
 

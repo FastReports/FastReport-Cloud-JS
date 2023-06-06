@@ -49,7 +49,7 @@
   describe('GroupDelete', function() {
     it('should create an instance of GroupDelete', function() {
       // uncomment below and update the code to test GroupDelete
-      //var instane = new FastreportCloudSdk.GroupDelete();
+      //var instance = new FastreportCloudSdk.GroupDelete();
       //expect(instance).to.be.a(FastreportCloudSdk.GroupDelete);
     });
 

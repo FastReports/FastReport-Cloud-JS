@@ -62,6 +62,13 @@ export default class FileGet {
 
     
         /**
+         * value: 32
+         * @const
+         */
+        "32" = 32;
+
+    
+        /**
          * value: -1
          * @const
          */

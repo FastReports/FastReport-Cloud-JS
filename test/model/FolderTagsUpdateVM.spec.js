@@ -50,7 +50,7 @@
   describe('FolderTagsUpdateVM', function() {
     it('should create an instance of FolderTagsUpdateVM', function() {
       // uncomment below and update the code to test FolderTagsUpdateVM
-      //var instane = new FastreportCloudSdk.FolderTagsUpdateVM();
+      //var instance = new FastreportCloudSdk.FolderTagsUpdateVM();
       //expect(instance).to.be.a(FastreportCloudSdk.FolderTagsUpdateVM);
     });
 

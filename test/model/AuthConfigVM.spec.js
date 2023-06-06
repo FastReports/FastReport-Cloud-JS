@@ -50,7 +50,7 @@
   describe('AuthConfigVM', function() {
     it('should create an instance of AuthConfigVM', function() {
       // uncomment below and update the code to test AuthConfigVM
-      //var instane = new FastreportCloudSdk.AuthConfigVM();
+      //var instance = new FastreportCloudSdk.AuthConfigVM();
       //expect(instance).to.be.a(FastreportCloudSdk.AuthConfigVM);
     });
 

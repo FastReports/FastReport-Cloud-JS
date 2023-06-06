@@ -50,26 +50,8 @@
   describe('TemplateFolderCreateVM', function() {
     it('should create an instance of TemplateFolderCreateVM', function() {
       // uncomment below and update the code to test TemplateFolderCreateVM
-      //var instane = new FastreportCloudSdk.TemplateFolderCreateVM();
+      //var instance = new FastreportCloudSdk.TemplateFolderCreateVM();
       //expect(instance).to.be.a(FastreportCloudSdk.TemplateFolderCreateVM);
-    });
-
-    it('should have the property name (base name: "name")', function() {
-      // uncomment below and update the code to test the property name
-      //var instance = new FastreportCloudSdk.TemplateFolderCreateVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property tags (base name: "tags")', function() {
-      // uncomment below and update the code to test the property tags
-      //var instance = new FastreportCloudSdk.TemplateFolderCreateVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property icon (base name: "icon")', function() {
-      // uncomment below and update the code to test the property icon
-      //var instance = new FastreportCloudSdk.TemplateFolderCreateVM();
-      //expect(instance).to.be();
     });
 
   });

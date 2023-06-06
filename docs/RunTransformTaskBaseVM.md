@@ -4,11 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**locale** | **String** |  | [optional] 
 **inputFile** | [**RunInputFileVM**](RunInputFileVM.md) |  | [optional] 
+**locale** | **String** |  | [optional] 
 **outputFile** | [**OutputFileVM**](OutputFileVM.md) |  | [optional] 
 **transports** | [**[RunTransportTaskBaseVM]**](RunTransportTaskBaseVM.md) |  | [optional] 
-**subscriptionId** | **String** |  | [optional] 
-**type** | [**TaskType**](TaskType.md) |  | [optional] 
+**t** | **String** |  | 
 
 

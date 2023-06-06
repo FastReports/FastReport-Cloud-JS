@@ -50,7 +50,7 @@
   describe('SubscriptionsVM', function() {
     it('should create an instance of SubscriptionsVM', function() {
       // uncomment below and update the code to test SubscriptionsVM
-      //var instane = new FastreportCloudSdk.SubscriptionsVM();
+      //var instance = new FastreportCloudSdk.SubscriptionsVM();
       //expect(instance).to.be.a(FastreportCloudSdk.SubscriptionsVM);
     });
 

@@ -48,6 +48,16 @@
   }
 
   describe('DataSourcesApi', function() {
+    describe('dataSourcesCountDataSourcesAsync', function() {
+      it('should call dataSourcesCountDataSourcesAsync successfully', function(done) {
+        //uncomment below and update the code to test dataSourcesCountDataSourcesAsync
+        //instance.dataSourcesCountDataSourcesAsync(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('dataSourcesCreateDataSource', function() {
       it('should call dataSourcesCreateDataSource successfully', function(done) {
         //uncomment below and update the code to test dataSourcesCreateDataSource

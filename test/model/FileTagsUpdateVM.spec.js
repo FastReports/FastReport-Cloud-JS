@@ -50,7 +50,7 @@
   describe('FileTagsUpdateVM', function() {
     it('should create an instance of FileTagsUpdateVM', function() {
       // uncomment below and update the code to test FileTagsUpdateVM
-      //var instane = new FastreportCloudSdk.FileTagsUpdateVM();
+      //var instance = new FastreportCloudSdk.FileTagsUpdateVM();
       //expect(instance).to.be.a(FastreportCloudSdk.FileTagsUpdateVM);
     });
 

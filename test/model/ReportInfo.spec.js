@@ -50,7 +50,7 @@
   describe('ReportInfo', function() {
     it('should create an instance of ReportInfo', function() {
       // uncomment below and update the code to test ReportInfo
-      //var instane = new FastreportCloudSdk.ReportInfo();
+      //var instance = new FastreportCloudSdk.ReportInfo();
       //expect(instance).to.be.a(FastreportCloudSdk.ReportInfo);
     });
 

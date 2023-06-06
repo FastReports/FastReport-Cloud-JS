@@ -13,7 +13,6 @@
 
 import ApiClient from '../ApiClient';
 import ExportReportTaskVM from './ExportReportTaskVM';
-import TaskType from './TaskType';
 
 /**
  * The ExportTemplateTaskVM model module.
@@ -24,11 +23,13 @@ class ExportTemplateTaskVM {
     /**
      * Constructs a new <code>ExportTemplateTaskVM</code>.
      * @alias module:models/ExportTemplateTaskVM
+     * @extends module:models/ExportReportTaskVM
      * @implements module:models/ExportReportTaskVM
+     * @param t {String} 
      */
-    constructor() { 
-        ExportReportTaskVM.initialize(this);
-        ExportTemplateTaskVM.initialize(this);
+    constructor(t) { 
+        ExportReportTaskVM.initialize(this, t);
+        ExportTemplateTaskVM.initialize(this, t);
     }
 
     /**
@@ -36,7 +37,7 @@ class ExportTemplateTaskVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, t) { 
     }
 
     /**
@@ -50,84 +51,79 @@ class ExportTemplateTaskVM {
         if (data) {
             obj = obj || new ExportTemplateTaskVM();
             ExportReportTaskVM.constructFromObject(data, obj);
+            ExportReportTaskVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('reportParameters')) {
                 obj['reportParameters'] = ApiClient.convertToType(data['reportParameters'], {'String': 'String'});
-            }
-            if (data.hasOwnProperty('name')) {
-                obj['name'] = ApiClient.convertToType(data['name'], 'String');
-            }
-            if (data.hasOwnProperty('subscriptionId')) {
-                obj['subscriptionId'] = ApiClient.convertToType(data['subscriptionId'], 'String');
-            }
-            if (data.hasOwnProperty('type')) {
-                obj['type'] = TaskType.constructFromObject(data['type']);
-            }
-            if (data.hasOwnProperty('delayedRunTime')) {
-                obj['delayedRunTime'] = ApiClient.convertToType(data['delayedRunTime'], 'Date');
-            }
-            if (data.hasOwnProperty('cronExpression')) {
-                obj['cronExpression'] = ApiClient.convertToType(data['cronExpression'], 'String');
             }
         }
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>ExportTemplateTaskVM</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>ExportTemplateTaskVM</code>.
+     */
+    static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of ExportTemplateTaskVM.RequiredProperties) {
+            if (!data[property]) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
+
+        return true;
+    }
+
 
 }
+
+ExportTemplateTaskVM.RequiredProperties = ["$t"];
 
 /**
  * @member {Object.<String, String>} reportParameters
  */
 ExportTemplateTaskVM.prototype['reportParameters'] = undefined;
 
-/**
- * @member {String} name
- */
-ExportTemplateTaskVM.prototype['name'] = undefined;
-
-/**
- * @member {String} subscriptionId
- */
-ExportTemplateTaskVM.prototype['subscriptionId'] = undefined;
-
-/**
- * @member {module:models/TaskType} type
- */
-ExportTemplateTaskVM.prototype['type'] = undefined;
-
-/**
- * @member {Date} delayedRunTime
- */
-ExportTemplateTaskVM.prototype['delayedRunTime'] = undefined;
-
-/**
- * @member {String} cronExpression
- */
-ExportTemplateTaskVM.prototype['cronExpression'] = undefined;
-
 
 // Implement ExportReportTaskVM interface:
 /**
- * @member {String} name
+ * @member {String} cronExpression
  */
-ExportReportTaskVM.prototype['name'] = undefined;
-/**
- * @member {String} subscriptionId
- */
-ExportReportTaskVM.prototype['subscriptionId'] = undefined;
-/**
- * @member {module:models/TaskType} type
- */
-ExportReportTaskVM.prototype['type'] = undefined;
+ExportReportTaskVM.prototype['cronExpression'] = undefined;
 /**
  * @member {Date} delayedRunTime
  */
 ExportReportTaskVM.prototype['delayedRunTime'] = undefined;
 /**
- * @member {String} cronExpression
+ * @member {Date} delayedWasRunTime
  */
-ExportReportTaskVM.prototype['cronExpression'] = undefined;
+ExportReportTaskVM.prototype['delayedWasRunTime'] = undefined;
+/**
+ * @member {String} id
+ */
+ExportReportTaskVM.prototype['id'] = undefined;
+/**
+ * @member {String} name
+ */
+ExportReportTaskVM.prototype['name'] = undefined;
+/**
+ * @member {Date} recurrentRunTime
+ */
+ExportReportTaskVM.prototype['recurrentRunTime'] = undefined;
+/**
+ * @member {Date} recurrentWasRunTime
+ */
+ExportReportTaskVM.prototype['recurrentWasRunTime'] = undefined;
+/**
+ * @member {String} subscriptionId
+ */
+ExportReportTaskVM.prototype['subscriptionId'] = undefined;
+/**
+ * @member {String} $t
+ */
+ExportReportTaskVM.prototype['$t'] = undefined;
 
 
 

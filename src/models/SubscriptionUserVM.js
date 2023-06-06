@@ -58,8 +58,34 @@ class SubscriptionUserVM {
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>SubscriptionUserVM</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>SubscriptionUserVM</code>.
+     */
+    static validateJSON(data) {
+        // ensure the json data is a string
+        if (data['userId'] && !(typeof data['userId'] === 'string' || data['userId'] instanceof String)) {
+            throw new Error("Expected the field `userId` to be a primitive type in the JSON string but got " + data['userId']);
+        }
+        if (data['groups']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['groups'])) {
+                throw new Error("Expected the field `groups` to be an array in the JSON data but got " + data['groups']);
+            }
+            // validate the optional field `groups` (array)
+            for (const item of data['groups']) {
+                GroupVM.validateJSON(item);
+            };
+        }
+
+        return true;
+    }
+
 
 }
+
+
 
 /**
  * @member {String} userId

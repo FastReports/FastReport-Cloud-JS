@@ -50,18 +50,12 @@
   describe('InputFileVM', function() {
     it('should create an instance of InputFileVM', function() {
       // uncomment below and update the code to test InputFileVM
-      //var instane = new FastreportCloudSdk.InputFileVM();
+      //var instance = new FastreportCloudSdk.InputFileVM();
       //expect(instance).to.be.a(FastreportCloudSdk.InputFileVM);
     });
 
     it('should have the property entityId (base name: "entityId")', function() {
       // uncomment below and update the code to test the property entityId
-      //var instance = new FastreportCloudSdk.InputFileVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property fileName (base name: "fileName")', function() {
-      // uncomment below and update the code to test the property fileName
       //var instance = new FastreportCloudSdk.InputFileVM();
       //expect(instance).to.be();
     });

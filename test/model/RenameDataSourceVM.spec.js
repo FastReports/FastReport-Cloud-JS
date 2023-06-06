@@ -50,7 +50,7 @@
   describe('RenameDataSourceVM', function() {
     it('should create an instance of RenameDataSourceVM', function() {
       // uncomment below and update the code to test RenameDataSourceVM
-      //var instane = new FastreportCloudSdk.RenameDataSourceVM();
+      //var instance = new FastreportCloudSdk.RenameDataSourceVM();
       //expect(instance).to.be.a(FastreportCloudSdk.RenameDataSourceVM);
     });
 

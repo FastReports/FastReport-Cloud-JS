@@ -50,7 +50,7 @@
   describe('DeleteApiKeyVM', function() {
     it('should create an instance of DeleteApiKeyVM', function() {
       // uncomment below and update the code to test DeleteApiKeyVM
-      //var instane = new FastreportCloudSdk.DeleteApiKeyVM();
+      //var instance = new FastreportCloudSdk.DeleteApiKeyVM();
       //expect(instance).to.be.a(FastreportCloudSdk.DeleteApiKeyVM);
     });
 

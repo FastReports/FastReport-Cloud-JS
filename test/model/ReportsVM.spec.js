@@ -50,32 +50,8 @@
   describe('ReportsVM', function() {
     it('should create an instance of ReportsVM', function() {
       // uncomment below and update the code to test ReportsVM
-      //var instane = new FastreportCloudSdk.ReportsVM();
+      //var instance = new FastreportCloudSdk.ReportsVM();
       //expect(instance).to.be.a(FastreportCloudSdk.ReportsVM);
-    });
-
-    it('should have the property files (base name: "files")', function() {
-      // uncomment below and update the code to test the property files
-      //var instance = new FastreportCloudSdk.ReportsVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property count (base name: "count")', function() {
-      // uncomment below and update the code to test the property count
-      //var instance = new FastreportCloudSdk.ReportsVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property skip (base name: "skip")', function() {
-      // uncomment below and update the code to test the property skip
-      //var instance = new FastreportCloudSdk.ReportsVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property take (base name: "take")', function() {
-      // uncomment below and update the code to test the property take
-      //var instance = new FastreportCloudSdk.ReportsVM();
-      //expect(instance).to.be();
     });
 
   });

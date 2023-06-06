@@ -50,8 +50,20 @@
   describe('CreateTaskBaseVM', function() {
     it('should create an instance of CreateTaskBaseVM', function() {
       // uncomment below and update the code to test CreateTaskBaseVM
-      //var instane = new FastreportCloudSdk.CreateTaskBaseVM();
+      //var instance = new FastreportCloudSdk.CreateTaskBaseVM();
       //expect(instance).to.be.a(FastreportCloudSdk.CreateTaskBaseVM);
+    });
+
+    it('should have the property cronExpression (base name: "cronExpression")', function() {
+      // uncomment below and update the code to test the property cronExpression
+      //var instance = new FastreportCloudSdk.CreateTaskBaseVM();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property delayedRunTime (base name: "delayedRunTime")', function() {
+      // uncomment below and update the code to test the property delayedRunTime
+      //var instance = new FastreportCloudSdk.CreateTaskBaseVM();
+      //expect(instance).to.be();
     });
 
     it('should have the property name (base name: "name")', function() {
@@ -66,20 +78,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property type (base name: "type")', function() {
-      // uncomment below and update the code to test the property type
-      //var instance = new FastreportCloudSdk.CreateTaskBaseVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property delayedRunTime (base name: "delayedRunTime")', function() {
-      // uncomment below and update the code to test the property delayedRunTime
-      //var instance = new FastreportCloudSdk.CreateTaskBaseVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property cronExpression (base name: "cronExpression")', function() {
-      // uncomment below and update the code to test the property cronExpression
+    it('should have the property t (base name: "$t")', function() {
+      // uncomment below and update the code to test the property t
       //var instance = new FastreportCloudSdk.CreateTaskBaseVM();
       //expect(instance).to.be();
     });

@@ -48,6 +48,16 @@
   }
 
   describe('ReportsApi', function() {
+    describe('reportFolderAndFileClearRecycleBin', function() {
+      it('should call reportFolderAndFileClearRecycleBin successfully', function(done) {
+        //uncomment below and update the code to test reportFolderAndFileClearRecycleBin
+        //instance.reportFolderAndFileClearRecycleBin(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('reportFolderAndFileGetCount', function() {
       it('should call reportFolderAndFileGetCount successfully', function(done) {
         //uncomment below and update the code to test reportFolderAndFileGetCount
@@ -68,6 +78,26 @@
         done();
       });
     });
+    describe('reportFolderAndFileGetRecycleBinFoldersAndFiles', function() {
+      it('should call reportFolderAndFileGetRecycleBinFoldersAndFiles successfully', function(done) {
+        //uncomment below and update the code to test reportFolderAndFileGetRecycleBinFoldersAndFiles
+        //instance.reportFolderAndFileGetRecycleBinFoldersAndFiles(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('reportFolderAndFileRecoverAllFromRecycleBin', function() {
+      it('should call reportFolderAndFileRecoverAllFromRecycleBin successfully', function(done) {
+        //uncomment below and update the code to test reportFolderAndFileRecoverAllFromRecycleBin
+        //instance.reportFolderAndFileRecoverAllFromRecycleBin(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('reportFoldersCopyFolder', function() {
       it('should call reportFoldersCopyFolder successfully', function(done) {
         //uncomment below and update the code to test reportFoldersCopyFolder
@@ -82,6 +112,16 @@
       it('should call reportFoldersDeleteFolder successfully', function(done) {
         //uncomment below and update the code to test reportFoldersDeleteFolder
         //instance.reportFoldersDeleteFolder(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('reportFoldersExport', function() {
+      it('should call reportFoldersExport successfully', function(done) {
+        //uncomment below and update the code to test reportFoldersExport
+        //instance.reportFoldersExport(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -128,6 +168,16 @@
         done();
       });
     });
+    describe('reportFoldersGetOrCreate', function() {
+      it('should call reportFoldersGetOrCreate successfully', function(done) {
+        //uncomment below and update the code to test reportFoldersGetOrCreate
+        //instance.reportFoldersGetOrCreate(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('reportFoldersGetPermissions', function() {
       it('should call reportFoldersGetPermissions successfully', function(done) {
         //uncomment below and update the code to test reportFoldersGetPermissions
@@ -158,10 +208,30 @@
         done();
       });
     });
+    describe('reportFoldersMoveFolderToBin', function() {
+      it('should call reportFoldersMoveFolderToBin successfully', function(done) {
+        //uncomment below and update the code to test reportFoldersMoveFolderToBin
+        //instance.reportFoldersMoveFolderToBin(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('reportFoldersPostFolder', function() {
       it('should call reportFoldersPostFolder successfully', function(done) {
         //uncomment below and update the code to test reportFoldersPostFolder
         //instance.reportFoldersPostFolder(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('reportFoldersRecoverFolder', function() {
+      it('should call reportFoldersRecoverFolder successfully', function(done) {
+        //uncomment below and update the code to test reportFoldersRecoverFolder
+        //instance.reportFoldersRecoverFolder(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -248,6 +318,16 @@
         done();
       });
     });
+    describe('reportsGetFileHistory', function() {
+      it('should call reportsGetFileHistory successfully', function(done) {
+        //uncomment below and update the code to test reportsGetFileHistory
+        //instance.reportsGetFileHistory(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('reportsGetFilesCount', function() {
       it('should call reportsGetFilesCount successfully', function(done) {
         //uncomment below and update the code to test reportsGetFilesCount
@@ -288,10 +368,40 @@
         done();
       });
     });
+    describe('reportsMoveFileToBin', function() {
+      it('should call reportsMoveFileToBin successfully', function(done) {
+        //uncomment below and update the code to test reportsMoveFileToBin
+        //instance.reportsMoveFileToBin(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('reportsRecoverFile', function() {
+      it('should call reportsRecoverFile successfully', function(done) {
+        //uncomment below and update the code to test reportsRecoverFile
+        //instance.reportsRecoverFile(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('reportsRenameFile', function() {
       it('should call reportsRenameFile successfully', function(done) {
         //uncomment below and update the code to test reportsRenameFile
         //instance.reportsRenameFile(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('reportsStaticPreview', function() {
+      it('should call reportsStaticPreview successfully', function(done) {
+        //uncomment below and update the code to test reportsStaticPreview
+        //instance.reportsStaticPreview(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

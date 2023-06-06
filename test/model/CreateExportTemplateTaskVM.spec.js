@@ -50,42 +50,12 @@
   describe('CreateExportTemplateTaskVM', function() {
     it('should create an instance of CreateExportTemplateTaskVM', function() {
       // uncomment below and update the code to test CreateExportTemplateTaskVM
-      //var instane = new FastreportCloudSdk.CreateExportTemplateTaskVM();
+      //var instance = new FastreportCloudSdk.CreateExportTemplateTaskVM();
       //expect(instance).to.be.a(FastreportCloudSdk.CreateExportTemplateTaskVM);
     });
 
     it('should have the property reportParameters (base name: "reportParameters")', function() {
       // uncomment below and update the code to test the property reportParameters
-      //var instance = new FastreportCloudSdk.CreateExportTemplateTaskVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property name (base name: "name")', function() {
-      // uncomment below and update the code to test the property name
-      //var instance = new FastreportCloudSdk.CreateExportTemplateTaskVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property subscriptionId (base name: "subscriptionId")', function() {
-      // uncomment below and update the code to test the property subscriptionId
-      //var instance = new FastreportCloudSdk.CreateExportTemplateTaskVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property type (base name: "type")', function() {
-      // uncomment below and update the code to test the property type
-      //var instance = new FastreportCloudSdk.CreateExportTemplateTaskVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property delayedRunTime (base name: "delayedRunTime")', function() {
-      // uncomment below and update the code to test the property delayedRunTime
-      //var instance = new FastreportCloudSdk.CreateExportTemplateTaskVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property cronExpression (base name: "cronExpression")', function() {
-      // uncomment below and update the code to test the property cronExpression
       //var instance = new FastreportCloudSdk.CreateExportTemplateTaskVM();
       //expect(instance).to.be();
     });

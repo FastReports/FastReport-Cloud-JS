@@ -29,6 +29,7 @@ class GroupPermission {
     /**
      * Constructs a new <code>GroupPermission</code>.
      * @alias module:models/GroupPermission
+     * @extends module:models/GroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupAdministratePermission
      * @implements module:models/GroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupAdministratePermission
      */
     constructor() { 
@@ -55,61 +56,26 @@ class GroupPermission {
         if (data) {
             obj = obj || new GroupPermission();
             GroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupAdministratePermission.constructFromObject(data, obj);
+            GroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupAdministratePermission.constructFromObject(data, obj);
 
-            if (data.hasOwnProperty('create')) {
-                obj['create'] = GroupCreate.constructFromObject(data['create']);
-            }
-            if (data.hasOwnProperty('delete')) {
-                obj['delete'] = GroupDelete.constructFromObject(data['delete']);
-            }
-            if (data.hasOwnProperty('execute')) {
-                obj['execute'] = GroupExecute.constructFromObject(data['execute']);
-            }
-            if (data.hasOwnProperty('get')) {
-                obj['get'] = GroupGet.constructFromObject(data['get']);
-            }
-            if (data.hasOwnProperty('update')) {
-                obj['update'] = GroupUpdate.constructFromObject(data['update']);
-            }
-            if (data.hasOwnProperty('administrate')) {
-                obj['administrate'] = GroupAdministrate.constructFromObject(data['administrate']);
-            }
         }
         return obj;
+    }
+
+    /**
+     * Validates the JSON data with respect to <code>GroupPermission</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>GroupPermission</code>.
+     */
+    static validateJSON(data) {
+
+        return true;
     }
 
 
 }
 
-/**
- * @member {module:models/GroupCreate} create
- */
-GroupPermission.prototype['create'] = undefined;
 
-/**
- * @member {module:models/GroupDelete} delete
- */
-GroupPermission.prototype['delete'] = undefined;
-
-/**
- * @member {module:models/GroupExecute} execute
- */
-GroupPermission.prototype['execute'] = undefined;
-
-/**
- * @member {module:models/GroupGet} get
- */
-GroupPermission.prototype['get'] = undefined;
-
-/**
- * @member {module:models/GroupUpdate} update
- */
-GroupPermission.prototype['update'] = undefined;
-
-/**
- * @member {module:models/GroupAdministrate} administrate
- */
-GroupPermission.prototype['administrate'] = undefined;
 
 
 // Implement GroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupAdministratePermission interface:

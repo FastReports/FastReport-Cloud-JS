@@ -50,44 +50,8 @@
   describe('SubscriptionPermission', function() {
     it('should create an instance of SubscriptionPermission', function() {
       // uncomment below and update the code to test SubscriptionPermission
-      //var instane = new FastreportCloudSdk.SubscriptionPermission();
+      //var instance = new FastreportCloudSdk.SubscriptionPermission();
       //expect(instance).to.be.a(FastreportCloudSdk.SubscriptionPermission);
-    });
-
-    it('should have the property create (base name: "create")', function() {
-      // uncomment below and update the code to test the property create
-      //var instance = new FastreportCloudSdk.SubscriptionPermission();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property _delete (base name: "delete")', function() {
-      // uncomment below and update the code to test the property _delete
-      //var instance = new FastreportCloudSdk.SubscriptionPermission();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property execute (base name: "execute")', function() {
-      // uncomment below and update the code to test the property execute
-      //var instance = new FastreportCloudSdk.SubscriptionPermission();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property get (base name: "get")', function() {
-      // uncomment below and update the code to test the property get
-      //var instance = new FastreportCloudSdk.SubscriptionPermission();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property update (base name: "update")', function() {
-      // uncomment below and update the code to test the property update
-      //var instance = new FastreportCloudSdk.SubscriptionPermission();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property administrate (base name: "administrate")', function() {
-      // uncomment below and update the code to test the property administrate
-      //var instance = new FastreportCloudSdk.SubscriptionPermission();
-      //expect(instance).to.be();
     });
 
   });

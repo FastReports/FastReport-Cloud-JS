@@ -50,42 +50,18 @@
   describe('UpdateWebhookTaskVM', function() {
     it('should create an instance of UpdateWebhookTaskVM', function() {
       // uncomment below and update the code to test UpdateWebhookTaskVM
-      //var instane = new FastreportCloudSdk.UpdateWebhookTaskVM();
+      //var instance = new FastreportCloudSdk.UpdateWebhookTaskVM();
       //expect(instance).to.be.a(FastreportCloudSdk.UpdateWebhookTaskVM);
     });
 
-    it('should have the property endpoints (base name: "endpoints")', function() {
-      // uncomment below and update the code to test the property endpoints
+    it('should have the property headers (base name: "headers")', function() {
+      // uncomment below and update the code to test the property headers
       //var instance = new FastreportCloudSdk.UpdateWebhookTaskVM();
       //expect(instance).to.be();
     });
 
-    it('should have the property name (base name: "name")', function() {
-      // uncomment below and update the code to test the property name
-      //var instance = new FastreportCloudSdk.UpdateWebhookTaskVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property subscriptionId (base name: "subscriptionId")', function() {
-      // uncomment below and update the code to test the property subscriptionId
-      //var instance = new FastreportCloudSdk.UpdateWebhookTaskVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property type (base name: "type")', function() {
-      // uncomment below and update the code to test the property type
-      //var instance = new FastreportCloudSdk.UpdateWebhookTaskVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property delayedRunTime (base name: "delayedRunTime")', function() {
-      // uncomment below and update the code to test the property delayedRunTime
-      //var instance = new FastreportCloudSdk.UpdateWebhookTaskVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property cronExpression (base name: "cronExpression")', function() {
-      // uncomment below and update the code to test the property cronExpression
+    it('should have the property url (base name: "url")', function() {
+      // uncomment below and update the code to test the property url
       //var instance = new FastreportCloudSdk.UpdateWebhookTaskVM();
       //expect(instance).to.be();
     });

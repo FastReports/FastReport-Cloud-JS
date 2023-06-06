@@ -50,7 +50,7 @@
   describe('TaskCreateTaskGetTaskUpdateTaskDeleteTaskExecuteTaskAdministratePermission', function() {
     it('should create an instance of TaskCreateTaskGetTaskUpdateTaskDeleteTaskExecuteTaskAdministratePermission', function() {
       // uncomment below and update the code to test TaskCreateTaskGetTaskUpdateTaskDeleteTaskExecuteTaskAdministratePermission
-      //var instane = new FastreportCloudSdk.TaskCreateTaskGetTaskUpdateTaskDeleteTaskExecuteTaskAdministratePermission();
+      //var instance = new FastreportCloudSdk.TaskCreateTaskGetTaskUpdateTaskDeleteTaskExecuteTaskAdministratePermission();
       //expect(instance).to.be.a(FastreportCloudSdk.TaskCreateTaskGetTaskUpdateTaskDeleteTaskExecuteTaskAdministratePermission);
     });
 

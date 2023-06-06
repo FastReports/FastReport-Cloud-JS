@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** |  | [optional] 
+**cronExpression** | **String** |  | [optional] 
+**delayedRunTime** | **Date** |  | [optional] 
 **delayedWasRunTime** | **Date** |  | [optional] 
+**id** | **String** |  | [optional] 
+**name** | **String** |  | [optional] 
 **recurrentRunTime** | **Date** |  | [optional] [readonly] 
 **recurrentWasRunTime** | **Date** |  | [optional] [readonly] 
-**name** | **String** |  | [optional] 
 **subscriptionId** | **String** |  | [optional] 
-**type** | [**TaskType**](TaskType.md) |  | [optional] 
-**delayedRunTime** | **Date** |  | [optional] 
-**cronExpression** | **String** |  | [optional] 
+**t** | **String** |  | 
 
 

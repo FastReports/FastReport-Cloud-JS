@@ -49,7 +49,7 @@
   describe('DataSourceConnectionType', function() {
     it('should create an instance of DataSourceConnectionType', function() {
       // uncomment below and update the code to test DataSourceConnectionType
-      //var instane = new FastreportCloudSdk.DataSourceConnectionType();
+      //var instance = new FastreportCloudSdk.DataSourceConnectionType();
       //expect(instance).to.be.a(FastreportCloudSdk.DataSourceConnectionType);
     });
 

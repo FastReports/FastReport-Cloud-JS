@@ -50,14 +50,8 @@
   describe('RunEmailTaskVM', function() {
     it('should create an instance of RunEmailTaskVM', function() {
       // uncomment below and update the code to test RunEmailTaskVM
-      //var instane = new FastreportCloudSdk.RunEmailTaskVM();
-      //expect(instance).to.be.a(FastreportCloudSdk.RunEmailTaskVM);
-    });
-
-    it('should have the property password (base name: "password")', function() {
-      // uncomment below and update the code to test the property password
       //var instance = new FastreportCloudSdk.RunEmailTaskVM();
-      //expect(instance).to.be();
+      //expect(instance).to.be.a(FastreportCloudSdk.RunEmailTaskVM);
     });
 
     it('should have the property body (base name: "body")', function() {
@@ -66,8 +60,38 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property enableSsl (base name: "enableSsl")', function() {
+      // uncomment below and update the code to test the property enableSsl
+      //var instance = new FastreportCloudSdk.RunEmailTaskVM();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property from (base name: "from")', function() {
+      // uncomment below and update the code to test the property from
+      //var instance = new FastreportCloudSdk.RunEmailTaskVM();
+      //expect(instance).to.be();
+    });
+
     it('should have the property isBodyHtml (base name: "isBodyHtml")', function() {
       // uncomment below and update the code to test the property isBodyHtml
+      //var instance = new FastreportCloudSdk.RunEmailTaskVM();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property password (base name: "password")', function() {
+      // uncomment below and update the code to test the property password
+      //var instance = new FastreportCloudSdk.RunEmailTaskVM();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property port (base name: "port")', function() {
+      // uncomment below and update the code to test the property port
+      //var instance = new FastreportCloudSdk.RunEmailTaskVM();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property server (base name: "server")', function() {
+      // uncomment below and update the code to test the property server
       //var instance = new FastreportCloudSdk.RunEmailTaskVM();
       //expect(instance).to.be();
     });
@@ -84,44 +108,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property from (base name: "from")', function() {
-      // uncomment below and update the code to test the property from
-      //var instance = new FastreportCloudSdk.RunEmailTaskVM();
-      //expect(instance).to.be();
-    });
-
     it('should have the property username (base name: "username")', function() {
       // uncomment below and update the code to test the property username
-      //var instance = new FastreportCloudSdk.RunEmailTaskVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property server (base name: "server")', function() {
-      // uncomment below and update the code to test the property server
-      //var instance = new FastreportCloudSdk.RunEmailTaskVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property port (base name: "port")', function() {
-      // uncomment below and update the code to test the property port
-      //var instance = new FastreportCloudSdk.RunEmailTaskVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property enableSsl (base name: "enableSsl")', function() {
-      // uncomment below and update the code to test the property enableSsl
-      //var instance = new FastreportCloudSdk.RunEmailTaskVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property subscriptionId (base name: "subscriptionId")', function() {
-      // uncomment below and update the code to test the property subscriptionId
-      //var instance = new FastreportCloudSdk.RunEmailTaskVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property type (base name: "type")', function() {
-      // uncomment below and update the code to test the property type
       //var instance = new FastreportCloudSdk.RunEmailTaskVM();
       //expect(instance).to.be();
     });

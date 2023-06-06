@@ -62,12 +62,12 @@ export default class TasksApi {
       };
 
       let authNames = ['ApiKey', 'JWT'];
-      let contentTypes = ['application/json', 'text/json', 'application/_*+json'];
+      let contentTypes = ['application/json', 'text/json', 'application/*+json'];
       let accepts = ['application/json'];
       let returnType = TaskBaseVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
-        '/api/tasks', 'POST',
+        '/api/tasks/v1/Tasks', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null
       );
@@ -115,7 +115,7 @@ export default class TasksApi {
       let returnType = null;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
-        '/api/tasks/{taskId}', 'DELETE',
+        '/api/tasks/v1/Tasks/{taskId}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null
       );
@@ -162,7 +162,7 @@ export default class TasksApi {
       let returnType = TaskBaseVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
-        '/api/tasks/{taskId}', 'GET',
+        '/api/tasks/v1/Tasks/{taskId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null
       );
@@ -211,7 +211,7 @@ export default class TasksApi {
       let returnType = TasksVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
-        '/api/tasks', 'GET',
+        '/api/tasks/v1/Tasks', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null
       );
@@ -261,7 +261,7 @@ export default class TasksApi {
       let returnType = TaskPermissionsVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
-        '/api/tasks/{id}/permissions', 'GET',
+        '/api/tasks/v1/Tasks/{id}/permissions', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null
       );
@@ -312,7 +312,7 @@ export default class TasksApi {
       let returnType = TaskBaseVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
-        '/api/tasks/{taskId}/rename', 'PUT',
+        '/api/tasks/v1/Tasks/{taskId}/rename', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null
       );
@@ -353,12 +353,12 @@ export default class TasksApi {
       };
 
       let authNames = ['ApiKey', 'JWT'];
-      let contentTypes = ['application/json', 'text/json', 'application/_*+json'];
+      let contentTypes = ['application/json', 'text/json', 'application/*+json'];
       let accepts = ['application/json'];
       let returnType = null;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
-        '/api/tasks/run', 'POST',
+        '/api/tasks/v1/Tasks/run', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null
       );
@@ -406,7 +406,7 @@ export default class TasksApi {
       let returnType = null;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
-        '/api/tasks/{taskId}/run', 'POST',
+        '/api/tasks/v1/Tasks/{taskId}/run', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null
       );
@@ -451,12 +451,12 @@ export default class TasksApi {
       };
 
       let authNames = ['ApiKey', 'JWT'];
-      let contentTypes = ['application/json', 'text/json', 'application/_*+json'];
+      let contentTypes = ['application/json', 'text/json', 'application/*+json'];
       let accepts = ['application/json'];
       let returnType = null;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
-        '/api/tasks/{id}/permissions', 'POST',
+        '/api/tasks/v1/Tasks/{id}/permissions', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null
       );
@@ -503,12 +503,12 @@ export default class TasksApi {
       };
 
       let authNames = ['ApiKey', 'JWT'];
-      let contentTypes = ['application/json', 'text/json', 'application/_*+json'];
+      let contentTypes = ['application/json', 'text/json', 'application/*+json'];
       let accepts = ['application/json'];
       let returnType = TaskBaseVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
-        '/api/tasks/{taskId}', 'PUT',
+        '/api/tasks/v1/Tasks/{taskId}', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null
       );

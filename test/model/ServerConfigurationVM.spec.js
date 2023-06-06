@@ -50,7 +50,7 @@
   describe('ServerConfigurationVM', function() {
     it('should create an instance of ServerConfigurationVM', function() {
       // uncomment below and update the code to test ServerConfigurationVM
-      //var instane = new FastreportCloudSdk.ServerConfigurationVM();
+      //var instance = new FastreportCloudSdk.ServerConfigurationVM();
       //expect(instance).to.be.a(FastreportCloudSdk.ServerConfigurationVM);
     });
 
@@ -78,6 +78,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property lastSLAVersion (base name: "lastSLAVersion")', function() {
+      // uncomment below and update the code to test the property lastSLAVersion
+      //var instance = new FastreportCloudSdk.ServerConfigurationVM();
+      //expect(instance).to.be();
+    });
+
     it('should have the property isDisabled (base name: "isDisabled")', function() {
       // uncomment below and update the code to test the property isDisabled
       //var instance = new FastreportCloudSdk.ServerConfigurationVM();
@@ -90,6 +96,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property invariantLocale (base name: "invariantLocale")', function() {
+      // uncomment below and update the code to test the property invariantLocale
+      //var instance = new FastreportCloudSdk.ServerConfigurationVM();
+      //expect(instance).to.be();
+    });
+
     it('should have the property auth (base name: "auth")', function() {
       // uncomment below and update the code to test the property auth
       //var instance = new FastreportCloudSdk.ServerConfigurationVM();
@@ -98,6 +110,36 @@
 
     it('should have the property designerForAnons (base name: "designerForAnons")', function() {
       // uncomment below and update the code to test the property designerForAnons
+      //var instance = new FastreportCloudSdk.ServerConfigurationVM();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property slaLink (base name: "slaLink")', function() {
+      // uncomment below and update the code to test the property slaLink
+      //var instance = new FastreportCloudSdk.ServerConfigurationVM();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property firstStepsVideoLink (base name: "firstStepsVideoLink")', function() {
+      // uncomment below and update the code to test the property firstStepsVideoLink
+      //var instance = new FastreportCloudSdk.ServerConfigurationVM();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property aboutLink (base name: "aboutLink")', function() {
+      // uncomment below and update the code to test the property aboutLink
+      //var instance = new FastreportCloudSdk.ServerConfigurationVM();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property homePageLink (base name: "homePageLink")', function() {
+      // uncomment below and update the code to test the property homePageLink
+      //var instance = new FastreportCloudSdk.ServerConfigurationVM();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property authServerName (base name: "authServerName")', function() {
+      // uncomment below and update the code to test the property authServerName
       //var instance = new FastreportCloudSdk.ServerConfigurationVM();
       //expect(instance).to.be();
     });

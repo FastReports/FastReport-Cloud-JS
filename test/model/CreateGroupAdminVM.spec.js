@@ -50,24 +50,12 @@
   describe('CreateGroupAdminVM', function() {
     it('should create an instance of CreateGroupAdminVM', function() {
       // uncomment below and update the code to test CreateGroupAdminVM
-      //var instane = new FastreportCloudSdk.CreateGroupAdminVM();
+      //var instance = new FastreportCloudSdk.CreateGroupAdminVM();
       //expect(instance).to.be.a(FastreportCloudSdk.CreateGroupAdminVM);
     });
 
     it('should have the property ownerId (base name: "ownerId")', function() {
       // uncomment below and update the code to test the property ownerId
-      //var instance = new FastreportCloudSdk.CreateGroupAdminVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property name (base name: "name")', function() {
-      // uncomment below and update the code to test the property name
-      //var instance = new FastreportCloudSdk.CreateGroupAdminVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property subscriptionId (base name: "subscriptionId")', function() {
-      // uncomment below and update the code to test the property subscriptionId
       //var instance = new FastreportCloudSdk.CreateGroupAdminVM();
       //expect(instance).to.be();
     });

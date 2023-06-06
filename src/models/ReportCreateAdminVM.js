@@ -23,6 +23,7 @@ class ReportCreateAdminVM {
     /**
      * Constructs a new <code>ReportCreateAdminVM</code>.
      * @alias module:models/ReportCreateAdminVM
+     * @extends module:models/ReportCreateVM
      * @implements module:models/ReportCreateVM
      */
     constructor() { 
@@ -51,6 +52,7 @@ class ReportCreateAdminVM {
         if (data) {
             obj = obj || new ReportCreateAdminVM();
             ReportCreateVM.constructFromObject(data, obj);
+            ReportCreateVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('ownerId')) {
                 obj['ownerId'] = ApiClient.convertToType(data['ownerId'], 'String');
@@ -58,24 +60,38 @@ class ReportCreateAdminVM {
             if (data.hasOwnProperty('parentId')) {
                 obj['parentId'] = ApiClient.convertToType(data['parentId'], 'String');
             }
-            if (data.hasOwnProperty('name')) {
-                obj['name'] = ApiClient.convertToType(data['name'], 'String');
-            }
-            if (data.hasOwnProperty('tags')) {
-                obj['tags'] = ApiClient.convertToType(data['tags'], ['String']);
-            }
-            if (data.hasOwnProperty('icon')) {
-                obj['icon'] = ApiClient.convertToType(data['icon'], 'Blob');
-            }
-            if (data.hasOwnProperty('content')) {
-                obj['content'] = ApiClient.convertToType(data['content'], 'Blob');
-            }
         }
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>ReportCreateAdminVM</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>ReportCreateAdminVM</code>.
+     */
+    static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of ReportCreateAdminVM.RequiredProperties) {
+            if (!data[property]) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
+        // ensure the json data is a string
+        if (data['ownerId'] && !(typeof data['ownerId'] === 'string' || data['ownerId'] instanceof String)) {
+            throw new Error("Expected the field `ownerId` to be a primitive type in the JSON string but got " + data['ownerId']);
+        }
+        // ensure the json data is a string
+        if (data['parentId'] && !(typeof data['parentId'] === 'string' || data['parentId'] instanceof String)) {
+            throw new Error("Expected the field `parentId` to be a primitive type in the JSON string but got " + data['parentId']);
+        }
+
+        return true;
+    }
+
 
 }
+
+ReportCreateAdminVM.RequiredProperties = ["ownerId", "parentId"];
 
 /**
  * @member {String} ownerId
@@ -86,26 +102,6 @@ ReportCreateAdminVM.prototype['ownerId'] = undefined;
  * @member {String} parentId
  */
 ReportCreateAdminVM.prototype['parentId'] = undefined;
-
-/**
- * @member {String} name
- */
-ReportCreateAdminVM.prototype['name'] = undefined;
-
-/**
- * @member {Array.<String>} tags
- */
-ReportCreateAdminVM.prototype['tags'] = undefined;
-
-/**
- * @member {Blob} icon
- */
-ReportCreateAdminVM.prototype['icon'] = undefined;
-
-/**
- * @member {Blob} content
- */
-ReportCreateAdminVM.prototype['content'] = undefined;
 
 
 // Implement ReportCreateVM interface:

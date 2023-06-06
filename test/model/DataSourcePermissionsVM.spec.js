@@ -50,7 +50,7 @@
   describe('DataSourcePermissionsVM', function() {
     it('should create an instance of DataSourcePermissionsVM', function() {
       // uncomment below and update the code to test DataSourcePermissionsVM
-      //var instane = new FastreportCloudSdk.DataSourcePermissionsVM();
+      //var instance = new FastreportCloudSdk.DataSourcePermissionsVM();
       //expect(instance).to.be.a(FastreportCloudSdk.DataSourcePermissionsVM);
     });
 

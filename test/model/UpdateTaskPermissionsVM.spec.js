@@ -50,18 +50,18 @@
   describe('UpdateTaskPermissionsVM', function() {
     it('should create an instance of UpdateTaskPermissionsVM', function() {
       // uncomment below and update the code to test UpdateTaskPermissionsVM
-      //var instane = new FastreportCloudSdk.UpdateTaskPermissionsVM();
-      //expect(instance).to.be.a(FastreportCloudSdk.UpdateTaskPermissionsVM);
-    });
-
-    it('should have the property newPermissions (base name: "newPermissions")', function() {
-      // uncomment below and update the code to test the property newPermissions
       //var instance = new FastreportCloudSdk.UpdateTaskPermissionsVM();
-      //expect(instance).to.be();
+      //expect(instance).to.be.a(FastreportCloudSdk.UpdateTaskPermissionsVM);
     });
 
     it('should have the property administrate (base name: "administrate")', function() {
       // uncomment below and update the code to test the property administrate
+      //var instance = new FastreportCloudSdk.UpdateTaskPermissionsVM();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property newPermissions (base name: "newPermissions")', function() {
+      // uncomment below and update the code to test the property newPermissions
       //var instance = new FastreportCloudSdk.UpdateTaskPermissionsVM();
       //expect(instance).to.be();
     });

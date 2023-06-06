@@ -50,7 +50,7 @@
   describe('InvitedUser', function() {
     it('should create an instance of InvitedUser', function() {
       // uncomment below and update the code to test InvitedUser
-      //var instane = new FastreportCloudSdk.InvitedUser();
+      //var instance = new FastreportCloudSdk.InvitedUser();
       //expect(instance).to.be.a(FastreportCloudSdk.InvitedUser);
     });
 

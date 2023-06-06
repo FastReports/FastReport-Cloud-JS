@@ -67,8 +67,36 @@ class UpdateDefaultPermissionsVM {
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>UpdateDefaultPermissionsVM</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>UpdateDefaultPermissionsVM</code>.
+     */
+    static validateJSON(data) {
+        // validate the optional field `filePermissions`
+        if (data['filePermissions']) { // data not null
+          UpdateFilePermissionsVM.validateJSON(data['filePermissions']);
+        }
+        // validate the optional field `groupPermissions`
+        if (data['groupPermissions']) { // data not null
+          UpdateGroupPermissionsVM.validateJSON(data['groupPermissions']);
+        }
+        // validate the optional field `dataSourcePermissions`
+        if (data['dataSourcePermissions']) { // data not null
+          UpdateDataSourcePermissionsVM.validateJSON(data['dataSourcePermissions']);
+        }
+        // validate the optional field `taskPermissions`
+        if (data['taskPermissions']) { // data not null
+          UpdateTaskPermissionsVM.validateJSON(data['taskPermissions']);
+        }
+
+        return true;
+    }
+
 
 }
+
+
 
 /**
  * @member {module:models/UpdateFilePermissionsVM} filePermissions

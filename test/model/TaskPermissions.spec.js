@@ -50,38 +50,8 @@
   describe('TaskPermissions', function() {
     it('should create an instance of TaskPermissions', function() {
       // uncomment below and update the code to test TaskPermissions
-      //var instane = new FastreportCloudSdk.TaskPermissions();
+      //var instance = new FastreportCloudSdk.TaskPermissions();
       //expect(instance).to.be.a(FastreportCloudSdk.TaskPermissions);
-    });
-
-    it('should have the property ownerId (base name: "ownerId")', function() {
-      // uncomment below and update the code to test the property ownerId
-      //var instance = new FastreportCloudSdk.TaskPermissions();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property owner (base name: "owner")', function() {
-      // uncomment below and update the code to test the property owner
-      //var instance = new FastreportCloudSdk.TaskPermissions();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property groups (base name: "groups")', function() {
-      // uncomment below and update the code to test the property groups
-      //var instance = new FastreportCloudSdk.TaskPermissions();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property other (base name: "other")', function() {
-      // uncomment below and update the code to test the property other
-      //var instance = new FastreportCloudSdk.TaskPermissions();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property anon (base name: "anon")', function() {
-      // uncomment below and update the code to test the property anon
-      //var instance = new FastreportCloudSdk.TaskPermissions();
-      //expect(instance).to.be();
     });
 
   });

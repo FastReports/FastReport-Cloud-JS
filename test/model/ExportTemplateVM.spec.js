@@ -50,7 +50,7 @@
   describe('ExportTemplateVM', function() {
     it('should create an instance of ExportTemplateVM', function() {
       // uncomment below and update the code to test ExportTemplateVM
-      //var instane = new FastreportCloudSdk.ExportTemplateVM();
+      //var instance = new FastreportCloudSdk.ExportTemplateVM();
       //expect(instance).to.be.a(FastreportCloudSdk.ExportTemplateVM);
     });
 

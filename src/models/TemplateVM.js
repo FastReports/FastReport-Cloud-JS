@@ -24,6 +24,7 @@ class TemplateVM {
     /**
      * Constructs a new <code>TemplateVM</code>.
      * @alias module:models/TemplateVM
+     * @extends module:models/FileVM
      * @implements module:models/FileVM
      */
     constructor() { 
@@ -50,61 +51,38 @@ class TemplateVM {
         if (data) {
             obj = obj || new TemplateVM();
             FileVM.constructFromObject(data, obj);
+            FileVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('reportInfo')) {
                 obj['reportInfo'] = ReportInfo.constructFromObject(data['reportInfo']);
-            }
-            if (data.hasOwnProperty('id')) {
-                obj['id'] = ApiClient.convertToType(data['id'], 'String');
-            }
-            if (data.hasOwnProperty('createdTime')) {
-                obj['createdTime'] = ApiClient.convertToType(data['createdTime'], 'Date');
-            }
-            if (data.hasOwnProperty('creatorUserId')) {
-                obj['creatorUserId'] = ApiClient.convertToType(data['creatorUserId'], 'String');
-            }
-            if (data.hasOwnProperty('editedTime')) {
-                obj['editedTime'] = ApiClient.convertToType(data['editedTime'], 'Date');
-            }
-            if (data.hasOwnProperty('editorUserId')) {
-                obj['editorUserId'] = ApiClient.convertToType(data['editorUserId'], 'String');
             }
         }
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>TemplateVM</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>TemplateVM</code>.
+     */
+    static validateJSON(data) {
+        // validate the optional field `reportInfo`
+        if (data['reportInfo']) { // data not null
+          ReportInfo.validateJSON(data['reportInfo']);
+        }
+
+        return true;
+    }
+
 
 }
+
+
 
 /**
  * @member {module:models/ReportInfo} reportInfo
  */
 TemplateVM.prototype['reportInfo'] = undefined;
-
-/**
- * @member {String} id
- */
-TemplateVM.prototype['id'] = undefined;
-
-/**
- * @member {Date} createdTime
- */
-TemplateVM.prototype['createdTime'] = undefined;
-
-/**
- * @member {String} creatorUserId
- */
-TemplateVM.prototype['creatorUserId'] = undefined;
-
-/**
- * @member {Date} editedTime
- */
-TemplateVM.prototype['editedTime'] = undefined;
-
-/**
- * @member {String} editorUserId
- */
-TemplateVM.prototype['editorUserId'] = undefined;
 
 
 // Implement FileVM interface:

@@ -57,12 +57,31 @@ class UserSettingsVM {
             if (data.hasOwnProperty('showHiddenFilesAndFolders')) {
                 obj['showHiddenFilesAndFolders'] = ApiClient.convertToType(data['showHiddenFilesAndFolders'], 'Boolean');
             }
+            if (data.hasOwnProperty('slaAcceptedDateTime')) {
+                obj['slaAcceptedDateTime'] = ApiClient.convertToType(data['slaAcceptedDateTime'], 'Date');
+            }
         }
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>UserSettingsVM</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>UserSettingsVM</code>.
+     */
+    static validateJSON(data) {
+        // ensure the json data is a string
+        if (data['defaultSubscription'] && !(typeof data['defaultSubscription'] === 'string' || data['defaultSubscription'] instanceof String)) {
+            throw new Error("Expected the field `defaultSubscription` to be a primitive type in the JSON string but got " + data['defaultSubscription']);
+        }
+
+        return true;
+    }
+
 
 }
+
+
 
 /**
  * @member {module:models/ProfileVisibility} profileVisibility
@@ -78,6 +97,11 @@ UserSettingsVM.prototype['defaultSubscription'] = undefined;
  * @member {Boolean} showHiddenFilesAndFolders
  */
 UserSettingsVM.prototype['showHiddenFilesAndFolders'] = undefined;
+
+/**
+ * @member {Date} slaAcceptedDateTime
+ */
+UserSettingsVM.prototype['slaAcceptedDateTime'] = undefined;
 
 
 

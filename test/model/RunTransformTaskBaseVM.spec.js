@@ -50,18 +50,18 @@
   describe('RunTransformTaskBaseVM', function() {
     it('should create an instance of RunTransformTaskBaseVM', function() {
       // uncomment below and update the code to test RunTransformTaskBaseVM
-      //var instane = new FastreportCloudSdk.RunTransformTaskBaseVM();
-      //expect(instance).to.be.a(FastreportCloudSdk.RunTransformTaskBaseVM);
-    });
-
-    it('should have the property locale (base name: "locale")', function() {
-      // uncomment below and update the code to test the property locale
       //var instance = new FastreportCloudSdk.RunTransformTaskBaseVM();
-      //expect(instance).to.be();
+      //expect(instance).to.be.a(FastreportCloudSdk.RunTransformTaskBaseVM);
     });
 
     it('should have the property inputFile (base name: "inputFile")', function() {
       // uncomment below and update the code to test the property inputFile
+      //var instance = new FastreportCloudSdk.RunTransformTaskBaseVM();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property locale (base name: "locale")', function() {
+      // uncomment below and update the code to test the property locale
       //var instance = new FastreportCloudSdk.RunTransformTaskBaseVM();
       //expect(instance).to.be();
     });
@@ -78,14 +78,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property subscriptionId (base name: "subscriptionId")', function() {
-      // uncomment below and update the code to test the property subscriptionId
-      //var instance = new FastreportCloudSdk.RunTransformTaskBaseVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property type (base name: "type")', function() {
-      // uncomment below and update the code to test the property type
+    it('should have the property t (base name: "$t")', function() {
+      // uncomment below and update the code to test the property t
       //var instance = new FastreportCloudSdk.RunTransformTaskBaseVM();
       //expect(instance).to.be();
     });

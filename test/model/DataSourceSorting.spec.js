@@ -49,7 +49,7 @@
   describe('DataSourceSorting', function() {
     it('should create an instance of DataSourceSorting', function() {
       // uncomment below and update the code to test DataSourceSorting
-      //var instane = new FastreportCloudSdk.DataSourceSorting();
+      //var instance = new FastreportCloudSdk.DataSourceSorting();
       //expect(instance).to.be.a(FastreportCloudSdk.DataSourceSorting);
     });
 

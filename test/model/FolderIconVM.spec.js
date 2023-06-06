@@ -50,7 +50,7 @@
   describe('FolderIconVM', function() {
     it('should create an instance of FolderIconVM', function() {
       // uncomment below and update the code to test FolderIconVM
-      //var instane = new FastreportCloudSdk.FolderIconVM();
+      //var instance = new FastreportCloudSdk.FolderIconVM();
       //expect(instance).to.be.a(FastreportCloudSdk.FolderIconVM);
     });
 

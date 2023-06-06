@@ -49,7 +49,7 @@
   describe('FileKind', function() {
     it('should create an instance of FileKind', function() {
       // uncomment below and update the code to test FileKind
-      //var instane = new FastreportCloudSdk.FileKind();
+      //var instance = new FastreportCloudSdk.FileKind();
       //expect(instance).to.be.a(FastreportCloudSdk.FileKind);
     });
 

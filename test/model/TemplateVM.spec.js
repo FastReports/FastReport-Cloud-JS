@@ -50,42 +50,12 @@
   describe('TemplateVM', function() {
     it('should create an instance of TemplateVM', function() {
       // uncomment below and update the code to test TemplateVM
-      //var instane = new FastreportCloudSdk.TemplateVM();
+      //var instance = new FastreportCloudSdk.TemplateVM();
       //expect(instance).to.be.a(FastreportCloudSdk.TemplateVM);
     });
 
     it('should have the property reportInfo (base name: "reportInfo")', function() {
       // uncomment below and update the code to test the property reportInfo
-      //var instance = new FastreportCloudSdk.TemplateVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property id (base name: "id")', function() {
-      // uncomment below and update the code to test the property id
-      //var instance = new FastreportCloudSdk.TemplateVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property createdTime (base name: "createdTime")', function() {
-      // uncomment below and update the code to test the property createdTime
-      //var instance = new FastreportCloudSdk.TemplateVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property creatorUserId (base name: "creatorUserId")', function() {
-      // uncomment below and update the code to test the property creatorUserId
-      //var instance = new FastreportCloudSdk.TemplateVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property editedTime (base name: "editedTime")', function() {
-      // uncomment below and update the code to test the property editedTime
-      //var instance = new FastreportCloudSdk.TemplateVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property editorUserId (base name: "editorUserId")', function() {
-      // uncomment below and update the code to test the property editorUserId
       //var instance = new FastreportCloudSdk.TemplateVM();
       //expect(instance).to.be();
     });

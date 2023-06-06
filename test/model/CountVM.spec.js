@@ -50,7 +50,7 @@
   describe('CountVM', function() {
     it('should create an instance of CountVM', function() {
       // uncomment below and update the code to test CountVM
-      //var instane = new FastreportCloudSdk.CountVM();
+      //var instance = new FastreportCloudSdk.CountVM();
       //expect(instance).to.be.a(FastreportCloudSdk.CountVM);
     });
 

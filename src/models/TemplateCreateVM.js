@@ -23,6 +23,7 @@ class TemplateCreateVM {
     /**
      * Constructs a new <code>TemplateCreateVM</code>.
      * @alias module:models/TemplateCreateVM
+     * @extends module:models/FileCreateVM
      * @implements module:models/FileCreateVM
      */
     constructor() { 
@@ -49,45 +50,26 @@ class TemplateCreateVM {
         if (data) {
             obj = obj || new TemplateCreateVM();
             FileCreateVM.constructFromObject(data, obj);
+            FileCreateVM.constructFromObject(data, obj);
 
-            if (data.hasOwnProperty('name')) {
-                obj['name'] = ApiClient.convertToType(data['name'], 'String');
-            }
-            if (data.hasOwnProperty('tags')) {
-                obj['tags'] = ApiClient.convertToType(data['tags'], ['String']);
-            }
-            if (data.hasOwnProperty('icon')) {
-                obj['icon'] = ApiClient.convertToType(data['icon'], 'Blob');
-            }
-            if (data.hasOwnProperty('content')) {
-                obj['content'] = ApiClient.convertToType(data['content'], 'Blob');
-            }
         }
         return obj;
+    }
+
+    /**
+     * Validates the JSON data with respect to <code>TemplateCreateVM</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>TemplateCreateVM</code>.
+     */
+    static validateJSON(data) {
+
+        return true;
     }
 
 
 }
 
-/**
- * @member {String} name
- */
-TemplateCreateVM.prototype['name'] = undefined;
 
-/**
- * @member {Array.<String>} tags
- */
-TemplateCreateVM.prototype['tags'] = undefined;
-
-/**
- * @member {Blob} icon
- */
-TemplateCreateVM.prototype['icon'] = undefined;
-
-/**
- * @member {Blob} content
- */
-TemplateCreateVM.prototype['content'] = undefined;
 
 
 // Implement FileCreateVM interface:

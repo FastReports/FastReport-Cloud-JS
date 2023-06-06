@@ -12,7 +12,6 @@
  */
 
 import ApiClient from '../ApiClient';
-import TaskType from './TaskType';
 import TransportTaskBaseVM from './TransportTaskBaseVM';
 
 /**
@@ -24,11 +23,13 @@ class EmailTaskVM {
     /**
      * Constructs a new <code>EmailTaskVM</code>.
      * @alias module:models/EmailTaskVM
+     * @extends module:models/TransportTaskBaseVM
      * @implements module:models/TransportTaskBaseVM
+     * @param t {String} 
      */
-    constructor() { 
-        TransportTaskBaseVM.initialize(this);
-        EmailTaskVM.initialize(this);
+    constructor(t) { 
+        TransportTaskBaseVM.initialize(this, t);
+        EmailTaskVM.initialize(this, t);
     }
 
     /**
@@ -36,7 +37,7 @@ class EmailTaskVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, t) { 
     }
 
     /**
@@ -50,12 +51,25 @@ class EmailTaskVM {
         if (data) {
             obj = obj || new EmailTaskVM();
             TransportTaskBaseVM.constructFromObject(data, obj);
+            TransportTaskBaseVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('body')) {
                 obj['body'] = ApiClient.convertToType(data['body'], 'String');
             }
+            if (data.hasOwnProperty('enableSsl')) {
+                obj['enableSsl'] = ApiClient.convertToType(data['enableSsl'], 'Boolean');
+            }
+            if (data.hasOwnProperty('from')) {
+                obj['from'] = ApiClient.convertToType(data['from'], 'String');
+            }
             if (data.hasOwnProperty('isBodyHtml')) {
                 obj['isBodyHtml'] = ApiClient.convertToType(data['isBodyHtml'], 'Boolean');
+            }
+            if (data.hasOwnProperty('port')) {
+                obj['port'] = ApiClient.convertToType(data['port'], 'Number');
+            }
+            if (data.hasOwnProperty('server')) {
+                obj['server'] = ApiClient.convertToType(data['server'], 'String');
             }
             if (data.hasOwnProperty('subject')) {
                 obj['subject'] = ApiClient.convertToType(data['subject'], 'String');
@@ -63,42 +77,57 @@ class EmailTaskVM {
             if (data.hasOwnProperty('to')) {
                 obj['to'] = ApiClient.convertToType(data['to'], ['String']);
             }
-            if (data.hasOwnProperty('from')) {
-                obj['from'] = ApiClient.convertToType(data['from'], 'String');
-            }
             if (data.hasOwnProperty('username')) {
                 obj['username'] = ApiClient.convertToType(data['username'], 'String');
-            }
-            if (data.hasOwnProperty('server')) {
-                obj['server'] = ApiClient.convertToType(data['server'], 'String');
-            }
-            if (data.hasOwnProperty('port')) {
-                obj['port'] = ApiClient.convertToType(data['port'], 'Number');
-            }
-            if (data.hasOwnProperty('enableSsl')) {
-                obj['enableSsl'] = ApiClient.convertToType(data['enableSsl'], 'Boolean');
-            }
-            if (data.hasOwnProperty('name')) {
-                obj['name'] = ApiClient.convertToType(data['name'], 'String');
-            }
-            if (data.hasOwnProperty('subscriptionId')) {
-                obj['subscriptionId'] = ApiClient.convertToType(data['subscriptionId'], 'String');
-            }
-            if (data.hasOwnProperty('type')) {
-                obj['type'] = TaskType.constructFromObject(data['type']);
-            }
-            if (data.hasOwnProperty('delayedRunTime')) {
-                obj['delayedRunTime'] = ApiClient.convertToType(data['delayedRunTime'], 'Date');
-            }
-            if (data.hasOwnProperty('cronExpression')) {
-                obj['cronExpression'] = ApiClient.convertToType(data['cronExpression'], 'String');
             }
         }
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>EmailTaskVM</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>EmailTaskVM</code>.
+     */
+    static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of EmailTaskVM.RequiredProperties) {
+            if (!data[property]) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
+        // ensure the json data is a string
+        if (data['body'] && !(typeof data['body'] === 'string' || data['body'] instanceof String)) {
+            throw new Error("Expected the field `body` to be a primitive type in the JSON string but got " + data['body']);
+        }
+        // ensure the json data is a string
+        if (data['from'] && !(typeof data['from'] === 'string' || data['from'] instanceof String)) {
+            throw new Error("Expected the field `from` to be a primitive type in the JSON string but got " + data['from']);
+        }
+        // ensure the json data is a string
+        if (data['server'] && !(typeof data['server'] === 'string' || data['server'] instanceof String)) {
+            throw new Error("Expected the field `server` to be a primitive type in the JSON string but got " + data['server']);
+        }
+        // ensure the json data is a string
+        if (data['subject'] && !(typeof data['subject'] === 'string' || data['subject'] instanceof String)) {
+            throw new Error("Expected the field `subject` to be a primitive type in the JSON string but got " + data['subject']);
+        }
+        // ensure the json data is an array
+        if (!Array.isArray(data['to'])) {
+            throw new Error("Expected the field `to` to be an array in the JSON data but got " + data['to']);
+        }
+        // ensure the json data is a string
+        if (data['username'] && !(typeof data['username'] === 'string' || data['username'] instanceof String)) {
+            throw new Error("Expected the field `username` to be a primitive type in the JSON string but got " + data['username']);
+        }
+
+        return true;
+    }
+
 
 }
+
+EmailTaskVM.RequiredProperties = ["$t"];
 
 /**
  * @member {String} body
@@ -106,9 +135,29 @@ class EmailTaskVM {
 EmailTaskVM.prototype['body'] = undefined;
 
 /**
+ * @member {Boolean} enableSsl
+ */
+EmailTaskVM.prototype['enableSsl'] = undefined;
+
+/**
+ * @member {String} from
+ */
+EmailTaskVM.prototype['from'] = undefined;
+
+/**
  * @member {Boolean} isBodyHtml
  */
 EmailTaskVM.prototype['isBodyHtml'] = undefined;
+
+/**
+ * @member {Number} port
+ */
+EmailTaskVM.prototype['port'] = undefined;
+
+/**
+ * @member {String} server
+ */
+EmailTaskVM.prototype['server'] = undefined;
 
 /**
  * @member {String} subject
@@ -121,77 +170,48 @@ EmailTaskVM.prototype['subject'] = undefined;
 EmailTaskVM.prototype['to'] = undefined;
 
 /**
- * @member {String} from
- */
-EmailTaskVM.prototype['from'] = undefined;
-
-/**
  * @member {String} username
  */
 EmailTaskVM.prototype['username'] = undefined;
 
-/**
- * @member {String} server
- */
-EmailTaskVM.prototype['server'] = undefined;
-
-/**
- * @member {Number} port
- */
-EmailTaskVM.prototype['port'] = undefined;
-
-/**
- * @member {Boolean} enableSsl
- */
-EmailTaskVM.prototype['enableSsl'] = undefined;
-
-/**
- * @member {String} name
- */
-EmailTaskVM.prototype['name'] = undefined;
-
-/**
- * @member {String} subscriptionId
- */
-EmailTaskVM.prototype['subscriptionId'] = undefined;
-
-/**
- * @member {module:models/TaskType} type
- */
-EmailTaskVM.prototype['type'] = undefined;
-
-/**
- * @member {Date} delayedRunTime
- */
-EmailTaskVM.prototype['delayedRunTime'] = undefined;
-
-/**
- * @member {String} cronExpression
- */
-EmailTaskVM.prototype['cronExpression'] = undefined;
-
 
 // Implement TransportTaskBaseVM interface:
 /**
- * @member {String} name
+ * @member {String} cronExpression
  */
-TransportTaskBaseVM.prototype['name'] = undefined;
-/**
- * @member {String} subscriptionId
- */
-TransportTaskBaseVM.prototype['subscriptionId'] = undefined;
-/**
- * @member {module:models/TaskType} type
- */
-TransportTaskBaseVM.prototype['type'] = undefined;
+TransportTaskBaseVM.prototype['cronExpression'] = undefined;
 /**
  * @member {Date} delayedRunTime
  */
 TransportTaskBaseVM.prototype['delayedRunTime'] = undefined;
 /**
- * @member {String} cronExpression
+ * @member {Date} delayedWasRunTime
  */
-TransportTaskBaseVM.prototype['cronExpression'] = undefined;
+TransportTaskBaseVM.prototype['delayedWasRunTime'] = undefined;
+/**
+ * @member {String} id
+ */
+TransportTaskBaseVM.prototype['id'] = undefined;
+/**
+ * @member {String} name
+ */
+TransportTaskBaseVM.prototype['name'] = undefined;
+/**
+ * @member {Date} recurrentRunTime
+ */
+TransportTaskBaseVM.prototype['recurrentRunTime'] = undefined;
+/**
+ * @member {Date} recurrentWasRunTime
+ */
+TransportTaskBaseVM.prototype['recurrentWasRunTime'] = undefined;
+/**
+ * @member {String} subscriptionId
+ */
+TransportTaskBaseVM.prototype['subscriptionId'] = undefined;
+/**
+ * @member {String} $t
+ */
+TransportTaskBaseVM.prototype['$t'] = undefined;
 
 
 

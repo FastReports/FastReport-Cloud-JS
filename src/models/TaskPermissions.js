@@ -24,6 +24,7 @@ class TaskPermissions {
     /**
      * Constructs a new <code>TaskPermissions</code>.
      * @alias module:models/TaskPermissions
+     * @extends module:models/TaskPermissionTaskCreateTaskGetTaskUpdateTaskDeleteTaskExecuteTaskAdministratePermissions
      * @implements module:models/TaskPermissionTaskCreateTaskGetTaskUpdateTaskDeleteTaskExecuteTaskAdministratePermissions
      */
     constructor() { 
@@ -50,53 +51,26 @@ class TaskPermissions {
         if (data) {
             obj = obj || new TaskPermissions();
             TaskPermissionTaskCreateTaskGetTaskUpdateTaskDeleteTaskExecuteTaskAdministratePermissions.constructFromObject(data, obj);
+            TaskPermissionTaskCreateTaskGetTaskUpdateTaskDeleteTaskExecuteTaskAdministratePermissions.constructFromObject(data, obj);
 
-            if (data.hasOwnProperty('ownerId')) {
-                obj['ownerId'] = ApiClient.convertToType(data['ownerId'], 'String');
-            }
-            if (data.hasOwnProperty('owner')) {
-                obj['owner'] = TaskPermission.constructFromObject(data['owner']);
-            }
-            if (data.hasOwnProperty('groups')) {
-                obj['groups'] = ApiClient.convertToType(data['groups'], {'String': TaskPermission});
-            }
-            if (data.hasOwnProperty('other')) {
-                obj['other'] = TaskPermission.constructFromObject(data['other']);
-            }
-            if (data.hasOwnProperty('anon')) {
-                obj['anon'] = TaskPermission.constructFromObject(data['anon']);
-            }
         }
         return obj;
+    }
+
+    /**
+     * Validates the JSON data with respect to <code>TaskPermissions</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>TaskPermissions</code>.
+     */
+    static validateJSON(data) {
+
+        return true;
     }
 
 
 }
 
-/**
- * @member {String} ownerId
- */
-TaskPermissions.prototype['ownerId'] = undefined;
 
-/**
- * @member {module:models/TaskPermission} owner
- */
-TaskPermissions.prototype['owner'] = undefined;
-
-/**
- * @member {Object.<String, module:models/TaskPermission>} groups
- */
-TaskPermissions.prototype['groups'] = undefined;
-
-/**
- * @member {module:models/TaskPermission} other
- */
-TaskPermissions.prototype['other'] = undefined;
-
-/**
- * @member {module:models/TaskPermission} anon
- */
-TaskPermissions.prototype['anon'] = undefined;
 
 
 // Implement TaskPermissionTaskCreateTaskGetTaskUpdateTaskDeleteTaskExecuteTaskAdministratePermissions interface:

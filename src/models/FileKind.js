@@ -40,13 +40,6 @@ export default class FileKind {
         "Export" = "Export";
 
     
-        /**
-         * value: "DataSource"
-         * @const
-         */
-        "DataSource" = "DataSource";
-
-    
 
     /**
     * Returns a <code>FileKind</code> enum value from a Javascript object name.

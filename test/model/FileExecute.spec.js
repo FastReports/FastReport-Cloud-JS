@@ -49,7 +49,7 @@
   describe('FileExecute', function() {
     it('should create an instance of FileExecute', function() {
       // uncomment below and update the code to test FileExecute
-      //var instane = new FastreportCloudSdk.FileExecute();
+      //var instance = new FastreportCloudSdk.FileExecute();
       //expect(instance).to.be.a(FastreportCloudSdk.FileExecute);
     });
 

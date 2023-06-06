@@ -50,7 +50,7 @@
   describe('UpdateUserSettingsVM', function() {
     it('should create an instance of UpdateUserSettingsVM', function() {
       // uncomment below and update the code to test UpdateUserSettingsVM
-      //var instane = new FastreportCloudSdk.UpdateUserSettingsVM();
+      //var instance = new FastreportCloudSdk.UpdateUserSettingsVM();
       //expect(instance).to.be.a(FastreportCloudSdk.UpdateUserSettingsVM);
     });
 

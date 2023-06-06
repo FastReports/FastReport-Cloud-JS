@@ -67,8 +67,36 @@ class SubscriptionPermissionSubscriptionCreateSubscriptionGetSubscriptionUpdateS
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>SubscriptionPermissionSubscriptionCreateSubscriptionGetSubscriptionUpdateSubscriptionDeleteSubscriptionExecuteSubscriptionAdministratePermissions</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>SubscriptionPermissionSubscriptionCreateSubscriptionGetSubscriptionUpdateSubscriptionDeleteSubscriptionExecuteSubscriptionAdministratePermissions</code>.
+     */
+    static validateJSON(data) {
+        // ensure the json data is a string
+        if (data['ownerId'] && !(typeof data['ownerId'] === 'string' || data['ownerId'] instanceof String)) {
+            throw new Error("Expected the field `ownerId` to be a primitive type in the JSON string but got " + data['ownerId']);
+        }
+        // validate the optional field `owner`
+        if (data['owner']) { // data not null
+          SubscriptionPermission.validateJSON(data['owner']);
+        }
+        // validate the optional field `other`
+        if (data['other']) { // data not null
+          SubscriptionPermission.validateJSON(data['other']);
+        }
+        // validate the optional field `anon`
+        if (data['anon']) { // data not null
+          SubscriptionPermission.validateJSON(data['anon']);
+        }
+
+        return true;
+    }
+
 
 }
+
+
 
 /**
  * @member {String} ownerId

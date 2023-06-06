@@ -13,7 +13,6 @@
 
 import ApiClient from '../ApiClient';
 import RunExportReportTaskVM from './RunExportReportTaskVM';
-import TaskType from './TaskType';
 
 /**
  * The RunExportTemplateTaskVM model module.
@@ -24,11 +23,13 @@ class RunExportTemplateTaskVM {
     /**
      * Constructs a new <code>RunExportTemplateTaskVM</code>.
      * @alias module:models/RunExportTemplateTaskVM
+     * @extends module:models/RunExportReportTaskVM
      * @implements module:models/RunExportReportTaskVM
+     * @param t {String} 
      */
-    constructor() { 
-        RunExportReportTaskVM.initialize(this);
-        RunExportTemplateTaskVM.initialize(this);
+    constructor(t) { 
+        RunExportReportTaskVM.initialize(this, t);
+        RunExportTemplateTaskVM.initialize(this, t);
     }
 
     /**
@@ -36,7 +37,7 @@ class RunExportTemplateTaskVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, t) { 
     }
 
     /**
@@ -50,37 +51,40 @@ class RunExportTemplateTaskVM {
         if (data) {
             obj = obj || new RunExportTemplateTaskVM();
             RunExportReportTaskVM.constructFromObject(data, obj);
+            RunExportReportTaskVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('reportParameters')) {
                 obj['reportParameters'] = ApiClient.convertToType(data['reportParameters'], {'String': 'String'});
-            }
-            if (data.hasOwnProperty('subscriptionId')) {
-                obj['subscriptionId'] = ApiClient.convertToType(data['subscriptionId'], 'String');
-            }
-            if (data.hasOwnProperty('type')) {
-                obj['type'] = TaskType.constructFromObject(data['type']);
             }
         }
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>RunExportTemplateTaskVM</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>RunExportTemplateTaskVM</code>.
+     */
+    static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of RunExportTemplateTaskVM.RequiredProperties) {
+            if (!data[property]) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
+
+        return true;
+    }
+
 
 }
+
+RunExportTemplateTaskVM.RequiredProperties = ["$t"];
 
 /**
  * @member {Object.<String, String>} reportParameters
  */
 RunExportTemplateTaskVM.prototype['reportParameters'] = undefined;
-
-/**
- * @member {String} subscriptionId
- */
-RunExportTemplateTaskVM.prototype['subscriptionId'] = undefined;
-
-/**
- * @member {module:models/TaskType} type
- */
-RunExportTemplateTaskVM.prototype['type'] = undefined;
 
 
 // Implement RunExportReportTaskVM interface:
@@ -89,9 +93,9 @@ RunExportTemplateTaskVM.prototype['type'] = undefined;
  */
 RunExportReportTaskVM.prototype['subscriptionId'] = undefined;
 /**
- * @member {module:models/TaskType} type
+ * @member {String} $t
  */
-RunExportReportTaskVM.prototype['type'] = undefined;
+RunExportReportTaskVM.prototype['$t'] = undefined;
 
 
 

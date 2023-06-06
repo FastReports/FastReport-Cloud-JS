@@ -49,7 +49,7 @@
   describe('FileStatusReason', function() {
     it('should create an instance of FileStatusReason', function() {
       // uncomment below and update the code to test FileStatusReason
-      //var instane = new FastreportCloudSdk.FileStatusReason();
+      //var instance = new FastreportCloudSdk.FileStatusReason();
       //expect(instance).to.be.a(FastreportCloudSdk.FileStatusReason);
     });
 

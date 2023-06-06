@@ -50,24 +50,18 @@
   describe('RunWebhookTaskVM', function() {
     it('should create an instance of RunWebhookTaskVM', function() {
       // uncomment below and update the code to test RunWebhookTaskVM
-      //var instane = new FastreportCloudSdk.RunWebhookTaskVM();
+      //var instance = new FastreportCloudSdk.RunWebhookTaskVM();
       //expect(instance).to.be.a(FastreportCloudSdk.RunWebhookTaskVM);
     });
 
-    it('should have the property endpoints (base name: "endpoints")', function() {
-      // uncomment below and update the code to test the property endpoints
+    it('should have the property headers (base name: "headers")', function() {
+      // uncomment below and update the code to test the property headers
       //var instance = new FastreportCloudSdk.RunWebhookTaskVM();
       //expect(instance).to.be();
     });
 
-    it('should have the property subscriptionId (base name: "subscriptionId")', function() {
-      // uncomment below and update the code to test the property subscriptionId
-      //var instance = new FastreportCloudSdk.RunWebhookTaskVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property type (base name: "type")', function() {
-      // uncomment below and update the code to test the property type
+    it('should have the property url (base name: "url")', function() {
+      // uncomment below and update the code to test the property url
       //var instance = new FastreportCloudSdk.RunWebhookTaskVM();
       //expect(instance).to.be();
     });

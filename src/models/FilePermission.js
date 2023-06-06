@@ -29,6 +29,7 @@ class FilePermission {
     /**
      * Constructs a new <code>FilePermission</code>.
      * @alias module:models/FilePermission
+     * @extends module:models/FileCreateFileGetFileUpdateFileDeleteFileExecuteFileAdministratePermission
      * @implements module:models/FileCreateFileGetFileUpdateFileDeleteFileExecuteFileAdministratePermission
      */
     constructor() { 
@@ -55,61 +56,26 @@ class FilePermission {
         if (data) {
             obj = obj || new FilePermission();
             FileCreateFileGetFileUpdateFileDeleteFileExecuteFileAdministratePermission.constructFromObject(data, obj);
+            FileCreateFileGetFileUpdateFileDeleteFileExecuteFileAdministratePermission.constructFromObject(data, obj);
 
-            if (data.hasOwnProperty('create')) {
-                obj['create'] = FileCreate.constructFromObject(data['create']);
-            }
-            if (data.hasOwnProperty('delete')) {
-                obj['delete'] = FileDelete.constructFromObject(data['delete']);
-            }
-            if (data.hasOwnProperty('execute')) {
-                obj['execute'] = FileExecute.constructFromObject(data['execute']);
-            }
-            if (data.hasOwnProperty('get')) {
-                obj['get'] = FileGet.constructFromObject(data['get']);
-            }
-            if (data.hasOwnProperty('update')) {
-                obj['update'] = FileUpdate.constructFromObject(data['update']);
-            }
-            if (data.hasOwnProperty('administrate')) {
-                obj['administrate'] = FileAdministrate.constructFromObject(data['administrate']);
-            }
         }
         return obj;
+    }
+
+    /**
+     * Validates the JSON data with respect to <code>FilePermission</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>FilePermission</code>.
+     */
+    static validateJSON(data) {
+
+        return true;
     }
 
 
 }
 
-/**
- * @member {module:models/FileCreate} create
- */
-FilePermission.prototype['create'] = undefined;
 
-/**
- * @member {module:models/FileDelete} delete
- */
-FilePermission.prototype['delete'] = undefined;
-
-/**
- * @member {module:models/FileExecute} execute
- */
-FilePermission.prototype['execute'] = undefined;
-
-/**
- * @member {module:models/FileGet} get
- */
-FilePermission.prototype['get'] = undefined;
-
-/**
- * @member {module:models/FileUpdate} update
- */
-FilePermission.prototype['update'] = undefined;
-
-/**
- * @member {module:models/FileAdministrate} administrate
- */
-FilePermission.prototype['administrate'] = undefined;
 
 
 // Implement FileCreateFileGetFileUpdateFileDeleteFileExecuteFileAdministratePermission interface:

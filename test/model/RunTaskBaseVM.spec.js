@@ -50,7 +50,7 @@
   describe('RunTaskBaseVM', function() {
     it('should create an instance of RunTaskBaseVM', function() {
       // uncomment below and update the code to test RunTaskBaseVM
-      //var instane = new FastreportCloudSdk.RunTaskBaseVM();
+      //var instance = new FastreportCloudSdk.RunTaskBaseVM();
       //expect(instance).to.be.a(FastreportCloudSdk.RunTaskBaseVM);
     });
 
@@ -60,8 +60,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property type (base name: "type")', function() {
-      // uncomment below and update the code to test the property type
+    it('should have the property t (base name: "$t")', function() {
+      // uncomment below and update the code to test the property t
       //var instance = new FastreportCloudSdk.RunTaskBaseVM();
       //expect(instance).to.be();
     });

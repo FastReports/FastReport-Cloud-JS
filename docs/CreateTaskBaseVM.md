@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**cronExpression** | **String** |  | [optional] 
+**delayedRunTime** | **Date** |  | [optional] 
 **name** | **String** |  | [optional] 
 **subscriptionId** | **String** |  | [optional] 
-**type** | [**TaskType**](TaskType.md) |  | [optional] 
-**delayedRunTime** | **Date** |  | [optional] 
-**cronExpression** | **String** |  | [optional] 
+**t** | **String** |  | 
 
 

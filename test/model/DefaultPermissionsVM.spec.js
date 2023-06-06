@@ -50,7 +50,7 @@
   describe('DefaultPermissionsVM', function() {
     it('should create an instance of DefaultPermissionsVM', function() {
       // uncomment below and update the code to test DefaultPermissionsVM
-      //var instane = new FastreportCloudSdk.DefaultPermissionsVM();
+      //var instance = new FastreportCloudSdk.DefaultPermissionsVM();
       //expect(instance).to.be.a(FastreportCloudSdk.DefaultPermissionsVM);
     });
 

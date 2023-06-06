@@ -14,7 +14,6 @@
 import ApiClient from '../ApiClient';
 import RunInputFileVM from './RunInputFileVM';
 import RunTaskBaseVM from './RunTaskBaseVM';
-import TaskType from './TaskType';
 
 /**
  * The RunTransportTaskBaseVM model module.
@@ -25,11 +24,13 @@ class RunTransportTaskBaseVM {
     /**
      * Constructs a new <code>RunTransportTaskBaseVM</code>.
      * @alias module:models/RunTransportTaskBaseVM
+     * @extends module:models/RunTaskBaseVM
      * @implements module:models/RunTaskBaseVM
+     * @param t {String} 
      */
-    constructor() { 
-        RunTaskBaseVM.initialize(this);
-        RunTransportTaskBaseVM.initialize(this);
+    constructor(t) { 
+        RunTaskBaseVM.initialize(this, t);
+        RunTransportTaskBaseVM.initialize(this, t);
     }
 
     /**
@@ -37,7 +38,8 @@ class RunTransportTaskBaseVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -51,37 +53,56 @@ class RunTransportTaskBaseVM {
         if (data) {
             obj = obj || new RunTransportTaskBaseVM();
             RunTaskBaseVM.constructFromObject(data, obj);
+            RunTaskBaseVM.constructFromObject(data, obj);
 
-            if (data.hasOwnProperty('files')) {
-                obj['files'] = ApiClient.convertToType(data['files'], [RunInputFileVM]);
+            if (data.hasOwnProperty('inputFile')) {
+                obj['inputFile'] = RunInputFileVM.constructFromObject(data['inputFile']);
             }
-            if (data.hasOwnProperty('subscriptionId')) {
-                obj['subscriptionId'] = ApiClient.convertToType(data['subscriptionId'], 'String');
-            }
-            if (data.hasOwnProperty('type')) {
-                obj['type'] = TaskType.constructFromObject(data['type']);
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
             }
         }
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>RunTransportTaskBaseVM</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>RunTransportTaskBaseVM</code>.
+     */
+    static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of RunTransportTaskBaseVM.RequiredProperties) {
+            if (!data[property]) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
+        // validate the optional field `inputFile`
+        if (data['inputFile']) { // data not null
+          RunInputFileVM.validateJSON(data['inputFile']);
+        }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
+        }
+
+        return true;
+    }
+
 
 }
 
-/**
- * @member {Array.<module:models/RunInputFileVM>} files
- */
-RunTransportTaskBaseVM.prototype['files'] = undefined;
+RunTransportTaskBaseVM.RequiredProperties = ["$t"];
 
 /**
- * @member {String} subscriptionId
+ * @member {module:models/RunInputFileVM} inputFile
  */
-RunTransportTaskBaseVM.prototype['subscriptionId'] = undefined;
+RunTransportTaskBaseVM.prototype['inputFile'] = undefined;
 
 /**
- * @member {module:models/TaskType} type
+ * @member {String} $t
  */
-RunTransportTaskBaseVM.prototype['type'] = undefined;
+RunTransportTaskBaseVM.prototype['$t'] = undefined;
 
 
 // Implement RunTaskBaseVM interface:
@@ -90,9 +111,9 @@ RunTransportTaskBaseVM.prototype['type'] = undefined;
  */
 RunTaskBaseVM.prototype['subscriptionId'] = undefined;
 /**
- * @member {module:models/TaskType} type
+ * @member {String} $t
  */
-RunTaskBaseVM.prototype['type'] = undefined;
+RunTaskBaseVM.prototype['$t'] = undefined;
 
 
 

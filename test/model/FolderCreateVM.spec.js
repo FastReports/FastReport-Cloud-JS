@@ -50,7 +50,7 @@
   describe('FolderCreateVM', function() {
     it('should create an instance of FolderCreateVM', function() {
       // uncomment below and update the code to test FolderCreateVM
-      //var instane = new FastreportCloudSdk.FolderCreateVM();
+      //var instance = new FastreportCloudSdk.FolderCreateVM();
       //expect(instance).to.be.a(FastreportCloudSdk.FolderCreateVM);
     });
 

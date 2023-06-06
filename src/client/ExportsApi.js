@@ -13,6 +13,7 @@
 
 
 import ApiClient from "../ApiClient";
+import AuditActionsVM from '../models/AuditActionsVM';
 import BreadcrumbsVM from '../models/BreadcrumbsVM';
 import CountVM from '../models/CountVM';
 import ExportFolderCreateVM from '../models/ExportFolderCreateVM';
@@ -25,6 +26,7 @@ import FileSorting from '../models/FileSorting';
 import FileTagsUpdateVM from '../models/FileTagsUpdateVM';
 import FileVM from '../models/FileVM';
 import FilesVM from '../models/FilesVM';
+import FolderCreateVM from '../models/FolderCreateVM';
 import FolderIconVM from '../models/FolderIconVM';
 import FolderRenameVM from '../models/FolderRenameVM';
 import FolderTagsUpdateVM from '../models/FolderTagsUpdateVM';
@@ -49,6 +51,55 @@ export default class ExportsApi {
         this.apiClient = apiClient || ApiClient.instance;
     }
 
+
+
+    /**
+     * Delete all folders and files from recycle bin
+     * User with a Delete RecycleBin permission can access this method.
+     * @param {String} subscriptionId subscription id
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     */
+    exportFolderAndFileClearRecycleBinWithHttpInfo(subscriptionId) {
+      let postBody = null;
+      // verify the required parameter 'subscriptionId' is set
+      if (subscriptionId === undefined || subscriptionId === null) {
+        throw new Error("Missing the required parameter 'subscriptionId' when calling exportFolderAndFileClearRecycleBin");
+      }
+
+      let pathParams = {
+        'subscriptionId': subscriptionId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKey', 'JWT'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = null;
+      if(!returnType) returnType = 'Blob';
+      return this.apiClient.callApi(
+        '/api/rp/v1/Exports/{subscriptionId}/ClearRecycleBin', 'DELETE',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Delete all folders and files from recycle bin
+     * User with a Delete RecycleBin permission can access this method.
+     * @param {String} subscriptionId subscription id
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     */
+    exportFolderAndFileClearRecycleBin(subscriptionId) {
+      return this.exportFolderAndFileClearRecycleBinWithHttpInfo(subscriptionId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
 
 
     /**
@@ -180,6 +231,125 @@ export default class ExportsApi {
 
 
     /**
+     * Get all folders and files from recycle bin
+     * User with a Get DeletedFiles permission can access this method.
+     * @param {String} subscriptionId subscription id
+     * @param {Object} opts Optional parameters
+     * @param {Number} opts.skip number of folder and files, that have to be skipped (default to 0)
+     * @param {Number} opts.take number of folder and files, that have to be returned (default to 10)
+     * @param {module:models/FileSorting} opts.orderBy indicates a field to sort by
+     * @param {Boolean} opts.desc indicates if sorting is descending (default to false)
+     * @param {String} opts.searchPattern  (default to '')
+     * @param {Boolean} opts.useRegex  (default to false)
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/FilesVM} and HTTP response
+     */
+    exportFolderAndFileGetRecycleBinFoldersAndFilesWithHttpInfo(subscriptionId, opts) {
+      opts = opts || {};
+      let postBody = null;
+      // verify the required parameter 'subscriptionId' is set
+      if (subscriptionId === undefined || subscriptionId === null) {
+        throw new Error("Missing the required parameter 'subscriptionId' when calling exportFolderAndFileGetRecycleBinFoldersAndFiles");
+      }
+
+      let pathParams = {
+        'subscriptionId': subscriptionId
+      };
+      let queryParams = {
+        'skip': opts['skip'],
+        'take': opts['take'],
+        'orderBy': opts['orderBy'],
+        'desc': opts['desc'],
+        'searchPattern': opts['searchPattern'],
+        'useRegex': opts['useRegex']
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKey', 'JWT'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = FilesVM;
+      if(!returnType) returnType = 'Blob';
+      return this.apiClient.callApi(
+        '/api/rp/v1/Exports/{subscriptionId}/ListRecycleBinFolderAndFiles', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Get all folders and files from recycle bin
+     * User with a Get DeletedFiles permission can access this method.
+     * @param {String} subscriptionId subscription id
+     * @param {Object} opts Optional parameters
+     * @param {Number} opts.skip number of folder and files, that have to be skipped (default to 0)
+     * @param {Number} opts.take number of folder and files, that have to be returned (default to 10)
+     * @param {module:models/FileSorting} opts.orderBy indicates a field to sort by
+     * @param {Boolean} opts.desc indicates if sorting is descending (default to false)
+     * @param {String} opts.searchPattern  (default to '')
+     * @param {Boolean} opts.useRegex  (default to false)
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/FilesVM}
+     */
+    exportFolderAndFileGetRecycleBinFoldersAndFiles(subscriptionId, opts) {
+      return this.exportFolderAndFileGetRecycleBinFoldersAndFilesWithHttpInfo(subscriptionId, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Recover all folders and files from recycle bin
+     * User with a Create RecycleBin permission can access this method.
+     * @param {String} subscriptionId subscription id
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     */
+    exportFolderAndFileRecoverAllFromRecycleBinWithHttpInfo(subscriptionId) {
+      let postBody = null;
+      // verify the required parameter 'subscriptionId' is set
+      if (subscriptionId === undefined || subscriptionId === null) {
+        throw new Error("Missing the required parameter 'subscriptionId' when calling exportFolderAndFileRecoverAllFromRecycleBin");
+      }
+
+      let pathParams = {
+        'subscriptionId': subscriptionId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKey', 'JWT'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = null;
+      if(!returnType) returnType = 'Blob';
+      return this.apiClient.callApi(
+        '/api/rp/v1/Exports/{subscriptionId}/RecoverRecycleBin', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Recover all folders and files from recycle bin
+     * User with a Create RecycleBin permission can access this method.
+     * @param {String} subscriptionId subscription id
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     */
+    exportFolderAndFileRecoverAllFromRecycleBin(subscriptionId) {
+      return this.exportFolderAndFileRecoverAllFromRecycleBinWithHttpInfo(subscriptionId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Move folder to a specified folder
      * User with a Update Place permission for a folder and Create Entity  for a Parent Folder can access this method.
      * @param {String} id moving folder id
@@ -239,12 +409,9 @@ export default class ExportsApi {
      * Delete specified folder
      * User with a Delete Entity permission can access this method.
      * @param {String} id folder id
-     * @param {Object} opts Optional parameters
-     * @param {Boolean} opts.recursive delete all childs (default to true)
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
-    exportFoldersDeleteFolderWithHttpInfo(id, opts) {
-      opts = opts || {};
+    exportFoldersDeleteFolderWithHttpInfo(id) {
       let postBody = null;
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
@@ -255,7 +422,6 @@ export default class ExportsApi {
         'id': id
       };
       let queryParams = {
-        'recursive': opts['recursive']
       };
       let headerParams = {
       };
@@ -278,12 +444,10 @@ export default class ExportsApi {
      * Delete specified folder
      * User with a Delete Entity permission can access this method.
      * @param {String} id folder id
-     * @param {Object} opts Optional parameters
-     * @param {Boolean} opts.recursive delete all childs (default to true)
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
-    exportFoldersDeleteFolder(id, opts) {
-      return this.exportFoldersDeleteFolderWithHttpInfo(id, opts)
+    exportFoldersDeleteFolder(id) {
+      return this.exportFoldersDeleteFolderWithHttpInfo(id)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -395,6 +559,10 @@ export default class ExportsApi {
      * @param {Object} opts Optional parameters
      * @param {Number} opts.skip number of files, that have to be skipped (default to 0)
      * @param {Number} opts.take number of files, that have to be returned (default to 10)
+     * @param {module:models/FileSorting} opts.orderBy 
+     * @param {Boolean} opts.desc  (default to false)
+     * @param {String} opts.searchPattern  (default to '')
+     * @param {Boolean} opts.useRegex  (default to false)
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/FilesVM} and HTTP response
      */
     exportFoldersGetFoldersWithHttpInfo(id, opts) {
@@ -410,7 +578,11 @@ export default class ExportsApi {
       };
       let queryParams = {
         'skip': opts['skip'],
-        'take': opts['take']
+        'take': opts['take'],
+        'orderBy': opts['orderBy'],
+        'desc': opts['desc'],
+        'searchPattern': opts['searchPattern'],
+        'useRegex': opts['useRegex']
       };
       let headerParams = {
       };
@@ -436,6 +608,10 @@ export default class ExportsApi {
      * @param {Object} opts Optional parameters
      * @param {Number} opts.skip number of files, that have to be skipped (default to 0)
      * @param {Number} opts.take number of files, that have to be returned (default to 10)
+     * @param {module:models/FileSorting} opts.orderBy 
+     * @param {Boolean} opts.desc  (default to false)
+     * @param {String} opts.searchPattern  (default to '')
+     * @param {Boolean} opts.useRegex  (default to false)
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/FilesVM}
      */
     exportFoldersGetFolders(id, opts) {
@@ -489,6 +665,60 @@ export default class ExportsApi {
      */
     exportFoldersGetFoldersCount(id) {
       return this.exportFoldersGetFoldersCountWithHttpInfo(id)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Get specified folder
+     * User with a Get Entity permission can access this method.
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.name folder name
+     * @param {String} opts.subscriptionId subscriptionId
+     * @param {String} opts.parentId parent folder id
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/FileVM} and HTTP response
+     */
+    exportFoldersGetOrCreateWithHttpInfo(opts) {
+      opts = opts || {};
+      let postBody = null;
+
+      let pathParams = {
+      };
+      let queryParams = {
+        'name': opts['name'],
+        'subscriptionId': opts['subscriptionId'],
+        'parentId': opts['parentId']
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKey', 'JWT'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = FileVM;
+      if(!returnType) returnType = 'Blob';
+      return this.apiClient.callApi(
+        '/api/rp/v1/Exports/Folder/getOrCreate', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Get specified folder
+     * User with a Get Entity permission can access this method.
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.name folder name
+     * @param {String} opts.subscriptionId subscriptionId
+     * @param {String} opts.parentId parent folder id
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/FileVM}
+     */
+    exportFoldersGetOrCreate(opts) {
+      return this.exportFoldersGetOrCreateWithHttpInfo(opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -647,6 +877,55 @@ export default class ExportsApi {
 
 
     /**
+     * Move specified folder to recycle bin
+     * User with a Delete Entity permission can access this method.
+     * @param {String} id folder id
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     */
+    exportFoldersMoveFolderToBinWithHttpInfo(id) {
+      let postBody = null;
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling exportFoldersMoveFolderToBin");
+      }
+
+      let pathParams = {
+        'id': id
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKey', 'JWT'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = null;
+      if(!returnType) returnType = 'Blob';
+      return this.apiClient.callApi(
+        '/api/rp/v1/Exports/Folder/{id}/ToBin', 'DELETE',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Move specified folder to recycle bin
+     * User with a Delete Entity permission can access this method.
+     * @param {String} id folder id
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     */
+    exportFoldersMoveFolderToBin(id) {
+      return this.exportFoldersMoveFolderToBinWithHttpInfo(id)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Create folder
      * User with a Create Entity permisison can access this method.
      * @param {String} id Identifier of parent folder id
@@ -673,7 +952,7 @@ export default class ExportsApi {
       };
 
       let authNames = ['ApiKey', 'JWT'];
-      let contentTypes = ['application/json', 'text/json', 'application/_*+json'];
+      let contentTypes = ['application/json', 'text/json', 'application/*+json'];
       let accepts = ['application/json'];
       let returnType = FileVM;
       if(!returnType) returnType = 'Blob';
@@ -694,6 +973,61 @@ export default class ExportsApi {
      */
     exportFoldersPostFolder(id, opts) {
       return this.exportFoldersPostFolderWithHttpInfo(id, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Recover specified folder
+     * User with a Delete Entity permission can access this method.
+     * @param {String} id folder id
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.recoveryPath 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     */
+    exportFoldersRecoverFolderWithHttpInfo(id, opts) {
+      opts = opts || {};
+      let postBody = null;
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling exportFoldersRecoverFolder");
+      }
+
+      let pathParams = {
+        'id': id
+      };
+      let queryParams = {
+        'recoveryPath': opts['recoveryPath']
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKey', 'JWT'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = null;
+      if(!returnType) returnType = 'Blob';
+      return this.apiClient.callApi(
+        '/api/rp/v1/Exports/Folder/{id}/Recover', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Recover specified folder
+     * User with a Delete Entity permission can access this method.
+     * @param {String} id folder id
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.recoveryPath 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     */
+    exportFoldersRecoverFolder(id, opts) {
+      return this.exportFoldersRecoverFolderWithHttpInfo(id, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -727,7 +1061,7 @@ export default class ExportsApi {
       };
 
       let authNames = ['ApiKey', 'JWT'];
-      let contentTypes = ['application/json', 'text/json', 'application/_*+json'];
+      let contentTypes = ['application/json', 'text/json', 'application/*+json'];
       let accepts = ['application/json'];
       let returnType = FileVM;
       if(!returnType) returnType = 'Blob';
@@ -781,7 +1115,7 @@ export default class ExportsApi {
       };
 
       let authNames = ['ApiKey', 'JWT'];
-      let contentTypes = ['application/json', 'text/json', 'application/_*+json'];
+      let contentTypes = ['application/json', 'text/json', 'application/*+json'];
       let accepts = ['application/json'];
       let returnType = FileVM;
       if(!returnType) returnType = 'Blob';
@@ -834,7 +1168,7 @@ export default class ExportsApi {
       };
 
       let authNames = ['ApiKey', 'JWT'];
-      let contentTypes = ['application/json', 'text/json', 'application/_*+json'];
+      let contentTypes = ['application/json', 'text/json', 'application/*+json'];
       let accepts = ['application/json'];
       let returnType = null;
       if(!returnType) returnType = 'Blob';
@@ -887,7 +1221,7 @@ export default class ExportsApi {
       };
 
       let authNames = ['ApiKey', 'JWT'];
-      let contentTypes = ['application/json', 'text/json', 'application/_*+json'];
+      let contentTypes = ['application/json', 'text/json', 'application/*+json'];
       let accepts = ['application/json'];
       let returnType = FileVM;
       if(!returnType) returnType = 'Blob';
@@ -1060,6 +1394,62 @@ export default class ExportsApi {
      */
     exportsGetFile(id) {
       return this.exportsGetFileWithHttpInfo(id)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Returns list of actions, performed on this file
+     * @param {String} id 
+     * @param {Object} opts Optional parameters
+     * @param {Number} opts.skip  (default to 0)
+     * @param {Number} opts.take  (default to 10)
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/AuditActionsVM} and HTTP response
+     */
+    exportsGetFileHistoryWithHttpInfo(id, opts) {
+      opts = opts || {};
+      let postBody = null;
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling exportsGetFileHistory");
+      }
+
+      let pathParams = {
+        'id': id
+      };
+      let queryParams = {
+        'skip': opts['skip'],
+        'take': opts['take']
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKey', 'JWT'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = AuditActionsVM;
+      if(!returnType) returnType = 'Blob';
+      return this.apiClient.callApi(
+        '/api/rp/v1/Exports/File/{id}/History', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Returns list of actions, performed on this file
+     * @param {String} id 
+     * @param {Object} opts Optional parameters
+     * @param {Number} opts.skip  (default to 0)
+     * @param {Number} opts.take  (default to 10)
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/AuditActionsVM}
+     */
+    exportsGetFileHistory(id, opts) {
+      return this.exportsGetFileHistoryWithHttpInfo(id, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -1287,6 +1677,110 @@ export default class ExportsApi {
 
 
     /**
+     * Move specified file to recycle bin
+     * User with Delete permission can access the method.
+     * @param {String} id file id
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     */
+    exportsMoveFileToBinWithHttpInfo(id) {
+      let postBody = null;
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling exportsMoveFileToBin");
+      }
+
+      let pathParams = {
+        'id': id
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKey', 'JWT'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = null;
+      if(!returnType) returnType = 'Blob';
+      return this.apiClient.callApi(
+        '/api/rp/v1/Exports/File/{id}/ToBin', 'DELETE',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Move specified file to recycle bin
+     * User with Delete permission can access the method.
+     * @param {String} id file id
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     */
+    exportsMoveFileToBin(id) {
+      return this.exportsMoveFileToBinWithHttpInfo(id)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Recover specified file from bin
+     * User with Delete permission can access the method.
+     * @param {String} id file id
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.recoveryPath 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     */
+    exportsRecoverFileWithHttpInfo(id, opts) {
+      opts = opts || {};
+      let postBody = null;
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling exportsRecoverFile");
+      }
+
+      let pathParams = {
+        'id': id
+      };
+      let queryParams = {
+        'recoveryPath': opts['recoveryPath']
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKey', 'JWT'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = null;
+      if(!returnType) returnType = 'Blob';
+      return this.apiClient.callApi(
+        '/api/rp/v1/Exports/File/{id}/Recover', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Recover specified file from bin
+     * User with Delete permission can access the method.
+     * @param {String} id file id
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.recoveryPath 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     */
+    exportsRecoverFile(id, opts) {
+      return this.exportsRecoverFileWithHttpInfo(id, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Rename a file
      * User with Update Name permission can access this method.
      * @param {String} id 
@@ -1313,7 +1807,7 @@ export default class ExportsApi {
       };
 
       let authNames = ['ApiKey', 'JWT'];
-      let contentTypes = ['application/json', 'text/json', 'application/_*+json'];
+      let contentTypes = ['application/json', 'text/json', 'application/*+json'];
       let accepts = ['application/json'];
       let returnType = ExportVM;
       if(!returnType) returnType = 'Blob';
@@ -1367,7 +1861,7 @@ export default class ExportsApi {
       };
 
       let authNames = ['ApiKey', 'JWT'];
-      let contentTypes = ['application/json', 'text/json', 'application/_*+json'];
+      let contentTypes = ['application/json', 'text/json', 'application/*+json'];
       let accepts = ['application/json'];
       let returnType = ExportVM;
       if(!returnType) returnType = 'Blob';
@@ -1420,7 +1914,7 @@ export default class ExportsApi {
       };
 
       let authNames = ['ApiKey', 'JWT'];
-      let contentTypes = ['application/json', 'text/json', 'application/_*+json'];
+      let contentTypes = ['application/json', 'text/json', 'application/*+json'];
       let accepts = ['application/json'];
       let returnType = null;
       if(!returnType) returnType = 'Blob';
@@ -1473,7 +1967,7 @@ export default class ExportsApi {
       };
 
       let authNames = ['ApiKey', 'JWT'];
-      let contentTypes = ['application/json', 'text/json', 'application/_*+json'];
+      let contentTypes = ['application/json', 'text/json', 'application/*+json'];
       let accepts = ['application/json'];
       let returnType = ExportVM;
       if(!returnType) returnType = 'Blob';

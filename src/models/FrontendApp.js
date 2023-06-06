@@ -51,25 +51,33 @@ class FrontendApp {
             if (data.hasOwnProperty('mixins')) {
                 obj['mixins'] = AppMixins.constructFromObject(data['mixins']);
             }
-            if (data.hasOwnProperty('invariantLocale')) {
-                obj['invariantLocale'] = ApiClient.convertToType(data['invariantLocale'], 'String');
-            }
         }
         return obj;
+    }
+
+    /**
+     * Validates the JSON data with respect to <code>FrontendApp</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>FrontendApp</code>.
+     */
+    static validateJSON(data) {
+        // validate the optional field `mixins`
+        if (data['mixins']) { // data not null
+          AppMixins.validateJSON(data['mixins']);
+        }
+
+        return true;
     }
 
 
 }
 
+
+
 /**
  * @member {module:models/AppMixins} mixins
  */
 FrontendApp.prototype['mixins'] = undefined;
-
-/**
- * @member {String} invariantLocale
- */
-FrontendApp.prototype['invariantLocale'] = undefined;
 
 
 

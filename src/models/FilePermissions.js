@@ -24,6 +24,7 @@ class FilePermissions {
     /**
      * Constructs a new <code>FilePermissions</code>.
      * @alias module:models/FilePermissions
+     * @extends module:models/FilePermissionFileCreateFileGetFileUpdateFileDeleteFileExecuteFileAdministratePermissions
      * @implements module:models/FilePermissionFileCreateFileGetFileUpdateFileDeleteFileExecuteFileAdministratePermissions
      */
     constructor() { 
@@ -50,53 +51,26 @@ class FilePermissions {
         if (data) {
             obj = obj || new FilePermissions();
             FilePermissionFileCreateFileGetFileUpdateFileDeleteFileExecuteFileAdministratePermissions.constructFromObject(data, obj);
+            FilePermissionFileCreateFileGetFileUpdateFileDeleteFileExecuteFileAdministratePermissions.constructFromObject(data, obj);
 
-            if (data.hasOwnProperty('ownerId')) {
-                obj['ownerId'] = ApiClient.convertToType(data['ownerId'], 'String');
-            }
-            if (data.hasOwnProperty('owner')) {
-                obj['owner'] = FilePermission.constructFromObject(data['owner']);
-            }
-            if (data.hasOwnProperty('groups')) {
-                obj['groups'] = ApiClient.convertToType(data['groups'], {'String': FilePermission});
-            }
-            if (data.hasOwnProperty('other')) {
-                obj['other'] = FilePermission.constructFromObject(data['other']);
-            }
-            if (data.hasOwnProperty('anon')) {
-                obj['anon'] = FilePermission.constructFromObject(data['anon']);
-            }
         }
         return obj;
+    }
+
+    /**
+     * Validates the JSON data with respect to <code>FilePermissions</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>FilePermissions</code>.
+     */
+    static validateJSON(data) {
+
+        return true;
     }
 
 
 }
 
-/**
- * @member {String} ownerId
- */
-FilePermissions.prototype['ownerId'] = undefined;
 
-/**
- * @member {module:models/FilePermission} owner
- */
-FilePermissions.prototype['owner'] = undefined;
-
-/**
- * @member {Object.<String, module:models/FilePermission>} groups
- */
-FilePermissions.prototype['groups'] = undefined;
-
-/**
- * @member {module:models/FilePermission} other
- */
-FilePermissions.prototype['other'] = undefined;
-
-/**
- * @member {module:models/FilePermission} anon
- */
-FilePermissions.prototype['anon'] = undefined;
 
 
 // Implement FilePermissionFileCreateFileGetFileUpdateFileDeleteFileExecuteFileAdministratePermissions interface:

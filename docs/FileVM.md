@@ -14,10 +14,6 @@ Name | Type | Description | Notes
 **status** | [**FileStatus**](FileStatus.md) |  | [optional] 
 **statusReason** | [**FileStatusReason**](FileStatusReason.md) |  | [optional] 
 **errorMessage** | **String** |  | [optional] 
-**id** | **String** |  | [optional] 
-**createdTime** | **Date** |  | [optional] 
-**creatorUserId** | **String** |  | [optional] 
-**editedTime** | **Date** |  | [optional] 
-**editorUserId** | **String** |  | [optional] 
+**isDeleted** | **Boolean** |  | [optional] 
 
 

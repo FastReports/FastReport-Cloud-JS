@@ -50,7 +50,7 @@
   describe('FileCreateFileGetFileUpdateFileDeleteFileExecuteFileAdministratePermission', function() {
     it('should create an instance of FileCreateFileGetFileUpdateFileDeleteFileExecuteFileAdministratePermission', function() {
       // uncomment below and update the code to test FileCreateFileGetFileUpdateFileDeleteFileExecuteFileAdministratePermission
-      //var instane = new FastreportCloudSdk.FileCreateFileGetFileUpdateFileDeleteFileExecuteFileAdministratePermission();
+      //var instance = new FastreportCloudSdk.FileCreateFileGetFileUpdateFileDeleteFileExecuteFileAdministratePermission();
       //expect(instance).to.be.a(FastreportCloudSdk.FileCreateFileGetFileUpdateFileDeleteFileExecuteFileAdministratePermission);
     });
 

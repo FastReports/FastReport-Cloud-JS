@@ -29,6 +29,7 @@ class SubscriptionPermission {
     /**
      * Constructs a new <code>SubscriptionPermission</code>.
      * @alias module:models/SubscriptionPermission
+     * @extends module:models/SubscriptionCreateSubscriptionGetSubscriptionUpdateSubscriptionDeleteSubscriptionExecuteSubscriptionAdministratePermission
      * @implements module:models/SubscriptionCreateSubscriptionGetSubscriptionUpdateSubscriptionDeleteSubscriptionExecuteSubscriptionAdministratePermission
      */
     constructor() { 
@@ -55,61 +56,26 @@ class SubscriptionPermission {
         if (data) {
             obj = obj || new SubscriptionPermission();
             SubscriptionCreateSubscriptionGetSubscriptionUpdateSubscriptionDeleteSubscriptionExecuteSubscriptionAdministratePermission.constructFromObject(data, obj);
+            SubscriptionCreateSubscriptionGetSubscriptionUpdateSubscriptionDeleteSubscriptionExecuteSubscriptionAdministratePermission.constructFromObject(data, obj);
 
-            if (data.hasOwnProperty('create')) {
-                obj['create'] = SubscriptionCreate.constructFromObject(data['create']);
-            }
-            if (data.hasOwnProperty('delete')) {
-                obj['delete'] = SubscriptionDelete.constructFromObject(data['delete']);
-            }
-            if (data.hasOwnProperty('execute')) {
-                obj['execute'] = SubscriptionExecute.constructFromObject(data['execute']);
-            }
-            if (data.hasOwnProperty('get')) {
-                obj['get'] = SubscriptionGet.constructFromObject(data['get']);
-            }
-            if (data.hasOwnProperty('update')) {
-                obj['update'] = SubscriptionUpdate.constructFromObject(data['update']);
-            }
-            if (data.hasOwnProperty('administrate')) {
-                obj['administrate'] = SubscriptionAdministrate.constructFromObject(data['administrate']);
-            }
         }
         return obj;
+    }
+
+    /**
+     * Validates the JSON data with respect to <code>SubscriptionPermission</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>SubscriptionPermission</code>.
+     */
+    static validateJSON(data) {
+
+        return true;
     }
 
 
 }
 
-/**
- * @member {module:models/SubscriptionCreate} create
- */
-SubscriptionPermission.prototype['create'] = undefined;
 
-/**
- * @member {module:models/SubscriptionDelete} delete
- */
-SubscriptionPermission.prototype['delete'] = undefined;
-
-/**
- * @member {module:models/SubscriptionExecute} execute
- */
-SubscriptionPermission.prototype['execute'] = undefined;
-
-/**
- * @member {module:models/SubscriptionGet} get
- */
-SubscriptionPermission.prototype['get'] = undefined;
-
-/**
- * @member {module:models/SubscriptionUpdate} update
- */
-SubscriptionPermission.prototype['update'] = undefined;
-
-/**
- * @member {module:models/SubscriptionAdministrate} administrate
- */
-SubscriptionPermission.prototype['administrate'] = undefined;
 
 
 // Implement SubscriptionCreateSubscriptionGetSubscriptionUpdateSubscriptionDeleteSubscriptionExecuteSubscriptionAdministratePermission interface:

@@ -23,6 +23,7 @@ class ExportFolderCreateVM {
     /**
      * Constructs a new <code>ExportFolderCreateVM</code>.
      * @alias module:models/ExportFolderCreateVM
+     * @extends module:models/FolderCreateVM
      * @implements module:models/FolderCreateVM
      */
     constructor() { 
@@ -49,37 +50,26 @@ class ExportFolderCreateVM {
         if (data) {
             obj = obj || new ExportFolderCreateVM();
             FolderCreateVM.constructFromObject(data, obj);
+            FolderCreateVM.constructFromObject(data, obj);
 
-            if (data.hasOwnProperty('name')) {
-                obj['name'] = ApiClient.convertToType(data['name'], 'String');
-            }
-            if (data.hasOwnProperty('tags')) {
-                obj['tags'] = ApiClient.convertToType(data['tags'], ['String']);
-            }
-            if (data.hasOwnProperty('icon')) {
-                obj['icon'] = ApiClient.convertToType(data['icon'], 'Blob');
-            }
         }
         return obj;
+    }
+
+    /**
+     * Validates the JSON data with respect to <code>ExportFolderCreateVM</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>ExportFolderCreateVM</code>.
+     */
+    static validateJSON(data) {
+
+        return true;
     }
 
 
 }
 
-/**
- * @member {String} name
- */
-ExportFolderCreateVM.prototype['name'] = undefined;
 
-/**
- * @member {Array.<String>} tags
- */
-ExportFolderCreateVM.prototype['tags'] = undefined;
-
-/**
- * @member {Blob} icon
- */
-ExportFolderCreateVM.prototype['icon'] = undefined;
 
 
 // Implement FolderCreateVM interface:

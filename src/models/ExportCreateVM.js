@@ -23,6 +23,7 @@ class ExportCreateVM {
     /**
      * Constructs a new <code>ExportCreateVM</code>.
      * @alias module:models/ExportCreateVM
+     * @extends module:models/FileCreateVM
      * @implements module:models/FileCreateVM
      */
     constructor() { 
@@ -49,28 +50,40 @@ class ExportCreateVM {
         if (data) {
             obj = obj || new ExportCreateVM();
             FileCreateVM.constructFromObject(data, obj);
+            FileCreateVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('templateId')) {
                 obj['templateId'] = ApiClient.convertToType(data['templateId'], 'String');
             }
-            if (data.hasOwnProperty('name')) {
-                obj['name'] = ApiClient.convertToType(data['name'], 'String');
-            }
-            if (data.hasOwnProperty('tags')) {
-                obj['tags'] = ApiClient.convertToType(data['tags'], ['String']);
-            }
-            if (data.hasOwnProperty('icon')) {
-                obj['icon'] = ApiClient.convertToType(data['icon'], 'Blob');
-            }
-            if (data.hasOwnProperty('content')) {
-                obj['content'] = ApiClient.convertToType(data['content'], 'Blob');
+            if (data.hasOwnProperty('reportId')) {
+                obj['reportId'] = ApiClient.convertToType(data['reportId'], 'String');
             }
         }
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>ExportCreateVM</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>ExportCreateVM</code>.
+     */
+    static validateJSON(data) {
+        // ensure the json data is a string
+        if (data['templateId'] && !(typeof data['templateId'] === 'string' || data['templateId'] instanceof String)) {
+            throw new Error("Expected the field `templateId` to be a primitive type in the JSON string but got " + data['templateId']);
+        }
+        // ensure the json data is a string
+        if (data['reportId'] && !(typeof data['reportId'] === 'string' || data['reportId'] instanceof String)) {
+            throw new Error("Expected the field `reportId` to be a primitive type in the JSON string but got " + data['reportId']);
+        }
+
+        return true;
+    }
+
 
 }
+
+
 
 /**
  * @member {String} templateId
@@ -78,24 +91,9 @@ class ExportCreateVM {
 ExportCreateVM.prototype['templateId'] = undefined;
 
 /**
- * @member {String} name
+ * @member {String} reportId
  */
-ExportCreateVM.prototype['name'] = undefined;
-
-/**
- * @member {Array.<String>} tags
- */
-ExportCreateVM.prototype['tags'] = undefined;
-
-/**
- * @member {Blob} icon
- */
-ExportCreateVM.prototype['icon'] = undefined;
-
-/**
- * @member {Blob} content
- */
-ExportCreateVM.prototype['content'] = undefined;
+ExportCreateVM.prototype['reportId'] = undefined;
 
 
 // Implement FileCreateVM interface:

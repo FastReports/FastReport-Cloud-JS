@@ -24,6 +24,7 @@ class ExportVM {
     /**
      * Constructs a new <code>ExportVM</code>.
      * @alias module:models/ExportVM
+     * @extends module:models/FileVM
      * @implements module:models/FileVM
      */
     constructor() { 
@@ -50,6 +51,7 @@ class ExportVM {
         if (data) {
             obj = obj || new ExportVM();
             FileVM.constructFromObject(data, obj);
+            FileVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('format')) {
                 obj['format'] = ExportFormat.constructFromObject(data['format']);
@@ -57,27 +59,35 @@ class ExportVM {
             if (data.hasOwnProperty('reportId')) {
                 obj['reportId'] = ApiClient.convertToType(data['reportId'], 'String');
             }
-            if (data.hasOwnProperty('id')) {
-                obj['id'] = ApiClient.convertToType(data['id'], 'String');
-            }
-            if (data.hasOwnProperty('createdTime')) {
-                obj['createdTime'] = ApiClient.convertToType(data['createdTime'], 'Date');
-            }
-            if (data.hasOwnProperty('creatorUserId')) {
-                obj['creatorUserId'] = ApiClient.convertToType(data['creatorUserId'], 'String');
-            }
-            if (data.hasOwnProperty('editedTime')) {
-                obj['editedTime'] = ApiClient.convertToType(data['editedTime'], 'Date');
-            }
-            if (data.hasOwnProperty('editorUserId')) {
-                obj['editorUserId'] = ApiClient.convertToType(data['editorUserId'], 'String');
+            if (data.hasOwnProperty('templateId')) {
+                obj['templateId'] = ApiClient.convertToType(data['templateId'], 'String');
             }
         }
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>ExportVM</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>ExportVM</code>.
+     */
+    static validateJSON(data) {
+        // ensure the json data is a string
+        if (data['reportId'] && !(typeof data['reportId'] === 'string' || data['reportId'] instanceof String)) {
+            throw new Error("Expected the field `reportId` to be a primitive type in the JSON string but got " + data['reportId']);
+        }
+        // ensure the json data is a string
+        if (data['templateId'] && !(typeof data['templateId'] === 'string' || data['templateId'] instanceof String)) {
+            throw new Error("Expected the field `templateId` to be a primitive type in the JSON string but got " + data['templateId']);
+        }
+
+        return true;
+    }
+
 
 }
+
+
 
 /**
  * @member {module:models/ExportFormat} format
@@ -90,29 +100,9 @@ ExportVM.prototype['format'] = undefined;
 ExportVM.prototype['reportId'] = undefined;
 
 /**
- * @member {String} id
+ * @member {String} templateId
  */
-ExportVM.prototype['id'] = undefined;
-
-/**
- * @member {Date} createdTime
- */
-ExportVM.prototype['createdTime'] = undefined;
-
-/**
- * @member {String} creatorUserId
- */
-ExportVM.prototype['creatorUserId'] = undefined;
-
-/**
- * @member {Date} editedTime
- */
-ExportVM.prototype['editedTime'] = undefined;
-
-/**
- * @member {String} editorUserId
- */
-ExportVM.prototype['editorUserId'] = undefined;
+ExportVM.prototype['templateId'] = undefined;
 
 
 // Implement FileVM interface:

@@ -48,6 +48,16 @@
   }
 
   describe('UserSettingsApi', function() {
+    describe('userSettingsAcceptAgreements', function() {
+      it('should call userSettingsAcceptAgreements successfully', function(done) {
+        //uncomment below and update the code to test userSettingsAcceptAgreements
+        //instance.userSettingsAcceptAgreements(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('userSettingsGetCurrentUserSettings', function() {
       it('should call userSettingsGetCurrentUserSettings successfully', function(done) {
         //uncomment below and update the code to test userSettingsGetCurrentUserSettings

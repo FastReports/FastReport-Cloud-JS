@@ -49,7 +49,7 @@
   describe('GroupExecute', function() {
     it('should create an instance of GroupExecute', function() {
       // uncomment below and update the code to test GroupExecute
-      //var instane = new FastreportCloudSdk.GroupExecute();
+      //var instance = new FastreportCloudSdk.GroupExecute();
       //expect(instance).to.be.a(FastreportCloudSdk.GroupExecute);
     });
 

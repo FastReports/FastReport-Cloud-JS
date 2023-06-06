@@ -12,7 +12,6 @@
  */
 
 import ApiClient from '../ApiClient';
-import TaskType from './TaskType';
 
 /**
  * The RunTaskBaseVM model module.
@@ -23,10 +22,11 @@ class RunTaskBaseVM {
     /**
      * Constructs a new <code>RunTaskBaseVM</code>.
      * @alias module:models/RunTaskBaseVM
+     * @param t {String} 
      */
-    constructor() { 
+    constructor(t) { 
         
-        RunTaskBaseVM.initialize(this);
+        RunTaskBaseVM.initialize(this, t);
     }
 
     /**
@@ -34,7 +34,8 @@ class RunTaskBaseVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -51,15 +52,41 @@ class RunTaskBaseVM {
             if (data.hasOwnProperty('subscriptionId')) {
                 obj['subscriptionId'] = ApiClient.convertToType(data['subscriptionId'], 'String');
             }
-            if (data.hasOwnProperty('type')) {
-                obj['type'] = TaskType.constructFromObject(data['type']);
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
             }
         }
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>RunTaskBaseVM</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>RunTaskBaseVM</code>.
+     */
+    static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of RunTaskBaseVM.RequiredProperties) {
+            if (!data[property]) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
+        // ensure the json data is a string
+        if (data['subscriptionId'] && !(typeof data['subscriptionId'] === 'string' || data['subscriptionId'] instanceof String)) {
+            throw new Error("Expected the field `subscriptionId` to be a primitive type in the JSON string but got " + data['subscriptionId']);
+        }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
+        }
+
+        return true;
+    }
+
 
 }
+
+RunTaskBaseVM.RequiredProperties = ["$t"];
 
 /**
  * @member {String} subscriptionId
@@ -67,9 +94,9 @@ class RunTaskBaseVM {
 RunTaskBaseVM.prototype['subscriptionId'] = undefined;
 
 /**
- * @member {module:models/TaskType} type
+ * @member {String} $t
  */
-RunTaskBaseVM.prototype['type'] = undefined;
+RunTaskBaseVM.prototype['$t'] = undefined;
 
 
 

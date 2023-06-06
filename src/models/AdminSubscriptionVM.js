@@ -26,6 +26,7 @@ class AdminSubscriptionVM {
     /**
      * Constructs a new <code>AdminSubscriptionVM</code>.
      * @alias module:models/AdminSubscriptionVM
+     * @extends module:models/SubscriptionVM
      * @implements module:models/SubscriptionVM
      */
     constructor() { 
@@ -52,85 +53,38 @@ class AdminSubscriptionVM {
         if (data) {
             obj = obj || new AdminSubscriptionVM();
             SubscriptionVM.constructFromObject(data, obj);
+            SubscriptionVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('defaultPermissions')) {
                 obj['defaultPermissions'] = DefaultPermissionsVM.constructFromObject(data['defaultPermissions']);
-            }
-            if (data.hasOwnProperty('id')) {
-                obj['id'] = ApiClient.convertToType(data['id'], 'String');
-            }
-            if (data.hasOwnProperty('name')) {
-                obj['name'] = ApiClient.convertToType(data['name'], 'String');
-            }
-            if (data.hasOwnProperty('locale')) {
-                obj['locale'] = ApiClient.convertToType(data['locale'], 'String');
-            }
-            if (data.hasOwnProperty('current')) {
-                obj['current'] = SubscriptionPeriodVM.constructFromObject(data['current']);
-            }
-            if (data.hasOwnProperty('old')) {
-                obj['old'] = ApiClient.convertToType(data['old'], [SubscriptionPeriodVM]);
-            }
-            if (data.hasOwnProperty('templatesFolder')) {
-                obj['templatesFolder'] = SubscriptionFolder.constructFromObject(data['templatesFolder']);
-            }
-            if (data.hasOwnProperty('reportsFolder')) {
-                obj['reportsFolder'] = SubscriptionFolder.constructFromObject(data['reportsFolder']);
-            }
-            if (data.hasOwnProperty('exportsFolder')) {
-                obj['exportsFolder'] = SubscriptionFolder.constructFromObject(data['exportsFolder']);
             }
         }
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>AdminSubscriptionVM</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>AdminSubscriptionVM</code>.
+     */
+    static validateJSON(data) {
+        // validate the optional field `defaultPermissions`
+        if (data['defaultPermissions']) { // data not null
+          DefaultPermissionsVM.validateJSON(data['defaultPermissions']);
+        }
+
+        return true;
+    }
+
 
 }
+
+
 
 /**
  * @member {module:models/DefaultPermissionsVM} defaultPermissions
  */
 AdminSubscriptionVM.prototype['defaultPermissions'] = undefined;
-
-/**
- * @member {String} id
- */
-AdminSubscriptionVM.prototype['id'] = undefined;
-
-/**
- * @member {String} name
- */
-AdminSubscriptionVM.prototype['name'] = undefined;
-
-/**
- * @member {String} locale
- */
-AdminSubscriptionVM.prototype['locale'] = undefined;
-
-/**
- * @member {module:models/SubscriptionPeriodVM} current
- */
-AdminSubscriptionVM.prototype['current'] = undefined;
-
-/**
- * @member {Array.<module:models/SubscriptionPeriodVM>} old
- */
-AdminSubscriptionVM.prototype['old'] = undefined;
-
-/**
- * @member {module:models/SubscriptionFolder} templatesFolder
- */
-AdminSubscriptionVM.prototype['templatesFolder'] = undefined;
-
-/**
- * @member {module:models/SubscriptionFolder} reportsFolder
- */
-AdminSubscriptionVM.prototype['reportsFolder'] = undefined;
-
-/**
- * @member {module:models/SubscriptionFolder} exportsFolder
- */
-AdminSubscriptionVM.prototype['exportsFolder'] = undefined;
 
 
 // Implement SubscriptionVM interface:

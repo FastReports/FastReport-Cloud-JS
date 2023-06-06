@@ -50,24 +50,12 @@
   describe('UpdateTaskBaseVM', function() {
     it('should create an instance of UpdateTaskBaseVM', function() {
       // uncomment below and update the code to test UpdateTaskBaseVM
-      //var instane = new FastreportCloudSdk.UpdateTaskBaseVM();
+      //var instance = new FastreportCloudSdk.UpdateTaskBaseVM();
       //expect(instance).to.be.a(FastreportCloudSdk.UpdateTaskBaseVM);
     });
 
-    it('should have the property name (base name: "name")', function() {
-      // uncomment below and update the code to test the property name
-      //var instance = new FastreportCloudSdk.UpdateTaskBaseVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property subscriptionId (base name: "subscriptionId")', function() {
-      // uncomment below and update the code to test the property subscriptionId
-      //var instance = new FastreportCloudSdk.UpdateTaskBaseVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property type (base name: "type")', function() {
-      // uncomment below and update the code to test the property type
+    it('should have the property cronExpression (base name: "cronExpression")', function() {
+      // uncomment below and update the code to test the property cronExpression
       //var instance = new FastreportCloudSdk.UpdateTaskBaseVM();
       //expect(instance).to.be();
     });
@@ -78,8 +66,14 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property cronExpression (base name: "cronExpression")', function() {
-      // uncomment below and update the code to test the property cronExpression
+    it('should have the property name (base name: "name")', function() {
+      // uncomment below and update the code to test the property name
+      //var instance = new FastreportCloudSdk.UpdateTaskBaseVM();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property t (base name: "$t")', function() {
+      // uncomment below and update the code to test the property t
       //var instance = new FastreportCloudSdk.UpdateTaskBaseVM();
       //expect(instance).to.be();
     });

@@ -12,7 +12,6 @@
  */
 
 import ApiClient from '../ApiClient';
-import TaskType from './TaskType';
 
 /**
  * The CreateTaskBaseVM model module.
@@ -23,10 +22,11 @@ class CreateTaskBaseVM {
     /**
      * Constructs a new <code>CreateTaskBaseVM</code>.
      * @alias module:models/CreateTaskBaseVM
+     * @param t {String} 
      */
-    constructor() { 
+    constructor(t) { 
         
-        CreateTaskBaseVM.initialize(this);
+        CreateTaskBaseVM.initialize(this, t);
     }
 
     /**
@@ -34,7 +34,8 @@ class CreateTaskBaseVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -48,27 +49,71 @@ class CreateTaskBaseVM {
         if (data) {
             obj = obj || new CreateTaskBaseVM();
 
+            if (data.hasOwnProperty('cronExpression')) {
+                obj['cronExpression'] = ApiClient.convertToType(data['cronExpression'], 'String');
+            }
+            if (data.hasOwnProperty('delayedRunTime')) {
+                obj['delayedRunTime'] = ApiClient.convertToType(data['delayedRunTime'], 'Date');
+            }
             if (data.hasOwnProperty('name')) {
                 obj['name'] = ApiClient.convertToType(data['name'], 'String');
             }
             if (data.hasOwnProperty('subscriptionId')) {
                 obj['subscriptionId'] = ApiClient.convertToType(data['subscriptionId'], 'String');
             }
-            if (data.hasOwnProperty('type')) {
-                obj['type'] = TaskType.constructFromObject(data['type']);
-            }
-            if (data.hasOwnProperty('delayedRunTime')) {
-                obj['delayedRunTime'] = ApiClient.convertToType(data['delayedRunTime'], 'Date');
-            }
-            if (data.hasOwnProperty('cronExpression')) {
-                obj['cronExpression'] = ApiClient.convertToType(data['cronExpression'], 'String');
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
             }
         }
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>CreateTaskBaseVM</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>CreateTaskBaseVM</code>.
+     */
+    static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of CreateTaskBaseVM.RequiredProperties) {
+            if (!data[property]) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
+        // ensure the json data is a string
+        if (data['cronExpression'] && !(typeof data['cronExpression'] === 'string' || data['cronExpression'] instanceof String)) {
+            throw new Error("Expected the field `cronExpression` to be a primitive type in the JSON string but got " + data['cronExpression']);
+        }
+        // ensure the json data is a string
+        if (data['name'] && !(typeof data['name'] === 'string' || data['name'] instanceof String)) {
+            throw new Error("Expected the field `name` to be a primitive type in the JSON string but got " + data['name']);
+        }
+        // ensure the json data is a string
+        if (data['subscriptionId'] && !(typeof data['subscriptionId'] === 'string' || data['subscriptionId'] instanceof String)) {
+            throw new Error("Expected the field `subscriptionId` to be a primitive type in the JSON string but got " + data['subscriptionId']);
+        }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
+        }
+
+        return true;
+    }
+
 
 }
+
+CreateTaskBaseVM.RequiredProperties = ["$t"];
+
+/**
+ * @member {String} cronExpression
+ */
+CreateTaskBaseVM.prototype['cronExpression'] = undefined;
+
+/**
+ * @member {Date} delayedRunTime
+ */
+CreateTaskBaseVM.prototype['delayedRunTime'] = undefined;
 
 /**
  * @member {String} name
@@ -81,19 +126,9 @@ CreateTaskBaseVM.prototype['name'] = undefined;
 CreateTaskBaseVM.prototype['subscriptionId'] = undefined;
 
 /**
- * @member {module:models/TaskType} type
+ * @member {String} $t
  */
-CreateTaskBaseVM.prototype['type'] = undefined;
-
-/**
- * @member {Date} delayedRunTime
- */
-CreateTaskBaseVM.prototype['delayedRunTime'] = undefined;
-
-/**
- * @member {String} cronExpression
- */
-CreateTaskBaseVM.prototype['cronExpression'] = undefined;
+CreateTaskBaseVM.prototype['$t'] = undefined;
 
 
 

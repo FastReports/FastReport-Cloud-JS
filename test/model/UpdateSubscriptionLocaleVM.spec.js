@@ -50,7 +50,7 @@
   describe('UpdateSubscriptionLocaleVM', function() {
     it('should create an instance of UpdateSubscriptionLocaleVM', function() {
       // uncomment below and update the code to test UpdateSubscriptionLocaleVM
-      //var instane = new FastreportCloudSdk.UpdateSubscriptionLocaleVM();
+      //var instance = new FastreportCloudSdk.UpdateSubscriptionLocaleVM();
       //expect(instance).to.be.a(FastreportCloudSdk.UpdateSubscriptionLocaleVM);
     });
 

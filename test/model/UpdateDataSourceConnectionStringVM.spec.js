@@ -50,7 +50,7 @@
   describe('UpdateDataSourceConnectionStringVM', function() {
     it('should create an instance of UpdateDataSourceConnectionStringVM', function() {
       // uncomment below and update the code to test UpdateDataSourceConnectionStringVM
-      //var instane = new FastreportCloudSdk.UpdateDataSourceConnectionStringVM();
+      //var instance = new FastreportCloudSdk.UpdateDataSourceConnectionStringVM();
       //expect(instance).to.be.a(FastreportCloudSdk.UpdateDataSourceConnectionStringVM);
     });
 

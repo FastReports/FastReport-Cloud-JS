@@ -57,8 +57,28 @@ class AppMixins {
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>AppMixins</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>AppMixins</code>.
+     */
+    static validateJSON(data) {
+        // ensure the json data is a string
+        if (data['head'] && !(typeof data['head'] === 'string' || data['head'] instanceof String)) {
+            throw new Error("Expected the field `head` to be a primitive type in the JSON string but got " + data['head']);
+        }
+        // ensure the json data is a string
+        if (data['body'] && !(typeof data['body'] === 'string' || data['body'] instanceof String)) {
+            throw new Error("Expected the field `body` to be a primitive type in the JSON string but got " + data['body']);
+        }
+
+        return true;
+    }
+
 
 }
+
+
 
 /**
  * @member {String} head

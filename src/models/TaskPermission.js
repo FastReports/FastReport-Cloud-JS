@@ -29,6 +29,7 @@ class TaskPermission {
     /**
      * Constructs a new <code>TaskPermission</code>.
      * @alias module:models/TaskPermission
+     * @extends module:models/TaskCreateTaskGetTaskUpdateTaskDeleteTaskExecuteTaskAdministratePermission
      * @implements module:models/TaskCreateTaskGetTaskUpdateTaskDeleteTaskExecuteTaskAdministratePermission
      */
     constructor() { 
@@ -55,61 +56,26 @@ class TaskPermission {
         if (data) {
             obj = obj || new TaskPermission();
             TaskCreateTaskGetTaskUpdateTaskDeleteTaskExecuteTaskAdministratePermission.constructFromObject(data, obj);
+            TaskCreateTaskGetTaskUpdateTaskDeleteTaskExecuteTaskAdministratePermission.constructFromObject(data, obj);
 
-            if (data.hasOwnProperty('create')) {
-                obj['create'] = TaskCreate.constructFromObject(data['create']);
-            }
-            if (data.hasOwnProperty('delete')) {
-                obj['delete'] = TaskDelete.constructFromObject(data['delete']);
-            }
-            if (data.hasOwnProperty('execute')) {
-                obj['execute'] = TaskExecute.constructFromObject(data['execute']);
-            }
-            if (data.hasOwnProperty('get')) {
-                obj['get'] = TaskGet.constructFromObject(data['get']);
-            }
-            if (data.hasOwnProperty('update')) {
-                obj['update'] = TaskUpdate.constructFromObject(data['update']);
-            }
-            if (data.hasOwnProperty('administrate')) {
-                obj['administrate'] = TaskAdministrate.constructFromObject(data['administrate']);
-            }
         }
         return obj;
+    }
+
+    /**
+     * Validates the JSON data with respect to <code>TaskPermission</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>TaskPermission</code>.
+     */
+    static validateJSON(data) {
+
+        return true;
     }
 
 
 }
 
-/**
- * @member {module:models/TaskCreate} create
- */
-TaskPermission.prototype['create'] = undefined;
 
-/**
- * @member {module:models/TaskDelete} delete
- */
-TaskPermission.prototype['delete'] = undefined;
-
-/**
- * @member {module:models/TaskExecute} execute
- */
-TaskPermission.prototype['execute'] = undefined;
-
-/**
- * @member {module:models/TaskGet} get
- */
-TaskPermission.prototype['get'] = undefined;
-
-/**
- * @member {module:models/TaskUpdate} update
- */
-TaskPermission.prototype['update'] = undefined;
-
-/**
- * @member {module:models/TaskAdministrate} administrate
- */
-TaskPermission.prototype['administrate'] = undefined;
 
 
 // Implement TaskCreateTaskGetTaskUpdateTaskDeleteTaskExecuteTaskAdministratePermission interface:

@@ -50,26 +50,8 @@
   describe('ExportFolderCreateVM', function() {
     it('should create an instance of ExportFolderCreateVM', function() {
       // uncomment below and update the code to test ExportFolderCreateVM
-      //var instane = new FastreportCloudSdk.ExportFolderCreateVM();
+      //var instance = new FastreportCloudSdk.ExportFolderCreateVM();
       //expect(instance).to.be.a(FastreportCloudSdk.ExportFolderCreateVM);
-    });
-
-    it('should have the property name (base name: "name")', function() {
-      // uncomment below and update the code to test the property name
-      //var instance = new FastreportCloudSdk.ExportFolderCreateVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property tags (base name: "tags")', function() {
-      // uncomment below and update the code to test the property tags
-      //var instance = new FastreportCloudSdk.ExportFolderCreateVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property icon (base name: "icon")', function() {
-      // uncomment below and update the code to test the property icon
-      //var instance = new FastreportCloudSdk.ExportFolderCreateVM();
-      //expect(instance).to.be();
     });
 
   });

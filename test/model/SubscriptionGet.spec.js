@@ -49,7 +49,7 @@
   describe('SubscriptionGet', function() {
     it('should create an instance of SubscriptionGet', function() {
       // uncomment below and update the code to test SubscriptionGet
-      //var instane = new FastreportCloudSdk.SubscriptionGet();
+      //var instance = new FastreportCloudSdk.SubscriptionGet();
       //expect(instance).to.be.a(FastreportCloudSdk.SubscriptionGet);
     });
 

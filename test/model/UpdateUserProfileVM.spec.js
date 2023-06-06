@@ -50,7 +50,7 @@
   describe('UpdateUserProfileVM', function() {
     it('should create an instance of UpdateUserProfileVM', function() {
       // uncomment below and update the code to test UpdateUserProfileVM
-      //var instane = new FastreportCloudSdk.UpdateUserProfileVM();
+      //var instance = new FastreportCloudSdk.UpdateUserProfileVM();
       //expect(instance).to.be.a(FastreportCloudSdk.UpdateUserProfileVM);
     });
 

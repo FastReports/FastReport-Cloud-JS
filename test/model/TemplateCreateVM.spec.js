@@ -50,32 +50,8 @@
   describe('TemplateCreateVM', function() {
     it('should create an instance of TemplateCreateVM', function() {
       // uncomment below and update the code to test TemplateCreateVM
-      //var instane = new FastreportCloudSdk.TemplateCreateVM();
+      //var instance = new FastreportCloudSdk.TemplateCreateVM();
       //expect(instance).to.be.a(FastreportCloudSdk.TemplateCreateVM);
-    });
-
-    it('should have the property name (base name: "name")', function() {
-      // uncomment below and update the code to test the property name
-      //var instance = new FastreportCloudSdk.TemplateCreateVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property tags (base name: "tags")', function() {
-      // uncomment below and update the code to test the property tags
-      //var instance = new FastreportCloudSdk.TemplateCreateVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property icon (base name: "icon")', function() {
-      // uncomment below and update the code to test the property icon
-      //var instance = new FastreportCloudSdk.TemplateCreateVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property content (base name: "content")', function() {
-      // uncomment below and update the code to test the property content
-      //var instance = new FastreportCloudSdk.TemplateCreateVM();
-      //expect(instance).to.be();
     });
 
   });

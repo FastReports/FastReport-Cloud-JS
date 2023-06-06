@@ -50,7 +50,7 @@
   describe('MyPermissionsVM', function() {
     it('should create an instance of MyPermissionsVM', function() {
       // uncomment below and update the code to test MyPermissionsVM
-      //var instane = new FastreportCloudSdk.MyPermissionsVM();
+      //var instance = new FastreportCloudSdk.MyPermissionsVM();
       //expect(instance).to.be.a(FastreportCloudSdk.MyPermissionsVM);
     });
 

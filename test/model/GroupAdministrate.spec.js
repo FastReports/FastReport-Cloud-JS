@@ -49,7 +49,7 @@
   describe('GroupAdministrate', function() {
     it('should create an instance of GroupAdministrate', function() {
       // uncomment below and update the code to test GroupAdministrate
-      //var instane = new FastreportCloudSdk.GroupAdministrate();
+      //var instance = new FastreportCloudSdk.GroupAdministrate();
       //expect(instance).to.be.a(FastreportCloudSdk.GroupAdministrate);
     });
 

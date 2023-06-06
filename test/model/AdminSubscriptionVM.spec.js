@@ -50,60 +50,12 @@
   describe('AdminSubscriptionVM', function() {
     it('should create an instance of AdminSubscriptionVM', function() {
       // uncomment below and update the code to test AdminSubscriptionVM
-      //var instane = new FastreportCloudSdk.AdminSubscriptionVM();
+      //var instance = new FastreportCloudSdk.AdminSubscriptionVM();
       //expect(instance).to.be.a(FastreportCloudSdk.AdminSubscriptionVM);
     });
 
     it('should have the property defaultPermissions (base name: "defaultPermissions")', function() {
       // uncomment below and update the code to test the property defaultPermissions
-      //var instance = new FastreportCloudSdk.AdminSubscriptionVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property id (base name: "id")', function() {
-      // uncomment below and update the code to test the property id
-      //var instance = new FastreportCloudSdk.AdminSubscriptionVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property name (base name: "name")', function() {
-      // uncomment below and update the code to test the property name
-      //var instance = new FastreportCloudSdk.AdminSubscriptionVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property locale (base name: "locale")', function() {
-      // uncomment below and update the code to test the property locale
-      //var instance = new FastreportCloudSdk.AdminSubscriptionVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property current (base name: "current")', function() {
-      // uncomment below and update the code to test the property current
-      //var instance = new FastreportCloudSdk.AdminSubscriptionVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property old (base name: "old")', function() {
-      // uncomment below and update the code to test the property old
-      //var instance = new FastreportCloudSdk.AdminSubscriptionVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property templatesFolder (base name: "templatesFolder")', function() {
-      // uncomment below and update the code to test the property templatesFolder
-      //var instance = new FastreportCloudSdk.AdminSubscriptionVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property reportsFolder (base name: "reportsFolder")', function() {
-      // uncomment below and update the code to test the property reportsFolder
-      //var instance = new FastreportCloudSdk.AdminSubscriptionVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property exportsFolder (base name: "exportsFolder")', function() {
-      // uncomment below and update the code to test the property exportsFolder
       //var instance = new FastreportCloudSdk.AdminSubscriptionVM();
       //expect(instance).to.be();
     });

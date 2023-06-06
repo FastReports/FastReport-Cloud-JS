@@ -26,6 +26,7 @@ class FileVM {
     /**
      * Constructs a new <code>FileVM</code>.
      * @alias module:models/FileVM
+     * @extends module:models/EntityVM
      * @implements module:models/EntityVM
      */
     constructor() { 
@@ -51,6 +52,7 @@ class FileVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new FileVM();
+            EntityVM.constructFromObject(data, obj);
             EntityVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('name')) {
@@ -83,27 +85,47 @@ class FileVM {
             if (data.hasOwnProperty('errorMessage')) {
                 obj['errorMessage'] = ApiClient.convertToType(data['errorMessage'], 'String');
             }
-            if (data.hasOwnProperty('id')) {
-                obj['id'] = ApiClient.convertToType(data['id'], 'String');
-            }
-            if (data.hasOwnProperty('createdTime')) {
-                obj['createdTime'] = ApiClient.convertToType(data['createdTime'], 'Date');
-            }
-            if (data.hasOwnProperty('creatorUserId')) {
-                obj['creatorUserId'] = ApiClient.convertToType(data['creatorUserId'], 'String');
-            }
-            if (data.hasOwnProperty('editedTime')) {
-                obj['editedTime'] = ApiClient.convertToType(data['editedTime'], 'Date');
-            }
-            if (data.hasOwnProperty('editorUserId')) {
-                obj['editorUserId'] = ApiClient.convertToType(data['editorUserId'], 'String');
+            if (data.hasOwnProperty('isDeleted')) {
+                obj['isDeleted'] = ApiClient.convertToType(data['isDeleted'], 'Boolean');
             }
         }
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>FileVM</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>FileVM</code>.
+     */
+    static validateJSON(data) {
+        // ensure the json data is a string
+        if (data['name'] && !(typeof data['name'] === 'string' || data['name'] instanceof String)) {
+            throw new Error("Expected the field `name` to be a primitive type in the JSON string but got " + data['name']);
+        }
+        // ensure the json data is a string
+        if (data['parentId'] && !(typeof data['parentId'] === 'string' || data['parentId'] instanceof String)) {
+            throw new Error("Expected the field `parentId` to be a primitive type in the JSON string but got " + data['parentId']);
+        }
+        // ensure the json data is an array
+        if (!Array.isArray(data['tags'])) {
+            throw new Error("Expected the field `tags` to be an array in the JSON data but got " + data['tags']);
+        }
+        // ensure the json data is a string
+        if (data['subscriptionId'] && !(typeof data['subscriptionId'] === 'string' || data['subscriptionId'] instanceof String)) {
+            throw new Error("Expected the field `subscriptionId` to be a primitive type in the JSON string but got " + data['subscriptionId']);
+        }
+        // ensure the json data is a string
+        if (data['errorMessage'] && !(typeof data['errorMessage'] === 'string' || data['errorMessage'] instanceof String)) {
+            throw new Error("Expected the field `errorMessage` to be a primitive type in the JSON string but got " + data['errorMessage']);
+        }
+
+        return true;
+    }
+
 
 }
+
+
 
 /**
  * @member {String} name
@@ -156,29 +178,9 @@ FileVM.prototype['statusReason'] = undefined;
 FileVM.prototype['errorMessage'] = undefined;
 
 /**
- * @member {String} id
+ * @member {Boolean} isDeleted
  */
-FileVM.prototype['id'] = undefined;
-
-/**
- * @member {Date} createdTime
- */
-FileVM.prototype['createdTime'] = undefined;
-
-/**
- * @member {String} creatorUserId
- */
-FileVM.prototype['creatorUserId'] = undefined;
-
-/**
- * @member {Date} editedTime
- */
-FileVM.prototype['editedTime'] = undefined;
-
-/**
- * @member {String} editorUserId
- */
-FileVM.prototype['editorUserId'] = undefined;
+FileVM.prototype['isDeleted'] = undefined;
 
 
 // Implement EntityVM interface:

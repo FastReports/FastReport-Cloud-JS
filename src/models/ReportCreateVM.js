@@ -23,6 +23,7 @@ class ReportCreateVM {
     /**
      * Constructs a new <code>ReportCreateVM</code>.
      * @alias module:models/ReportCreateVM
+     * @extends module:models/FileCreateVM
      * @implements module:models/FileCreateVM
      */
     constructor() { 
@@ -49,53 +50,38 @@ class ReportCreateVM {
         if (data) {
             obj = obj || new ReportCreateVM();
             FileCreateVM.constructFromObject(data, obj);
+            FileCreateVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('templateId')) {
                 obj['templateId'] = ApiClient.convertToType(data['templateId'], 'String');
-            }
-            if (data.hasOwnProperty('name')) {
-                obj['name'] = ApiClient.convertToType(data['name'], 'String');
-            }
-            if (data.hasOwnProperty('tags')) {
-                obj['tags'] = ApiClient.convertToType(data['tags'], ['String']);
-            }
-            if (data.hasOwnProperty('icon')) {
-                obj['icon'] = ApiClient.convertToType(data['icon'], 'Blob');
-            }
-            if (data.hasOwnProperty('content')) {
-                obj['content'] = ApiClient.convertToType(data['content'], 'Blob');
             }
         }
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>ReportCreateVM</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>ReportCreateVM</code>.
+     */
+    static validateJSON(data) {
+        // ensure the json data is a string
+        if (data['templateId'] && !(typeof data['templateId'] === 'string' || data['templateId'] instanceof String)) {
+            throw new Error("Expected the field `templateId` to be a primitive type in the JSON string but got " + data['templateId']);
+        }
+
+        return true;
+    }
+
 
 }
+
+
 
 /**
  * @member {String} templateId
  */
 ReportCreateVM.prototype['templateId'] = undefined;
-
-/**
- * @member {String} name
- */
-ReportCreateVM.prototype['name'] = undefined;
-
-/**
- * @member {Array.<String>} tags
- */
-ReportCreateVM.prototype['tags'] = undefined;
-
-/**
- * @member {Blob} icon
- */
-ReportCreateVM.prototype['icon'] = undefined;
-
-/**
- * @member {Blob} content
- */
-ReportCreateVM.prototype['content'] = undefined;
 
 
 // Implement FileCreateVM interface:

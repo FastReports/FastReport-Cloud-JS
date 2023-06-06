@@ -91,6 +91,53 @@ export default class SubscriptionUsersApi {
 
 
     /**
+     * Returns a number of users in subscription
+     * @param {String} subscriptionId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Number} and HTTP response
+     */
+    subscriptionUsersCountUsersAsyncWithHttpInfo(subscriptionId) {
+      let postBody = null;
+      // verify the required parameter 'subscriptionId' is set
+      if (subscriptionId === undefined || subscriptionId === null) {
+        throw new Error("Missing the required parameter 'subscriptionId' when calling subscriptionUsersCountUsersAsync");
+      }
+
+      let pathParams = {
+        'subscriptionId': subscriptionId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKey', 'JWT'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = 'Number';
+      if(!returnType) returnType = 'Blob';
+      return this.apiClient.callApi(
+        '/api/manage/v1/Subscriptions/{subscriptionId}/UsersCount', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Returns a number of users in subscription
+     * @param {String} subscriptionId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Number}
+     */
+    subscriptionUsersCountUsersAsync(subscriptionId) {
+      return this.subscriptionUsersCountUsersAsyncWithHttpInfo(subscriptionId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Returns all users of subscription
      * @param {String} subscriptionId Idenitifier of subscription
      * @param {Object} opts Optional parameters

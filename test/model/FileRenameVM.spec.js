@@ -50,7 +50,7 @@
   describe('FileRenameVM', function() {
     it('should create an instance of FileRenameVM', function() {
       // uncomment below and update the code to test FileRenameVM
-      //var instane = new FastreportCloudSdk.FileRenameVM();
+      //var instance = new FastreportCloudSdk.FileRenameVM();
       //expect(instance).to.be.a(FastreportCloudSdk.FileRenameVM);
     });
 

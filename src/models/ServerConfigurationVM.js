@@ -61,11 +61,17 @@ class ServerConfigurationVM {
             if (data.hasOwnProperty('corporateServerMode')) {
                 obj['corporateServerMode'] = ApiClient.convertToType(data['corporateServerMode'], 'Boolean');
             }
+            if (data.hasOwnProperty('lastSLAVersion')) {
+                obj['lastSLAVersion'] = ApiClient.convertToType(data['lastSLAVersion'], 'Date');
+            }
             if (data.hasOwnProperty('isDisabled')) {
                 obj['isDisabled'] = ApiClient.convertToType(data['isDisabled'], 'Boolean');
             }
             if (data.hasOwnProperty('frontend')) {
                 obj['frontend'] = FrontendApp.constructFromObject(data['frontend']);
+            }
+            if (data.hasOwnProperty('invariantLocale')) {
+                obj['invariantLocale'] = ApiClient.convertToType(data['invariantLocale'], 'String');
             }
             if (data.hasOwnProperty('auth')) {
                 obj['auth'] = AuthConfigVM.constructFromObject(data['auth']);
@@ -73,12 +79,83 @@ class ServerConfigurationVM {
             if (data.hasOwnProperty('designerForAnons')) {
                 obj['designerForAnons'] = ApiClient.convertToType(data['designerForAnons'], 'Boolean');
             }
+            if (data.hasOwnProperty('slaLink')) {
+                obj['slaLink'] = ApiClient.convertToType(data['slaLink'], 'String');
+            }
+            if (data.hasOwnProperty('firstStepsVideoLink')) {
+                obj['firstStepsVideoLink'] = ApiClient.convertToType(data['firstStepsVideoLink'], 'String');
+            }
+            if (data.hasOwnProperty('aboutLink')) {
+                obj['aboutLink'] = ApiClient.convertToType(data['aboutLink'], 'String');
+            }
+            if (data.hasOwnProperty('homePageLink')) {
+                obj['homePageLink'] = ApiClient.convertToType(data['homePageLink'], 'String');
+            }
+            if (data.hasOwnProperty('authServerName')) {
+                obj['authServerName'] = ApiClient.convertToType(data['authServerName'], 'String');
+            }
         }
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>ServerConfigurationVM</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>ServerConfigurationVM</code>.
+     */
+    static validateJSON(data) {
+        // ensure the json data is a string
+        if (data['title'] && !(typeof data['title'] === 'string' || data['title'] instanceof String)) {
+            throw new Error("Expected the field `title` to be a primitive type in the JSON string but got " + data['title']);
+        }
+        // ensure the json data is a string
+        if (data['logoLink'] && !(typeof data['logoLink'] === 'string' || data['logoLink'] instanceof String)) {
+            throw new Error("Expected the field `logoLink` to be a primitive type in the JSON string but got " + data['logoLink']);
+        }
+        // ensure the json data is a string
+        if (data['copyright'] && !(typeof data['copyright'] === 'string' || data['copyright'] instanceof String)) {
+            throw new Error("Expected the field `copyright` to be a primitive type in the JSON string but got " + data['copyright']);
+        }
+        // validate the optional field `frontend`
+        if (data['frontend']) { // data not null
+          FrontendApp.validateJSON(data['frontend']);
+        }
+        // ensure the json data is a string
+        if (data['invariantLocale'] && !(typeof data['invariantLocale'] === 'string' || data['invariantLocale'] instanceof String)) {
+            throw new Error("Expected the field `invariantLocale` to be a primitive type in the JSON string but got " + data['invariantLocale']);
+        }
+        // validate the optional field `auth`
+        if (data['auth']) { // data not null
+          AuthConfigVM.validateJSON(data['auth']);
+        }
+        // ensure the json data is a string
+        if (data['slaLink'] && !(typeof data['slaLink'] === 'string' || data['slaLink'] instanceof String)) {
+            throw new Error("Expected the field `slaLink` to be a primitive type in the JSON string but got " + data['slaLink']);
+        }
+        // ensure the json data is a string
+        if (data['firstStepsVideoLink'] && !(typeof data['firstStepsVideoLink'] === 'string' || data['firstStepsVideoLink'] instanceof String)) {
+            throw new Error("Expected the field `firstStepsVideoLink` to be a primitive type in the JSON string but got " + data['firstStepsVideoLink']);
+        }
+        // ensure the json data is a string
+        if (data['aboutLink'] && !(typeof data['aboutLink'] === 'string' || data['aboutLink'] instanceof String)) {
+            throw new Error("Expected the field `aboutLink` to be a primitive type in the JSON string but got " + data['aboutLink']);
+        }
+        // ensure the json data is a string
+        if (data['homePageLink'] && !(typeof data['homePageLink'] === 'string' || data['homePageLink'] instanceof String)) {
+            throw new Error("Expected the field `homePageLink` to be a primitive type in the JSON string but got " + data['homePageLink']);
+        }
+        // ensure the json data is a string
+        if (data['authServerName'] && !(typeof data['authServerName'] === 'string' || data['authServerName'] instanceof String)) {
+            throw new Error("Expected the field `authServerName` to be a primitive type in the JSON string but got " + data['authServerName']);
+        }
+
+        return true;
+    }
+
 
 }
+
+
 
 /**
  * @member {String} title
@@ -101,6 +178,11 @@ ServerConfigurationVM.prototype['copyright'] = undefined;
 ServerConfigurationVM.prototype['corporateServerMode'] = undefined;
 
 /**
+ * @member {Date} lastSLAVersion
+ */
+ServerConfigurationVM.prototype['lastSLAVersion'] = undefined;
+
+/**
  * @member {Boolean} isDisabled
  */
 ServerConfigurationVM.prototype['isDisabled'] = undefined;
@@ -111,6 +193,11 @@ ServerConfigurationVM.prototype['isDisabled'] = undefined;
 ServerConfigurationVM.prototype['frontend'] = undefined;
 
 /**
+ * @member {String} invariantLocale
+ */
+ServerConfigurationVM.prototype['invariantLocale'] = undefined;
+
+/**
  * @member {module:models/AuthConfigVM} auth
  */
 ServerConfigurationVM.prototype['auth'] = undefined;
@@ -119,6 +206,31 @@ ServerConfigurationVM.prototype['auth'] = undefined;
  * @member {Boolean} designerForAnons
  */
 ServerConfigurationVM.prototype['designerForAnons'] = undefined;
+
+/**
+ * @member {String} slaLink
+ */
+ServerConfigurationVM.prototype['slaLink'] = undefined;
+
+/**
+ * @member {String} firstStepsVideoLink
+ */
+ServerConfigurationVM.prototype['firstStepsVideoLink'] = undefined;
+
+/**
+ * @member {String} aboutLink
+ */
+ServerConfigurationVM.prototype['aboutLink'] = undefined;
+
+/**
+ * @member {String} homePageLink
+ */
+ServerConfigurationVM.prototype['homePageLink'] = undefined;
+
+/**
+ * @member {String} authServerName
+ */
+ServerConfigurationVM.prototype['authServerName'] = undefined;
 
 
 

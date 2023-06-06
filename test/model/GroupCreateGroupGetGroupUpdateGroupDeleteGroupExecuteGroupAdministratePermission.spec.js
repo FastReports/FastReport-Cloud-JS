@@ -50,7 +50,7 @@
   describe('GroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupAdministratePermission', function() {
     it('should create an instance of GroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupAdministratePermission', function() {
       // uncomment below and update the code to test GroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupAdministratePermission
-      //var instane = new FastreportCloudSdk.GroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupAdministratePermission();
+      //var instance = new FastreportCloudSdk.GroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupAdministratePermission();
       //expect(instance).to.be.a(FastreportCloudSdk.GroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupAdministratePermission);
     });
 

@@ -50,26 +50,8 @@
   describe('AdminReportFolderCreateVM', function() {
     it('should create an instance of AdminReportFolderCreateVM', function() {
       // uncomment below and update the code to test AdminReportFolderCreateVM
-      //var instane = new FastreportCloudSdk.AdminReportFolderCreateVM();
+      //var instance = new FastreportCloudSdk.AdminReportFolderCreateVM();
       //expect(instance).to.be.a(FastreportCloudSdk.AdminReportFolderCreateVM);
-    });
-
-    it('should have the property name (base name: "name")', function() {
-      // uncomment below and update the code to test the property name
-      //var instance = new FastreportCloudSdk.AdminReportFolderCreateVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property tags (base name: "tags")', function() {
-      // uncomment below and update the code to test the property tags
-      //var instance = new FastreportCloudSdk.AdminReportFolderCreateVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property icon (base name: "icon")', function() {
-      // uncomment below and update the code to test the property icon
-      //var instance = new FastreportCloudSdk.AdminReportFolderCreateVM();
-      //expect(instance).to.be();
     });
 
   });

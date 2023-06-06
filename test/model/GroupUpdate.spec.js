@@ -49,7 +49,7 @@
   describe('GroupUpdate', function() {
     it('should create an instance of GroupUpdate', function() {
       // uncomment below and update the code to test GroupUpdate
-      //var instane = new FastreportCloudSdk.GroupUpdate();
+      //var instance = new FastreportCloudSdk.GroupUpdate();
       //expect(instance).to.be.a(FastreportCloudSdk.GroupUpdate);
     });
 

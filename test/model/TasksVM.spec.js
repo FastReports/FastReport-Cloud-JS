@@ -50,7 +50,7 @@
   describe('TasksVM', function() {
     it('should create an instance of TasksVM', function() {
       // uncomment below and update the code to test TasksVM
-      //var instane = new FastreportCloudSdk.TasksVM();
+      //var instance = new FastreportCloudSdk.TasksVM();
       //expect(instance).to.be.a(FastreportCloudSdk.TasksVM);
     });
 

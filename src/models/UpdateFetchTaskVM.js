@@ -12,8 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
-import TaskType from './TaskType';
-import UpdateTransformTaskBaseVM from './UpdateTransformTaskBaseVM';
+import UpdateTaskBaseVM from './UpdateTaskBaseVM';
 
 /**
  * The UpdateFetchTaskVM model module.
@@ -24,11 +23,13 @@ class UpdateFetchTaskVM {
     /**
      * Constructs a new <code>UpdateFetchTaskVM</code>.
      * @alias module:models/UpdateFetchTaskVM
-     * @implements module:models/UpdateTransformTaskBaseVM
+     * @extends module:models/UpdateTaskBaseVM
+     * @implements module:models/UpdateTaskBaseVM
+     * @param t {String} 
      */
-    constructor() { 
-        UpdateTransformTaskBaseVM.initialize(this);
-        UpdateFetchTaskVM.initialize(this);
+    constructor(t) { 
+        UpdateTaskBaseVM.initialize(this, t);
+        UpdateFetchTaskVM.initialize(this, t);
     }
 
     /**
@@ -36,7 +37,7 @@ class UpdateFetchTaskVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, t) { 
     }
 
     /**
@@ -49,77 +50,64 @@ class UpdateFetchTaskVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new UpdateFetchTaskVM();
-            UpdateTransformTaskBaseVM.constructFromObject(data, obj);
+            UpdateTaskBaseVM.constructFromObject(data, obj);
+            UpdateTaskBaseVM.constructFromObject(data, obj);
 
-            if (data.hasOwnProperty('name')) {
-                obj['name'] = ApiClient.convertToType(data['name'], 'String');
-            }
-            if (data.hasOwnProperty('subscriptionId')) {
-                obj['subscriptionId'] = ApiClient.convertToType(data['subscriptionId'], 'String');
-            }
-            if (data.hasOwnProperty('type')) {
-                obj['type'] = TaskType.constructFromObject(data['type']);
-            }
-            if (data.hasOwnProperty('delayedRunTime')) {
-                obj['delayedRunTime'] = ApiClient.convertToType(data['delayedRunTime'], 'Date');
-            }
-            if (data.hasOwnProperty('cronExpression')) {
-                obj['cronExpression'] = ApiClient.convertToType(data['cronExpression'], 'String');
+            if (data.hasOwnProperty('dataSourceId')) {
+                obj['dataSourceId'] = ApiClient.convertToType(data['dataSourceId'], 'String');
             }
         }
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>UpdateFetchTaskVM</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>UpdateFetchTaskVM</code>.
+     */
+    static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of UpdateFetchTaskVM.RequiredProperties) {
+            if (!data[property]) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
+        // ensure the json data is a string
+        if (data['dataSourceId'] && !(typeof data['dataSourceId'] === 'string' || data['dataSourceId'] instanceof String)) {
+            throw new Error("Expected the field `dataSourceId` to be a primitive type in the JSON string but got " + data['dataSourceId']);
+        }
+
+        return true;
+    }
+
 
 }
 
-/**
- * @member {String} name
- */
-UpdateFetchTaskVM.prototype['name'] = undefined;
+UpdateFetchTaskVM.RequiredProperties = ["$t"];
 
 /**
- * @member {String} subscriptionId
+ * @member {String} dataSourceId
  */
-UpdateFetchTaskVM.prototype['subscriptionId'] = undefined;
+UpdateFetchTaskVM.prototype['dataSourceId'] = undefined;
 
-/**
- * @member {module:models/TaskType} type
- */
-UpdateFetchTaskVM.prototype['type'] = undefined;
 
-/**
- * @member {Date} delayedRunTime
- */
-UpdateFetchTaskVM.prototype['delayedRunTime'] = undefined;
-
+// Implement UpdateTaskBaseVM interface:
 /**
  * @member {String} cronExpression
  */
-UpdateFetchTaskVM.prototype['cronExpression'] = undefined;
-
-
-// Implement UpdateTransformTaskBaseVM interface:
-/**
- * @member {String} name
- */
-UpdateTransformTaskBaseVM.prototype['name'] = undefined;
-/**
- * @member {String} subscriptionId
- */
-UpdateTransformTaskBaseVM.prototype['subscriptionId'] = undefined;
-/**
- * @member {module:models/TaskType} type
- */
-UpdateTransformTaskBaseVM.prototype['type'] = undefined;
+UpdateTaskBaseVM.prototype['cronExpression'] = undefined;
 /**
  * @member {Date} delayedRunTime
  */
-UpdateTransformTaskBaseVM.prototype['delayedRunTime'] = undefined;
+UpdateTaskBaseVM.prototype['delayedRunTime'] = undefined;
 /**
- * @member {String} cronExpression
+ * @member {String} name
  */
-UpdateTransformTaskBaseVM.prototype['cronExpression'] = undefined;
+UpdateTaskBaseVM.prototype['name'] = undefined;
+/**
+ * @member {String} $t
+ */
+UpdateTaskBaseVM.prototype['$t'] = undefined;
 
 
 

@@ -49,7 +49,7 @@
   describe('ProfileVisibility', function() {
     it('should create an instance of ProfileVisibility', function() {
       // uncomment below and update the code to test ProfileVisibility
-      //var instane = new FastreportCloudSdk.ProfileVisibility();
+      //var instance = new FastreportCloudSdk.ProfileVisibility();
       //expect(instance).to.be.a(FastreportCloudSdk.ProfileVisibility);
     });
 

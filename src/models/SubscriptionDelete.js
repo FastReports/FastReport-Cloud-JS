@@ -41,6 +41,20 @@ export default class SubscriptionDelete {
 
     
         /**
+         * value: 4
+         * @const
+         */
+        "4" = 4;
+
+    
+        /**
+         * value: 8
+         * @const
+         */
+        "8" = 8;
+
+    
+        /**
          * value: -1
          * @const
          */

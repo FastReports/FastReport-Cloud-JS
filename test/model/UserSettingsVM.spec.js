@@ -50,7 +50,7 @@
   describe('UserSettingsVM', function() {
     it('should create an instance of UserSettingsVM', function() {
       // uncomment below and update the code to test UserSettingsVM
-      //var instane = new FastreportCloudSdk.UserSettingsVM();
+      //var instance = new FastreportCloudSdk.UserSettingsVM();
       //expect(instance).to.be.a(FastreportCloudSdk.UserSettingsVM);
     });
 
@@ -68,6 +68,12 @@
 
     it('should have the property showHiddenFilesAndFolders (base name: "showHiddenFilesAndFolders")', function() {
       // uncomment below and update the code to test the property showHiddenFilesAndFolders
+      //var instance = new FastreportCloudSdk.UserSettingsVM();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property slaAcceptedDateTime (base name: "slaAcceptedDateTime")', function() {
+      // uncomment below and update the code to test the property slaAcceptedDateTime
       //var instance = new FastreportCloudSdk.UserSettingsVM();
       //expect(instance).to.be();
     });

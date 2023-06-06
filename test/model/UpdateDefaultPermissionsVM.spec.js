@@ -50,7 +50,7 @@
   describe('UpdateDefaultPermissionsVM', function() {
     it('should create an instance of UpdateDefaultPermissionsVM', function() {
       // uncomment below and update the code to test UpdateDefaultPermissionsVM
-      //var instane = new FastreportCloudSdk.UpdateDefaultPermissionsVM();
+      //var instance = new FastreportCloudSdk.UpdateDefaultPermissionsVM();
       //expect(instance).to.be.a(FastreportCloudSdk.UpdateDefaultPermissionsVM);
     });
 

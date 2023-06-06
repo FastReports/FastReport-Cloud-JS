@@ -4,11 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**files** | [**[InputFileVM]**](InputFileVM.md) |  | [optional] 
-**name** | **String** |  | [optional] 
-**subscriptionId** | **String** |  | [optional] 
-**type** | [**TaskType**](TaskType.md) |  | [optional] 
-**delayedRunTime** | **Date** |  | [optional] 
-**cronExpression** | **String** |  | [optional] 
+**inputFile** | [**InputFileVM**](InputFileVM.md) |  | [optional] 
+**t** | **String** |  | 
 
 

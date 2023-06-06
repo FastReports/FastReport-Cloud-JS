@@ -50,7 +50,7 @@
   describe('SubscriptionPeriodVM', function() {
     it('should create an instance of SubscriptionPeriodVM', function() {
       // uncomment below and update the code to test SubscriptionPeriodVM
-      //var instane = new FastreportCloudSdk.SubscriptionPeriodVM();
+      //var instance = new FastreportCloudSdk.SubscriptionPeriodVM();
       //expect(instance).to.be.a(FastreportCloudSdk.SubscriptionPeriodVM);
     });
 

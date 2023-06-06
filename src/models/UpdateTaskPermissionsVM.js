@@ -24,12 +24,12 @@ class UpdateTaskPermissionsVM {
     /**
      * Constructs a new <code>UpdateTaskPermissionsVM</code>.
      * @alias module:models/UpdateTaskPermissionsVM
-     * @param newPermissions {module:models/TaskPermissions} 
      * @param administrate {module:models/TaskAdministrate} 
+     * @param newPermissions {module:models/TaskPermissions} 
      */
-    constructor(newPermissions, administrate) { 
+    constructor(administrate, newPermissions) { 
         
-        UpdateTaskPermissionsVM.initialize(this, newPermissions, administrate);
+        UpdateTaskPermissionsVM.initialize(this, administrate, newPermissions);
     }
 
     /**
@@ -37,9 +37,9 @@ class UpdateTaskPermissionsVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, newPermissions, administrate) { 
-        obj['newPermissions'] = newPermissions;
+    static initialize(obj, administrate, newPermissions) { 
         obj['administrate'] = administrate;
+        obj['newPermissions'] = newPermissions;
     }
 
     /**
@@ -53,28 +53,50 @@ class UpdateTaskPermissionsVM {
         if (data) {
             obj = obj || new UpdateTaskPermissionsVM();
 
-            if (data.hasOwnProperty('newPermissions')) {
-                obj['newPermissions'] = TaskPermissions.constructFromObject(data['newPermissions']);
-            }
             if (data.hasOwnProperty('administrate')) {
                 obj['administrate'] = TaskAdministrate.constructFromObject(data['administrate']);
+            }
+            if (data.hasOwnProperty('newPermissions')) {
+                obj['newPermissions'] = TaskPermissions.constructFromObject(data['newPermissions']);
             }
         }
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>UpdateTaskPermissionsVM</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>UpdateTaskPermissionsVM</code>.
+     */
+    static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of UpdateTaskPermissionsVM.RequiredProperties) {
+            if (!data[property]) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
+        // validate the optional field `newPermissions`
+        if (data['newPermissions']) { // data not null
+          TaskPermissions.validateJSON(data['newPermissions']);
+        }
+
+        return true;
+    }
+
 
 }
 
-/**
- * @member {module:models/TaskPermissions} newPermissions
- */
-UpdateTaskPermissionsVM.prototype['newPermissions'] = undefined;
+UpdateTaskPermissionsVM.RequiredProperties = ["administrate", "newPermissions"];
 
 /**
  * @member {module:models/TaskAdministrate} administrate
  */
 UpdateTaskPermissionsVM.prototype['administrate'] = undefined;
+
+/**
+ * @member {module:models/TaskPermissions} newPermissions
+ */
+UpdateTaskPermissionsVM.prototype['newPermissions'] = undefined;
 
 
 

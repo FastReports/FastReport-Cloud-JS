@@ -50,7 +50,7 @@
   describe('FileIconVM', function() {
     it('should create an instance of FileIconVM', function() {
       // uncomment below and update the code to test FileIconVM
-      //var instane = new FastreportCloudSdk.FileIconVM();
+      //var instance = new FastreportCloudSdk.FileIconVM();
       //expect(instance).to.be.a(FastreportCloudSdk.FileIconVM);
     });
 

@@ -12,8 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
-import CreateTransformTaskBaseVM from './CreateTransformTaskBaseVM';
-import TaskType from './TaskType';
+import CreateTaskBaseVM from './CreateTaskBaseVM';
 
 /**
  * The CreateThumbnailReportTaskVM model module.
@@ -24,11 +23,13 @@ class CreateThumbnailReportTaskVM {
     /**
      * Constructs a new <code>CreateThumbnailReportTaskVM</code>.
      * @alias module:models/CreateThumbnailReportTaskVM
-     * @implements module:models/CreateTransformTaskBaseVM
+     * @extends module:models/CreateTaskBaseVM
+     * @implements module:models/CreateTaskBaseVM
+     * @param t {String} 
      */
-    constructor() { 
-        CreateTransformTaskBaseVM.initialize(this);
-        CreateThumbnailReportTaskVM.initialize(this);
+    constructor(t) { 
+        CreateTaskBaseVM.initialize(this, t);
+        CreateThumbnailReportTaskVM.initialize(this, t);
     }
 
     /**
@@ -36,7 +37,7 @@ class CreateThumbnailReportTaskVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, t) { 
     }
 
     /**
@@ -49,77 +50,68 @@ class CreateThumbnailReportTaskVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new CreateThumbnailReportTaskVM();
-            CreateTransformTaskBaseVM.constructFromObject(data, obj);
+            CreateTaskBaseVM.constructFromObject(data, obj);
+            CreateTaskBaseVM.constructFromObject(data, obj);
 
-            if (data.hasOwnProperty('name')) {
-                obj['name'] = ApiClient.convertToType(data['name'], 'String');
-            }
-            if (data.hasOwnProperty('subscriptionId')) {
-                obj['subscriptionId'] = ApiClient.convertToType(data['subscriptionId'], 'String');
-            }
-            if (data.hasOwnProperty('type')) {
-                obj['type'] = TaskType.constructFromObject(data['type']);
-            }
-            if (data.hasOwnProperty('delayedRunTime')) {
-                obj['delayedRunTime'] = ApiClient.convertToType(data['delayedRunTime'], 'Date');
-            }
-            if (data.hasOwnProperty('cronExpression')) {
-                obj['cronExpression'] = ApiClient.convertToType(data['cronExpression'], 'String');
+            if (data.hasOwnProperty('reportId')) {
+                obj['reportId'] = ApiClient.convertToType(data['reportId'], 'String');
             }
         }
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>CreateThumbnailReportTaskVM</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>CreateThumbnailReportTaskVM</code>.
+     */
+    static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of CreateThumbnailReportTaskVM.RequiredProperties) {
+            if (!data[property]) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
+        // ensure the json data is a string
+        if (data['reportId'] && !(typeof data['reportId'] === 'string' || data['reportId'] instanceof String)) {
+            throw new Error("Expected the field `reportId` to be a primitive type in the JSON string but got " + data['reportId']);
+        }
+
+        return true;
+    }
+
 
 }
 
-/**
- * @member {String} name
- */
-CreateThumbnailReportTaskVM.prototype['name'] = undefined;
+CreateThumbnailReportTaskVM.RequiredProperties = ["$t"];
 
 /**
- * @member {String} subscriptionId
+ * @member {String} reportId
  */
-CreateThumbnailReportTaskVM.prototype['subscriptionId'] = undefined;
+CreateThumbnailReportTaskVM.prototype['reportId'] = undefined;
 
-/**
- * @member {module:models/TaskType} type
- */
-CreateThumbnailReportTaskVM.prototype['type'] = undefined;
 
-/**
- * @member {Date} delayedRunTime
- */
-CreateThumbnailReportTaskVM.prototype['delayedRunTime'] = undefined;
-
+// Implement CreateTaskBaseVM interface:
 /**
  * @member {String} cronExpression
  */
-CreateThumbnailReportTaskVM.prototype['cronExpression'] = undefined;
-
-
-// Implement CreateTransformTaskBaseVM interface:
-/**
- * @member {String} name
- */
-CreateTransformTaskBaseVM.prototype['name'] = undefined;
-/**
- * @member {String} subscriptionId
- */
-CreateTransformTaskBaseVM.prototype['subscriptionId'] = undefined;
-/**
- * @member {module:models/TaskType} type
- */
-CreateTransformTaskBaseVM.prototype['type'] = undefined;
+CreateTaskBaseVM.prototype['cronExpression'] = undefined;
 /**
  * @member {Date} delayedRunTime
  */
-CreateTransformTaskBaseVM.prototype['delayedRunTime'] = undefined;
+CreateTaskBaseVM.prototype['delayedRunTime'] = undefined;
 /**
- * @member {String} cronExpression
+ * @member {String} name
  */
-CreateTransformTaskBaseVM.prototype['cronExpression'] = undefined;
+CreateTaskBaseVM.prototype['name'] = undefined;
+/**
+ * @member {String} subscriptionId
+ */
+CreateTaskBaseVM.prototype['subscriptionId'] = undefined;
+/**
+ * @member {String} $t
+ */
+CreateTaskBaseVM.prototype['$t'] = undefined;
 
 
 

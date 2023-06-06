@@ -50,7 +50,7 @@
   describe('ExportVMFilesVMBase', function() {
     it('should create an instance of ExportVMFilesVMBase', function() {
       // uncomment below and update the code to test ExportVMFilesVMBase
-      //var instane = new FastreportCloudSdk.ExportVMFilesVMBase();
+      //var instance = new FastreportCloudSdk.ExportVMFilesVMBase();
       //expect(instance).to.be.a(FastreportCloudSdk.ExportVMFilesVMBase);
     });
 

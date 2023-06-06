@@ -64,8 +64,30 @@ class DataSourcesVM {
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>DataSourcesVM</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>DataSourcesVM</code>.
+     */
+    static validateJSON(data) {
+        if (data['dataSources']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['dataSources'])) {
+                throw new Error("Expected the field `dataSources` to be an array in the JSON data but got " + data['dataSources']);
+            }
+            // validate the optional field `dataSources` (array)
+            for (const item of data['dataSources']) {
+                DataSourceVM.validateJSON(item);
+            };
+        }
+
+        return true;
+    }
+
 
 }
+
+
 
 /**
  * @member {Array.<module:models/DataSourceVM>} dataSources

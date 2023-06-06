@@ -88,8 +88,44 @@ class ReportInfo {
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>ReportInfo</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>ReportInfo</code>.
+     */
+    static validateJSON(data) {
+        // ensure the json data is a string
+        if (data['author'] && !(typeof data['author'] === 'string' || data['author'] instanceof String)) {
+            throw new Error("Expected the field `author` to be a primitive type in the JSON string but got " + data['author']);
+        }
+        // ensure the json data is a string
+        if (data['creatorVersion'] && !(typeof data['creatorVersion'] === 'string' || data['creatorVersion'] instanceof String)) {
+            throw new Error("Expected the field `creatorVersion` to be a primitive type in the JSON string but got " + data['creatorVersion']);
+        }
+        // ensure the json data is a string
+        if (data['description'] && !(typeof data['description'] === 'string' || data['description'] instanceof String)) {
+            throw new Error("Expected the field `description` to be a primitive type in the JSON string but got " + data['description']);
+        }
+        // ensure the json data is a string
+        if (data['name'] && !(typeof data['name'] === 'string' || data['name'] instanceof String)) {
+            throw new Error("Expected the field `name` to be a primitive type in the JSON string but got " + data['name']);
+        }
+        // ensure the json data is a string
+        if (data['tag'] && !(typeof data['tag'] === 'string' || data['tag'] instanceof String)) {
+            throw new Error("Expected the field `tag` to be a primitive type in the JSON string but got " + data['tag']);
+        }
+        // ensure the json data is a string
+        if (data['version'] && !(typeof data['version'] === 'string' || data['version'] instanceof String)) {
+            throw new Error("Expected the field `version` to be a primitive type in the JSON string but got " + data['version']);
+        }
+
+        return true;
+    }
+
 
 }
+
+
 
 /**
  * @member {String} author

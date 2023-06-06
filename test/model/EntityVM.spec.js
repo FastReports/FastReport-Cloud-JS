@@ -50,7 +50,7 @@
   describe('EntityVM', function() {
     it('should create an instance of EntityVM', function() {
       // uncomment below and update the code to test EntityVM
-      //var instane = new FastreportCloudSdk.EntityVM();
+      //var instance = new FastreportCloudSdk.EntityVM();
       //expect(instance).to.be.a(FastreportCloudSdk.EntityVM);
     });
 

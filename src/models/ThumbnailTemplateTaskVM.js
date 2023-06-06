@@ -12,8 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
-import TaskType from './TaskType';
-import TransformTaskBaseVM from './TransformTaskBaseVM';
+import TaskBaseVM from './TaskBaseVM';
 
 /**
  * The ThumbnailTemplateTaskVM model module.
@@ -24,11 +23,13 @@ class ThumbnailTemplateTaskVM {
     /**
      * Constructs a new <code>ThumbnailTemplateTaskVM</code>.
      * @alias module:models/ThumbnailTemplateTaskVM
-     * @implements module:models/TransformTaskBaseVM
+     * @extends module:models/TaskBaseVM
+     * @implements module:models/TaskBaseVM
+     * @param t {String} 
      */
-    constructor() { 
-        TransformTaskBaseVM.initialize(this);
-        ThumbnailTemplateTaskVM.initialize(this);
+    constructor(t) { 
+        TaskBaseVM.initialize(this, t);
+        ThumbnailTemplateTaskVM.initialize(this, t);
     }
 
     /**
@@ -36,7 +37,7 @@ class ThumbnailTemplateTaskVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, t) { 
     }
 
     /**
@@ -49,77 +50,84 @@ class ThumbnailTemplateTaskVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new ThumbnailTemplateTaskVM();
-            TransformTaskBaseVM.constructFromObject(data, obj);
+            TaskBaseVM.constructFromObject(data, obj);
+            TaskBaseVM.constructFromObject(data, obj);
 
-            if (data.hasOwnProperty('name')) {
-                obj['name'] = ApiClient.convertToType(data['name'], 'String');
-            }
-            if (data.hasOwnProperty('subscriptionId')) {
-                obj['subscriptionId'] = ApiClient.convertToType(data['subscriptionId'], 'String');
-            }
-            if (data.hasOwnProperty('type')) {
-                obj['type'] = TaskType.constructFromObject(data['type']);
-            }
-            if (data.hasOwnProperty('delayedRunTime')) {
-                obj['delayedRunTime'] = ApiClient.convertToType(data['delayedRunTime'], 'Date');
-            }
-            if (data.hasOwnProperty('cronExpression')) {
-                obj['cronExpression'] = ApiClient.convertToType(data['cronExpression'], 'String');
+            if (data.hasOwnProperty('templateId')) {
+                obj['templateId'] = ApiClient.convertToType(data['templateId'], 'String');
             }
         }
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>ThumbnailTemplateTaskVM</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>ThumbnailTemplateTaskVM</code>.
+     */
+    static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of ThumbnailTemplateTaskVM.RequiredProperties) {
+            if (!data[property]) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
+        // ensure the json data is a string
+        if (data['templateId'] && !(typeof data['templateId'] === 'string' || data['templateId'] instanceof String)) {
+            throw new Error("Expected the field `templateId` to be a primitive type in the JSON string but got " + data['templateId']);
+        }
+
+        return true;
+    }
+
 
 }
 
-/**
- * @member {String} name
- */
-ThumbnailTemplateTaskVM.prototype['name'] = undefined;
+ThumbnailTemplateTaskVM.RequiredProperties = ["$t"];
 
 /**
- * @member {String} subscriptionId
+ * @member {String} templateId
  */
-ThumbnailTemplateTaskVM.prototype['subscriptionId'] = undefined;
+ThumbnailTemplateTaskVM.prototype['templateId'] = undefined;
 
-/**
- * @member {module:models/TaskType} type
- */
-ThumbnailTemplateTaskVM.prototype['type'] = undefined;
 
-/**
- * @member {Date} delayedRunTime
- */
-ThumbnailTemplateTaskVM.prototype['delayedRunTime'] = undefined;
-
+// Implement TaskBaseVM interface:
 /**
  * @member {String} cronExpression
  */
-ThumbnailTemplateTaskVM.prototype['cronExpression'] = undefined;
-
-
-// Implement TransformTaskBaseVM interface:
-/**
- * @member {String} name
- */
-TransformTaskBaseVM.prototype['name'] = undefined;
-/**
- * @member {String} subscriptionId
- */
-TransformTaskBaseVM.prototype['subscriptionId'] = undefined;
-/**
- * @member {module:models/TaskType} type
- */
-TransformTaskBaseVM.prototype['type'] = undefined;
+TaskBaseVM.prototype['cronExpression'] = undefined;
 /**
  * @member {Date} delayedRunTime
  */
-TransformTaskBaseVM.prototype['delayedRunTime'] = undefined;
+TaskBaseVM.prototype['delayedRunTime'] = undefined;
 /**
- * @member {String} cronExpression
+ * @member {Date} delayedWasRunTime
  */
-TransformTaskBaseVM.prototype['cronExpression'] = undefined;
+TaskBaseVM.prototype['delayedWasRunTime'] = undefined;
+/**
+ * @member {String} id
+ */
+TaskBaseVM.prototype['id'] = undefined;
+/**
+ * @member {String} name
+ */
+TaskBaseVM.prototype['name'] = undefined;
+/**
+ * @member {Date} recurrentRunTime
+ */
+TaskBaseVM.prototype['recurrentRunTime'] = undefined;
+/**
+ * @member {Date} recurrentWasRunTime
+ */
+TaskBaseVM.prototype['recurrentWasRunTime'] = undefined;
+/**
+ * @member {String} subscriptionId
+ */
+TaskBaseVM.prototype['subscriptionId'] = undefined;
+/**
+ * @member {String} $t
+ */
+TaskBaseVM.prototype['$t'] = undefined;
 
 
 

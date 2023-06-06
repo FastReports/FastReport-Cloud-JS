@@ -50,18 +50,12 @@
   describe('RunThumbnailTemplateTaskVM', function() {
     it('should create an instance of RunThumbnailTemplateTaskVM', function() {
       // uncomment below and update the code to test RunThumbnailTemplateTaskVM
-      //var instane = new FastreportCloudSdk.RunThumbnailTemplateTaskVM();
+      //var instance = new FastreportCloudSdk.RunThumbnailTemplateTaskVM();
       //expect(instance).to.be.a(FastreportCloudSdk.RunThumbnailTemplateTaskVM);
     });
 
-    it('should have the property subscriptionId (base name: "subscriptionId")', function() {
-      // uncomment below and update the code to test the property subscriptionId
-      //var instance = new FastreportCloudSdk.RunThumbnailTemplateTaskVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property type (base name: "type")', function() {
-      // uncomment below and update the code to test the property type
+    it('should have the property templateId (base name: "templateId")', function() {
+      // uncomment below and update the code to test the property templateId
       //var instance = new FastreportCloudSdk.RunThumbnailTemplateTaskVM();
       //expect(instance).to.be();
     });

@@ -49,7 +49,7 @@
   describe('SubscriptionDelete', function() {
     it('should create an instance of SubscriptionDelete', function() {
       // uncomment below and update the code to test SubscriptionDelete
-      //var instane = new FastreportCloudSdk.SubscriptionDelete();
+      //var instance = new FastreportCloudSdk.SubscriptionDelete();
       //expect(instance).to.be.a(FastreportCloudSdk.SubscriptionDelete);
     });
 

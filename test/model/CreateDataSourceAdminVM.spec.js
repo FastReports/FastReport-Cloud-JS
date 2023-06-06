@@ -50,36 +50,12 @@
   describe('CreateDataSourceAdminVM', function() {
     it('should create an instance of CreateDataSourceAdminVM', function() {
       // uncomment below and update the code to test CreateDataSourceAdminVM
-      //var instane = new FastreportCloudSdk.CreateDataSourceAdminVM();
+      //var instance = new FastreportCloudSdk.CreateDataSourceAdminVM();
       //expect(instance).to.be.a(FastreportCloudSdk.CreateDataSourceAdminVM);
     });
 
     it('should have the property ownerId (base name: "ownerId")', function() {
       // uncomment below and update the code to test the property ownerId
-      //var instance = new FastreportCloudSdk.CreateDataSourceAdminVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property name (base name: "name")', function() {
-      // uncomment below and update the code to test the property name
-      //var instance = new FastreportCloudSdk.CreateDataSourceAdminVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property connectionString (base name: "connectionString")', function() {
-      // uncomment below and update the code to test the property connectionString
-      //var instance = new FastreportCloudSdk.CreateDataSourceAdminVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property subscriptionId (base name: "subscriptionId")', function() {
-      // uncomment below and update the code to test the property subscriptionId
-      //var instance = new FastreportCloudSdk.CreateDataSourceAdminVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property connectionType (base name: "connectionType")', function() {
-      // uncomment below and update the code to test the property connectionType
       //var instance = new FastreportCloudSdk.CreateDataSourceAdminVM();
       //expect(instance).to.be();
     });

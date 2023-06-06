@@ -61,8 +61,28 @@ class UpdateUserSettingsVM {
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>UpdateUserSettingsVM</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>UpdateUserSettingsVM</code>.
+     */
+    static validateJSON(data) {
+        // validate the optional field `profileVisibility`
+        if (data['profileVisibility']) { // data not null
+          ProfileVisibility.validateJSON(data['profileVisibility']);
+        }
+        // ensure the json data is a string
+        if (data['defaultSubscription'] && !(typeof data['defaultSubscription'] === 'string' || data['defaultSubscription'] instanceof String)) {
+            throw new Error("Expected the field `defaultSubscription` to be a primitive type in the JSON string but got " + data['defaultSubscription']);
+        }
+
+        return true;
+    }
+
 
 }
+
+
 
 /**
  * @member {module:models/ProfileVisibility} profileVisibility

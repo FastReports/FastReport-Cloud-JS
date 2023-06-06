@@ -24,6 +24,7 @@ class ExportsVM {
     /**
      * Constructs a new <code>ExportsVM</code>.
      * @alias module:models/ExportsVM
+     * @extends module:models/ExportVMFilesVMBase
      * @implements module:models/ExportVMFilesVMBase
      */
     constructor() { 
@@ -50,45 +51,26 @@ class ExportsVM {
         if (data) {
             obj = obj || new ExportsVM();
             ExportVMFilesVMBase.constructFromObject(data, obj);
+            ExportVMFilesVMBase.constructFromObject(data, obj);
 
-            if (data.hasOwnProperty('files')) {
-                obj['files'] = ApiClient.convertToType(data['files'], [ExportVM]);
-            }
-            if (data.hasOwnProperty('count')) {
-                obj['count'] = ApiClient.convertToType(data['count'], 'Number');
-            }
-            if (data.hasOwnProperty('skip')) {
-                obj['skip'] = ApiClient.convertToType(data['skip'], 'Number');
-            }
-            if (data.hasOwnProperty('take')) {
-                obj['take'] = ApiClient.convertToType(data['take'], 'Number');
-            }
         }
         return obj;
+    }
+
+    /**
+     * Validates the JSON data with respect to <code>ExportsVM</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>ExportsVM</code>.
+     */
+    static validateJSON(data) {
+
+        return true;
     }
 
 
 }
 
-/**
- * @member {Array.<module:models/ExportVM>} files
- */
-ExportsVM.prototype['files'] = undefined;
 
-/**
- * @member {Number} count
- */
-ExportsVM.prototype['count'] = undefined;
-
-/**
- * @member {Number} skip
- */
-ExportsVM.prototype['skip'] = undefined;
-
-/**
- * @member {Number} take
- */
-ExportsVM.prototype['take'] = undefined;
 
 
 // Implement ExportVMFilesVMBase interface:

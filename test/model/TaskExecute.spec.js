@@ -49,7 +49,7 @@
   describe('TaskExecute', function() {
     it('should create an instance of TaskExecute', function() {
       // uncomment below and update the code to test TaskExecute
-      //var instane = new FastreportCloudSdk.TaskExecute();
+      //var instance = new FastreportCloudSdk.TaskExecute();
       //expect(instance).to.be.a(FastreportCloudSdk.TaskExecute);
     });
 

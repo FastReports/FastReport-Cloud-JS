@@ -12,8 +12,6 @@
  */
 
 import ApiClient from '../ApiClient';
-import EndpointVM from './EndpointVM';
-import TaskType from './TaskType';
 import TransportTaskBaseVM from './TransportTaskBaseVM';
 
 /**
@@ -25,11 +23,13 @@ class WebhookTaskVM {
     /**
      * Constructs a new <code>WebhookTaskVM</code>.
      * @alias module:models/WebhookTaskVM
+     * @extends module:models/TransportTaskBaseVM
      * @implements module:models/TransportTaskBaseVM
+     * @param t {String} 
      */
-    constructor() { 
-        TransportTaskBaseVM.initialize(this);
-        WebhookTaskVM.initialize(this);
+    constructor(t) { 
+        TransportTaskBaseVM.initialize(this, t);
+        WebhookTaskVM.initialize(this, t);
     }
 
     /**
@@ -37,7 +37,7 @@ class WebhookTaskVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, t) { 
     }
 
     /**
@@ -51,84 +51,91 @@ class WebhookTaskVM {
         if (data) {
             obj = obj || new WebhookTaskVM();
             TransportTaskBaseVM.constructFromObject(data, obj);
+            TransportTaskBaseVM.constructFromObject(data, obj);
 
-            if (data.hasOwnProperty('endpoints')) {
-                obj['endpoints'] = ApiClient.convertToType(data['endpoints'], [EndpointVM]);
+            if (data.hasOwnProperty('headers')) {
+                obj['headers'] = ApiClient.convertToType(data['headers'], {'String': 'String'});
             }
-            if (data.hasOwnProperty('name')) {
-                obj['name'] = ApiClient.convertToType(data['name'], 'String');
-            }
-            if (data.hasOwnProperty('subscriptionId')) {
-                obj['subscriptionId'] = ApiClient.convertToType(data['subscriptionId'], 'String');
-            }
-            if (data.hasOwnProperty('type')) {
-                obj['type'] = TaskType.constructFromObject(data['type']);
-            }
-            if (data.hasOwnProperty('delayedRunTime')) {
-                obj['delayedRunTime'] = ApiClient.convertToType(data['delayedRunTime'], 'Date');
-            }
-            if (data.hasOwnProperty('cronExpression')) {
-                obj['cronExpression'] = ApiClient.convertToType(data['cronExpression'], 'String');
+            if (data.hasOwnProperty('url')) {
+                obj['url'] = ApiClient.convertToType(data['url'], 'String');
             }
         }
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>WebhookTaskVM</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>WebhookTaskVM</code>.
+     */
+    static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of WebhookTaskVM.RequiredProperties) {
+            if (!data[property]) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
+        // ensure the json data is a string
+        if (data['url'] && !(typeof data['url'] === 'string' || data['url'] instanceof String)) {
+            throw new Error("Expected the field `url` to be a primitive type in the JSON string but got " + data['url']);
+        }
+
+        return true;
+    }
+
 
 }
 
-/**
- * @member {Array.<module:models/EndpointVM>} endpoints
- */
-WebhookTaskVM.prototype['endpoints'] = undefined;
+WebhookTaskVM.RequiredProperties = ["$t"];
 
 /**
- * @member {String} name
+ * @member {Object.<String, String>} headers
  */
-WebhookTaskVM.prototype['name'] = undefined;
+WebhookTaskVM.prototype['headers'] = undefined;
 
 /**
- * @member {String} subscriptionId
+ * @member {String} url
  */
-WebhookTaskVM.prototype['subscriptionId'] = undefined;
-
-/**
- * @member {module:models/TaskType} type
- */
-WebhookTaskVM.prototype['type'] = undefined;
-
-/**
- * @member {Date} delayedRunTime
- */
-WebhookTaskVM.prototype['delayedRunTime'] = undefined;
-
-/**
- * @member {String} cronExpression
- */
-WebhookTaskVM.prototype['cronExpression'] = undefined;
+WebhookTaskVM.prototype['url'] = undefined;
 
 
 // Implement TransportTaskBaseVM interface:
 /**
- * @member {String} name
+ * @member {String} cronExpression
  */
-TransportTaskBaseVM.prototype['name'] = undefined;
-/**
- * @member {String} subscriptionId
- */
-TransportTaskBaseVM.prototype['subscriptionId'] = undefined;
-/**
- * @member {module:models/TaskType} type
- */
-TransportTaskBaseVM.prototype['type'] = undefined;
+TransportTaskBaseVM.prototype['cronExpression'] = undefined;
 /**
  * @member {Date} delayedRunTime
  */
 TransportTaskBaseVM.prototype['delayedRunTime'] = undefined;
 /**
- * @member {String} cronExpression
+ * @member {Date} delayedWasRunTime
  */
-TransportTaskBaseVM.prototype['cronExpression'] = undefined;
+TransportTaskBaseVM.prototype['delayedWasRunTime'] = undefined;
+/**
+ * @member {String} id
+ */
+TransportTaskBaseVM.prototype['id'] = undefined;
+/**
+ * @member {String} name
+ */
+TransportTaskBaseVM.prototype['name'] = undefined;
+/**
+ * @member {Date} recurrentRunTime
+ */
+TransportTaskBaseVM.prototype['recurrentRunTime'] = undefined;
+/**
+ * @member {Date} recurrentWasRunTime
+ */
+TransportTaskBaseVM.prototype['recurrentWasRunTime'] = undefined;
+/**
+ * @member {String} subscriptionId
+ */
+TransportTaskBaseVM.prototype['subscriptionId'] = undefined;
+/**
+ * @member {String} $t
+ */
+TransportTaskBaseVM.prototype['$t'] = undefined;
 
 
 

@@ -49,7 +49,7 @@
   describe('TaskAdministrate', function() {
     it('should create an instance of TaskAdministrate', function() {
       // uncomment below and update the code to test TaskAdministrate
-      //var instane = new FastreportCloudSdk.TaskAdministrate();
+      //var instance = new FastreportCloudSdk.TaskAdministrate();
       //expect(instance).to.be.a(FastreportCloudSdk.TaskAdministrate);
     });
 

@@ -50,7 +50,7 @@
   describe('FileCreateVM', function() {
     it('should create an instance of FileCreateVM', function() {
       // uncomment below and update the code to test FileCreateVM
-      //var instane = new FastreportCloudSdk.FileCreateVM();
+      //var instance = new FastreportCloudSdk.FileCreateVM();
       //expect(instance).to.be.a(FastreportCloudSdk.FileCreateVM);
     });
 

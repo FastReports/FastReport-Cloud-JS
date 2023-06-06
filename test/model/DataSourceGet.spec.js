@@ -49,7 +49,7 @@
   describe('DataSourceGet', function() {
     it('should create an instance of DataSourceGet', function() {
       // uncomment below and update the code to test DataSourceGet
-      //var instane = new FastreportCloudSdk.DataSourceGet();
+      //var instance = new FastreportCloudSdk.DataSourceGet();
       //expect(instance).to.be.a(FastreportCloudSdk.DataSourceGet);
     });
 

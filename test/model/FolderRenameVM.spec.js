@@ -50,7 +50,7 @@
   describe('FolderRenameVM', function() {
     it('should create an instance of FolderRenameVM', function() {
       // uncomment below and update the code to test FolderRenameVM
-      //var instane = new FastreportCloudSdk.FolderRenameVM();
+      //var instance = new FastreportCloudSdk.FolderRenameVM();
       //expect(instance).to.be.a(FastreportCloudSdk.FolderRenameVM);
     });
 

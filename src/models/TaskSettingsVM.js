@@ -59,6 +59,9 @@ class TaskSettingsVM {
             if (data.hasOwnProperty('sendViaEmail')) {
                 obj['sendViaEmail'] = ApiClient.convertToType(data['sendViaEmail'], 'Boolean');
             }
+            if (data.hasOwnProperty('uploadToFTP')) {
+                obj['uploadToFTP'] = ApiClient.convertToType(data['uploadToFTP'], 'Boolean');
+            }
             if (data.hasOwnProperty('sendViaWebhook')) {
                 obj['sendViaWebhook'] = ApiClient.convertToType(data['sendViaWebhook'], 'Boolean');
             }
@@ -75,8 +78,20 @@ class TaskSettingsVM {
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>TaskSettingsVM</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>TaskSettingsVM</code>.
+     */
+    static validateJSON(data) {
+
+        return true;
+    }
+
 
 }
+
+
 
 /**
  * @member {Boolean} prepare
@@ -97,6 +112,11 @@ TaskSettingsVM.prototype['exportReport'] = undefined;
  * @member {Boolean} sendViaEmail
  */
 TaskSettingsVM.prototype['sendViaEmail'] = undefined;
+
+/**
+ * @member {Boolean} uploadToFTP
+ */
+TaskSettingsVM.prototype['uploadToFTP'] = undefined;
 
 /**
  * @member {Boolean} sendViaWebhook

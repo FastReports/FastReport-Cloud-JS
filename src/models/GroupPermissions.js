@@ -24,6 +24,7 @@ class GroupPermissions {
     /**
      * Constructs a new <code>GroupPermissions</code>.
      * @alias module:models/GroupPermissions
+     * @extends module:models/GroupPermissionGroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupAdministratePermissions
      * @implements module:models/GroupPermissionGroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupAdministratePermissions
      */
     constructor() { 
@@ -50,53 +51,26 @@ class GroupPermissions {
         if (data) {
             obj = obj || new GroupPermissions();
             GroupPermissionGroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupAdministratePermissions.constructFromObject(data, obj);
+            GroupPermissionGroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupAdministratePermissions.constructFromObject(data, obj);
 
-            if (data.hasOwnProperty('ownerId')) {
-                obj['ownerId'] = ApiClient.convertToType(data['ownerId'], 'String');
-            }
-            if (data.hasOwnProperty('owner')) {
-                obj['owner'] = GroupPermission.constructFromObject(data['owner']);
-            }
-            if (data.hasOwnProperty('groups')) {
-                obj['groups'] = ApiClient.convertToType(data['groups'], {'String': GroupPermission});
-            }
-            if (data.hasOwnProperty('other')) {
-                obj['other'] = GroupPermission.constructFromObject(data['other']);
-            }
-            if (data.hasOwnProperty('anon')) {
-                obj['anon'] = GroupPermission.constructFromObject(data['anon']);
-            }
         }
         return obj;
+    }
+
+    /**
+     * Validates the JSON data with respect to <code>GroupPermissions</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>GroupPermissions</code>.
+     */
+    static validateJSON(data) {
+
+        return true;
     }
 
 
 }
 
-/**
- * @member {String} ownerId
- */
-GroupPermissions.prototype['ownerId'] = undefined;
 
-/**
- * @member {module:models/GroupPermission} owner
- */
-GroupPermissions.prototype['owner'] = undefined;
-
-/**
- * @member {Object.<String, module:models/GroupPermission>} groups
- */
-GroupPermissions.prototype['groups'] = undefined;
-
-/**
- * @member {module:models/GroupPermission} other
- */
-GroupPermissions.prototype['other'] = undefined;
-
-/**
- * @member {module:models/GroupPermission} anon
- */
-GroupPermissions.prototype['anon'] = undefined;
 
 
 // Implement GroupPermissionGroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupAdministratePermissions interface:

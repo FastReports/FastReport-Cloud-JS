@@ -23,6 +23,7 @@ class AdminReportFolderCreateVM {
     /**
      * Constructs a new <code>AdminReportFolderCreateVM</code>.
      * @alias module:models/AdminReportFolderCreateVM
+     * @extends module:models/AdminFolderCreateVM
      * @implements module:models/AdminFolderCreateVM
      */
     constructor() { 
@@ -49,37 +50,26 @@ class AdminReportFolderCreateVM {
         if (data) {
             obj = obj || new AdminReportFolderCreateVM();
             AdminFolderCreateVM.constructFromObject(data, obj);
+            AdminFolderCreateVM.constructFromObject(data, obj);
 
-            if (data.hasOwnProperty('name')) {
-                obj['name'] = ApiClient.convertToType(data['name'], 'String');
-            }
-            if (data.hasOwnProperty('tags')) {
-                obj['tags'] = ApiClient.convertToType(data['tags'], ['String']);
-            }
-            if (data.hasOwnProperty('icon')) {
-                obj['icon'] = ApiClient.convertToType(data['icon'], 'Blob');
-            }
         }
         return obj;
+    }
+
+    /**
+     * Validates the JSON data with respect to <code>AdminReportFolderCreateVM</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>AdminReportFolderCreateVM</code>.
+     */
+    static validateJSON(data) {
+
+        return true;
     }
 
 
 }
 
-/**
- * @member {String} name
- */
-AdminReportFolderCreateVM.prototype['name'] = undefined;
 
-/**
- * @member {Array.<String>} tags
- */
-AdminReportFolderCreateVM.prototype['tags'] = undefined;
-
-/**
- * @member {Blob} icon
- */
-AdminReportFolderCreateVM.prototype['icon'] = undefined;
 
 
 // Implement AdminFolderCreateVM interface:

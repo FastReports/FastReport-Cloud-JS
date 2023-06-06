@@ -50,7 +50,7 @@
   describe('RunPrepareTemplateTaskVM', function() {
     it('should create an instance of RunPrepareTemplateTaskVM', function() {
       // uncomment below and update the code to test RunPrepareTemplateTaskVM
-      //var instane = new FastreportCloudSdk.RunPrepareTemplateTaskVM();
+      //var instance = new FastreportCloudSdk.RunPrepareTemplateTaskVM();
       //expect(instance).to.be.a(FastreportCloudSdk.RunPrepareTemplateTaskVM);
     });
 
@@ -68,18 +68,6 @@
 
     it('should have the property reportParameters (base name: "reportParameters")', function() {
       // uncomment below and update the code to test the property reportParameters
-      //var instance = new FastreportCloudSdk.RunPrepareTemplateTaskVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property subscriptionId (base name: "subscriptionId")', function() {
-      // uncomment below and update the code to test the property subscriptionId
-      //var instance = new FastreportCloudSdk.RunPrepareTemplateTaskVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property type (base name: "type")', function() {
-      // uncomment below and update the code to test the property type
       //var instance = new FastreportCloudSdk.RunPrepareTemplateTaskVM();
       //expect(instance).to.be();
     });

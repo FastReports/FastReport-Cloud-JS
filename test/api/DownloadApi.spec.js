@@ -78,6 +78,16 @@
         done();
       });
     });
+    describe('downloadGetLastSVGExport', function() {
+      it('should call downloadGetLastSVGExport successfully', function(done) {
+        //uncomment below and update the code to test downloadGetLastSVGExport
+        //instance.downloadGetLastSVGExport(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('downloadGetReport', function() {
       it('should call downloadGetReport successfully', function(done) {
         //uncomment below and update the code to test downloadGetReport

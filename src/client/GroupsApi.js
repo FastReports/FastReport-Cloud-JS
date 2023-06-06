@@ -61,7 +61,7 @@ export default class GroupsApi {
       };
 
       let authNames = ['ApiKey', 'JWT'];
-      let contentTypes = ['application/json', 'text/json', 'application/_*+json'];
+      let contentTypes = ['application/json', 'text/json', 'application/*+json'];
       let accepts = ['application/json'];
       let returnType = GroupVM;
       if(!returnType) returnType = 'Blob';
@@ -304,7 +304,7 @@ export default class GroupsApi {
       };
 
       let authNames = ['ApiKey', 'JWT'];
-      let contentTypes = ['application/json', 'text/json', 'application/_*+json'];
+      let contentTypes = ['application/json', 'text/json', 'application/*+json'];
       let accepts = ['application/json'];
       let returnType = GroupVM;
       if(!returnType) returnType = 'Blob';
@@ -355,7 +355,7 @@ export default class GroupsApi {
       };
 
       let authNames = ['ApiKey', 'JWT'];
-      let contentTypes = ['application/json', 'text/json', 'application/_*+json'];
+      let contentTypes = ['application/json', 'text/json', 'application/*+json'];
       let accepts = ['application/json'];
       let returnType = null;
       if(!returnType) returnType = 'Blob';

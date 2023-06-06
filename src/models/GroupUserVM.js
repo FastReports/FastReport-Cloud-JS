@@ -54,8 +54,24 @@ class GroupUserVM {
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>GroupUserVM</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>GroupUserVM</code>.
+     */
+    static validateJSON(data) {
+        // ensure the json data is a string
+        if (data['userId'] && !(typeof data['userId'] === 'string' || data['userId'] instanceof String)) {
+            throw new Error("Expected the field `userId` to be a primitive type in the JSON string but got " + data['userId']);
+        }
+
+        return true;
+    }
+
 
 }
+
+
 
 /**
  * @member {String} userId

@@ -48,6 +48,16 @@
   }
 
   describe('SubscriptionGroupsApi', function() {
+    describe('subscriptionGroupsCountGroupsAsync', function() {
+      it('should call subscriptionGroupsCountGroupsAsync successfully', function(done) {
+        //uncomment below and update the code to test subscriptionGroupsCountGroupsAsync
+        //instance.subscriptionGroupsCountGroupsAsync(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('subscriptionGroupsGetGroupsList', function() {
       it('should call subscriptionGroupsGetGroupsList successfully', function(done) {
         //uncomment below and update the code to test subscriptionGroupsGetGroupsList

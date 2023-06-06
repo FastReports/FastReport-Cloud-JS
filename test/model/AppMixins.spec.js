@@ -50,7 +50,7 @@
   describe('AppMixins', function() {
     it('should create an instance of AppMixins', function() {
       // uncomment below and update the code to test AppMixins
-      //var instane = new FastreportCloudSdk.AppMixins();
+      //var instance = new FastreportCloudSdk.AppMixins();
       //expect(instance).to.be.a(FastreportCloudSdk.AppMixins);
     });
 

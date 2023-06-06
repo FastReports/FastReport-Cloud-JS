@@ -50,7 +50,7 @@
   describe('UpdateDataSourceSubscriptionVM', function() {
     it('should create an instance of UpdateDataSourceSubscriptionVM', function() {
       // uncomment below and update the code to test UpdateDataSourceSubscriptionVM
-      //var instane = new FastreportCloudSdk.UpdateDataSourceSubscriptionVM();
+      //var instance = new FastreportCloudSdk.UpdateDataSourceSubscriptionVM();
       //expect(instance).to.be.a(FastreportCloudSdk.UpdateDataSourceSubscriptionVM);
     });
 

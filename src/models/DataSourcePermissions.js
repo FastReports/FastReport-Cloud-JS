@@ -24,6 +24,7 @@ class DataSourcePermissions {
     /**
      * Constructs a new <code>DataSourcePermissions</code>.
      * @alias module:models/DataSourcePermissions
+     * @extends module:models/DataSourcePermissionDataSourceCreateDataSourceGetDataSourceUpdateDataSourceDeleteDataSourceExecuteDataSourceAdministratePermissions
      * @implements module:models/DataSourcePermissionDataSourceCreateDataSourceGetDataSourceUpdateDataSourceDeleteDataSourceExecuteDataSourceAdministratePermissions
      */
     constructor() { 
@@ -50,53 +51,26 @@ class DataSourcePermissions {
         if (data) {
             obj = obj || new DataSourcePermissions();
             DataSourcePermissionDataSourceCreateDataSourceGetDataSourceUpdateDataSourceDeleteDataSourceExecuteDataSourceAdministratePermissions.constructFromObject(data, obj);
+            DataSourcePermissionDataSourceCreateDataSourceGetDataSourceUpdateDataSourceDeleteDataSourceExecuteDataSourceAdministratePermissions.constructFromObject(data, obj);
 
-            if (data.hasOwnProperty('ownerId')) {
-                obj['ownerId'] = ApiClient.convertToType(data['ownerId'], 'String');
-            }
-            if (data.hasOwnProperty('owner')) {
-                obj['owner'] = DataSourcePermission.constructFromObject(data['owner']);
-            }
-            if (data.hasOwnProperty('groups')) {
-                obj['groups'] = ApiClient.convertToType(data['groups'], {'String': DataSourcePermission});
-            }
-            if (data.hasOwnProperty('other')) {
-                obj['other'] = DataSourcePermission.constructFromObject(data['other']);
-            }
-            if (data.hasOwnProperty('anon')) {
-                obj['anon'] = DataSourcePermission.constructFromObject(data['anon']);
-            }
         }
         return obj;
+    }
+
+    /**
+     * Validates the JSON data with respect to <code>DataSourcePermissions</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>DataSourcePermissions</code>.
+     */
+    static validateJSON(data) {
+
+        return true;
     }
 
 
 }
 
-/**
- * @member {String} ownerId
- */
-DataSourcePermissions.prototype['ownerId'] = undefined;
 
-/**
- * @member {module:models/DataSourcePermission} owner
- */
-DataSourcePermissions.prototype['owner'] = undefined;
-
-/**
- * @member {Object.<String, module:models/DataSourcePermission>} groups
- */
-DataSourcePermissions.prototype['groups'] = undefined;
-
-/**
- * @member {module:models/DataSourcePermission} other
- */
-DataSourcePermissions.prototype['other'] = undefined;
-
-/**
- * @member {module:models/DataSourcePermission} anon
- */
-DataSourcePermissions.prototype['anon'] = undefined;
 
 
 // Implement DataSourcePermissionDataSourceCreateDataSourceGetDataSourceUpdateDataSourceDeleteDataSourceExecuteDataSourceAdministratePermissions interface:

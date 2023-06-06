@@ -24,6 +24,7 @@ class CreateDataSourceAdminVM {
     /**
      * Constructs a new <code>CreateDataSourceAdminVM</code>.
      * @alias module:models/CreateDataSourceAdminVM
+     * @extends module:models/CreateDataSourceVM
      * @implements module:models/CreateDataSourceVM
      * @param connectionString {String} 
      * @param subscriptionId {String} 
@@ -40,8 +41,6 @@ class CreateDataSourceAdminVM {
      */
     static initialize(obj, connectionString, subscriptionId) { 
         obj['ownerId'] = ownerId;
-        obj['connectionString'] = connectionString;
-        obj['subscriptionId'] = subscriptionId;
     }
 
     /**
@@ -55,53 +54,44 @@ class CreateDataSourceAdminVM {
         if (data) {
             obj = obj || new CreateDataSourceAdminVM();
             CreateDataSourceVM.constructFromObject(data, obj);
+            CreateDataSourceVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('ownerId')) {
                 obj['ownerId'] = ApiClient.convertToType(data['ownerId'], 'String');
-            }
-            if (data.hasOwnProperty('name')) {
-                obj['name'] = ApiClient.convertToType(data['name'], 'String');
-            }
-            if (data.hasOwnProperty('connectionString')) {
-                obj['connectionString'] = ApiClient.convertToType(data['connectionString'], 'String');
-            }
-            if (data.hasOwnProperty('subscriptionId')) {
-                obj['subscriptionId'] = ApiClient.convertToType(data['subscriptionId'], 'String');
-            }
-            if (data.hasOwnProperty('connectionType')) {
-                obj['connectionType'] = DataSourceConnectionType.constructFromObject(data['connectionType']);
             }
         }
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>CreateDataSourceAdminVM</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>CreateDataSourceAdminVM</code>.
+     */
+    static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of CreateDataSourceAdminVM.RequiredProperties) {
+            if (!data[property]) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
+        // ensure the json data is a string
+        if (data['ownerId'] && !(typeof data['ownerId'] === 'string' || data['ownerId'] instanceof String)) {
+            throw new Error("Expected the field `ownerId` to be a primitive type in the JSON string but got " + data['ownerId']);
+        }
+
+        return true;
+    }
+
 
 }
+
+CreateDataSourceAdminVM.RequiredProperties = ["ownerId", "connectionString", "subscriptionId"];
 
 /**
  * @member {String} ownerId
  */
 CreateDataSourceAdminVM.prototype['ownerId'] = undefined;
-
-/**
- * @member {String} name
- */
-CreateDataSourceAdminVM.prototype['name'] = undefined;
-
-/**
- * @member {String} connectionString
- */
-CreateDataSourceAdminVM.prototype['connectionString'] = undefined;
-
-/**
- * @member {String} subscriptionId
- */
-CreateDataSourceAdminVM.prototype['subscriptionId'] = undefined;
-
-/**
- * @member {module:models/DataSourceConnectionType} connectionType
- */
-CreateDataSourceAdminVM.prototype['connectionType'] = undefined;
 
 
 // Implement CreateDataSourceVM interface:

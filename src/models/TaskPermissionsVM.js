@@ -55,8 +55,24 @@ class TaskPermissionsVM {
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>TaskPermissionsVM</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>TaskPermissionsVM</code>.
+     */
+    static validateJSON(data) {
+        // validate the optional field `permissions`
+        if (data['permissions']) { // data not null
+          TaskPermissions.validateJSON(data['permissions']);
+        }
+
+        return true;
+    }
+
 
 }
+
+
 
 /**
  * @member {module:models/TaskPermissions} permissions

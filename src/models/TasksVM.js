@@ -64,8 +64,30 @@ class TasksVM {
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>TasksVM</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>TasksVM</code>.
+     */
+    static validateJSON(data) {
+        if (data['tasks']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['tasks'])) {
+                throw new Error("Expected the field `tasks` to be an array in the JSON data but got " + data['tasks']);
+            }
+            // validate the optional field `tasks` (array)
+            for (const item of data['tasks']) {
+                TaskBaseVM.validateJSON(item);
+            };
+        }
+
+        return true;
+    }
+
 
 }
+
+
 
 /**
  * @member {Number} count

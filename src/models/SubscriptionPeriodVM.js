@@ -61,8 +61,24 @@ class SubscriptionPeriodVM {
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>SubscriptionPeriodVM</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>SubscriptionPeriodVM</code>.
+     */
+    static validateJSON(data) {
+        // validate the optional field `plan`
+        if (data['plan']) { // data not null
+          SubscriptionPlanVM.validateJSON(data['plan']);
+        }
+
+        return true;
+    }
+
 
 }
+
+
 
 /**
  * @member {Date} startTime

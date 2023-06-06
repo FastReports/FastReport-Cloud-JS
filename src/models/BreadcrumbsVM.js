@@ -55,8 +55,30 @@ class BreadcrumbsVM {
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>BreadcrumbsVM</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>BreadcrumbsVM</code>.
+     */
+    static validateJSON(data) {
+        if (data['breadcrumbs']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['breadcrumbs'])) {
+                throw new Error("Expected the field `breadcrumbs` to be an array in the JSON data but got " + data['breadcrumbs']);
+            }
+            // validate the optional field `breadcrumbs` (array)
+            for (const item of data['breadcrumbs']) {
+                BreadcrumbsModel.validateJSON(item);
+            };
+        }
+
+        return true;
+    }
+
 
 }
+
+
 
 /**
  * @member {Array.<module:models/BreadcrumbsModel>} breadcrumbs

@@ -48,6 +48,13 @@ export default class SubscriptionUpdate {
 
     
         /**
+         * value: 16
+         * @const
+         */
+        "16" = 16;
+
+    
+        /**
          * value: -1
          * @const
          */

@@ -12,8 +12,6 @@
  */
 
 import ApiClient from '../ApiClient';
-import TaskType from './TaskType';
-import UpdateEndpointVM from './UpdateEndpointVM';
 import UpdateTransportTaskBaseVM from './UpdateTransportTaskBaseVM';
 
 /**
@@ -25,11 +23,13 @@ class UpdateWebhookTaskVM {
     /**
      * Constructs a new <code>UpdateWebhookTaskVM</code>.
      * @alias module:models/UpdateWebhookTaskVM
+     * @extends module:models/UpdateTransportTaskBaseVM
      * @implements module:models/UpdateTransportTaskBaseVM
+     * @param t {String} 
      */
-    constructor() { 
-        UpdateTransportTaskBaseVM.initialize(this);
-        UpdateWebhookTaskVM.initialize(this);
+    constructor(t) { 
+        UpdateTransportTaskBaseVM.initialize(this, t);
+        UpdateWebhookTaskVM.initialize(this, t);
     }
 
     /**
@@ -37,7 +37,7 @@ class UpdateWebhookTaskVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, t) { 
     }
 
     /**
@@ -51,84 +51,71 @@ class UpdateWebhookTaskVM {
         if (data) {
             obj = obj || new UpdateWebhookTaskVM();
             UpdateTransportTaskBaseVM.constructFromObject(data, obj);
+            UpdateTransportTaskBaseVM.constructFromObject(data, obj);
 
-            if (data.hasOwnProperty('endpoints')) {
-                obj['endpoints'] = ApiClient.convertToType(data['endpoints'], [UpdateEndpointVM]);
+            if (data.hasOwnProperty('headers')) {
+                obj['headers'] = ApiClient.convertToType(data['headers'], {'String': 'String'});
             }
-            if (data.hasOwnProperty('name')) {
-                obj['name'] = ApiClient.convertToType(data['name'], 'String');
-            }
-            if (data.hasOwnProperty('subscriptionId')) {
-                obj['subscriptionId'] = ApiClient.convertToType(data['subscriptionId'], 'String');
-            }
-            if (data.hasOwnProperty('type')) {
-                obj['type'] = TaskType.constructFromObject(data['type']);
-            }
-            if (data.hasOwnProperty('delayedRunTime')) {
-                obj['delayedRunTime'] = ApiClient.convertToType(data['delayedRunTime'], 'Date');
-            }
-            if (data.hasOwnProperty('cronExpression')) {
-                obj['cronExpression'] = ApiClient.convertToType(data['cronExpression'], 'String');
+            if (data.hasOwnProperty('url')) {
+                obj['url'] = ApiClient.convertToType(data['url'], 'String');
             }
         }
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>UpdateWebhookTaskVM</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>UpdateWebhookTaskVM</code>.
+     */
+    static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of UpdateWebhookTaskVM.RequiredProperties) {
+            if (!data[property]) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
+        // ensure the json data is a string
+        if (data['url'] && !(typeof data['url'] === 'string' || data['url'] instanceof String)) {
+            throw new Error("Expected the field `url` to be a primitive type in the JSON string but got " + data['url']);
+        }
+
+        return true;
+    }
+
 
 }
 
-/**
- * @member {Array.<module:models/UpdateEndpointVM>} endpoints
- */
-UpdateWebhookTaskVM.prototype['endpoints'] = undefined;
+UpdateWebhookTaskVM.RequiredProperties = ["$t"];
 
 /**
- * @member {String} name
+ * @member {Object.<String, String>} headers
  */
-UpdateWebhookTaskVM.prototype['name'] = undefined;
+UpdateWebhookTaskVM.prototype['headers'] = undefined;
 
 /**
- * @member {String} subscriptionId
+ * @member {String} url
  */
-UpdateWebhookTaskVM.prototype['subscriptionId'] = undefined;
-
-/**
- * @member {module:models/TaskType} type
- */
-UpdateWebhookTaskVM.prototype['type'] = undefined;
-
-/**
- * @member {Date} delayedRunTime
- */
-UpdateWebhookTaskVM.prototype['delayedRunTime'] = undefined;
-
-/**
- * @member {String} cronExpression
- */
-UpdateWebhookTaskVM.prototype['cronExpression'] = undefined;
+UpdateWebhookTaskVM.prototype['url'] = undefined;
 
 
 // Implement UpdateTransportTaskBaseVM interface:
 /**
- * @member {String} name
+ * @member {String} cronExpression
  */
-UpdateTransportTaskBaseVM.prototype['name'] = undefined;
-/**
- * @member {String} subscriptionId
- */
-UpdateTransportTaskBaseVM.prototype['subscriptionId'] = undefined;
-/**
- * @member {module:models/TaskType} type
- */
-UpdateTransportTaskBaseVM.prototype['type'] = undefined;
+UpdateTransportTaskBaseVM.prototype['cronExpression'] = undefined;
 /**
  * @member {Date} delayedRunTime
  */
 UpdateTransportTaskBaseVM.prototype['delayedRunTime'] = undefined;
 /**
- * @member {String} cronExpression
+ * @member {String} name
  */
-UpdateTransportTaskBaseVM.prototype['cronExpression'] = undefined;
+UpdateTransportTaskBaseVM.prototype['name'] = undefined;
+/**
+ * @member {String} $t
+ */
+UpdateTransportTaskBaseVM.prototype['$t'] = undefined;
 
 
 

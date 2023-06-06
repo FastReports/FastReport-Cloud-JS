@@ -50,7 +50,7 @@
   describe('RenameGroupVM', function() {
     it('should create an instance of RenameGroupVM', function() {
       // uncomment below and update the code to test RenameGroupVM
-      //var instane = new FastreportCloudSdk.RenameGroupVM();
+      //var instance = new FastreportCloudSdk.RenameGroupVM();
       //expect(instance).to.be.a(FastreportCloudSdk.RenameGroupVM);
     });
 

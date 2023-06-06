@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **exportTemplate** | **Boolean** |  | [optional] 
 **exportReport** | **Boolean** |  | [optional] 
 **sendViaEmail** | **Boolean** |  | [optional] 
+**uploadToFTP** | **Boolean** |  | [optional] 
 **sendViaWebhook** | **Boolean** |  | [optional] 
 **fetchData** | **Boolean** |  | [optional] 
 **thumbnailReport** | **Boolean** |  | [optional] 

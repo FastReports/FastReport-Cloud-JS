@@ -13,6 +13,7 @@
 
 
 import ApiClient from './ApiClient';
+import AcceptAgreementsVM from './models/AcceptAgreementsVM';
 import AdminExportFolderCreateVM from './models/AdminExportFolderCreateVM';
 import AdminFolderCreateVM from './models/AdminFolderCreateVM';
 import AdminReportFolderCreateVM from './models/AdminReportFolderCreateVM';
@@ -21,17 +22,29 @@ import AdminTemplateFolderCreateVM from './models/AdminTemplateFolderCreateVM';
 import ApiKeyVM from './models/ApiKeyVM';
 import ApiKeysVM from './models/ApiKeysVM';
 import AppMixins from './models/AppMixins';
+import AuditActionVM from './models/AuditActionVM';
+import AuditActionsVM from './models/AuditActionsVM';
+import AuditFilePropertyChangedVM from './models/AuditFilePropertyChangedVM';
+import AuditSubscriptionActionVM from './models/AuditSubscriptionActionVM';
+import AuditTaskActionVM from './models/AuditTaskActionVM';
+import AuditType from './models/AuditType';
 import AuthConfigVM from './models/AuthConfigVM';
 import BreadcrumbsModel from './models/BreadcrumbsModel';
 import BreadcrumbsVM from './models/BreadcrumbsVM';
+import ContactGroupVM from './models/ContactGroupVM';
+import ContactGroupsVM from './models/ContactGroupsVM';
+import ContactVM from './models/ContactVM';
+import ContactsVM from './models/ContactsVM';
 import CountVM from './models/CountVM';
 import CreateApiKeyVM from './models/CreateApiKeyVM';
+import CreateContactGroupVM from './models/CreateContactGroupVM';
+import CreateContactVM from './models/CreateContactVM';
 import CreateDataSourceAdminVM from './models/CreateDataSourceAdminVM';
 import CreateDataSourceVM from './models/CreateDataSourceVM';
 import CreateEmailTaskVM from './models/CreateEmailTaskVM';
-import CreateEndpointVM from './models/CreateEndpointVM';
 import CreateExportReportTaskVM from './models/CreateExportReportTaskVM';
 import CreateExportTemplateTaskVM from './models/CreateExportTemplateTaskVM';
+import CreateFTPUploadTaskVM from './models/CreateFTPUploadTaskVM';
 import CreateFetchTaskVM from './models/CreateFetchTaskVM';
 import CreateGroupAdminVM from './models/CreateGroupAdminVM';
 import CreateGroupVM from './models/CreateGroupVM';
@@ -62,7 +75,7 @@ import DataSourcesVM from './models/DataSourcesVM';
 import DefaultPermissionsVM from './models/DefaultPermissionsVM';
 import DeleteApiKeyVM from './models/DeleteApiKeyVM';
 import EmailTaskVM from './models/EmailTaskVM';
-import EndpointVM from './models/EndpointVM';
+import EntityType from './models/EntityType';
 import EntityVM from './models/EntityVM';
 import ExportCreateAdminVM from './models/ExportCreateAdminVM';
 import ExportCreateVM from './models/ExportCreateVM';
@@ -75,6 +88,7 @@ import ExportTemplateVM from './models/ExportTemplateVM';
 import ExportVM from './models/ExportVM';
 import ExportVMFilesVMBase from './models/ExportVMFilesVMBase';
 import ExportsVM from './models/ExportsVM';
+import FTPUploadTaskVM from './models/FTPUploadTaskVM';
 import FetchTaskVM from './models/FetchTaskVM';
 import FileAdministrate from './models/FileAdministrate';
 import FileCreate from './models/FileCreate';
@@ -119,12 +133,15 @@ import GroupUserVM from './models/GroupUserVM';
 import GroupUsersVM from './models/GroupUsersVM';
 import GroupVM from './models/GroupVM';
 import GroupsVM from './models/GroupsVM';
+import HttpValidationProblemDetails from './models/HttpValidationProblemDetails';
 import InputFileVM from './models/InputFileVM';
 import InvitedUser from './models/InvitedUser';
 import MyPermissionsVM from './models/MyPermissionsVM';
 import OutputFileVM from './models/OutputFileVM';
 import PrepareTemplateTaskVM from './models/PrepareTemplateTaskVM';
 import PrepareTemplateVM from './models/PrepareTemplateVM';
+import PreviewReportVM from './models/PreviewReportVM';
+import PreviewTemplateVM from './models/PreviewTemplateVM';
 import ProblemDetails from './models/ProblemDetails';
 import ProfileVisibility from './models/ProfileVisibility';
 import RenameDataSourceVM from './models/RenameDataSourceVM';
@@ -138,9 +155,9 @@ import ReportVM from './models/ReportVM';
 import ReportVMFilesVMBase from './models/ReportVMFilesVMBase';
 import ReportsVM from './models/ReportsVM';
 import RunEmailTaskVM from './models/RunEmailTaskVM';
-import RunEndpointVM from './models/RunEndpointVM';
 import RunExportReportTaskVM from './models/RunExportReportTaskVM';
 import RunExportTemplateTaskVM from './models/RunExportTemplateTaskVM';
+import RunFTPUploadTaskVM from './models/RunFTPUploadTaskVM';
 import RunFetchTaskVM from './models/RunFetchTaskVM';
 import RunInputFileVM from './models/RunInputFileVM';
 import RunPrepareTemplateTaskVM from './models/RunPrepareTemplateTaskVM';
@@ -185,7 +202,6 @@ import TaskPermissionTaskCreateTaskGetTaskUpdateTaskDeleteTaskExecuteTaskAdminis
 import TaskPermissions from './models/TaskPermissions';
 import TaskPermissionsVM from './models/TaskPermissionsVM';
 import TaskSettingsVM from './models/TaskSettingsVM';
-import TaskType from './models/TaskType';
 import TaskUpdate from './models/TaskUpdate';
 import TasksVM from './models/TasksVM';
 import TemplateCreateAdminVM from './models/TemplateCreateAdminVM';
@@ -199,15 +215,18 @@ import ThumbnailTemplateTaskVM from './models/ThumbnailTemplateTaskVM';
 import TimePeriodType from './models/TimePeriodType';
 import TransformTaskBaseVM from './models/TransformTaskBaseVM';
 import TransportTaskBaseVM from './models/TransportTaskBaseVM';
+import UpdateContactGroupVM from './models/UpdateContactGroupVM';
+import UpdateContactVM from './models/UpdateContactVM';
 import UpdateDataSourceConnectionStringVM from './models/UpdateDataSourceConnectionStringVM';
 import UpdateDataSourcePermissionsVM from './models/UpdateDataSourcePermissionsVM';
 import UpdateDataSourceSubscriptionVM from './models/UpdateDataSourceSubscriptionVM';
 import UpdateDefaultPermissionsVM from './models/UpdateDefaultPermissionsVM';
 import UpdateEmailTaskVM from './models/UpdateEmailTaskVM';
-import UpdateEndpointVM from './models/UpdateEndpointVM';
 import UpdateExportReportTaskVM from './models/UpdateExportReportTaskVM';
 import UpdateExportTemplateTaskVM from './models/UpdateExportTemplateTaskVM';
+import UpdateFTPUploadTaskVM from './models/UpdateFTPUploadTaskVM';
 import UpdateFetchTaskVM from './models/UpdateFetchTaskVM';
+import UpdateFileContentVM from './models/UpdateFileContentVM';
 import UpdateFilePermissionsVM from './models/UpdateFilePermissionsVM';
 import UpdateGroupPermissionsVM from './models/UpdateGroupPermissionsVM';
 import UpdatePrepareTemplateTaskVM from './models/UpdatePrepareTemplateTaskVM';
@@ -224,10 +243,11 @@ import UpdateUserSettingsVM from './models/UpdateUserSettingsVM';
 import UpdateWebhookTaskVM from './models/UpdateWebhookTaskVM';
 import UserProfileVM from './models/UserProfileVM';
 import UserSettingsVM from './models/UserSettingsVM';
-import ValidationProblemDetails from './models/ValidationProblemDetails';
 import WebhookTaskVM from './models/WebhookTaskVM';
 import ApiKeysApi from './client/ApiKeysApi';
 import ConfigurationApi from './client/ConfigurationApi';
+import ContactGroupsApi from './client/ContactGroupsApi';
+import ContactsApi from './client/ContactsApi';
 import DataSourcesApi from './client/DataSourcesApi';
 import DownloadApi from './client/DownloadApi';
 import ExportsApi from './client/ExportsApi';
@@ -285,6 +305,12 @@ export {
     ApiClient,
 
     /**
+     * The AcceptAgreementsVM model constructor.
+     * @property {module:models/AcceptAgreementsVM}
+     */
+    AcceptAgreementsVM,
+
+    /**
      * The AdminExportFolderCreateVM model constructor.
      * @property {module:models/AdminExportFolderCreateVM}
      */
@@ -333,6 +359,42 @@ export {
     AppMixins,
 
     /**
+     * The AuditActionVM model constructor.
+     * @property {module:models/AuditActionVM}
+     */
+    AuditActionVM,
+
+    /**
+     * The AuditActionsVM model constructor.
+     * @property {module:models/AuditActionsVM}
+     */
+    AuditActionsVM,
+
+    /**
+     * The AuditFilePropertyChangedVM model constructor.
+     * @property {module:models/AuditFilePropertyChangedVM}
+     */
+    AuditFilePropertyChangedVM,
+
+    /**
+     * The AuditSubscriptionActionVM model constructor.
+     * @property {module:models/AuditSubscriptionActionVM}
+     */
+    AuditSubscriptionActionVM,
+
+    /**
+     * The AuditTaskActionVM model constructor.
+     * @property {module:models/AuditTaskActionVM}
+     */
+    AuditTaskActionVM,
+
+    /**
+     * The AuditType model constructor.
+     * @property {module:models/AuditType}
+     */
+    AuditType,
+
+    /**
      * The AuthConfigVM model constructor.
      * @property {module:models/AuthConfigVM}
      */
@@ -351,6 +413,30 @@ export {
     BreadcrumbsVM,
 
     /**
+     * The ContactGroupVM model constructor.
+     * @property {module:models/ContactGroupVM}
+     */
+    ContactGroupVM,
+
+    /**
+     * The ContactGroupsVM model constructor.
+     * @property {module:models/ContactGroupsVM}
+     */
+    ContactGroupsVM,
+
+    /**
+     * The ContactVM model constructor.
+     * @property {module:models/ContactVM}
+     */
+    ContactVM,
+
+    /**
+     * The ContactsVM model constructor.
+     * @property {module:models/ContactsVM}
+     */
+    ContactsVM,
+
+    /**
      * The CountVM model constructor.
      * @property {module:models/CountVM}
      */
@@ -361,6 +447,18 @@ export {
      * @property {module:models/CreateApiKeyVM}
      */
     CreateApiKeyVM,
+
+    /**
+     * The CreateContactGroupVM model constructor.
+     * @property {module:models/CreateContactGroupVM}
+     */
+    CreateContactGroupVM,
+
+    /**
+     * The CreateContactVM model constructor.
+     * @property {module:models/CreateContactVM}
+     */
+    CreateContactVM,
 
     /**
      * The CreateDataSourceAdminVM model constructor.
@@ -381,12 +479,6 @@ export {
     CreateEmailTaskVM,
 
     /**
-     * The CreateEndpointVM model constructor.
-     * @property {module:models/CreateEndpointVM}
-     */
-    CreateEndpointVM,
-
-    /**
      * The CreateExportReportTaskVM model constructor.
      * @property {module:models/CreateExportReportTaskVM}
      */
@@ -397,6 +489,12 @@ export {
      * @property {module:models/CreateExportTemplateTaskVM}
      */
     CreateExportTemplateTaskVM,
+
+    /**
+     * The CreateFTPUploadTaskVM model constructor.
+     * @property {module:models/CreateFTPUploadTaskVM}
+     */
+    CreateFTPUploadTaskVM,
 
     /**
      * The CreateFetchTaskVM model constructor.
@@ -579,10 +677,10 @@ export {
     EmailTaskVM,
 
     /**
-     * The EndpointVM model constructor.
-     * @property {module:models/EndpointVM}
+     * The EntityType model constructor.
+     * @property {module:models/EntityType}
      */
-    EndpointVM,
+    EntityType,
 
     /**
      * The EntityVM model constructor.
@@ -655,6 +753,12 @@ export {
      * @property {module:models/ExportsVM}
      */
     ExportsVM,
+
+    /**
+     * The FTPUploadTaskVM model constructor.
+     * @property {module:models/FTPUploadTaskVM}
+     */
+    FTPUploadTaskVM,
 
     /**
      * The FetchTaskVM model constructor.
@@ -921,6 +1025,12 @@ export {
     GroupsVM,
 
     /**
+     * The HttpValidationProblemDetails model constructor.
+     * @property {module:models/HttpValidationProblemDetails}
+     */
+    HttpValidationProblemDetails,
+
+    /**
      * The InputFileVM model constructor.
      * @property {module:models/InputFileVM}
      */
@@ -955,6 +1065,18 @@ export {
      * @property {module:models/PrepareTemplateVM}
      */
     PrepareTemplateVM,
+
+    /**
+     * The PreviewReportVM model constructor.
+     * @property {module:models/PreviewReportVM}
+     */
+    PreviewReportVM,
+
+    /**
+     * The PreviewTemplateVM model constructor.
+     * @property {module:models/PreviewTemplateVM}
+     */
+    PreviewTemplateVM,
 
     /**
      * The ProblemDetails model constructor.
@@ -1035,12 +1157,6 @@ export {
     RunEmailTaskVM,
 
     /**
-     * The RunEndpointVM model constructor.
-     * @property {module:models/RunEndpointVM}
-     */
-    RunEndpointVM,
-
-    /**
      * The RunExportReportTaskVM model constructor.
      * @property {module:models/RunExportReportTaskVM}
      */
@@ -1051,6 +1167,12 @@ export {
      * @property {module:models/RunExportTemplateTaskVM}
      */
     RunExportTemplateTaskVM,
+
+    /**
+     * The RunFTPUploadTaskVM model constructor.
+     * @property {module:models/RunFTPUploadTaskVM}
+     */
+    RunFTPUploadTaskVM,
 
     /**
      * The RunFetchTaskVM model constructor.
@@ -1317,12 +1439,6 @@ export {
     TaskSettingsVM,
 
     /**
-     * The TaskType model constructor.
-     * @property {module:models/TaskType}
-     */
-    TaskType,
-
-    /**
      * The TaskUpdate model constructor.
      * @property {module:models/TaskUpdate}
      */
@@ -1401,6 +1517,18 @@ export {
     TransportTaskBaseVM,
 
     /**
+     * The UpdateContactGroupVM model constructor.
+     * @property {module:models/UpdateContactGroupVM}
+     */
+    UpdateContactGroupVM,
+
+    /**
+     * The UpdateContactVM model constructor.
+     * @property {module:models/UpdateContactVM}
+     */
+    UpdateContactVM,
+
+    /**
      * The UpdateDataSourceConnectionStringVM model constructor.
      * @property {module:models/UpdateDataSourceConnectionStringVM}
      */
@@ -1431,12 +1559,6 @@ export {
     UpdateEmailTaskVM,
 
     /**
-     * The UpdateEndpointVM model constructor.
-     * @property {module:models/UpdateEndpointVM}
-     */
-    UpdateEndpointVM,
-
-    /**
      * The UpdateExportReportTaskVM model constructor.
      * @property {module:models/UpdateExportReportTaskVM}
      */
@@ -1449,10 +1571,22 @@ export {
     UpdateExportTemplateTaskVM,
 
     /**
+     * The UpdateFTPUploadTaskVM model constructor.
+     * @property {module:models/UpdateFTPUploadTaskVM}
+     */
+    UpdateFTPUploadTaskVM,
+
+    /**
      * The UpdateFetchTaskVM model constructor.
      * @property {module:models/UpdateFetchTaskVM}
      */
     UpdateFetchTaskVM,
+
+    /**
+     * The UpdateFileContentVM model constructor.
+     * @property {module:models/UpdateFileContentVM}
+     */
+    UpdateFileContentVM,
 
     /**
      * The UpdateFilePermissionsVM model constructor.
@@ -1551,12 +1685,6 @@ export {
     UserSettingsVM,
 
     /**
-     * The ValidationProblemDetails model constructor.
-     * @property {module:models/ValidationProblemDetails}
-     */
-    ValidationProblemDetails,
-
-    /**
      * The WebhookTaskVM model constructor.
      * @property {module:models/WebhookTaskVM}
      */
@@ -1573,6 +1701,18 @@ export {
     * @property {module:client/ConfigurationApi}
     */
     ConfigurationApi,
+
+    /**
+    * The ContactGroupsApi service constructor.
+    * @property {module:client/ContactGroupsApi}
+    */
+    ContactGroupsApi,
+
+    /**
+    * The ContactsApi service constructor.
+    * @property {module:client/ContactsApi}
+    */
+    ContactsApi,
 
     /**
     * The DataSourcesApi service constructor.

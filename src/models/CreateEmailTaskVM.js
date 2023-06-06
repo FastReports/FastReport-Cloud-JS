@@ -13,7 +13,6 @@
 
 import ApiClient from '../ApiClient';
 import CreateTransportTaskBaseVM from './CreateTransportTaskBaseVM';
-import TaskType from './TaskType';
 
 /**
  * The CreateEmailTaskVM model module.
@@ -24,11 +23,13 @@ class CreateEmailTaskVM {
     /**
      * Constructs a new <code>CreateEmailTaskVM</code>.
      * @alias module:models/CreateEmailTaskVM
+     * @extends module:models/CreateTransportTaskBaseVM
      * @implements module:models/CreateTransportTaskBaseVM
+     * @param t {String} 
      */
-    constructor() { 
-        CreateTransportTaskBaseVM.initialize(this);
-        CreateEmailTaskVM.initialize(this);
+    constructor(t) { 
+        CreateTransportTaskBaseVM.initialize(this, t);
+        CreateEmailTaskVM.initialize(this, t);
     }
 
     /**
@@ -36,7 +37,7 @@ class CreateEmailTaskVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, t) { 
     }
 
     /**
@@ -50,15 +51,28 @@ class CreateEmailTaskVM {
         if (data) {
             obj = obj || new CreateEmailTaskVM();
             CreateTransportTaskBaseVM.constructFromObject(data, obj);
+            CreateTransportTaskBaseVM.constructFromObject(data, obj);
 
-            if (data.hasOwnProperty('password')) {
-                obj['password'] = ApiClient.convertToType(data['password'], 'String');
-            }
             if (data.hasOwnProperty('body')) {
                 obj['body'] = ApiClient.convertToType(data['body'], 'String');
             }
+            if (data.hasOwnProperty('enableSsl')) {
+                obj['enableSsl'] = ApiClient.convertToType(data['enableSsl'], 'Boolean');
+            }
+            if (data.hasOwnProperty('from')) {
+                obj['from'] = ApiClient.convertToType(data['from'], 'String');
+            }
             if (data.hasOwnProperty('isBodyHtml')) {
                 obj['isBodyHtml'] = ApiClient.convertToType(data['isBodyHtml'], 'Boolean');
+            }
+            if (data.hasOwnProperty('password')) {
+                obj['password'] = ApiClient.convertToType(data['password'], 'String');
+            }
+            if (data.hasOwnProperty('port')) {
+                obj['port'] = ApiClient.convertToType(data['port'], 'Number');
+            }
+            if (data.hasOwnProperty('server')) {
+                obj['server'] = ApiClient.convertToType(data['server'], 'String');
             }
             if (data.hasOwnProperty('subject')) {
                 obj['subject'] = ApiClient.convertToType(data['subject'], 'String');
@@ -66,47 +80,61 @@ class CreateEmailTaskVM {
             if (data.hasOwnProperty('to')) {
                 obj['to'] = ApiClient.convertToType(data['to'], ['String']);
             }
-            if (data.hasOwnProperty('from')) {
-                obj['from'] = ApiClient.convertToType(data['from'], 'String');
-            }
             if (data.hasOwnProperty('username')) {
                 obj['username'] = ApiClient.convertToType(data['username'], 'String');
-            }
-            if (data.hasOwnProperty('server')) {
-                obj['server'] = ApiClient.convertToType(data['server'], 'String');
-            }
-            if (data.hasOwnProperty('port')) {
-                obj['port'] = ApiClient.convertToType(data['port'], 'Number');
-            }
-            if (data.hasOwnProperty('enableSsl')) {
-                obj['enableSsl'] = ApiClient.convertToType(data['enableSsl'], 'Boolean');
-            }
-            if (data.hasOwnProperty('name')) {
-                obj['name'] = ApiClient.convertToType(data['name'], 'String');
-            }
-            if (data.hasOwnProperty('subscriptionId')) {
-                obj['subscriptionId'] = ApiClient.convertToType(data['subscriptionId'], 'String');
-            }
-            if (data.hasOwnProperty('type')) {
-                obj['type'] = TaskType.constructFromObject(data['type']);
-            }
-            if (data.hasOwnProperty('delayedRunTime')) {
-                obj['delayedRunTime'] = ApiClient.convertToType(data['delayedRunTime'], 'Date');
-            }
-            if (data.hasOwnProperty('cronExpression')) {
-                obj['cronExpression'] = ApiClient.convertToType(data['cronExpression'], 'String');
             }
         }
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>CreateEmailTaskVM</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>CreateEmailTaskVM</code>.
+     */
+    static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of CreateEmailTaskVM.RequiredProperties) {
+            if (!data[property]) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
+        // ensure the json data is a string
+        if (data['body'] && !(typeof data['body'] === 'string' || data['body'] instanceof String)) {
+            throw new Error("Expected the field `body` to be a primitive type in the JSON string but got " + data['body']);
+        }
+        // ensure the json data is a string
+        if (data['from'] && !(typeof data['from'] === 'string' || data['from'] instanceof String)) {
+            throw new Error("Expected the field `from` to be a primitive type in the JSON string but got " + data['from']);
+        }
+        // ensure the json data is a string
+        if (data['password'] && !(typeof data['password'] === 'string' || data['password'] instanceof String)) {
+            throw new Error("Expected the field `password` to be a primitive type in the JSON string but got " + data['password']);
+        }
+        // ensure the json data is a string
+        if (data['server'] && !(typeof data['server'] === 'string' || data['server'] instanceof String)) {
+            throw new Error("Expected the field `server` to be a primitive type in the JSON string but got " + data['server']);
+        }
+        // ensure the json data is a string
+        if (data['subject'] && !(typeof data['subject'] === 'string' || data['subject'] instanceof String)) {
+            throw new Error("Expected the field `subject` to be a primitive type in the JSON string but got " + data['subject']);
+        }
+        // ensure the json data is an array
+        if (!Array.isArray(data['to'])) {
+            throw new Error("Expected the field `to` to be an array in the JSON data but got " + data['to']);
+        }
+        // ensure the json data is a string
+        if (data['username'] && !(typeof data['username'] === 'string' || data['username'] instanceof String)) {
+            throw new Error("Expected the field `username` to be a primitive type in the JSON string but got " + data['username']);
+        }
+
+        return true;
+    }
+
 
 }
 
-/**
- * @member {String} password
- */
-CreateEmailTaskVM.prototype['password'] = undefined;
+CreateEmailTaskVM.RequiredProperties = ["$t"];
 
 /**
  * @member {String} body
@@ -114,9 +142,34 @@ CreateEmailTaskVM.prototype['password'] = undefined;
 CreateEmailTaskVM.prototype['body'] = undefined;
 
 /**
+ * @member {Boolean} enableSsl
+ */
+CreateEmailTaskVM.prototype['enableSsl'] = undefined;
+
+/**
+ * @member {String} from
+ */
+CreateEmailTaskVM.prototype['from'] = undefined;
+
+/**
  * @member {Boolean} isBodyHtml
  */
 CreateEmailTaskVM.prototype['isBodyHtml'] = undefined;
+
+/**
+ * @member {String} password
+ */
+CreateEmailTaskVM.prototype['password'] = undefined;
+
+/**
+ * @member {Number} port
+ */
+CreateEmailTaskVM.prototype['port'] = undefined;
+
+/**
+ * @member {String} server
+ */
+CreateEmailTaskVM.prototype['server'] = undefined;
 
 /**
  * @member {String} subject
@@ -129,57 +182,20 @@ CreateEmailTaskVM.prototype['subject'] = undefined;
 CreateEmailTaskVM.prototype['to'] = undefined;
 
 /**
- * @member {String} from
- */
-CreateEmailTaskVM.prototype['from'] = undefined;
-
-/**
  * @member {String} username
  */
 CreateEmailTaskVM.prototype['username'] = undefined;
 
-/**
- * @member {String} server
- */
-CreateEmailTaskVM.prototype['server'] = undefined;
 
-/**
- * @member {Number} port
- */
-CreateEmailTaskVM.prototype['port'] = undefined;
-
-/**
- * @member {Boolean} enableSsl
- */
-CreateEmailTaskVM.prototype['enableSsl'] = undefined;
-
-/**
- * @member {String} name
- */
-CreateEmailTaskVM.prototype['name'] = undefined;
-
-/**
- * @member {String} subscriptionId
- */
-CreateEmailTaskVM.prototype['subscriptionId'] = undefined;
-
-/**
- * @member {module:models/TaskType} type
- */
-CreateEmailTaskVM.prototype['type'] = undefined;
-
-/**
- * @member {Date} delayedRunTime
- */
-CreateEmailTaskVM.prototype['delayedRunTime'] = undefined;
-
+// Implement CreateTransportTaskBaseVM interface:
 /**
  * @member {String} cronExpression
  */
-CreateEmailTaskVM.prototype['cronExpression'] = undefined;
-
-
-// Implement CreateTransportTaskBaseVM interface:
+CreateTransportTaskBaseVM.prototype['cronExpression'] = undefined;
+/**
+ * @member {Date} delayedRunTime
+ */
+CreateTransportTaskBaseVM.prototype['delayedRunTime'] = undefined;
 /**
  * @member {String} name
  */
@@ -189,17 +205,9 @@ CreateTransportTaskBaseVM.prototype['name'] = undefined;
  */
 CreateTransportTaskBaseVM.prototype['subscriptionId'] = undefined;
 /**
- * @member {module:models/TaskType} type
+ * @member {String} $t
  */
-CreateTransportTaskBaseVM.prototype['type'] = undefined;
-/**
- * @member {Date} delayedRunTime
- */
-CreateTransportTaskBaseVM.prototype['delayedRunTime'] = undefined;
-/**
- * @member {String} cronExpression
- */
-CreateTransportTaskBaseVM.prototype['cronExpression'] = undefined;
+CreateTransportTaskBaseVM.prototype['$t'] = undefined;
 
 
 

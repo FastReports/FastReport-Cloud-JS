@@ -50,7 +50,7 @@
   describe('PrepareTemplateVM', function() {
     it('should create an instance of PrepareTemplateVM', function() {
       // uncomment below and update the code to test PrepareTemplateVM
-      //var instane = new FastreportCloudSdk.PrepareTemplateVM();
+      //var instance = new FastreportCloudSdk.PrepareTemplateVM();
       //expect(instance).to.be.a(FastreportCloudSdk.PrepareTemplateVM);
     });
 
@@ -66,8 +66,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property parentFolderId (base name: "parentFolderId")', function() {
-      // uncomment below and update the code to test the property parentFolderId
+    it('should have the property folderId (base name: "folderId")', function() {
+      // uncomment below and update the code to test the property folderId
       //var instance = new FastreportCloudSdk.PrepareTemplateVM();
       //expect(instance).to.be();
     });

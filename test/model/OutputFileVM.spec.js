@@ -50,7 +50,7 @@
   describe('OutputFileVM', function() {
     it('should create an instance of OutputFileVM', function() {
       // uncomment below and update the code to test OutputFileVM
-      //var instane = new FastreportCloudSdk.OutputFileVM();
+      //var instance = new FastreportCloudSdk.OutputFileVM();
       //expect(instance).to.be.a(FastreportCloudSdk.OutputFileVM);
     });
 
@@ -68,6 +68,12 @@
 
     it('should have the property type (base name: "type")', function() {
       // uncomment below and update the code to test the property type
+      //var instance = new FastreportCloudSdk.OutputFileVM();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property isTemporary (base name: "isTemporary")', function() {
+      // uncomment below and update the code to test the property isTemporary
       //var instance = new FastreportCloudSdk.OutputFileVM();
       //expect(instance).to.be();
     });

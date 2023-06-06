@@ -50,7 +50,7 @@
   describe('TemplateCreateAdminVM', function() {
     it('should create an instance of TemplateCreateAdminVM', function() {
       // uncomment below and update the code to test TemplateCreateAdminVM
-      //var instane = new FastreportCloudSdk.TemplateCreateAdminVM();
+      //var instance = new FastreportCloudSdk.TemplateCreateAdminVM();
       //expect(instance).to.be.a(FastreportCloudSdk.TemplateCreateAdminVM);
     });
 
@@ -62,30 +62,6 @@
 
     it('should have the property parentId (base name: "parentId")', function() {
       // uncomment below and update the code to test the property parentId
-      //var instance = new FastreportCloudSdk.TemplateCreateAdminVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property name (base name: "name")', function() {
-      // uncomment below and update the code to test the property name
-      //var instance = new FastreportCloudSdk.TemplateCreateAdminVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property tags (base name: "tags")', function() {
-      // uncomment below and update the code to test the property tags
-      //var instance = new FastreportCloudSdk.TemplateCreateAdminVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property icon (base name: "icon")', function() {
-      // uncomment below and update the code to test the property icon
-      //var instance = new FastreportCloudSdk.TemplateCreateAdminVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property content (base name: "content")', function() {
-      // uncomment below and update the code to test the property content
       //var instance = new FastreportCloudSdk.TemplateCreateAdminVM();
       //expect(instance).to.be();
     });

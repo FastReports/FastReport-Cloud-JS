@@ -50,7 +50,7 @@
   describe('SubscriptionFolder', function() {
     it('should create an instance of SubscriptionFolder', function() {
       // uncomment below and update the code to test SubscriptionFolder
-      //var instane = new FastreportCloudSdk.SubscriptionFolder();
+      //var instance = new FastreportCloudSdk.SubscriptionFolder();
       //expect(instance).to.be.a(FastreportCloudSdk.SubscriptionFolder);
     });
 

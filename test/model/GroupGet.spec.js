@@ -49,7 +49,7 @@
   describe('GroupGet', function() {
     it('should create an instance of GroupGet', function() {
       // uncomment below and update the code to test GroupGet
-      //var instane = new FastreportCloudSdk.GroupGet();
+      //var instance = new FastreportCloudSdk.GroupGet();
       //expect(instance).to.be.a(FastreportCloudSdk.GroupGet);
     });
 

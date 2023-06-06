@@ -49,7 +49,7 @@
   describe('FileType', function() {
     it('should create an instance of FileType', function() {
       // uncomment below and update the code to test FileType
-      //var instane = new FastreportCloudSdk.FileType();
+      //var instance = new FastreportCloudSdk.FileType();
       //expect(instance).to.be.a(FastreportCloudSdk.FileType);
     });
 

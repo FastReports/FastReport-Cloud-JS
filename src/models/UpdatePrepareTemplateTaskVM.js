@@ -12,8 +12,6 @@
  */
 
 import ApiClient from '../ApiClient';
-import TaskType from './TaskType';
-import UpdateExportReportTaskVM from './UpdateExportReportTaskVM';
 import UpdateTransformTaskBaseVM from './UpdateTransformTaskBaseVM';
 
 /**
@@ -25,11 +23,13 @@ class UpdatePrepareTemplateTaskVM {
     /**
      * Constructs a new <code>UpdatePrepareTemplateTaskVM</code>.
      * @alias module:models/UpdatePrepareTemplateTaskVM
+     * @extends module:models/UpdateTransformTaskBaseVM
      * @implements module:models/UpdateTransformTaskBaseVM
+     * @param t {String} 
      */
-    constructor() { 
-        UpdateTransformTaskBaseVM.initialize(this);
-        UpdatePrepareTemplateTaskVM.initialize(this);
+    constructor(t) { 
+        UpdateTransformTaskBaseVM.initialize(this, t);
+        UpdatePrepareTemplateTaskVM.initialize(this, t);
     }
 
     /**
@@ -37,7 +37,7 @@ class UpdatePrepareTemplateTaskVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, t) { 
     }
 
     /**
@@ -51,9 +51,10 @@ class UpdatePrepareTemplateTaskVM {
         if (data) {
             obj = obj || new UpdatePrepareTemplateTaskVM();
             UpdateTransformTaskBaseVM.constructFromObject(data, obj);
+            UpdateTransformTaskBaseVM.constructFromObject(data, obj);
 
-            if (data.hasOwnProperty('exports')) {
-                obj['exports'] = ApiClient.convertToType(data['exports'], [UpdateExportReportTaskVM]);
+            if (data.hasOwnProperty('exportIds')) {
+                obj['exportIds'] = ApiClient.convertToType(data['exportIds'], ['String']);
             }
             if (data.hasOwnProperty('pagesCount')) {
                 obj['pagesCount'] = ApiClient.convertToType(data['pagesCount'], 'Number');
@@ -61,32 +62,39 @@ class UpdatePrepareTemplateTaskVM {
             if (data.hasOwnProperty('reportParameters')) {
                 obj['reportParameters'] = ApiClient.convertToType(data['reportParameters'], {'String': 'String'});
             }
-            if (data.hasOwnProperty('name')) {
-                obj['name'] = ApiClient.convertToType(data['name'], 'String');
-            }
-            if (data.hasOwnProperty('subscriptionId')) {
-                obj['subscriptionId'] = ApiClient.convertToType(data['subscriptionId'], 'String');
-            }
-            if (data.hasOwnProperty('type')) {
-                obj['type'] = TaskType.constructFromObject(data['type']);
-            }
-            if (data.hasOwnProperty('delayedRunTime')) {
-                obj['delayedRunTime'] = ApiClient.convertToType(data['delayedRunTime'], 'Date');
-            }
-            if (data.hasOwnProperty('cronExpression')) {
-                obj['cronExpression'] = ApiClient.convertToType(data['cronExpression'], 'String');
-            }
         }
         return obj;
+    }
+
+    /**
+     * Validates the JSON data with respect to <code>UpdatePrepareTemplateTaskVM</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>UpdatePrepareTemplateTaskVM</code>.
+     */
+    static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of UpdatePrepareTemplateTaskVM.RequiredProperties) {
+            if (!data[property]) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
+        // ensure the json data is an array
+        if (!Array.isArray(data['exportIds'])) {
+            throw new Error("Expected the field `exportIds` to be an array in the JSON data but got " + data['exportIds']);
+        }
+
+        return true;
     }
 
 
 }
 
+UpdatePrepareTemplateTaskVM.RequiredProperties = ["$t"];
+
 /**
- * @member {Array.<module:models/UpdateExportReportTaskVM>} exports
+ * @member {Array.<String>} exportIds
  */
-UpdatePrepareTemplateTaskVM.prototype['exports'] = undefined;
+UpdatePrepareTemplateTaskVM.prototype['exportIds'] = undefined;
 
 /**
  * @member {Number} pagesCount
@@ -98,53 +106,24 @@ UpdatePrepareTemplateTaskVM.prototype['pagesCount'] = undefined;
  */
 UpdatePrepareTemplateTaskVM.prototype['reportParameters'] = undefined;
 
-/**
- * @member {String} name
- */
-UpdatePrepareTemplateTaskVM.prototype['name'] = undefined;
-
-/**
- * @member {String} subscriptionId
- */
-UpdatePrepareTemplateTaskVM.prototype['subscriptionId'] = undefined;
-
-/**
- * @member {module:models/TaskType} type
- */
-UpdatePrepareTemplateTaskVM.prototype['type'] = undefined;
-
-/**
- * @member {Date} delayedRunTime
- */
-UpdatePrepareTemplateTaskVM.prototype['delayedRunTime'] = undefined;
-
-/**
- * @member {String} cronExpression
- */
-UpdatePrepareTemplateTaskVM.prototype['cronExpression'] = undefined;
-
 
 // Implement UpdateTransformTaskBaseVM interface:
 /**
- * @member {String} name
+ * @member {String} cronExpression
  */
-UpdateTransformTaskBaseVM.prototype['name'] = undefined;
-/**
- * @member {String} subscriptionId
- */
-UpdateTransformTaskBaseVM.prototype['subscriptionId'] = undefined;
-/**
- * @member {module:models/TaskType} type
- */
-UpdateTransformTaskBaseVM.prototype['type'] = undefined;
+UpdateTransformTaskBaseVM.prototype['cronExpression'] = undefined;
 /**
  * @member {Date} delayedRunTime
  */
 UpdateTransformTaskBaseVM.prototype['delayedRunTime'] = undefined;
 /**
- * @member {String} cronExpression
+ * @member {String} name
  */
-UpdateTransformTaskBaseVM.prototype['cronExpression'] = undefined;
+UpdateTransformTaskBaseVM.prototype['name'] = undefined;
+/**
+ * @member {String} $t
+ */
+UpdateTransformTaskBaseVM.prototype['$t'] = undefined;
 
 
 

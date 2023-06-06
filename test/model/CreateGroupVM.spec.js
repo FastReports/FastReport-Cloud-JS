@@ -50,7 +50,7 @@
   describe('CreateGroupVM', function() {
     it('should create an instance of CreateGroupVM', function() {
       // uncomment below and update the code to test CreateGroupVM
-      //var instane = new FastreportCloudSdk.CreateGroupVM();
+      //var instance = new FastreportCloudSdk.CreateGroupVM();
       //expect(instance).to.be.a(FastreportCloudSdk.CreateGroupVM);
     });
 

@@ -13,7 +13,6 @@
 
 import ApiClient from '../ApiClient';
 import InputFileVM from './InputFileVM';
-import TaskType from './TaskType';
 import UpdateTaskBaseVM from './UpdateTaskBaseVM';
 
 /**
@@ -25,11 +24,13 @@ class UpdateTransportTaskBaseVM {
     /**
      * Constructs a new <code>UpdateTransportTaskBaseVM</code>.
      * @alias module:models/UpdateTransportTaskBaseVM
+     * @extends module:models/UpdateTaskBaseVM
      * @implements module:models/UpdateTaskBaseVM
+     * @param t {String} 
      */
-    constructor() { 
-        UpdateTaskBaseVM.initialize(this);
-        UpdateTransportTaskBaseVM.initialize(this);
+    constructor(t) { 
+        UpdateTaskBaseVM.initialize(this, t);
+        UpdateTransportTaskBaseVM.initialize(this, t);
     }
 
     /**
@@ -37,7 +38,8 @@ class UpdateTransportTaskBaseVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -51,84 +53,75 @@ class UpdateTransportTaskBaseVM {
         if (data) {
             obj = obj || new UpdateTransportTaskBaseVM();
             UpdateTaskBaseVM.constructFromObject(data, obj);
+            UpdateTaskBaseVM.constructFromObject(data, obj);
 
-            if (data.hasOwnProperty('files')) {
-                obj['files'] = ApiClient.convertToType(data['files'], [InputFileVM]);
+            if (data.hasOwnProperty('inputFile')) {
+                obj['inputFile'] = InputFileVM.constructFromObject(data['inputFile']);
             }
-            if (data.hasOwnProperty('name')) {
-                obj['name'] = ApiClient.convertToType(data['name'], 'String');
-            }
-            if (data.hasOwnProperty('subscriptionId')) {
-                obj['subscriptionId'] = ApiClient.convertToType(data['subscriptionId'], 'String');
-            }
-            if (data.hasOwnProperty('type')) {
-                obj['type'] = TaskType.constructFromObject(data['type']);
-            }
-            if (data.hasOwnProperty('delayedRunTime')) {
-                obj['delayedRunTime'] = ApiClient.convertToType(data['delayedRunTime'], 'Date');
-            }
-            if (data.hasOwnProperty('cronExpression')) {
-                obj['cronExpression'] = ApiClient.convertToType(data['cronExpression'], 'String');
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
             }
         }
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>UpdateTransportTaskBaseVM</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>UpdateTransportTaskBaseVM</code>.
+     */
+    static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of UpdateTransportTaskBaseVM.RequiredProperties) {
+            if (!data[property]) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
+        // validate the optional field `inputFile`
+        if (data['inputFile']) { // data not null
+          InputFileVM.validateJSON(data['inputFile']);
+        }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
+        }
+
+        return true;
+    }
+
 
 }
 
-/**
- * @member {Array.<module:models/InputFileVM>} files
- */
-UpdateTransportTaskBaseVM.prototype['files'] = undefined;
+UpdateTransportTaskBaseVM.RequiredProperties = ["$t"];
 
 /**
- * @member {String} name
+ * @member {module:models/InputFileVM} inputFile
  */
-UpdateTransportTaskBaseVM.prototype['name'] = undefined;
+UpdateTransportTaskBaseVM.prototype['inputFile'] = undefined;
 
 /**
- * @member {String} subscriptionId
+ * @member {String} $t
  */
-UpdateTransportTaskBaseVM.prototype['subscriptionId'] = undefined;
-
-/**
- * @member {module:models/TaskType} type
- */
-UpdateTransportTaskBaseVM.prototype['type'] = undefined;
-
-/**
- * @member {Date} delayedRunTime
- */
-UpdateTransportTaskBaseVM.prototype['delayedRunTime'] = undefined;
-
-/**
- * @member {String} cronExpression
- */
-UpdateTransportTaskBaseVM.prototype['cronExpression'] = undefined;
+UpdateTransportTaskBaseVM.prototype['$t'] = undefined;
 
 
 // Implement UpdateTaskBaseVM interface:
 /**
- * @member {String} name
+ * @member {String} cronExpression
  */
-UpdateTaskBaseVM.prototype['name'] = undefined;
-/**
- * @member {String} subscriptionId
- */
-UpdateTaskBaseVM.prototype['subscriptionId'] = undefined;
-/**
- * @member {module:models/TaskType} type
- */
-UpdateTaskBaseVM.prototype['type'] = undefined;
+UpdateTaskBaseVM.prototype['cronExpression'] = undefined;
 /**
  * @member {Date} delayedRunTime
  */
 UpdateTaskBaseVM.prototype['delayedRunTime'] = undefined;
 /**
- * @member {String} cronExpression
+ * @member {String} name
  */
-UpdateTaskBaseVM.prototype['cronExpression'] = undefined;
+UpdateTaskBaseVM.prototype['name'] = undefined;
+/**
+ * @member {String} $t
+ */
+UpdateTaskBaseVM.prototype['$t'] = undefined;
 
 
 

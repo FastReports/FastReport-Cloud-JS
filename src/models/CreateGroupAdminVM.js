@@ -23,6 +23,7 @@ class CreateGroupAdminVM {
     /**
      * Constructs a new <code>CreateGroupAdminVM</code>.
      * @alias module:models/CreateGroupAdminVM
+     * @extends module:models/CreateGroupVM
      * @implements module:models/CreateGroupVM
      * @param name {String} 
      */
@@ -37,7 +38,6 @@ class CreateGroupAdminVM {
      * Only for internal use.
      */
     static initialize(obj, name) { 
-        obj['name'] = name;
     }
 
     /**
@@ -51,37 +51,44 @@ class CreateGroupAdminVM {
         if (data) {
             obj = obj || new CreateGroupAdminVM();
             CreateGroupVM.constructFromObject(data, obj);
+            CreateGroupVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('ownerId')) {
                 obj['ownerId'] = ApiClient.convertToType(data['ownerId'], 'String');
-            }
-            if (data.hasOwnProperty('name')) {
-                obj['name'] = ApiClient.convertToType(data['name'], 'String');
-            }
-            if (data.hasOwnProperty('subscriptionId')) {
-                obj['subscriptionId'] = ApiClient.convertToType(data['subscriptionId'], 'String');
             }
         }
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>CreateGroupAdminVM</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>CreateGroupAdminVM</code>.
+     */
+    static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of CreateGroupAdminVM.RequiredProperties) {
+            if (!data[property]) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
+        // ensure the json data is a string
+        if (data['ownerId'] && !(typeof data['ownerId'] === 'string' || data['ownerId'] instanceof String)) {
+            throw new Error("Expected the field `ownerId` to be a primitive type in the JSON string but got " + data['ownerId']);
+        }
+
+        return true;
+    }
+
 
 }
+
+CreateGroupAdminVM.RequiredProperties = ["name"];
 
 /**
  * @member {String} ownerId
  */
 CreateGroupAdminVM.prototype['ownerId'] = undefined;
-
-/**
- * @member {String} name
- */
-CreateGroupAdminVM.prototype['name'] = undefined;
-
-/**
- * @member {String} subscriptionId
- */
-CreateGroupAdminVM.prototype['subscriptionId'] = undefined;
 
 
 // Implement CreateGroupVM interface:

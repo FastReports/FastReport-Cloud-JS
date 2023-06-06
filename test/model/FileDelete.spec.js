@@ -49,7 +49,7 @@
   describe('FileDelete', function() {
     it('should create an instance of FileDelete', function() {
       // uncomment below and update the code to test FileDelete
-      //var instane = new FastreportCloudSdk.FileDelete();
+      //var instance = new FastreportCloudSdk.FileDelete();
       //expect(instance).to.be.a(FastreportCloudSdk.FileDelete);
     });
 

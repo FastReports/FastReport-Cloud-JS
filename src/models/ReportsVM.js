@@ -24,6 +24,7 @@ class ReportsVM {
     /**
      * Constructs a new <code>ReportsVM</code>.
      * @alias module:models/ReportsVM
+     * @extends module:models/ReportVMFilesVMBase
      * @implements module:models/ReportVMFilesVMBase
      */
     constructor() { 
@@ -50,45 +51,26 @@ class ReportsVM {
         if (data) {
             obj = obj || new ReportsVM();
             ReportVMFilesVMBase.constructFromObject(data, obj);
+            ReportVMFilesVMBase.constructFromObject(data, obj);
 
-            if (data.hasOwnProperty('files')) {
-                obj['files'] = ApiClient.convertToType(data['files'], [ReportVM]);
-            }
-            if (data.hasOwnProperty('count')) {
-                obj['count'] = ApiClient.convertToType(data['count'], 'Number');
-            }
-            if (data.hasOwnProperty('skip')) {
-                obj['skip'] = ApiClient.convertToType(data['skip'], 'Number');
-            }
-            if (data.hasOwnProperty('take')) {
-                obj['take'] = ApiClient.convertToType(data['take'], 'Number');
-            }
         }
         return obj;
+    }
+
+    /**
+     * Validates the JSON data with respect to <code>ReportsVM</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>ReportsVM</code>.
+     */
+    static validateJSON(data) {
+
+        return true;
     }
 
 
 }
 
-/**
- * @member {Array.<module:models/ReportVM>} files
- */
-ReportsVM.prototype['files'] = undefined;
 
-/**
- * @member {Number} count
- */
-ReportsVM.prototype['count'] = undefined;
-
-/**
- * @member {Number} skip
- */
-ReportsVM.prototype['skip'] = undefined;
-
-/**
- * @member {Number} take
- */
-ReportsVM.prototype['take'] = undefined;
 
 
 // Implement ReportVMFilesVMBase interface:

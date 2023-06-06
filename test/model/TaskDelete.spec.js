@@ -49,7 +49,7 @@
   describe('TaskDelete', function() {
     it('should create an instance of TaskDelete', function() {
       // uncomment below and update the code to test TaskDelete
-      //var instane = new FastreportCloudSdk.TaskDelete();
+      //var instance = new FastreportCloudSdk.TaskDelete();
       //expect(instance).to.be.a(FastreportCloudSdk.TaskDelete);
     });
 

@@ -53,8 +53,8 @@ class PrepareTemplateVM {
             if (data.hasOwnProperty('locale')) {
                 obj['locale'] = ApiClient.convertToType(data['locale'], 'String');
             }
-            if (data.hasOwnProperty('parentFolderId')) {
-                obj['parentFolderId'] = ApiClient.convertToType(data['parentFolderId'], 'String');
+            if (data.hasOwnProperty('folderId')) {
+                obj['folderId'] = ApiClient.convertToType(data['folderId'], 'String');
             }
             if (data.hasOwnProperty('pagesCount')) {
                 obj['pagesCount'] = ApiClient.convertToType(data['pagesCount'], 'Number');
@@ -66,8 +66,32 @@ class PrepareTemplateVM {
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>PrepareTemplateVM</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>PrepareTemplateVM</code>.
+     */
+    static validateJSON(data) {
+        // ensure the json data is a string
+        if (data['name'] && !(typeof data['name'] === 'string' || data['name'] instanceof String)) {
+            throw new Error("Expected the field `name` to be a primitive type in the JSON string but got " + data['name']);
+        }
+        // ensure the json data is a string
+        if (data['locale'] && !(typeof data['locale'] === 'string' || data['locale'] instanceof String)) {
+            throw new Error("Expected the field `locale` to be a primitive type in the JSON string but got " + data['locale']);
+        }
+        // ensure the json data is a string
+        if (data['folderId'] && !(typeof data['folderId'] === 'string' || data['folderId'] instanceof String)) {
+            throw new Error("Expected the field `folderId` to be a primitive type in the JSON string but got " + data['folderId']);
+        }
+
+        return true;
+    }
+
 
 }
+
+
 
 /**
  * @member {String} name
@@ -80,9 +104,9 @@ PrepareTemplateVM.prototype['name'] = undefined;
 PrepareTemplateVM.prototype['locale'] = undefined;
 
 /**
- * @member {String} parentFolderId
+ * @member {String} folderId
  */
-PrepareTemplateVM.prototype['parentFolderId'] = undefined;
+PrepareTemplateVM.prototype['folderId'] = undefined;
 
 /**
  * @member {Number} pagesCount

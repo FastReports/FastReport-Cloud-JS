@@ -49,7 +49,7 @@
   describe('GroupCreate', function() {
     it('should create an instance of GroupCreate', function() {
       // uncomment below and update the code to test GroupCreate
-      //var instane = new FastreportCloudSdk.GroupCreate();
+      //var instance = new FastreportCloudSdk.GroupCreate();
       //expect(instance).to.be.a(FastreportCloudSdk.GroupCreate);
     });
 

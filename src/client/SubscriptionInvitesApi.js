@@ -118,7 +118,7 @@ export default class SubscriptionInvitesApi {
       };
 
       let authNames = ['ApiKey', 'JWT'];
-      let contentTypes = ['application/json', 'text/json', 'application/_*+json'];
+      let contentTypes = ['application/json', 'text/json', 'application/*+json'];
       let accepts = ['application/json'];
       let returnType = SubscriptionInviteVM;
       if(!returnType) returnType = 'Blob';

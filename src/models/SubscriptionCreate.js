@@ -62,6 +62,20 @@ export default class SubscriptionCreate {
 
     
         /**
+         * value: 32
+         * @const
+         */
+        "32" = 32;
+
+    
+        /**
+         * value: 64
+         * @const
+         */
+        "64" = 64;
+
+    
+        /**
          * value: -1
          * @const
          */

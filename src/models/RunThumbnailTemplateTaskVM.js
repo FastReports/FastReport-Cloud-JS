@@ -12,8 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
-import RunTransformTaskBaseVM from './RunTransformTaskBaseVM';
-import TaskType from './TaskType';
+import RunTaskBaseVM from './RunTaskBaseVM';
 
 /**
  * The RunThumbnailTemplateTaskVM model module.
@@ -24,11 +23,13 @@ class RunThumbnailTemplateTaskVM {
     /**
      * Constructs a new <code>RunThumbnailTemplateTaskVM</code>.
      * @alias module:models/RunThumbnailTemplateTaskVM
-     * @implements module:models/RunTransformTaskBaseVM
+     * @extends module:models/RunTaskBaseVM
+     * @implements module:models/RunTaskBaseVM
+     * @param t {String} 
      */
-    constructor() { 
-        RunTransformTaskBaseVM.initialize(this);
-        RunThumbnailTemplateTaskVM.initialize(this);
+    constructor(t) { 
+        RunTaskBaseVM.initialize(this, t);
+        RunThumbnailTemplateTaskVM.initialize(this, t);
     }
 
     /**
@@ -36,7 +37,7 @@ class RunThumbnailTemplateTaskVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, t) { 
     }
 
     /**
@@ -49,41 +50,56 @@ class RunThumbnailTemplateTaskVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new RunThumbnailTemplateTaskVM();
-            RunTransformTaskBaseVM.constructFromObject(data, obj);
+            RunTaskBaseVM.constructFromObject(data, obj);
+            RunTaskBaseVM.constructFromObject(data, obj);
 
-            if (data.hasOwnProperty('subscriptionId')) {
-                obj['subscriptionId'] = ApiClient.convertToType(data['subscriptionId'], 'String');
-            }
-            if (data.hasOwnProperty('type')) {
-                obj['type'] = TaskType.constructFromObject(data['type']);
+            if (data.hasOwnProperty('templateId')) {
+                obj['templateId'] = ApiClient.convertToType(data['templateId'], 'String');
             }
         }
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>RunThumbnailTemplateTaskVM</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>RunThumbnailTemplateTaskVM</code>.
+     */
+    static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of RunThumbnailTemplateTaskVM.RequiredProperties) {
+            if (!data[property]) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
+        // ensure the json data is a string
+        if (data['templateId'] && !(typeof data['templateId'] === 'string' || data['templateId'] instanceof String)) {
+            throw new Error("Expected the field `templateId` to be a primitive type in the JSON string but got " + data['templateId']);
+        }
+
+        return true;
+    }
+
 
 }
 
+RunThumbnailTemplateTaskVM.RequiredProperties = ["$t"];
+
+/**
+ * @member {String} templateId
+ */
+RunThumbnailTemplateTaskVM.prototype['templateId'] = undefined;
+
+
+// Implement RunTaskBaseVM interface:
 /**
  * @member {String} subscriptionId
  */
-RunThumbnailTemplateTaskVM.prototype['subscriptionId'] = undefined;
-
+RunTaskBaseVM.prototype['subscriptionId'] = undefined;
 /**
- * @member {module:models/TaskType} type
+ * @member {String} $t
  */
-RunThumbnailTemplateTaskVM.prototype['type'] = undefined;
-
-
-// Implement RunTransformTaskBaseVM interface:
-/**
- * @member {String} subscriptionId
- */
-RunTransformTaskBaseVM.prototype['subscriptionId'] = undefined;
-/**
- * @member {module:models/TaskType} type
- */
-RunTransformTaskBaseVM.prototype['type'] = undefined;
+RunTaskBaseVM.prototype['$t'] = undefined;
 
 
 

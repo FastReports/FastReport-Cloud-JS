@@ -64,8 +64,30 @@ class FileVMFilesVMBase {
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>FileVMFilesVMBase</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>FileVMFilesVMBase</code>.
+     */
+    static validateJSON(data) {
+        if (data['files']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['files'])) {
+                throw new Error("Expected the field `files` to be an array in the JSON data but got " + data['files']);
+            }
+            // validate the optional field `files` (array)
+            for (const item of data['files']) {
+                FileVM.validateJSON(item);
+            };
+        }
+
+        return true;
+    }
+
 
 }
+
+
 
 /**
  * @member {Array.<module:models/FileVM>} files

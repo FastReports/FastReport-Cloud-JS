@@ -49,7 +49,7 @@
   describe('FileGet', function() {
     it('should create an instance of FileGet', function() {
       // uncomment below and update the code to test FileGet
-      //var instane = new FastreportCloudSdk.FileGet();
+      //var instance = new FastreportCloudSdk.FileGet();
       //expect(instance).to.be.a(FastreportCloudSdk.FileGet);
     });
 

@@ -58,8 +58,30 @@ class ApiKeysVM {
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>ApiKeysVM</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>ApiKeysVM</code>.
+     */
+    static validateJSON(data) {
+        if (data['apiKeys']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['apiKeys'])) {
+                throw new Error("Expected the field `apiKeys` to be an array in the JSON data but got " + data['apiKeys']);
+            }
+            // validate the optional field `apiKeys` (array)
+            for (const item of data['apiKeys']) {
+                ApiKeyVM.validateJSON(item);
+            };
+        }
+
+        return true;
+    }
+
 
 }
+
+
 
 /**
  * @member {Array.<module:models/ApiKeyVM>} apiKeys

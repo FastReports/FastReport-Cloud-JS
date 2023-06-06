@@ -48,6 +48,16 @@
   }
 
   describe('ExportsApi', function() {
+    describe('exportFolderAndFileClearRecycleBin', function() {
+      it('should call exportFolderAndFileClearRecycleBin successfully', function(done) {
+        //uncomment below and update the code to test exportFolderAndFileClearRecycleBin
+        //instance.exportFolderAndFileClearRecycleBin(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('exportFolderAndFileGetCount', function() {
       it('should call exportFolderAndFileGetCount successfully', function(done) {
         //uncomment below and update the code to test exportFolderAndFileGetCount
@@ -62,6 +72,26 @@
       it('should call exportFolderAndFileGetFoldersAndFiles successfully', function(done) {
         //uncomment below and update the code to test exportFolderAndFileGetFoldersAndFiles
         //instance.exportFolderAndFileGetFoldersAndFiles(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('exportFolderAndFileGetRecycleBinFoldersAndFiles', function() {
+      it('should call exportFolderAndFileGetRecycleBinFoldersAndFiles successfully', function(done) {
+        //uncomment below and update the code to test exportFolderAndFileGetRecycleBinFoldersAndFiles
+        //instance.exportFolderAndFileGetRecycleBinFoldersAndFiles(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('exportFolderAndFileRecoverAllFromRecycleBin', function() {
+      it('should call exportFolderAndFileRecoverAllFromRecycleBin successfully', function(done) {
+        //uncomment below and update the code to test exportFolderAndFileRecoverAllFromRecycleBin
+        //instance.exportFolderAndFileRecoverAllFromRecycleBin(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -128,6 +158,16 @@
         done();
       });
     });
+    describe('exportFoldersGetOrCreate', function() {
+      it('should call exportFoldersGetOrCreate successfully', function(done) {
+        //uncomment below and update the code to test exportFoldersGetOrCreate
+        //instance.exportFoldersGetOrCreate(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('exportFoldersGetPermissions', function() {
       it('should call exportFoldersGetPermissions successfully', function(done) {
         //uncomment below and update the code to test exportFoldersGetPermissions
@@ -158,10 +198,30 @@
         done();
       });
     });
+    describe('exportFoldersMoveFolderToBin', function() {
+      it('should call exportFoldersMoveFolderToBin successfully', function(done) {
+        //uncomment below and update the code to test exportFoldersMoveFolderToBin
+        //instance.exportFoldersMoveFolderToBin(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('exportFoldersPostFolder', function() {
       it('should call exportFoldersPostFolder successfully', function(done) {
         //uncomment below and update the code to test exportFoldersPostFolder
         //instance.exportFoldersPostFolder(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('exportFoldersRecoverFolder', function() {
+      it('should call exportFoldersRecoverFolder successfully', function(done) {
+        //uncomment below and update the code to test exportFoldersRecoverFolder
+        //instance.exportFoldersRecoverFolder(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -238,6 +298,16 @@
         done();
       });
     });
+    describe('exportsGetFileHistory', function() {
+      it('should call exportsGetFileHistory successfully', function(done) {
+        //uncomment below and update the code to test exportsGetFileHistory
+        //instance.exportsGetFileHistory(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('exportsGetFilesCount', function() {
       it('should call exportsGetFilesCount successfully', function(done) {
         //uncomment below and update the code to test exportsGetFilesCount
@@ -272,6 +342,26 @@
       it('should call exportsMoveFile successfully', function(done) {
         //uncomment below and update the code to test exportsMoveFile
         //instance.exportsMoveFile(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('exportsMoveFileToBin', function() {
+      it('should call exportsMoveFileToBin successfully', function(done) {
+        //uncomment below and update the code to test exportsMoveFileToBin
+        //instance.exportsMoveFileToBin(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('exportsRecoverFile', function() {
+      it('should call exportsRecoverFile successfully', function(done) {
+        //uncomment below and update the code to test exportsRecoverFile
+        //instance.exportsRecoverFile(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

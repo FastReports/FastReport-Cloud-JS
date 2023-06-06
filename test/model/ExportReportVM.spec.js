@@ -50,7 +50,7 @@
   describe('ExportReportVM', function() {
     it('should create an instance of ExportReportVM', function() {
       // uncomment below and update the code to test ExportReportVM
-      //var instane = new FastreportCloudSdk.ExportReportVM();
+      //var instance = new FastreportCloudSdk.ExportReportVM();
       //expect(instance).to.be.a(FastreportCloudSdk.ExportReportVM);
     });
 

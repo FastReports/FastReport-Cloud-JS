@@ -66,8 +66,32 @@ class EntityVM {
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>EntityVM</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>EntityVM</code>.
+     */
+    static validateJSON(data) {
+        // ensure the json data is a string
+        if (data['id'] && !(typeof data['id'] === 'string' || data['id'] instanceof String)) {
+            throw new Error("Expected the field `id` to be a primitive type in the JSON string but got " + data['id']);
+        }
+        // ensure the json data is a string
+        if (data['creatorUserId'] && !(typeof data['creatorUserId'] === 'string' || data['creatorUserId'] instanceof String)) {
+            throw new Error("Expected the field `creatorUserId` to be a primitive type in the JSON string but got " + data['creatorUserId']);
+        }
+        // ensure the json data is a string
+        if (data['editorUserId'] && !(typeof data['editorUserId'] === 'string' || data['editorUserId'] instanceof String)) {
+            throw new Error("Expected the field `editorUserId` to be a primitive type in the JSON string but got " + data['editorUserId']);
+        }
+
+        return true;
+    }
+
 
 }
+
+
 
 /**
  * @member {String} id

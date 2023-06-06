@@ -24,6 +24,7 @@ class ReportVM {
     /**
      * Constructs a new <code>ReportVM</code>.
      * @alias module:models/ReportVM
+     * @extends module:models/FileVM
      * @implements module:models/FileVM
      */
     constructor() { 
@@ -50,6 +51,7 @@ class ReportVM {
         if (data) {
             obj = obj || new ReportVM();
             FileVM.constructFromObject(data, obj);
+            FileVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('templateId')) {
                 obj['templateId'] = ApiClient.convertToType(data['templateId'], 'String');
@@ -57,27 +59,32 @@ class ReportVM {
             if (data.hasOwnProperty('reportInfo')) {
                 obj['reportInfo'] = ReportInfo.constructFromObject(data['reportInfo']);
             }
-            if (data.hasOwnProperty('id')) {
-                obj['id'] = ApiClient.convertToType(data['id'], 'String');
-            }
-            if (data.hasOwnProperty('createdTime')) {
-                obj['createdTime'] = ApiClient.convertToType(data['createdTime'], 'Date');
-            }
-            if (data.hasOwnProperty('creatorUserId')) {
-                obj['creatorUserId'] = ApiClient.convertToType(data['creatorUserId'], 'String');
-            }
-            if (data.hasOwnProperty('editedTime')) {
-                obj['editedTime'] = ApiClient.convertToType(data['editedTime'], 'Date');
-            }
-            if (data.hasOwnProperty('editorUserId')) {
-                obj['editorUserId'] = ApiClient.convertToType(data['editorUserId'], 'String');
-            }
         }
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>ReportVM</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>ReportVM</code>.
+     */
+    static validateJSON(data) {
+        // ensure the json data is a string
+        if (data['templateId'] && !(typeof data['templateId'] === 'string' || data['templateId'] instanceof String)) {
+            throw new Error("Expected the field `templateId` to be a primitive type in the JSON string but got " + data['templateId']);
+        }
+        // validate the optional field `reportInfo`
+        if (data['reportInfo']) { // data not null
+          ReportInfo.validateJSON(data['reportInfo']);
+        }
+
+        return true;
+    }
+
 
 }
+
+
 
 /**
  * @member {String} templateId
@@ -88,31 +95,6 @@ ReportVM.prototype['templateId'] = undefined;
  * @member {module:models/ReportInfo} reportInfo
  */
 ReportVM.prototype['reportInfo'] = undefined;
-
-/**
- * @member {String} id
- */
-ReportVM.prototype['id'] = undefined;
-
-/**
- * @member {Date} createdTime
- */
-ReportVM.prototype['createdTime'] = undefined;
-
-/**
- * @member {String} creatorUserId
- */
-ReportVM.prototype['creatorUserId'] = undefined;
-
-/**
- * @member {Date} editedTime
- */
-ReportVM.prototype['editedTime'] = undefined;
-
-/**
- * @member {String} editorUserId
- */
-ReportVM.prototype['editorUserId'] = undefined;
 
 
 // Implement FileVM interface:

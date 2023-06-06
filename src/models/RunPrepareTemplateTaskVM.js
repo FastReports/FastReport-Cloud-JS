@@ -14,7 +14,6 @@
 import ApiClient from '../ApiClient';
 import RunExportReportTaskVM from './RunExportReportTaskVM';
 import RunTransformTaskBaseVM from './RunTransformTaskBaseVM';
-import TaskType from './TaskType';
 
 /**
  * The RunPrepareTemplateTaskVM model module.
@@ -25,11 +24,13 @@ class RunPrepareTemplateTaskVM {
     /**
      * Constructs a new <code>RunPrepareTemplateTaskVM</code>.
      * @alias module:models/RunPrepareTemplateTaskVM
+     * @extends module:models/RunTransformTaskBaseVM
      * @implements module:models/RunTransformTaskBaseVM
+     * @param t {String} 
      */
-    constructor() { 
-        RunTransformTaskBaseVM.initialize(this);
-        RunPrepareTemplateTaskVM.initialize(this);
+    constructor(t) { 
+        RunTransformTaskBaseVM.initialize(this, t);
+        RunPrepareTemplateTaskVM.initialize(this, t);
     }
 
     /**
@@ -37,7 +38,7 @@ class RunPrepareTemplateTaskVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, t) { 
     }
 
     /**
@@ -51,6 +52,7 @@ class RunPrepareTemplateTaskVM {
         if (data) {
             obj = obj || new RunPrepareTemplateTaskVM();
             RunTransformTaskBaseVM.constructFromObject(data, obj);
+            RunTransformTaskBaseVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('exports')) {
                 obj['exports'] = ApiClient.convertToType(data['exports'], [RunExportReportTaskVM]);
@@ -61,18 +63,40 @@ class RunPrepareTemplateTaskVM {
             if (data.hasOwnProperty('reportParameters')) {
                 obj['reportParameters'] = ApiClient.convertToType(data['reportParameters'], {'String': 'String'});
             }
-            if (data.hasOwnProperty('subscriptionId')) {
-                obj['subscriptionId'] = ApiClient.convertToType(data['subscriptionId'], 'String');
-            }
-            if (data.hasOwnProperty('type')) {
-                obj['type'] = TaskType.constructFromObject(data['type']);
-            }
         }
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>RunPrepareTemplateTaskVM</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>RunPrepareTemplateTaskVM</code>.
+     */
+    static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of RunPrepareTemplateTaskVM.RequiredProperties) {
+            if (!data[property]) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
+        if (data['exports']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['exports'])) {
+                throw new Error("Expected the field `exports` to be an array in the JSON data but got " + data['exports']);
+            }
+            // validate the optional field `exports` (array)
+            for (const item of data['exports']) {
+                RunExportReportTaskVM.validateJSON(item);
+            };
+        }
+
+        return true;
+    }
+
 
 }
+
+RunPrepareTemplateTaskVM.RequiredProperties = ["$t"];
 
 /**
  * @member {Array.<module:models/RunExportReportTaskVM>} exports
@@ -89,16 +113,6 @@ RunPrepareTemplateTaskVM.prototype['pagesCount'] = undefined;
  */
 RunPrepareTemplateTaskVM.prototype['reportParameters'] = undefined;
 
-/**
- * @member {String} subscriptionId
- */
-RunPrepareTemplateTaskVM.prototype['subscriptionId'] = undefined;
-
-/**
- * @member {module:models/TaskType} type
- */
-RunPrepareTemplateTaskVM.prototype['type'] = undefined;
-
 
 // Implement RunTransformTaskBaseVM interface:
 /**
@@ -106,9 +120,9 @@ RunPrepareTemplateTaskVM.prototype['type'] = undefined;
  */
 RunTransformTaskBaseVM.prototype['subscriptionId'] = undefined;
 /**
- * @member {module:models/TaskType} type
+ * @member {String} $t
  */
-RunTransformTaskBaseVM.prototype['type'] = undefined;
+RunTransformTaskBaseVM.prototype['$t'] = undefined;
 
 
 

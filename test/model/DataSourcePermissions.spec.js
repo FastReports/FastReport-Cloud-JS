@@ -50,38 +50,8 @@
   describe('DataSourcePermissions', function() {
     it('should create an instance of DataSourcePermissions', function() {
       // uncomment below and update the code to test DataSourcePermissions
-      //var instane = new FastreportCloudSdk.DataSourcePermissions();
+      //var instance = new FastreportCloudSdk.DataSourcePermissions();
       //expect(instance).to.be.a(FastreportCloudSdk.DataSourcePermissions);
-    });
-
-    it('should have the property ownerId (base name: "ownerId")', function() {
-      // uncomment below and update the code to test the property ownerId
-      //var instance = new FastreportCloudSdk.DataSourcePermissions();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property owner (base name: "owner")', function() {
-      // uncomment below and update the code to test the property owner
-      //var instance = new FastreportCloudSdk.DataSourcePermissions();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property groups (base name: "groups")', function() {
-      // uncomment below and update the code to test the property groups
-      //var instance = new FastreportCloudSdk.DataSourcePermissions();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property other (base name: "other")', function() {
-      // uncomment below and update the code to test the property other
-      //var instance = new FastreportCloudSdk.DataSourcePermissions();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property anon (base name: "anon")', function() {
-      // uncomment below and update the code to test the property anon
-      //var instance = new FastreportCloudSdk.DataSourcePermissions();
-      //expect(instance).to.be();
     });
 
   });

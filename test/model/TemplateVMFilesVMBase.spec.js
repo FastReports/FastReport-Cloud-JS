@@ -50,7 +50,7 @@
   describe('TemplateVMFilesVMBase', function() {
     it('should create an instance of TemplateVMFilesVMBase', function() {
       // uncomment below and update the code to test TemplateVMFilesVMBase
-      //var instane = new FastreportCloudSdk.TemplateVMFilesVMBase();
+      //var instance = new FastreportCloudSdk.TemplateVMFilesVMBase();
       //expect(instance).to.be.a(FastreportCloudSdk.TemplateVMFilesVMBase);
     });
 

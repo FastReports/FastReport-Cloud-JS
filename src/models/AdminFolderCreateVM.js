@@ -23,6 +23,7 @@ class AdminFolderCreateVM {
     /**
      * Constructs a new <code>AdminFolderCreateVM</code>.
      * @alias module:models/AdminFolderCreateVM
+     * @extends module:models/FolderCreateVM
      * @implements module:models/FolderCreateVM
      */
     constructor() { 
@@ -51,6 +52,7 @@ class AdminFolderCreateVM {
         if (data) {
             obj = obj || new AdminFolderCreateVM();
             FolderCreateVM.constructFromObject(data, obj);
+            FolderCreateVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('parentId')) {
                 obj['parentId'] = ApiClient.convertToType(data['parentId'], 'String');
@@ -61,21 +63,38 @@ class AdminFolderCreateVM {
             if (data.hasOwnProperty('force')) {
                 obj['force'] = ApiClient.convertToType(data['force'], 'Boolean');
             }
-            if (data.hasOwnProperty('name')) {
-                obj['name'] = ApiClient.convertToType(data['name'], 'String');
-            }
-            if (data.hasOwnProperty('tags')) {
-                obj['tags'] = ApiClient.convertToType(data['tags'], ['String']);
-            }
-            if (data.hasOwnProperty('icon')) {
-                obj['icon'] = ApiClient.convertToType(data['icon'], 'Blob');
-            }
         }
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>AdminFolderCreateVM</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>AdminFolderCreateVM</code>.
+     */
+    static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of AdminFolderCreateVM.RequiredProperties) {
+            if (!data[property]) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
+        // ensure the json data is a string
+        if (data['parentId'] && !(typeof data['parentId'] === 'string' || data['parentId'] instanceof String)) {
+            throw new Error("Expected the field `parentId` to be a primitive type in the JSON string but got " + data['parentId']);
+        }
+        // ensure the json data is a string
+        if (data['ownerId'] && !(typeof data['ownerId'] === 'string' || data['ownerId'] instanceof String)) {
+            throw new Error("Expected the field `ownerId` to be a primitive type in the JSON string but got " + data['ownerId']);
+        }
+
+        return true;
+    }
+
 
 }
+
+AdminFolderCreateVM.RequiredProperties = ["parentId", "ownerId"];
 
 /**
  * @member {String} parentId
@@ -91,21 +110,6 @@ AdminFolderCreateVM.prototype['ownerId'] = undefined;
  * @member {Boolean} force
  */
 AdminFolderCreateVM.prototype['force'] = undefined;
-
-/**
- * @member {String} name
- */
-AdminFolderCreateVM.prototype['name'] = undefined;
-
-/**
- * @member {Array.<String>} tags
- */
-AdminFolderCreateVM.prototype['tags'] = undefined;
-
-/**
- * @member {Blob} icon
- */
-AdminFolderCreateVM.prototype['icon'] = undefined;
 
 
 // Implement FolderCreateVM interface:

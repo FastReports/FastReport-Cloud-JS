@@ -49,7 +49,7 @@
   describe('TimePeriodType', function() {
     it('should create an instance of TimePeriodType', function() {
       // uncomment below and update the code to test TimePeriodType
-      //var instane = new FastreportCloudSdk.TimePeriodType();
+      //var instance = new FastreportCloudSdk.TimePeriodType();
       //expect(instance).to.be.a(FastreportCloudSdk.TimePeriodType);
     });
 

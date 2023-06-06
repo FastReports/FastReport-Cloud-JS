@@ -24,6 +24,7 @@ class SubscriptionPermissions {
     /**
      * Constructs a new <code>SubscriptionPermissions</code>.
      * @alias module:models/SubscriptionPermissions
+     * @extends module:models/SubscriptionPermissionSubscriptionCreateSubscriptionGetSubscriptionUpdateSubscriptionDeleteSubscriptionExecuteSubscriptionAdministratePermissions
      * @implements module:models/SubscriptionPermissionSubscriptionCreateSubscriptionGetSubscriptionUpdateSubscriptionDeleteSubscriptionExecuteSubscriptionAdministratePermissions
      */
     constructor() { 
@@ -50,53 +51,26 @@ class SubscriptionPermissions {
         if (data) {
             obj = obj || new SubscriptionPermissions();
             SubscriptionPermissionSubscriptionCreateSubscriptionGetSubscriptionUpdateSubscriptionDeleteSubscriptionExecuteSubscriptionAdministratePermissions.constructFromObject(data, obj);
+            SubscriptionPermissionSubscriptionCreateSubscriptionGetSubscriptionUpdateSubscriptionDeleteSubscriptionExecuteSubscriptionAdministratePermissions.constructFromObject(data, obj);
 
-            if (data.hasOwnProperty('ownerId')) {
-                obj['ownerId'] = ApiClient.convertToType(data['ownerId'], 'String');
-            }
-            if (data.hasOwnProperty('owner')) {
-                obj['owner'] = SubscriptionPermission.constructFromObject(data['owner']);
-            }
-            if (data.hasOwnProperty('groups')) {
-                obj['groups'] = ApiClient.convertToType(data['groups'], {'String': SubscriptionPermission});
-            }
-            if (data.hasOwnProperty('other')) {
-                obj['other'] = SubscriptionPermission.constructFromObject(data['other']);
-            }
-            if (data.hasOwnProperty('anon')) {
-                obj['anon'] = SubscriptionPermission.constructFromObject(data['anon']);
-            }
         }
         return obj;
+    }
+
+    /**
+     * Validates the JSON data with respect to <code>SubscriptionPermissions</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>SubscriptionPermissions</code>.
+     */
+    static validateJSON(data) {
+
+        return true;
     }
 
 
 }
 
-/**
- * @member {String} ownerId
- */
-SubscriptionPermissions.prototype['ownerId'] = undefined;
 
-/**
- * @member {module:models/SubscriptionPermission} owner
- */
-SubscriptionPermissions.prototype['owner'] = undefined;
-
-/**
- * @member {Object.<String, module:models/SubscriptionPermission>} groups
- */
-SubscriptionPermissions.prototype['groups'] = undefined;
-
-/**
- * @member {module:models/SubscriptionPermission} other
- */
-SubscriptionPermissions.prototype['other'] = undefined;
-
-/**
- * @member {module:models/SubscriptionPermission} anon
- */
-SubscriptionPermissions.prototype['anon'] = undefined;
 
 
 // Implement SubscriptionPermissionSubscriptionCreateSubscriptionGetSubscriptionUpdateSubscriptionDeleteSubscriptionExecuteSubscriptionAdministratePermissions interface:

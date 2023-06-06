@@ -29,6 +29,7 @@ class DataSourcePermission {
     /**
      * Constructs a new <code>DataSourcePermission</code>.
      * @alias module:models/DataSourcePermission
+     * @extends module:models/DataSourceCreateDataSourceGetDataSourceUpdateDataSourceDeleteDataSourceExecuteDataSourceAdministratePermission
      * @implements module:models/DataSourceCreateDataSourceGetDataSourceUpdateDataSourceDeleteDataSourceExecuteDataSourceAdministratePermission
      */
     constructor() { 
@@ -55,61 +56,26 @@ class DataSourcePermission {
         if (data) {
             obj = obj || new DataSourcePermission();
             DataSourceCreateDataSourceGetDataSourceUpdateDataSourceDeleteDataSourceExecuteDataSourceAdministratePermission.constructFromObject(data, obj);
+            DataSourceCreateDataSourceGetDataSourceUpdateDataSourceDeleteDataSourceExecuteDataSourceAdministratePermission.constructFromObject(data, obj);
 
-            if (data.hasOwnProperty('create')) {
-                obj['create'] = DataSourceCreate.constructFromObject(data['create']);
-            }
-            if (data.hasOwnProperty('delete')) {
-                obj['delete'] = DataSourceDelete.constructFromObject(data['delete']);
-            }
-            if (data.hasOwnProperty('execute')) {
-                obj['execute'] = DataSourceExecute.constructFromObject(data['execute']);
-            }
-            if (data.hasOwnProperty('get')) {
-                obj['get'] = DataSourceGet.constructFromObject(data['get']);
-            }
-            if (data.hasOwnProperty('update')) {
-                obj['update'] = DataSourceUpdate.constructFromObject(data['update']);
-            }
-            if (data.hasOwnProperty('administrate')) {
-                obj['administrate'] = DataSourceAdministrate.constructFromObject(data['administrate']);
-            }
         }
         return obj;
+    }
+
+    /**
+     * Validates the JSON data with respect to <code>DataSourcePermission</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>DataSourcePermission</code>.
+     */
+    static validateJSON(data) {
+
+        return true;
     }
 
 
 }
 
-/**
- * @member {module:models/DataSourceCreate} create
- */
-DataSourcePermission.prototype['create'] = undefined;
 
-/**
- * @member {module:models/DataSourceDelete} delete
- */
-DataSourcePermission.prototype['delete'] = undefined;
-
-/**
- * @member {module:models/DataSourceExecute} execute
- */
-DataSourcePermission.prototype['execute'] = undefined;
-
-/**
- * @member {module:models/DataSourceGet} get
- */
-DataSourcePermission.prototype['get'] = undefined;
-
-/**
- * @member {module:models/DataSourceUpdate} update
- */
-DataSourcePermission.prototype['update'] = undefined;
-
-/**
- * @member {module:models/DataSourceAdministrate} administrate
- */
-DataSourcePermission.prototype['administrate'] = undefined;
 
 
 // Implement DataSourceCreateDataSourceGetDataSourceUpdateDataSourceDeleteDataSourceExecuteDataSourceAdministratePermission interface:

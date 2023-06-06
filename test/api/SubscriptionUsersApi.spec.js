@@ -58,6 +58,16 @@
         done();
       });
     });
+    describe('subscriptionUsersCountUsersAsync', function() {
+      it('should call subscriptionUsersCountUsersAsync successfully', function(done) {
+        //uncomment below and update the code to test subscriptionUsersCountUsersAsync
+        //instance.subscriptionUsersCountUsersAsync(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('subscriptionUsersGetUsers', function() {
       it('should call subscriptionUsersGetUsers successfully', function(done) {
         //uncomment below and update the code to test subscriptionUsersGetUsers

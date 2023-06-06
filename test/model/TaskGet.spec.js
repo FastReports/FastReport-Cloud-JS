@@ -49,7 +49,7 @@
   describe('TaskGet', function() {
     it('should create an instance of TaskGet', function() {
       // uncomment below and update the code to test TaskGet
-      //var instane = new FastreportCloudSdk.TaskGet();
+      //var instance = new FastreportCloudSdk.TaskGet();
       //expect(instance).to.be.a(FastreportCloudSdk.TaskGet);
     });
 

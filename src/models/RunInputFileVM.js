@@ -24,6 +24,7 @@ class RunInputFileVM {
     /**
      * Constructs a new <code>RunInputFileVM</code>.
      * @alias module:models/RunInputFileVM
+     * @extends module:models/InputFileVM
      * @implements module:models/InputFileVM
      */
     constructor() { 
@@ -50,25 +51,36 @@ class RunInputFileVM {
         if (data) {
             obj = obj || new RunInputFileVM();
             InputFileVM.constructFromObject(data, obj);
+            InputFileVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('content')) {
                 obj['content'] = ApiClient.convertToType(data['content'], 'Blob');
             }
-            if (data.hasOwnProperty('entityId')) {
-                obj['entityId'] = ApiClient.convertToType(data['entityId'], 'String');
-            }
             if (data.hasOwnProperty('fileName')) {
                 obj['fileName'] = ApiClient.convertToType(data['fileName'], 'String');
-            }
-            if (data.hasOwnProperty('type')) {
-                obj['type'] = FileKind.constructFromObject(data['type']);
             }
         }
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>RunInputFileVM</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>RunInputFileVM</code>.
+     */
+    static validateJSON(data) {
+        // ensure the json data is a string
+        if (data['fileName'] && !(typeof data['fileName'] === 'string' || data['fileName'] instanceof String)) {
+            throw new Error("Expected the field `fileName` to be a primitive type in the JSON string but got " + data['fileName']);
+        }
+
+        return true;
+    }
+
 
 }
+
+
 
 /**
  * @member {Blob} content
@@ -76,19 +88,9 @@ class RunInputFileVM {
 RunInputFileVM.prototype['content'] = undefined;
 
 /**
- * @member {String} entityId
- */
-RunInputFileVM.prototype['entityId'] = undefined;
-
-/**
  * @member {String} fileName
  */
 RunInputFileVM.prototype['fileName'] = undefined;
-
-/**
- * @member {module:models/FileKind} type
- */
-RunInputFileVM.prototype['type'] = undefined;
 
 
 // Implement InputFileVM interface:
@@ -96,10 +98,6 @@ RunInputFileVM.prototype['type'] = undefined;
  * @member {String} entityId
  */
 InputFileVM.prototype['entityId'] = undefined;
-/**
- * @member {String} fileName
- */
-InputFileVM.prototype['fileName'] = undefined;
 /**
  * @member {module:models/FileKind} type
  */

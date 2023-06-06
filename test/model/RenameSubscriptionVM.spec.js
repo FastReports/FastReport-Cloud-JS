@@ -50,7 +50,7 @@
   describe('RenameSubscriptionVM', function() {
     it('should create an instance of RenameSubscriptionVM', function() {
       // uncomment below and update the code to test RenameSubscriptionVM
-      //var instane = new FastreportCloudSdk.RenameSubscriptionVM();
+      //var instance = new FastreportCloudSdk.RenameSubscriptionVM();
       //expect(instance).to.be.a(FastreportCloudSdk.RenameSubscriptionVM);
     });
 

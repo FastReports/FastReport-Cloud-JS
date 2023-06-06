@@ -49,7 +49,7 @@
   describe('ExportFormat', function() {
     it('should create an instance of ExportFormat', function() {
       // uncomment below and update the code to test ExportFormat
-      //var instane = new FastreportCloudSdk.ExportFormat();
+      //var instance = new FastreportCloudSdk.ExportFormat();
       //expect(instance).to.be.a(FastreportCloudSdk.ExportFormat);
     });
 

@@ -75,8 +75,20 @@ class FileCreateFileGetFileUpdateFileDeleteFileExecuteFileAdministratePermission
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>FileCreateFileGetFileUpdateFileDeleteFileExecuteFileAdministratePermission</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>FileCreateFileGetFileUpdateFileDeleteFileExecuteFileAdministratePermission</code>.
+     */
+    static validateJSON(data) {
+
+        return true;
+    }
+
 
 }
+
+
 
 /**
  * @member {module:models/FileCreate} create

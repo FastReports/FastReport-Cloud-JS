@@ -50,24 +50,18 @@
   describe('RunTransportTaskBaseVM', function() {
     it('should create an instance of RunTransportTaskBaseVM', function() {
       // uncomment below and update the code to test RunTransportTaskBaseVM
-      //var instane = new FastreportCloudSdk.RunTransportTaskBaseVM();
+      //var instance = new FastreportCloudSdk.RunTransportTaskBaseVM();
       //expect(instance).to.be.a(FastreportCloudSdk.RunTransportTaskBaseVM);
     });
 
-    it('should have the property files (base name: "files")', function() {
-      // uncomment below and update the code to test the property files
+    it('should have the property inputFile (base name: "inputFile")', function() {
+      // uncomment below and update the code to test the property inputFile
       //var instance = new FastreportCloudSdk.RunTransportTaskBaseVM();
       //expect(instance).to.be();
     });
 
-    it('should have the property subscriptionId (base name: "subscriptionId")', function() {
-      // uncomment below and update the code to test the property subscriptionId
-      //var instance = new FastreportCloudSdk.RunTransportTaskBaseVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property type (base name: "type")', function() {
-      // uncomment below and update the code to test the property type
+    it('should have the property t (base name: "$t")', function() {
+      // uncomment below and update the code to test the property t
       //var instance = new FastreportCloudSdk.RunTransportTaskBaseVM();
       //expect(instance).to.be();
     });

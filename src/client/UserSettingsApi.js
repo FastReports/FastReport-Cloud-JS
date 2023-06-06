@@ -13,6 +13,7 @@
 
 
 import ApiClient from "../ApiClient";
+import AcceptAgreementsVM from '../models/AcceptAgreementsVM';
 import ProblemDetails from '../models/ProblemDetails';
 import UpdateUserSettingsVM from '../models/UpdateUserSettingsVM';
 import UserSettingsVM from '../models/UserSettingsVM';
@@ -35,6 +36,51 @@ export default class UserSettingsApi {
         this.apiClient = apiClient || ApiClient.instance;
     }
 
+
+
+    /**
+     * Use this endpoint to accept current version of service license agreement
+     * @param {Object} opts Optional parameters
+     * @param {module:models/AcceptAgreementsVM} opts.acceptAgreementsVM 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     */
+    userSettingsAcceptAgreementsWithHttpInfo(opts) {
+      opts = opts || {};
+      let postBody = opts['acceptAgreementsVM'];
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKey', 'JWT'];
+      let contentTypes = ['application/json', 'text/json', 'application/*+json'];
+      let accepts = [];
+      let returnType = null;
+      if(!returnType) returnType = 'Blob';
+      return this.apiClient.callApi(
+        '/api/manage/v1/UserSettings/accept', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Use this endpoint to accept current version of service license agreement
+     * @param {Object} opts Optional parameters
+     * @param {module:models/AcceptAgreementsVM} opts.acceptAgreementsVM 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     */
+    userSettingsAcceptAgreements(opts) {
+      return this.userSettingsAcceptAgreementsWithHttpInfo(opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
 
 
     /**
@@ -97,7 +143,7 @@ export default class UserSettingsApi {
       };
 
       let authNames = ['ApiKey', 'JWT'];
-      let contentTypes = ['application/json', 'text/json', 'application/_*+json'];
+      let contentTypes = ['application/json', 'text/json', 'application/*+json'];
       let accepts = ['application/json'];
       let returnType = UserSettingsVM;
       if(!returnType) returnType = 'Blob';

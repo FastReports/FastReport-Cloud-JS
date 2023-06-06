@@ -12,9 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
-import RunEndpointVM from './RunEndpointVM';
 import RunTransportTaskBaseVM from './RunTransportTaskBaseVM';
-import TaskType from './TaskType';
 
 /**
  * The RunWebhookTaskVM model module.
@@ -25,11 +23,13 @@ class RunWebhookTaskVM {
     /**
      * Constructs a new <code>RunWebhookTaskVM</code>.
      * @alias module:models/RunWebhookTaskVM
+     * @extends module:models/RunTransportTaskBaseVM
      * @implements module:models/RunTransportTaskBaseVM
+     * @param t {String} 
      */
-    constructor() { 
-        RunTransportTaskBaseVM.initialize(this);
-        RunWebhookTaskVM.initialize(this);
+    constructor(t) { 
+        RunTransportTaskBaseVM.initialize(this, t);
+        RunWebhookTaskVM.initialize(this, t);
     }
 
     /**
@@ -37,7 +37,7 @@ class RunWebhookTaskVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, t) { 
     }
 
     /**
@@ -51,37 +51,52 @@ class RunWebhookTaskVM {
         if (data) {
             obj = obj || new RunWebhookTaskVM();
             RunTransportTaskBaseVM.constructFromObject(data, obj);
+            RunTransportTaskBaseVM.constructFromObject(data, obj);
 
-            if (data.hasOwnProperty('endpoints')) {
-                obj['endpoints'] = ApiClient.convertToType(data['endpoints'], [RunEndpointVM]);
+            if (data.hasOwnProperty('headers')) {
+                obj['headers'] = ApiClient.convertToType(data['headers'], {'String': 'String'});
             }
-            if (data.hasOwnProperty('subscriptionId')) {
-                obj['subscriptionId'] = ApiClient.convertToType(data['subscriptionId'], 'String');
-            }
-            if (data.hasOwnProperty('type')) {
-                obj['type'] = TaskType.constructFromObject(data['type']);
+            if (data.hasOwnProperty('url')) {
+                obj['url'] = ApiClient.convertToType(data['url'], 'String');
             }
         }
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>RunWebhookTaskVM</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>RunWebhookTaskVM</code>.
+     */
+    static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of RunWebhookTaskVM.RequiredProperties) {
+            if (!data[property]) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
+        // ensure the json data is a string
+        if (data['url'] && !(typeof data['url'] === 'string' || data['url'] instanceof String)) {
+            throw new Error("Expected the field `url` to be a primitive type in the JSON string but got " + data['url']);
+        }
+
+        return true;
+    }
+
 
 }
 
-/**
- * @member {Array.<module:models/RunEndpointVM>} endpoints
- */
-RunWebhookTaskVM.prototype['endpoints'] = undefined;
+RunWebhookTaskVM.RequiredProperties = ["$t"];
 
 /**
- * @member {String} subscriptionId
+ * @member {Object.<String, String>} headers
  */
-RunWebhookTaskVM.prototype['subscriptionId'] = undefined;
+RunWebhookTaskVM.prototype['headers'] = undefined;
 
 /**
- * @member {module:models/TaskType} type
+ * @member {String} url
  */
-RunWebhookTaskVM.prototype['type'] = undefined;
+RunWebhookTaskVM.prototype['url'] = undefined;
 
 
 // Implement RunTransportTaskBaseVM interface:
@@ -90,9 +105,9 @@ RunWebhookTaskVM.prototype['type'] = undefined;
  */
 RunTransportTaskBaseVM.prototype['subscriptionId'] = undefined;
 /**
- * @member {module:models/TaskType} type
+ * @member {String} $t
  */
-RunTransportTaskBaseVM.prototype['type'] = undefined;
+RunTransportTaskBaseVM.prototype['$t'] = undefined;
 
 
 

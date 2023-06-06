@@ -49,7 +49,7 @@
   describe('FileCreate', function() {
     it('should create an instance of FileCreate', function() {
       // uncomment below and update the code to test FileCreate
-      //var instane = new FastreportCloudSdk.FileCreate();
+      //var instance = new FastreportCloudSdk.FileCreate();
       //expect(instance).to.be.a(FastreportCloudSdk.FileCreate);
     });
 

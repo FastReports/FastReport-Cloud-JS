@@ -50,7 +50,7 @@
   describe('UpdateFilePermissionsVM', function() {
     it('should create an instance of UpdateFilePermissionsVM', function() {
       // uncomment below and update the code to test UpdateFilePermissionsVM
-      //var instane = new FastreportCloudSdk.UpdateFilePermissionsVM();
+      //var instance = new FastreportCloudSdk.UpdateFilePermissionsVM();
       //expect(instance).to.be.a(FastreportCloudSdk.UpdateFilePermissionsVM);
     });
 

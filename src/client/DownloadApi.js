@@ -189,6 +189,53 @@ export default class DownloadApi {
 
 
     /**
+     * returns export, that was created from report with specified id.  INTERNAL USAGE ONLY!
+     * @param {String} reportId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link File} and HTTP response
+     */
+    downloadGetLastSVGExportWithHttpInfo(reportId) {
+      let postBody = null;
+      // verify the required parameter 'reportId' is set
+      if (reportId === undefined || reportId === null) {
+        throw new Error("Missing the required parameter 'reportId' when calling downloadGetLastSVGExport");
+      }
+
+      let pathParams = {
+        'reportId': reportId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKey', 'JWT'];
+      let contentTypes = [];
+      let accepts = ['text/plain', 'application/json', 'application/octet-stream'];
+      let returnType = File;
+      if(!returnType) returnType = 'Blob';
+      return this.apiClient.callApi(
+        '/download/lastPreview/{reportId}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * returns export, that was created from report with specified id.  INTERNAL USAGE ONLY!
+     * @param {String} reportId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link File}
+     */
+    downloadGetLastSVGExport(reportId) {
+      return this.downloadGetLastSVGExportWithHttpInfo(reportId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Returns a prepared file with specified id
      * @param {String} id 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link File} and HTTP response
