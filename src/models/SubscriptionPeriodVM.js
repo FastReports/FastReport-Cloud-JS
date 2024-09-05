@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import CloudBaseVM from './CloudBaseVM';
 import SubscriptionPlanVM from './SubscriptionPlanVM';
 
 /**
@@ -23,10 +24,13 @@ class SubscriptionPeriodVM {
     /**
      * Constructs a new <code>SubscriptionPeriodVM</code>.
      * @alias module:models/SubscriptionPeriodVM
+     * @extends module:models/CloudBaseVM
+     * @implements module:models/CloudBaseVM
+     * @param t {String} 
      */
-    constructor() { 
-        
-        SubscriptionPeriodVM.initialize(this);
+    constructor(t) { 
+        CloudBaseVM.initialize(this, t);
+        SubscriptionPeriodVM.initialize(this, t);
     }
 
     /**
@@ -34,7 +38,8 @@ class SubscriptionPeriodVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -47,6 +52,8 @@ class SubscriptionPeriodVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new SubscriptionPeriodVM();
+            CloudBaseVM.constructFromObject(data, obj);
+            CloudBaseVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('startTime')) {
                 obj['startTime'] = ApiClient.convertToType(data['startTime'], 'Date');
@@ -56,6 +63,9 @@ class SubscriptionPeriodVM {
             }
             if (data.hasOwnProperty('plan')) {
                 obj['plan'] = SubscriptionPlanVM.constructFromObject(data['plan']);
+            }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
             }
         }
         return obj;
@@ -67,9 +77,19 @@ class SubscriptionPeriodVM {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>SubscriptionPeriodVM</code>.
      */
     static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of SubscriptionPeriodVM.RequiredProperties) {
+            if (!data.hasOwnProperty(property)) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
         // validate the optional field `plan`
         if (data['plan']) { // data not null
           SubscriptionPlanVM.validateJSON(data['plan']);
+        }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
         }
 
         return true;
@@ -78,7 +98,7 @@ class SubscriptionPeriodVM {
 
 }
 
-
+SubscriptionPeriodVM.RequiredProperties = ["$t"];
 
 /**
  * @member {Date} startTime
@@ -95,7 +115,17 @@ SubscriptionPeriodVM.prototype['endTime'] = undefined;
  */
 SubscriptionPeriodVM.prototype['plan'] = undefined;
 
+/**
+ * @member {String} $t
+ */
+SubscriptionPeriodVM.prototype['$t'] = undefined;
 
+
+// Implement CloudBaseVM interface:
+/**
+ * @member {String} $t
+ */
+CloudBaseVM.prototype['$t'] = undefined;
 
 
 

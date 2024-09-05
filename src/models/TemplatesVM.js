@@ -12,8 +12,8 @@
  */
 
 import ApiClient from '../ApiClient';
+import FilesVMBase from './FilesVMBase';
 import TemplateVM from './TemplateVM';
-import TemplateVMFilesVMBase from './TemplateVMFilesVMBase';
 
 /**
  * The TemplatesVM model module.
@@ -24,12 +24,13 @@ class TemplatesVM {
     /**
      * Constructs a new <code>TemplatesVM</code>.
      * @alias module:models/TemplatesVM
-     * @extends module:models/TemplateVMFilesVMBase
-     * @implements module:models/TemplateVMFilesVMBase
+     * @extends module:models/FilesVMBase
+     * @implements module:models/FilesVMBase
+     * @param t {String} 
      */
-    constructor() { 
-        TemplateVMFilesVMBase.initialize(this);
-        TemplatesVM.initialize(this);
+    constructor(t) { 
+        FilesVMBase.initialize(this, t);
+        TemplatesVM.initialize(this, t);
     }
 
     /**
@@ -37,7 +38,8 @@ class TemplatesVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -50,9 +52,15 @@ class TemplatesVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new TemplatesVM();
-            TemplateVMFilesVMBase.constructFromObject(data, obj);
-            TemplateVMFilesVMBase.constructFromObject(data, obj);
+            FilesVMBase.constructFromObject(data, obj);
+            FilesVMBase.constructFromObject(data, obj);
 
+            if (data.hasOwnProperty('files')) {
+                obj['files'] = ApiClient.convertToType(data['files'], [TemplateVM]);
+            }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
+            }
         }
         return obj;
     }
@@ -63,6 +71,26 @@ class TemplatesVM {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>TemplatesVM</code>.
      */
     static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of TemplatesVM.RequiredProperties) {
+            if (!data.hasOwnProperty(property)) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
+        if (data['files']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['files'])) {
+                throw new Error("Expected the field `files` to be an array in the JSON data but got " + data['files']);
+            }
+            // validate the optional field `files` (array)
+            for (const item of data['files']) {
+                TemplateVM.validateJSON(item);
+            };
+        }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
+        }
 
         return true;
     }
@@ -70,26 +98,24 @@ class TemplatesVM {
 
 }
 
+TemplatesVM.RequiredProperties = ["$t"];
 
-
-
-// Implement TemplateVMFilesVMBase interface:
 /**
  * @member {Array.<module:models/TemplateVM>} files
  */
-TemplateVMFilesVMBase.prototype['files'] = undefined;
+TemplatesVM.prototype['files'] = undefined;
+
 /**
- * @member {Number} count
+ * @member {String} $t
  */
-TemplateVMFilesVMBase.prototype['count'] = undefined;
+TemplatesVM.prototype['$t'] = undefined;
+
+
+// Implement FilesVMBase interface:
 /**
- * @member {Number} skip
+ * @member {String} $t
  */
-TemplateVMFilesVMBase.prototype['skip'] = undefined;
-/**
- * @member {Number} take
- */
-TemplateVMFilesVMBase.prototype['take'] = undefined;
+FilesVMBase.prototype['$t'] = undefined;
 
 
 

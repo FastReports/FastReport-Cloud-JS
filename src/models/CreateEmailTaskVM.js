@@ -12,7 +12,9 @@
  */
 
 import ApiClient from '../ApiClient';
+import CreateTaskEndVM from './CreateTaskEndVM';
 import CreateTransportTaskBaseVM from './CreateTransportTaskBaseVM';
+import InputFileVM from './InputFileVM';
 
 /**
  * The CreateEmailTaskVM model module.
@@ -38,6 +40,7 @@ class CreateEmailTaskVM {
      * Only for internal use.
      */
     static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -83,6 +86,9 @@ class CreateEmailTaskVM {
             if (data.hasOwnProperty('username')) {
                 obj['username'] = ApiClient.convertToType(data['username'], 'String');
             }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
+            }
         }
         return obj;
     }
@@ -95,7 +101,7 @@ class CreateEmailTaskVM {
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
         for (const property of CreateEmailTaskVM.RequiredProperties) {
-            if (!data[property]) {
+            if (!data.hasOwnProperty(property)) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
@@ -126,6 +132,10 @@ class CreateEmailTaskVM {
         // ensure the json data is a string
         if (data['username'] && !(typeof data['username'] === 'string' || data['username'] instanceof String)) {
             throw new Error("Expected the field `username` to be a primitive type in the JSON string but got " + data['username']);
+        }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
         }
 
         return true;
@@ -186,6 +196,11 @@ CreateEmailTaskVM.prototype['to'] = undefined;
  */
 CreateEmailTaskVM.prototype['username'] = undefined;
 
+/**
+ * @member {String} $t
+ */
+CreateEmailTaskVM.prototype['$t'] = undefined;
+
 
 // Implement CreateTransportTaskBaseVM interface:
 /**
@@ -193,9 +208,13 @@ CreateEmailTaskVM.prototype['username'] = undefined;
  */
 CreateTransportTaskBaseVM.prototype['cronExpression'] = undefined;
 /**
- * @member {Date} delayedRunTime
+ * @member {Date} startsOn
  */
-CreateTransportTaskBaseVM.prototype['delayedRunTime'] = undefined;
+CreateTransportTaskBaseVM.prototype['startsOn'] = undefined;
+/**
+ * @member {module:models/CreateTaskEndVM} ends
+ */
+CreateTransportTaskBaseVM.prototype['ends'] = undefined;
 /**
  * @member {String} name
  */

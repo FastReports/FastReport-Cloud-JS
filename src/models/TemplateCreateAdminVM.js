@@ -25,10 +25,11 @@ class TemplateCreateAdminVM {
      * @alias module:models/TemplateCreateAdminVM
      * @extends module:models/TemplateCreateVM
      * @implements module:models/TemplateCreateVM
+     * @param t {String} 
      */
-    constructor() { 
-        TemplateCreateVM.initialize(this);
-        TemplateCreateAdminVM.initialize(this);
+    constructor(t) { 
+        TemplateCreateVM.initialize(this, t);
+        TemplateCreateAdminVM.initialize(this, t);
     }
 
     /**
@@ -36,9 +37,10 @@ class TemplateCreateAdminVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, t) { 
         obj['ownerId'] = ownerId;
         obj['parentId'] = parentId;
+        obj['$t'] = t;
     }
 
     /**
@@ -60,6 +62,9 @@ class TemplateCreateAdminVM {
             if (data.hasOwnProperty('parentId')) {
                 obj['parentId'] = ApiClient.convertToType(data['parentId'], 'String');
             }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
+            }
         }
         return obj;
     }
@@ -72,7 +77,7 @@ class TemplateCreateAdminVM {
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
         for (const property of TemplateCreateAdminVM.RequiredProperties) {
-            if (!data[property]) {
+            if (!data.hasOwnProperty(property)) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
@@ -84,6 +89,10 @@ class TemplateCreateAdminVM {
         if (data['parentId'] && !(typeof data['parentId'] === 'string' || data['parentId'] instanceof String)) {
             throw new Error("Expected the field `parentId` to be a primitive type in the JSON string but got " + data['parentId']);
         }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
+        }
 
         return true;
     }
@@ -91,7 +100,7 @@ class TemplateCreateAdminVM {
 
 }
 
-TemplateCreateAdminVM.RequiredProperties = ["ownerId", "parentId"];
+TemplateCreateAdminVM.RequiredProperties = ["ownerId", "parentId", "$t"];
 
 /**
  * @member {String} ownerId
@@ -102,6 +111,11 @@ TemplateCreateAdminVM.prototype['ownerId'] = undefined;
  * @member {String} parentId
  */
 TemplateCreateAdminVM.prototype['parentId'] = undefined;
+
+/**
+ * @member {String} $t
+ */
+TemplateCreateAdminVM.prototype['$t'] = undefined;
 
 
 // Implement TemplateCreateVM interface:
@@ -121,6 +135,10 @@ TemplateCreateVM.prototype['icon'] = undefined;
  * @member {Blob} content
  */
 TemplateCreateVM.prototype['content'] = undefined;
+/**
+ * @member {String} $t
+ */
+TemplateCreateVM.prototype['$t'] = undefined;
 
 
 

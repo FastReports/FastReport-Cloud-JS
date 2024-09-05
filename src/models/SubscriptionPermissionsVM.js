@@ -12,7 +12,8 @@
  */
 
 import ApiClient from '../ApiClient';
-import SubscriptionPermissions from './SubscriptionPermissions';
+import CloudBaseVM from './CloudBaseVM';
+import SubscriptionPermissionsCRUDVM from './SubscriptionPermissionsCRUDVM';
 
 /**
  * The SubscriptionPermissionsVM model module.
@@ -23,10 +24,13 @@ class SubscriptionPermissionsVM {
     /**
      * Constructs a new <code>SubscriptionPermissionsVM</code>.
      * @alias module:models/SubscriptionPermissionsVM
+     * @extends module:models/CloudBaseVM
+     * @implements module:models/CloudBaseVM
+     * @param t {String} 
      */
-    constructor() { 
-        
-        SubscriptionPermissionsVM.initialize(this);
+    constructor(t) { 
+        CloudBaseVM.initialize(this, t);
+        SubscriptionPermissionsVM.initialize(this, t);
     }
 
     /**
@@ -34,7 +38,8 @@ class SubscriptionPermissionsVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -47,9 +52,14 @@ class SubscriptionPermissionsVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new SubscriptionPermissionsVM();
+            CloudBaseVM.constructFromObject(data, obj);
+            CloudBaseVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('permissions')) {
-                obj['permissions'] = SubscriptionPermissions.constructFromObject(data['permissions']);
+                obj['permissions'] = SubscriptionPermissionsCRUDVM.constructFromObject(data['permissions']);
+            }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
             }
         }
         return obj;
@@ -61,9 +71,19 @@ class SubscriptionPermissionsVM {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>SubscriptionPermissionsVM</code>.
      */
     static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of SubscriptionPermissionsVM.RequiredProperties) {
+            if (!data.hasOwnProperty(property)) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
         // validate the optional field `permissions`
         if (data['permissions']) { // data not null
-          SubscriptionPermissions.validateJSON(data['permissions']);
+          SubscriptionPermissionsCRUDVM.validateJSON(data['permissions']);
+        }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
         }
 
         return true;
@@ -72,14 +92,24 @@ class SubscriptionPermissionsVM {
 
 }
 
-
+SubscriptionPermissionsVM.RequiredProperties = ["$t"];
 
 /**
- * @member {module:models/SubscriptionPermissions} permissions
+ * @member {module:models/SubscriptionPermissionsCRUDVM} permissions
  */
 SubscriptionPermissionsVM.prototype['permissions'] = undefined;
 
+/**
+ * @member {String} $t
+ */
+SubscriptionPermissionsVM.prototype['$t'] = undefined;
 
+
+// Implement CloudBaseVM interface:
+/**
+ * @member {String} $t
+ */
+CloudBaseVM.prototype['$t'] = undefined;
 
 
 

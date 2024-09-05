@@ -10,5 +10,6 @@ Name | Type | Description | Notes
 **expiredDate** | **Date** |  | [optional] 
 **addedUsers** | [**[InvitedUser]**](InvitedUser.md) |  | [optional] 
 **creatorUserId** | **String** |  | [optional] 
+**t** | **String** |  | 
 
 

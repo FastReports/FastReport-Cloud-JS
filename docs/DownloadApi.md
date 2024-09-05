@@ -143,7 +143,8 @@ JWT.accessToken = "YOUR ACCESS TOKEN"
 let apiInstance = new FastreportCloudSdk.DownloadApi();
 let archiveName = "archiveName_example"; // String | name of the created archive
 let opts = {
-  'ids': "ids_example" // String | ids separated with a ',' sign
+  'fileIds': "fileIds_example", // String | ids separated with a ',' sign
+  'folderIds': "folderIds_example" // String | ids separated with a ',' sign
 };
 apiInstance.downloadGetExports(archiveName, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -159,7 +160,8 @@ apiInstance.downloadGetExports(archiveName, opts).then((data) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **archiveName** | **String**| name of the created archive | 
- **ids** | **String**| ids separated with a &#39;,&#39; sign | [optional] 
+ **fileIds** | **String**| ids separated with a &#39;,&#39; sign | [optional] 
+ **folderIds** | **String**| ids separated with a &#39;,&#39; sign | [optional] 
 
 ### Return type
 
@@ -347,7 +349,8 @@ JWT.accessToken = "YOUR ACCESS TOKEN"
 let apiInstance = new FastreportCloudSdk.DownloadApi();
 let archiveName = "archiveName_example"; // String | name of the created archive
 let opts = {
-  'ids': "ids_example" // String | ids separated with a ',' sign
+  'fileIds': "fileIds_example", // String | ids separated with a ',' sign
+  'folderIds': "folderIds_example" // String | ids separated with a ',' sign
 };
 apiInstance.downloadGetReports(archiveName, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -363,7 +366,8 @@ apiInstance.downloadGetReports(archiveName, opts).then((data) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **archiveName** | **String**| name of the created archive | 
- **ids** | **String**| ids separated with a &#39;,&#39; sign | [optional] 
+ **fileIds** | **String**| ids separated with a &#39;,&#39; sign | [optional] 
+ **folderIds** | **String**| ids separated with a &#39;,&#39; sign | [optional] 
 
 ### Return type
 
@@ -501,7 +505,8 @@ JWT.accessToken = "YOUR ACCESS TOKEN"
 let apiInstance = new FastreportCloudSdk.DownloadApi();
 let archiveName = "archiveName_example"; // String | name of the created archive
 let opts = {
-  'ids': "ids_example" // String | ids separated with a ',' sign
+  'fileIds': "fileIds_example", // String | ids separated with a ',' sign
+  'folderIds': "folderIds_example" // String | ids separated with a ',' sign
 };
 apiInstance.downloadGetTemplates(archiveName, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -517,7 +522,8 @@ apiInstance.downloadGetTemplates(archiveName, opts).then((data) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **archiveName** | **String**| name of the created archive | 
- **ids** | **String**| ids separated with a &#39;,&#39; sign | [optional] 
+ **fileIds** | **String**| ids separated with a &#39;,&#39; sign | [optional] 
+ **folderIds** | **String**| ids separated with a &#39;,&#39; sign | [optional] 
 
 ### Return type
 

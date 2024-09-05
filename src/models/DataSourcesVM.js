@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import CloudBaseVM from './CloudBaseVM';
 import DataSourceVM from './DataSourceVM';
 
 /**
@@ -23,10 +24,13 @@ class DataSourcesVM {
     /**
      * Constructs a new <code>DataSourcesVM</code>.
      * @alias module:models/DataSourcesVM
+     * @extends module:models/CloudBaseVM
+     * @implements module:models/CloudBaseVM
+     * @param t {String} 
      */
-    constructor() { 
-        
-        DataSourcesVM.initialize(this);
+    constructor(t) { 
+        CloudBaseVM.initialize(this, t);
+        DataSourcesVM.initialize(this, t);
     }
 
     /**
@@ -34,7 +38,8 @@ class DataSourcesVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -47,6 +52,8 @@ class DataSourcesVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new DataSourcesVM();
+            CloudBaseVM.constructFromObject(data, obj);
+            CloudBaseVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('dataSources')) {
                 obj['dataSources'] = ApiClient.convertToType(data['dataSources'], [DataSourceVM]);
@@ -60,6 +67,9 @@ class DataSourcesVM {
             if (data.hasOwnProperty('take')) {
                 obj['take'] = ApiClient.convertToType(data['take'], 'Number');
             }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
+            }
         }
         return obj;
     }
@@ -70,6 +80,12 @@ class DataSourcesVM {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>DataSourcesVM</code>.
      */
     static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of DataSourcesVM.RequiredProperties) {
+            if (!data.hasOwnProperty(property)) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
         if (data['dataSources']) { // data not null
             // ensure the json data is an array
             if (!Array.isArray(data['dataSources'])) {
@@ -80,6 +96,10 @@ class DataSourcesVM {
                 DataSourceVM.validateJSON(item);
             };
         }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
+        }
 
         return true;
     }
@@ -87,7 +107,7 @@ class DataSourcesVM {
 
 }
 
-
+DataSourcesVM.RequiredProperties = ["$t"];
 
 /**
  * @member {Array.<module:models/DataSourceVM>} dataSources
@@ -109,7 +129,17 @@ DataSourcesVM.prototype['skip'] = undefined;
  */
 DataSourcesVM.prototype['take'] = undefined;
 
+/**
+ * @member {String} $t
+ */
+DataSourcesVM.prototype['$t'] = undefined;
 
+
+// Implement CloudBaseVM interface:
+/**
+ * @member {String} $t
+ */
+CloudBaseVM.prototype['$t'] = undefined;
 
 
 

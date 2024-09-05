@@ -12,7 +12,9 @@
  */
 
 import ApiClient from '../ApiClient';
+import CloudBaseVM from './CloudBaseVM';
 import DataSourceConnectionType from './DataSourceConnectionType';
+import DataSourceSelectCommandVM from './DataSourceSelectCommandVM';
 import DataSourceStatus from './DataSourceStatus';
 
 /**
@@ -24,10 +26,13 @@ class DataSourceVM {
     /**
      * Constructs a new <code>DataSourceVM</code>.
      * @alias module:models/DataSourceVM
+     * @extends module:models/CloudBaseVM
+     * @implements module:models/CloudBaseVM
+     * @param t {String} 
      */
-    constructor() { 
-        
-        DataSourceVM.initialize(this);
+    constructor(t) { 
+        CloudBaseVM.initialize(this, t);
+        DataSourceVM.initialize(this, t);
     }
 
     /**
@@ -35,7 +40,8 @@ class DataSourceVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -48,6 +54,8 @@ class DataSourceVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new DataSourceVM();
+            CloudBaseVM.constructFromObject(data, obj);
+            CloudBaseVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('id')) {
                 obj['id'] = ApiClient.convertToType(data['id'], 'String');
@@ -82,6 +90,15 @@ class DataSourceVM {
             if (data.hasOwnProperty('status')) {
                 obj['status'] = DataSourceStatus.constructFromObject(data['status']);
             }
+            if (data.hasOwnProperty('errorMessage')) {
+                obj['errorMessage'] = ApiClient.convertToType(data['errorMessage'], 'String');
+            }
+            if (data.hasOwnProperty('selectCommands')) {
+                obj['selectCommands'] = ApiClient.convertToType(data['selectCommands'], [DataSourceSelectCommandVM]);
+            }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
+            }
         }
         return obj;
     }
@@ -92,6 +109,12 @@ class DataSourceVM {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>DataSourceVM</code>.
      */
     static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of DataSourceVM.RequiredProperties) {
+            if (!data.hasOwnProperty(property)) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
         // ensure the json data is a string
         if (data['id'] && !(typeof data['id'] === 'string' || data['id'] instanceof String)) {
             throw new Error("Expected the field `id` to be a primitive type in the JSON string but got " + data['id']);
@@ -120,6 +143,24 @@ class DataSourceVM {
         if (data['creatorUserId'] && !(typeof data['creatorUserId'] === 'string' || data['creatorUserId'] instanceof String)) {
             throw new Error("Expected the field `creatorUserId` to be a primitive type in the JSON string but got " + data['creatorUserId']);
         }
+        // ensure the json data is a string
+        if (data['errorMessage'] && !(typeof data['errorMessage'] === 'string' || data['errorMessage'] instanceof String)) {
+            throw new Error("Expected the field `errorMessage` to be a primitive type in the JSON string but got " + data['errorMessage']);
+        }
+        if (data['selectCommands']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['selectCommands'])) {
+                throw new Error("Expected the field `selectCommands` to be an array in the JSON data but got " + data['selectCommands']);
+            }
+            // validate the optional field `selectCommands` (array)
+            for (const item of data['selectCommands']) {
+                DataSourceSelectCommandVM.validateJSON(item);
+            };
+        }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
+        }
 
         return true;
     }
@@ -127,7 +168,7 @@ class DataSourceVM {
 
 }
 
-
+DataSourceVM.RequiredProperties = ["$t"];
 
 /**
  * @member {String} id
@@ -184,7 +225,27 @@ DataSourceVM.prototype['creatorUserId'] = undefined;
  */
 DataSourceVM.prototype['status'] = undefined;
 
+/**
+ * @member {String} errorMessage
+ */
+DataSourceVM.prototype['errorMessage'] = undefined;
 
+/**
+ * @member {Array.<module:models/DataSourceSelectCommandVM>} selectCommands
+ */
+DataSourceVM.prototype['selectCommands'] = undefined;
+
+/**
+ * @member {String} $t
+ */
+DataSourceVM.prototype['$t'] = undefined;
+
+
+// Implement CloudBaseVM interface:
+/**
+ * @member {String} $t
+ */
+CloudBaseVM.prototype['$t'] = undefined;
 
 
 

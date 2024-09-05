@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import CloudBaseVM from './CloudBaseVM';
 
 /**
  * The FolderCreateVM model module.
@@ -22,10 +23,13 @@ class FolderCreateVM {
     /**
      * Constructs a new <code>FolderCreateVM</code>.
      * @alias module:models/FolderCreateVM
+     * @extends module:models/CloudBaseVM
+     * @implements module:models/CloudBaseVM
+     * @param t {String} 
      */
-    constructor() { 
-        
-        FolderCreateVM.initialize(this);
+    constructor(t) { 
+        CloudBaseVM.initialize(this, t);
+        FolderCreateVM.initialize(this, t);
     }
 
     /**
@@ -33,7 +37,8 @@ class FolderCreateVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -46,6 +51,8 @@ class FolderCreateVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new FolderCreateVM();
+            CloudBaseVM.constructFromObject(data, obj);
+            CloudBaseVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('name')) {
                 obj['name'] = ApiClient.convertToType(data['name'], 'String');
@@ -55,6 +62,9 @@ class FolderCreateVM {
             }
             if (data.hasOwnProperty('icon')) {
                 obj['icon'] = ApiClient.convertToType(data['icon'], 'Blob');
+            }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
             }
         }
         return obj;
@@ -66,6 +76,12 @@ class FolderCreateVM {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>FolderCreateVM</code>.
      */
     static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of FolderCreateVM.RequiredProperties) {
+            if (!data.hasOwnProperty(property)) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
         // ensure the json data is a string
         if (data['name'] && !(typeof data['name'] === 'string' || data['name'] instanceof String)) {
             throw new Error("Expected the field `name` to be a primitive type in the JSON string but got " + data['name']);
@@ -74,6 +90,10 @@ class FolderCreateVM {
         if (!Array.isArray(data['tags'])) {
             throw new Error("Expected the field `tags` to be an array in the JSON data but got " + data['tags']);
         }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
+        }
 
         return true;
     }
@@ -81,7 +101,7 @@ class FolderCreateVM {
 
 }
 
-
+FolderCreateVM.RequiredProperties = ["$t"];
 
 /**
  * @member {String} name
@@ -98,7 +118,17 @@ FolderCreateVM.prototype['tags'] = undefined;
  */
 FolderCreateVM.prototype['icon'] = undefined;
 
+/**
+ * @member {String} $t
+ */
+FolderCreateVM.prototype['$t'] = undefined;
 
+
+// Implement CloudBaseVM interface:
+/**
+ * @member {String} $t
+ */
+CloudBaseVM.prototype['$t'] = undefined;
 
 
 

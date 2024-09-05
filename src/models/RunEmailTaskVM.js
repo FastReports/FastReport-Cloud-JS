@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import RunInputFileVM from './RunInputFileVM';
 import RunTransportTaskBaseVM from './RunTransportTaskBaseVM';
 
 /**
@@ -39,6 +40,7 @@ class RunEmailTaskVM {
      */
     static initialize(obj, t) { 
         obj['to'] = to;
+        obj['$t'] = t;
     }
 
     /**
@@ -84,6 +86,9 @@ class RunEmailTaskVM {
             if (data.hasOwnProperty('username')) {
                 obj['username'] = ApiClient.convertToType(data['username'], 'String');
             }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
+            }
         }
         return obj;
     }
@@ -96,7 +101,7 @@ class RunEmailTaskVM {
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
         for (const property of RunEmailTaskVM.RequiredProperties) {
-            if (!data[property]) {
+            if (!data.hasOwnProperty(property)) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
@@ -127,6 +132,10 @@ class RunEmailTaskVM {
         // ensure the json data is a string
         if (data['username'] && !(typeof data['username'] === 'string' || data['username'] instanceof String)) {
             throw new Error("Expected the field `username` to be a primitive type in the JSON string but got " + data['username']);
+        }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
         }
 
         return true;
@@ -186,6 +195,11 @@ RunEmailTaskVM.prototype['to'] = undefined;
  * @member {String} username
  */
 RunEmailTaskVM.prototype['username'] = undefined;
+
+/**
+ * @member {String} $t
+ */
+RunEmailTaskVM.prototype['$t'] = undefined;
 
 
 // Implement RunTransportTaskBaseVM interface:

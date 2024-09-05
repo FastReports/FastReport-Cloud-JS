@@ -192,7 +192,8 @@ let apiInstance = new FastreportCloudSdk.TasksApi();
 let opts = {
   'skip': 0, // Number | number of tasks, that have to be skipped
   'take': 10, // Number | number of tasks, that have to be returned
-  'subscriptionId': "subscriptionId_example" // String | subscription id
+  'subscriptionId': "subscriptionId_example", // String | subscription id
+  'searchPattern': "''" // String | 
 };
 apiInstance.tasksGetList(opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -210,6 +211,7 @@ Name | Type | Description  | Notes
  **skip** | **Number**| number of tasks, that have to be skipped | [optional] [default to 0]
  **take** | **Number**| number of tasks, that have to be returned | [optional] [default to 10]
  **subscriptionId** | **String**| subscription id | [optional] 
+ **searchPattern** | **String**|  | [optional] [default to &#39;&#39;]
 
 ### Return type
 

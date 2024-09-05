@@ -54,6 +54,18 @@
       //expect(instance).to.be.a(FastreportCloudSdk.ExportsVM);
     });
 
+    it('should have the property files (base name: "files")', function() {
+      // uncomment below and update the code to test the property files
+      //var instance = new FastreportCloudSdk.ExportsVM();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property t (base name: "$t")', function() {
+      // uncomment below and update the code to test the property t
+      //var instance = new FastreportCloudSdk.ExportsVM();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

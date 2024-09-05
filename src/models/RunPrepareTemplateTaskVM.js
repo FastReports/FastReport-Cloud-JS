@@ -12,8 +12,11 @@
  */
 
 import ApiClient from '../ApiClient';
+import OutputFileVM from './OutputFileVM';
 import RunExportReportTaskVM from './RunExportReportTaskVM';
+import RunInputFileVM from './RunInputFileVM';
 import RunTransformTaskBaseVM from './RunTransformTaskBaseVM';
+import RunTransportTaskBaseVM from './RunTransportTaskBaseVM';
 
 /**
  * The RunPrepareTemplateTaskVM model module.
@@ -39,6 +42,7 @@ class RunPrepareTemplateTaskVM {
      * Only for internal use.
      */
     static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -63,6 +67,9 @@ class RunPrepareTemplateTaskVM {
             if (data.hasOwnProperty('reportParameters')) {
                 obj['reportParameters'] = ApiClient.convertToType(data['reportParameters'], {'String': 'String'});
             }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
+            }
         }
         return obj;
     }
@@ -75,7 +82,7 @@ class RunPrepareTemplateTaskVM {
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
         for (const property of RunPrepareTemplateTaskVM.RequiredProperties) {
-            if (!data[property]) {
+            if (!data.hasOwnProperty(property)) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
@@ -88,6 +95,10 @@ class RunPrepareTemplateTaskVM {
             for (const item of data['exports']) {
                 RunExportReportTaskVM.validateJSON(item);
             };
+        }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
         }
 
         return true;
@@ -112,6 +123,11 @@ RunPrepareTemplateTaskVM.prototype['pagesCount'] = undefined;
  * @member {Object.<String, String>} reportParameters
  */
 RunPrepareTemplateTaskVM.prototype['reportParameters'] = undefined;
+
+/**
+ * @member {String} $t
+ */
+RunPrepareTemplateTaskVM.prototype['$t'] = undefined;
 
 
 // Implement RunTransformTaskBaseVM interface:

@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import CloudBaseVM from './CloudBaseVM';
 
 /**
  * The UpdateUserProfileVM model module.
@@ -22,10 +23,13 @@ class UpdateUserProfileVM {
     /**
      * Constructs a new <code>UpdateUserProfileVM</code>.
      * @alias module:models/UpdateUserProfileVM
+     * @extends module:models/CloudBaseVM
+     * @implements module:models/CloudBaseVM
+     * @param t {String} 
      */
-    constructor() { 
-        
-        UpdateUserProfileVM.initialize(this);
+    constructor(t) { 
+        CloudBaseVM.initialize(this, t);
+        UpdateUserProfileVM.initialize(this, t);
     }
 
     /**
@@ -33,7 +37,8 @@ class UpdateUserProfileVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -46,6 +51,8 @@ class UpdateUserProfileVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new UpdateUserProfileVM();
+            CloudBaseVM.constructFromObject(data, obj);
+            CloudBaseVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('name')) {
                 obj['name'] = ApiClient.convertToType(data['name'], 'String');
@@ -62,6 +69,9 @@ class UpdateUserProfileVM {
             if (data.hasOwnProperty('passwordNew2')) {
                 obj['passwordNew2'] = ApiClient.convertToType(data['passwordNew2'], 'String');
             }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
+            }
         }
         return obj;
     }
@@ -72,6 +82,12 @@ class UpdateUserProfileVM {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>UpdateUserProfileVM</code>.
      */
     static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of UpdateUserProfileVM.RequiredProperties) {
+            if (!data.hasOwnProperty(property)) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
         // ensure the json data is a string
         if (data['name'] && !(typeof data['name'] === 'string' || data['name'] instanceof String)) {
             throw new Error("Expected the field `name` to be a primitive type in the JSON string but got " + data['name']);
@@ -92,6 +108,10 @@ class UpdateUserProfileVM {
         if (data['passwordNew2'] && !(typeof data['passwordNew2'] === 'string' || data['passwordNew2'] instanceof String)) {
             throw new Error("Expected the field `passwordNew2` to be a primitive type in the JSON string but got " + data['passwordNew2']);
         }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
+        }
 
         return true;
     }
@@ -99,7 +119,7 @@ class UpdateUserProfileVM {
 
 }
 
-
+UpdateUserProfileVM.RequiredProperties = ["$t"];
 
 /**
  * @member {String} name
@@ -126,7 +146,17 @@ UpdateUserProfileVM.prototype['passwordNew'] = undefined;
  */
 UpdateUserProfileVM.prototype['passwordNew2'] = undefined;
 
+/**
+ * @member {String} $t
+ */
+UpdateUserProfileVM.prototype['$t'] = undefined;
 
+
+// Implement CloudBaseVM interface:
+/**
+ * @member {String} $t
+ */
+CloudBaseVM.prototype['$t'] = undefined;
 
 
 

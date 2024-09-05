@@ -12,7 +12,9 @@
  */
 
 import ApiClient from '../ApiClient';
+import CreateTaskEndVM from './CreateTaskEndVM';
 import CreateTransportTaskBaseVM from './CreateTransportTaskBaseVM';
+import InputFileVM from './InputFileVM';
 
 /**
  * The CreateFTPUploadTaskVM model module.
@@ -38,6 +40,7 @@ class CreateFTPUploadTaskVM {
      * Only for internal use.
      */
     static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -77,6 +80,9 @@ class CreateFTPUploadTaskVM {
             if (data.hasOwnProperty('useSFTP')) {
                 obj['useSFTP'] = ApiClient.convertToType(data['useSFTP'], 'Boolean');
             }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
+            }
         }
         return obj;
     }
@@ -89,7 +95,7 @@ class CreateFTPUploadTaskVM {
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
         for (const property of CreateFTPUploadTaskVM.RequiredProperties) {
-            if (!data[property]) {
+            if (!data.hasOwnProperty(property)) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
@@ -112,6 +118,10 @@ class CreateFTPUploadTaskVM {
         // ensure the json data is a string
         if (data['ftpUsername'] && !(typeof data['ftpUsername'] === 'string' || data['ftpUsername'] instanceof String)) {
             throw new Error("Expected the field `ftpUsername` to be a primitive type in the JSON string but got " + data['ftpUsername']);
+        }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
         }
 
         return true;
@@ -162,6 +172,11 @@ CreateFTPUploadTaskVM.prototype['ftpUsername'] = undefined;
  */
 CreateFTPUploadTaskVM.prototype['useSFTP'] = undefined;
 
+/**
+ * @member {String} $t
+ */
+CreateFTPUploadTaskVM.prototype['$t'] = undefined;
+
 
 // Implement CreateTransportTaskBaseVM interface:
 /**
@@ -169,9 +184,13 @@ CreateFTPUploadTaskVM.prototype['useSFTP'] = undefined;
  */
 CreateTransportTaskBaseVM.prototype['cronExpression'] = undefined;
 /**
- * @member {Date} delayedRunTime
+ * @member {Date} startsOn
  */
-CreateTransportTaskBaseVM.prototype['delayedRunTime'] = undefined;
+CreateTransportTaskBaseVM.prototype['startsOn'] = undefined;
+/**
+ * @member {module:models/CreateTaskEndVM} ends
+ */
+CreateTransportTaskBaseVM.prototype['ends'] = undefined;
 /**
  * @member {String} name
  */

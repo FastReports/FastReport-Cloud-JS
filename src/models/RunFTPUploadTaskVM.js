@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import RunInputFileVM from './RunInputFileVM';
 import RunTransportTaskBaseVM from './RunTransportTaskBaseVM';
 
 /**
@@ -38,6 +39,7 @@ class RunFTPUploadTaskVM {
      * Only for internal use.
      */
     static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -77,6 +79,9 @@ class RunFTPUploadTaskVM {
             if (data.hasOwnProperty('useSFTP')) {
                 obj['useSFTP'] = ApiClient.convertToType(data['useSFTP'], 'Boolean');
             }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
+            }
         }
         return obj;
     }
@@ -89,7 +94,7 @@ class RunFTPUploadTaskVM {
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
         for (const property of RunFTPUploadTaskVM.RequiredProperties) {
-            if (!data[property]) {
+            if (!data.hasOwnProperty(property)) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
@@ -112,6 +117,10 @@ class RunFTPUploadTaskVM {
         // ensure the json data is a string
         if (data['ftpUsername'] && !(typeof data['ftpUsername'] === 'string' || data['ftpUsername'] instanceof String)) {
             throw new Error("Expected the field `ftpUsername` to be a primitive type in the JSON string but got " + data['ftpUsername']);
+        }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
         }
 
         return true;
@@ -161,6 +170,11 @@ RunFTPUploadTaskVM.prototype['ftpUsername'] = undefined;
  * @member {Boolean} useSFTP
  */
 RunFTPUploadTaskVM.prototype['useSFTP'] = undefined;
+
+/**
+ * @member {String} $t
+ */
+RunFTPUploadTaskVM.prototype['$t'] = undefined;
 
 
 // Implement RunTransportTaskBaseVM interface:

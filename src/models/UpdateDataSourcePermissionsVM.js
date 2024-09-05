@@ -12,8 +12,9 @@
  */
 
 import ApiClient from '../ApiClient';
+import CloudBaseVM from './CloudBaseVM';
 import DataSourceAdministrate from './DataSourceAdministrate';
-import DataSourcePermissions from './DataSourcePermissions';
+import DataSourcePermissionsCRUDVM from './DataSourcePermissionsCRUDVM';
 
 /**
  * The UpdateDataSourcePermissionsVM model module.
@@ -24,12 +25,13 @@ class UpdateDataSourcePermissionsVM {
     /**
      * Constructs a new <code>UpdateDataSourcePermissionsVM</code>.
      * @alias module:models/UpdateDataSourcePermissionsVM
-     * @param newPermissions {module:models/DataSourcePermissions} 
-     * @param administrate {module:models/DataSourceAdministrate} 
+     * @extends module:models/CloudBaseVM
+     * @implements module:models/CloudBaseVM
+     * @param t {String} 
      */
-    constructor(newPermissions, administrate) { 
-        
-        UpdateDataSourcePermissionsVM.initialize(this, newPermissions, administrate);
+    constructor(t) { 
+        CloudBaseVM.initialize(this, t);
+        UpdateDataSourcePermissionsVM.initialize(this, t);
     }
 
     /**
@@ -37,9 +39,10 @@ class UpdateDataSourcePermissionsVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, newPermissions, administrate) { 
+    static initialize(obj, t) { 
         obj['newPermissions'] = newPermissions;
         obj['administrate'] = administrate;
+        obj['$t'] = t;
     }
 
     /**
@@ -52,12 +55,17 @@ class UpdateDataSourcePermissionsVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new UpdateDataSourcePermissionsVM();
+            CloudBaseVM.constructFromObject(data, obj);
+            CloudBaseVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('newPermissions')) {
-                obj['newPermissions'] = DataSourcePermissions.constructFromObject(data['newPermissions']);
+                obj['newPermissions'] = DataSourcePermissionsCRUDVM.constructFromObject(data['newPermissions']);
             }
             if (data.hasOwnProperty('administrate')) {
                 obj['administrate'] = DataSourceAdministrate.constructFromObject(data['administrate']);
+            }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
             }
         }
         return obj;
@@ -71,13 +79,17 @@ class UpdateDataSourcePermissionsVM {
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
         for (const property of UpdateDataSourcePermissionsVM.RequiredProperties) {
-            if (!data[property]) {
+            if (!data.hasOwnProperty(property)) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
         // validate the optional field `newPermissions`
         if (data['newPermissions']) { // data not null
-          DataSourcePermissions.validateJSON(data['newPermissions']);
+          DataSourcePermissionsCRUDVM.validateJSON(data['newPermissions']);
+        }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
         }
 
         return true;
@@ -86,10 +98,10 @@ class UpdateDataSourcePermissionsVM {
 
 }
 
-UpdateDataSourcePermissionsVM.RequiredProperties = ["newPermissions", "administrate"];
+UpdateDataSourcePermissionsVM.RequiredProperties = ["newPermissions", "administrate", "$t"];
 
 /**
- * @member {module:models/DataSourcePermissions} newPermissions
+ * @member {module:models/DataSourcePermissionsCRUDVM} newPermissions
  */
 UpdateDataSourcePermissionsVM.prototype['newPermissions'] = undefined;
 
@@ -98,7 +110,17 @@ UpdateDataSourcePermissionsVM.prototype['newPermissions'] = undefined;
  */
 UpdateDataSourcePermissionsVM.prototype['administrate'] = undefined;
 
+/**
+ * @member {String} $t
+ */
+UpdateDataSourcePermissionsVM.prototype['$t'] = undefined;
 
+
+// Implement CloudBaseVM interface:
+/**
+ * @member {String} $t
+ */
+CloudBaseVM.prototype['$t'] = undefined;
 
 
 

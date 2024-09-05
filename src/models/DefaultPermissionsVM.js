@@ -12,10 +12,11 @@
  */
 
 import ApiClient from '../ApiClient';
-import DataSourcePermissions from './DataSourcePermissions';
-import FilePermissions from './FilePermissions';
-import GroupPermissions from './GroupPermissions';
-import TaskPermissions from './TaskPermissions';
+import CloudBaseVM from './CloudBaseVM';
+import DataSourcePermissionsCRUDVM from './DataSourcePermissionsCRUDVM';
+import FilePermissionsCRUDVM from './FilePermissionsCRUDVM';
+import GroupPermissionsCRUDVM from './GroupPermissionsCRUDVM';
+import TaskPermissionsCRUDVM from './TaskPermissionsCRUDVM';
 
 /**
  * The DefaultPermissionsVM model module.
@@ -26,10 +27,13 @@ class DefaultPermissionsVM {
     /**
      * Constructs a new <code>DefaultPermissionsVM</code>.
      * @alias module:models/DefaultPermissionsVM
+     * @extends module:models/CloudBaseVM
+     * @implements module:models/CloudBaseVM
+     * @param t {String} 
      */
-    constructor() { 
-        
-        DefaultPermissionsVM.initialize(this);
+    constructor(t) { 
+        CloudBaseVM.initialize(this, t);
+        DefaultPermissionsVM.initialize(this, t);
     }
 
     /**
@@ -37,7 +41,8 @@ class DefaultPermissionsVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -50,18 +55,23 @@ class DefaultPermissionsVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new DefaultPermissionsVM();
+            CloudBaseVM.constructFromObject(data, obj);
+            CloudBaseVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('filePermissions')) {
-                obj['filePermissions'] = FilePermissions.constructFromObject(data['filePermissions']);
+                obj['filePermissions'] = FilePermissionsCRUDVM.constructFromObject(data['filePermissions']);
             }
             if (data.hasOwnProperty('dataSourcePermissions')) {
-                obj['dataSourcePermissions'] = DataSourcePermissions.constructFromObject(data['dataSourcePermissions']);
+                obj['dataSourcePermissions'] = DataSourcePermissionsCRUDVM.constructFromObject(data['dataSourcePermissions']);
             }
             if (data.hasOwnProperty('groupPermissions')) {
-                obj['groupPermissions'] = GroupPermissions.constructFromObject(data['groupPermissions']);
+                obj['groupPermissions'] = GroupPermissionsCRUDVM.constructFromObject(data['groupPermissions']);
             }
             if (data.hasOwnProperty('taskPermissions')) {
-                obj['taskPermissions'] = TaskPermissions.constructFromObject(data['taskPermissions']);
+                obj['taskPermissions'] = TaskPermissionsCRUDVM.constructFromObject(data['taskPermissions']);
+            }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
             }
         }
         return obj;
@@ -73,21 +83,31 @@ class DefaultPermissionsVM {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>DefaultPermissionsVM</code>.
      */
     static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of DefaultPermissionsVM.RequiredProperties) {
+            if (!data.hasOwnProperty(property)) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
         // validate the optional field `filePermissions`
         if (data['filePermissions']) { // data not null
-          FilePermissions.validateJSON(data['filePermissions']);
+          FilePermissionsCRUDVM.validateJSON(data['filePermissions']);
         }
         // validate the optional field `dataSourcePermissions`
         if (data['dataSourcePermissions']) { // data not null
-          DataSourcePermissions.validateJSON(data['dataSourcePermissions']);
+          DataSourcePermissionsCRUDVM.validateJSON(data['dataSourcePermissions']);
         }
         // validate the optional field `groupPermissions`
         if (data['groupPermissions']) { // data not null
-          GroupPermissions.validateJSON(data['groupPermissions']);
+          GroupPermissionsCRUDVM.validateJSON(data['groupPermissions']);
         }
         // validate the optional field `taskPermissions`
         if (data['taskPermissions']) { // data not null
-          TaskPermissions.validateJSON(data['taskPermissions']);
+          TaskPermissionsCRUDVM.validateJSON(data['taskPermissions']);
+        }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
         }
 
         return true;
@@ -96,29 +116,39 @@ class DefaultPermissionsVM {
 
 }
 
-
+DefaultPermissionsVM.RequiredProperties = ["$t"];
 
 /**
- * @member {module:models/FilePermissions} filePermissions
+ * @member {module:models/FilePermissionsCRUDVM} filePermissions
  */
 DefaultPermissionsVM.prototype['filePermissions'] = undefined;
 
 /**
- * @member {module:models/DataSourcePermissions} dataSourcePermissions
+ * @member {module:models/DataSourcePermissionsCRUDVM} dataSourcePermissions
  */
 DefaultPermissionsVM.prototype['dataSourcePermissions'] = undefined;
 
 /**
- * @member {module:models/GroupPermissions} groupPermissions
+ * @member {module:models/GroupPermissionsCRUDVM} groupPermissions
  */
 DefaultPermissionsVM.prototype['groupPermissions'] = undefined;
 
 /**
- * @member {module:models/TaskPermissions} taskPermissions
+ * @member {module:models/TaskPermissionsCRUDVM} taskPermissions
  */
 DefaultPermissionsVM.prototype['taskPermissions'] = undefined;
 
+/**
+ * @member {String} $t
+ */
+DefaultPermissionsVM.prototype['$t'] = undefined;
 
+
+// Implement CloudBaseVM interface:
+/**
+ * @member {String} $t
+ */
+CloudBaseVM.prototype['$t'] = undefined;
 
 
 

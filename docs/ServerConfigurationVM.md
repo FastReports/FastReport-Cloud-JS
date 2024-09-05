@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **corporateServerMode** | **Boolean** |  | [optional] 
 **lastSLAVersion** | **Date** |  | [optional] 
 **isDisabled** | **Boolean** |  | [optional] 
-**frontend** | [**FrontendApp**](FrontendApp.md) |  | [optional] 
+**frontend** | [**FrontendAppVM**](FrontendAppVM.md) |  | [optional] 
 **invariantLocale** | **String** |  | [optional] 
 **auth** | [**AuthConfigVM**](AuthConfigVM.md) |  | [optional] 
 **designerForAnons** | **Boolean** |  | [optional] 
@@ -19,5 +19,8 @@ Name | Type | Description | Notes
 **aboutLink** | **String** |  | [optional] 
 **homePageLink** | **String** |  | [optional] 
 **authServerName** | **String** |  | [optional] 
+**updateWorkspaceLink** | **String** |  | [optional] 
+**sharingEnabled** | **Boolean** |  | [optional] 
+**t** | **String** |  | 
 
 

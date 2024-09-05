@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import CloudBaseVM from './CloudBaseVM';
 import GroupVM from './GroupVM';
 
 /**
@@ -23,10 +24,13 @@ class GroupsVM {
     /**
      * Constructs a new <code>GroupsVM</code>.
      * @alias module:models/GroupsVM
+     * @extends module:models/CloudBaseVM
+     * @implements module:models/CloudBaseVM
+     * @param t {String} 
      */
-    constructor() { 
-        
-        GroupsVM.initialize(this);
+    constructor(t) { 
+        CloudBaseVM.initialize(this, t);
+        GroupsVM.initialize(this, t);
     }
 
     /**
@@ -34,7 +38,8 @@ class GroupsVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -47,6 +52,8 @@ class GroupsVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new GroupsVM();
+            CloudBaseVM.constructFromObject(data, obj);
+            CloudBaseVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('groups')) {
                 obj['groups'] = ApiClient.convertToType(data['groups'], [GroupVM]);
@@ -60,6 +67,9 @@ class GroupsVM {
             if (data.hasOwnProperty('take')) {
                 obj['take'] = ApiClient.convertToType(data['take'], 'Number');
             }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
+            }
         }
         return obj;
     }
@@ -70,6 +80,12 @@ class GroupsVM {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>GroupsVM</code>.
      */
     static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of GroupsVM.RequiredProperties) {
+            if (!data.hasOwnProperty(property)) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
         if (data['groups']) { // data not null
             // ensure the json data is an array
             if (!Array.isArray(data['groups'])) {
@@ -80,6 +96,10 @@ class GroupsVM {
                 GroupVM.validateJSON(item);
             };
         }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
+        }
 
         return true;
     }
@@ -87,7 +107,7 @@ class GroupsVM {
 
 }
 
-
+GroupsVM.RequiredProperties = ["$t"];
 
 /**
  * @member {Array.<module:models/GroupVM>} groups
@@ -109,7 +129,17 @@ GroupsVM.prototype['skip'] = undefined;
  */
 GroupsVM.prototype['take'] = undefined;
 
+/**
+ * @member {String} $t
+ */
+GroupsVM.prototype['$t'] = undefined;
 
+
+// Implement CloudBaseVM interface:
+/**
+ * @member {String} $t
+ */
+CloudBaseVM.prototype['$t'] = undefined;
 
 
 

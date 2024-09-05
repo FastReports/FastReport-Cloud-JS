@@ -21,4 +21,6 @@
 
 * `MongoDB` (value: `"MongoDB"`)
 
+* `ClickHouse` (value: `"ClickHouse"`)
+
 

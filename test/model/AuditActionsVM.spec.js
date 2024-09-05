@@ -60,8 +60,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property count (base name: "count")', function() {
-      // uncomment below and update the code to test the property count
+    it('should have the property hasMore (base name: "hasMore")', function() {
+      // uncomment below and update the code to test the property hasMore
       //var instance = new FastreportCloudSdk.AuditActionsVM();
       //expect(instance).to.be();
     });
@@ -74,6 +74,12 @@
 
     it('should have the property take (base name: "take")', function() {
       // uncomment below and update the code to test the property take
+      //var instance = new FastreportCloudSdk.AuditActionsVM();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property t (base name: "$t")', function() {
+      // uncomment below and update the code to test the property t
       //var instance = new FastreportCloudSdk.AuditActionsVM();
       //expect(instance).to.be();
     });

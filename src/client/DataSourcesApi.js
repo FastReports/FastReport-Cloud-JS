@@ -14,6 +14,8 @@
 
 import ApiClient from "../ApiClient";
 import CreateDataSourceVM from '../models/CreateDataSourceVM';
+import DataSourceConnectionType from '../models/DataSourceConnectionType';
+import DataSourceParameterTypesVM from '../models/DataSourceParameterTypesVM';
 import DataSourcePermissionsVM from '../models/DataSourcePermissionsVM';
 import DataSourceSorting from '../models/DataSourceSorting';
 import DataSourceVM from '../models/DataSourceVM';
@@ -22,6 +24,7 @@ import ProblemDetails from '../models/ProblemDetails';
 import RenameDataSourceVM from '../models/RenameDataSourceVM';
 import UpdateDataSourceConnectionStringVM from '../models/UpdateDataSourceConnectionStringVM';
 import UpdateDataSourcePermissionsVM from '../models/UpdateDataSourcePermissionsVM';
+import UpdateDataSourceSelectCommandsVM from '../models/UpdateDataSourceSelectCommandsVM';
 import UpdateDataSourceSubscriptionVM from '../models/UpdateDataSourceSubscriptionVM';
 
 /**
@@ -233,7 +236,7 @@ export default class DataSourcesApi {
     /**
      * Returns all of the data sources, that current user have permission for in a subscription <br />  The method will return minimal infomration about the datasources: <br />  id, name, editedTime, status.
      * @param {Object} opts Optional parameters
-     * @param {String} opts.subscriptionId subscription id
+     * @param {String} opts.subscriptionId id of subscription where the datasources are located
      * @param {Number} opts.skip how many data sources will be skipped (default to 0)
      * @param {Number} opts.take how many data sources will be taken (default to 10)
      * @param {module:models/DataSourceSorting} opts.orderBy field to order by
@@ -273,7 +276,7 @@ export default class DataSourcesApi {
     /**
      * Returns all of the data sources, that current user have permission for in a subscription <br />  The method will return minimal infomration about the datasources: <br />  id, name, editedTime, status.
      * @param {Object} opts Optional parameters
-     * @param {String} opts.subscriptionId subscription id
+     * @param {String} opts.subscriptionId id of subscription where the datasources are located
      * @param {Number} opts.skip how many data sources will be skipped (default to 0)
      * @param {Number} opts.take how many data sources will be taken (default to 10)
      * @param {module:models/DataSourceSorting} opts.orderBy field to order by
@@ -329,6 +332,53 @@ export default class DataSourcesApi {
      */
     dataSourcesGetDataSource(id) {
       return this.dataSourcesGetDataSourceWithHttpInfo(id)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Get data source parameter DataType's
+     * @param {module:models/DataSourceConnectionType} dataSourceType data source type (MsSql, MySql, etc.)
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/DataSourceParameterTypesVM} and HTTP response
+     */
+    dataSourcesGetParameterTypesWithHttpInfo(dataSourceType) {
+      let postBody = null;
+      // verify the required parameter 'dataSourceType' is set
+      if (dataSourceType === undefined || dataSourceType === null) {
+        throw new Error("Missing the required parameter 'dataSourceType' when calling dataSourcesGetParameterTypes");
+      }
+
+      let pathParams = {
+        'dataSourceType': dataSourceType
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKey', 'JWT'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = DataSourceParameterTypesVM;
+      if(!returnType) returnType = 'Blob';
+      return this.apiClient.callApi(
+        '/api/data/v1/DataSources/parameterTypes/{dataSourceType}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Get data source parameter DataType's
+     * @param {module:models/DataSourceConnectionType} dataSourceType data source type (MsSql, MySql, etc.)
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/DataSourceParameterTypesVM}
+     */
+    dataSourcesGetParameterTypes(dataSourceType) {
+      return this.dataSourcesGetParameterTypesWithHttpInfo(dataSourceType)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -465,7 +515,7 @@ export default class DataSourcesApi {
       let returnType = DataSourceVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
-        '/api/data/v1/DataSources/{id}/ConnectionString', 'PUT',
+        '/api/data/v1/DataSources/{id}/connectionString', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null
       );
@@ -532,6 +582,58 @@ export default class DataSourcesApi {
      */
     dataSourcesUpdatePermissions(id, opts) {
       return this.dataSourcesUpdatePermissionsWithHttpInfo(id, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Update data source's select commands by id
+     * @param {String} id data source id
+     * @param {Object} opts Optional parameters
+     * @param {module:models/UpdateDataSourceSelectCommandsVM} opts.updateDataSourceSelectCommandsVM update viewmodel
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/DataSourceVM} and HTTP response
+     */
+    dataSourcesUpdateSelectCommandsWithHttpInfo(id, opts) {
+      opts = opts || {};
+      let postBody = opts['updateDataSourceSelectCommandsVM'];
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling dataSourcesUpdateSelectCommands");
+      }
+
+      let pathParams = {
+        'id': id
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKey', 'JWT'];
+      let contentTypes = ['application/json', 'text/json', 'application/*+json'];
+      let accepts = ['application/json'];
+      let returnType = DataSourceVM;
+      if(!returnType) returnType = 'Blob';
+      return this.apiClient.callApi(
+        '/api/data/v1/DataSources/{id}/selectCommands', 'PUT',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Update data source's select commands by id
+     * @param {String} id data source id
+     * @param {Object} opts Optional parameters
+     * @param {module:models/UpdateDataSourceSelectCommandsVM} opts.updateDataSourceSelectCommandsVM update viewmodel
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/DataSourceVM}
+     */
+    dataSourcesUpdateSelectCommands(id, opts) {
+      return this.dataSourcesUpdateSelectCommandsWithHttpInfo(id, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

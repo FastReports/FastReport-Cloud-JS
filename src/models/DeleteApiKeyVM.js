@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import CloudBaseVM from './CloudBaseVM';
 
 /**
  * The DeleteApiKeyVM model module.
@@ -22,11 +23,13 @@ class DeleteApiKeyVM {
     /**
      * Constructs a new <code>DeleteApiKeyVM</code>.
      * @alias module:models/DeleteApiKeyVM
-     * @param apiKey {String} 
+     * @extends module:models/CloudBaseVM
+     * @implements module:models/CloudBaseVM
+     * @param t {String} 
      */
-    constructor(apiKey) { 
-        
-        DeleteApiKeyVM.initialize(this, apiKey);
+    constructor(t) { 
+        CloudBaseVM.initialize(this, t);
+        DeleteApiKeyVM.initialize(this, t);
     }
 
     /**
@@ -34,8 +37,9 @@ class DeleteApiKeyVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, apiKey) { 
+    static initialize(obj, t) { 
         obj['apiKey'] = apiKey;
+        obj['$t'] = t;
     }
 
     /**
@@ -48,9 +52,14 @@ class DeleteApiKeyVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new DeleteApiKeyVM();
+            CloudBaseVM.constructFromObject(data, obj);
+            CloudBaseVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('apiKey')) {
                 obj['apiKey'] = ApiClient.convertToType(data['apiKey'], 'String');
+            }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
             }
         }
         return obj;
@@ -64,13 +73,17 @@ class DeleteApiKeyVM {
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
         for (const property of DeleteApiKeyVM.RequiredProperties) {
-            if (!data[property]) {
+            if (!data.hasOwnProperty(property)) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
         // ensure the json data is a string
         if (data['apiKey'] && !(typeof data['apiKey'] === 'string' || data['apiKey'] instanceof String)) {
             throw new Error("Expected the field `apiKey` to be a primitive type in the JSON string but got " + data['apiKey']);
+        }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
         }
 
         return true;
@@ -79,14 +92,24 @@ class DeleteApiKeyVM {
 
 }
 
-DeleteApiKeyVM.RequiredProperties = ["apiKey"];
+DeleteApiKeyVM.RequiredProperties = ["apiKey", "$t"];
 
 /**
  * @member {String} apiKey
  */
 DeleteApiKeyVM.prototype['apiKey'] = undefined;
 
+/**
+ * @member {String} $t
+ */
+DeleteApiKeyVM.prototype['$t'] = undefined;
 
+
+// Implement CloudBaseVM interface:
+/**
+ * @member {String} $t
+ */
+CloudBaseVM.prototype['$t'] = undefined;
 
 
 

@@ -60,8 +60,14 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property delayedRunTime (base name: "delayedRunTime")', function() {
-      // uncomment below and update the code to test the property delayedRunTime
+    it('should have the property startsOn (base name: "startsOn")', function() {
+      // uncomment below and update the code to test the property startsOn
+      //var instance = new FastreportCloudSdk.CreateTaskBaseVM();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property ends (base name: "ends")', function() {
+      // uncomment below and update the code to test the property ends
       //var instance = new FastreportCloudSdk.CreateTaskBaseVM();
       //expect(instance).to.be();
     });

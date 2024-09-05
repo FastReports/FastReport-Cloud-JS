@@ -5,12 +5,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **cronExpression** | **String** |  | [optional] 
-**delayedRunTime** | **Date** |  | [optional] 
-**delayedWasRunTime** | **Date** |  | [optional] 
+**startsOn** | **Date** |  | [optional] 
+**ends** | [**TaskEnd**](TaskEnd.md) |  | [optional] 
 **id** | **String** |  | [optional] 
 **name** | **String** |  | [optional] 
-**recurrentRunTime** | **Date** |  | [optional] [readonly] 
-**recurrentWasRunTime** | **Date** |  | [optional] [readonly] 
+**recurrentRunTime** | **Date** |  | [optional] 
+**recurrentWasRunTime** | **Date** |  | [optional] 
 **subscriptionId** | **String** |  | [optional] 
 **t** | **String** |  | 
 

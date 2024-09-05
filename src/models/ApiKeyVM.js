@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import CloudBaseVM from './CloudBaseVM';
 
 /**
  * The ApiKeyVM model module.
@@ -22,10 +23,13 @@ class ApiKeyVM {
     /**
      * Constructs a new <code>ApiKeyVM</code>.
      * @alias module:models/ApiKeyVM
+     * @extends module:models/CloudBaseVM
+     * @implements module:models/CloudBaseVM
+     * @param t {String} 
      */
-    constructor() { 
-        
-        ApiKeyVM.initialize(this);
+    constructor(t) { 
+        CloudBaseVM.initialize(this, t);
+        ApiKeyVM.initialize(this, t);
     }
 
     /**
@@ -33,7 +37,8 @@ class ApiKeyVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -46,6 +51,8 @@ class ApiKeyVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new ApiKeyVM();
+            CloudBaseVM.constructFromObject(data, obj);
+            CloudBaseVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('value')) {
                 obj['value'] = ApiClient.convertToType(data['value'], 'String');
@@ -55,6 +62,9 @@ class ApiKeyVM {
             }
             if (data.hasOwnProperty('expired')) {
                 obj['expired'] = ApiClient.convertToType(data['expired'], 'Date');
+            }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
             }
         }
         return obj;
@@ -66,6 +76,12 @@ class ApiKeyVM {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>ApiKeyVM</code>.
      */
     static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of ApiKeyVM.RequiredProperties) {
+            if (!data.hasOwnProperty(property)) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
         // ensure the json data is a string
         if (data['value'] && !(typeof data['value'] === 'string' || data['value'] instanceof String)) {
             throw new Error("Expected the field `value` to be a primitive type in the JSON string but got " + data['value']);
@@ -74,6 +90,10 @@ class ApiKeyVM {
         if (data['description'] && !(typeof data['description'] === 'string' || data['description'] instanceof String)) {
             throw new Error("Expected the field `description` to be a primitive type in the JSON string but got " + data['description']);
         }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
+        }
 
         return true;
     }
@@ -81,7 +101,7 @@ class ApiKeyVM {
 
 }
 
-
+ApiKeyVM.RequiredProperties = ["$t"];
 
 /**
  * @member {String} value
@@ -98,7 +118,17 @@ ApiKeyVM.prototype['description'] = undefined;
  */
 ApiKeyVM.prototype['expired'] = undefined;
 
+/**
+ * @member {String} $t
+ */
+ApiKeyVM.prototype['$t'] = undefined;
 
+
+// Implement CloudBaseVM interface:
+/**
+ * @member {String} $t
+ */
+CloudBaseVM.prototype['$t'] = undefined;
 
 
 

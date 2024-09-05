@@ -14,6 +14,7 @@
 import ApiClient from '../ApiClient';
 import InputFileVM from './InputFileVM';
 import TaskBaseVM from './TaskBaseVM';
+import TaskEnd from './TaskEnd';
 
 /**
  * The TransportTaskBaseVM model module.
@@ -73,7 +74,7 @@ class TransportTaskBaseVM {
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
         for (const property of TransportTaskBaseVM.RequiredProperties) {
-            if (!data[property]) {
+            if (!data.hasOwnProperty(property)) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
@@ -106,38 +107,6 @@ TransportTaskBaseVM.prototype['$t'] = undefined;
 
 
 // Implement TaskBaseVM interface:
-/**
- * @member {String} cronExpression
- */
-TaskBaseVM.prototype['cronExpression'] = undefined;
-/**
- * @member {Date} delayedRunTime
- */
-TaskBaseVM.prototype['delayedRunTime'] = undefined;
-/**
- * @member {Date} delayedWasRunTime
- */
-TaskBaseVM.prototype['delayedWasRunTime'] = undefined;
-/**
- * @member {String} id
- */
-TaskBaseVM.prototype['id'] = undefined;
-/**
- * @member {String} name
- */
-TaskBaseVM.prototype['name'] = undefined;
-/**
- * @member {Date} recurrentRunTime
- */
-TaskBaseVM.prototype['recurrentRunTime'] = undefined;
-/**
- * @member {Date} recurrentWasRunTime
- */
-TaskBaseVM.prototype['recurrentWasRunTime'] = undefined;
-/**
- * @member {String} subscriptionId
- */
-TaskBaseVM.prototype['subscriptionId'] = undefined;
 /**
  * @member {String} $t
  */

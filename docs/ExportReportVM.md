@@ -10,5 +10,6 @@ Name | Type | Description | Notes
 **pagesCount** | **Number** |  | [optional] 
 **format** | [**ExportFormat**](ExportFormat.md) |  | [optional] 
 **exportParameters** | **{String: String}** |  | [optional] 
+**t** | **String** |  | 
 
 

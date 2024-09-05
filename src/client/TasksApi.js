@@ -187,6 +187,7 @@ export default class TasksApi {
      * @param {Number} opts.skip number of tasks, that have to be skipped (default to 0)
      * @param {Number} opts.take number of tasks, that have to be returned (default to 10)
      * @param {String} opts.subscriptionId subscription id
+     * @param {String} opts.searchPattern  (default to '')
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/TasksVM} and HTTP response
      */
     tasksGetListWithHttpInfo(opts) {
@@ -198,7 +199,8 @@ export default class TasksApi {
       let queryParams = {
         'skip': opts['skip'],
         'take': opts['take'],
-        'subscriptionId': opts['subscriptionId']
+        'subscriptionId': opts['subscriptionId'],
+        'searchPattern': opts['searchPattern']
       };
       let headerParams = {
       };
@@ -223,6 +225,7 @@ export default class TasksApi {
      * @param {Number} opts.skip number of tasks, that have to be skipped (default to 0)
      * @param {Number} opts.take number of tasks, that have to be returned (default to 10)
      * @param {String} opts.subscriptionId subscription id
+     * @param {String} opts.searchPattern  (default to '')
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/TasksVM}
      */
     tasksGetList(opts) {

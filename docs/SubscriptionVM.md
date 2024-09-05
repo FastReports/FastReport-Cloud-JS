@@ -12,5 +12,7 @@ Name | Type | Description | Notes
 **templatesFolder** | [**SubscriptionFolder**](SubscriptionFolder.md) |  | [optional] 
 **reportsFolder** | [**SubscriptionFolder**](SubscriptionFolder.md) |  | [optional] 
 **exportsFolder** | [**SubscriptionFolder**](SubscriptionFolder.md) |  | [optional] 
+**tags** | **[String]** |  | [optional] 
+**t** | **String** |  | 
 
 

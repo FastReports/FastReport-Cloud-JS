@@ -12,7 +12,9 @@
  */
 
 import ApiClient from '../ApiClient';
+import CloudBaseVM from './CloudBaseVM';
 import DataSourceConnectionType from './DataSourceConnectionType';
+import DataSourceSelectCommandVM from './DataSourceSelectCommandVM';
 
 /**
  * The CreateDataSourceVM model module.
@@ -23,12 +25,13 @@ class CreateDataSourceVM {
     /**
      * Constructs a new <code>CreateDataSourceVM</code>.
      * @alias module:models/CreateDataSourceVM
-     * @param connectionString {String} 
-     * @param subscriptionId {String} 
+     * @extends module:models/CloudBaseVM
+     * @implements module:models/CloudBaseVM
+     * @param t {String} 
      */
-    constructor(connectionString, subscriptionId) { 
-        
-        CreateDataSourceVM.initialize(this, connectionString, subscriptionId);
+    constructor(t) { 
+        CloudBaseVM.initialize(this, t);
+        CreateDataSourceVM.initialize(this, t);
     }
 
     /**
@@ -36,9 +39,10 @@ class CreateDataSourceVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, connectionString, subscriptionId) { 
+    static initialize(obj, t) { 
         obj['connectionString'] = connectionString;
         obj['subscriptionId'] = subscriptionId;
+        obj['$t'] = t;
     }
 
     /**
@@ -51,6 +55,8 @@ class CreateDataSourceVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new CreateDataSourceVM();
+            CloudBaseVM.constructFromObject(data, obj);
+            CloudBaseVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('name')) {
                 obj['name'] = ApiClient.convertToType(data['name'], 'String');
@@ -64,6 +70,12 @@ class CreateDataSourceVM {
             if (data.hasOwnProperty('connectionType')) {
                 obj['connectionType'] = DataSourceConnectionType.constructFromObject(data['connectionType']);
             }
+            if (data.hasOwnProperty('selectCommands')) {
+                obj['selectCommands'] = ApiClient.convertToType(data['selectCommands'], [DataSourceSelectCommandVM]);
+            }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
+            }
         }
         return obj;
     }
@@ -76,7 +88,7 @@ class CreateDataSourceVM {
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
         for (const property of CreateDataSourceVM.RequiredProperties) {
-            if (!data[property]) {
+            if (!data.hasOwnProperty(property)) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
@@ -92,6 +104,20 @@ class CreateDataSourceVM {
         if (data['subscriptionId'] && !(typeof data['subscriptionId'] === 'string' || data['subscriptionId'] instanceof String)) {
             throw new Error("Expected the field `subscriptionId` to be a primitive type in the JSON string but got " + data['subscriptionId']);
         }
+        if (data['selectCommands']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['selectCommands'])) {
+                throw new Error("Expected the field `selectCommands` to be an array in the JSON data but got " + data['selectCommands']);
+            }
+            // validate the optional field `selectCommands` (array)
+            for (const item of data['selectCommands']) {
+                DataSourceSelectCommandVM.validateJSON(item);
+            };
+        }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
+        }
 
         return true;
     }
@@ -99,7 +125,7 @@ class CreateDataSourceVM {
 
 }
 
-CreateDataSourceVM.RequiredProperties = ["connectionString", "subscriptionId"];
+CreateDataSourceVM.RequiredProperties = ["connectionString", "subscriptionId", "$t"];
 
 /**
  * @member {String} name
@@ -121,7 +147,22 @@ CreateDataSourceVM.prototype['subscriptionId'] = undefined;
  */
 CreateDataSourceVM.prototype['connectionType'] = undefined;
 
+/**
+ * @member {Array.<module:models/DataSourceSelectCommandVM>} selectCommands
+ */
+CreateDataSourceVM.prototype['selectCommands'] = undefined;
 
+/**
+ * @member {String} $t
+ */
+CreateDataSourceVM.prototype['$t'] = undefined;
+
+
+// Implement CloudBaseVM interface:
+/**
+ * @member {String} $t
+ */
+CloudBaseVM.prototype['$t'] = undefined;
 
 
 

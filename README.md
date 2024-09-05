@@ -73,7 +73,7 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *FastreportCloudSdk.ApiKeysApi* | [**apiKeysCreateApiKey**](docs/ApiKeysApi.md#apiKeysCreateApiKey) | **POST** /api/manage/v1/ApiKeys | Create a new apikey, 5 apikeys for user. Hardcoded for ddos.
 *FastreportCloudSdk.ApiKeysApi* | [**apiKeysDeleteApiKey**](docs/ApiKeysApi.md#apiKeysDeleteApiKey) | **DELETE** /api/manage/v1/ApiKeys | Delete an apikey
-*FastreportCloudSdk.ApiKeysApi* | [**apiKeysGetApiKeys**](docs/ApiKeysApi.md#apiKeysGetApiKeys) | **GET** /api/manage/v1/ApiKeys | Returns list with all api keys of current user
+*FastreportCloudSdk.ApiKeysApi* | [**apiKeysGetApiKeys**](docs/ApiKeysApi.md#apiKeysGetApiKeys) | **GET** /api/manage/v1/ApiKeys | Returns list with all apikeys of current user
 *FastreportCloudSdk.ConfigurationApi* | [**configurationGet**](docs/ConfigurationApi.md#configurationGet) | **GET** /api/v1/Configuration | returns information about server configuration
 *FastreportCloudSdk.ContactGroupsApi* | [**contactGroupsCreate**](docs/ContactGroupsApi.md#contactGroupsCreate) | **POST** /api/v1/ContactGroups/group | Creates contact group
 *FastreportCloudSdk.ContactGroupsApi* | [**contactGroupsDelete**](docs/ContactGroupsApi.md#contactGroupsDelete) | **DELETE** /api/v1/ContactGroups/{id} | Removes contact by id
@@ -92,10 +92,12 @@ Class | Method | HTTP request | Description
 *FastreportCloudSdk.DataSourcesApi* | [**dataSourcesFetchData**](docs/DataSourcesApi.md#dataSourcesFetchData) | **GET** /api/data/v1/DataSources/{id}/fetch | This should connect to a database and set data structure
 *FastreportCloudSdk.DataSourcesApi* | [**dataSourcesGetAvailableDataSources**](docs/DataSourcesApi.md#dataSourcesGetAvailableDataSources) | **GET** /api/data/v1/DataSources | Returns all of the data sources, that current user have permission for in a subscription &lt;br /&gt;  The method will return minimal infomration about the datasources: &lt;br /&gt;  id, name, editedTime, status.
 *FastreportCloudSdk.DataSourcesApi* | [**dataSourcesGetDataSource**](docs/DataSourcesApi.md#dataSourcesGetDataSource) | **GET** /api/data/v1/DataSources/{id} | Get data source by id
+*FastreportCloudSdk.DataSourcesApi* | [**dataSourcesGetParameterTypes**](docs/DataSourcesApi.md#dataSourcesGetParameterTypes) | **GET** /api/data/v1/DataSources/parameterTypes/{dataSourceType} | Get data source parameter DataType&#39;s
 *FastreportCloudSdk.DataSourcesApi* | [**dataSourcesGetPermissions**](docs/DataSourcesApi.md#dataSourcesGetPermissions) | **GET** /api/data/v1/DataSources/{id}/permissions | Get all Data source permissions
 *FastreportCloudSdk.DataSourcesApi* | [**dataSourcesRenameDataSource**](docs/DataSourcesApi.md#dataSourcesRenameDataSource) | **PUT** /api/data/v1/DataSources/{id}/rename | Rename data source by id
-*FastreportCloudSdk.DataSourcesApi* | [**dataSourcesUpdateConnectionString**](docs/DataSourcesApi.md#dataSourcesUpdateConnectionString) | **PUT** /api/data/v1/DataSources/{id}/ConnectionString | Update data source&#39;s connection string by id
+*FastreportCloudSdk.DataSourcesApi* | [**dataSourcesUpdateConnectionString**](docs/DataSourcesApi.md#dataSourcesUpdateConnectionString) | **PUT** /api/data/v1/DataSources/{id}/connectionString | Update data source&#39;s connection string by id
 *FastreportCloudSdk.DataSourcesApi* | [**dataSourcesUpdatePermissions**](docs/DataSourcesApi.md#dataSourcesUpdatePermissions) | **POST** /api/data/v1/DataSources/{id}/permissions | Update permissions
+*FastreportCloudSdk.DataSourcesApi* | [**dataSourcesUpdateSelectCommands**](docs/DataSourcesApi.md#dataSourcesUpdateSelectCommands) | **PUT** /api/data/v1/DataSources/{id}/selectCommands | Update data source&#39;s select commands by id
 *FastreportCloudSdk.DataSourcesApi* | [**dataSourcesUpdateSubscriptionDataSource**](docs/DataSourcesApi.md#dataSourcesUpdateSubscriptionDataSource) | **PUT** /api/data/v1/DataSources/{id}/updateSubscription | Update data source&#39;s subscription
 *FastreportCloudSdk.DownloadApi* | [**downloadGetExport**](docs/DownloadApi.md#downloadGetExport) | **GET** /download/e/{id} | Returns a export file with specified id
 *FastreportCloudSdk.DownloadApi* | [**downloadGetExportThumbnail**](docs/DownloadApi.md#downloadGetExportThumbnail) | **GET** /download/e/{id}/thumbnail | Returns export&#39;s thumbnail
@@ -108,10 +110,17 @@ Class | Method | HTTP request | Description
 *FastreportCloudSdk.DownloadApi* | [**downloadGetTemplateThumbnail**](docs/DownloadApi.md#downloadGetTemplateThumbnail) | **GET** /download/t/{id}/thumbnail | Returns template&#39;s thumbnail
 *FastreportCloudSdk.DownloadApi* | [**downloadGetTemplates**](docs/DownloadApi.md#downloadGetTemplates) | **GET** /download/ts/{archiveName} | Returns a zip archive with selected files
 *FastreportCloudSdk.ExportsApi* | [**exportFolderAndFileClearRecycleBin**](docs/ExportsApi.md#exportFolderAndFileClearRecycleBin) | **DELETE** /api/rp/v1/Exports/{subscriptionId}/ClearRecycleBin | Delete all folders and files from recycle bin
+*FastreportCloudSdk.ExportsApi* | [**exportFolderAndFileCopyFiles**](docs/ExportsApi.md#exportFolderAndFileCopyFiles) | **POST** /api/rp/v1/Exports/{subscriptionId}/CopyFiles | Copy folders and files to a specified folder
+*FastreportCloudSdk.ExportsApi* | [**exportFolderAndFileCountRecycleBinFoldersAndFiles**](docs/ExportsApi.md#exportFolderAndFileCountRecycleBinFoldersAndFiles) | **GET** /api/rp/v1/Exports/{subscriptionId}/CountRecycleBinFolderAndFiles | Count all folders and files from recycle bin
+*FastreportCloudSdk.ExportsApi* | [**exportFolderAndFileDeleteFiles**](docs/ExportsApi.md#exportFolderAndFileDeleteFiles) | **POST** /api/rp/v1/Exports/{subscriptionId}/DeleteFiles | Delete folders and files
 *FastreportCloudSdk.ExportsApi* | [**exportFolderAndFileGetCount**](docs/ExportsApi.md#exportFolderAndFileGetCount) | **GET** /api/rp/v1/Exports/Folder/{id}/CountFolderAndFiles | Get count of files and folders what contains in a specified folder
 *FastreportCloudSdk.ExportsApi* | [**exportFolderAndFileGetFoldersAndFiles**](docs/ExportsApi.md#exportFolderAndFileGetFoldersAndFiles) | **GET** /api/rp/v1/Exports/Folder/{id}/ListFolderAndFiles | Get all folders and files from specified folder
 *FastreportCloudSdk.ExportsApi* | [**exportFolderAndFileGetRecycleBinFoldersAndFiles**](docs/ExportsApi.md#exportFolderAndFileGetRecycleBinFoldersAndFiles) | **GET** /api/rp/v1/Exports/{subscriptionId}/ListRecycleBinFolderAndFiles | Get all folders and files from recycle bin
+*FastreportCloudSdk.ExportsApi* | [**exportFolderAndFileMoveFiles**](docs/ExportsApi.md#exportFolderAndFileMoveFiles) | **POST** /api/rp/v1/Exports/{subscriptionId}/MoveFiles | Move folders and files to a specified folder
+*FastreportCloudSdk.ExportsApi* | [**exportFolderAndFileMoveFilesToBin**](docs/ExportsApi.md#exportFolderAndFileMoveFilesToBin) | **POST** /api/rp/v1/Exports/{subscriptionId}/ToBin | Move folders and files to bin
 *FastreportCloudSdk.ExportsApi* | [**exportFolderAndFileRecoverAllFromRecycleBin**](docs/ExportsApi.md#exportFolderAndFileRecoverAllFromRecycleBin) | **POST** /api/rp/v1/Exports/{subscriptionId}/RecoverRecycleBin | Recover all folders and files from recycle bin
+*FastreportCloudSdk.ExportsApi* | [**exportFolderAndFileRecoverFiles**](docs/ExportsApi.md#exportFolderAndFileRecoverFiles) | **POST** /api/rp/v1/Exports/{subscriptionId}/RecoverFiles | Recover folders and files from bin
+*FastreportCloudSdk.ExportsApi* | [**exportFoldersCalculateFolderSize**](docs/ExportsApi.md#exportFoldersCalculateFolderSize) | **GET** /api/rp/v1/Exports/Folder/{id}/size | Get specified folder, calculate it&#39;s size
 *FastreportCloudSdk.ExportsApi* | [**exportFoldersCopyFolder**](docs/ExportsApi.md#exportFoldersCopyFolder) | **POST** /api/rp/v1/Exports/Folder/{id}/Copy/{folderId} | Move folder to a specified folder
 *FastreportCloudSdk.ExportsApi* | [**exportFoldersDeleteFolder**](docs/ExportsApi.md#exportFoldersDeleteFolder) | **DELETE** /api/rp/v1/Exports/Folder/{id} | Delete specified folder
 *FastreportCloudSdk.ExportsApi* | [**exportFoldersGetBreadcrumbs**](docs/ExportsApi.md#exportFoldersGetBreadcrumbs) | **GET** /api/rp/v1/Exports/Folder/{id}/Breadcrumbs | Get specified folder breadcrumbs
@@ -130,12 +139,15 @@ Class | Method | HTTP request | Description
 *FastreportCloudSdk.ExportsApi* | [**exportFoldersUpdatePermissions**](docs/ExportsApi.md#exportFoldersUpdatePermissions) | **POST** /api/rp/v1/Exports/{id}/permissions | Update permissions
 *FastreportCloudSdk.ExportsApi* | [**exportFoldersUpdateTags**](docs/ExportsApi.md#exportFoldersUpdateTags) | **PUT** /api/rp/v1/Exports/Folder/{id}/UpdateTags | Update tags
 *FastreportCloudSdk.ExportsApi* | [**exportsCopyFile**](docs/ExportsApi.md#exportsCopyFile) | **POST** /api/rp/v1/Exports/File/{id}/Copy/{folderId} | Copy file to a specified folder
+*FastreportCloudSdk.ExportsApi* | [**exportsCreateSharingKey**](docs/ExportsApi.md#exportsCreateSharingKey) | **POST** /api/rp/v1/Exports/File/{id}/sharingKey | Create a new key, that can be used to share access to a file  (You need Administrate.Anon permission to create a new key)
 *FastreportCloudSdk.ExportsApi* | [**exportsDeleteFile**](docs/ExportsApi.md#exportsDeleteFile) | **DELETE** /api/rp/v1/Exports/File/{id} | Delete specified file
-*FastreportCloudSdk.ExportsApi* | [**exportsGetFile**](docs/ExportsApi.md#exportsGetFile) | **GET** /api/rp/v1/Exports/File/{id} | Get specified file
+*FastreportCloudSdk.ExportsApi* | [**exportsDeleteSharingKey**](docs/ExportsApi.md#exportsDeleteSharingKey) | **DELETE** /api/rp/v1/Exports/File/{id}/sharingKey | Deletes a sharing key, making links, that utilizing it no longer work
+*FastreportCloudSdk.ExportsApi* | [**exportsGetFile**](docs/ExportsApi.md#exportsGetFile) | **GET** /api/rp/v1/Exports/File/{id} | Get export by specified id
 *FastreportCloudSdk.ExportsApi* | [**exportsGetFileHistory**](docs/ExportsApi.md#exportsGetFileHistory) | **GET** /api/rp/v1/Exports/File/{id}/History | Returns list of actions, performed on this file
 *FastreportCloudSdk.ExportsApi* | [**exportsGetFilesCount**](docs/ExportsApi.md#exportsGetFilesCount) | **GET** /api/rp/v1/Exports/Folder/{id}/CountFiles | Get count of files what contains in a specified folder
 *FastreportCloudSdk.ExportsApi* | [**exportsGetFilesList**](docs/ExportsApi.md#exportsGetFilesList) | **GET** /api/rp/v1/Exports/Folder/{id}/ListFiles | Get all files from specified folder. &lt;br /&gt;  User with Get Entity permission can access this method. &lt;br /&gt;  The method will returns minimal infomration about the file: &lt;br /&gt;  id, name, size, editedTime, createdTime, tags, status, statusReason.
-*FastreportCloudSdk.ExportsApi* | [**exportsGetPermissions**](docs/ExportsApi.md#exportsGetPermissions) | **GET** /api/rp/v1/Exports/File/{id}/permissions | Get all file permissions
+*FastreportCloudSdk.ExportsApi* | [**exportsGetPermissions**](docs/ExportsApi.md#exportsGetPermissions) | **GET** /api/rp/v1/Exports/File/{id}/permissions | 
+*FastreportCloudSdk.ExportsApi* | [**exportsGetSharingKeys**](docs/ExportsApi.md#exportsGetSharingKeys) | **GET** /api/rp/v1/Exports/File/{id}/sharingKeys | Returns all sharing keys, associated with the file
 *FastreportCloudSdk.ExportsApi* | [**exportsMoveFile**](docs/ExportsApi.md#exportsMoveFile) | **POST** /api/rp/v1/Exports/File/{id}/Move/{folderId} | Move file to a specified folder
 *FastreportCloudSdk.ExportsApi* | [**exportsMoveFileToBin**](docs/ExportsApi.md#exportsMoveFileToBin) | **DELETE** /api/rp/v1/Exports/File/{id}/ToBin | Move specified file to recycle bin
 *FastreportCloudSdk.ExportsApi* | [**exportsRecoverFile**](docs/ExportsApi.md#exportsRecoverFile) | **POST** /api/rp/v1/Exports/File/{id}/Recover | Recover specified file from bin
@@ -156,10 +168,17 @@ Class | Method | HTTP request | Description
 *FastreportCloudSdk.GroupsApi* | [**groupsUpdatePermissions**](docs/GroupsApi.md#groupsUpdatePermissions) | **POST** /api/manage/v1/Groups/{id}/permissions | Update permissions
 *FastreportCloudSdk.HealthCheckApi* | [**healthCheckDataGet**](docs/HealthCheckApi.md#healthCheckDataGet) | **GET** /api/backend/v1/HealthCheck | healthcheck
 *FastreportCloudSdk.ReportsApi* | [**reportFolderAndFileClearRecycleBin**](docs/ReportsApi.md#reportFolderAndFileClearRecycleBin) | **DELETE** /api/rp/v1/Reports/{subscriptionId}/ClearRecycleBin | Delete all folders and files from recycle bin
+*FastreportCloudSdk.ReportsApi* | [**reportFolderAndFileCopyFiles**](docs/ReportsApi.md#reportFolderAndFileCopyFiles) | **POST** /api/rp/v1/Reports/{subscriptionId}/CopyFiles | Copy folders and files to a specified folder
+*FastreportCloudSdk.ReportsApi* | [**reportFolderAndFileCountRecycleBinFoldersAndFiles**](docs/ReportsApi.md#reportFolderAndFileCountRecycleBinFoldersAndFiles) | **GET** /api/rp/v1/Reports/{subscriptionId}/CountRecycleBinFolderAndFiles | Count all folders and files from recycle bin
+*FastreportCloudSdk.ReportsApi* | [**reportFolderAndFileDeleteFiles**](docs/ReportsApi.md#reportFolderAndFileDeleteFiles) | **POST** /api/rp/v1/Reports/{subscriptionId}/DeleteFiles | Delete folders and files
 *FastreportCloudSdk.ReportsApi* | [**reportFolderAndFileGetCount**](docs/ReportsApi.md#reportFolderAndFileGetCount) | **GET** /api/rp/v1/Reports/Folder/{id}/CountFolderAndFiles | Get count of files and folders what contains in a specified folder
 *FastreportCloudSdk.ReportsApi* | [**reportFolderAndFileGetFoldersAndFiles**](docs/ReportsApi.md#reportFolderAndFileGetFoldersAndFiles) | **GET** /api/rp/v1/Reports/Folder/{id}/ListFolderAndFiles | Get all folders and files from specified folder
 *FastreportCloudSdk.ReportsApi* | [**reportFolderAndFileGetRecycleBinFoldersAndFiles**](docs/ReportsApi.md#reportFolderAndFileGetRecycleBinFoldersAndFiles) | **GET** /api/rp/v1/Reports/{subscriptionId}/ListRecycleBinFolderAndFiles | Get all folders and files from recycle bin
+*FastreportCloudSdk.ReportsApi* | [**reportFolderAndFileMoveFiles**](docs/ReportsApi.md#reportFolderAndFileMoveFiles) | **POST** /api/rp/v1/Reports/{subscriptionId}/MoveFiles | Move folders and files to a specified folder
+*FastreportCloudSdk.ReportsApi* | [**reportFolderAndFileMoveFilesToBin**](docs/ReportsApi.md#reportFolderAndFileMoveFilesToBin) | **POST** /api/rp/v1/Reports/{subscriptionId}/ToBin | Move folders and files to bin
 *FastreportCloudSdk.ReportsApi* | [**reportFolderAndFileRecoverAllFromRecycleBin**](docs/ReportsApi.md#reportFolderAndFileRecoverAllFromRecycleBin) | **POST** /api/rp/v1/Reports/{subscriptionId}/RecoverRecycleBin | Recover all folders and files from recycle bin
+*FastreportCloudSdk.ReportsApi* | [**reportFolderAndFileRecoverFiles**](docs/ReportsApi.md#reportFolderAndFileRecoverFiles) | **POST** /api/rp/v1/Reports/{subscriptionId}/RecoverFiles | Recover folders and files from bin
+*FastreportCloudSdk.ReportsApi* | [**reportFoldersCalculateFolderSize**](docs/ReportsApi.md#reportFoldersCalculateFolderSize) | **GET** /api/rp/v1/Reports/Folder/{id}/size | Get specified folder, calculate it&#39;s size
 *FastreportCloudSdk.ReportsApi* | [**reportFoldersCopyFolder**](docs/ReportsApi.md#reportFoldersCopyFolder) | **POST** /api/rp/v1/Reports/Folder/{id}/Copy/{folderId} | Move folder to a specified folder
 *FastreportCloudSdk.ReportsApi* | [**reportFoldersDeleteFolder**](docs/ReportsApi.md#reportFoldersDeleteFolder) | **DELETE** /api/rp/v1/Reports/Folder/{id} | Delete specified folder
 *FastreportCloudSdk.ReportsApi* | [**reportFoldersExport**](docs/ReportsApi.md#reportFoldersExport) | **POST** /api/rp/v1/Reports/Folder/{id}/Export | Export specified report folder to a specified format
@@ -179,13 +198,16 @@ Class | Method | HTTP request | Description
 *FastreportCloudSdk.ReportsApi* | [**reportFoldersUpdatePermissions**](docs/ReportsApi.md#reportFoldersUpdatePermissions) | **POST** /api/rp/v1/Reports/{id}/permissions | Update permissions
 *FastreportCloudSdk.ReportsApi* | [**reportFoldersUpdateTags**](docs/ReportsApi.md#reportFoldersUpdateTags) | **PUT** /api/rp/v1/Reports/Folder/{id}/UpdateTags | Update tags
 *FastreportCloudSdk.ReportsApi* | [**reportsCopyFile**](docs/ReportsApi.md#reportsCopyFile) | **POST** /api/rp/v1/Reports/File/{id}/Copy/{folderId} | Copy file to a specified folder
+*FastreportCloudSdk.ReportsApi* | [**reportsCreateSharingKey**](docs/ReportsApi.md#reportsCreateSharingKey) | **POST** /api/rp/v1/Reports/File/{id}/sharingKey | Create a new key, that can be used to share access to a file  (You need Administrate.Anon permission to create a new key)
 *FastreportCloudSdk.ReportsApi* | [**reportsDeleteFile**](docs/ReportsApi.md#reportsDeleteFile) | **DELETE** /api/rp/v1/Reports/File/{id} | Delete specified file
+*FastreportCloudSdk.ReportsApi* | [**reportsDeleteSharingKey**](docs/ReportsApi.md#reportsDeleteSharingKey) | **DELETE** /api/rp/v1/Reports/File/{id}/sharingKey | Deletes a sharing key, making links, that utilizing it no longer work
 *FastreportCloudSdk.ReportsApi* | [**reportsExport**](docs/ReportsApi.md#reportsExport) | **POST** /api/rp/v1/Reports/File/{id}/Export | Export specified report to a specified format
 *FastreportCloudSdk.ReportsApi* | [**reportsGetFile**](docs/ReportsApi.md#reportsGetFile) | **GET** /api/rp/v1/Reports/File/{id} | Get specified file
 *FastreportCloudSdk.ReportsApi* | [**reportsGetFileHistory**](docs/ReportsApi.md#reportsGetFileHistory) | **GET** /api/rp/v1/Reports/File/{id}/History | Returns list of actions, performed on this file
 *FastreportCloudSdk.ReportsApi* | [**reportsGetFilesCount**](docs/ReportsApi.md#reportsGetFilesCount) | **GET** /api/rp/v1/Reports/Folder/{id}/CountFiles | Get count of files what contains in a specified folder
 *FastreportCloudSdk.ReportsApi* | [**reportsGetFilesList**](docs/ReportsApi.md#reportsGetFilesList) | **GET** /api/rp/v1/Reports/Folder/{id}/ListFiles | Get all files from specified folder. &lt;br /&gt;  User with Get Entity permission can access this method. &lt;br /&gt;  The method will returns minimal infomration about the file: &lt;br /&gt;  id, name, size, editedTime, createdTime, tags, status, statusReason.
-*FastreportCloudSdk.ReportsApi* | [**reportsGetPermissions**](docs/ReportsApi.md#reportsGetPermissions) | **GET** /api/rp/v1/Reports/File/{id}/permissions | Get all file permissions
+*FastreportCloudSdk.ReportsApi* | [**reportsGetPermissions**](docs/ReportsApi.md#reportsGetPermissions) | **GET** /api/rp/v1/Reports/File/{id}/permissions | 
+*FastreportCloudSdk.ReportsApi* | [**reportsGetSharingKeys**](docs/ReportsApi.md#reportsGetSharingKeys) | **GET** /api/rp/v1/Reports/File/{id}/sharingKeys | Returns all sharing keys, associated with the file
 *FastreportCloudSdk.ReportsApi* | [**reportsMoveFile**](docs/ReportsApi.md#reportsMoveFile) | **POST** /api/rp/v1/Reports/File/{id}/Move/{folderId} | Move file to a specified folder
 *FastreportCloudSdk.ReportsApi* | [**reportsMoveFileToBin**](docs/ReportsApi.md#reportsMoveFileToBin) | **DELETE** /api/rp/v1/Reports/File/{id}/ToBin | Move specified file to recycle bin
 *FastreportCloudSdk.ReportsApi* | [**reportsRecoverFile**](docs/ReportsApi.md#reportsRecoverFile) | **POST** /api/rp/v1/Reports/File/{id}/Recover | Recover specified file from bin
@@ -194,12 +216,13 @@ Class | Method | HTTP request | Description
 *FastreportCloudSdk.ReportsApi* | [**reportsUpdateIcon**](docs/ReportsApi.md#reportsUpdateIcon) | **PUT** /api/rp/v1/Reports/File/{id}/Icon | Update a files&#39;s icon
 *FastreportCloudSdk.ReportsApi* | [**reportsUpdatePermissions**](docs/ReportsApi.md#reportsUpdatePermissions) | **POST** /api/rp/v1/Reports/File/{id}/permissions | Update permissions
 *FastreportCloudSdk.ReportsApi* | [**reportsUpdateTags**](docs/ReportsApi.md#reportsUpdateTags) | **PUT** /api/rp/v1/Reports/File/{id}/UpdateTags | Update tags
-*FastreportCloudSdk.ReportsApi* | [**reportsUploadFile**](docs/ReportsApi.md#reportsUploadFile) | **POST** /api/rp/v1/Reports/Folder/{id}/File | Upload a file to the specified folder  !
+*FastreportCloudSdk.ReportsApi* | [**reportsUploadFile**](docs/ReportsApi.md#reportsUploadFile) | **POST** /api/rp/v1/Reports/Folder/{id}/File | Upload a file to the specified folder. The method is deprecated, use the UploadFileV2 method instead!
+*FastreportCloudSdk.ReportsApi* | [**reportsUploadFileV2**](docs/ReportsApi.md#reportsUploadFileV2) | **POST** /api/rp/v2/Reports/Folder/{id}/File | Alternative api for upload a file to the specified folder!
 *FastreportCloudSdk.SubscriptionGroupsApi* | [**subscriptionGroupsCountGroupsAsync**](docs/SubscriptionGroupsApi.md#subscriptionGroupsCountGroupsAsync) | **GET** /api/manage/v1/Subscriptions/{subscriptionId}/count | Returns a number of groups in subscription
 *FastreportCloudSdk.SubscriptionGroupsApi* | [**subscriptionGroupsGetGroupsList**](docs/SubscriptionGroupsApi.md#subscriptionGroupsGetGroupsList) | **GET** /api/manage/v1/Subscriptions/{subscriptionId}/groups | returns groups of the subscription or subscription user
 *FastreportCloudSdk.SubscriptionInvitesApi* | [**subscriptionInvitesAcceptInvite**](docs/SubscriptionInvitesApi.md#subscriptionInvitesAcceptInvite) | **GET** /api/manage/v1/Subscriptions/{subscriptionId}/invite/{accessToken}/accept | Add a user to the subscription using invite,  the added users will be displayed in the list of users of the subscription,  and these users will also have an active subscription.
 *FastreportCloudSdk.SubscriptionInvitesApi* | [**subscriptionInvitesCreateInvite**](docs/SubscriptionInvitesApi.md#subscriptionInvitesCreateInvite) | **POST** /api/manage/v1/Subscriptions/{subscriptionId}/invite | Create invite to subscription
-*FastreportCloudSdk.SubscriptionInvitesApi* | [**subscriptionInvitesDeleteInvite**](docs/SubscriptionInvitesApi.md#subscriptionInvitesDeleteInvite) | **DELETE** /api/manage/v1/Subscriptions/{subscriptionId}/invite/{accesstoken} | Rename subscription
+*FastreportCloudSdk.SubscriptionInvitesApi* | [**subscriptionInvitesDeleteInvite**](docs/SubscriptionInvitesApi.md#subscriptionInvitesDeleteInvite) | **DELETE** /api/manage/v1/Subscriptions/{subscriptionId}/invite/{accesstoken} | Delete invite with specified token
 *FastreportCloudSdk.SubscriptionInvitesApi* | [**subscriptionInvitesGetInvites**](docs/SubscriptionInvitesApi.md#subscriptionInvitesGetInvites) | **GET** /api/manage/v1/Subscriptions/{subscriptionId}/invites | Get list of invites in a subscription,  the added users will be displayed in the list of users of the subscription,  and these users will also have an active subscription.
 *FastreportCloudSdk.SubscriptionPlansApi* | [**subscriptionPlansGetSubscriptionPlan**](docs/SubscriptionPlansApi.md#subscriptionPlansGetSubscriptionPlan) | **GET** /api/manage/v1/SubscriptionPlans/{id} | Returns a subscription plan. Not all subscriptions can be issued for customer.
 *FastreportCloudSdk.SubscriptionPlansApi* | [**subscriptionPlansGetSubscriptionPlans**](docs/SubscriptionPlansApi.md#subscriptionPlansGetSubscriptionPlans) | **GET** /api/manage/v1/SubscriptionPlans | Returns a list of active subscription plans that can be issued to the user.
@@ -228,10 +251,17 @@ Class | Method | HTTP request | Description
 *FastreportCloudSdk.TasksApi* | [**tasksUpdatePermissions**](docs/TasksApi.md#tasksUpdatePermissions) | **POST** /api/tasks/v1/Tasks/{id}/permissions | Update permissions
 *FastreportCloudSdk.TasksApi* | [**tasksUpdateTask**](docs/TasksApi.md#tasksUpdateTask) | **PUT** /api/tasks/v1/Tasks/{taskId} | Update a task
 *FastreportCloudSdk.TemplatesApi* | [**templateFolderAndFileClearRecycleBin**](docs/TemplatesApi.md#templateFolderAndFileClearRecycleBin) | **DELETE** /api/rp/v1/Templates/{subscriptionId}/ClearRecycleBin | Delete all folders and files from recycle bin
+*FastreportCloudSdk.TemplatesApi* | [**templateFolderAndFileCopyFiles**](docs/TemplatesApi.md#templateFolderAndFileCopyFiles) | **POST** /api/rp/v1/Templates/{subscriptionId}/CopyFiles | Copy folders and files to a specified folder
+*FastreportCloudSdk.TemplatesApi* | [**templateFolderAndFileCountRecycleBinFoldersAndFiles**](docs/TemplatesApi.md#templateFolderAndFileCountRecycleBinFoldersAndFiles) | **GET** /api/rp/v1/Templates/{subscriptionId}/CountRecycleBinFolderAndFiles | Count all folders and files from recycle bin
+*FastreportCloudSdk.TemplatesApi* | [**templateFolderAndFileDeleteFiles**](docs/TemplatesApi.md#templateFolderAndFileDeleteFiles) | **POST** /api/rp/v1/Templates/{subscriptionId}/DeleteFiles | Delete folders and files
 *FastreportCloudSdk.TemplatesApi* | [**templateFolderAndFileGetCount**](docs/TemplatesApi.md#templateFolderAndFileGetCount) | **GET** /api/rp/v1/Templates/Folder/{id}/CountFolderAndFiles | Get count of files and folders what contains in a specified folder
 *FastreportCloudSdk.TemplatesApi* | [**templateFolderAndFileGetFoldersAndFiles**](docs/TemplatesApi.md#templateFolderAndFileGetFoldersAndFiles) | **GET** /api/rp/v1/Templates/Folder/{id}/ListFolderAndFiles | Get all folders and files from specified folder
 *FastreportCloudSdk.TemplatesApi* | [**templateFolderAndFileGetRecycleBinFoldersAndFiles**](docs/TemplatesApi.md#templateFolderAndFileGetRecycleBinFoldersAndFiles) | **GET** /api/rp/v1/Templates/{subscriptionId}/ListRecycleBinFolderAndFiles | Get all folders and files from recycle bin
+*FastreportCloudSdk.TemplatesApi* | [**templateFolderAndFileMoveFiles**](docs/TemplatesApi.md#templateFolderAndFileMoveFiles) | **POST** /api/rp/v1/Templates/{subscriptionId}/MoveFiles | Move folders and files to a specified folder
+*FastreportCloudSdk.TemplatesApi* | [**templateFolderAndFileMoveFilesToBin**](docs/TemplatesApi.md#templateFolderAndFileMoveFilesToBin) | **POST** /api/rp/v1/Templates/{subscriptionId}/ToBin | Move folders and files to bin
 *FastreportCloudSdk.TemplatesApi* | [**templateFolderAndFileRecoverAllFromRecycleBin**](docs/TemplatesApi.md#templateFolderAndFileRecoverAllFromRecycleBin) | **POST** /api/rp/v1/Templates/{subscriptionId}/RecoverRecycleBin | Recover all folders and files from recycle bin
+*FastreportCloudSdk.TemplatesApi* | [**templateFolderAndFileRecoverFiles**](docs/TemplatesApi.md#templateFolderAndFileRecoverFiles) | **POST** /api/rp/v1/Templates/{subscriptionId}/RecoverFiles | Recover folders and files from bin
+*FastreportCloudSdk.TemplatesApi* | [**templateFoldersCalculateFolderSize**](docs/TemplatesApi.md#templateFoldersCalculateFolderSize) | **GET** /api/rp/v1/Templates/Folder/{id}/size | Get specified folder, calculate it&#39;s size
 *FastreportCloudSdk.TemplatesApi* | [**templateFoldersCopyFolder**](docs/TemplatesApi.md#templateFoldersCopyFolder) | **POST** /api/rp/v1/Templates/Folder/{id}/Copy/{folderId} | Move folder to a specified folder
 *FastreportCloudSdk.TemplatesApi* | [**templateFoldersDeleteFolder**](docs/TemplatesApi.md#templateFoldersDeleteFolder) | **DELETE** /api/rp/v1/Templates/Folder/{id} | Delete specified folder
 *FastreportCloudSdk.TemplatesApi* | [**templateFoldersExport**](docs/TemplatesApi.md#templateFoldersExport) | **POST** /api/rp/v1/Templates/Folder/{id}/Export | Export specified template folder to a specified format
@@ -252,24 +282,31 @@ Class | Method | HTTP request | Description
 *FastreportCloudSdk.TemplatesApi* | [**templateFoldersUpdatePermissions**](docs/TemplatesApi.md#templateFoldersUpdatePermissions) | **POST** /api/rp/v1/Templates/{id}/permissions | Update permissions
 *FastreportCloudSdk.TemplatesApi* | [**templateFoldersUpdateTags**](docs/TemplatesApi.md#templateFoldersUpdateTags) | **PUT** /api/rp/v1/Templates/Folder/{id}/UpdateTags | Update tags
 *FastreportCloudSdk.TemplatesApi* | [**templatesCopyFile**](docs/TemplatesApi.md#templatesCopyFile) | **POST** /api/rp/v1/Templates/File/{id}/Copy/{folderId} | Copy file to a specified folder
+*FastreportCloudSdk.TemplatesApi* | [**templatesCreateSharingKey**](docs/TemplatesApi.md#templatesCreateSharingKey) | **POST** /api/rp/v1/Templates/File/{id}/sharingKey | Create a new key, that can be used to share access to a file  (You need Administrate.Anon permission to create a new key)
 *FastreportCloudSdk.TemplatesApi* | [**templatesDeleteFile**](docs/TemplatesApi.md#templatesDeleteFile) | **DELETE** /api/rp/v1/Templates/File/{id} | Delete specified file
+*FastreportCloudSdk.TemplatesApi* | [**templatesDeleteSharingKey**](docs/TemplatesApi.md#templatesDeleteSharingKey) | **DELETE** /api/rp/v1/Templates/File/{id}/sharingKey | Deletes a sharing key, making links, that utilizing it no longer work
 *FastreportCloudSdk.TemplatesApi* | [**templatesExport**](docs/TemplatesApi.md#templatesExport) | **POST** /api/rp/v1/Templates/File/{id}/Export | Export specified report template to a specified format
 *FastreportCloudSdk.TemplatesApi* | [**templatesGetFile**](docs/TemplatesApi.md#templatesGetFile) | **GET** /api/rp/v1/Templates/File/{id} | Get specified file
 *FastreportCloudSdk.TemplatesApi* | [**templatesGetFileHistory**](docs/TemplatesApi.md#templatesGetFileHistory) | **GET** /api/rp/v1/Templates/File/{id}/History | Returns list of actions, performed on this file
 *FastreportCloudSdk.TemplatesApi* | [**templatesGetFilesCount**](docs/TemplatesApi.md#templatesGetFilesCount) | **GET** /api/rp/v1/Templates/Folder/{id}/CountFiles | Get count of files what contains in a specified folder
 *FastreportCloudSdk.TemplatesApi* | [**templatesGetFilesList**](docs/TemplatesApi.md#templatesGetFilesList) | **GET** /api/rp/v1/Templates/Folder/{id}/ListFiles | Get all files from specified folder. &lt;br /&gt;  User with Get Entity permission can access this method. &lt;br /&gt;  The method will returns minimal infomration about the file: &lt;br /&gt;  id, name, size, editedTime, createdTime, tags, status, statusReason.
-*FastreportCloudSdk.TemplatesApi* | [**templatesGetPermissions**](docs/TemplatesApi.md#templatesGetPermissions) | **GET** /api/rp/v1/Templates/File/{id}/permissions | Get all file permissions
+*FastreportCloudSdk.TemplatesApi* | [**templatesGetPermissions**](docs/TemplatesApi.md#templatesGetPermissions) | **GET** /api/rp/v1/Templates/File/{id}/permissions | 
+*FastreportCloudSdk.TemplatesApi* | [**templatesGetSharingKeys**](docs/TemplatesApi.md#templatesGetSharingKeys) | **GET** /api/rp/v1/Templates/File/{id}/sharingKeys | Returns all sharing keys, associated with the file
 *FastreportCloudSdk.TemplatesApi* | [**templatesMoveFile**](docs/TemplatesApi.md#templatesMoveFile) | **POST** /api/rp/v1/Templates/File/{id}/Move/{folderId} | Move file to a specified folder
 *FastreportCloudSdk.TemplatesApi* | [**templatesMoveFileToBin**](docs/TemplatesApi.md#templatesMoveFileToBin) | **DELETE** /api/rp/v1/Templates/File/{id}/ToBin | Move specified file to recycle bin
 *FastreportCloudSdk.TemplatesApi* | [**templatesPrepare**](docs/TemplatesApi.md#templatesPrepare) | **POST** /api/rp/v1/Templates/File/{id}/Prepare | Prepare specified template to report
 *FastreportCloudSdk.TemplatesApi* | [**templatesRecoverFile**](docs/TemplatesApi.md#templatesRecoverFile) | **POST** /api/rp/v1/Templates/File/{id}/Recover | Recover specified file from bin
 *FastreportCloudSdk.TemplatesApi* | [**templatesRenameFile**](docs/TemplatesApi.md#templatesRenameFile) | **PUT** /api/rp/v1/Templates/File/{id}/Rename | Rename a file
 *FastreportCloudSdk.TemplatesApi* | [**templatesStaticPreview**](docs/TemplatesApi.md#templatesStaticPreview) | **POST** /api/rp/v1/Templates/File/{id}/StaticPreview | Make preview for the report.  Generate a new or return exist prepared svg files.  If template was changed will be returned a new.  Pass the &#x60;&#x60; parameter to check prepared timestamp
-*FastreportCloudSdk.TemplatesApi* | [**templatesUpdateContent**](docs/TemplatesApi.md#templatesUpdateContent) | **PUT** /api/rp/v1/Templates/File/{id}/Content | Updates contnet of the template
+*FastreportCloudSdk.TemplatesApi* | [**templatesUpdateContent**](docs/TemplatesApi.md#templatesUpdateContent) | **PUT** /api/rp/v1/Templates/File/{id}/Content | Updates contnet of the template. The method is deprecated, use the UpdateContentV2 method instead!
+*FastreportCloudSdk.TemplatesApi* | [**templatesUpdateContentV2**](docs/TemplatesApi.md#templatesUpdateContentV2) | **PUT** /api/rp/v2/Templates/File/{id}/Content | Updates contnet of the template.
 *FastreportCloudSdk.TemplatesApi* | [**templatesUpdateIcon**](docs/TemplatesApi.md#templatesUpdateIcon) | **PUT** /api/rp/v1/Templates/File/{id}/Icon | Update a files&#39;s icon
 *FastreportCloudSdk.TemplatesApi* | [**templatesUpdatePermissions**](docs/TemplatesApi.md#templatesUpdatePermissions) | **POST** /api/rp/v1/Templates/File/{id}/permissions | Update permissions
 *FastreportCloudSdk.TemplatesApi* | [**templatesUpdateTags**](docs/TemplatesApi.md#templatesUpdateTags) | **PUT** /api/rp/v1/Templates/File/{id}/UpdateTags | Update tags
-*FastreportCloudSdk.TemplatesApi* | [**templatesUploadFile**](docs/TemplatesApi.md#templatesUploadFile) | **POST** /api/rp/v1/Templates/Folder/{id}/File | Upload a file to the specified folder  !
+*FastreportCloudSdk.TemplatesApi* | [**templatesUploadFile**](docs/TemplatesApi.md#templatesUploadFile) | **POST** /api/rp/v1/Templates/Folder/{id}/File | Upload a file to the specified folder. The method is deprecated, use the UploadFileV2 method instead!
+*FastreportCloudSdk.TemplatesApi* | [**templatesUploadFileV2**](docs/TemplatesApi.md#templatesUploadFileV2) | **POST** /api/rp/v2/Templates/Folder/{id}/File | Alternative api for upload a file to the specified folder!
+*FastreportCloudSdk.UserNotificationsApi* | [**userNotificationsClearNotifications**](docs/UserNotificationsApi.md#userNotificationsClearNotifications) | **DELETE** /api/manage/v1/notifications | Use this endpoint to \&quot;clear\&quot; your notifications
+*FastreportCloudSdk.UserNotificationsApi* | [**userNotificationsGetNotifications**](docs/UserNotificationsApi.md#userNotificationsGetNotifications) | **GET** /api/manage/v1/notifications | Use this endpoint to recieve notifications
 *FastreportCloudSdk.UserProfileApi* | [**userProfileGetMyProfile**](docs/UserProfileApi.md#userProfileGetMyProfile) | **GET** /api/manage/v1/UserProfile | Return current profile of the current user
 *FastreportCloudSdk.UserProfileApi* | [**userProfileGetUserProfile**](docs/UserProfileApi.md#userProfileGetUserProfile) | **GET** /api/manage/v1/UserProfile/{userId} | Return user profile by user identifier.  If the user did not provide information about himself or blocked, then the endpoint will return an empty model. (only id)
 *FastreportCloudSdk.UserProfileApi* | [**userProfileUpdateMyProfile**](docs/UserProfileApi.md#userProfileUpdateMyProfile) | **PUT** /api/manage/v1/UserProfile | Update profile of the current user
@@ -281,29 +318,48 @@ Class | Method | HTTP request | Description
 ## Documentation for Models
 
  - [FastreportCloudSdk.AcceptAgreementsVM](docs/AcceptAgreementsVM.md)
+ - [FastreportCloudSdk.AdminAdministrate](docs/AdminAdministrate.md)
+ - [FastreportCloudSdk.AdminCreate](docs/AdminCreate.md)
+ - [FastreportCloudSdk.AdminCreateAdminGetAdminUpdateAdminDeleteAdminExecuteAdminAdministratePermission](docs/AdminCreateAdminGetAdminUpdateAdminDeleteAdminExecuteAdminAdministratePermission.md)
+ - [FastreportCloudSdk.AdminDelete](docs/AdminDelete.md)
+ - [FastreportCloudSdk.AdminExecute](docs/AdminExecute.md)
  - [FastreportCloudSdk.AdminExportFolderCreateVM](docs/AdminExportFolderCreateVM.md)
  - [FastreportCloudSdk.AdminFolderCreateVM](docs/AdminFolderCreateVM.md)
+ - [FastreportCloudSdk.AdminGet](docs/AdminGet.md)
+ - [FastreportCloudSdk.AdminPermission](docs/AdminPermission.md)
  - [FastreportCloudSdk.AdminReportFolderCreateVM](docs/AdminReportFolderCreateVM.md)
  - [FastreportCloudSdk.AdminSubscriptionVM](docs/AdminSubscriptionVM.md)
+ - [FastreportCloudSdk.AdminSubscriptionsVM](docs/AdminSubscriptionsVM.md)
  - [FastreportCloudSdk.AdminTemplateFolderCreateVM](docs/AdminTemplateFolderCreateVM.md)
+ - [FastreportCloudSdk.AdminUpdate](docs/AdminUpdate.md)
+ - [FastreportCloudSdk.AdminUpdateCurrentSubscriptionPlanVM](docs/AdminUpdateCurrentSubscriptionPlanVM.md)
+ - [FastreportCloudSdk.AnalysisResultVM](docs/AnalysisResultVM.md)
+ - [FastreportCloudSdk.AnalysisResultsVM](docs/AnalysisResultsVM.md)
  - [FastreportCloudSdk.ApiKeyVM](docs/ApiKeyVM.md)
  - [FastreportCloudSdk.ApiKeysVM](docs/ApiKeysVM.md)
- - [FastreportCloudSdk.AppMixins](docs/AppMixins.md)
+ - [FastreportCloudSdk.AppMixinsVM](docs/AppMixinsVM.md)
  - [FastreportCloudSdk.AuditActionVM](docs/AuditActionVM.md)
  - [FastreportCloudSdk.AuditActionsVM](docs/AuditActionsVM.md)
+ - [FastreportCloudSdk.AuditActiveStatsVM](docs/AuditActiveStatsVM.md)
  - [FastreportCloudSdk.AuditFilePropertyChangedVM](docs/AuditFilePropertyChangedVM.md)
+ - [FastreportCloudSdk.AuditStatVM](docs/AuditStatVM.md)
+ - [FastreportCloudSdk.AuditStatsVM](docs/AuditStatsVM.md)
  - [FastreportCloudSdk.AuditSubscriptionActionVM](docs/AuditSubscriptionActionVM.md)
  - [FastreportCloudSdk.AuditTaskActionVM](docs/AuditTaskActionVM.md)
  - [FastreportCloudSdk.AuditType](docs/AuditType.md)
  - [FastreportCloudSdk.AuthConfigVM](docs/AuthConfigVM.md)
  - [FastreportCloudSdk.BreadcrumbsModel](docs/BreadcrumbsModel.md)
  - [FastreportCloudSdk.BreadcrumbsVM](docs/BreadcrumbsVM.md)
+ - [FastreportCloudSdk.CheckUserByPasswordInternalVM](docs/CheckUserByPasswordInternalVM.md)
+ - [FastreportCloudSdk.ClearNotificationsVM](docs/ClearNotificationsVM.md)
+ - [FastreportCloudSdk.CloudBaseVM](docs/CloudBaseVM.md)
  - [FastreportCloudSdk.ContactGroupVM](docs/ContactGroupVM.md)
  - [FastreportCloudSdk.ContactGroupsVM](docs/ContactGroupsVM.md)
  - [FastreportCloudSdk.ContactVM](docs/ContactVM.md)
  - [FastreportCloudSdk.ContactsVM](docs/ContactsVM.md)
  - [FastreportCloudSdk.CountVM](docs/CountVM.md)
  - [FastreportCloudSdk.CreateApiKeyVM](docs/CreateApiKeyVM.md)
+ - [FastreportCloudSdk.CreateAuditActionVM](docs/CreateAuditActionVM.md)
  - [FastreportCloudSdk.CreateContactGroupVM](docs/CreateContactGroupVM.md)
  - [FastreportCloudSdk.CreateContactVM](docs/CreateContactVM.md)
  - [FastreportCloudSdk.CreateDataSourceAdminVM](docs/CreateDataSourceAdminVM.md)
@@ -313,11 +369,17 @@ Class | Method | HTTP request | Description
  - [FastreportCloudSdk.CreateExportTemplateTaskVM](docs/CreateExportTemplateTaskVM.md)
  - [FastreportCloudSdk.CreateFTPUploadTaskVM](docs/CreateFTPUploadTaskVM.md)
  - [FastreportCloudSdk.CreateFetchTaskVM](docs/CreateFetchTaskVM.md)
+ - [FastreportCloudSdk.CreateFileShareVM](docs/CreateFileShareVM.md)
  - [FastreportCloudSdk.CreateGroupAdminVM](docs/CreateGroupAdminVM.md)
  - [FastreportCloudSdk.CreateGroupVM](docs/CreateGroupVM.md)
+ - [FastreportCloudSdk.CreateIfNotExistInternalVM](docs/CreateIfNotExistInternalVM.md)
  - [FastreportCloudSdk.CreatePrepareTemplateTaskVM](docs/CreatePrepareTemplateTaskVM.md)
  - [FastreportCloudSdk.CreateSubscriptionInviteVM](docs/CreateSubscriptionInviteVM.md)
+ - [FastreportCloudSdk.CreateSubscriptionPeriodVM](docs/CreateSubscriptionPeriodVM.md)
+ - [FastreportCloudSdk.CreateSubscriptionPlanVM](docs/CreateSubscriptionPlanVM.md)
+ - [FastreportCloudSdk.CreateSubscriptionVM](docs/CreateSubscriptionVM.md)
  - [FastreportCloudSdk.CreateTaskBaseVM](docs/CreateTaskBaseVM.md)
+ - [FastreportCloudSdk.CreateTaskEndVM](docs/CreateTaskEndVM.md)
  - [FastreportCloudSdk.CreateThumbnailReportTaskVM](docs/CreateThumbnailReportTaskVM.md)
  - [FastreportCloudSdk.CreateThumbnailTemplateTaskVM](docs/CreateThumbnailTemplateTaskVM.md)
  - [FastreportCloudSdk.CreateTransformTaskBaseVM](docs/CreateTransformTaskBaseVM.md)
@@ -326,14 +388,16 @@ Class | Method | HTTP request | Description
  - [FastreportCloudSdk.DataSourceAdministrate](docs/DataSourceAdministrate.md)
  - [FastreportCloudSdk.DataSourceConnectionType](docs/DataSourceConnectionType.md)
  - [FastreportCloudSdk.DataSourceCreate](docs/DataSourceCreate.md)
- - [FastreportCloudSdk.DataSourceCreateDataSourceGetDataSourceUpdateDataSourceDeleteDataSourceExecuteDataSourceAdministratePermission](docs/DataSourceCreateDataSourceGetDataSourceUpdateDataSourceDeleteDataSourceExecuteDataSourceAdministratePermission.md)
  - [FastreportCloudSdk.DataSourceDelete](docs/DataSourceDelete.md)
  - [FastreportCloudSdk.DataSourceExecute](docs/DataSourceExecute.md)
  - [FastreportCloudSdk.DataSourceGet](docs/DataSourceGet.md)
- - [FastreportCloudSdk.DataSourcePermission](docs/DataSourcePermission.md)
- - [FastreportCloudSdk.DataSourcePermissionDataSourceCreateDataSourceGetDataSourceUpdateDataSourceDeleteDataSourceExecuteDataSourceAdministratePermissions](docs/DataSourcePermissionDataSourceCreateDataSourceGetDataSourceUpdateDataSourceDeleteDataSourceExecuteDataSourceAdministratePermissions.md)
- - [FastreportCloudSdk.DataSourcePermissions](docs/DataSourcePermissions.md)
+ - [FastreportCloudSdk.DataSourceParameterTypeVM](docs/DataSourceParameterTypeVM.md)
+ - [FastreportCloudSdk.DataSourceParameterTypesVM](docs/DataSourceParameterTypesVM.md)
+ - [FastreportCloudSdk.DataSourcePermissionCRUDVM](docs/DataSourcePermissionCRUDVM.md)
+ - [FastreportCloudSdk.DataSourcePermissionsCRUDVM](docs/DataSourcePermissionsCRUDVM.md)
  - [FastreportCloudSdk.DataSourcePermissionsVM](docs/DataSourcePermissionsVM.md)
+ - [FastreportCloudSdk.DataSourceSelectCommandParameterVM](docs/DataSourceSelectCommandParameterVM.md)
+ - [FastreportCloudSdk.DataSourceSelectCommandVM](docs/DataSourceSelectCommandVM.md)
  - [FastreportCloudSdk.DataSourceSorting](docs/DataSourceSorting.md)
  - [FastreportCloudSdk.DataSourceStatus](docs/DataSourceStatus.md)
  - [FastreportCloudSdk.DataSourceUpdate](docs/DataSourceUpdate.md)
@@ -343,7 +407,6 @@ Class | Method | HTTP request | Description
  - [FastreportCloudSdk.DeleteApiKeyVM](docs/DeleteApiKeyVM.md)
  - [FastreportCloudSdk.EmailTaskVM](docs/EmailTaskVM.md)
  - [FastreportCloudSdk.EntityType](docs/EntityType.md)
- - [FastreportCloudSdk.EntityVM](docs/EntityVM.md)
  - [FastreportCloudSdk.ExportCreateAdminVM](docs/ExportCreateAdminVM.md)
  - [FastreportCloudSdk.ExportCreateVM](docs/ExportCreateVM.md)
  - [FastreportCloudSdk.ExportFolderCreateVM](docs/ExportFolderCreateVM.md)
@@ -353,47 +416,51 @@ Class | Method | HTTP request | Description
  - [FastreportCloudSdk.ExportTemplateTaskVM](docs/ExportTemplateTaskVM.md)
  - [FastreportCloudSdk.ExportTemplateVM](docs/ExportTemplateVM.md)
  - [FastreportCloudSdk.ExportVM](docs/ExportVM.md)
- - [FastreportCloudSdk.ExportVMFilesVMBase](docs/ExportVMFilesVMBase.md)
  - [FastreportCloudSdk.ExportsVM](docs/ExportsVM.md)
  - [FastreportCloudSdk.FTPUploadTaskVM](docs/FTPUploadTaskVM.md)
  - [FastreportCloudSdk.FetchTaskVM](docs/FetchTaskVM.md)
  - [FastreportCloudSdk.FileAdministrate](docs/FileAdministrate.md)
+ - [FastreportCloudSdk.FileContentVM](docs/FileContentVM.md)
  - [FastreportCloudSdk.FileCreate](docs/FileCreate.md)
- - [FastreportCloudSdk.FileCreateFileGetFileUpdateFileDeleteFileExecuteFileAdministratePermission](docs/FileCreateFileGetFileUpdateFileDeleteFileExecuteFileAdministratePermission.md)
+ - [FastreportCloudSdk.FileCreateFormVM](docs/FileCreateFormVM.md)
  - [FastreportCloudSdk.FileCreateVM](docs/FileCreateVM.md)
  - [FastreportCloudSdk.FileDelete](docs/FileDelete.md)
  - [FastreportCloudSdk.FileExecute](docs/FileExecute.md)
  - [FastreportCloudSdk.FileGet](docs/FileGet.md)
  - [FastreportCloudSdk.FileIconVM](docs/FileIconVM.md)
  - [FastreportCloudSdk.FileKind](docs/FileKind.md)
- - [FastreportCloudSdk.FilePermission](docs/FilePermission.md)
- - [FastreportCloudSdk.FilePermissionFileCreateFileGetFileUpdateFileDeleteFileExecuteFileAdministratePermissions](docs/FilePermissionFileCreateFileGetFileUpdateFileDeleteFileExecuteFileAdministratePermissions.md)
- - [FastreportCloudSdk.FilePermissions](docs/FilePermissions.md)
+ - [FastreportCloudSdk.FilePermissionCRUDVM](docs/FilePermissionCRUDVM.md)
+ - [FastreportCloudSdk.FilePermissionsCRUDVM](docs/FilePermissionsCRUDVM.md)
  - [FastreportCloudSdk.FilePermissionsVM](docs/FilePermissionsVM.md)
  - [FastreportCloudSdk.FileRenameVM](docs/FileRenameVM.md)
+ - [FastreportCloudSdk.FileShareVM](docs/FileShareVM.md)
+ - [FastreportCloudSdk.FileSharingKeysVM](docs/FileSharingKeysVM.md)
  - [FastreportCloudSdk.FileSorting](docs/FileSorting.md)
  - [FastreportCloudSdk.FileStatus](docs/FileStatus.md)
  - [FastreportCloudSdk.FileStatusReason](docs/FileStatusReason.md)
+ - [FastreportCloudSdk.FileStatusUpdateInternalVM](docs/FileStatusUpdateInternalVM.md)
+ - [FastreportCloudSdk.FileStatusVM](docs/FileStatusVM.md)
  - [FastreportCloudSdk.FileTagsUpdateVM](docs/FileTagsUpdateVM.md)
+ - [FastreportCloudSdk.FileThumbnailUpdateInternalVM](docs/FileThumbnailUpdateInternalVM.md)
  - [FastreportCloudSdk.FileType](docs/FileType.md)
  - [FastreportCloudSdk.FileUpdate](docs/FileUpdate.md)
+ - [FastreportCloudSdk.FileUpdateVM](docs/FileUpdateVM.md)
  - [FastreportCloudSdk.FileVM](docs/FileVM.md)
- - [FastreportCloudSdk.FileVMFilesVMBase](docs/FileVMFilesVMBase.md)
  - [FastreportCloudSdk.FilesVM](docs/FilesVM.md)
+ - [FastreportCloudSdk.FilesVMBase](docs/FilesVMBase.md)
  - [FastreportCloudSdk.FolderCreateVM](docs/FolderCreateVM.md)
  - [FastreportCloudSdk.FolderIconVM](docs/FolderIconVM.md)
  - [FastreportCloudSdk.FolderRenameVM](docs/FolderRenameVM.md)
+ - [FastreportCloudSdk.FolderSizeVM](docs/FolderSizeVM.md)
  - [FastreportCloudSdk.FolderTagsUpdateVM](docs/FolderTagsUpdateVM.md)
- - [FastreportCloudSdk.FrontendApp](docs/FrontendApp.md)
+ - [FastreportCloudSdk.FrontendAppVM](docs/FrontendAppVM.md)
  - [FastreportCloudSdk.GroupAdministrate](docs/GroupAdministrate.md)
  - [FastreportCloudSdk.GroupCreate](docs/GroupCreate.md)
- - [FastreportCloudSdk.GroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupAdministratePermission](docs/GroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupAdministratePermission.md)
  - [FastreportCloudSdk.GroupDelete](docs/GroupDelete.md)
  - [FastreportCloudSdk.GroupExecute](docs/GroupExecute.md)
  - [FastreportCloudSdk.GroupGet](docs/GroupGet.md)
- - [FastreportCloudSdk.GroupPermission](docs/GroupPermission.md)
- - [FastreportCloudSdk.GroupPermissionGroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupAdministratePermissions](docs/GroupPermissionGroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupAdministratePermissions.md)
- - [FastreportCloudSdk.GroupPermissions](docs/GroupPermissions.md)
+ - [FastreportCloudSdk.GroupPermissionCRUDVM](docs/GroupPermissionCRUDVM.md)
+ - [FastreportCloudSdk.GroupPermissionsCRUDVM](docs/GroupPermissionsCRUDVM.md)
  - [FastreportCloudSdk.GroupPermissionsVM](docs/GroupPermissionsVM.md)
  - [FastreportCloudSdk.GroupUpdate](docs/GroupUpdate.md)
  - [FastreportCloudSdk.GroupUserVM](docs/GroupUserVM.md)
@@ -410,17 +477,21 @@ Class | Method | HTTP request | Description
  - [FastreportCloudSdk.PreviewReportVM](docs/PreviewReportVM.md)
  - [FastreportCloudSdk.PreviewTemplateVM](docs/PreviewTemplateVM.md)
  - [FastreportCloudSdk.ProblemDetails](docs/ProblemDetails.md)
+ - [FastreportCloudSdk.ProblemLevel](docs/ProblemLevel.md)
+ - [FastreportCloudSdk.ProblemType](docs/ProblemType.md)
  - [FastreportCloudSdk.ProfileVisibility](docs/ProfileVisibility.md)
+ - [FastreportCloudSdk.RegisterUserVM](docs/RegisterUserVM.md)
  - [FastreportCloudSdk.RenameDataSourceVM](docs/RenameDataSourceVM.md)
  - [FastreportCloudSdk.RenameGroupVM](docs/RenameGroupVM.md)
  - [FastreportCloudSdk.RenameSubscriptionVM](docs/RenameSubscriptionVM.md)
  - [FastreportCloudSdk.ReportCreateAdminVM](docs/ReportCreateAdminVM.md)
+ - [FastreportCloudSdk.ReportCreateFormVM](docs/ReportCreateFormVM.md)
  - [FastreportCloudSdk.ReportCreateVM](docs/ReportCreateVM.md)
  - [FastreportCloudSdk.ReportFolderCreateVM](docs/ReportFolderCreateVM.md)
  - [FastreportCloudSdk.ReportInfo](docs/ReportInfo.md)
  - [FastreportCloudSdk.ReportVM](docs/ReportVM.md)
- - [FastreportCloudSdk.ReportVMFilesVMBase](docs/ReportVMFilesVMBase.md)
  - [FastreportCloudSdk.ReportsVM](docs/ReportsVM.md)
+ - [FastreportCloudSdk.RestOfSpaceVM](docs/RestOfSpaceVM.md)
  - [FastreportCloudSdk.RunEmailTaskVM](docs/RunEmailTaskVM.md)
  - [FastreportCloudSdk.RunExportReportTaskVM](docs/RunExportReportTaskVM.md)
  - [FastreportCloudSdk.RunExportTemplateTaskVM](docs/RunExportTemplateTaskVM.md)
@@ -435,10 +506,11 @@ Class | Method | HTTP request | Description
  - [FastreportCloudSdk.RunTransportTaskBaseVM](docs/RunTransportTaskBaseVM.md)
  - [FastreportCloudSdk.RunWebhookTaskVM](docs/RunWebhookTaskVM.md)
  - [FastreportCloudSdk.SaveMode](docs/SaveMode.md)
+ - [FastreportCloudSdk.SelectedFilesVM](docs/SelectedFilesVM.md)
  - [FastreportCloudSdk.ServerConfigurationVM](docs/ServerConfigurationVM.md)
+ - [FastreportCloudSdk.SolvationReportVM](docs/SolvationReportVM.md)
  - [FastreportCloudSdk.SubscriptionAdministrate](docs/SubscriptionAdministrate.md)
  - [FastreportCloudSdk.SubscriptionCreate](docs/SubscriptionCreate.md)
- - [FastreportCloudSdk.SubscriptionCreateSubscriptionGetSubscriptionUpdateSubscriptionDeleteSubscriptionExecuteSubscriptionAdministratePermission](docs/SubscriptionCreateSubscriptionGetSubscriptionUpdateSubscriptionDeleteSubscriptionExecuteSubscriptionAdministratePermission.md)
  - [FastreportCloudSdk.SubscriptionDelete](docs/SubscriptionDelete.md)
  - [FastreportCloudSdk.SubscriptionExecute](docs/SubscriptionExecute.md)
  - [FastreportCloudSdk.SubscriptionFolder](docs/SubscriptionFolder.md)
@@ -446,9 +518,8 @@ Class | Method | HTTP request | Description
  - [FastreportCloudSdk.SubscriptionInviteVM](docs/SubscriptionInviteVM.md)
  - [FastreportCloudSdk.SubscriptionInvitesVM](docs/SubscriptionInvitesVM.md)
  - [FastreportCloudSdk.SubscriptionPeriodVM](docs/SubscriptionPeriodVM.md)
- - [FastreportCloudSdk.SubscriptionPermission](docs/SubscriptionPermission.md)
- - [FastreportCloudSdk.SubscriptionPermissionSubscriptionCreateSubscriptionGetSubscriptionUpdateSubscriptionDeleteSubscriptionExecuteSubscriptionAdministratePermissions](docs/SubscriptionPermissionSubscriptionCreateSubscriptionGetSubscriptionUpdateSubscriptionDeleteSubscriptionExecuteSubscriptionAdministratePermissions.md)
- - [FastreportCloudSdk.SubscriptionPermissions](docs/SubscriptionPermissions.md)
+ - [FastreportCloudSdk.SubscriptionPermissionCRUDVM](docs/SubscriptionPermissionCRUDVM.md)
+ - [FastreportCloudSdk.SubscriptionPermissionsCRUDVM](docs/SubscriptionPermissionsCRUDVM.md)
  - [FastreportCloudSdk.SubscriptionPermissionsVM](docs/SubscriptionPermissionsVM.md)
  - [FastreportCloudSdk.SubscriptionPlanVM](docs/SubscriptionPlanVM.md)
  - [FastreportCloudSdk.SubscriptionPlansVM](docs/SubscriptionPlansVM.md)
@@ -460,22 +531,24 @@ Class | Method | HTTP request | Description
  - [FastreportCloudSdk.TaskAdministrate](docs/TaskAdministrate.md)
  - [FastreportCloudSdk.TaskBaseVM](docs/TaskBaseVM.md)
  - [FastreportCloudSdk.TaskCreate](docs/TaskCreate.md)
- - [FastreportCloudSdk.TaskCreateTaskGetTaskUpdateTaskDeleteTaskExecuteTaskAdministratePermission](docs/TaskCreateTaskGetTaskUpdateTaskDeleteTaskExecuteTaskAdministratePermission.md)
  - [FastreportCloudSdk.TaskDelete](docs/TaskDelete.md)
+ - [FastreportCloudSdk.TaskEnd](docs/TaskEnd.md)
  - [FastreportCloudSdk.TaskExecute](docs/TaskExecute.md)
  - [FastreportCloudSdk.TaskGet](docs/TaskGet.md)
- - [FastreportCloudSdk.TaskPermission](docs/TaskPermission.md)
- - [FastreportCloudSdk.TaskPermissionTaskCreateTaskGetTaskUpdateTaskDeleteTaskExecuteTaskAdministratePermissions](docs/TaskPermissionTaskCreateTaskGetTaskUpdateTaskDeleteTaskExecuteTaskAdministratePermissions.md)
- - [FastreportCloudSdk.TaskPermissions](docs/TaskPermissions.md)
+ - [FastreportCloudSdk.TaskIdsVM](docs/TaskIdsVM.md)
+ - [FastreportCloudSdk.TaskMessageIdVM](docs/TaskMessageIdVM.md)
+ - [FastreportCloudSdk.TaskPermissionCRUDVM](docs/TaskPermissionCRUDVM.md)
+ - [FastreportCloudSdk.TaskPermissionsCRUDVM](docs/TaskPermissionsCRUDVM.md)
  - [FastreportCloudSdk.TaskPermissionsVM](docs/TaskPermissionsVM.md)
  - [FastreportCloudSdk.TaskSettingsVM](docs/TaskSettingsVM.md)
  - [FastreportCloudSdk.TaskUpdate](docs/TaskUpdate.md)
  - [FastreportCloudSdk.TasksVM](docs/TasksVM.md)
+ - [FastreportCloudSdk.TemplateContentVM](docs/TemplateContentVM.md)
  - [FastreportCloudSdk.TemplateCreateAdminVM](docs/TemplateCreateAdminVM.md)
+ - [FastreportCloudSdk.TemplateCreateFormVM](docs/TemplateCreateFormVM.md)
  - [FastreportCloudSdk.TemplateCreateVM](docs/TemplateCreateVM.md)
  - [FastreportCloudSdk.TemplateFolderCreateVM](docs/TemplateFolderCreateVM.md)
  - [FastreportCloudSdk.TemplateVM](docs/TemplateVM.md)
- - [FastreportCloudSdk.TemplateVMFilesVMBase](docs/TemplateVMFilesVMBase.md)
  - [FastreportCloudSdk.TemplatesVM](docs/TemplatesVM.md)
  - [FastreportCloudSdk.ThumbnailReportTaskVM](docs/ThumbnailReportTaskVM.md)
  - [FastreportCloudSdk.ThumbnailTemplateTaskVM](docs/ThumbnailTemplateTaskVM.md)
@@ -484,21 +557,30 @@ Class | Method | HTTP request | Description
  - [FastreportCloudSdk.TransportTaskBaseVM](docs/TransportTaskBaseVM.md)
  - [FastreportCloudSdk.UpdateContactGroupVM](docs/UpdateContactGroupVM.md)
  - [FastreportCloudSdk.UpdateContactVM](docs/UpdateContactVM.md)
+ - [FastreportCloudSdk.UpdateContentInternalVM](docs/UpdateContentInternalVM.md)
  - [FastreportCloudSdk.UpdateDataSourceConnectionStringVM](docs/UpdateDataSourceConnectionStringVM.md)
  - [FastreportCloudSdk.UpdateDataSourcePermissionsVM](docs/UpdateDataSourcePermissionsVM.md)
+ - [FastreportCloudSdk.UpdateDataSourceSelectCommandsVM](docs/UpdateDataSourceSelectCommandsVM.md)
  - [FastreportCloudSdk.UpdateDataSourceSubscriptionVM](docs/UpdateDataSourceSubscriptionVM.md)
+ - [FastreportCloudSdk.UpdateDataSourceVM](docs/UpdateDataSourceVM.md)
+ - [FastreportCloudSdk.UpdateDataVM](docs/UpdateDataVM.md)
  - [FastreportCloudSdk.UpdateDefaultPermissionsVM](docs/UpdateDefaultPermissionsVM.md)
  - [FastreportCloudSdk.UpdateEmailTaskVM](docs/UpdateEmailTaskVM.md)
  - [FastreportCloudSdk.UpdateExportReportTaskVM](docs/UpdateExportReportTaskVM.md)
  - [FastreportCloudSdk.UpdateExportTemplateTaskVM](docs/UpdateExportTemplateTaskVM.md)
  - [FastreportCloudSdk.UpdateFTPUploadTaskVM](docs/UpdateFTPUploadTaskVM.md)
  - [FastreportCloudSdk.UpdateFetchTaskVM](docs/UpdateFetchTaskVM.md)
+ - [FastreportCloudSdk.UpdateFileContentFormVM](docs/UpdateFileContentFormVM.md)
+ - [FastreportCloudSdk.UpdateFileContentInternalVM](docs/UpdateFileContentInternalVM.md)
  - [FastreportCloudSdk.UpdateFileContentVM](docs/UpdateFileContentVM.md)
  - [FastreportCloudSdk.UpdateFilePermissionsVM](docs/UpdateFilePermissionsVM.md)
  - [FastreportCloudSdk.UpdateGroupPermissionsVM](docs/UpdateGroupPermissionsVM.md)
+ - [FastreportCloudSdk.UpdateGroupVM](docs/UpdateGroupVM.md)
  - [FastreportCloudSdk.UpdatePrepareTemplateTaskVM](docs/UpdatePrepareTemplateTaskVM.md)
  - [FastreportCloudSdk.UpdateSubscriptionLocaleVM](docs/UpdateSubscriptionLocaleVM.md)
  - [FastreportCloudSdk.UpdateSubscriptionPermissionsVM](docs/UpdateSubscriptionPermissionsVM.md)
+ - [FastreportCloudSdk.UpdateSubscriptionPlanVM](docs/UpdateSubscriptionPlanVM.md)
+ - [FastreportCloudSdk.UpdateSubscriptionVM](docs/UpdateSubscriptionVM.md)
  - [FastreportCloudSdk.UpdateTaskBaseVM](docs/UpdateTaskBaseVM.md)
  - [FastreportCloudSdk.UpdateTaskPermissionsVM](docs/UpdateTaskPermissionsVM.md)
  - [FastreportCloudSdk.UpdateThumbnailReportTaskVM](docs/UpdateThumbnailReportTaskVM.md)
@@ -507,9 +589,14 @@ Class | Method | HTTP request | Description
  - [FastreportCloudSdk.UpdateTransportTaskBaseVM](docs/UpdateTransportTaskBaseVM.md)
  - [FastreportCloudSdk.UpdateUserProfileVM](docs/UpdateUserProfileVM.md)
  - [FastreportCloudSdk.UpdateUserSettingsVM](docs/UpdateUserSettingsVM.md)
+ - [FastreportCloudSdk.UpdateUserVM](docs/UpdateUserVM.md)
  - [FastreportCloudSdk.UpdateWebhookTaskVM](docs/UpdateWebhookTaskVM.md)
+ - [FastreportCloudSdk.UserIsAdminVM](docs/UserIsAdminVM.md)
  - [FastreportCloudSdk.UserProfileVM](docs/UserProfileVM.md)
+ - [FastreportCloudSdk.UserResultVM](docs/UserResultVM.md)
  - [FastreportCloudSdk.UserSettingsVM](docs/UserSettingsVM.md)
+ - [FastreportCloudSdk.UserVM](docs/UserVM.md)
+ - [FastreportCloudSdk.UsersVM](docs/UsersVM.md)
  - [FastreportCloudSdk.WebhookTaskVM](docs/WebhookTaskVM.md)
 
 

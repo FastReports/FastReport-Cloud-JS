@@ -82,6 +82,13 @@ export default class DataSourceConnectionType {
         "MongoDB" = "MongoDB";
 
     
+        /**
+         * value: "ClickHouse"
+         * @const
+         */
+        "ClickHouse" = "ClickHouse";
+
+    
 
     /**
     * Returns a <code>DataSourceConnectionType</code> enum value from a Javascript object name.

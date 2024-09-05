@@ -108,6 +108,16 @@
         done();
       });
     });
+    describe('dataSourcesGetParameterTypes', function() {
+      it('should call dataSourcesGetParameterTypes successfully', function(done) {
+        //uncomment below and update the code to test dataSourcesGetParameterTypes
+        //instance.dataSourcesGetParameterTypes(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('dataSourcesGetPermissions', function() {
       it('should call dataSourcesGetPermissions successfully', function(done) {
         //uncomment below and update the code to test dataSourcesGetPermissions
@@ -142,6 +152,16 @@
       it('should call dataSourcesUpdatePermissions successfully', function(done) {
         //uncomment below and update the code to test dataSourcesUpdatePermissions
         //instance.dataSourcesUpdatePermissions(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('dataSourcesUpdateSelectCommands', function() {
+      it('should call dataSourcesUpdateSelectCommands successfully', function(done) {
+        //uncomment below and update the code to test dataSourcesUpdateSelectCommands
+        //instance.dataSourcesUpdateSelectCommands(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

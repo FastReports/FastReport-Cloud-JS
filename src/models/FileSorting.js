@@ -20,13 +20,6 @@ import ApiClient from '../ApiClient';
 export default class FileSorting {
     
         /**
-         * value: "None"
-         * @const
-         */
-        "None" = "None";
-
-    
-        /**
          * value: "CreatedTime"
          * @const
          */

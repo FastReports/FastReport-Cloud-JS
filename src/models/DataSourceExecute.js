@@ -27,6 +27,13 @@ export default class DataSourceExecute {
 
     
         /**
+         * value: 1
+         * @const
+         */
+        "1" = 1;
+
+    
+        /**
          * value: -1
          * @const
          */

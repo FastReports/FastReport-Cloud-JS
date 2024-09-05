@@ -12,6 +12,8 @@
  */
 
 import ApiClient from '../ApiClient';
+import InputFileVM from './InputFileVM';
+import TaskEnd from './TaskEnd';
 import TransportTaskBaseVM from './TransportTaskBaseVM';
 
 /**
@@ -38,6 +40,7 @@ class WebhookTaskVM {
      * Only for internal use.
      */
     static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -59,6 +62,9 @@ class WebhookTaskVM {
             if (data.hasOwnProperty('url')) {
                 obj['url'] = ApiClient.convertToType(data['url'], 'String');
             }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
+            }
         }
         return obj;
     }
@@ -71,13 +77,17 @@ class WebhookTaskVM {
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
         for (const property of WebhookTaskVM.RequiredProperties) {
-            if (!data[property]) {
+            if (!data.hasOwnProperty(property)) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
         // ensure the json data is a string
         if (data['url'] && !(typeof data['url'] === 'string' || data['url'] instanceof String)) {
             throw new Error("Expected the field `url` to be a primitive type in the JSON string but got " + data['url']);
+        }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
         }
 
         return true;
@@ -98,6 +108,11 @@ WebhookTaskVM.prototype['headers'] = undefined;
  */
 WebhookTaskVM.prototype['url'] = undefined;
 
+/**
+ * @member {String} $t
+ */
+WebhookTaskVM.prototype['$t'] = undefined;
+
 
 // Implement TransportTaskBaseVM interface:
 /**
@@ -105,13 +120,13 @@ WebhookTaskVM.prototype['url'] = undefined;
  */
 TransportTaskBaseVM.prototype['cronExpression'] = undefined;
 /**
- * @member {Date} delayedRunTime
+ * @member {Date} startsOn
  */
-TransportTaskBaseVM.prototype['delayedRunTime'] = undefined;
+TransportTaskBaseVM.prototype['startsOn'] = undefined;
 /**
- * @member {Date} delayedWasRunTime
+ * @member {module:models/TaskEnd} ends
  */
-TransportTaskBaseVM.prototype['delayedWasRunTime'] = undefined;
+TransportTaskBaseVM.prototype['ends'] = undefined;
 /**
  * @member {String} id
  */

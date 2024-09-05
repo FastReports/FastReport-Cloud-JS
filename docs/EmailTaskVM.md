@@ -13,5 +13,6 @@ Name | Type | Description | Notes
 **subject** | **String** |  | [optional] 
 **to** | **[String]** |  | [optional] 
 **username** | **String** |  | [optional] 
+**t** | **String** |  | 
 
 

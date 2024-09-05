@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import CloudBaseVM from './CloudBaseVM';
 
 /**
  * The RunTaskBaseVM model module.
@@ -22,10 +23,12 @@ class RunTaskBaseVM {
     /**
      * Constructs a new <code>RunTaskBaseVM</code>.
      * @alias module:models/RunTaskBaseVM
+     * @extends module:models/CloudBaseVM
+     * @implements module:models/CloudBaseVM
      * @param t {String} 
      */
     constructor(t) { 
-        
+        CloudBaseVM.initialize(this, t);
         RunTaskBaseVM.initialize(this, t);
     }
 
@@ -48,6 +51,8 @@ class RunTaskBaseVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new RunTaskBaseVM();
+            CloudBaseVM.constructFromObject(data, obj);
+            CloudBaseVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('subscriptionId')) {
                 obj['subscriptionId'] = ApiClient.convertToType(data['subscriptionId'], 'String');
@@ -67,7 +72,7 @@ class RunTaskBaseVM {
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
         for (const property of RunTaskBaseVM.RequiredProperties) {
-            if (!data[property]) {
+            if (!data.hasOwnProperty(property)) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
@@ -99,6 +104,11 @@ RunTaskBaseVM.prototype['subscriptionId'] = undefined;
 RunTaskBaseVM.prototype['$t'] = undefined;
 
 
+// Implement CloudBaseVM interface:
+/**
+ * @member {String} $t
+ */
+CloudBaseVM.prototype['$t'] = undefined;
 
 
 

@@ -5,7 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **cronExpression** | **String** |  | [optional] 
-**delayedRunTime** | **Date** |  | [optional] 
+**startsOn** | **Date** |  | [optional] 
+**ends** | [**CreateTaskEndVM**](CreateTaskEndVM.md) |  | [optional] 
 **name** | **String** |  | [optional] 
 **t** | **String** |  | 
 

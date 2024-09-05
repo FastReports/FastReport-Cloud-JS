@@ -12,7 +12,9 @@
  */
 
 import ApiClient from '../ApiClient';
+import CreateTaskEndVM from './CreateTaskEndVM';
 import CreateTransportTaskBaseVM from './CreateTransportTaskBaseVM';
+import InputFileVM from './InputFileVM';
 
 /**
  * The CreateWebhookTaskVM model module.
@@ -38,6 +40,7 @@ class CreateWebhookTaskVM {
      * Only for internal use.
      */
     static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -59,6 +62,9 @@ class CreateWebhookTaskVM {
             if (data.hasOwnProperty('url')) {
                 obj['url'] = ApiClient.convertToType(data['url'], 'String');
             }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
+            }
         }
         return obj;
     }
@@ -71,13 +77,17 @@ class CreateWebhookTaskVM {
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
         for (const property of CreateWebhookTaskVM.RequiredProperties) {
-            if (!data[property]) {
+            if (!data.hasOwnProperty(property)) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
         // ensure the json data is a string
         if (data['url'] && !(typeof data['url'] === 'string' || data['url'] instanceof String)) {
             throw new Error("Expected the field `url` to be a primitive type in the JSON string but got " + data['url']);
+        }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
         }
 
         return true;
@@ -98,6 +108,11 @@ CreateWebhookTaskVM.prototype['headers'] = undefined;
  */
 CreateWebhookTaskVM.prototype['url'] = undefined;
 
+/**
+ * @member {String} $t
+ */
+CreateWebhookTaskVM.prototype['$t'] = undefined;
+
 
 // Implement CreateTransportTaskBaseVM interface:
 /**
@@ -105,9 +120,13 @@ CreateWebhookTaskVM.prototype['url'] = undefined;
  */
 CreateTransportTaskBaseVM.prototype['cronExpression'] = undefined;
 /**
- * @member {Date} delayedRunTime
+ * @member {Date} startsOn
  */
-CreateTransportTaskBaseVM.prototype['delayedRunTime'] = undefined;
+CreateTransportTaskBaseVM.prototype['startsOn'] = undefined;
+/**
+ * @member {module:models/CreateTaskEndVM} ends
+ */
+CreateTransportTaskBaseVM.prototype['ends'] = undefined;
 /**
  * @member {String} name
  */

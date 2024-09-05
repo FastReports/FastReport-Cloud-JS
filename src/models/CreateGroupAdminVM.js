@@ -26,10 +26,11 @@ class CreateGroupAdminVM {
      * @extends module:models/CreateGroupVM
      * @implements module:models/CreateGroupVM
      * @param name {String} 
+     * @param t {String} 
      */
-    constructor(name) { 
-        CreateGroupVM.initialize(this, name);
-        CreateGroupAdminVM.initialize(this, name);
+    constructor(name, t) { 
+        CreateGroupVM.initialize(this, t);
+        CreateGroupAdminVM.initialize(this, name, t);
     }
 
     /**
@@ -37,7 +38,8 @@ class CreateGroupAdminVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, name) { 
+    static initialize(obj, name, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -56,6 +58,9 @@ class CreateGroupAdminVM {
             if (data.hasOwnProperty('ownerId')) {
                 obj['ownerId'] = ApiClient.convertToType(data['ownerId'], 'String');
             }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
+            }
         }
         return obj;
     }
@@ -68,13 +73,17 @@ class CreateGroupAdminVM {
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
         for (const property of CreateGroupAdminVM.RequiredProperties) {
-            if (!data[property]) {
+            if (!data.hasOwnProperty(property)) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
         // ensure the json data is a string
         if (data['ownerId'] && !(typeof data['ownerId'] === 'string' || data['ownerId'] instanceof String)) {
             throw new Error("Expected the field `ownerId` to be a primitive type in the JSON string but got " + data['ownerId']);
+        }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
         }
 
         return true;
@@ -83,23 +92,24 @@ class CreateGroupAdminVM {
 
 }
 
-CreateGroupAdminVM.RequiredProperties = ["name"];
+CreateGroupAdminVM.RequiredProperties = ["$t", "name"];
 
 /**
  * @member {String} ownerId
  */
 CreateGroupAdminVM.prototype['ownerId'] = undefined;
 
+/**
+ * @member {String} $t
+ */
+CreateGroupAdminVM.prototype['$t'] = undefined;
+
 
 // Implement CreateGroupVM interface:
 /**
- * @member {String} name
+ * @member {String} $t
  */
-CreateGroupVM.prototype['name'] = undefined;
-/**
- * @member {String} subscriptionId
- */
-CreateGroupVM.prototype['subscriptionId'] = undefined;
+CreateGroupVM.prototype['$t'] = undefined;
 
 
 

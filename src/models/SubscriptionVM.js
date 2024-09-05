@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import CloudBaseVM from './CloudBaseVM';
 import SubscriptionFolder from './SubscriptionFolder';
 import SubscriptionPeriodVM from './SubscriptionPeriodVM';
 
@@ -24,10 +25,13 @@ class SubscriptionVM {
     /**
      * Constructs a new <code>SubscriptionVM</code>.
      * @alias module:models/SubscriptionVM
+     * @extends module:models/CloudBaseVM
+     * @implements module:models/CloudBaseVM
+     * @param t {String} 
      */
-    constructor() { 
-        
-        SubscriptionVM.initialize(this);
+    constructor(t) { 
+        CloudBaseVM.initialize(this, t);
+        SubscriptionVM.initialize(this, t);
     }
 
     /**
@@ -35,7 +39,8 @@ class SubscriptionVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -48,6 +53,8 @@ class SubscriptionVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new SubscriptionVM();
+            CloudBaseVM.constructFromObject(data, obj);
+            CloudBaseVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('id')) {
                 obj['id'] = ApiClient.convertToType(data['id'], 'String');
@@ -73,6 +80,12 @@ class SubscriptionVM {
             if (data.hasOwnProperty('exportsFolder')) {
                 obj['exportsFolder'] = SubscriptionFolder.constructFromObject(data['exportsFolder']);
             }
+            if (data.hasOwnProperty('tags')) {
+                obj['tags'] = ApiClient.convertToType(data['tags'], ['String']);
+            }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
+            }
         }
         return obj;
     }
@@ -83,6 +96,12 @@ class SubscriptionVM {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>SubscriptionVM</code>.
      */
     static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of SubscriptionVM.RequiredProperties) {
+            if (!data.hasOwnProperty(property)) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
         // ensure the json data is a string
         if (data['id'] && !(typeof data['id'] === 'string' || data['id'] instanceof String)) {
             throw new Error("Expected the field `id` to be a primitive type in the JSON string but got " + data['id']);
@@ -121,6 +140,14 @@ class SubscriptionVM {
         if (data['exportsFolder']) { // data not null
           SubscriptionFolder.validateJSON(data['exportsFolder']);
         }
+        // ensure the json data is an array
+        if (!Array.isArray(data['tags'])) {
+            throw new Error("Expected the field `tags` to be an array in the JSON data but got " + data['tags']);
+        }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
+        }
 
         return true;
     }
@@ -128,7 +155,7 @@ class SubscriptionVM {
 
 }
 
-
+SubscriptionVM.RequiredProperties = ["$t"];
 
 /**
  * @member {String} id
@@ -170,7 +197,22 @@ SubscriptionVM.prototype['reportsFolder'] = undefined;
  */
 SubscriptionVM.prototype['exportsFolder'] = undefined;
 
+/**
+ * @member {Array.<String>} tags
+ */
+SubscriptionVM.prototype['tags'] = undefined;
 
+/**
+ * @member {String} $t
+ */
+SubscriptionVM.prototype['$t'] = undefined;
+
+
+// Implement CloudBaseVM interface:
+/**
+ * @member {String} $t
+ */
+CloudBaseVM.prototype['$t'] = undefined;
 
 
 

@@ -28,10 +28,11 @@ class AdminSubscriptionVM {
      * @alias module:models/AdminSubscriptionVM
      * @extends module:models/SubscriptionVM
      * @implements module:models/SubscriptionVM
+     * @param t {String} 
      */
-    constructor() { 
-        SubscriptionVM.initialize(this);
-        AdminSubscriptionVM.initialize(this);
+    constructor(t) { 
+        SubscriptionVM.initialize(this, t);
+        AdminSubscriptionVM.initialize(this, t);
     }
 
     /**
@@ -39,7 +40,8 @@ class AdminSubscriptionVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -58,6 +60,12 @@ class AdminSubscriptionVM {
             if (data.hasOwnProperty('defaultPermissions')) {
                 obj['defaultPermissions'] = DefaultPermissionsVM.constructFromObject(data['defaultPermissions']);
             }
+            if (data.hasOwnProperty('ownerId')) {
+                obj['ownerId'] = ApiClient.convertToType(data['ownerId'], 'String');
+            }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
+            }
         }
         return obj;
     }
@@ -68,9 +76,23 @@ class AdminSubscriptionVM {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>AdminSubscriptionVM</code>.
      */
     static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of AdminSubscriptionVM.RequiredProperties) {
+            if (!data.hasOwnProperty(property)) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
         // validate the optional field `defaultPermissions`
         if (data['defaultPermissions']) { // data not null
           DefaultPermissionsVM.validateJSON(data['defaultPermissions']);
+        }
+        // ensure the json data is a string
+        if (data['ownerId'] && !(typeof data['ownerId'] === 'string' || data['ownerId'] instanceof String)) {
+            throw new Error("Expected the field `ownerId` to be a primitive type in the JSON string but got " + data['ownerId']);
+        }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
         }
 
         return true;
@@ -79,47 +101,29 @@ class AdminSubscriptionVM {
 
 }
 
-
+AdminSubscriptionVM.RequiredProperties = ["$t"];
 
 /**
  * @member {module:models/DefaultPermissionsVM} defaultPermissions
  */
 AdminSubscriptionVM.prototype['defaultPermissions'] = undefined;
 
+/**
+ * @member {String} ownerId
+ */
+AdminSubscriptionVM.prototype['ownerId'] = undefined;
+
+/**
+ * @member {String} $t
+ */
+AdminSubscriptionVM.prototype['$t'] = undefined;
+
 
 // Implement SubscriptionVM interface:
 /**
- * @member {String} id
+ * @member {String} $t
  */
-SubscriptionVM.prototype['id'] = undefined;
-/**
- * @member {String} name
- */
-SubscriptionVM.prototype['name'] = undefined;
-/**
- * @member {String} locale
- */
-SubscriptionVM.prototype['locale'] = undefined;
-/**
- * @member {module:models/SubscriptionPeriodVM} current
- */
-SubscriptionVM.prototype['current'] = undefined;
-/**
- * @member {Array.<module:models/SubscriptionPeriodVM>} old
- */
-SubscriptionVM.prototype['old'] = undefined;
-/**
- * @member {module:models/SubscriptionFolder} templatesFolder
- */
-SubscriptionVM.prototype['templatesFolder'] = undefined;
-/**
- * @member {module:models/SubscriptionFolder} reportsFolder
- */
-SubscriptionVM.prototype['reportsFolder'] = undefined;
-/**
- * @member {module:models/SubscriptionFolder} exportsFolder
- */
-SubscriptionVM.prototype['exportsFolder'] = undefined;
+SubscriptionVM.prototype['$t'] = undefined;
 
 
 

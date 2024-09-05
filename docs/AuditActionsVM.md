@@ -5,8 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **items** | [**[AuditActionVM]**](AuditActionVM.md) |  | [optional] 
-**count** | **Number** |  | [optional] 
+**hasMore** | **Boolean** |  | [optional] 
 **skip** | **Number** |  | [optional] 
 **take** | **Number** |  | [optional] 
+**t** | **String** |  | 
 
 

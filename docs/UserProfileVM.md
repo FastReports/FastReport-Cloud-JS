@@ -9,5 +9,6 @@ Name | Type | Description | Notes
 **username** | **String** |  | [optional] 
 **email** | **String** |  | [optional] 
 **isReadOnly** | **Boolean** |  | [optional] 
+**t** | **String** |  | 
 
 

@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import CloudBaseVM from './CloudBaseVM';
 import TaskSettingsVM from './TaskSettingsVM';
 import TimePeriodType from './TimePeriodType';
 
@@ -24,10 +25,13 @@ class SubscriptionPlanVM {
     /**
      * Constructs a new <code>SubscriptionPlanVM</code>.
      * @alias module:models/SubscriptionPlanVM
+     * @extends module:models/CloudBaseVM
+     * @implements module:models/CloudBaseVM
+     * @param t {String} 
      */
-    constructor() { 
-        
-        SubscriptionPlanVM.initialize(this);
+    constructor(t) { 
+        CloudBaseVM.initialize(this, t);
+        SubscriptionPlanVM.initialize(this, t);
     }
 
     /**
@@ -35,7 +39,8 @@ class SubscriptionPlanVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -48,6 +53,8 @@ class SubscriptionPlanVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new SubscriptionPlanVM();
+            CloudBaseVM.constructFromObject(data, obj);
+            CloudBaseVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('id')) {
                 obj['id'] = ApiClient.convertToType(data['id'], 'String');
@@ -109,6 +116,9 @@ class SubscriptionPlanVM {
             if (data.hasOwnProperty('tasks')) {
                 obj['tasks'] = TaskSettingsVM.constructFromObject(data['tasks']);
             }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
+            }
         }
         return obj;
     }
@@ -119,6 +129,12 @@ class SubscriptionPlanVM {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>SubscriptionPlanVM</code>.
      */
     static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of SubscriptionPlanVM.RequiredProperties) {
+            if (!data.hasOwnProperty(property)) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
         // ensure the json data is a string
         if (data['id'] && !(typeof data['id'] === 'string' || data['id'] instanceof String)) {
             throw new Error("Expected the field `id` to be a primitive type in the JSON string but got " + data['id']);
@@ -126,10 +142,6 @@ class SubscriptionPlanVM {
         // ensure the json data is a string
         if (data['displayName'] && !(typeof data['displayName'] === 'string' || data['displayName'] instanceof String)) {
             throw new Error("Expected the field `displayName` to be a primitive type in the JSON string but got " + data['displayName']);
-        }
-        // validate the optional field `timePeriodType`
-        if (data['timePeriodType']) { // data not null
-          TimePeriodType.validateJSON(data['timePeriodType']);
         }
         // ensure the json data is a string
         if (data['urlToBuy'] && !(typeof data['urlToBuy'] === 'string' || data['urlToBuy'] instanceof String)) {
@@ -139,6 +151,10 @@ class SubscriptionPlanVM {
         if (data['tasks']) { // data not null
           TaskSettingsVM.validateJSON(data['tasks']);
         }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
+        }
 
         return true;
     }
@@ -146,7 +162,7 @@ class SubscriptionPlanVM {
 
 }
 
-
+SubscriptionPlanVM.RequiredProperties = ["$t"];
 
 /**
  * @member {String} id
@@ -248,7 +264,17 @@ SubscriptionPlanVM.prototype['pageLimit'] = undefined;
  */
 SubscriptionPlanVM.prototype['tasks'] = undefined;
 
+/**
+ * @member {String} $t
+ */
+SubscriptionPlanVM.prototype['$t'] = undefined;
 
+
+// Implement CloudBaseVM interface:
+/**
+ * @member {String} $t
+ */
+CloudBaseVM.prototype['$t'] = undefined;
 
 
 

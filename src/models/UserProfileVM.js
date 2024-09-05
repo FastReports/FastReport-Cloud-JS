@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import CloudBaseVM from './CloudBaseVM';
 
 /**
  * The UserProfileVM model module.
@@ -22,10 +23,13 @@ class UserProfileVM {
     /**
      * Constructs a new <code>UserProfileVM</code>.
      * @alias module:models/UserProfileVM
+     * @extends module:models/CloudBaseVM
+     * @implements module:models/CloudBaseVM
+     * @param t {String} 
      */
-    constructor() { 
-        
-        UserProfileVM.initialize(this);
+    constructor(t) { 
+        CloudBaseVM.initialize(this, t);
+        UserProfileVM.initialize(this, t);
     }
 
     /**
@@ -33,7 +37,8 @@ class UserProfileVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -46,6 +51,8 @@ class UserProfileVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new UserProfileVM();
+            CloudBaseVM.constructFromObject(data, obj);
+            CloudBaseVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('id')) {
                 obj['id'] = ApiClient.convertToType(data['id'], 'String');
@@ -62,6 +69,9 @@ class UserProfileVM {
             if (data.hasOwnProperty('isReadOnly')) {
                 obj['isReadOnly'] = ApiClient.convertToType(data['isReadOnly'], 'Boolean');
             }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
+            }
         }
         return obj;
     }
@@ -72,6 +82,12 @@ class UserProfileVM {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>UserProfileVM</code>.
      */
     static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of UserProfileVM.RequiredProperties) {
+            if (!data.hasOwnProperty(property)) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
         // ensure the json data is a string
         if (data['id'] && !(typeof data['id'] === 'string' || data['id'] instanceof String)) {
             throw new Error("Expected the field `id` to be a primitive type in the JSON string but got " + data['id']);
@@ -88,6 +104,10 @@ class UserProfileVM {
         if (data['email'] && !(typeof data['email'] === 'string' || data['email'] instanceof String)) {
             throw new Error("Expected the field `email` to be a primitive type in the JSON string but got " + data['email']);
         }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
+        }
 
         return true;
     }
@@ -95,7 +115,7 @@ class UserProfileVM {
 
 }
 
-
+UserProfileVM.RequiredProperties = ["$t"];
 
 /**
  * @member {String} id
@@ -122,7 +142,17 @@ UserProfileVM.prototype['email'] = undefined;
  */
 UserProfileVM.prototype['isReadOnly'] = undefined;
 
+/**
+ * @member {String} $t
+ */
+UserProfileVM.prototype['$t'] = undefined;
 
+
+// Implement CloudBaseVM interface:
+/**
+ * @member {String} $t
+ */
+CloudBaseVM.prototype['$t'] = undefined;
 
 
 

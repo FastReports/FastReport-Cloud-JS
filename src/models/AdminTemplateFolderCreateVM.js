@@ -25,10 +25,13 @@ class AdminTemplateFolderCreateVM {
      * @alias module:models/AdminTemplateFolderCreateVM
      * @extends module:models/AdminFolderCreateVM
      * @implements module:models/AdminFolderCreateVM
+     * @param parentId {String} 
+     * @param ownerId {String} 
+     * @param t {String} 
      */
-    constructor() { 
-        AdminFolderCreateVM.initialize(this);
-        AdminTemplateFolderCreateVM.initialize(this);
+    constructor(parentId, ownerId, t) { 
+        AdminFolderCreateVM.initialize(this, t);
+        AdminTemplateFolderCreateVM.initialize(this, parentId, ownerId, t);
     }
 
     /**
@@ -36,7 +39,8 @@ class AdminTemplateFolderCreateVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, parentId, ownerId, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -52,6 +56,9 @@ class AdminTemplateFolderCreateVM {
             AdminFolderCreateVM.constructFromObject(data, obj);
             AdminFolderCreateVM.constructFromObject(data, obj);
 
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
+            }
         }
         return obj;
     }
@@ -62,6 +69,16 @@ class AdminTemplateFolderCreateVM {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>AdminTemplateFolderCreateVM</code>.
      */
     static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of AdminTemplateFolderCreateVM.RequiredProperties) {
+            if (!data.hasOwnProperty(property)) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
+        }
 
         return true;
     }
@@ -69,7 +86,12 @@ class AdminTemplateFolderCreateVM {
 
 }
 
+AdminTemplateFolderCreateVM.RequiredProperties = ["$t", "parentId", "ownerId"];
 
+/**
+ * @member {String} $t
+ */
+AdminTemplateFolderCreateVM.prototype['$t'] = undefined;
 
 
 // Implement AdminFolderCreateVM interface:
@@ -85,6 +107,10 @@ AdminFolderCreateVM.prototype['tags'] = undefined;
  * @member {Blob} icon
  */
 AdminFolderCreateVM.prototype['icon'] = undefined;
+/**
+ * @member {String} $t
+ */
+AdminFolderCreateVM.prototype['$t'] = undefined;
 
 
 

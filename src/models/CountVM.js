@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import CloudBaseVM from './CloudBaseVM';
 
 /**
  * The CountVM model module.
@@ -22,10 +23,13 @@ class CountVM {
     /**
      * Constructs a new <code>CountVM</code>.
      * @alias module:models/CountVM
+     * @extends module:models/CloudBaseVM
+     * @implements module:models/CloudBaseVM
+     * @param t {String} 
      */
-    constructor() { 
-        
-        CountVM.initialize(this);
+    constructor(t) { 
+        CloudBaseVM.initialize(this, t);
+        CountVM.initialize(this, t);
     }
 
     /**
@@ -33,7 +37,8 @@ class CountVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -46,9 +51,14 @@ class CountVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new CountVM();
+            CloudBaseVM.constructFromObject(data, obj);
+            CloudBaseVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('count')) {
                 obj['count'] = ApiClient.convertToType(data['count'], 'Number');
+            }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
             }
         }
         return obj;
@@ -60,6 +70,16 @@ class CountVM {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>CountVM</code>.
      */
     static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of CountVM.RequiredProperties) {
+            if (!data.hasOwnProperty(property)) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
+        }
 
         return true;
     }
@@ -67,14 +87,24 @@ class CountVM {
 
 }
 
-
+CountVM.RequiredProperties = ["$t"];
 
 /**
  * @member {Number} count
  */
 CountVM.prototype['count'] = undefined;
 
+/**
+ * @member {String} $t
+ */
+CountVM.prototype['$t'] = undefined;
 
+
+// Implement CloudBaseVM interface:
+/**
+ * @member {String} $t
+ */
+CloudBaseVM.prototype['$t'] = undefined;
 
 
 

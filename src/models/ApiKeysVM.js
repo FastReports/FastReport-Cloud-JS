@@ -13,6 +13,7 @@
 
 import ApiClient from '../ApiClient';
 import ApiKeyVM from './ApiKeyVM';
+import CloudBaseVM from './CloudBaseVM';
 
 /**
  * The ApiKeysVM model module.
@@ -23,10 +24,13 @@ class ApiKeysVM {
     /**
      * Constructs a new <code>ApiKeysVM</code>.
      * @alias module:models/ApiKeysVM
+     * @extends module:models/CloudBaseVM
+     * @implements module:models/CloudBaseVM
+     * @param t {String} 
      */
-    constructor() { 
-        
-        ApiKeysVM.initialize(this);
+    constructor(t) { 
+        CloudBaseVM.initialize(this, t);
+        ApiKeysVM.initialize(this, t);
     }
 
     /**
@@ -34,7 +38,8 @@ class ApiKeysVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -47,12 +52,17 @@ class ApiKeysVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new ApiKeysVM();
+            CloudBaseVM.constructFromObject(data, obj);
+            CloudBaseVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('apiKeys')) {
                 obj['apiKeys'] = ApiClient.convertToType(data['apiKeys'], [ApiKeyVM]);
             }
             if (data.hasOwnProperty('count')) {
                 obj['count'] = ApiClient.convertToType(data['count'], 'Number');
+            }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
             }
         }
         return obj;
@@ -64,6 +74,12 @@ class ApiKeysVM {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>ApiKeysVM</code>.
      */
     static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of ApiKeysVM.RequiredProperties) {
+            if (!data.hasOwnProperty(property)) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
         if (data['apiKeys']) { // data not null
             // ensure the json data is an array
             if (!Array.isArray(data['apiKeys'])) {
@@ -74,6 +90,10 @@ class ApiKeysVM {
                 ApiKeyVM.validateJSON(item);
             };
         }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
+        }
 
         return true;
     }
@@ -81,7 +101,7 @@ class ApiKeysVM {
 
 }
 
-
+ApiKeysVM.RequiredProperties = ["$t"];
 
 /**
  * @member {Array.<module:models/ApiKeyVM>} apiKeys
@@ -93,7 +113,17 @@ ApiKeysVM.prototype['apiKeys'] = undefined;
  */
 ApiKeysVM.prototype['count'] = undefined;
 
+/**
+ * @member {String} $t
+ */
+ApiKeysVM.prototype['$t'] = undefined;
 
+
+// Implement CloudBaseVM interface:
+/**
+ * @member {String} $t
+ */
+CloudBaseVM.prototype['$t'] = undefined;
 
 
 

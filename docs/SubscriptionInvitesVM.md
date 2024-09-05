@@ -6,5 +6,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **invites** | [**[SubscriptionInviteVM]**](SubscriptionInviteVM.md) |  | [optional] 
 **count** | **Number** |  | [optional] 
+**t** | **String** |  | 
 
 

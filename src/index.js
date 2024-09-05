@@ -14,29 +14,48 @@
 
 import ApiClient from './ApiClient';
 import AcceptAgreementsVM from './models/AcceptAgreementsVM';
+import AdminAdministrate from './models/AdminAdministrate';
+import AdminCreate from './models/AdminCreate';
+import AdminCreateAdminGetAdminUpdateAdminDeleteAdminExecuteAdminAdministratePermission from './models/AdminCreateAdminGetAdminUpdateAdminDeleteAdminExecuteAdminAdministratePermission';
+import AdminDelete from './models/AdminDelete';
+import AdminExecute from './models/AdminExecute';
 import AdminExportFolderCreateVM from './models/AdminExportFolderCreateVM';
 import AdminFolderCreateVM from './models/AdminFolderCreateVM';
+import AdminGet from './models/AdminGet';
+import AdminPermission from './models/AdminPermission';
 import AdminReportFolderCreateVM from './models/AdminReportFolderCreateVM';
 import AdminSubscriptionVM from './models/AdminSubscriptionVM';
+import AdminSubscriptionsVM from './models/AdminSubscriptionsVM';
 import AdminTemplateFolderCreateVM from './models/AdminTemplateFolderCreateVM';
+import AdminUpdate from './models/AdminUpdate';
+import AdminUpdateCurrentSubscriptionPlanVM from './models/AdminUpdateCurrentSubscriptionPlanVM';
+import AnalysisResultVM from './models/AnalysisResultVM';
+import AnalysisResultsVM from './models/AnalysisResultsVM';
 import ApiKeyVM from './models/ApiKeyVM';
 import ApiKeysVM from './models/ApiKeysVM';
-import AppMixins from './models/AppMixins';
+import AppMixinsVM from './models/AppMixinsVM';
 import AuditActionVM from './models/AuditActionVM';
 import AuditActionsVM from './models/AuditActionsVM';
+import AuditActiveStatsVM from './models/AuditActiveStatsVM';
 import AuditFilePropertyChangedVM from './models/AuditFilePropertyChangedVM';
+import AuditStatVM from './models/AuditStatVM';
+import AuditStatsVM from './models/AuditStatsVM';
 import AuditSubscriptionActionVM from './models/AuditSubscriptionActionVM';
 import AuditTaskActionVM from './models/AuditTaskActionVM';
 import AuditType from './models/AuditType';
 import AuthConfigVM from './models/AuthConfigVM';
 import BreadcrumbsModel from './models/BreadcrumbsModel';
 import BreadcrumbsVM from './models/BreadcrumbsVM';
+import CheckUserByPasswordInternalVM from './models/CheckUserByPasswordInternalVM';
+import ClearNotificationsVM from './models/ClearNotificationsVM';
+import CloudBaseVM from './models/CloudBaseVM';
 import ContactGroupVM from './models/ContactGroupVM';
 import ContactGroupsVM from './models/ContactGroupsVM';
 import ContactVM from './models/ContactVM';
 import ContactsVM from './models/ContactsVM';
 import CountVM from './models/CountVM';
 import CreateApiKeyVM from './models/CreateApiKeyVM';
+import CreateAuditActionVM from './models/CreateAuditActionVM';
 import CreateContactGroupVM from './models/CreateContactGroupVM';
 import CreateContactVM from './models/CreateContactVM';
 import CreateDataSourceAdminVM from './models/CreateDataSourceAdminVM';
@@ -46,11 +65,17 @@ import CreateExportReportTaskVM from './models/CreateExportReportTaskVM';
 import CreateExportTemplateTaskVM from './models/CreateExportTemplateTaskVM';
 import CreateFTPUploadTaskVM from './models/CreateFTPUploadTaskVM';
 import CreateFetchTaskVM from './models/CreateFetchTaskVM';
+import CreateFileShareVM from './models/CreateFileShareVM';
 import CreateGroupAdminVM from './models/CreateGroupAdminVM';
 import CreateGroupVM from './models/CreateGroupVM';
+import CreateIfNotExistInternalVM from './models/CreateIfNotExistInternalVM';
 import CreatePrepareTemplateTaskVM from './models/CreatePrepareTemplateTaskVM';
 import CreateSubscriptionInviteVM from './models/CreateSubscriptionInviteVM';
+import CreateSubscriptionPeriodVM from './models/CreateSubscriptionPeriodVM';
+import CreateSubscriptionPlanVM from './models/CreateSubscriptionPlanVM';
+import CreateSubscriptionVM from './models/CreateSubscriptionVM';
 import CreateTaskBaseVM from './models/CreateTaskBaseVM';
+import CreateTaskEndVM from './models/CreateTaskEndVM';
 import CreateThumbnailReportTaskVM from './models/CreateThumbnailReportTaskVM';
 import CreateThumbnailTemplateTaskVM from './models/CreateThumbnailTemplateTaskVM';
 import CreateTransformTaskBaseVM from './models/CreateTransformTaskBaseVM';
@@ -59,14 +84,16 @@ import CreateWebhookTaskVM from './models/CreateWebhookTaskVM';
 import DataSourceAdministrate from './models/DataSourceAdministrate';
 import DataSourceConnectionType from './models/DataSourceConnectionType';
 import DataSourceCreate from './models/DataSourceCreate';
-import DataSourceCreateDataSourceGetDataSourceUpdateDataSourceDeleteDataSourceExecuteDataSourceAdministratePermission from './models/DataSourceCreateDataSourceGetDataSourceUpdateDataSourceDeleteDataSourceExecuteDataSourceAdministratePermission';
 import DataSourceDelete from './models/DataSourceDelete';
 import DataSourceExecute from './models/DataSourceExecute';
 import DataSourceGet from './models/DataSourceGet';
-import DataSourcePermission from './models/DataSourcePermission';
-import DataSourcePermissionDataSourceCreateDataSourceGetDataSourceUpdateDataSourceDeleteDataSourceExecuteDataSourceAdministratePermissions from './models/DataSourcePermissionDataSourceCreateDataSourceGetDataSourceUpdateDataSourceDeleteDataSourceExecuteDataSourceAdministratePermissions';
-import DataSourcePermissions from './models/DataSourcePermissions';
+import DataSourceParameterTypeVM from './models/DataSourceParameterTypeVM';
+import DataSourceParameterTypesVM from './models/DataSourceParameterTypesVM';
+import DataSourcePermissionCRUDVM from './models/DataSourcePermissionCRUDVM';
+import DataSourcePermissionsCRUDVM from './models/DataSourcePermissionsCRUDVM';
 import DataSourcePermissionsVM from './models/DataSourcePermissionsVM';
+import DataSourceSelectCommandParameterVM from './models/DataSourceSelectCommandParameterVM';
+import DataSourceSelectCommandVM from './models/DataSourceSelectCommandVM';
 import DataSourceSorting from './models/DataSourceSorting';
 import DataSourceStatus from './models/DataSourceStatus';
 import DataSourceUpdate from './models/DataSourceUpdate';
@@ -76,7 +103,6 @@ import DefaultPermissionsVM from './models/DefaultPermissionsVM';
 import DeleteApiKeyVM from './models/DeleteApiKeyVM';
 import EmailTaskVM from './models/EmailTaskVM';
 import EntityType from './models/EntityType';
-import EntityVM from './models/EntityVM';
 import ExportCreateAdminVM from './models/ExportCreateAdminVM';
 import ExportCreateVM from './models/ExportCreateVM';
 import ExportFolderCreateVM from './models/ExportFolderCreateVM';
@@ -86,47 +112,51 @@ import ExportReportVM from './models/ExportReportVM';
 import ExportTemplateTaskVM from './models/ExportTemplateTaskVM';
 import ExportTemplateVM from './models/ExportTemplateVM';
 import ExportVM from './models/ExportVM';
-import ExportVMFilesVMBase from './models/ExportVMFilesVMBase';
 import ExportsVM from './models/ExportsVM';
 import FTPUploadTaskVM from './models/FTPUploadTaskVM';
 import FetchTaskVM from './models/FetchTaskVM';
 import FileAdministrate from './models/FileAdministrate';
+import FileContentVM from './models/FileContentVM';
 import FileCreate from './models/FileCreate';
-import FileCreateFileGetFileUpdateFileDeleteFileExecuteFileAdministratePermission from './models/FileCreateFileGetFileUpdateFileDeleteFileExecuteFileAdministratePermission';
+import FileCreateFormVM from './models/FileCreateFormVM';
 import FileCreateVM from './models/FileCreateVM';
 import FileDelete from './models/FileDelete';
 import FileExecute from './models/FileExecute';
 import FileGet from './models/FileGet';
 import FileIconVM from './models/FileIconVM';
 import FileKind from './models/FileKind';
-import FilePermission from './models/FilePermission';
-import FilePermissionFileCreateFileGetFileUpdateFileDeleteFileExecuteFileAdministratePermissions from './models/FilePermissionFileCreateFileGetFileUpdateFileDeleteFileExecuteFileAdministratePermissions';
-import FilePermissions from './models/FilePermissions';
+import FilePermissionCRUDVM from './models/FilePermissionCRUDVM';
+import FilePermissionsCRUDVM from './models/FilePermissionsCRUDVM';
 import FilePermissionsVM from './models/FilePermissionsVM';
 import FileRenameVM from './models/FileRenameVM';
+import FileShareVM from './models/FileShareVM';
+import FileSharingKeysVM from './models/FileSharingKeysVM';
 import FileSorting from './models/FileSorting';
 import FileStatus from './models/FileStatus';
 import FileStatusReason from './models/FileStatusReason';
+import FileStatusUpdateInternalVM from './models/FileStatusUpdateInternalVM';
+import FileStatusVM from './models/FileStatusVM';
 import FileTagsUpdateVM from './models/FileTagsUpdateVM';
+import FileThumbnailUpdateInternalVM from './models/FileThumbnailUpdateInternalVM';
 import FileType from './models/FileType';
 import FileUpdate from './models/FileUpdate';
+import FileUpdateVM from './models/FileUpdateVM';
 import FileVM from './models/FileVM';
-import FileVMFilesVMBase from './models/FileVMFilesVMBase';
 import FilesVM from './models/FilesVM';
+import FilesVMBase from './models/FilesVMBase';
 import FolderCreateVM from './models/FolderCreateVM';
 import FolderIconVM from './models/FolderIconVM';
 import FolderRenameVM from './models/FolderRenameVM';
+import FolderSizeVM from './models/FolderSizeVM';
 import FolderTagsUpdateVM from './models/FolderTagsUpdateVM';
-import FrontendApp from './models/FrontendApp';
+import FrontendAppVM from './models/FrontendAppVM';
 import GroupAdministrate from './models/GroupAdministrate';
 import GroupCreate from './models/GroupCreate';
-import GroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupAdministratePermission from './models/GroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupAdministratePermission';
 import GroupDelete from './models/GroupDelete';
 import GroupExecute from './models/GroupExecute';
 import GroupGet from './models/GroupGet';
-import GroupPermission from './models/GroupPermission';
-import GroupPermissionGroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupAdministratePermissions from './models/GroupPermissionGroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupAdministratePermissions';
-import GroupPermissions from './models/GroupPermissions';
+import GroupPermissionCRUDVM from './models/GroupPermissionCRUDVM';
+import GroupPermissionsCRUDVM from './models/GroupPermissionsCRUDVM';
 import GroupPermissionsVM from './models/GroupPermissionsVM';
 import GroupUpdate from './models/GroupUpdate';
 import GroupUserVM from './models/GroupUserVM';
@@ -143,17 +173,21 @@ import PrepareTemplateVM from './models/PrepareTemplateVM';
 import PreviewReportVM from './models/PreviewReportVM';
 import PreviewTemplateVM from './models/PreviewTemplateVM';
 import ProblemDetails from './models/ProblemDetails';
+import ProblemLevel from './models/ProblemLevel';
+import ProblemType from './models/ProblemType';
 import ProfileVisibility from './models/ProfileVisibility';
+import RegisterUserVM from './models/RegisterUserVM';
 import RenameDataSourceVM from './models/RenameDataSourceVM';
 import RenameGroupVM from './models/RenameGroupVM';
 import RenameSubscriptionVM from './models/RenameSubscriptionVM';
 import ReportCreateAdminVM from './models/ReportCreateAdminVM';
+import ReportCreateFormVM from './models/ReportCreateFormVM';
 import ReportCreateVM from './models/ReportCreateVM';
 import ReportFolderCreateVM from './models/ReportFolderCreateVM';
 import ReportInfo from './models/ReportInfo';
 import ReportVM from './models/ReportVM';
-import ReportVMFilesVMBase from './models/ReportVMFilesVMBase';
 import ReportsVM from './models/ReportsVM';
+import RestOfSpaceVM from './models/RestOfSpaceVM';
 import RunEmailTaskVM from './models/RunEmailTaskVM';
 import RunExportReportTaskVM from './models/RunExportReportTaskVM';
 import RunExportTemplateTaskVM from './models/RunExportTemplateTaskVM';
@@ -168,10 +202,11 @@ import RunTransformTaskBaseVM from './models/RunTransformTaskBaseVM';
 import RunTransportTaskBaseVM from './models/RunTransportTaskBaseVM';
 import RunWebhookTaskVM from './models/RunWebhookTaskVM';
 import SaveMode from './models/SaveMode';
+import SelectedFilesVM from './models/SelectedFilesVM';
 import ServerConfigurationVM from './models/ServerConfigurationVM';
+import SolvationReportVM from './models/SolvationReportVM';
 import SubscriptionAdministrate from './models/SubscriptionAdministrate';
 import SubscriptionCreate from './models/SubscriptionCreate';
-import SubscriptionCreateSubscriptionGetSubscriptionUpdateSubscriptionDeleteSubscriptionExecuteSubscriptionAdministratePermission from './models/SubscriptionCreateSubscriptionGetSubscriptionUpdateSubscriptionDeleteSubscriptionExecuteSubscriptionAdministratePermission';
 import SubscriptionDelete from './models/SubscriptionDelete';
 import SubscriptionExecute from './models/SubscriptionExecute';
 import SubscriptionFolder from './models/SubscriptionFolder';
@@ -179,9 +214,8 @@ import SubscriptionGet from './models/SubscriptionGet';
 import SubscriptionInviteVM from './models/SubscriptionInviteVM';
 import SubscriptionInvitesVM from './models/SubscriptionInvitesVM';
 import SubscriptionPeriodVM from './models/SubscriptionPeriodVM';
-import SubscriptionPermission from './models/SubscriptionPermission';
-import SubscriptionPermissionSubscriptionCreateSubscriptionGetSubscriptionUpdateSubscriptionDeleteSubscriptionExecuteSubscriptionAdministratePermissions from './models/SubscriptionPermissionSubscriptionCreateSubscriptionGetSubscriptionUpdateSubscriptionDeleteSubscriptionExecuteSubscriptionAdministratePermissions';
-import SubscriptionPermissions from './models/SubscriptionPermissions';
+import SubscriptionPermissionCRUDVM from './models/SubscriptionPermissionCRUDVM';
+import SubscriptionPermissionsCRUDVM from './models/SubscriptionPermissionsCRUDVM';
 import SubscriptionPermissionsVM from './models/SubscriptionPermissionsVM';
 import SubscriptionPlanVM from './models/SubscriptionPlanVM';
 import SubscriptionPlansVM from './models/SubscriptionPlansVM';
@@ -193,22 +227,24 @@ import SubscriptionsVM from './models/SubscriptionsVM';
 import TaskAdministrate from './models/TaskAdministrate';
 import TaskBaseVM from './models/TaskBaseVM';
 import TaskCreate from './models/TaskCreate';
-import TaskCreateTaskGetTaskUpdateTaskDeleteTaskExecuteTaskAdministratePermission from './models/TaskCreateTaskGetTaskUpdateTaskDeleteTaskExecuteTaskAdministratePermission';
 import TaskDelete from './models/TaskDelete';
+import TaskEnd from './models/TaskEnd';
 import TaskExecute from './models/TaskExecute';
 import TaskGet from './models/TaskGet';
-import TaskPermission from './models/TaskPermission';
-import TaskPermissionTaskCreateTaskGetTaskUpdateTaskDeleteTaskExecuteTaskAdministratePermissions from './models/TaskPermissionTaskCreateTaskGetTaskUpdateTaskDeleteTaskExecuteTaskAdministratePermissions';
-import TaskPermissions from './models/TaskPermissions';
+import TaskIdsVM from './models/TaskIdsVM';
+import TaskMessageIdVM from './models/TaskMessageIdVM';
+import TaskPermissionCRUDVM from './models/TaskPermissionCRUDVM';
+import TaskPermissionsCRUDVM from './models/TaskPermissionsCRUDVM';
 import TaskPermissionsVM from './models/TaskPermissionsVM';
 import TaskSettingsVM from './models/TaskSettingsVM';
 import TaskUpdate from './models/TaskUpdate';
 import TasksVM from './models/TasksVM';
+import TemplateContentVM from './models/TemplateContentVM';
 import TemplateCreateAdminVM from './models/TemplateCreateAdminVM';
+import TemplateCreateFormVM from './models/TemplateCreateFormVM';
 import TemplateCreateVM from './models/TemplateCreateVM';
 import TemplateFolderCreateVM from './models/TemplateFolderCreateVM';
 import TemplateVM from './models/TemplateVM';
-import TemplateVMFilesVMBase from './models/TemplateVMFilesVMBase';
 import TemplatesVM from './models/TemplatesVM';
 import ThumbnailReportTaskVM from './models/ThumbnailReportTaskVM';
 import ThumbnailTemplateTaskVM from './models/ThumbnailTemplateTaskVM';
@@ -217,21 +253,30 @@ import TransformTaskBaseVM from './models/TransformTaskBaseVM';
 import TransportTaskBaseVM from './models/TransportTaskBaseVM';
 import UpdateContactGroupVM from './models/UpdateContactGroupVM';
 import UpdateContactVM from './models/UpdateContactVM';
+import UpdateContentInternalVM from './models/UpdateContentInternalVM';
 import UpdateDataSourceConnectionStringVM from './models/UpdateDataSourceConnectionStringVM';
 import UpdateDataSourcePermissionsVM from './models/UpdateDataSourcePermissionsVM';
+import UpdateDataSourceSelectCommandsVM from './models/UpdateDataSourceSelectCommandsVM';
 import UpdateDataSourceSubscriptionVM from './models/UpdateDataSourceSubscriptionVM';
+import UpdateDataSourceVM from './models/UpdateDataSourceVM';
+import UpdateDataVM from './models/UpdateDataVM';
 import UpdateDefaultPermissionsVM from './models/UpdateDefaultPermissionsVM';
 import UpdateEmailTaskVM from './models/UpdateEmailTaskVM';
 import UpdateExportReportTaskVM from './models/UpdateExportReportTaskVM';
 import UpdateExportTemplateTaskVM from './models/UpdateExportTemplateTaskVM';
 import UpdateFTPUploadTaskVM from './models/UpdateFTPUploadTaskVM';
 import UpdateFetchTaskVM from './models/UpdateFetchTaskVM';
+import UpdateFileContentFormVM from './models/UpdateFileContentFormVM';
+import UpdateFileContentInternalVM from './models/UpdateFileContentInternalVM';
 import UpdateFileContentVM from './models/UpdateFileContentVM';
 import UpdateFilePermissionsVM from './models/UpdateFilePermissionsVM';
 import UpdateGroupPermissionsVM from './models/UpdateGroupPermissionsVM';
+import UpdateGroupVM from './models/UpdateGroupVM';
 import UpdatePrepareTemplateTaskVM from './models/UpdatePrepareTemplateTaskVM';
 import UpdateSubscriptionLocaleVM from './models/UpdateSubscriptionLocaleVM';
 import UpdateSubscriptionPermissionsVM from './models/UpdateSubscriptionPermissionsVM';
+import UpdateSubscriptionPlanVM from './models/UpdateSubscriptionPlanVM';
+import UpdateSubscriptionVM from './models/UpdateSubscriptionVM';
 import UpdateTaskBaseVM from './models/UpdateTaskBaseVM';
 import UpdateTaskPermissionsVM from './models/UpdateTaskPermissionsVM';
 import UpdateThumbnailReportTaskVM from './models/UpdateThumbnailReportTaskVM';
@@ -240,9 +285,14 @@ import UpdateTransformTaskBaseVM from './models/UpdateTransformTaskBaseVM';
 import UpdateTransportTaskBaseVM from './models/UpdateTransportTaskBaseVM';
 import UpdateUserProfileVM from './models/UpdateUserProfileVM';
 import UpdateUserSettingsVM from './models/UpdateUserSettingsVM';
+import UpdateUserVM from './models/UpdateUserVM';
 import UpdateWebhookTaskVM from './models/UpdateWebhookTaskVM';
+import UserIsAdminVM from './models/UserIsAdminVM';
 import UserProfileVM from './models/UserProfileVM';
+import UserResultVM from './models/UserResultVM';
 import UserSettingsVM from './models/UserSettingsVM';
+import UserVM from './models/UserVM';
+import UsersVM from './models/UsersVM';
 import WebhookTaskVM from './models/WebhookTaskVM';
 import ApiKeysApi from './client/ApiKeysApi';
 import ConfigurationApi from './client/ConfigurationApi';
@@ -262,6 +312,7 @@ import SubscriptionUsersApi from './client/SubscriptionUsersApi';
 import SubscriptionsApi from './client/SubscriptionsApi';
 import TasksApi from './client/TasksApi';
 import TemplatesApi from './client/TemplatesApi';
+import UserNotificationsApi from './client/UserNotificationsApi';
 import UserProfileApi from './client/UserProfileApi';
 import UserSettingsApi from './client/UserSettingsApi';
 
@@ -311,6 +362,36 @@ export {
     AcceptAgreementsVM,
 
     /**
+     * The AdminAdministrate model constructor.
+     * @property {module:models/AdminAdministrate}
+     */
+    AdminAdministrate,
+
+    /**
+     * The AdminCreate model constructor.
+     * @property {module:models/AdminCreate}
+     */
+    AdminCreate,
+
+    /**
+     * The AdminCreateAdminGetAdminUpdateAdminDeleteAdminExecuteAdminAdministratePermission model constructor.
+     * @property {module:models/AdminCreateAdminGetAdminUpdateAdminDeleteAdminExecuteAdminAdministratePermission}
+     */
+    AdminCreateAdminGetAdminUpdateAdminDeleteAdminExecuteAdminAdministratePermission,
+
+    /**
+     * The AdminDelete model constructor.
+     * @property {module:models/AdminDelete}
+     */
+    AdminDelete,
+
+    /**
+     * The AdminExecute model constructor.
+     * @property {module:models/AdminExecute}
+     */
+    AdminExecute,
+
+    /**
      * The AdminExportFolderCreateVM model constructor.
      * @property {module:models/AdminExportFolderCreateVM}
      */
@@ -321,6 +402,18 @@ export {
      * @property {module:models/AdminFolderCreateVM}
      */
     AdminFolderCreateVM,
+
+    /**
+     * The AdminGet model constructor.
+     * @property {module:models/AdminGet}
+     */
+    AdminGet,
+
+    /**
+     * The AdminPermission model constructor.
+     * @property {module:models/AdminPermission}
+     */
+    AdminPermission,
 
     /**
      * The AdminReportFolderCreateVM model constructor.
@@ -335,10 +428,40 @@ export {
     AdminSubscriptionVM,
 
     /**
+     * The AdminSubscriptionsVM model constructor.
+     * @property {module:models/AdminSubscriptionsVM}
+     */
+    AdminSubscriptionsVM,
+
+    /**
      * The AdminTemplateFolderCreateVM model constructor.
      * @property {module:models/AdminTemplateFolderCreateVM}
      */
     AdminTemplateFolderCreateVM,
+
+    /**
+     * The AdminUpdate model constructor.
+     * @property {module:models/AdminUpdate}
+     */
+    AdminUpdate,
+
+    /**
+     * The AdminUpdateCurrentSubscriptionPlanVM model constructor.
+     * @property {module:models/AdminUpdateCurrentSubscriptionPlanVM}
+     */
+    AdminUpdateCurrentSubscriptionPlanVM,
+
+    /**
+     * The AnalysisResultVM model constructor.
+     * @property {module:models/AnalysisResultVM}
+     */
+    AnalysisResultVM,
+
+    /**
+     * The AnalysisResultsVM model constructor.
+     * @property {module:models/AnalysisResultsVM}
+     */
+    AnalysisResultsVM,
 
     /**
      * The ApiKeyVM model constructor.
@@ -353,10 +476,10 @@ export {
     ApiKeysVM,
 
     /**
-     * The AppMixins model constructor.
-     * @property {module:models/AppMixins}
+     * The AppMixinsVM model constructor.
+     * @property {module:models/AppMixinsVM}
      */
-    AppMixins,
+    AppMixinsVM,
 
     /**
      * The AuditActionVM model constructor.
@@ -371,10 +494,28 @@ export {
     AuditActionsVM,
 
     /**
+     * The AuditActiveStatsVM model constructor.
+     * @property {module:models/AuditActiveStatsVM}
+     */
+    AuditActiveStatsVM,
+
+    /**
      * The AuditFilePropertyChangedVM model constructor.
      * @property {module:models/AuditFilePropertyChangedVM}
      */
     AuditFilePropertyChangedVM,
+
+    /**
+     * The AuditStatVM model constructor.
+     * @property {module:models/AuditStatVM}
+     */
+    AuditStatVM,
+
+    /**
+     * The AuditStatsVM model constructor.
+     * @property {module:models/AuditStatsVM}
+     */
+    AuditStatsVM,
 
     /**
      * The AuditSubscriptionActionVM model constructor.
@@ -413,6 +554,24 @@ export {
     BreadcrumbsVM,
 
     /**
+     * The CheckUserByPasswordInternalVM model constructor.
+     * @property {module:models/CheckUserByPasswordInternalVM}
+     */
+    CheckUserByPasswordInternalVM,
+
+    /**
+     * The ClearNotificationsVM model constructor.
+     * @property {module:models/ClearNotificationsVM}
+     */
+    ClearNotificationsVM,
+
+    /**
+     * The CloudBaseVM model constructor.
+     * @property {module:models/CloudBaseVM}
+     */
+    CloudBaseVM,
+
+    /**
      * The ContactGroupVM model constructor.
      * @property {module:models/ContactGroupVM}
      */
@@ -447,6 +606,12 @@ export {
      * @property {module:models/CreateApiKeyVM}
      */
     CreateApiKeyVM,
+
+    /**
+     * The CreateAuditActionVM model constructor.
+     * @property {module:models/CreateAuditActionVM}
+     */
+    CreateAuditActionVM,
 
     /**
      * The CreateContactGroupVM model constructor.
@@ -503,6 +668,12 @@ export {
     CreateFetchTaskVM,
 
     /**
+     * The CreateFileShareVM model constructor.
+     * @property {module:models/CreateFileShareVM}
+     */
+    CreateFileShareVM,
+
+    /**
      * The CreateGroupAdminVM model constructor.
      * @property {module:models/CreateGroupAdminVM}
      */
@@ -513,6 +684,12 @@ export {
      * @property {module:models/CreateGroupVM}
      */
     CreateGroupVM,
+
+    /**
+     * The CreateIfNotExistInternalVM model constructor.
+     * @property {module:models/CreateIfNotExistInternalVM}
+     */
+    CreateIfNotExistInternalVM,
 
     /**
      * The CreatePrepareTemplateTaskVM model constructor.
@@ -527,10 +704,34 @@ export {
     CreateSubscriptionInviteVM,
 
     /**
+     * The CreateSubscriptionPeriodVM model constructor.
+     * @property {module:models/CreateSubscriptionPeriodVM}
+     */
+    CreateSubscriptionPeriodVM,
+
+    /**
+     * The CreateSubscriptionPlanVM model constructor.
+     * @property {module:models/CreateSubscriptionPlanVM}
+     */
+    CreateSubscriptionPlanVM,
+
+    /**
+     * The CreateSubscriptionVM model constructor.
+     * @property {module:models/CreateSubscriptionVM}
+     */
+    CreateSubscriptionVM,
+
+    /**
      * The CreateTaskBaseVM model constructor.
      * @property {module:models/CreateTaskBaseVM}
      */
     CreateTaskBaseVM,
+
+    /**
+     * The CreateTaskEndVM model constructor.
+     * @property {module:models/CreateTaskEndVM}
+     */
+    CreateTaskEndVM,
 
     /**
      * The CreateThumbnailReportTaskVM model constructor.
@@ -581,12 +782,6 @@ export {
     DataSourceCreate,
 
     /**
-     * The DataSourceCreateDataSourceGetDataSourceUpdateDataSourceDeleteDataSourceExecuteDataSourceAdministratePermission model constructor.
-     * @property {module:models/DataSourceCreateDataSourceGetDataSourceUpdateDataSourceDeleteDataSourceExecuteDataSourceAdministratePermission}
-     */
-    DataSourceCreateDataSourceGetDataSourceUpdateDataSourceDeleteDataSourceExecuteDataSourceAdministratePermission,
-
-    /**
      * The DataSourceDelete model constructor.
      * @property {module:models/DataSourceDelete}
      */
@@ -605,28 +800,46 @@ export {
     DataSourceGet,
 
     /**
-     * The DataSourcePermission model constructor.
-     * @property {module:models/DataSourcePermission}
+     * The DataSourceParameterTypeVM model constructor.
+     * @property {module:models/DataSourceParameterTypeVM}
      */
-    DataSourcePermission,
+    DataSourceParameterTypeVM,
 
     /**
-     * The DataSourcePermissionDataSourceCreateDataSourceGetDataSourceUpdateDataSourceDeleteDataSourceExecuteDataSourceAdministratePermissions model constructor.
-     * @property {module:models/DataSourcePermissionDataSourceCreateDataSourceGetDataSourceUpdateDataSourceDeleteDataSourceExecuteDataSourceAdministratePermissions}
+     * The DataSourceParameterTypesVM model constructor.
+     * @property {module:models/DataSourceParameterTypesVM}
      */
-    DataSourcePermissionDataSourceCreateDataSourceGetDataSourceUpdateDataSourceDeleteDataSourceExecuteDataSourceAdministratePermissions,
+    DataSourceParameterTypesVM,
 
     /**
-     * The DataSourcePermissions model constructor.
-     * @property {module:models/DataSourcePermissions}
+     * The DataSourcePermissionCRUDVM model constructor.
+     * @property {module:models/DataSourcePermissionCRUDVM}
      */
-    DataSourcePermissions,
+    DataSourcePermissionCRUDVM,
+
+    /**
+     * The DataSourcePermissionsCRUDVM model constructor.
+     * @property {module:models/DataSourcePermissionsCRUDVM}
+     */
+    DataSourcePermissionsCRUDVM,
 
     /**
      * The DataSourcePermissionsVM model constructor.
      * @property {module:models/DataSourcePermissionsVM}
      */
     DataSourcePermissionsVM,
+
+    /**
+     * The DataSourceSelectCommandParameterVM model constructor.
+     * @property {module:models/DataSourceSelectCommandParameterVM}
+     */
+    DataSourceSelectCommandParameterVM,
+
+    /**
+     * The DataSourceSelectCommandVM model constructor.
+     * @property {module:models/DataSourceSelectCommandVM}
+     */
+    DataSourceSelectCommandVM,
 
     /**
      * The DataSourceSorting model constructor.
@@ -683,12 +896,6 @@ export {
     EntityType,
 
     /**
-     * The EntityVM model constructor.
-     * @property {module:models/EntityVM}
-     */
-    EntityVM,
-
-    /**
      * The ExportCreateAdminVM model constructor.
      * @property {module:models/ExportCreateAdminVM}
      */
@@ -743,12 +950,6 @@ export {
     ExportVM,
 
     /**
-     * The ExportVMFilesVMBase model constructor.
-     * @property {module:models/ExportVMFilesVMBase}
-     */
-    ExportVMFilesVMBase,
-
-    /**
      * The ExportsVM model constructor.
      * @property {module:models/ExportsVM}
      */
@@ -773,16 +974,22 @@ export {
     FileAdministrate,
 
     /**
+     * The FileContentVM model constructor.
+     * @property {module:models/FileContentVM}
+     */
+    FileContentVM,
+
+    /**
      * The FileCreate model constructor.
      * @property {module:models/FileCreate}
      */
     FileCreate,
 
     /**
-     * The FileCreateFileGetFileUpdateFileDeleteFileExecuteFileAdministratePermission model constructor.
-     * @property {module:models/FileCreateFileGetFileUpdateFileDeleteFileExecuteFileAdministratePermission}
+     * The FileCreateFormVM model constructor.
+     * @property {module:models/FileCreateFormVM}
      */
-    FileCreateFileGetFileUpdateFileDeleteFileExecuteFileAdministratePermission,
+    FileCreateFormVM,
 
     /**
      * The FileCreateVM model constructor.
@@ -821,22 +1028,16 @@ export {
     FileKind,
 
     /**
-     * The FilePermission model constructor.
-     * @property {module:models/FilePermission}
+     * The FilePermissionCRUDVM model constructor.
+     * @property {module:models/FilePermissionCRUDVM}
      */
-    FilePermission,
+    FilePermissionCRUDVM,
 
     /**
-     * The FilePermissionFileCreateFileGetFileUpdateFileDeleteFileExecuteFileAdministratePermissions model constructor.
-     * @property {module:models/FilePermissionFileCreateFileGetFileUpdateFileDeleteFileExecuteFileAdministratePermissions}
+     * The FilePermissionsCRUDVM model constructor.
+     * @property {module:models/FilePermissionsCRUDVM}
      */
-    FilePermissionFileCreateFileGetFileUpdateFileDeleteFileExecuteFileAdministratePermissions,
-
-    /**
-     * The FilePermissions model constructor.
-     * @property {module:models/FilePermissions}
-     */
-    FilePermissions,
+    FilePermissionsCRUDVM,
 
     /**
      * The FilePermissionsVM model constructor.
@@ -849,6 +1050,18 @@ export {
      * @property {module:models/FileRenameVM}
      */
     FileRenameVM,
+
+    /**
+     * The FileShareVM model constructor.
+     * @property {module:models/FileShareVM}
+     */
+    FileShareVM,
+
+    /**
+     * The FileSharingKeysVM model constructor.
+     * @property {module:models/FileSharingKeysVM}
+     */
+    FileSharingKeysVM,
 
     /**
      * The FileSorting model constructor.
@@ -869,10 +1082,28 @@ export {
     FileStatusReason,
 
     /**
+     * The FileStatusUpdateInternalVM model constructor.
+     * @property {module:models/FileStatusUpdateInternalVM}
+     */
+    FileStatusUpdateInternalVM,
+
+    /**
+     * The FileStatusVM model constructor.
+     * @property {module:models/FileStatusVM}
+     */
+    FileStatusVM,
+
+    /**
      * The FileTagsUpdateVM model constructor.
      * @property {module:models/FileTagsUpdateVM}
      */
     FileTagsUpdateVM,
+
+    /**
+     * The FileThumbnailUpdateInternalVM model constructor.
+     * @property {module:models/FileThumbnailUpdateInternalVM}
+     */
+    FileThumbnailUpdateInternalVM,
 
     /**
      * The FileType model constructor.
@@ -887,22 +1118,28 @@ export {
     FileUpdate,
 
     /**
+     * The FileUpdateVM model constructor.
+     * @property {module:models/FileUpdateVM}
+     */
+    FileUpdateVM,
+
+    /**
      * The FileVM model constructor.
      * @property {module:models/FileVM}
      */
     FileVM,
 
     /**
-     * The FileVMFilesVMBase model constructor.
-     * @property {module:models/FileVMFilesVMBase}
-     */
-    FileVMFilesVMBase,
-
-    /**
      * The FilesVM model constructor.
      * @property {module:models/FilesVM}
      */
     FilesVM,
+
+    /**
+     * The FilesVMBase model constructor.
+     * @property {module:models/FilesVMBase}
+     */
+    FilesVMBase,
 
     /**
      * The FolderCreateVM model constructor.
@@ -923,16 +1160,22 @@ export {
     FolderRenameVM,
 
     /**
+     * The FolderSizeVM model constructor.
+     * @property {module:models/FolderSizeVM}
+     */
+    FolderSizeVM,
+
+    /**
      * The FolderTagsUpdateVM model constructor.
      * @property {module:models/FolderTagsUpdateVM}
      */
     FolderTagsUpdateVM,
 
     /**
-     * The FrontendApp model constructor.
-     * @property {module:models/FrontendApp}
+     * The FrontendAppVM model constructor.
+     * @property {module:models/FrontendAppVM}
      */
-    FrontendApp,
+    FrontendAppVM,
 
     /**
      * The GroupAdministrate model constructor.
@@ -945,12 +1188,6 @@ export {
      * @property {module:models/GroupCreate}
      */
     GroupCreate,
-
-    /**
-     * The GroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupAdministratePermission model constructor.
-     * @property {module:models/GroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupAdministratePermission}
-     */
-    GroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupAdministratePermission,
 
     /**
      * The GroupDelete model constructor.
@@ -971,22 +1208,16 @@ export {
     GroupGet,
 
     /**
-     * The GroupPermission model constructor.
-     * @property {module:models/GroupPermission}
+     * The GroupPermissionCRUDVM model constructor.
+     * @property {module:models/GroupPermissionCRUDVM}
      */
-    GroupPermission,
+    GroupPermissionCRUDVM,
 
     /**
-     * The GroupPermissionGroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupAdministratePermissions model constructor.
-     * @property {module:models/GroupPermissionGroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupAdministratePermissions}
+     * The GroupPermissionsCRUDVM model constructor.
+     * @property {module:models/GroupPermissionsCRUDVM}
      */
-    GroupPermissionGroupCreateGroupGetGroupUpdateGroupDeleteGroupExecuteGroupAdministratePermissions,
-
-    /**
-     * The GroupPermissions model constructor.
-     * @property {module:models/GroupPermissions}
-     */
-    GroupPermissions,
+    GroupPermissionsCRUDVM,
 
     /**
      * The GroupPermissionsVM model constructor.
@@ -1085,10 +1316,28 @@ export {
     ProblemDetails,
 
     /**
+     * The ProblemLevel model constructor.
+     * @property {module:models/ProblemLevel}
+     */
+    ProblemLevel,
+
+    /**
+     * The ProblemType model constructor.
+     * @property {module:models/ProblemType}
+     */
+    ProblemType,
+
+    /**
      * The ProfileVisibility model constructor.
      * @property {module:models/ProfileVisibility}
      */
     ProfileVisibility,
+
+    /**
+     * The RegisterUserVM model constructor.
+     * @property {module:models/RegisterUserVM}
+     */
+    RegisterUserVM,
 
     /**
      * The RenameDataSourceVM model constructor.
@@ -1115,6 +1364,12 @@ export {
     ReportCreateAdminVM,
 
     /**
+     * The ReportCreateFormVM model constructor.
+     * @property {module:models/ReportCreateFormVM}
+     */
+    ReportCreateFormVM,
+
+    /**
      * The ReportCreateVM model constructor.
      * @property {module:models/ReportCreateVM}
      */
@@ -1139,16 +1394,16 @@ export {
     ReportVM,
 
     /**
-     * The ReportVMFilesVMBase model constructor.
-     * @property {module:models/ReportVMFilesVMBase}
-     */
-    ReportVMFilesVMBase,
-
-    /**
      * The ReportsVM model constructor.
      * @property {module:models/ReportsVM}
      */
     ReportsVM,
+
+    /**
+     * The RestOfSpaceVM model constructor.
+     * @property {module:models/RestOfSpaceVM}
+     */
+    RestOfSpaceVM,
 
     /**
      * The RunEmailTaskVM model constructor.
@@ -1235,10 +1490,22 @@ export {
     SaveMode,
 
     /**
+     * The SelectedFilesVM model constructor.
+     * @property {module:models/SelectedFilesVM}
+     */
+    SelectedFilesVM,
+
+    /**
      * The ServerConfigurationVM model constructor.
      * @property {module:models/ServerConfigurationVM}
      */
     ServerConfigurationVM,
+
+    /**
+     * The SolvationReportVM model constructor.
+     * @property {module:models/SolvationReportVM}
+     */
+    SolvationReportVM,
 
     /**
      * The SubscriptionAdministrate model constructor.
@@ -1251,12 +1518,6 @@ export {
      * @property {module:models/SubscriptionCreate}
      */
     SubscriptionCreate,
-
-    /**
-     * The SubscriptionCreateSubscriptionGetSubscriptionUpdateSubscriptionDeleteSubscriptionExecuteSubscriptionAdministratePermission model constructor.
-     * @property {module:models/SubscriptionCreateSubscriptionGetSubscriptionUpdateSubscriptionDeleteSubscriptionExecuteSubscriptionAdministratePermission}
-     */
-    SubscriptionCreateSubscriptionGetSubscriptionUpdateSubscriptionDeleteSubscriptionExecuteSubscriptionAdministratePermission,
 
     /**
      * The SubscriptionDelete model constructor.
@@ -1301,22 +1562,16 @@ export {
     SubscriptionPeriodVM,
 
     /**
-     * The SubscriptionPermission model constructor.
-     * @property {module:models/SubscriptionPermission}
+     * The SubscriptionPermissionCRUDVM model constructor.
+     * @property {module:models/SubscriptionPermissionCRUDVM}
      */
-    SubscriptionPermission,
+    SubscriptionPermissionCRUDVM,
 
     /**
-     * The SubscriptionPermissionSubscriptionCreateSubscriptionGetSubscriptionUpdateSubscriptionDeleteSubscriptionExecuteSubscriptionAdministratePermissions model constructor.
-     * @property {module:models/SubscriptionPermissionSubscriptionCreateSubscriptionGetSubscriptionUpdateSubscriptionDeleteSubscriptionExecuteSubscriptionAdministratePermissions}
+     * The SubscriptionPermissionsCRUDVM model constructor.
+     * @property {module:models/SubscriptionPermissionsCRUDVM}
      */
-    SubscriptionPermissionSubscriptionCreateSubscriptionGetSubscriptionUpdateSubscriptionDeleteSubscriptionExecuteSubscriptionAdministratePermissions,
-
-    /**
-     * The SubscriptionPermissions model constructor.
-     * @property {module:models/SubscriptionPermissions}
-     */
-    SubscriptionPermissions,
+    SubscriptionPermissionsCRUDVM,
 
     /**
      * The SubscriptionPermissionsVM model constructor.
@@ -1385,16 +1640,16 @@ export {
     TaskCreate,
 
     /**
-     * The TaskCreateTaskGetTaskUpdateTaskDeleteTaskExecuteTaskAdministratePermission model constructor.
-     * @property {module:models/TaskCreateTaskGetTaskUpdateTaskDeleteTaskExecuteTaskAdministratePermission}
-     */
-    TaskCreateTaskGetTaskUpdateTaskDeleteTaskExecuteTaskAdministratePermission,
-
-    /**
      * The TaskDelete model constructor.
      * @property {module:models/TaskDelete}
      */
     TaskDelete,
+
+    /**
+     * The TaskEnd model constructor.
+     * @property {module:models/TaskEnd}
+     */
+    TaskEnd,
 
     /**
      * The TaskExecute model constructor.
@@ -1409,22 +1664,28 @@ export {
     TaskGet,
 
     /**
-     * The TaskPermission model constructor.
-     * @property {module:models/TaskPermission}
+     * The TaskIdsVM model constructor.
+     * @property {module:models/TaskIdsVM}
      */
-    TaskPermission,
+    TaskIdsVM,
 
     /**
-     * The TaskPermissionTaskCreateTaskGetTaskUpdateTaskDeleteTaskExecuteTaskAdministratePermissions model constructor.
-     * @property {module:models/TaskPermissionTaskCreateTaskGetTaskUpdateTaskDeleteTaskExecuteTaskAdministratePermissions}
+     * The TaskMessageIdVM model constructor.
+     * @property {module:models/TaskMessageIdVM}
      */
-    TaskPermissionTaskCreateTaskGetTaskUpdateTaskDeleteTaskExecuteTaskAdministratePermissions,
+    TaskMessageIdVM,
 
     /**
-     * The TaskPermissions model constructor.
-     * @property {module:models/TaskPermissions}
+     * The TaskPermissionCRUDVM model constructor.
+     * @property {module:models/TaskPermissionCRUDVM}
      */
-    TaskPermissions,
+    TaskPermissionCRUDVM,
+
+    /**
+     * The TaskPermissionsCRUDVM model constructor.
+     * @property {module:models/TaskPermissionsCRUDVM}
+     */
+    TaskPermissionsCRUDVM,
 
     /**
      * The TaskPermissionsVM model constructor.
@@ -1451,10 +1712,22 @@ export {
     TasksVM,
 
     /**
+     * The TemplateContentVM model constructor.
+     * @property {module:models/TemplateContentVM}
+     */
+    TemplateContentVM,
+
+    /**
      * The TemplateCreateAdminVM model constructor.
      * @property {module:models/TemplateCreateAdminVM}
      */
     TemplateCreateAdminVM,
+
+    /**
+     * The TemplateCreateFormVM model constructor.
+     * @property {module:models/TemplateCreateFormVM}
+     */
+    TemplateCreateFormVM,
 
     /**
      * The TemplateCreateVM model constructor.
@@ -1473,12 +1746,6 @@ export {
      * @property {module:models/TemplateVM}
      */
     TemplateVM,
-
-    /**
-     * The TemplateVMFilesVMBase model constructor.
-     * @property {module:models/TemplateVMFilesVMBase}
-     */
-    TemplateVMFilesVMBase,
 
     /**
      * The TemplatesVM model constructor.
@@ -1529,6 +1796,12 @@ export {
     UpdateContactVM,
 
     /**
+     * The UpdateContentInternalVM model constructor.
+     * @property {module:models/UpdateContentInternalVM}
+     */
+    UpdateContentInternalVM,
+
+    /**
      * The UpdateDataSourceConnectionStringVM model constructor.
      * @property {module:models/UpdateDataSourceConnectionStringVM}
      */
@@ -1541,10 +1814,28 @@ export {
     UpdateDataSourcePermissionsVM,
 
     /**
+     * The UpdateDataSourceSelectCommandsVM model constructor.
+     * @property {module:models/UpdateDataSourceSelectCommandsVM}
+     */
+    UpdateDataSourceSelectCommandsVM,
+
+    /**
      * The UpdateDataSourceSubscriptionVM model constructor.
      * @property {module:models/UpdateDataSourceSubscriptionVM}
      */
     UpdateDataSourceSubscriptionVM,
+
+    /**
+     * The UpdateDataSourceVM model constructor.
+     * @property {module:models/UpdateDataSourceVM}
+     */
+    UpdateDataSourceVM,
+
+    /**
+     * The UpdateDataVM model constructor.
+     * @property {module:models/UpdateDataVM}
+     */
+    UpdateDataVM,
 
     /**
      * The UpdateDefaultPermissionsVM model constructor.
@@ -1583,6 +1874,18 @@ export {
     UpdateFetchTaskVM,
 
     /**
+     * The UpdateFileContentFormVM model constructor.
+     * @property {module:models/UpdateFileContentFormVM}
+     */
+    UpdateFileContentFormVM,
+
+    /**
+     * The UpdateFileContentInternalVM model constructor.
+     * @property {module:models/UpdateFileContentInternalVM}
+     */
+    UpdateFileContentInternalVM,
+
+    /**
      * The UpdateFileContentVM model constructor.
      * @property {module:models/UpdateFileContentVM}
      */
@@ -1601,6 +1904,12 @@ export {
     UpdateGroupPermissionsVM,
 
     /**
+     * The UpdateGroupVM model constructor.
+     * @property {module:models/UpdateGroupVM}
+     */
+    UpdateGroupVM,
+
+    /**
      * The UpdatePrepareTemplateTaskVM model constructor.
      * @property {module:models/UpdatePrepareTemplateTaskVM}
      */
@@ -1617,6 +1926,18 @@ export {
      * @property {module:models/UpdateSubscriptionPermissionsVM}
      */
     UpdateSubscriptionPermissionsVM,
+
+    /**
+     * The UpdateSubscriptionPlanVM model constructor.
+     * @property {module:models/UpdateSubscriptionPlanVM}
+     */
+    UpdateSubscriptionPlanVM,
+
+    /**
+     * The UpdateSubscriptionVM model constructor.
+     * @property {module:models/UpdateSubscriptionVM}
+     */
+    UpdateSubscriptionVM,
 
     /**
      * The UpdateTaskBaseVM model constructor.
@@ -1667,10 +1988,22 @@ export {
     UpdateUserSettingsVM,
 
     /**
+     * The UpdateUserVM model constructor.
+     * @property {module:models/UpdateUserVM}
+     */
+    UpdateUserVM,
+
+    /**
      * The UpdateWebhookTaskVM model constructor.
      * @property {module:models/UpdateWebhookTaskVM}
      */
     UpdateWebhookTaskVM,
+
+    /**
+     * The UserIsAdminVM model constructor.
+     * @property {module:models/UserIsAdminVM}
+     */
+    UserIsAdminVM,
 
     /**
      * The UserProfileVM model constructor.
@@ -1679,10 +2012,28 @@ export {
     UserProfileVM,
 
     /**
+     * The UserResultVM model constructor.
+     * @property {module:models/UserResultVM}
+     */
+    UserResultVM,
+
+    /**
      * The UserSettingsVM model constructor.
      * @property {module:models/UserSettingsVM}
      */
     UserSettingsVM,
+
+    /**
+     * The UserVM model constructor.
+     * @property {module:models/UserVM}
+     */
+    UserVM,
+
+    /**
+     * The UsersVM model constructor.
+     * @property {module:models/UsersVM}
+     */
+    UsersVM,
 
     /**
      * The WebhookTaskVM model constructor.
@@ -1797,6 +2148,12 @@ export {
     * @property {module:client/TemplatesApi}
     */
     TemplatesApi,
+
+    /**
+    * The UserNotificationsApi service constructor.
+    * @property {module:client/UserNotificationsApi}
+    */
+    UserNotificationsApi,
 
     /**
     * The UserProfileApi service constructor.

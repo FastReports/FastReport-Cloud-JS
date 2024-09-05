@@ -9,5 +9,6 @@ Name | Type | Description | Notes
 **email** | **String** |  | [optional] 
 **passwordNew** | **String** |  | [optional] 
 **passwordNew2** | **String** |  | [optional] 
+**t** | **String** |  | 
 
 

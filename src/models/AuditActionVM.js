@@ -13,6 +13,7 @@
 
 import ApiClient from '../ApiClient';
 import AuditType from './AuditType';
+import CloudBaseVM from './CloudBaseVM';
 
 /**
  * The AuditActionVM model module.
@@ -23,10 +24,12 @@ class AuditActionVM {
     /**
      * Constructs a new <code>AuditActionVM</code>.
      * @alias module:models/AuditActionVM
+     * @extends module:models/CloudBaseVM
+     * @implements module:models/CloudBaseVM
      * @param t {String} 
      */
     constructor(t) { 
-        
+        CloudBaseVM.initialize(this, t);
         AuditActionVM.initialize(this, t);
     }
 
@@ -49,6 +52,8 @@ class AuditActionVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new AuditActionVM();
+            CloudBaseVM.constructFromObject(data, obj);
+            CloudBaseVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('userId')) {
                 obj['userId'] = ApiClient.convertToType(data['userId'], 'String');
@@ -92,7 +97,7 @@ class AuditActionVM {
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
         for (const property of AuditActionVM.RequiredProperties) {
-            if (!data[property]) {
+            if (!data.hasOwnProperty(property)) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
@@ -184,6 +189,11 @@ AuditActionVM.prototype['adminAction'] = undefined;
 AuditActionVM.prototype['$t'] = undefined;
 
 
+// Implement CloudBaseVM interface:
+/**
+ * @member {String} $t
+ */
+CloudBaseVM.prototype['$t'] = undefined;
 
 
 

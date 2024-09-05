@@ -25,10 +25,11 @@ class ExportCreateAdminVM {
      * @alias module:models/ExportCreateAdminVM
      * @extends module:models/ExportCreateVM
      * @implements module:models/ExportCreateVM
+     * @param t {String} 
      */
-    constructor() { 
-        ExportCreateVM.initialize(this);
-        ExportCreateAdminVM.initialize(this);
+    constructor(t) { 
+        ExportCreateVM.initialize(this, t);
+        ExportCreateAdminVM.initialize(this, t);
     }
 
     /**
@@ -36,9 +37,10 @@ class ExportCreateAdminVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, t) { 
         obj['ownerId'] = ownerId;
         obj['parentId'] = parentId;
+        obj['$t'] = t;
     }
 
     /**
@@ -60,6 +62,9 @@ class ExportCreateAdminVM {
             if (data.hasOwnProperty('parentId')) {
                 obj['parentId'] = ApiClient.convertToType(data['parentId'], 'String');
             }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
+            }
         }
         return obj;
     }
@@ -72,7 +77,7 @@ class ExportCreateAdminVM {
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
         for (const property of ExportCreateAdminVM.RequiredProperties) {
-            if (!data[property]) {
+            if (!data.hasOwnProperty(property)) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
@@ -84,6 +89,10 @@ class ExportCreateAdminVM {
         if (data['parentId'] && !(typeof data['parentId'] === 'string' || data['parentId'] instanceof String)) {
             throw new Error("Expected the field `parentId` to be a primitive type in the JSON string but got " + data['parentId']);
         }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
+        }
 
         return true;
     }
@@ -91,7 +100,7 @@ class ExportCreateAdminVM {
 
 }
 
-ExportCreateAdminVM.RequiredProperties = ["ownerId", "parentId"];
+ExportCreateAdminVM.RequiredProperties = ["ownerId", "parentId", "$t"];
 
 /**
  * @member {String} ownerId
@@ -102,6 +111,11 @@ ExportCreateAdminVM.prototype['ownerId'] = undefined;
  * @member {String} parentId
  */
 ExportCreateAdminVM.prototype['parentId'] = undefined;
+
+/**
+ * @member {String} $t
+ */
+ExportCreateAdminVM.prototype['$t'] = undefined;
 
 
 // Implement ExportCreateVM interface:
@@ -121,6 +135,10 @@ ExportCreateVM.prototype['icon'] = undefined;
  * @member {Blob} content
  */
 ExportCreateVM.prototype['content'] = undefined;
+/**
+ * @member {String} $t
+ */
+ExportCreateVM.prototype['$t'] = undefined;
 
 
 

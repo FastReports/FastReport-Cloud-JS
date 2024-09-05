@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import CloudBaseVM from './CloudBaseVM';
 
 /**
  * The FolderIconVM model module.
@@ -22,11 +23,13 @@ class FolderIconVM {
     /**
      * Constructs a new <code>FolderIconVM</code>.
      * @alias module:models/FolderIconVM
-     * @param icon {Blob} 
+     * @extends module:models/CloudBaseVM
+     * @implements module:models/CloudBaseVM
+     * @param t {String} 
      */
-    constructor(icon) { 
-        
-        FolderIconVM.initialize(this, icon);
+    constructor(t) { 
+        CloudBaseVM.initialize(this, t);
+        FolderIconVM.initialize(this, t);
     }
 
     /**
@@ -34,8 +37,9 @@ class FolderIconVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, icon) { 
+    static initialize(obj, t) { 
         obj['icon'] = icon;
+        obj['$t'] = t;
     }
 
     /**
@@ -48,9 +52,14 @@ class FolderIconVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new FolderIconVM();
+            CloudBaseVM.constructFromObject(data, obj);
+            CloudBaseVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('icon')) {
                 obj['icon'] = ApiClient.convertToType(data['icon'], 'Blob');
+            }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
             }
         }
         return obj;
@@ -64,9 +73,13 @@ class FolderIconVM {
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
         for (const property of FolderIconVM.RequiredProperties) {
-            if (!data[property]) {
+            if (!data.hasOwnProperty(property)) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
+        }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
         }
 
         return true;
@@ -75,14 +88,24 @@ class FolderIconVM {
 
 }
 
-FolderIconVM.RequiredProperties = ["icon"];
+FolderIconVM.RequiredProperties = ["icon", "$t"];
 
 /**
  * @member {Blob} icon
  */
 FolderIconVM.prototype['icon'] = undefined;
 
+/**
+ * @member {String} $t
+ */
+FolderIconVM.prototype['$t'] = undefined;
 
+
+// Implement CloudBaseVM interface:
+/**
+ * @member {String} $t
+ */
+CloudBaseVM.prototype['$t'] = undefined;
 
 
 

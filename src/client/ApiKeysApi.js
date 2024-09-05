@@ -88,7 +88,7 @@ export default class ApiKeysApi {
     /**
      * Delete an apikey
      * @param {module:models/DeleteApiKeyVM} deleteApiKeyVM 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/ApiKeyVM} and HTTP response
      */
     apiKeysDeleteApiKeyWithHttpInfo(deleteApiKeyVM) {
       let postBody = deleteApiKeyVM;
@@ -109,7 +109,7 @@ export default class ApiKeysApi {
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = ['application/json', 'text/json', 'application/*+json'];
       let accepts = ['application/json'];
-      let returnType = null;
+      let returnType = ApiKeyVM;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/manage/v1/ApiKeys', 'DELETE',
@@ -121,7 +121,7 @@ export default class ApiKeysApi {
     /**
      * Delete an apikey
      * @param {module:models/DeleteApiKeyVM} deleteApiKeyVM 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/ApiKeyVM}
      */
     apiKeysDeleteApiKey(deleteApiKeyVM) {
       return this.apiKeysDeleteApiKeyWithHttpInfo(deleteApiKeyVM)
@@ -132,7 +132,7 @@ export default class ApiKeysApi {
 
 
     /**
-     * Returns list with all api keys of current user
+     * Returns list with all apikeys of current user
      * Always work, it should make only 200 response (except if user is not authorized).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/ApiKeysVM} and HTTP response
      */
@@ -161,7 +161,7 @@ export default class ApiKeysApi {
     }
 
     /**
-     * Returns list with all api keys of current user
+     * Returns list with all apikeys of current user
      * Always work, it should make only 200 response (except if user is not authorized).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/ApiKeysVM}
      */

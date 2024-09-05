@@ -12,7 +12,8 @@
  */
 
 import ApiClient from '../ApiClient';
-import DataSourcePermissions from './DataSourcePermissions';
+import CloudBaseVM from './CloudBaseVM';
+import DataSourcePermissionsCRUDVM from './DataSourcePermissionsCRUDVM';
 
 /**
  * The DataSourcePermissionsVM model module.
@@ -23,10 +24,13 @@ class DataSourcePermissionsVM {
     /**
      * Constructs a new <code>DataSourcePermissionsVM</code>.
      * @alias module:models/DataSourcePermissionsVM
+     * @extends module:models/CloudBaseVM
+     * @implements module:models/CloudBaseVM
+     * @param t {String} 
      */
-    constructor() { 
-        
-        DataSourcePermissionsVM.initialize(this);
+    constructor(t) { 
+        CloudBaseVM.initialize(this, t);
+        DataSourcePermissionsVM.initialize(this, t);
     }
 
     /**
@@ -34,7 +38,8 @@ class DataSourcePermissionsVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -47,9 +52,14 @@ class DataSourcePermissionsVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new DataSourcePermissionsVM();
+            CloudBaseVM.constructFromObject(data, obj);
+            CloudBaseVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('permissions')) {
-                obj['permissions'] = DataSourcePermissions.constructFromObject(data['permissions']);
+                obj['permissions'] = DataSourcePermissionsCRUDVM.constructFromObject(data['permissions']);
+            }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
             }
         }
         return obj;
@@ -61,9 +71,19 @@ class DataSourcePermissionsVM {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>DataSourcePermissionsVM</code>.
      */
     static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of DataSourcePermissionsVM.RequiredProperties) {
+            if (!data.hasOwnProperty(property)) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
         // validate the optional field `permissions`
         if (data['permissions']) { // data not null
-          DataSourcePermissions.validateJSON(data['permissions']);
+          DataSourcePermissionsCRUDVM.validateJSON(data['permissions']);
+        }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
         }
 
         return true;
@@ -72,14 +92,24 @@ class DataSourcePermissionsVM {
 
 }
 
-
+DataSourcePermissionsVM.RequiredProperties = ["$t"];
 
 /**
- * @member {module:models/DataSourcePermissions} permissions
+ * @member {module:models/DataSourcePermissionsCRUDVM} permissions
  */
 DataSourcePermissionsVM.prototype['permissions'] = undefined;
 
+/**
+ * @member {String} $t
+ */
+DataSourcePermissionsVM.prototype['$t'] = undefined;
 
+
+// Implement CloudBaseVM interface:
+/**
+ * @member {String} $t
+ */
+CloudBaseVM.prototype['$t'] = undefined;
 
 
 

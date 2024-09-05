@@ -6,5 +6,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **userId** | **String** |  | [optional] 
 **groups** | [**[GroupVM]**](GroupVM.md) |  | [optional] 
+**t** | **String** |  | 
 
 

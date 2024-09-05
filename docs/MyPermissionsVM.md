@@ -4,10 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**subscription** | [**SubscriptionPermission**](SubscriptionPermission.md) |  | [optional] 
-**files** | [**FilePermission**](FilePermission.md) |  | [optional] 
-**datasources** | [**DataSourcePermission**](DataSourcePermission.md) |  | [optional] 
-**groups** | [**GroupPermission**](GroupPermission.md) |  | [optional] 
-**tasks** | [**TaskPermission**](TaskPermission.md) |  | [optional] 
+**subscription** | [**SubscriptionPermissionCRUDVM**](SubscriptionPermissionCRUDVM.md) |  | [optional] 
+**files** | [**FilePermissionCRUDVM**](FilePermissionCRUDVM.md) |  | [optional] 
+**datasources** | [**DataSourcePermissionCRUDVM**](DataSourcePermissionCRUDVM.md) |  | [optional] 
+**groups** | [**GroupPermissionCRUDVM**](GroupPermissionCRUDVM.md) |  | [optional] 
+**tasks** | [**TaskPermissionCRUDVM**](TaskPermissionCRUDVM.md) |  | [optional] 
+**t** | **String** |  | 
 
 

@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**permissions** | [**DataSourcePermissions**](DataSourcePermissions.md) |  | [optional] 
+**permissions** | [**DataSourcePermissionsCRUDVM**](DataSourcePermissionsCRUDVM.md) |  | [optional] 
+**t** | **String** |  | 
 
 

@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import CreateTaskEndVM from './CreateTaskEndVM';
 import InputFileVM from './InputFileVM';
 import OutputFileVM from './OutputFileVM';
 import UpdateTaskBaseVM from './UpdateTaskBaseVM';
@@ -83,7 +84,7 @@ class UpdateTransformTaskBaseVM {
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
         for (const property of UpdateTransformTaskBaseVM.RequiredProperties) {
-            if (!data[property]) {
+            if (!data.hasOwnProperty(property)) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
@@ -143,18 +144,6 @@ UpdateTransformTaskBaseVM.prototype['$t'] = undefined;
 
 
 // Implement UpdateTaskBaseVM interface:
-/**
- * @member {String} cronExpression
- */
-UpdateTaskBaseVM.prototype['cronExpression'] = undefined;
-/**
- * @member {Date} delayedRunTime
- */
-UpdateTaskBaseVM.prototype['delayedRunTime'] = undefined;
-/**
- * @member {String} name
- */
-UpdateTaskBaseVM.prototype['name'] = undefined;
 /**
  * @member {String} $t
  */

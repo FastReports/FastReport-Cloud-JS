@@ -4,5 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**files** | [**[ReportVM]**](ReportVM.md) |  | [optional] 
+**t** | **String** |  | 
 
 

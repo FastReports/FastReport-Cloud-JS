@@ -38,6 +38,7 @@ class RunThumbnailReportTaskVM {
      * Only for internal use.
      */
     static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -56,6 +57,9 @@ class RunThumbnailReportTaskVM {
             if (data.hasOwnProperty('reportId')) {
                 obj['reportId'] = ApiClient.convertToType(data['reportId'], 'String');
             }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
+            }
         }
         return obj;
     }
@@ -68,13 +72,17 @@ class RunThumbnailReportTaskVM {
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
         for (const property of RunThumbnailReportTaskVM.RequiredProperties) {
-            if (!data[property]) {
+            if (!data.hasOwnProperty(property)) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
         // ensure the json data is a string
         if (data['reportId'] && !(typeof data['reportId'] === 'string' || data['reportId'] instanceof String)) {
             throw new Error("Expected the field `reportId` to be a primitive type in the JSON string but got " + data['reportId']);
+        }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
         }
 
         return true;
@@ -90,12 +98,13 @@ RunThumbnailReportTaskVM.RequiredProperties = ["$t"];
  */
 RunThumbnailReportTaskVM.prototype['reportId'] = undefined;
 
+/**
+ * @member {String} $t
+ */
+RunThumbnailReportTaskVM.prototype['$t'] = undefined;
+
 
 // Implement RunTaskBaseVM interface:
-/**
- * @member {String} subscriptionId
- */
-RunTaskBaseVM.prototype['subscriptionId'] = undefined;
 /**
  * @member {String} $t
  */

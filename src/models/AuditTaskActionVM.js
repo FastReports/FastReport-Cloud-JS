@@ -39,6 +39,7 @@ class AuditTaskActionVM {
      * Only for internal use.
      */
     static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -57,6 +58,12 @@ class AuditTaskActionVM {
             if (data.hasOwnProperty('messageId')) {
                 obj['messageId'] = ApiClient.convertToType(data['messageId'], 'String');
             }
+            if (data.hasOwnProperty('fileName')) {
+                obj['fileName'] = ApiClient.convertToType(data['fileName'], 'String');
+            }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
+            }
         }
         return obj;
     }
@@ -69,13 +76,21 @@ class AuditTaskActionVM {
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
         for (const property of AuditTaskActionVM.RequiredProperties) {
-            if (!data[property]) {
+            if (!data.hasOwnProperty(property)) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
         // ensure the json data is a string
         if (data['messageId'] && !(typeof data['messageId'] === 'string' || data['messageId'] instanceof String)) {
             throw new Error("Expected the field `messageId` to be a primitive type in the JSON string but got " + data['messageId']);
+        }
+        // ensure the json data is a string
+        if (data['fileName'] && !(typeof data['fileName'] === 'string' || data['fileName'] instanceof String)) {
+            throw new Error("Expected the field `fileName` to be a primitive type in the JSON string but got " + data['fileName']);
+        }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
         }
 
         return true;
@@ -91,44 +106,18 @@ AuditTaskActionVM.RequiredProperties = ["$t"];
  */
 AuditTaskActionVM.prototype['messageId'] = undefined;
 
+/**
+ * @member {String} fileName
+ */
+AuditTaskActionVM.prototype['fileName'] = undefined;
+
+/**
+ * @member {String} $t
+ */
+AuditTaskActionVM.prototype['$t'] = undefined;
+
 
 // Implement AuditActionVM interface:
-/**
- * @member {String} userId
- */
-AuditActionVM.prototype['userId'] = undefined;
-/**
- * @member {String} entityId
- */
-AuditActionVM.prototype['entityId'] = undefined;
-/**
- * @member {String} subscriptionId
- */
-AuditActionVM.prototype['subscriptionId'] = undefined;
-/**
- * @member {module:models/AuditType} type
- */
-AuditActionVM.prototype['type'] = undefined;
-/**
- * @member {String} id
- */
-AuditActionVM.prototype['id'] = undefined;
-/**
- * @member {Date} createdTime
- */
-AuditActionVM.prototype['createdTime'] = undefined;
-/**
- * @member {String} creatorUserId
- */
-AuditActionVM.prototype['creatorUserId'] = undefined;
-/**
- * @member {String} name
- */
-AuditActionVM.prototype['name'] = undefined;
-/**
- * @member {Boolean} adminAction
- */
-AuditActionVM.prototype['adminAction'] = undefined;
 /**
  * @member {String} $t
  */

@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**reportId** | **String** |  | [optional] [readonly] 
+**reportId** | **String** |  | [optional] 
+**t** | **String** |  | 
 
 

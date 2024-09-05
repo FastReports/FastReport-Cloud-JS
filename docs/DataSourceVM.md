@@ -15,5 +15,8 @@ Name | Type | Description | Notes
 **createdTime** | **Date** |  | [optional] 
 **creatorUserId** | **String** |  | [optional] 
 **status** | [**DataSourceStatus**](DataSourceStatus.md) |  | [optional] 
+**errorMessage** | **String** |  | [optional] 
+**selectCommands** | [**[DataSourceSelectCommandVM]**](DataSourceSelectCommandVM.md) |  | [optional] 
+**t** | **String** |  | 
 
 

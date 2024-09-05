@@ -13,7 +13,7 @@
 
 import ApiClient from '../ApiClient';
 import ExportVM from './ExportVM';
-import ExportVMFilesVMBase from './ExportVMFilesVMBase';
+import FilesVMBase from './FilesVMBase';
 
 /**
  * The ExportsVM model module.
@@ -24,12 +24,13 @@ class ExportsVM {
     /**
      * Constructs a new <code>ExportsVM</code>.
      * @alias module:models/ExportsVM
-     * @extends module:models/ExportVMFilesVMBase
-     * @implements module:models/ExportVMFilesVMBase
+     * @extends module:models/FilesVMBase
+     * @implements module:models/FilesVMBase
+     * @param t {String} 
      */
-    constructor() { 
-        ExportVMFilesVMBase.initialize(this);
-        ExportsVM.initialize(this);
+    constructor(t) { 
+        FilesVMBase.initialize(this, t);
+        ExportsVM.initialize(this, t);
     }
 
     /**
@@ -37,7 +38,8 @@ class ExportsVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -50,9 +52,15 @@ class ExportsVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new ExportsVM();
-            ExportVMFilesVMBase.constructFromObject(data, obj);
-            ExportVMFilesVMBase.constructFromObject(data, obj);
+            FilesVMBase.constructFromObject(data, obj);
+            FilesVMBase.constructFromObject(data, obj);
 
+            if (data.hasOwnProperty('files')) {
+                obj['files'] = ApiClient.convertToType(data['files'], [ExportVM]);
+            }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
+            }
         }
         return obj;
     }
@@ -63,6 +71,26 @@ class ExportsVM {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>ExportsVM</code>.
      */
     static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of ExportsVM.RequiredProperties) {
+            if (!data.hasOwnProperty(property)) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
+        if (data['files']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['files'])) {
+                throw new Error("Expected the field `files` to be an array in the JSON data but got " + data['files']);
+            }
+            // validate the optional field `files` (array)
+            for (const item of data['files']) {
+                ExportVM.validateJSON(item);
+            };
+        }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
+        }
 
         return true;
     }
@@ -70,26 +98,24 @@ class ExportsVM {
 
 }
 
+ExportsVM.RequiredProperties = ["$t"];
 
-
-
-// Implement ExportVMFilesVMBase interface:
 /**
  * @member {Array.<module:models/ExportVM>} files
  */
-ExportVMFilesVMBase.prototype['files'] = undefined;
+ExportsVM.prototype['files'] = undefined;
+
 /**
- * @member {Number} count
+ * @member {String} $t
  */
-ExportVMFilesVMBase.prototype['count'] = undefined;
+ExportsVM.prototype['$t'] = undefined;
+
+
+// Implement FilesVMBase interface:
 /**
- * @member {Number} skip
+ * @member {String} $t
  */
-ExportVMFilesVMBase.prototype['skip'] = undefined;
-/**
- * @member {Number} take
- */
-ExportVMFilesVMBase.prototype['take'] = undefined;
+FilesVMBase.prototype['$t'] = undefined;
 
 
 

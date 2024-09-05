@@ -54,6 +54,12 @@
       //expect(instance).to.be.a(FastreportCloudSdk.TemplateFolderCreateVM);
     });
 
+    it('should have the property t (base name: "$t")', function() {
+      // uncomment below and update the code to test the property t
+      //var instance = new FastreportCloudSdk.TemplateFolderCreateVM();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

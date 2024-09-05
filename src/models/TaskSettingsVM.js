@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import CloudBaseVM from './CloudBaseVM';
 
 /**
  * The TaskSettingsVM model module.
@@ -22,10 +23,13 @@ class TaskSettingsVM {
     /**
      * Constructs a new <code>TaskSettingsVM</code>.
      * @alias module:models/TaskSettingsVM
+     * @extends module:models/CloudBaseVM
+     * @implements module:models/CloudBaseVM
+     * @param t {String} 
      */
-    constructor() { 
-        
-        TaskSettingsVM.initialize(this);
+    constructor(t) { 
+        CloudBaseVM.initialize(this, t);
+        TaskSettingsVM.initialize(this, t);
     }
 
     /**
@@ -33,7 +37,8 @@ class TaskSettingsVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -46,6 +51,8 @@ class TaskSettingsVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new TaskSettingsVM();
+            CloudBaseVM.constructFromObject(data, obj);
+            CloudBaseVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('prepare')) {
                 obj['prepare'] = ApiClient.convertToType(data['prepare'], 'Boolean');
@@ -74,6 +81,9 @@ class TaskSettingsVM {
             if (data.hasOwnProperty('thumbnailTemplate')) {
                 obj['thumbnailTemplate'] = ApiClient.convertToType(data['thumbnailTemplate'], 'Boolean');
             }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
+            }
         }
         return obj;
     }
@@ -84,6 +94,16 @@ class TaskSettingsVM {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>TaskSettingsVM</code>.
      */
     static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of TaskSettingsVM.RequiredProperties) {
+            if (!data.hasOwnProperty(property)) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
+        }
 
         return true;
     }
@@ -91,7 +111,7 @@ class TaskSettingsVM {
 
 }
 
-
+TaskSettingsVM.RequiredProperties = ["$t"];
 
 /**
  * @member {Boolean} prepare
@@ -138,7 +158,17 @@ TaskSettingsVM.prototype['thumbnailReport'] = undefined;
  */
 TaskSettingsVM.prototype['thumbnailTemplate'] = undefined;
 
+/**
+ * @member {String} $t
+ */
+TaskSettingsVM.prototype['$t'] = undefined;
 
+
+// Implement CloudBaseVM interface:
+/**
+ * @member {String} $t
+ */
+CloudBaseVM.prototype['$t'] = undefined;
 
 
 

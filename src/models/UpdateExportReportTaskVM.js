@@ -12,7 +12,10 @@
  */
 
 import ApiClient from '../ApiClient';
+import CreateTaskEndVM from './CreateTaskEndVM';
 import ExportFormat from './ExportFormat';
+import InputFileVM from './InputFileVM';
+import OutputFileVM from './OutputFileVM';
 import UpdateTransformTaskBaseVM from './UpdateTransformTaskBaseVM';
 
 /**
@@ -79,13 +82,9 @@ class UpdateExportReportTaskVM {
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
         for (const property of UpdateExportReportTaskVM.RequiredProperties) {
-            if (!data[property]) {
+            if (!data.hasOwnProperty(property)) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
-        }
-        // validate the optional field `format`
-        if (data['format']) { // data not null
-          ExportFormat.validateJSON(data['format']);
         }
         // ensure the json data is a string
         if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
@@ -127,9 +126,13 @@ UpdateExportReportTaskVM.prototype['$t'] = undefined;
  */
 UpdateTransformTaskBaseVM.prototype['cronExpression'] = undefined;
 /**
- * @member {Date} delayedRunTime
+ * @member {Date} startsOn
  */
-UpdateTransformTaskBaseVM.prototype['delayedRunTime'] = undefined;
+UpdateTransformTaskBaseVM.prototype['startsOn'] = undefined;
+/**
+ * @member {module:models/CreateTaskEndVM} ends
+ */
+UpdateTransformTaskBaseVM.prototype['ends'] = undefined;
 /**
  * @member {String} name
  */

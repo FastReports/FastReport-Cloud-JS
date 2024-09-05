@@ -139,7 +139,8 @@ export default class DownloadApi {
      * Returns a zip archive with selected ids
      * @param {String} archiveName name of the created archive
      * @param {Object} opts Optional parameters
-     * @param {String} opts.ids ids separated with a ',' sign
+     * @param {String} opts.fileIds ids separated with a ',' sign
+     * @param {String} opts.folderIds ids separated with a ',' sign
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link File} and HTTP response
      */
     downloadGetExportsWithHttpInfo(archiveName, opts) {
@@ -154,7 +155,8 @@ export default class DownloadApi {
         'archiveName': archiveName
       };
       let queryParams = {
-        'ids': opts['ids']
+        'fileIds': opts['fileIds'],
+        'folderIds': opts['folderIds']
       };
       let headerParams = {
       };
@@ -177,7 +179,8 @@ export default class DownloadApi {
      * Returns a zip archive with selected ids
      * @param {String} archiveName name of the created archive
      * @param {Object} opts Optional parameters
-     * @param {String} opts.ids ids separated with a ',' sign
+     * @param {String} opts.fileIds ids separated with a ',' sign
+     * @param {String} opts.folderIds ids separated with a ',' sign
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link File}
      */
     downloadGetExports(archiveName, opts) {
@@ -333,7 +336,8 @@ export default class DownloadApi {
      * Returns a zip archive with selected files
      * @param {String} archiveName name of the created archive
      * @param {Object} opts Optional parameters
-     * @param {String} opts.ids ids separated with a ',' sign
+     * @param {String} opts.fileIds ids separated with a ',' sign
+     * @param {String} opts.folderIds ids separated with a ',' sign
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link File} and HTTP response
      */
     downloadGetReportsWithHttpInfo(archiveName, opts) {
@@ -348,7 +352,8 @@ export default class DownloadApi {
         'archiveName': archiveName
       };
       let queryParams = {
-        'ids': opts['ids']
+        'fileIds': opts['fileIds'],
+        'folderIds': opts['folderIds']
       };
       let headerParams = {
       };
@@ -371,7 +376,8 @@ export default class DownloadApi {
      * Returns a zip archive with selected files
      * @param {String} archiveName name of the created archive
      * @param {Object} opts Optional parameters
-     * @param {String} opts.ids ids separated with a ',' sign
+     * @param {String} opts.fileIds ids separated with a ',' sign
+     * @param {String} opts.folderIds ids separated with a ',' sign
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link File}
      */
     downloadGetReports(archiveName, opts) {
@@ -480,7 +486,8 @@ export default class DownloadApi {
      * Returns a zip archive with selected files
      * @param {String} archiveName name of the created archive
      * @param {Object} opts Optional parameters
-     * @param {String} opts.ids ids separated with a ',' sign
+     * @param {String} opts.fileIds ids separated with a ',' sign
+     * @param {String} opts.folderIds ids separated with a ',' sign
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link File} and HTTP response
      */
     downloadGetTemplatesWithHttpInfo(archiveName, opts) {
@@ -495,7 +502,8 @@ export default class DownloadApi {
         'archiveName': archiveName
       };
       let queryParams = {
-        'ids': opts['ids']
+        'fileIds': opts['fileIds'],
+        'folderIds': opts['folderIds']
       };
       let headerParams = {
       };
@@ -518,7 +526,8 @@ export default class DownloadApi {
      * Returns a zip archive with selected files
      * @param {String} archiveName name of the created archive
      * @param {Object} opts Optional parameters
-     * @param {String} opts.ids ids separated with a ',' sign
+     * @param {String} opts.fileIds ids separated with a ',' sign
+     * @param {String} opts.folderIds ids separated with a ',' sign
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link File}
      */
     downloadGetTemplates(archiveName, opts) {

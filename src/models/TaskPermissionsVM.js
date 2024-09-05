@@ -12,7 +12,8 @@
  */
 
 import ApiClient from '../ApiClient';
-import TaskPermissions from './TaskPermissions';
+import CloudBaseVM from './CloudBaseVM';
+import TaskPermissionsCRUDVM from './TaskPermissionsCRUDVM';
 
 /**
  * The TaskPermissionsVM model module.
@@ -23,10 +24,13 @@ class TaskPermissionsVM {
     /**
      * Constructs a new <code>TaskPermissionsVM</code>.
      * @alias module:models/TaskPermissionsVM
+     * @extends module:models/CloudBaseVM
+     * @implements module:models/CloudBaseVM
+     * @param t {String} 
      */
-    constructor() { 
-        
-        TaskPermissionsVM.initialize(this);
+    constructor(t) { 
+        CloudBaseVM.initialize(this, t);
+        TaskPermissionsVM.initialize(this, t);
     }
 
     /**
@@ -34,7 +38,8 @@ class TaskPermissionsVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -47,9 +52,14 @@ class TaskPermissionsVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new TaskPermissionsVM();
+            CloudBaseVM.constructFromObject(data, obj);
+            CloudBaseVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('permissions')) {
-                obj['permissions'] = TaskPermissions.constructFromObject(data['permissions']);
+                obj['permissions'] = TaskPermissionsCRUDVM.constructFromObject(data['permissions']);
+            }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
             }
         }
         return obj;
@@ -61,9 +71,19 @@ class TaskPermissionsVM {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>TaskPermissionsVM</code>.
      */
     static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of TaskPermissionsVM.RequiredProperties) {
+            if (!data.hasOwnProperty(property)) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
         // validate the optional field `permissions`
         if (data['permissions']) { // data not null
-          TaskPermissions.validateJSON(data['permissions']);
+          TaskPermissionsCRUDVM.validateJSON(data['permissions']);
+        }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
         }
 
         return true;
@@ -72,14 +92,24 @@ class TaskPermissionsVM {
 
 }
 
-
+TaskPermissionsVM.RequiredProperties = ["$t"];
 
 /**
- * @member {module:models/TaskPermissions} permissions
+ * @member {module:models/TaskPermissionsCRUDVM} permissions
  */
 TaskPermissionsVM.prototype['permissions'] = undefined;
 
+/**
+ * @member {String} $t
+ */
+TaskPermissionsVM.prototype['$t'] = undefined;
 
+
+// Implement CloudBaseVM interface:
+/**
+ * @member {String} $t
+ */
+CloudBaseVM.prototype['$t'] = undefined;
 
 
 

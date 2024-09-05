@@ -54,6 +54,36 @@
       //expect(instance).to.be.a(FastreportCloudSdk.FileVM);
     });
 
+    it('should have the property id (base name: "id")', function() {
+      // uncomment below and update the code to test the property id
+      //var instance = new FastreportCloudSdk.FileVM();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property createdTime (base name: "createdTime")', function() {
+      // uncomment below and update the code to test the property createdTime
+      //var instance = new FastreportCloudSdk.FileVM();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property creatorUserId (base name: "creatorUserId")', function() {
+      // uncomment below and update the code to test the property creatorUserId
+      //var instance = new FastreportCloudSdk.FileVM();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property editedTime (base name: "editedTime")', function() {
+      // uncomment below and update the code to test the property editedTime
+      //var instance = new FastreportCloudSdk.FileVM();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property editorUserId (base name: "editorUserId")', function() {
+      // uncomment below and update the code to test the property editorUserId
+      //var instance = new FastreportCloudSdk.FileVM();
+      //expect(instance).to.be();
+    });
+
     it('should have the property name (base name: "name")', function() {
       // uncomment below and update the code to test the property name
       //var instance = new FastreportCloudSdk.FileVM();
@@ -116,6 +146,12 @@
 
     it('should have the property isDeleted (base name: "isDeleted")', function() {
       // uncomment below and update the code to test the property isDeleted
+      //var instance = new FastreportCloudSdk.FileVM();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property t (base name: "$t")', function() {
+      // uncomment below and update the code to test the property t
       //var instance = new FastreportCloudSdk.FileVM();
       //expect(instance).to.be();
     });

@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import CloudBaseVM from './CloudBaseVM';
 import TaskBaseVM from './TaskBaseVM';
 
 /**
@@ -23,10 +24,13 @@ class TasksVM {
     /**
      * Constructs a new <code>TasksVM</code>.
      * @alias module:models/TasksVM
+     * @extends module:models/CloudBaseVM
+     * @implements module:models/CloudBaseVM
+     * @param t {String} 
      */
-    constructor() { 
-        
-        TasksVM.initialize(this);
+    constructor(t) { 
+        CloudBaseVM.initialize(this, t);
+        TasksVM.initialize(this, t);
     }
 
     /**
@@ -34,7 +38,8 @@ class TasksVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -47,6 +52,8 @@ class TasksVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new TasksVM();
+            CloudBaseVM.constructFromObject(data, obj);
+            CloudBaseVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('count')) {
                 obj['count'] = ApiClient.convertToType(data['count'], 'Number');
@@ -60,6 +67,9 @@ class TasksVM {
             if (data.hasOwnProperty('tasks')) {
                 obj['tasks'] = ApiClient.convertToType(data['tasks'], [TaskBaseVM]);
             }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
+            }
         }
         return obj;
     }
@@ -70,6 +80,12 @@ class TasksVM {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>TasksVM</code>.
      */
     static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of TasksVM.RequiredProperties) {
+            if (!data.hasOwnProperty(property)) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
         if (data['tasks']) { // data not null
             // ensure the json data is an array
             if (!Array.isArray(data['tasks'])) {
@@ -80,6 +96,10 @@ class TasksVM {
                 TaskBaseVM.validateJSON(item);
             };
         }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
+        }
 
         return true;
     }
@@ -87,7 +107,7 @@ class TasksVM {
 
 }
 
-
+TasksVM.RequiredProperties = ["$t"];
 
 /**
  * @member {Number} count
@@ -109,7 +129,17 @@ TasksVM.prototype['take'] = undefined;
  */
 TasksVM.prototype['tasks'] = undefined;
 
+/**
+ * @member {String} $t
+ */
+TasksVM.prototype['$t'] = undefined;
 
+
+// Implement CloudBaseVM interface:
+/**
+ * @member {String} $t
+ */
+CloudBaseVM.prototype['$t'] = undefined;
 
 
 

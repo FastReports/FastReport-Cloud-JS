@@ -58,6 +58,36 @@
         done();
       });
     });
+    describe('reportFolderAndFileCopyFiles', function() {
+      it('should call reportFolderAndFileCopyFiles successfully', function(done) {
+        //uncomment below and update the code to test reportFolderAndFileCopyFiles
+        //instance.reportFolderAndFileCopyFiles(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('reportFolderAndFileCountRecycleBinFoldersAndFiles', function() {
+      it('should call reportFolderAndFileCountRecycleBinFoldersAndFiles successfully', function(done) {
+        //uncomment below and update the code to test reportFolderAndFileCountRecycleBinFoldersAndFiles
+        //instance.reportFolderAndFileCountRecycleBinFoldersAndFiles(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('reportFolderAndFileDeleteFiles', function() {
+      it('should call reportFolderAndFileDeleteFiles successfully', function(done) {
+        //uncomment below and update the code to test reportFolderAndFileDeleteFiles
+        //instance.reportFolderAndFileDeleteFiles(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('reportFolderAndFileGetCount', function() {
       it('should call reportFolderAndFileGetCount successfully', function(done) {
         //uncomment below and update the code to test reportFolderAndFileGetCount
@@ -88,10 +118,50 @@
         done();
       });
     });
+    describe('reportFolderAndFileMoveFiles', function() {
+      it('should call reportFolderAndFileMoveFiles successfully', function(done) {
+        //uncomment below and update the code to test reportFolderAndFileMoveFiles
+        //instance.reportFolderAndFileMoveFiles(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('reportFolderAndFileMoveFilesToBin', function() {
+      it('should call reportFolderAndFileMoveFilesToBin successfully', function(done) {
+        //uncomment below and update the code to test reportFolderAndFileMoveFilesToBin
+        //instance.reportFolderAndFileMoveFilesToBin(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('reportFolderAndFileRecoverAllFromRecycleBin', function() {
       it('should call reportFolderAndFileRecoverAllFromRecycleBin successfully', function(done) {
         //uncomment below and update the code to test reportFolderAndFileRecoverAllFromRecycleBin
         //instance.reportFolderAndFileRecoverAllFromRecycleBin(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('reportFolderAndFileRecoverFiles', function() {
+      it('should call reportFolderAndFileRecoverFiles successfully', function(done) {
+        //uncomment below and update the code to test reportFolderAndFileRecoverFiles
+        //instance.reportFolderAndFileRecoverFiles(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('reportFoldersCalculateFolderSize', function() {
+      it('should call reportFoldersCalculateFolderSize successfully', function(done) {
+        //uncomment below and update the code to test reportFoldersCalculateFolderSize
+        //instance.reportFoldersCalculateFolderSize(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -288,10 +358,30 @@
         done();
       });
     });
+    describe('reportsCreateSharingKey', function() {
+      it('should call reportsCreateSharingKey successfully', function(done) {
+        //uncomment below and update the code to test reportsCreateSharingKey
+        //instance.reportsCreateSharingKey(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('reportsDeleteFile', function() {
       it('should call reportsDeleteFile successfully', function(done) {
         //uncomment below and update the code to test reportsDeleteFile
         //instance.reportsDeleteFile(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('reportsDeleteSharingKey', function() {
+      it('should call reportsDeleteSharingKey successfully', function(done) {
+        //uncomment below and update the code to test reportsDeleteSharingKey
+        //instance.reportsDeleteSharingKey(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -352,6 +442,16 @@
       it('should call reportsGetPermissions successfully', function(done) {
         //uncomment below and update the code to test reportsGetPermissions
         //instance.reportsGetPermissions(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('reportsGetSharingKeys', function() {
+      it('should call reportsGetSharingKeys successfully', function(done) {
+        //uncomment below and update the code to test reportsGetSharingKeys
+        //instance.reportsGetSharingKeys(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -442,6 +542,16 @@
       it('should call reportsUploadFile successfully', function(done) {
         //uncomment below and update the code to test reportsUploadFile
         //instance.reportsUploadFile(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('reportsUploadFileV2', function() {
+      it('should call reportsUploadFileV2 successfully', function(done) {
+        //uncomment below and update the code to test reportsUploadFileV2
+        //instance.reportsUploadFileV2(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

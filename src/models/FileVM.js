@@ -12,7 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
-import EntityVM from './EntityVM';
+import CloudBaseVM from './CloudBaseVM';
 import FileStatus from './FileStatus';
 import FileStatusReason from './FileStatusReason';
 import FileType from './FileType';
@@ -26,12 +26,13 @@ class FileVM {
     /**
      * Constructs a new <code>FileVM</code>.
      * @alias module:models/FileVM
-     * @extends module:models/EntityVM
-     * @implements module:models/EntityVM
+     * @extends module:models/CloudBaseVM
+     * @implements module:models/CloudBaseVM
+     * @param t {String} 
      */
-    constructor() { 
-        EntityVM.initialize(this);
-        FileVM.initialize(this);
+    constructor(t) { 
+        CloudBaseVM.initialize(this, t);
+        FileVM.initialize(this, t);
     }
 
     /**
@@ -39,7 +40,8 @@ class FileVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -52,9 +54,24 @@ class FileVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new FileVM();
-            EntityVM.constructFromObject(data, obj);
-            EntityVM.constructFromObject(data, obj);
+            CloudBaseVM.constructFromObject(data, obj);
+            CloudBaseVM.constructFromObject(data, obj);
 
+            if (data.hasOwnProperty('id')) {
+                obj['id'] = ApiClient.convertToType(data['id'], 'String');
+            }
+            if (data.hasOwnProperty('createdTime')) {
+                obj['createdTime'] = ApiClient.convertToType(data['createdTime'], 'Date');
+            }
+            if (data.hasOwnProperty('creatorUserId')) {
+                obj['creatorUserId'] = ApiClient.convertToType(data['creatorUserId'], 'String');
+            }
+            if (data.hasOwnProperty('editedTime')) {
+                obj['editedTime'] = ApiClient.convertToType(data['editedTime'], 'Date');
+            }
+            if (data.hasOwnProperty('editorUserId')) {
+                obj['editorUserId'] = ApiClient.convertToType(data['editorUserId'], 'String');
+            }
             if (data.hasOwnProperty('name')) {
                 obj['name'] = ApiClient.convertToType(data['name'], 'String');
             }
@@ -88,6 +105,9 @@ class FileVM {
             if (data.hasOwnProperty('isDeleted')) {
                 obj['isDeleted'] = ApiClient.convertToType(data['isDeleted'], 'Boolean');
             }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
+            }
         }
         return obj;
     }
@@ -98,6 +118,24 @@ class FileVM {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>FileVM</code>.
      */
     static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of FileVM.RequiredProperties) {
+            if (!data.hasOwnProperty(property)) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
+        // ensure the json data is a string
+        if (data['id'] && !(typeof data['id'] === 'string' || data['id'] instanceof String)) {
+            throw new Error("Expected the field `id` to be a primitive type in the JSON string but got " + data['id']);
+        }
+        // ensure the json data is a string
+        if (data['creatorUserId'] && !(typeof data['creatorUserId'] === 'string' || data['creatorUserId'] instanceof String)) {
+            throw new Error("Expected the field `creatorUserId` to be a primitive type in the JSON string but got " + data['creatorUserId']);
+        }
+        // ensure the json data is a string
+        if (data['editorUserId'] && !(typeof data['editorUserId'] === 'string' || data['editorUserId'] instanceof String)) {
+            throw new Error("Expected the field `editorUserId` to be a primitive type in the JSON string but got " + data['editorUserId']);
+        }
         // ensure the json data is a string
         if (data['name'] && !(typeof data['name'] === 'string' || data['name'] instanceof String)) {
             throw new Error("Expected the field `name` to be a primitive type in the JSON string but got " + data['name']);
@@ -118,6 +156,10 @@ class FileVM {
         if (data['errorMessage'] && !(typeof data['errorMessage'] === 'string' || data['errorMessage'] instanceof String)) {
             throw new Error("Expected the field `errorMessage` to be a primitive type in the JSON string but got " + data['errorMessage']);
         }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
+        }
 
         return true;
     }
@@ -125,7 +167,32 @@ class FileVM {
 
 }
 
+FileVM.RequiredProperties = ["$t"];
 
+/**
+ * @member {String} id
+ */
+FileVM.prototype['id'] = undefined;
+
+/**
+ * @member {Date} createdTime
+ */
+FileVM.prototype['createdTime'] = undefined;
+
+/**
+ * @member {String} creatorUserId
+ */
+FileVM.prototype['creatorUserId'] = undefined;
+
+/**
+ * @member {Date} editedTime
+ */
+FileVM.prototype['editedTime'] = undefined;
+
+/**
+ * @member {String} editorUserId
+ */
+FileVM.prototype['editorUserId'] = undefined;
 
 /**
  * @member {String} name
@@ -182,28 +249,17 @@ FileVM.prototype['errorMessage'] = undefined;
  */
 FileVM.prototype['isDeleted'] = undefined;
 
+/**
+ * @member {String} $t
+ */
+FileVM.prototype['$t'] = undefined;
 
-// Implement EntityVM interface:
+
+// Implement CloudBaseVM interface:
 /**
- * @member {String} id
+ * @member {String} $t
  */
-EntityVM.prototype['id'] = undefined;
-/**
- * @member {Date} createdTime
- */
-EntityVM.prototype['createdTime'] = undefined;
-/**
- * @member {String} creatorUserId
- */
-EntityVM.prototype['creatorUserId'] = undefined;
-/**
- * @member {Date} editedTime
- */
-EntityVM.prototype['editedTime'] = undefined;
-/**
- * @member {String} editorUserId
- */
-EntityVM.prototype['editorUserId'] = undefined;
+CloudBaseVM.prototype['$t'] = undefined;
 
 
 

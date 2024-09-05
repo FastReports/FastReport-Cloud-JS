@@ -13,7 +13,10 @@
 
 import ApiClient from '../ApiClient';
 import ExportFormat from './ExportFormat';
+import OutputFileVM from './OutputFileVM';
+import RunInputFileVM from './RunInputFileVM';
 import RunTransformTaskBaseVM from './RunTransformTaskBaseVM';
+import RunTransportTaskBaseVM from './RunTransportTaskBaseVM';
 
 /**
  * The RunExportReportTaskVM model module.
@@ -79,7 +82,7 @@ class RunExportReportTaskVM {
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
         for (const property of RunExportReportTaskVM.RequiredProperties) {
-            if (!data[property]) {
+            if (!data.hasOwnProperty(property)) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }

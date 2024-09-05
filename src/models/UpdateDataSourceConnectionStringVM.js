@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import CloudBaseVM from './CloudBaseVM';
 
 /**
  * The UpdateDataSourceConnectionStringVM model module.
@@ -22,11 +23,13 @@ class UpdateDataSourceConnectionStringVM {
     /**
      * Constructs a new <code>UpdateDataSourceConnectionStringVM</code>.
      * @alias module:models/UpdateDataSourceConnectionStringVM
-     * @param connectionString {String} 
+     * @extends module:models/CloudBaseVM
+     * @implements module:models/CloudBaseVM
+     * @param t {String} 
      */
-    constructor(connectionString) { 
-        
-        UpdateDataSourceConnectionStringVM.initialize(this, connectionString);
+    constructor(t) { 
+        CloudBaseVM.initialize(this, t);
+        UpdateDataSourceConnectionStringVM.initialize(this, t);
     }
 
     /**
@@ -34,8 +37,9 @@ class UpdateDataSourceConnectionStringVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, connectionString) { 
+    static initialize(obj, t) { 
         obj['connectionString'] = connectionString;
+        obj['$t'] = t;
     }
 
     /**
@@ -48,9 +52,14 @@ class UpdateDataSourceConnectionStringVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new UpdateDataSourceConnectionStringVM();
+            CloudBaseVM.constructFromObject(data, obj);
+            CloudBaseVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('connectionString')) {
                 obj['connectionString'] = ApiClient.convertToType(data['connectionString'], 'String');
+            }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
             }
         }
         return obj;
@@ -64,13 +73,17 @@ class UpdateDataSourceConnectionStringVM {
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
         for (const property of UpdateDataSourceConnectionStringVM.RequiredProperties) {
-            if (!data[property]) {
+            if (!data.hasOwnProperty(property)) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
         // ensure the json data is a string
         if (data['connectionString'] && !(typeof data['connectionString'] === 'string' || data['connectionString'] instanceof String)) {
             throw new Error("Expected the field `connectionString` to be a primitive type in the JSON string but got " + data['connectionString']);
+        }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
         }
 
         return true;
@@ -79,14 +92,24 @@ class UpdateDataSourceConnectionStringVM {
 
 }
 
-UpdateDataSourceConnectionStringVM.RequiredProperties = ["connectionString"];
+UpdateDataSourceConnectionStringVM.RequiredProperties = ["connectionString", "$t"];
 
 /**
  * @member {String} connectionString
  */
 UpdateDataSourceConnectionStringVM.prototype['connectionString'] = undefined;
 
+/**
+ * @member {String} $t
+ */
+UpdateDataSourceConnectionStringVM.prototype['$t'] = undefined;
 
+
+// Implement CloudBaseVM interface:
+/**
+ * @member {String} $t
+ */
+CloudBaseVM.prototype['$t'] = undefined;
 
 
 

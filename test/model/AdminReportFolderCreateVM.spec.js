@@ -54,6 +54,12 @@
       //expect(instance).to.be.a(FastreportCloudSdk.AdminReportFolderCreateVM);
     });
 
+    it('should have the property t (base name: "$t")', function() {
+      // uncomment below and update the code to test the property t
+      //var instance = new FastreportCloudSdk.AdminReportFolderCreateVM();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

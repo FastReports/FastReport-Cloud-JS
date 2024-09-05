@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import RunInputFileVM from './RunInputFileVM';
 import RunTransportTaskBaseVM from './RunTransportTaskBaseVM';
 
 /**
@@ -38,6 +39,7 @@ class RunWebhookTaskVM {
      * Only for internal use.
      */
     static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -59,6 +61,9 @@ class RunWebhookTaskVM {
             if (data.hasOwnProperty('url')) {
                 obj['url'] = ApiClient.convertToType(data['url'], 'String');
             }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
+            }
         }
         return obj;
     }
@@ -71,13 +76,17 @@ class RunWebhookTaskVM {
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
         for (const property of RunWebhookTaskVM.RequiredProperties) {
-            if (!data[property]) {
+            if (!data.hasOwnProperty(property)) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
         // ensure the json data is a string
         if (data['url'] && !(typeof data['url'] === 'string' || data['url'] instanceof String)) {
             throw new Error("Expected the field `url` to be a primitive type in the JSON string but got " + data['url']);
+        }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
         }
 
         return true;
@@ -97,6 +106,11 @@ RunWebhookTaskVM.prototype['headers'] = undefined;
  * @member {String} url
  */
 RunWebhookTaskVM.prototype['url'] = undefined;
+
+/**
+ * @member {String} $t
+ */
+RunWebhookTaskVM.prototype['$t'] = undefined;
 
 
 // Implement RunTransportTaskBaseVM interface:

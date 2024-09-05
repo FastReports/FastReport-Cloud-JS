@@ -12,6 +12,9 @@
  */
 
 import ApiClient from '../ApiClient';
+import CreateTaskEndVM from './CreateTaskEndVM';
+import InputFileVM from './InputFileVM';
+import OutputFileVM from './OutputFileVM';
 import UpdateTransformTaskBaseVM from './UpdateTransformTaskBaseVM';
 
 /**
@@ -38,6 +41,7 @@ class UpdatePrepareTemplateTaskVM {
      * Only for internal use.
      */
     static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -62,6 +66,9 @@ class UpdatePrepareTemplateTaskVM {
             if (data.hasOwnProperty('reportParameters')) {
                 obj['reportParameters'] = ApiClient.convertToType(data['reportParameters'], {'String': 'String'});
             }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
+            }
         }
         return obj;
     }
@@ -74,13 +81,17 @@ class UpdatePrepareTemplateTaskVM {
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
         for (const property of UpdatePrepareTemplateTaskVM.RequiredProperties) {
-            if (!data[property]) {
+            if (!data.hasOwnProperty(property)) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
         // ensure the json data is an array
         if (!Array.isArray(data['exportIds'])) {
             throw new Error("Expected the field `exportIds` to be an array in the JSON data but got " + data['exportIds']);
+        }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
         }
 
         return true;
@@ -106,6 +117,11 @@ UpdatePrepareTemplateTaskVM.prototype['pagesCount'] = undefined;
  */
 UpdatePrepareTemplateTaskVM.prototype['reportParameters'] = undefined;
 
+/**
+ * @member {String} $t
+ */
+UpdatePrepareTemplateTaskVM.prototype['$t'] = undefined;
+
 
 // Implement UpdateTransformTaskBaseVM interface:
 /**
@@ -113,9 +129,13 @@ UpdatePrepareTemplateTaskVM.prototype['reportParameters'] = undefined;
  */
 UpdateTransformTaskBaseVM.prototype['cronExpression'] = undefined;
 /**
- * @member {Date} delayedRunTime
+ * @member {Date} startsOn
  */
-UpdateTransformTaskBaseVM.prototype['delayedRunTime'] = undefined;
+UpdateTransformTaskBaseVM.prototype['startsOn'] = undefined;
+/**
+ * @member {module:models/CreateTaskEndVM} ends
+ */
+UpdateTransformTaskBaseVM.prototype['ends'] = undefined;
 /**
  * @member {String} name
  */

@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import CloudBaseVM from './CloudBaseVM';
 
 /**
  * The CreateApiKeyVM model module.
@@ -22,11 +23,13 @@ class CreateApiKeyVM {
     /**
      * Constructs a new <code>CreateApiKeyVM</code>.
      * @alias module:models/CreateApiKeyVM
-     * @param expired {Date} 
+     * @extends module:models/CloudBaseVM
+     * @implements module:models/CloudBaseVM
+     * @param t {String} 
      */
-    constructor(expired) { 
-        
-        CreateApiKeyVM.initialize(this, expired);
+    constructor(t) { 
+        CloudBaseVM.initialize(this, t);
+        CreateApiKeyVM.initialize(this, t);
     }
 
     /**
@@ -34,8 +37,9 @@ class CreateApiKeyVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, expired) { 
+    static initialize(obj, t) { 
         obj['expired'] = expired;
+        obj['$t'] = t;
     }
 
     /**
@@ -48,12 +52,17 @@ class CreateApiKeyVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new CreateApiKeyVM();
+            CloudBaseVM.constructFromObject(data, obj);
+            CloudBaseVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('description')) {
                 obj['description'] = ApiClient.convertToType(data['description'], 'String');
             }
             if (data.hasOwnProperty('expired')) {
                 obj['expired'] = ApiClient.convertToType(data['expired'], 'Date');
+            }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
             }
         }
         return obj;
@@ -67,13 +76,17 @@ class CreateApiKeyVM {
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
         for (const property of CreateApiKeyVM.RequiredProperties) {
-            if (!data[property]) {
+            if (!data.hasOwnProperty(property)) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
         // ensure the json data is a string
         if (data['description'] && !(typeof data['description'] === 'string' || data['description'] instanceof String)) {
             throw new Error("Expected the field `description` to be a primitive type in the JSON string but got " + data['description']);
+        }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
         }
 
         return true;
@@ -82,7 +95,7 @@ class CreateApiKeyVM {
 
 }
 
-CreateApiKeyVM.RequiredProperties = ["expired"];
+CreateApiKeyVM.RequiredProperties = ["expired", "$t"];
 
 /**
  * @member {String} description
@@ -94,7 +107,17 @@ CreateApiKeyVM.prototype['description'] = undefined;
  */
 CreateApiKeyVM.prototype['expired'] = undefined;
 
+/**
+ * @member {String} $t
+ */
+CreateApiKeyVM.prototype['$t'] = undefined;
 
+
+// Implement CloudBaseVM interface:
+/**
+ * @member {String} $t
+ */
+CloudBaseVM.prototype['$t'] = undefined;
 
 
 

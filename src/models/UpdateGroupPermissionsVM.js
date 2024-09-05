@@ -12,8 +12,9 @@
  */
 
 import ApiClient from '../ApiClient';
+import CloudBaseVM from './CloudBaseVM';
 import GroupAdministrate from './GroupAdministrate';
-import GroupPermissions from './GroupPermissions';
+import GroupPermissionsCRUDVM from './GroupPermissionsCRUDVM';
 
 /**
  * The UpdateGroupPermissionsVM model module.
@@ -24,12 +25,13 @@ class UpdateGroupPermissionsVM {
     /**
      * Constructs a new <code>UpdateGroupPermissionsVM</code>.
      * @alias module:models/UpdateGroupPermissionsVM
-     * @param newPermissions {module:models/GroupPermissions} 
-     * @param administrate {module:models/GroupAdministrate} 
+     * @extends module:models/CloudBaseVM
+     * @implements module:models/CloudBaseVM
+     * @param t {String} 
      */
-    constructor(newPermissions, administrate) { 
-        
-        UpdateGroupPermissionsVM.initialize(this, newPermissions, administrate);
+    constructor(t) { 
+        CloudBaseVM.initialize(this, t);
+        UpdateGroupPermissionsVM.initialize(this, t);
     }
 
     /**
@@ -37,9 +39,10 @@ class UpdateGroupPermissionsVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, newPermissions, administrate) { 
+    static initialize(obj, t) { 
         obj['newPermissions'] = newPermissions;
         obj['administrate'] = administrate;
+        obj['$t'] = t;
     }
 
     /**
@@ -52,12 +55,17 @@ class UpdateGroupPermissionsVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new UpdateGroupPermissionsVM();
+            CloudBaseVM.constructFromObject(data, obj);
+            CloudBaseVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('newPermissions')) {
-                obj['newPermissions'] = GroupPermissions.constructFromObject(data['newPermissions']);
+                obj['newPermissions'] = GroupPermissionsCRUDVM.constructFromObject(data['newPermissions']);
             }
             if (data.hasOwnProperty('administrate')) {
                 obj['administrate'] = GroupAdministrate.constructFromObject(data['administrate']);
+            }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
             }
         }
         return obj;
@@ -71,13 +79,17 @@ class UpdateGroupPermissionsVM {
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
         for (const property of UpdateGroupPermissionsVM.RequiredProperties) {
-            if (!data[property]) {
+            if (!data.hasOwnProperty(property)) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
         // validate the optional field `newPermissions`
         if (data['newPermissions']) { // data not null
-          GroupPermissions.validateJSON(data['newPermissions']);
+          GroupPermissionsCRUDVM.validateJSON(data['newPermissions']);
+        }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
         }
 
         return true;
@@ -86,10 +98,10 @@ class UpdateGroupPermissionsVM {
 
 }
 
-UpdateGroupPermissionsVM.RequiredProperties = ["newPermissions", "administrate"];
+UpdateGroupPermissionsVM.RequiredProperties = ["newPermissions", "administrate", "$t"];
 
 /**
- * @member {module:models/GroupPermissions} newPermissions
+ * @member {module:models/GroupPermissionsCRUDVM} newPermissions
  */
 UpdateGroupPermissionsVM.prototype['newPermissions'] = undefined;
 
@@ -98,7 +110,17 @@ UpdateGroupPermissionsVM.prototype['newPermissions'] = undefined;
  */
 UpdateGroupPermissionsVM.prototype['administrate'] = undefined;
 
+/**
+ * @member {String} $t
+ */
+UpdateGroupPermissionsVM.prototype['$t'] = undefined;
 
+
+// Implement CloudBaseVM interface:
+/**
+ * @member {String} $t
+ */
+CloudBaseVM.prototype['$t'] = undefined;
 
 
 

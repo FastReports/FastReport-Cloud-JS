@@ -11,5 +11,6 @@ Name | Type | Description | Notes
 **ftpPort** | **Number** |  | [optional] 
 **ftpUsername** | **String** |  | [optional] 
 **useSFTP** | **Boolean** |  | [optional] 
+**t** | **String** |  | 
 
 

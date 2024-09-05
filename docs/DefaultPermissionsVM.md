@@ -4,9 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**filePermissions** | [**FilePermissions**](FilePermissions.md) |  | [optional] 
-**dataSourcePermissions** | [**DataSourcePermissions**](DataSourcePermissions.md) |  | [optional] 
-**groupPermissions** | [**GroupPermissions**](GroupPermissions.md) |  | [optional] 
-**taskPermissions** | [**TaskPermissions**](TaskPermissions.md) |  | [optional] 
+**filePermissions** | [**FilePermissionsCRUDVM**](FilePermissionsCRUDVM.md) |  | [optional] 
+**dataSourcePermissions** | [**DataSourcePermissionsCRUDVM**](DataSourcePermissionsCRUDVM.md) |  | [optional] 
+**groupPermissions** | [**GroupPermissionsCRUDVM**](GroupPermissionsCRUDVM.md) |  | [optional] 
+**taskPermissions** | [**TaskPermissionsCRUDVM**](TaskPermissionsCRUDVM.md) |  | [optional] 
+**t** | **String** |  | 
 
 

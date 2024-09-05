@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import CloudBaseVM from './CloudBaseVM';
 
 /**
  * The PreviewTemplateVM model module.
@@ -22,10 +23,13 @@ class PreviewTemplateVM {
     /**
      * Constructs a new <code>PreviewTemplateVM</code>.
      * @alias module:models/PreviewTemplateVM
+     * @extends module:models/CloudBaseVM
+     * @implements module:models/CloudBaseVM
+     * @param t {String} 
      */
-    constructor() { 
-        
-        PreviewTemplateVM.initialize(this);
+    constructor(t) { 
+        CloudBaseVM.initialize(this, t);
+        PreviewTemplateVM.initialize(this, t);
     }
 
     /**
@@ -33,7 +37,8 @@ class PreviewTemplateVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -46,6 +51,8 @@ class PreviewTemplateVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new PreviewTemplateVM();
+            CloudBaseVM.constructFromObject(data, obj);
+            CloudBaseVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('locale')) {
                 obj['locale'] = ApiClient.convertToType(data['locale'], 'String');
@@ -55,6 +62,9 @@ class PreviewTemplateVM {
             }
             if (data.hasOwnProperty('cacheTolerance')) {
                 obj['cacheTolerance'] = ApiClient.convertToType(data['cacheTolerance'], 'Number');
+            }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
             }
         }
         return obj;
@@ -66,9 +76,19 @@ class PreviewTemplateVM {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>PreviewTemplateVM</code>.
      */
     static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of PreviewTemplateVM.RequiredProperties) {
+            if (!data.hasOwnProperty(property)) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
         // ensure the json data is a string
         if (data['locale'] && !(typeof data['locale'] === 'string' || data['locale'] instanceof String)) {
             throw new Error("Expected the field `locale` to be a primitive type in the JSON string but got " + data['locale']);
+        }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
         }
 
         return true;
@@ -77,7 +97,7 @@ class PreviewTemplateVM {
 
 }
 
-
+PreviewTemplateVM.RequiredProperties = ["$t"];
 
 /**
  * @member {String} locale
@@ -95,7 +115,17 @@ PreviewTemplateVM.prototype['reportParameters'] = undefined;
  */
 PreviewTemplateVM.prototype['cacheTolerance'] = 300;
 
+/**
+ * @member {String} $t
+ */
+PreviewTemplateVM.prototype['$t'] = undefined;
 
+
+// Implement CloudBaseVM interface:
+/**
+ * @member {String} $t
+ */
+CloudBaseVM.prototype['$t'] = undefined;
 
 
 

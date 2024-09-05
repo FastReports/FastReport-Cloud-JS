@@ -26,10 +26,11 @@ class RunInputFileVM {
      * @alias module:models/RunInputFileVM
      * @extends module:models/InputFileVM
      * @implements module:models/InputFileVM
+     * @param t {String} 
      */
-    constructor() { 
-        InputFileVM.initialize(this);
-        RunInputFileVM.initialize(this);
+    constructor(t) { 
+        InputFileVM.initialize(this, t);
+        RunInputFileVM.initialize(this, t);
     }
 
     /**
@@ -37,7 +38,8 @@ class RunInputFileVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -59,6 +61,9 @@ class RunInputFileVM {
             if (data.hasOwnProperty('fileName')) {
                 obj['fileName'] = ApiClient.convertToType(data['fileName'], 'String');
             }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
+            }
         }
         return obj;
     }
@@ -69,9 +74,19 @@ class RunInputFileVM {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>RunInputFileVM</code>.
      */
     static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of RunInputFileVM.RequiredProperties) {
+            if (!data.hasOwnProperty(property)) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
         // ensure the json data is a string
         if (data['fileName'] && !(typeof data['fileName'] === 'string' || data['fileName'] instanceof String)) {
             throw new Error("Expected the field `fileName` to be a primitive type in the JSON string but got " + data['fileName']);
+        }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
         }
 
         return true;
@@ -80,7 +95,7 @@ class RunInputFileVM {
 
 }
 
-
+RunInputFileVM.RequiredProperties = ["$t"];
 
 /**
  * @member {Blob} content
@@ -92,16 +107,17 @@ RunInputFileVM.prototype['content'] = undefined;
  */
 RunInputFileVM.prototype['fileName'] = undefined;
 
+/**
+ * @member {String} $t
+ */
+RunInputFileVM.prototype['$t'] = undefined;
+
 
 // Implement InputFileVM interface:
 /**
- * @member {String} entityId
+ * @member {String} $t
  */
-InputFileVM.prototype['entityId'] = undefined;
-/**
- * @member {module:models/FileKind} type
- */
-InputFileVM.prototype['type'] = undefined;
+InputFileVM.prototype['$t'] = undefined;
 
 
 

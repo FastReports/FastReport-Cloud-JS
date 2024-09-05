@@ -8,5 +8,7 @@ Name | Type | Description | Notes
 **defaultSubscription** | **String** |  | [optional] 
 **showHiddenFilesAndFolders** | **Boolean** |  | [optional] 
 **slaAcceptedDateTime** | **Date** |  | [optional] 
+**subscribedNotifications** | [**[AuditType]**](AuditType.md) |  | [optional] 
+**t** | **String** |  | 
 
 

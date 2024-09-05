@@ -4,6 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**id** | **String** |  | [optional] 
+**createdTime** | **Date** |  | [optional] 
+**creatorUserId** | **String** |  | [optional] 
+**editedTime** | **Date** |  | [optional] 
+**editorUserId** | **String** |  | [optional] 
 **name** | **String** |  | [optional] 
 **parentId** | **String** |  | [optional] 
 **tags** | **[String]** |  | [optional] 
@@ -15,5 +20,6 @@ Name | Type | Description | Notes
 **statusReason** | [**FileStatusReason**](FileStatusReason.md) |  | [optional] 
 **errorMessage** | **String** |  | [optional] 
 **isDeleted** | **Boolean** |  | [optional] 
+**t** | **String** |  | 
 
 

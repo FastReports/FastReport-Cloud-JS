@@ -12,6 +12,8 @@
  */
 
 import ApiClient from '../ApiClient';
+import InputFileVM from './InputFileVM';
+import TaskEnd from './TaskEnd';
 import TransportTaskBaseVM from './TransportTaskBaseVM';
 
 /**
@@ -38,6 +40,7 @@ class FTPUploadTaskVM {
      * Only for internal use.
      */
     static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -74,6 +77,9 @@ class FTPUploadTaskVM {
             if (data.hasOwnProperty('useSFTP')) {
                 obj['useSFTP'] = ApiClient.convertToType(data['useSFTP'], 'Boolean');
             }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
+            }
         }
         return obj;
     }
@@ -86,7 +92,7 @@ class FTPUploadTaskVM {
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
         for (const property of FTPUploadTaskVM.RequiredProperties) {
-            if (!data[property]) {
+            if (!data.hasOwnProperty(property)) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
@@ -105,6 +111,10 @@ class FTPUploadTaskVM {
         // ensure the json data is a string
         if (data['ftpUsername'] && !(typeof data['ftpUsername'] === 'string' || data['ftpUsername'] instanceof String)) {
             throw new Error("Expected the field `ftpUsername` to be a primitive type in the JSON string but got " + data['ftpUsername']);
+        }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
         }
 
         return true;
@@ -150,6 +160,11 @@ FTPUploadTaskVM.prototype['ftpUsername'] = undefined;
  */
 FTPUploadTaskVM.prototype['useSFTP'] = undefined;
 
+/**
+ * @member {String} $t
+ */
+FTPUploadTaskVM.prototype['$t'] = undefined;
+
 
 // Implement TransportTaskBaseVM interface:
 /**
@@ -157,13 +172,13 @@ FTPUploadTaskVM.prototype['useSFTP'] = undefined;
  */
 TransportTaskBaseVM.prototype['cronExpression'] = undefined;
 /**
- * @member {Date} delayedRunTime
+ * @member {Date} startsOn
  */
-TransportTaskBaseVM.prototype['delayedRunTime'] = undefined;
+TransportTaskBaseVM.prototype['startsOn'] = undefined;
 /**
- * @member {Date} delayedWasRunTime
+ * @member {module:models/TaskEnd} ends
  */
-TransportTaskBaseVM.prototype['delayedWasRunTime'] = undefined;
+TransportTaskBaseVM.prototype['ends'] = undefined;
 /**
  * @member {String} id
  */

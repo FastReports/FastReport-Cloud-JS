@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**apiKeysCreateApiKey**](ApiKeysApi.md#apiKeysCreateApiKey) | **POST** /api/manage/v1/ApiKeys | Create a new apikey, 5 apikeys for user. Hardcoded for ddos.
 [**apiKeysDeleteApiKey**](ApiKeysApi.md#apiKeysDeleteApiKey) | **DELETE** /api/manage/v1/ApiKeys | Delete an apikey
-[**apiKeysGetApiKeys**](ApiKeysApi.md#apiKeysGetApiKeys) | **GET** /api/manage/v1/ApiKeys | Returns list with all api keys of current user
+[**apiKeysGetApiKeys**](ApiKeysApi.md#apiKeysGetApiKeys) | **GET** /api/manage/v1/ApiKeys | Returns list with all apikeys of current user
 
 
 
@@ -62,7 +62,7 @@ Name | Type | Description  | Notes
 
 ## apiKeysDeleteApiKey
 
-> apiKeysDeleteApiKey(deleteApiKeyVM)
+> ApiKeyVM apiKeysDeleteApiKey(deleteApiKeyVM)
 
 Delete an apikey
 
@@ -81,8 +81,8 @@ JWT.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new FastreportCloudSdk.ApiKeysApi();
 let deleteApiKeyVM = new FastreportCloudSdk.DeleteApiKeyVM(); // DeleteApiKeyVM | 
-apiInstance.apiKeysDeleteApiKey(deleteApiKeyVM).then(() => {
-  console.log('API called successfully.');
+apiInstance.apiKeysDeleteApiKey(deleteApiKeyVM).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
 });
@@ -98,7 +98,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**ApiKeyVM**](ApiKeyVM.md)
 
 ### Authorization
 
@@ -114,7 +114,7 @@ null (empty response body)
 
 > ApiKeysVM apiKeysGetApiKeys()
 
-Returns list with all api keys of current user
+Returns list with all apikeys of current user
 
 Always work, it should make only 200 response (except if user is not authorized).
 

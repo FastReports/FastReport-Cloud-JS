@@ -12,8 +12,9 @@
  */
 
 import ApiClient from '../ApiClient';
+import CloudBaseVM from './CloudBaseVM';
 import TaskAdministrate from './TaskAdministrate';
-import TaskPermissions from './TaskPermissions';
+import TaskPermissionsCRUDVM from './TaskPermissionsCRUDVM';
 
 /**
  * The UpdateTaskPermissionsVM model module.
@@ -24,12 +25,13 @@ class UpdateTaskPermissionsVM {
     /**
      * Constructs a new <code>UpdateTaskPermissionsVM</code>.
      * @alias module:models/UpdateTaskPermissionsVM
-     * @param administrate {module:models/TaskAdministrate} 
-     * @param newPermissions {module:models/TaskPermissions} 
+     * @extends module:models/CloudBaseVM
+     * @implements module:models/CloudBaseVM
+     * @param t {String} 
      */
-    constructor(administrate, newPermissions) { 
-        
-        UpdateTaskPermissionsVM.initialize(this, administrate, newPermissions);
+    constructor(t) { 
+        CloudBaseVM.initialize(this, t);
+        UpdateTaskPermissionsVM.initialize(this, t);
     }
 
     /**
@@ -37,9 +39,10 @@ class UpdateTaskPermissionsVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, administrate, newPermissions) { 
+    static initialize(obj, t) { 
         obj['administrate'] = administrate;
         obj['newPermissions'] = newPermissions;
+        obj['$t'] = t;
     }
 
     /**
@@ -52,12 +55,17 @@ class UpdateTaskPermissionsVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new UpdateTaskPermissionsVM();
+            CloudBaseVM.constructFromObject(data, obj);
+            CloudBaseVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('administrate')) {
                 obj['administrate'] = TaskAdministrate.constructFromObject(data['administrate']);
             }
             if (data.hasOwnProperty('newPermissions')) {
-                obj['newPermissions'] = TaskPermissions.constructFromObject(data['newPermissions']);
+                obj['newPermissions'] = TaskPermissionsCRUDVM.constructFromObject(data['newPermissions']);
+            }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
             }
         }
         return obj;
@@ -71,13 +79,17 @@ class UpdateTaskPermissionsVM {
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
         for (const property of UpdateTaskPermissionsVM.RequiredProperties) {
-            if (!data[property]) {
+            if (!data.hasOwnProperty(property)) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
         // validate the optional field `newPermissions`
         if (data['newPermissions']) { // data not null
-          TaskPermissions.validateJSON(data['newPermissions']);
+          TaskPermissionsCRUDVM.validateJSON(data['newPermissions']);
+        }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
         }
 
         return true;
@@ -86,7 +98,7 @@ class UpdateTaskPermissionsVM {
 
 }
 
-UpdateTaskPermissionsVM.RequiredProperties = ["administrate", "newPermissions"];
+UpdateTaskPermissionsVM.RequiredProperties = ["administrate", "newPermissions", "$t"];
 
 /**
  * @member {module:models/TaskAdministrate} administrate
@@ -94,11 +106,21 @@ UpdateTaskPermissionsVM.RequiredProperties = ["administrate", "newPermissions"];
 UpdateTaskPermissionsVM.prototype['administrate'] = undefined;
 
 /**
- * @member {module:models/TaskPermissions} newPermissions
+ * @member {module:models/TaskPermissionsCRUDVM} newPermissions
  */
 UpdateTaskPermissionsVM.prototype['newPermissions'] = undefined;
 
+/**
+ * @member {String} $t
+ */
+UpdateTaskPermissionsVM.prototype['$t'] = undefined;
 
+
+// Implement CloudBaseVM interface:
+/**
+ * @member {String} $t
+ */
+CloudBaseVM.prototype['$t'] = undefined;
 
 
 

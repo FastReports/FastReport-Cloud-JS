@@ -12,6 +12,8 @@
  */
 
 import ApiClient from '../ApiClient';
+import AuditType from './AuditType';
+import CloudBaseVM from './CloudBaseVM';
 import ProfileVisibility from './ProfileVisibility';
 
 /**
@@ -23,10 +25,13 @@ class UserSettingsVM {
     /**
      * Constructs a new <code>UserSettingsVM</code>.
      * @alias module:models/UserSettingsVM
+     * @extends module:models/CloudBaseVM
+     * @implements module:models/CloudBaseVM
+     * @param t {String} 
      */
-    constructor() { 
-        
-        UserSettingsVM.initialize(this);
+    constructor(t) { 
+        CloudBaseVM.initialize(this, t);
+        UserSettingsVM.initialize(this, t);
     }
 
     /**
@@ -34,7 +39,8 @@ class UserSettingsVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -47,6 +53,8 @@ class UserSettingsVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new UserSettingsVM();
+            CloudBaseVM.constructFromObject(data, obj);
+            CloudBaseVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('profileVisibility')) {
                 obj['profileVisibility'] = ProfileVisibility.constructFromObject(data['profileVisibility']);
@@ -60,6 +68,12 @@ class UserSettingsVM {
             if (data.hasOwnProperty('slaAcceptedDateTime')) {
                 obj['slaAcceptedDateTime'] = ApiClient.convertToType(data['slaAcceptedDateTime'], 'Date');
             }
+            if (data.hasOwnProperty('subscribedNotifications')) {
+                obj['subscribedNotifications'] = ApiClient.convertToType(data['subscribedNotifications'], [AuditType]);
+            }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
+            }
         }
         return obj;
     }
@@ -70,9 +84,23 @@ class UserSettingsVM {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>UserSettingsVM</code>.
      */
     static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of UserSettingsVM.RequiredProperties) {
+            if (!data.hasOwnProperty(property)) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
         // ensure the json data is a string
         if (data['defaultSubscription'] && !(typeof data['defaultSubscription'] === 'string' || data['defaultSubscription'] instanceof String)) {
             throw new Error("Expected the field `defaultSubscription` to be a primitive type in the JSON string but got " + data['defaultSubscription']);
+        }
+        // ensure the json data is an array
+        if (!Array.isArray(data['subscribedNotifications'])) {
+            throw new Error("Expected the field `subscribedNotifications` to be an array in the JSON data but got " + data['subscribedNotifications']);
+        }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
         }
 
         return true;
@@ -81,7 +109,7 @@ class UserSettingsVM {
 
 }
 
-
+UserSettingsVM.RequiredProperties = ["$t"];
 
 /**
  * @member {module:models/ProfileVisibility} profileVisibility
@@ -103,7 +131,22 @@ UserSettingsVM.prototype['showHiddenFilesAndFolders'] = undefined;
  */
 UserSettingsVM.prototype['slaAcceptedDateTime'] = undefined;
 
+/**
+ * @member {Array.<module:models/AuditType>} subscribedNotifications
+ */
+UserSettingsVM.prototype['subscribedNotifications'] = undefined;
 
+/**
+ * @member {String} $t
+ */
+UserSettingsVM.prototype['$t'] = undefined;
+
+
+// Implement CloudBaseVM interface:
+/**
+ * @member {String} $t
+ */
+CloudBaseVM.prototype['$t'] = undefined;
 
 
 

@@ -13,7 +13,7 @@
 
 import ApiClient from '../ApiClient';
 import FileVM from './FileVM';
-import FileVMFilesVMBase from './FileVMFilesVMBase';
+import FilesVMBase from './FilesVMBase';
 
 /**
  * The FilesVM model module.
@@ -24,12 +24,13 @@ class FilesVM {
     /**
      * Constructs a new <code>FilesVM</code>.
      * @alias module:models/FilesVM
-     * @extends module:models/FileVMFilesVMBase
-     * @implements module:models/FileVMFilesVMBase
+     * @extends module:models/FilesVMBase
+     * @implements module:models/FilesVMBase
+     * @param t {String} 
      */
-    constructor() { 
-        FileVMFilesVMBase.initialize(this);
-        FilesVM.initialize(this);
+    constructor(t) { 
+        FilesVMBase.initialize(this, t);
+        FilesVM.initialize(this, t);
     }
 
     /**
@@ -37,7 +38,8 @@ class FilesVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -50,9 +52,12 @@ class FilesVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new FilesVM();
-            FileVMFilesVMBase.constructFromObject(data, obj);
-            FileVMFilesVMBase.constructFromObject(data, obj);
+            FilesVMBase.constructFromObject(data, obj);
+            FilesVMBase.constructFromObject(data, obj);
 
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
+            }
         }
         return obj;
     }
@@ -63,6 +68,16 @@ class FilesVM {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>FilesVM</code>.
      */
     static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of FilesVM.RequiredProperties) {
+            if (!data.hasOwnProperty(property)) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
+        }
 
         return true;
     }
@@ -70,26 +85,19 @@ class FilesVM {
 
 }
 
+FilesVM.RequiredProperties = ["$t"];
+
+/**
+ * @member {String} $t
+ */
+FilesVM.prototype['$t'] = undefined;
 
 
-
-// Implement FileVMFilesVMBase interface:
+// Implement FilesVMBase interface:
 /**
- * @member {Array.<module:models/FileVM>} files
+ * @member {String} $t
  */
-FileVMFilesVMBase.prototype['files'] = undefined;
-/**
- * @member {Number} count
- */
-FileVMFilesVMBase.prototype['count'] = undefined;
-/**
- * @member {Number} skip
- */
-FileVMFilesVMBase.prototype['skip'] = undefined;
-/**
- * @member {Number} take
- */
-FileVMFilesVMBase.prototype['take'] = undefined;
+FilesVMBase.prototype['$t'] = undefined;
 
 
 

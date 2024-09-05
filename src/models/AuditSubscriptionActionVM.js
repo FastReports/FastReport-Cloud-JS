@@ -39,6 +39,7 @@ class AuditSubscriptionActionVM {
      * Only for internal use.
      */
     static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -63,6 +64,9 @@ class AuditSubscriptionActionVM {
             if (data.hasOwnProperty('planId')) {
                 obj['planId'] = ApiClient.convertToType(data['planId'], 'String');
             }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
+            }
         }
         return obj;
     }
@@ -75,13 +79,17 @@ class AuditSubscriptionActionVM {
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
         for (const property of AuditSubscriptionActionVM.RequiredProperties) {
-            if (!data[property]) {
+            if (!data.hasOwnProperty(property)) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
         // ensure the json data is a string
         if (data['planId'] && !(typeof data['planId'] === 'string' || data['planId'] instanceof String)) {
             throw new Error("Expected the field `planId` to be a primitive type in the JSON string but got " + data['planId']);
+        }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
         }
 
         return true;
@@ -107,44 +115,13 @@ AuditSubscriptionActionVM.prototype['periodEnd'] = undefined;
  */
 AuditSubscriptionActionVM.prototype['planId'] = undefined;
 
+/**
+ * @member {String} $t
+ */
+AuditSubscriptionActionVM.prototype['$t'] = undefined;
+
 
 // Implement AuditActionVM interface:
-/**
- * @member {String} userId
- */
-AuditActionVM.prototype['userId'] = undefined;
-/**
- * @member {String} entityId
- */
-AuditActionVM.prototype['entityId'] = undefined;
-/**
- * @member {String} subscriptionId
- */
-AuditActionVM.prototype['subscriptionId'] = undefined;
-/**
- * @member {module:models/AuditType} type
- */
-AuditActionVM.prototype['type'] = undefined;
-/**
- * @member {String} id
- */
-AuditActionVM.prototype['id'] = undefined;
-/**
- * @member {Date} createdTime
- */
-AuditActionVM.prototype['createdTime'] = undefined;
-/**
- * @member {String} creatorUserId
- */
-AuditActionVM.prototype['creatorUserId'] = undefined;
-/**
- * @member {String} name
- */
-AuditActionVM.prototype['name'] = undefined;
-/**
- * @member {Boolean} adminAction
- */
-AuditActionVM.prototype['adminAction'] = undefined;
 /**
  * @member {String} $t
  */

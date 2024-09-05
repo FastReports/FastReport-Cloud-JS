@@ -12,6 +12,8 @@
  */
 
 import ApiClient from '../ApiClient';
+import InputFileVM from './InputFileVM';
+import TaskEnd from './TaskEnd';
 import TransportTaskBaseVM from './TransportTaskBaseVM';
 
 /**
@@ -38,6 +40,7 @@ class EmailTaskVM {
      * Only for internal use.
      */
     static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -80,6 +83,9 @@ class EmailTaskVM {
             if (data.hasOwnProperty('username')) {
                 obj['username'] = ApiClient.convertToType(data['username'], 'String');
             }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
+            }
         }
         return obj;
     }
@@ -92,7 +98,7 @@ class EmailTaskVM {
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
         for (const property of EmailTaskVM.RequiredProperties) {
-            if (!data[property]) {
+            if (!data.hasOwnProperty(property)) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
@@ -119,6 +125,10 @@ class EmailTaskVM {
         // ensure the json data is a string
         if (data['username'] && !(typeof data['username'] === 'string' || data['username'] instanceof String)) {
             throw new Error("Expected the field `username` to be a primitive type in the JSON string but got " + data['username']);
+        }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
         }
 
         return true;
@@ -174,6 +184,11 @@ EmailTaskVM.prototype['to'] = undefined;
  */
 EmailTaskVM.prototype['username'] = undefined;
 
+/**
+ * @member {String} $t
+ */
+EmailTaskVM.prototype['$t'] = undefined;
+
 
 // Implement TransportTaskBaseVM interface:
 /**
@@ -181,13 +196,13 @@ EmailTaskVM.prototype['username'] = undefined;
  */
 TransportTaskBaseVM.prototype['cronExpression'] = undefined;
 /**
- * @member {Date} delayedRunTime
+ * @member {Date} startsOn
  */
-TransportTaskBaseVM.prototype['delayedRunTime'] = undefined;
+TransportTaskBaseVM.prototype['startsOn'] = undefined;
 /**
- * @member {Date} delayedWasRunTime
+ * @member {module:models/TaskEnd} ends
  */
-TransportTaskBaseVM.prototype['delayedWasRunTime'] = undefined;
+TransportTaskBaseVM.prototype['ends'] = undefined;
 /**
  * @member {String} id
  */

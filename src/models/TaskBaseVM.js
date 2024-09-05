@@ -12,6 +12,8 @@
  */
 
 import ApiClient from '../ApiClient';
+import CloudBaseVM from './CloudBaseVM';
+import TaskEnd from './TaskEnd';
 
 /**
  * The TaskBaseVM model module.
@@ -22,10 +24,12 @@ class TaskBaseVM {
     /**
      * Constructs a new <code>TaskBaseVM</code>.
      * @alias module:models/TaskBaseVM
+     * @extends module:models/CloudBaseVM
+     * @implements module:models/CloudBaseVM
      * @param t {String} 
      */
     constructor(t) { 
-        
+        CloudBaseVM.initialize(this, t);
         TaskBaseVM.initialize(this, t);
     }
 
@@ -48,15 +52,17 @@ class TaskBaseVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new TaskBaseVM();
+            CloudBaseVM.constructFromObject(data, obj);
+            CloudBaseVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('cronExpression')) {
                 obj['cronExpression'] = ApiClient.convertToType(data['cronExpression'], 'String');
             }
-            if (data.hasOwnProperty('delayedRunTime')) {
-                obj['delayedRunTime'] = ApiClient.convertToType(data['delayedRunTime'], 'Date');
+            if (data.hasOwnProperty('startsOn')) {
+                obj['startsOn'] = ApiClient.convertToType(data['startsOn'], 'Date');
             }
-            if (data.hasOwnProperty('delayedWasRunTime')) {
-                obj['delayedWasRunTime'] = ApiClient.convertToType(data['delayedWasRunTime'], 'Date');
+            if (data.hasOwnProperty('ends')) {
+                obj['ends'] = TaskEnd.constructFromObject(data['ends']);
             }
             if (data.hasOwnProperty('id')) {
                 obj['id'] = ApiClient.convertToType(data['id'], 'String');
@@ -88,13 +94,17 @@ class TaskBaseVM {
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
         for (const property of TaskBaseVM.RequiredProperties) {
-            if (!data[property]) {
+            if (!data.hasOwnProperty(property)) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
         // ensure the json data is a string
         if (data['cronExpression'] && !(typeof data['cronExpression'] === 'string' || data['cronExpression'] instanceof String)) {
             throw new Error("Expected the field `cronExpression` to be a primitive type in the JSON string but got " + data['cronExpression']);
+        }
+        // validate the optional field `ends`
+        if (data['ends']) { // data not null
+          TaskEnd.validateJSON(data['ends']);
         }
         // ensure the json data is a string
         if (data['id'] && !(typeof data['id'] === 'string' || data['id'] instanceof String)) {
@@ -127,14 +137,14 @@ TaskBaseVM.RequiredProperties = ["$t"];
 TaskBaseVM.prototype['cronExpression'] = undefined;
 
 /**
- * @member {Date} delayedRunTime
+ * @member {Date} startsOn
  */
-TaskBaseVM.prototype['delayedRunTime'] = undefined;
+TaskBaseVM.prototype['startsOn'] = undefined;
 
 /**
- * @member {Date} delayedWasRunTime
+ * @member {module:models/TaskEnd} ends
  */
-TaskBaseVM.prototype['delayedWasRunTime'] = undefined;
+TaskBaseVM.prototype['ends'] = undefined;
 
 /**
  * @member {String} id
@@ -167,6 +177,11 @@ TaskBaseVM.prototype['subscriptionId'] = undefined;
 TaskBaseVM.prototype['$t'] = undefined;
 
 
+// Implement CloudBaseVM interface:
+/**
+ * @member {String} $t
+ */
+CloudBaseVM.prototype['$t'] = undefined;
 
 
 

@@ -13,6 +13,9 @@
 
 import ApiClient from '../ApiClient';
 import ExportFormat from './ExportFormat';
+import InputFileVM from './InputFileVM';
+import OutputFileVM from './OutputFileVM';
+import TaskEnd from './TaskEnd';
 import TransformTaskBaseVM from './TransformTaskBaseVM';
 
 /**
@@ -79,7 +82,7 @@ class ExportReportTaskVM {
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
         for (const property of ExportReportTaskVM.RequiredProperties) {
-            if (!data[property]) {
+            if (!data.hasOwnProperty(property)) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
@@ -123,13 +126,13 @@ ExportReportTaskVM.prototype['$t'] = undefined;
  */
 TransformTaskBaseVM.prototype['cronExpression'] = undefined;
 /**
- * @member {Date} delayedRunTime
+ * @member {Date} startsOn
  */
-TransformTaskBaseVM.prototype['delayedRunTime'] = undefined;
+TransformTaskBaseVM.prototype['startsOn'] = undefined;
 /**
- * @member {Date} delayedWasRunTime
+ * @member {module:models/TaskEnd} ends
  */
-TransformTaskBaseVM.prototype['delayedWasRunTime'] = undefined;
+TransformTaskBaseVM.prototype['ends'] = undefined;
 /**
  * @member {String} id
  */

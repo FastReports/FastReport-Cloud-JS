@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import CloudBaseVM from './CloudBaseVM';
 
 /**
  * The UpdateFileContentVM model module.
@@ -22,11 +23,13 @@ class UpdateFileContentVM {
     /**
      * Constructs a new <code>UpdateFileContentVM</code>.
      * @alias module:models/UpdateFileContentVM
-     * @param content {Blob} 
+     * @extends module:models/CloudBaseVM
+     * @implements module:models/CloudBaseVM
+     * @param t {String} 
      */
-    constructor(content) { 
-        
-        UpdateFileContentVM.initialize(this, content);
+    constructor(t) { 
+        CloudBaseVM.initialize(this, t);
+        UpdateFileContentVM.initialize(this, t);
     }
 
     /**
@@ -34,8 +37,9 @@ class UpdateFileContentVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, content) { 
+    static initialize(obj, t) { 
         obj['content'] = content;
+        obj['$t'] = t;
     }
 
     /**
@@ -48,9 +52,14 @@ class UpdateFileContentVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new UpdateFileContentVM();
+            CloudBaseVM.constructFromObject(data, obj);
+            CloudBaseVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('content')) {
                 obj['content'] = ApiClient.convertToType(data['content'], 'Blob');
+            }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
             }
         }
         return obj;
@@ -64,9 +73,13 @@ class UpdateFileContentVM {
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
         for (const property of UpdateFileContentVM.RequiredProperties) {
-            if (!data[property]) {
+            if (!data.hasOwnProperty(property)) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
+        }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
         }
 
         return true;
@@ -75,14 +88,24 @@ class UpdateFileContentVM {
 
 }
 
-UpdateFileContentVM.RequiredProperties = ["content"];
+UpdateFileContentVM.RequiredProperties = ["content", "$t"];
 
 /**
  * @member {Blob} content
  */
 UpdateFileContentVM.prototype['content'] = undefined;
 
+/**
+ * @member {String} $t
+ */
+UpdateFileContentVM.prototype['$t'] = undefined;
 
+
+// Implement CloudBaseVM interface:
+/**
+ * @member {String} $t
+ */
+CloudBaseVM.prototype['$t'] = undefined;
 
 
 

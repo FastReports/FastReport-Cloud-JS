@@ -13,6 +13,9 @@
 
 import ApiClient from '../ApiClient';
 import ExportFormat from './ExportFormat';
+import FileStatus from './FileStatus';
+import FileStatusReason from './FileStatusReason';
+import FileType from './FileType';
 import FileVM from './FileVM';
 
 /**
@@ -26,10 +29,11 @@ class ExportVM {
      * @alias module:models/ExportVM
      * @extends module:models/FileVM
      * @implements module:models/FileVM
+     * @param t {String} 
      */
-    constructor() { 
-        FileVM.initialize(this);
-        ExportVM.initialize(this);
+    constructor(t) { 
+        FileVM.initialize(this, t);
+        ExportVM.initialize(this, t);
     }
 
     /**
@@ -37,7 +41,8 @@ class ExportVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -62,6 +67,9 @@ class ExportVM {
             if (data.hasOwnProperty('templateId')) {
                 obj['templateId'] = ApiClient.convertToType(data['templateId'], 'String');
             }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
+            }
         }
         return obj;
     }
@@ -72,6 +80,12 @@ class ExportVM {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>ExportVM</code>.
      */
     static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of ExportVM.RequiredProperties) {
+            if (!data.hasOwnProperty(property)) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
         // ensure the json data is a string
         if (data['reportId'] && !(typeof data['reportId'] === 'string' || data['reportId'] instanceof String)) {
             throw new Error("Expected the field `reportId` to be a primitive type in the JSON string but got " + data['reportId']);
@@ -80,6 +94,10 @@ class ExportVM {
         if (data['templateId'] && !(typeof data['templateId'] === 'string' || data['templateId'] instanceof String)) {
             throw new Error("Expected the field `templateId` to be a primitive type in the JSON string but got " + data['templateId']);
         }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
+        }
 
         return true;
     }
@@ -87,7 +105,7 @@ class ExportVM {
 
 }
 
-
+ExportVM.RequiredProperties = ["$t"];
 
 /**
  * @member {module:models/ExportFormat} format
@@ -104,28 +122,17 @@ ExportVM.prototype['reportId'] = undefined;
  */
 ExportVM.prototype['templateId'] = undefined;
 
+/**
+ * @member {String} $t
+ */
+ExportVM.prototype['$t'] = undefined;
+
 
 // Implement FileVM interface:
 /**
- * @member {String} id
+ * @member {String} $t
  */
-FileVM.prototype['id'] = undefined;
-/**
- * @member {Date} createdTime
- */
-FileVM.prototype['createdTime'] = undefined;
-/**
- * @member {String} creatorUserId
- */
-FileVM.prototype['creatorUserId'] = undefined;
-/**
- * @member {Date} editedTime
- */
-FileVM.prototype['editedTime'] = undefined;
-/**
- * @member {String} editorUserId
- */
-FileVM.prototype['editorUserId'] = undefined;
+FileVM.prototype['$t'] = undefined;
 
 
 

@@ -12,7 +12,8 @@
  */
 
 import ApiClient from '../ApiClient';
-import FilePermissions from './FilePermissions';
+import CloudBaseVM from './CloudBaseVM';
+import FilePermissionsCRUDVM from './FilePermissionsCRUDVM';
 
 /**
  * The FilePermissionsVM model module.
@@ -23,10 +24,13 @@ class FilePermissionsVM {
     /**
      * Constructs a new <code>FilePermissionsVM</code>.
      * @alias module:models/FilePermissionsVM
+     * @extends module:models/CloudBaseVM
+     * @implements module:models/CloudBaseVM
+     * @param t {String} 
      */
-    constructor() { 
-        
-        FilePermissionsVM.initialize(this);
+    constructor(t) { 
+        CloudBaseVM.initialize(this, t);
+        FilePermissionsVM.initialize(this, t);
     }
 
     /**
@@ -34,7 +38,8 @@ class FilePermissionsVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -47,9 +52,14 @@ class FilePermissionsVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new FilePermissionsVM();
+            CloudBaseVM.constructFromObject(data, obj);
+            CloudBaseVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('permissions')) {
-                obj['permissions'] = FilePermissions.constructFromObject(data['permissions']);
+                obj['permissions'] = FilePermissionsCRUDVM.constructFromObject(data['permissions']);
+            }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
             }
         }
         return obj;
@@ -61,9 +71,19 @@ class FilePermissionsVM {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>FilePermissionsVM</code>.
      */
     static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of FilePermissionsVM.RequiredProperties) {
+            if (!data.hasOwnProperty(property)) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
         // validate the optional field `permissions`
         if (data['permissions']) { // data not null
-          FilePermissions.validateJSON(data['permissions']);
+          FilePermissionsCRUDVM.validateJSON(data['permissions']);
+        }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
         }
 
         return true;
@@ -72,14 +92,24 @@ class FilePermissionsVM {
 
 }
 
-
+FilePermissionsVM.RequiredProperties = ["$t"];
 
 /**
- * @member {module:models/FilePermissions} permissions
+ * @member {module:models/FilePermissionsCRUDVM} permissions
  */
 FilePermissionsVM.prototype['permissions'] = undefined;
 
+/**
+ * @member {String} $t
+ */
+FilePermissionsVM.prototype['$t'] = undefined;
 
+
+// Implement CloudBaseVM interface:
+/**
+ * @member {String} $t
+ */
+CloudBaseVM.prototype['$t'] = undefined;
 
 
 

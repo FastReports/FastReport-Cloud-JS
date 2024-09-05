@@ -13,5 +13,6 @@ Name | Type | Description | Notes
 **fetchData** | **Boolean** |  | [optional] 
 **thumbnailReport** | **Boolean** |  | [optional] 
 **thumbnailTemplate** | **Boolean** |  | [optional] 
+**t** | **String** |  | 
 
 

@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import CloudBaseVM from './CloudBaseVM';
 
 /**
  * The GroupVM model module.
@@ -22,10 +23,13 @@ class GroupVM {
     /**
      * Constructs a new <code>GroupVM</code>.
      * @alias module:models/GroupVM
+     * @extends module:models/CloudBaseVM
+     * @implements module:models/CloudBaseVM
+     * @param t {String} 
      */
-    constructor() { 
-        
-        GroupVM.initialize(this);
+    constructor(t) { 
+        CloudBaseVM.initialize(this, t);
+        GroupVM.initialize(this, t);
     }
 
     /**
@@ -33,7 +37,8 @@ class GroupVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -46,6 +51,8 @@ class GroupVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new GroupVM();
+            CloudBaseVM.constructFromObject(data, obj);
+            CloudBaseVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('id')) {
                 obj['id'] = ApiClient.convertToType(data['id'], 'String');
@@ -55,6 +62,9 @@ class GroupVM {
             }
             if (data.hasOwnProperty('subscriptionId')) {
                 obj['subscriptionId'] = ApiClient.convertToType(data['subscriptionId'], 'String');
+            }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
             }
         }
         return obj;
@@ -66,6 +76,12 @@ class GroupVM {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>GroupVM</code>.
      */
     static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of GroupVM.RequiredProperties) {
+            if (!data.hasOwnProperty(property)) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
         // ensure the json data is a string
         if (data['id'] && !(typeof data['id'] === 'string' || data['id'] instanceof String)) {
             throw new Error("Expected the field `id` to be a primitive type in the JSON string but got " + data['id']);
@@ -78,6 +94,10 @@ class GroupVM {
         if (data['subscriptionId'] && !(typeof data['subscriptionId'] === 'string' || data['subscriptionId'] instanceof String)) {
             throw new Error("Expected the field `subscriptionId` to be a primitive type in the JSON string but got " + data['subscriptionId']);
         }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
+        }
 
         return true;
     }
@@ -85,7 +105,7 @@ class GroupVM {
 
 }
 
-
+GroupVM.RequiredProperties = ["$t"];
 
 /**
  * @member {String} id
@@ -102,7 +122,17 @@ GroupVM.prototype['name'] = undefined;
  */
 GroupVM.prototype['subscriptionId'] = undefined;
 
+/**
+ * @member {String} $t
+ */
+GroupVM.prototype['$t'] = undefined;
 
+
+// Implement CloudBaseVM interface:
+/**
+ * @member {String} $t
+ */
+CloudBaseVM.prototype['$t'] = undefined;
 
 
 

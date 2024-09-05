@@ -13,6 +13,7 @@
 
 import ApiClient from '../ApiClient';
 import CreateTaskBaseVM from './CreateTaskBaseVM';
+import CreateTaskEndVM from './CreateTaskEndVM';
 
 /**
  * The CreateThumbnailReportTaskVM model module.
@@ -38,6 +39,7 @@ class CreateThumbnailReportTaskVM {
      * Only for internal use.
      */
     static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -56,6 +58,9 @@ class CreateThumbnailReportTaskVM {
             if (data.hasOwnProperty('reportId')) {
                 obj['reportId'] = ApiClient.convertToType(data['reportId'], 'String');
             }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
+            }
         }
         return obj;
     }
@@ -68,13 +73,17 @@ class CreateThumbnailReportTaskVM {
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
         for (const property of CreateThumbnailReportTaskVM.RequiredProperties) {
-            if (!data[property]) {
+            if (!data.hasOwnProperty(property)) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
         // ensure the json data is a string
         if (data['reportId'] && !(typeof data['reportId'] === 'string' || data['reportId'] instanceof String)) {
             throw new Error("Expected the field `reportId` to be a primitive type in the JSON string but got " + data['reportId']);
+        }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
         }
 
         return true;
@@ -90,24 +99,13 @@ CreateThumbnailReportTaskVM.RequiredProperties = ["$t"];
  */
 CreateThumbnailReportTaskVM.prototype['reportId'] = undefined;
 
+/**
+ * @member {String} $t
+ */
+CreateThumbnailReportTaskVM.prototype['$t'] = undefined;
+
 
 // Implement CreateTaskBaseVM interface:
-/**
- * @member {String} cronExpression
- */
-CreateTaskBaseVM.prototype['cronExpression'] = undefined;
-/**
- * @member {Date} delayedRunTime
- */
-CreateTaskBaseVM.prototype['delayedRunTime'] = undefined;
-/**
- * @member {String} name
- */
-CreateTaskBaseVM.prototype['name'] = undefined;
-/**
- * @member {String} subscriptionId
- */
-CreateTaskBaseVM.prototype['subscriptionId'] = undefined;
 /**
  * @member {String} $t
  */

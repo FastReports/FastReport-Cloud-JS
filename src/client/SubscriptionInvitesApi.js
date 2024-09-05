@@ -145,7 +145,7 @@ export default class SubscriptionInvitesApi {
 
 
     /**
-     * Rename subscription
+     * Delete invite with specified token
      * @param {String} subscriptionId id
      * @param {String} accesstoken invite's token
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
@@ -185,7 +185,7 @@ export default class SubscriptionInvitesApi {
     }
 
     /**
-     * Rename subscription
+     * Delete invite with specified token
      * @param {String} subscriptionId id
      * @param {String} accesstoken invite's token
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}

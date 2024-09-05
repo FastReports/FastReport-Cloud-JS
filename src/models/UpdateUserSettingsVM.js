@@ -12,6 +12,8 @@
  */
 
 import ApiClient from '../ApiClient';
+import AuditType from './AuditType';
+import CloudBaseVM from './CloudBaseVM';
 import ProfileVisibility from './ProfileVisibility';
 
 /**
@@ -23,10 +25,13 @@ class UpdateUserSettingsVM {
     /**
      * Constructs a new <code>UpdateUserSettingsVM</code>.
      * @alias module:models/UpdateUserSettingsVM
+     * @extends module:models/CloudBaseVM
+     * @implements module:models/CloudBaseVM
+     * @param t {String} 
      */
-    constructor() { 
-        
-        UpdateUserSettingsVM.initialize(this);
+    constructor(t) { 
+        CloudBaseVM.initialize(this, t);
+        UpdateUserSettingsVM.initialize(this, t);
     }
 
     /**
@@ -34,7 +39,8 @@ class UpdateUserSettingsVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -47,6 +53,8 @@ class UpdateUserSettingsVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new UpdateUserSettingsVM();
+            CloudBaseVM.constructFromObject(data, obj);
+            CloudBaseVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('profileVisibility')) {
                 obj['profileVisibility'] = ApiClient.convertToType(data['profileVisibility'], ProfileVisibility);
@@ -56,6 +64,12 @@ class UpdateUserSettingsVM {
             }
             if (data.hasOwnProperty('showHiddenFilesAndFolders')) {
                 obj['showHiddenFilesAndFolders'] = ApiClient.convertToType(data['showHiddenFilesAndFolders'], 'Boolean');
+            }
+            if (data.hasOwnProperty('subscribedNotifications')) {
+                obj['subscribedNotifications'] = ApiClient.convertToType(data['subscribedNotifications'], [AuditType]);
+            }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
             }
         }
         return obj;
@@ -67,13 +81,23 @@ class UpdateUserSettingsVM {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>UpdateUserSettingsVM</code>.
      */
     static validateJSON(data) {
-        // validate the optional field `profileVisibility`
-        if (data['profileVisibility']) { // data not null
-          ProfileVisibility.validateJSON(data['profileVisibility']);
+        // check to make sure all required properties are present in the JSON string
+        for (const property of UpdateUserSettingsVM.RequiredProperties) {
+            if (!data.hasOwnProperty(property)) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
         }
         // ensure the json data is a string
         if (data['defaultSubscription'] && !(typeof data['defaultSubscription'] === 'string' || data['defaultSubscription'] instanceof String)) {
             throw new Error("Expected the field `defaultSubscription` to be a primitive type in the JSON string but got " + data['defaultSubscription']);
+        }
+        // ensure the json data is an array
+        if (!Array.isArray(data['subscribedNotifications'])) {
+            throw new Error("Expected the field `subscribedNotifications` to be an array in the JSON data but got " + data['subscribedNotifications']);
+        }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
         }
 
         return true;
@@ -82,7 +106,7 @@ class UpdateUserSettingsVM {
 
 }
 
-
+UpdateUserSettingsVM.RequiredProperties = ["$t"];
 
 /**
  * @member {module:models/ProfileVisibility} profileVisibility
@@ -99,7 +123,22 @@ UpdateUserSettingsVM.prototype['defaultSubscription'] = undefined;
  */
 UpdateUserSettingsVM.prototype['showHiddenFilesAndFolders'] = undefined;
 
+/**
+ * @member {Array.<module:models/AuditType>} subscribedNotifications
+ */
+UpdateUserSettingsVM.prototype['subscribedNotifications'] = undefined;
 
+/**
+ * @member {String} $t
+ */
+UpdateUserSettingsVM.prototype['$t'] = undefined;
+
+
+// Implement CloudBaseVM interface:
+/**
+ * @member {String} $t
+ */
+CloudBaseVM.prototype['$t'] = undefined;
 
 
 

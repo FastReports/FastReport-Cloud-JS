@@ -13,7 +13,8 @@
 
 import ApiClient from '../ApiClient';
 import AuthConfigVM from './AuthConfigVM';
-import FrontendApp from './FrontendApp';
+import CloudBaseVM from './CloudBaseVM';
+import FrontendAppVM from './FrontendAppVM';
 
 /**
  * The ServerConfigurationVM model module.
@@ -24,10 +25,13 @@ class ServerConfigurationVM {
     /**
      * Constructs a new <code>ServerConfigurationVM</code>.
      * @alias module:models/ServerConfigurationVM
+     * @extends module:models/CloudBaseVM
+     * @implements module:models/CloudBaseVM
+     * @param t {String} 
      */
-    constructor() { 
-        
-        ServerConfigurationVM.initialize(this);
+    constructor(t) { 
+        CloudBaseVM.initialize(this, t);
+        ServerConfigurationVM.initialize(this, t);
     }
 
     /**
@@ -35,7 +39,8 @@ class ServerConfigurationVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -48,6 +53,8 @@ class ServerConfigurationVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new ServerConfigurationVM();
+            CloudBaseVM.constructFromObject(data, obj);
+            CloudBaseVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('title')) {
                 obj['title'] = ApiClient.convertToType(data['title'], 'String');
@@ -68,7 +75,7 @@ class ServerConfigurationVM {
                 obj['isDisabled'] = ApiClient.convertToType(data['isDisabled'], 'Boolean');
             }
             if (data.hasOwnProperty('frontend')) {
-                obj['frontend'] = FrontendApp.constructFromObject(data['frontend']);
+                obj['frontend'] = FrontendAppVM.constructFromObject(data['frontend']);
             }
             if (data.hasOwnProperty('invariantLocale')) {
                 obj['invariantLocale'] = ApiClient.convertToType(data['invariantLocale'], 'String');
@@ -94,6 +101,15 @@ class ServerConfigurationVM {
             if (data.hasOwnProperty('authServerName')) {
                 obj['authServerName'] = ApiClient.convertToType(data['authServerName'], 'String');
             }
+            if (data.hasOwnProperty('updateWorkspaceLink')) {
+                obj['updateWorkspaceLink'] = ApiClient.convertToType(data['updateWorkspaceLink'], 'String');
+            }
+            if (data.hasOwnProperty('sharingEnabled')) {
+                obj['sharingEnabled'] = ApiClient.convertToType(data['sharingEnabled'], 'Boolean');
+            }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
+            }
         }
         return obj;
     }
@@ -104,6 +120,12 @@ class ServerConfigurationVM {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>ServerConfigurationVM</code>.
      */
     static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of ServerConfigurationVM.RequiredProperties) {
+            if (!data.hasOwnProperty(property)) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
         // ensure the json data is a string
         if (data['title'] && !(typeof data['title'] === 'string' || data['title'] instanceof String)) {
             throw new Error("Expected the field `title` to be a primitive type in the JSON string but got " + data['title']);
@@ -118,7 +140,7 @@ class ServerConfigurationVM {
         }
         // validate the optional field `frontend`
         if (data['frontend']) { // data not null
-          FrontendApp.validateJSON(data['frontend']);
+          FrontendAppVM.validateJSON(data['frontend']);
         }
         // ensure the json data is a string
         if (data['invariantLocale'] && !(typeof data['invariantLocale'] === 'string' || data['invariantLocale'] instanceof String)) {
@@ -148,6 +170,14 @@ class ServerConfigurationVM {
         if (data['authServerName'] && !(typeof data['authServerName'] === 'string' || data['authServerName'] instanceof String)) {
             throw new Error("Expected the field `authServerName` to be a primitive type in the JSON string but got " + data['authServerName']);
         }
+        // ensure the json data is a string
+        if (data['updateWorkspaceLink'] && !(typeof data['updateWorkspaceLink'] === 'string' || data['updateWorkspaceLink'] instanceof String)) {
+            throw new Error("Expected the field `updateWorkspaceLink` to be a primitive type in the JSON string but got " + data['updateWorkspaceLink']);
+        }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
+        }
 
         return true;
     }
@@ -155,7 +185,7 @@ class ServerConfigurationVM {
 
 }
 
-
+ServerConfigurationVM.RequiredProperties = ["$t"];
 
 /**
  * @member {String} title
@@ -188,7 +218,7 @@ ServerConfigurationVM.prototype['lastSLAVersion'] = undefined;
 ServerConfigurationVM.prototype['isDisabled'] = undefined;
 
 /**
- * @member {module:models/FrontendApp} frontend
+ * @member {module:models/FrontendAppVM} frontend
  */
 ServerConfigurationVM.prototype['frontend'] = undefined;
 
@@ -232,7 +262,27 @@ ServerConfigurationVM.prototype['homePageLink'] = undefined;
  */
 ServerConfigurationVM.prototype['authServerName'] = undefined;
 
+/**
+ * @member {String} updateWorkspaceLink
+ */
+ServerConfigurationVM.prototype['updateWorkspaceLink'] = undefined;
 
+/**
+ * @member {Boolean} sharingEnabled
+ */
+ServerConfigurationVM.prototype['sharingEnabled'] = undefined;
+
+/**
+ * @member {String} $t
+ */
+ServerConfigurationVM.prototype['$t'] = undefined;
+
+
+// Implement CloudBaseVM interface:
+/**
+ * @member {String} $t
+ */
+CloudBaseVM.prototype['$t'] = undefined;
 
 
 

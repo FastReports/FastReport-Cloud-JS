@@ -12,8 +12,8 @@
  */
 
 import ApiClient from '../ApiClient';
+import FilesVMBase from './FilesVMBase';
 import ReportVM from './ReportVM';
-import ReportVMFilesVMBase from './ReportVMFilesVMBase';
 
 /**
  * The ReportsVM model module.
@@ -24,12 +24,13 @@ class ReportsVM {
     /**
      * Constructs a new <code>ReportsVM</code>.
      * @alias module:models/ReportsVM
-     * @extends module:models/ReportVMFilesVMBase
-     * @implements module:models/ReportVMFilesVMBase
+     * @extends module:models/FilesVMBase
+     * @implements module:models/FilesVMBase
+     * @param t {String} 
      */
-    constructor() { 
-        ReportVMFilesVMBase.initialize(this);
-        ReportsVM.initialize(this);
+    constructor(t) { 
+        FilesVMBase.initialize(this, t);
+        ReportsVM.initialize(this, t);
     }
 
     /**
@@ -37,7 +38,8 @@ class ReportsVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -50,9 +52,15 @@ class ReportsVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new ReportsVM();
-            ReportVMFilesVMBase.constructFromObject(data, obj);
-            ReportVMFilesVMBase.constructFromObject(data, obj);
+            FilesVMBase.constructFromObject(data, obj);
+            FilesVMBase.constructFromObject(data, obj);
 
+            if (data.hasOwnProperty('files')) {
+                obj['files'] = ApiClient.convertToType(data['files'], [ReportVM]);
+            }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
+            }
         }
         return obj;
     }
@@ -63,6 +71,26 @@ class ReportsVM {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>ReportsVM</code>.
      */
     static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of ReportsVM.RequiredProperties) {
+            if (!data.hasOwnProperty(property)) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
+        if (data['files']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['files'])) {
+                throw new Error("Expected the field `files` to be an array in the JSON data but got " + data['files']);
+            }
+            // validate the optional field `files` (array)
+            for (const item of data['files']) {
+                ReportVM.validateJSON(item);
+            };
+        }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
+        }
 
         return true;
     }
@@ -70,26 +98,24 @@ class ReportsVM {
 
 }
 
+ReportsVM.RequiredProperties = ["$t"];
 
-
-
-// Implement ReportVMFilesVMBase interface:
 /**
  * @member {Array.<module:models/ReportVM>} files
  */
-ReportVMFilesVMBase.prototype['files'] = undefined;
+ReportsVM.prototype['files'] = undefined;
+
 /**
- * @member {Number} count
+ * @member {String} $t
  */
-ReportVMFilesVMBase.prototype['count'] = undefined;
+ReportsVM.prototype['$t'] = undefined;
+
+
+// Implement FilesVMBase interface:
 /**
- * @member {Number} skip
+ * @member {String} $t
  */
-ReportVMFilesVMBase.prototype['skip'] = undefined;
-/**
- * @member {Number} take
- */
-ReportVMFilesVMBase.prototype['take'] = undefined;
+FilesVMBase.prototype['$t'] = undefined;
 
 
 

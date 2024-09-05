@@ -12,7 +12,11 @@
  */
 
 import ApiClient from '../ApiClient';
+import ExportFormat from './ExportFormat';
+import OutputFileVM from './OutputFileVM';
 import RunExportReportTaskVM from './RunExportReportTaskVM';
+import RunInputFileVM from './RunInputFileVM';
+import RunTransportTaskBaseVM from './RunTransportTaskBaseVM';
 
 /**
  * The RunExportTemplateTaskVM model module.
@@ -38,6 +42,7 @@ class RunExportTemplateTaskVM {
      * Only for internal use.
      */
     static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -56,6 +61,9 @@ class RunExportTemplateTaskVM {
             if (data.hasOwnProperty('reportParameters')) {
                 obj['reportParameters'] = ApiClient.convertToType(data['reportParameters'], {'String': 'String'});
             }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
+            }
         }
         return obj;
     }
@@ -68,9 +76,13 @@ class RunExportTemplateTaskVM {
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
         for (const property of RunExportTemplateTaskVM.RequiredProperties) {
-            if (!data[property]) {
+            if (!data.hasOwnProperty(property)) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
+        }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
         }
 
         return true;
@@ -86,16 +98,37 @@ RunExportTemplateTaskVM.RequiredProperties = ["$t"];
  */
 RunExportTemplateTaskVM.prototype['reportParameters'] = undefined;
 
+/**
+ * @member {String} $t
+ */
+RunExportTemplateTaskVM.prototype['$t'] = undefined;
+
 
 // Implement RunExportReportTaskVM interface:
 /**
- * @member {String} subscriptionId
+ * @member {module:models/RunInputFileVM} inputFile
  */
-RunExportReportTaskVM.prototype['subscriptionId'] = undefined;
+RunExportReportTaskVM.prototype['inputFile'] = undefined;
+/**
+ * @member {String} locale
+ */
+RunExportReportTaskVM.prototype['locale'] = undefined;
+/**
+ * @member {module:models/OutputFileVM} outputFile
+ */
+RunExportReportTaskVM.prototype['outputFile'] = undefined;
+/**
+ * @member {Array.<module:models/RunTransportTaskBaseVM>} transports
+ */
+RunExportReportTaskVM.prototype['transports'] = undefined;
 /**
  * @member {String} $t
  */
 RunExportReportTaskVM.prototype['$t'] = undefined;
+/**
+ * @member {String} subscriptionId
+ */
+RunExportReportTaskVM.prototype['subscriptionId'] = undefined;
 
 
 

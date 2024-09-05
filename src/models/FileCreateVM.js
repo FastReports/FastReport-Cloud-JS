@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import CloudBaseVM from './CloudBaseVM';
 
 /**
  * The FileCreateVM model module.
@@ -22,10 +23,13 @@ class FileCreateVM {
     /**
      * Constructs a new <code>FileCreateVM</code>.
      * @alias module:models/FileCreateVM
+     * @extends module:models/CloudBaseVM
+     * @implements module:models/CloudBaseVM
+     * @param t {String} 
      */
-    constructor() { 
-        
-        FileCreateVM.initialize(this);
+    constructor(t) { 
+        CloudBaseVM.initialize(this, t);
+        FileCreateVM.initialize(this, t);
     }
 
     /**
@@ -33,7 +37,8 @@ class FileCreateVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -46,6 +51,8 @@ class FileCreateVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new FileCreateVM();
+            CloudBaseVM.constructFromObject(data, obj);
+            CloudBaseVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('name')) {
                 obj['name'] = ApiClient.convertToType(data['name'], 'String');
@@ -59,6 +66,9 @@ class FileCreateVM {
             if (data.hasOwnProperty('content')) {
                 obj['content'] = ApiClient.convertToType(data['content'], 'Blob');
             }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
+            }
         }
         return obj;
     }
@@ -69,6 +79,12 @@ class FileCreateVM {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>FileCreateVM</code>.
      */
     static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of FileCreateVM.RequiredProperties) {
+            if (!data.hasOwnProperty(property)) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
         // ensure the json data is a string
         if (data['name'] && !(typeof data['name'] === 'string' || data['name'] instanceof String)) {
             throw new Error("Expected the field `name` to be a primitive type in the JSON string but got " + data['name']);
@@ -77,6 +93,10 @@ class FileCreateVM {
         if (!Array.isArray(data['tags'])) {
             throw new Error("Expected the field `tags` to be an array in the JSON data but got " + data['tags']);
         }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
+        }
 
         return true;
     }
@@ -84,7 +104,7 @@ class FileCreateVM {
 
 }
 
-
+FileCreateVM.RequiredProperties = ["$t"];
 
 /**
  * @member {String} name
@@ -106,7 +126,17 @@ FileCreateVM.prototype['icon'] = undefined;
  */
 FileCreateVM.prototype['content'] = undefined;
 
+/**
+ * @member {String} $t
+ */
+FileCreateVM.prototype['$t'] = undefined;
 
+
+// Implement CloudBaseVM interface:
+/**
+ * @member {String} $t
+ */
+CloudBaseVM.prototype['$t'] = undefined;
 
 
 

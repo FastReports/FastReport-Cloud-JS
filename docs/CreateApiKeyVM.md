@@ -6,5 +6,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **description** | **String** |  | [optional] 
 **expired** | **Date** |  | 
+**t** | **String** |  | 
 
 

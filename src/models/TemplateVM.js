@@ -12,6 +12,9 @@
  */
 
 import ApiClient from '../ApiClient';
+import FileStatus from './FileStatus';
+import FileStatusReason from './FileStatusReason';
+import FileType from './FileType';
 import FileVM from './FileVM';
 import ReportInfo from './ReportInfo';
 
@@ -26,10 +29,11 @@ class TemplateVM {
      * @alias module:models/TemplateVM
      * @extends module:models/FileVM
      * @implements module:models/FileVM
+     * @param t {String} 
      */
-    constructor() { 
-        FileVM.initialize(this);
-        TemplateVM.initialize(this);
+    constructor(t) { 
+        FileVM.initialize(this, t);
+        TemplateVM.initialize(this, t);
     }
 
     /**
@@ -37,7 +41,8 @@ class TemplateVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -56,6 +61,9 @@ class TemplateVM {
             if (data.hasOwnProperty('reportInfo')) {
                 obj['reportInfo'] = ReportInfo.constructFromObject(data['reportInfo']);
             }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
+            }
         }
         return obj;
     }
@@ -66,9 +74,19 @@ class TemplateVM {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>TemplateVM</code>.
      */
     static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of TemplateVM.RequiredProperties) {
+            if (!data.hasOwnProperty(property)) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
         // validate the optional field `reportInfo`
         if (data['reportInfo']) { // data not null
           ReportInfo.validateJSON(data['reportInfo']);
+        }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
         }
 
         return true;
@@ -77,35 +95,24 @@ class TemplateVM {
 
 }
 
-
+TemplateVM.RequiredProperties = ["$t"];
 
 /**
  * @member {module:models/ReportInfo} reportInfo
  */
 TemplateVM.prototype['reportInfo'] = undefined;
 
+/**
+ * @member {String} $t
+ */
+TemplateVM.prototype['$t'] = undefined;
+
 
 // Implement FileVM interface:
 /**
- * @member {String} id
+ * @member {String} $t
  */
-FileVM.prototype['id'] = undefined;
-/**
- * @member {Date} createdTime
- */
-FileVM.prototype['createdTime'] = undefined;
-/**
- * @member {String} creatorUserId
- */
-FileVM.prototype['creatorUserId'] = undefined;
-/**
- * @member {Date} editedTime
- */
-FileVM.prototype['editedTime'] = undefined;
-/**
- * @member {String} editorUserId
- */
-FileVM.prototype['editorUserId'] = undefined;
+FileVM.prototype['$t'] = undefined;
 
 
 

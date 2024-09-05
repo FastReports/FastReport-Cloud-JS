@@ -4,7 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**newPermissions** | [**FilePermissions**](FilePermissions.md) |  | 
+**newPermissions** | [**FilePermissionsCRUDVM**](FilePermissionsCRUDVM.md) |  | 
 **administrate** | [**FileAdministrate**](FileAdministrate.md) |  | 
+**t** | **String** |  | 
 
 

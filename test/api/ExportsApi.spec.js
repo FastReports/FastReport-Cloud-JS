@@ -58,6 +58,36 @@
         done();
       });
     });
+    describe('exportFolderAndFileCopyFiles', function() {
+      it('should call exportFolderAndFileCopyFiles successfully', function(done) {
+        //uncomment below and update the code to test exportFolderAndFileCopyFiles
+        //instance.exportFolderAndFileCopyFiles(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('exportFolderAndFileCountRecycleBinFoldersAndFiles', function() {
+      it('should call exportFolderAndFileCountRecycleBinFoldersAndFiles successfully', function(done) {
+        //uncomment below and update the code to test exportFolderAndFileCountRecycleBinFoldersAndFiles
+        //instance.exportFolderAndFileCountRecycleBinFoldersAndFiles(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('exportFolderAndFileDeleteFiles', function() {
+      it('should call exportFolderAndFileDeleteFiles successfully', function(done) {
+        //uncomment below and update the code to test exportFolderAndFileDeleteFiles
+        //instance.exportFolderAndFileDeleteFiles(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('exportFolderAndFileGetCount', function() {
       it('should call exportFolderAndFileGetCount successfully', function(done) {
         //uncomment below and update the code to test exportFolderAndFileGetCount
@@ -88,10 +118,50 @@
         done();
       });
     });
+    describe('exportFolderAndFileMoveFiles', function() {
+      it('should call exportFolderAndFileMoveFiles successfully', function(done) {
+        //uncomment below and update the code to test exportFolderAndFileMoveFiles
+        //instance.exportFolderAndFileMoveFiles(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('exportFolderAndFileMoveFilesToBin', function() {
+      it('should call exportFolderAndFileMoveFilesToBin successfully', function(done) {
+        //uncomment below and update the code to test exportFolderAndFileMoveFilesToBin
+        //instance.exportFolderAndFileMoveFilesToBin(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('exportFolderAndFileRecoverAllFromRecycleBin', function() {
       it('should call exportFolderAndFileRecoverAllFromRecycleBin successfully', function(done) {
         //uncomment below and update the code to test exportFolderAndFileRecoverAllFromRecycleBin
         //instance.exportFolderAndFileRecoverAllFromRecycleBin(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('exportFolderAndFileRecoverFiles', function() {
+      it('should call exportFolderAndFileRecoverFiles successfully', function(done) {
+        //uncomment below and update the code to test exportFolderAndFileRecoverFiles
+        //instance.exportFolderAndFileRecoverFiles(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('exportFoldersCalculateFolderSize', function() {
+      it('should call exportFoldersCalculateFolderSize successfully', function(done) {
+        //uncomment below and update the code to test exportFoldersCalculateFolderSize
+        //instance.exportFoldersCalculateFolderSize(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -278,10 +348,30 @@
         done();
       });
     });
+    describe('exportsCreateSharingKey', function() {
+      it('should call exportsCreateSharingKey successfully', function(done) {
+        //uncomment below and update the code to test exportsCreateSharingKey
+        //instance.exportsCreateSharingKey(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('exportsDeleteFile', function() {
       it('should call exportsDeleteFile successfully', function(done) {
         //uncomment below and update the code to test exportsDeleteFile
         //instance.exportsDeleteFile(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('exportsDeleteSharingKey', function() {
+      it('should call exportsDeleteSharingKey successfully', function(done) {
+        //uncomment below and update the code to test exportsDeleteSharingKey
+        //instance.exportsDeleteSharingKey(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -332,6 +422,16 @@
       it('should call exportsGetPermissions successfully', function(done) {
         //uncomment below and update the code to test exportsGetPermissions
         //instance.exportsGetPermissions(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('exportsGetSharingKeys', function() {
+      it('should call exportsGetSharingKeys successfully', function(done) {
+        //uncomment below and update the code to test exportsGetSharingKeys
+        //instance.exportsGetSharingKeys(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

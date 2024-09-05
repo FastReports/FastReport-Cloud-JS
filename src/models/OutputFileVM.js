@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import CloudBaseVM from './CloudBaseVM';
 import FileKind from './FileKind';
 
 /**
@@ -23,10 +24,13 @@ class OutputFileVM {
     /**
      * Constructs a new <code>OutputFileVM</code>.
      * @alias module:models/OutputFileVM
+     * @extends module:models/CloudBaseVM
+     * @implements module:models/CloudBaseVM
+     * @param t {String} 
      */
-    constructor() { 
-        
-        OutputFileVM.initialize(this);
+    constructor(t) { 
+        CloudBaseVM.initialize(this, t);
+        OutputFileVM.initialize(this, t);
     }
 
     /**
@@ -34,7 +38,8 @@ class OutputFileVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -47,6 +52,8 @@ class OutputFileVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new OutputFileVM();
+            CloudBaseVM.constructFromObject(data, obj);
+            CloudBaseVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('fileName')) {
                 obj['fileName'] = ApiClient.convertToType(data['fileName'], 'String');
@@ -60,6 +67,9 @@ class OutputFileVM {
             if (data.hasOwnProperty('isTemporary')) {
                 obj['isTemporary'] = ApiClient.convertToType(data['isTemporary'], 'Boolean');
             }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
+            }
         }
         return obj;
     }
@@ -70,6 +80,12 @@ class OutputFileVM {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>OutputFileVM</code>.
      */
     static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of OutputFileVM.RequiredProperties) {
+            if (!data.hasOwnProperty(property)) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
         // ensure the json data is a string
         if (data['fileName'] && !(typeof data['fileName'] === 'string' || data['fileName'] instanceof String)) {
             throw new Error("Expected the field `fileName` to be a primitive type in the JSON string but got " + data['fileName']);
@@ -78,6 +94,10 @@ class OutputFileVM {
         if (data['folderId'] && !(typeof data['folderId'] === 'string' || data['folderId'] instanceof String)) {
             throw new Error("Expected the field `folderId` to be a primitive type in the JSON string but got " + data['folderId']);
         }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
+        }
 
         return true;
     }
@@ -85,7 +105,7 @@ class OutputFileVM {
 
 }
 
-
+OutputFileVM.RequiredProperties = ["$t"];
 
 /**
  * @member {String} fileName
@@ -107,7 +127,17 @@ OutputFileVM.prototype['type'] = undefined;
  */
 OutputFileVM.prototype['isTemporary'] = undefined;
 
+/**
+ * @member {String} $t
+ */
+OutputFileVM.prototype['$t'] = undefined;
 
+
+// Implement CloudBaseVM interface:
+/**
+ * @member {String} $t
+ */
+CloudBaseVM.prototype['$t'] = undefined;
 
 
 

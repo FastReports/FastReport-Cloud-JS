@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import CloudBaseVM from './CloudBaseVM';
 import UpdateDataSourcePermissionsVM from './UpdateDataSourcePermissionsVM';
 import UpdateFilePermissionsVM from './UpdateFilePermissionsVM';
 import UpdateGroupPermissionsVM from './UpdateGroupPermissionsVM';
@@ -26,10 +27,13 @@ class UpdateDefaultPermissionsVM {
     /**
      * Constructs a new <code>UpdateDefaultPermissionsVM</code>.
      * @alias module:models/UpdateDefaultPermissionsVM
+     * @extends module:models/CloudBaseVM
+     * @implements module:models/CloudBaseVM
+     * @param t {String} 
      */
-    constructor() { 
-        
-        UpdateDefaultPermissionsVM.initialize(this);
+    constructor(t) { 
+        CloudBaseVM.initialize(this, t);
+        UpdateDefaultPermissionsVM.initialize(this, t);
     }
 
     /**
@@ -37,7 +41,8 @@ class UpdateDefaultPermissionsVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -50,6 +55,8 @@ class UpdateDefaultPermissionsVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new UpdateDefaultPermissionsVM();
+            CloudBaseVM.constructFromObject(data, obj);
+            CloudBaseVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('filePermissions')) {
                 obj['filePermissions'] = UpdateFilePermissionsVM.constructFromObject(data['filePermissions']);
@@ -63,6 +70,9 @@ class UpdateDefaultPermissionsVM {
             if (data.hasOwnProperty('taskPermissions')) {
                 obj['taskPermissions'] = UpdateTaskPermissionsVM.constructFromObject(data['taskPermissions']);
             }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
+            }
         }
         return obj;
     }
@@ -73,6 +83,12 @@ class UpdateDefaultPermissionsVM {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>UpdateDefaultPermissionsVM</code>.
      */
     static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of UpdateDefaultPermissionsVM.RequiredProperties) {
+            if (!data.hasOwnProperty(property)) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
         // validate the optional field `filePermissions`
         if (data['filePermissions']) { // data not null
           UpdateFilePermissionsVM.validateJSON(data['filePermissions']);
@@ -89,6 +105,10 @@ class UpdateDefaultPermissionsVM {
         if (data['taskPermissions']) { // data not null
           UpdateTaskPermissionsVM.validateJSON(data['taskPermissions']);
         }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
+        }
 
         return true;
     }
@@ -96,7 +116,7 @@ class UpdateDefaultPermissionsVM {
 
 }
 
-
+UpdateDefaultPermissionsVM.RequiredProperties = ["$t"];
 
 /**
  * @member {module:models/UpdateFilePermissionsVM} filePermissions
@@ -118,7 +138,17 @@ UpdateDefaultPermissionsVM.prototype['dataSourcePermissions'] = undefined;
  */
 UpdateDefaultPermissionsVM.prototype['taskPermissions'] = undefined;
 
+/**
+ * @member {String} $t
+ */
+UpdateDefaultPermissionsVM.prototype['$t'] = undefined;
 
+
+// Implement CloudBaseVM interface:
+/**
+ * @member {String} $t
+ */
+CloudBaseVM.prototype['$t'] = undefined;
 
 
 

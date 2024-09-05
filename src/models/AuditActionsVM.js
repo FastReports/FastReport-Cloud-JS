@@ -13,6 +13,7 @@
 
 import ApiClient from '../ApiClient';
 import AuditActionVM from './AuditActionVM';
+import CloudBaseVM from './CloudBaseVM';
 
 /**
  * The AuditActionsVM model module.
@@ -23,10 +24,13 @@ class AuditActionsVM {
     /**
      * Constructs a new <code>AuditActionsVM</code>.
      * @alias module:models/AuditActionsVM
+     * @extends module:models/CloudBaseVM
+     * @implements module:models/CloudBaseVM
+     * @param t {String} 
      */
-    constructor() { 
-        
-        AuditActionsVM.initialize(this);
+    constructor(t) { 
+        CloudBaseVM.initialize(this, t);
+        AuditActionsVM.initialize(this, t);
     }
 
     /**
@@ -34,7 +38,8 @@ class AuditActionsVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -47,18 +52,23 @@ class AuditActionsVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new AuditActionsVM();
+            CloudBaseVM.constructFromObject(data, obj);
+            CloudBaseVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('items')) {
                 obj['items'] = ApiClient.convertToType(data['items'], [AuditActionVM]);
             }
-            if (data.hasOwnProperty('count')) {
-                obj['count'] = ApiClient.convertToType(data['count'], 'Number');
+            if (data.hasOwnProperty('hasMore')) {
+                obj['hasMore'] = ApiClient.convertToType(data['hasMore'], 'Boolean');
             }
             if (data.hasOwnProperty('skip')) {
                 obj['skip'] = ApiClient.convertToType(data['skip'], 'Number');
             }
             if (data.hasOwnProperty('take')) {
                 obj['take'] = ApiClient.convertToType(data['take'], 'Number');
+            }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
             }
         }
         return obj;
@@ -70,6 +80,12 @@ class AuditActionsVM {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>AuditActionsVM</code>.
      */
     static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of AuditActionsVM.RequiredProperties) {
+            if (!data.hasOwnProperty(property)) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
         if (data['items']) { // data not null
             // ensure the json data is an array
             if (!Array.isArray(data['items'])) {
@@ -80,6 +96,10 @@ class AuditActionsVM {
                 AuditActionVM.validateJSON(item);
             };
         }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
+        }
 
         return true;
     }
@@ -87,7 +107,7 @@ class AuditActionsVM {
 
 }
 
-
+AuditActionsVM.RequiredProperties = ["$t"];
 
 /**
  * @member {Array.<module:models/AuditActionVM>} items
@@ -95,9 +115,9 @@ class AuditActionsVM {
 AuditActionsVM.prototype['items'] = undefined;
 
 /**
- * @member {Number} count
+ * @member {Boolean} hasMore
  */
-AuditActionsVM.prototype['count'] = undefined;
+AuditActionsVM.prototype['hasMore'] = undefined;
 
 /**
  * @member {Number} skip
@@ -109,7 +129,17 @@ AuditActionsVM.prototype['skip'] = undefined;
  */
 AuditActionsVM.prototype['take'] = undefined;
 
+/**
+ * @member {String} $t
+ */
+AuditActionsVM.prototype['$t'] = undefined;
 
+
+// Implement CloudBaseVM interface:
+/**
+ * @member {String} $t
+ */
+CloudBaseVM.prototype['$t'] = undefined;
 
 
 

@@ -144,6 +144,24 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property updateWorkspaceLink (base name: "updateWorkspaceLink")', function() {
+      // uncomment below and update the code to test the property updateWorkspaceLink
+      //var instance = new FastreportCloudSdk.ServerConfigurationVM();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property sharingEnabled (base name: "sharingEnabled")', function() {
+      // uncomment below and update the code to test the property sharingEnabled
+      //var instance = new FastreportCloudSdk.ServerConfigurationVM();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property t (base name: "$t")', function() {
+      // uncomment below and update the code to test the property t
+      //var instance = new FastreportCloudSdk.ServerConfigurationVM();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

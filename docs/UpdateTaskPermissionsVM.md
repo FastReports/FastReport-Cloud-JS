@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **administrate** | [**TaskAdministrate**](TaskAdministrate.md) |  | 
-**newPermissions** | [**TaskPermissions**](TaskPermissions.md) |  | 
+**newPermissions** | [**TaskPermissionsCRUDVM**](TaskPermissionsCRUDVM.md) |  | 
+**t** | **String** |  | 
 
 

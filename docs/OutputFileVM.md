@@ -8,5 +8,6 @@ Name | Type | Description | Notes
 **folderId** | **String** |  | [optional] 
 **type** | [**FileKind**](FileKind.md) |  | [optional] 
 **isTemporary** | **Boolean** |  | [optional] 
+**t** | **String** |  | 
 
 

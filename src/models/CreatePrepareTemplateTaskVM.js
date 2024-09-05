@@ -13,7 +13,11 @@
 
 import ApiClient from '../ApiClient';
 import CreateExportReportTaskVM from './CreateExportReportTaskVM';
+import CreateTaskEndVM from './CreateTaskEndVM';
 import CreateTransformTaskBaseVM from './CreateTransformTaskBaseVM';
+import CreateTransportTaskBaseVM from './CreateTransportTaskBaseVM';
+import InputFileVM from './InputFileVM';
+import OutputFileVM from './OutputFileVM';
 
 /**
  * The CreatePrepareTemplateTaskVM model module.
@@ -39,6 +43,7 @@ class CreatePrepareTemplateTaskVM {
      * Only for internal use.
      */
     static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -63,6 +68,9 @@ class CreatePrepareTemplateTaskVM {
             if (data.hasOwnProperty('reportParameters')) {
                 obj['reportParameters'] = ApiClient.convertToType(data['reportParameters'], {'String': 'String'});
             }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
+            }
         }
         return obj;
     }
@@ -75,7 +83,7 @@ class CreatePrepareTemplateTaskVM {
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
         for (const property of CreatePrepareTemplateTaskVM.RequiredProperties) {
-            if (!data[property]) {
+            if (!data.hasOwnProperty(property)) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
@@ -88,6 +96,10 @@ class CreatePrepareTemplateTaskVM {
             for (const item of data['exports']) {
                 CreateExportReportTaskVM.validateJSON(item);
             };
+        }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
         }
 
         return true;
@@ -113,6 +125,11 @@ CreatePrepareTemplateTaskVM.prototype['pagesCount'] = undefined;
  */
 CreatePrepareTemplateTaskVM.prototype['reportParameters'] = undefined;
 
+/**
+ * @member {String} $t
+ */
+CreatePrepareTemplateTaskVM.prototype['$t'] = undefined;
+
 
 // Implement CreateTransformTaskBaseVM interface:
 /**
@@ -120,9 +137,13 @@ CreatePrepareTemplateTaskVM.prototype['reportParameters'] = undefined;
  */
 CreateTransformTaskBaseVM.prototype['cronExpression'] = undefined;
 /**
- * @member {Date} delayedRunTime
+ * @member {Date} startsOn
  */
-CreateTransformTaskBaseVM.prototype['delayedRunTime'] = undefined;
+CreateTransformTaskBaseVM.prototype['startsOn'] = undefined;
+/**
+ * @member {module:models/CreateTaskEndVM} ends
+ */
+CreateTransformTaskBaseVM.prototype['ends'] = undefined;
 /**
  * @member {String} name
  */

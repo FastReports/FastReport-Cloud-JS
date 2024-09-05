@@ -13,6 +13,7 @@
 
 import ApiClient from '../ApiClient';
 import BreadcrumbsModel from './BreadcrumbsModel';
+import CloudBaseVM from './CloudBaseVM';
 
 /**
  * The BreadcrumbsVM model module.
@@ -23,10 +24,13 @@ class BreadcrumbsVM {
     /**
      * Constructs a new <code>BreadcrumbsVM</code>.
      * @alias module:models/BreadcrumbsVM
+     * @extends module:models/CloudBaseVM
+     * @implements module:models/CloudBaseVM
+     * @param t {String} 
      */
-    constructor() { 
-        
-        BreadcrumbsVM.initialize(this);
+    constructor(t) { 
+        CloudBaseVM.initialize(this, t);
+        BreadcrumbsVM.initialize(this, t);
     }
 
     /**
@@ -34,7 +38,8 @@ class BreadcrumbsVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -47,9 +52,14 @@ class BreadcrumbsVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new BreadcrumbsVM();
+            CloudBaseVM.constructFromObject(data, obj);
+            CloudBaseVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('breadcrumbs')) {
                 obj['breadcrumbs'] = ApiClient.convertToType(data['breadcrumbs'], [BreadcrumbsModel]);
+            }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
             }
         }
         return obj;
@@ -61,6 +71,12 @@ class BreadcrumbsVM {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>BreadcrumbsVM</code>.
      */
     static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of BreadcrumbsVM.RequiredProperties) {
+            if (!data.hasOwnProperty(property)) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
         if (data['breadcrumbs']) { // data not null
             // ensure the json data is an array
             if (!Array.isArray(data['breadcrumbs'])) {
@@ -71,6 +87,10 @@ class BreadcrumbsVM {
                 BreadcrumbsModel.validateJSON(item);
             };
         }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
+        }
 
         return true;
     }
@@ -78,14 +98,24 @@ class BreadcrumbsVM {
 
 }
 
-
+BreadcrumbsVM.RequiredProperties = ["$t"];
 
 /**
  * @member {Array.<module:models/BreadcrumbsModel>} breadcrumbs
  */
 BreadcrumbsVM.prototype['breadcrumbs'] = undefined;
 
+/**
+ * @member {String} $t
+ */
+BreadcrumbsVM.prototype['$t'] = undefined;
 
+
+// Implement CloudBaseVM interface:
+/**
+ * @member {String} $t
+ */
+CloudBaseVM.prototype['$t'] = undefined;
 
 
 

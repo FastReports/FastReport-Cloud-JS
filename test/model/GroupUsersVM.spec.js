@@ -78,6 +78,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property t (base name: "$t")', function() {
+      // uncomment below and update the code to test the property t
+      //var instance = new FastreportCloudSdk.GroupUsersVM();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

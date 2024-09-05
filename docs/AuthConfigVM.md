@@ -7,5 +7,6 @@ Name | Type | Description | Notes
 **useLocal** | **Boolean** |  | [optional] 
 **useOpenId** | **Boolean** |  | [optional] 
 **authority** | **String** |  | [optional] 
+**t** | **String** |  | 
 
 

@@ -16,24 +16,26 @@ import ApiClient from "../ApiClient";
 import AuditActionsVM from '../models/AuditActionsVM';
 import BreadcrumbsVM from '../models/BreadcrumbsVM';
 import CountVM from '../models/CountVM';
+import CreateFileShareVM from '../models/CreateFileShareVM';
 import ExportTemplateVM from '../models/ExportTemplateVM';
 import ExportVM from '../models/ExportVM';
-import FileCreateVM from '../models/FileCreateVM';
 import FileIconVM from '../models/FileIconVM';
 import FilePermissionsVM from '../models/FilePermissionsVM';
 import FileRenameVM from '../models/FileRenameVM';
+import FileSharingKeysVM from '../models/FileSharingKeysVM';
 import FileSorting from '../models/FileSorting';
 import FileTagsUpdateVM from '../models/FileTagsUpdateVM';
 import FileVM from '../models/FileVM';
 import FilesVM from '../models/FilesVM';
-import FolderCreateVM from '../models/FolderCreateVM';
 import FolderIconVM from '../models/FolderIconVM';
 import FolderRenameVM from '../models/FolderRenameVM';
+import FolderSizeVM from '../models/FolderSizeVM';
 import FolderTagsUpdateVM from '../models/FolderTagsUpdateVM';
 import PrepareTemplateVM from '../models/PrepareTemplateVM';
 import PreviewTemplateVM from '../models/PreviewTemplateVM';
 import ProblemDetails from '../models/ProblemDetails';
 import ReportVM from '../models/ReportVM';
+import SelectedFilesVM from '../models/SelectedFilesVM';
 import TemplateCreateVM from '../models/TemplateCreateVM';
 import TemplateFolderCreateVM from '../models/TemplateFolderCreateVM';
 import TemplateVM from '../models/TemplateVM';
@@ -104,6 +106,172 @@ export default class TemplatesApi {
      */
     templateFolderAndFileClearRecycleBin(subscriptionId) {
       return this.templateFolderAndFileClearRecycleBinWithHttpInfo(subscriptionId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Copy folders and files to a specified folder
+     * User with a Get permission for a files and Create permission for a destination folder can access this method.
+     * @param {String} subscriptionId id of current subscription
+     * @param {Object} opts Optional parameters
+     * @param {module:models/SelectedFilesVM} opts.selectedFilesVM VM with files' ids and params of their destination
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     */
+    templateFolderAndFileCopyFilesWithHttpInfo(subscriptionId, opts) {
+      opts = opts || {};
+      let postBody = opts['selectedFilesVM'];
+      // verify the required parameter 'subscriptionId' is set
+      if (subscriptionId === undefined || subscriptionId === null) {
+        throw new Error("Missing the required parameter 'subscriptionId' when calling templateFolderAndFileCopyFiles");
+      }
+
+      let pathParams = {
+        'subscriptionId': subscriptionId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKey', 'JWT'];
+      let contentTypes = ['application/json', 'text/json', 'application/*+json'];
+      let accepts = ['application/json'];
+      let returnType = null;
+      if(!returnType) returnType = 'Blob';
+      return this.apiClient.callApi(
+        '/api/rp/v1/Templates/{subscriptionId}/CopyFiles', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Copy folders and files to a specified folder
+     * User with a Get permission for a files and Create permission for a destination folder can access this method.
+     * @param {String} subscriptionId id of current subscription
+     * @param {Object} opts Optional parameters
+     * @param {module:models/SelectedFilesVM} opts.selectedFilesVM VM with files' ids and params of their destination
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     */
+    templateFolderAndFileCopyFiles(subscriptionId, opts) {
+      return this.templateFolderAndFileCopyFilesWithHttpInfo(subscriptionId, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Count all folders and files from recycle bin
+     * User with a Get DeletedFiles permission can access this method.
+     * @param {String} subscriptionId subscription id
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.searchPattern  (default to '')
+     * @param {Boolean} opts.useRegex  (default to false)
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/CountVM} and HTTP response
+     */
+    templateFolderAndFileCountRecycleBinFoldersAndFilesWithHttpInfo(subscriptionId, opts) {
+      opts = opts || {};
+      let postBody = null;
+      // verify the required parameter 'subscriptionId' is set
+      if (subscriptionId === undefined || subscriptionId === null) {
+        throw new Error("Missing the required parameter 'subscriptionId' when calling templateFolderAndFileCountRecycleBinFoldersAndFiles");
+      }
+
+      let pathParams = {
+        'subscriptionId': subscriptionId
+      };
+      let queryParams = {
+        'searchPattern': opts['searchPattern'],
+        'useRegex': opts['useRegex']
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKey', 'JWT'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = CountVM;
+      if(!returnType) returnType = 'Blob';
+      return this.apiClient.callApi(
+        '/api/rp/v1/Templates/{subscriptionId}/CountRecycleBinFolderAndFiles', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Count all folders and files from recycle bin
+     * User with a Get DeletedFiles permission can access this method.
+     * @param {String} subscriptionId subscription id
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.searchPattern  (default to '')
+     * @param {Boolean} opts.useRegex  (default to false)
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/CountVM}
+     */
+    templateFolderAndFileCountRecycleBinFoldersAndFiles(subscriptionId, opts) {
+      return this.templateFolderAndFileCountRecycleBinFoldersAndFilesWithHttpInfo(subscriptionId, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Delete folders and files
+     * User with a Delete permission can access this method.
+     * @param {String} subscriptionId id of current subscription
+     * @param {Object} opts Optional parameters
+     * @param {module:models/SelectedFilesVM} opts.selectedFilesVM VM with files' ids and params of their destination
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     */
+    templateFolderAndFileDeleteFilesWithHttpInfo(subscriptionId, opts) {
+      opts = opts || {};
+      let postBody = opts['selectedFilesVM'];
+      // verify the required parameter 'subscriptionId' is set
+      if (subscriptionId === undefined || subscriptionId === null) {
+        throw new Error("Missing the required parameter 'subscriptionId' when calling templateFolderAndFileDeleteFiles");
+      }
+
+      let pathParams = {
+        'subscriptionId': subscriptionId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKey', 'JWT'];
+      let contentTypes = ['application/json', 'text/json', 'application/*+json'];
+      let accepts = ['application/json'];
+      let returnType = null;
+      if(!returnType) returnType = 'Blob';
+      return this.apiClient.callApi(
+        '/api/rp/v1/Templates/{subscriptionId}/DeleteFiles', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Delete folders and files
+     * User with a Delete permission can access this method.
+     * @param {String} subscriptionId id of current subscription
+     * @param {Object} opts Optional parameters
+     * @param {module:models/SelectedFilesVM} opts.selectedFilesVM VM with files' ids and params of their destination
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     */
+    templateFolderAndFileDeleteFiles(subscriptionId, opts) {
+      return this.templateFolderAndFileDeleteFilesWithHttpInfo(subscriptionId, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -309,6 +477,114 @@ export default class TemplatesApi {
 
 
     /**
+     * Move folders and files to a specified folder
+     * User with a Update Place permission for a files and Create permission for a destination folder can access this method.
+     * @param {String} subscriptionId id of current subscription
+     * @param {Object} opts Optional parameters
+     * @param {module:models/SelectedFilesVM} opts.selectedFilesVM VM with files' ids and params of their destination
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     */
+    templateFolderAndFileMoveFilesWithHttpInfo(subscriptionId, opts) {
+      opts = opts || {};
+      let postBody = opts['selectedFilesVM'];
+      // verify the required parameter 'subscriptionId' is set
+      if (subscriptionId === undefined || subscriptionId === null) {
+        throw new Error("Missing the required parameter 'subscriptionId' when calling templateFolderAndFileMoveFiles");
+      }
+
+      let pathParams = {
+        'subscriptionId': subscriptionId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKey', 'JWT'];
+      let contentTypes = ['application/json', 'text/json', 'application/*+json'];
+      let accepts = ['application/json'];
+      let returnType = null;
+      if(!returnType) returnType = 'Blob';
+      return this.apiClient.callApi(
+        '/api/rp/v1/Templates/{subscriptionId}/MoveFiles', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Move folders and files to a specified folder
+     * User with a Update Place permission for a files and Create permission for a destination folder can access this method.
+     * @param {String} subscriptionId id of current subscription
+     * @param {Object} opts Optional parameters
+     * @param {module:models/SelectedFilesVM} opts.selectedFilesVM VM with files' ids and params of their destination
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     */
+    templateFolderAndFileMoveFiles(subscriptionId, opts) {
+      return this.templateFolderAndFileMoveFilesWithHttpInfo(subscriptionId, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Move folders and files to bin
+     * User with a Delete permission can access this method.
+     * @param {String} subscriptionId id of current subscription
+     * @param {Object} opts Optional parameters
+     * @param {module:models/SelectedFilesVM} opts.selectedFilesVM VM with files' ids and params of their destination
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     */
+    templateFolderAndFileMoveFilesToBinWithHttpInfo(subscriptionId, opts) {
+      opts = opts || {};
+      let postBody = opts['selectedFilesVM'];
+      // verify the required parameter 'subscriptionId' is set
+      if (subscriptionId === undefined || subscriptionId === null) {
+        throw new Error("Missing the required parameter 'subscriptionId' when calling templateFolderAndFileMoveFilesToBin");
+      }
+
+      let pathParams = {
+        'subscriptionId': subscriptionId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKey', 'JWT'];
+      let contentTypes = ['application/json', 'text/json', 'application/*+json'];
+      let accepts = ['application/json'];
+      let returnType = null;
+      if(!returnType) returnType = 'Blob';
+      return this.apiClient.callApi(
+        '/api/rp/v1/Templates/{subscriptionId}/ToBin', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Move folders and files to bin
+     * User with a Delete permission can access this method.
+     * @param {String} subscriptionId id of current subscription
+     * @param {Object} opts Optional parameters
+     * @param {module:models/SelectedFilesVM} opts.selectedFilesVM VM with files' ids and params of their destination
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     */
+    templateFolderAndFileMoveFilesToBin(subscriptionId, opts) {
+      return this.templateFolderAndFileMoveFilesToBinWithHttpInfo(subscriptionId, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Recover all folders and files from recycle bin
      * User with a Create RecycleBin permission can access this method.
      * @param {String} subscriptionId subscription id
@@ -351,6 +627,109 @@ export default class TemplatesApi {
      */
     templateFolderAndFileRecoverAllFromRecycleBin(subscriptionId) {
       return this.templateFolderAndFileRecoverAllFromRecycleBinWithHttpInfo(subscriptionId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Recover folders and files from bin
+     * User with a SubscriptionCreate permission can access this method.
+     * @param {String} subscriptionId id of current subscription
+     * @param {Object} opts Optional parameters
+     * @param {module:models/SelectedFilesVM} opts.selectedFilesVM VM with files' ids and params of their destination
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     */
+    templateFolderAndFileRecoverFilesWithHttpInfo(subscriptionId, opts) {
+      opts = opts || {};
+      let postBody = opts['selectedFilesVM'];
+      // verify the required parameter 'subscriptionId' is set
+      if (subscriptionId === undefined || subscriptionId === null) {
+        throw new Error("Missing the required parameter 'subscriptionId' when calling templateFolderAndFileRecoverFiles");
+      }
+
+      let pathParams = {
+        'subscriptionId': subscriptionId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKey', 'JWT'];
+      let contentTypes = ['application/json', 'text/json', 'application/*+json'];
+      let accepts = ['application/json'];
+      let returnType = null;
+      if(!returnType) returnType = 'Blob';
+      return this.apiClient.callApi(
+        '/api/rp/v1/Templates/{subscriptionId}/RecoverFiles', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Recover folders and files from bin
+     * User with a SubscriptionCreate permission can access this method.
+     * @param {String} subscriptionId id of current subscription
+     * @param {Object} opts Optional parameters
+     * @param {module:models/SelectedFilesVM} opts.selectedFilesVM VM with files' ids and params of their destination
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     */
+    templateFolderAndFileRecoverFiles(subscriptionId, opts) {
+      return this.templateFolderAndFileRecoverFilesWithHttpInfo(subscriptionId, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Get specified folder, calculate it's size
+     * User with a Get Entity permission can access this method.
+     * @param {String} id folder id
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/FolderSizeVM} and HTTP response
+     */
+    templateFoldersCalculateFolderSizeWithHttpInfo(id) {
+      let postBody = null;
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling templateFoldersCalculateFolderSize");
+      }
+
+      let pathParams = {
+        'id': id
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKey', 'JWT'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = FolderSizeVM;
+      if(!returnType) returnType = 'Blob';
+      return this.apiClient.callApi(
+        '/api/rp/v1/Templates/Folder/{id}/size', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Get specified folder, calculate it's size
+     * User with a Get Entity permission can access this method.
+     * @param {String} id folder id
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/FolderSizeVM}
+     */
+    templateFoldersCalculateFolderSize(id) {
+      return this.templateFoldersCalculateFolderSizeWithHttpInfo(id)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -1419,6 +1798,58 @@ export default class TemplatesApi {
 
 
     /**
+     * Create a new key, that can be used to share access to a file  (You need Administrate.Anon permission to create a new key)
+     * @param {String} id file id
+     * @param {Object} opts Optional parameters
+     * @param {module:models/CreateFileShareVM} opts.createFileShareVM parameters for sharing key creation
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/FileSharingKeysVM} and HTTP response
+     */
+    templatesCreateSharingKeyWithHttpInfo(id, opts) {
+      opts = opts || {};
+      let postBody = opts['createFileShareVM'];
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling templatesCreateSharingKey");
+      }
+
+      let pathParams = {
+        'id': id
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKey', 'JWT'];
+      let contentTypes = ['application/json', 'text/json', 'application/*+json'];
+      let accepts = ['application/json'];
+      let returnType = FileSharingKeysVM;
+      if(!returnType) returnType = 'Blob';
+      return this.apiClient.callApi(
+        '/api/rp/v1/Templates/File/{id}/sharingKey', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Create a new key, that can be used to share access to a file  (You need Administrate.Anon permission to create a new key)
+     * @param {String} id file id
+     * @param {Object} opts Optional parameters
+     * @param {module:models/CreateFileShareVM} opts.createFileShareVM parameters for sharing key creation
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/FileSharingKeysVM}
+     */
+    templatesCreateSharingKey(id, opts) {
+      return this.templatesCreateSharingKeyWithHttpInfo(id, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Delete specified file
      * User with Delete permission can access the method.
      * @param {String} id file id
@@ -1468,9 +1899,63 @@ export default class TemplatesApi {
 
 
     /**
+     * Deletes a sharing key, making links, that utilizing it no longer work
+     * @param {String} id file id
+     * @param {String} key key to delete
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     */
+    templatesDeleteSharingKeyWithHttpInfo(id, key) {
+      let postBody = null;
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling templatesDeleteSharingKey");
+      }
+      // verify the required parameter 'key' is set
+      if (key === undefined || key === null) {
+        throw new Error("Missing the required parameter 'key' when calling templatesDeleteSharingKey");
+      }
+
+      let pathParams = {
+        'id': id,
+        'key': key
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKey', 'JWT'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = null;
+      if(!returnType) returnType = 'Blob';
+      return this.apiClient.callApi(
+        '/api/rp/v1/Templates/File/{id}/sharingKey', 'DELETE',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Deletes a sharing key, making links, that utilizing it no longer work
+     * @param {String} id file id
+     * @param {String} key key to delete
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     */
+    templatesDeleteSharingKey(id, key) {
+      return this.templatesDeleteSharingKeyWithHttpInfo(id, key)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Export specified report template to a specified format
      * User with Execute Export permission on prepared report and  Create Entity on an export folder can access this method.
-     * @param {String} id report id
+     * @param {String} id template id
      * @param {Object} opts Optional parameters
      * @param {module:models/ExportTemplateVM} opts.exportTemplateVM export parameters (string only)
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/ExportVM} and HTTP response
@@ -1508,7 +1993,7 @@ export default class TemplatesApi {
     /**
      * Export specified report template to a specified format
      * User with Execute Export permission on prepared report and  Create Entity on an export folder can access this method.
-     * @param {String} id report id
+     * @param {String} id template id
      * @param {Object} opts Optional parameters
      * @param {module:models/ExportTemplateVM} opts.exportTemplateVM export parameters (string only)
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/ExportVM}
@@ -1744,7 +2229,6 @@ export default class TemplatesApi {
 
 
     /**
-     * Get all file permissions
      * @param {String} id 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/FilePermissionsVM} and HTTP response
      */
@@ -1778,7 +2262,6 @@ export default class TemplatesApi {
     }
 
     /**
-     * Get all file permissions
      * @param {String} id 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/FilePermissionsVM}
      */
@@ -1791,8 +2274,55 @@ export default class TemplatesApi {
 
 
     /**
+     * Returns all sharing keys, associated with the file
+     * @param {String} id file id
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/FileSharingKeysVM} and HTTP response
+     */
+    templatesGetSharingKeysWithHttpInfo(id) {
+      let postBody = null;
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling templatesGetSharingKeys");
+      }
+
+      let pathParams = {
+        'id': id
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKey', 'JWT'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = FileSharingKeysVM;
+      if(!returnType) returnType = 'Blob';
+      return this.apiClient.callApi(
+        '/api/rp/v1/Templates/File/{id}/sharingKeys', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Returns all sharing keys, associated with the file
+     * @param {String} id file id
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/FileSharingKeysVM}
+     */
+    templatesGetSharingKeys(id) {
+      return this.templatesGetSharingKeysWithHttpInfo(id)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Move file to a specified folder
-     * User with Update Place permission can access this method.
+     * User with a Update Place permission for a folder and Create Entity  for a Parent Folder can access this method.
      * @param {String} id file id
      * @param {String} folderId folder id
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/TemplateVM} and HTTP response
@@ -1833,7 +2363,7 @@ export default class TemplatesApi {
 
     /**
      * Move file to a specified folder
-     * User with Update Place permission can access this method.
+     * User with a Update Place permission for a folder and Create Entity  for a Parent Folder can access this method.
      * @param {String} id file id
      * @param {String} folderId folder id
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/TemplateVM}
@@ -2111,7 +2641,7 @@ export default class TemplatesApi {
 
 
     /**
-     * Updates contnet of the template
+     * Updates contnet of the template. The method is deprecated, use the UpdateContentV2 method instead!
      * @param {String} id template id
      * @param {Object} opts Optional parameters
      * @param {module:models/UpdateFileContentVM} opts.updateFileContentVM VM with only byte[] with new content
@@ -2148,7 +2678,7 @@ export default class TemplatesApi {
     }
 
     /**
-     * Updates contnet of the template
+     * Updates contnet of the template. The method is deprecated, use the UpdateContentV2 method instead!
      * @param {String} id template id
      * @param {Object} opts Optional parameters
      * @param {module:models/UpdateFileContentVM} opts.updateFileContentVM VM with only byte[] with new content
@@ -2156,6 +2686,60 @@ export default class TemplatesApi {
      */
     templatesUpdateContent(id, opts) {
       return this.templatesUpdateContentWithHttpInfo(id, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Updates contnet of the template.
+     * @param {String} id template id
+     * @param {File} fileContent 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     */
+    templatesUpdateContentV2WithHttpInfo(id, fileContent) {
+      let postBody = null;
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling templatesUpdateContentV2");
+      }
+      // verify the required parameter 'fileContent' is set
+      if (fileContent === undefined || fileContent === null) {
+        throw new Error("Missing the required parameter 'fileContent' when calling templatesUpdateContentV2");
+      }
+
+      let pathParams = {
+        'id': id
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+        'FileContent': fileContent
+      };
+
+      let authNames = ['ApiKey', 'JWT'];
+      let contentTypes = ['multipart/form-data'];
+      let accepts = ['application/json'];
+      let returnType = null;
+      if(!returnType) returnType = 'Blob';
+      return this.apiClient.callApi(
+        '/api/rp/v2/Templates/File/{id}/Content', 'PUT',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Updates contnet of the template.
+     * @param {String} id template id
+     * @param {File} fileContent 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     */
+    templatesUpdateContentV2(id, fileContent) {
+      return this.templatesUpdateContentV2WithHttpInfo(id, fileContent)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -2323,7 +2907,7 @@ export default class TemplatesApi {
 
 
     /**
-     * Upload a file to the specified folder  !
+     * Upload a file to the specified folder. The method is deprecated, use the UploadFileV2 method instead!
      * User with Create Entity permission can access this method.
      * @param {String} id Identifier of folder
      * @param {Object} opts Optional parameters
@@ -2361,7 +2945,7 @@ export default class TemplatesApi {
     }
 
     /**
-     * Upload a file to the specified folder  !
+     * Upload a file to the specified folder. The method is deprecated, use the UploadFileV2 method instead!
      * User with Create Entity permission can access this method.
      * @param {String} id Identifier of folder
      * @param {Object} opts Optional parameters
@@ -2370,6 +2954,71 @@ export default class TemplatesApi {
      */
     templatesUploadFile(id, opts) {
       return this.templatesUploadFileWithHttpInfo(id, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Alternative api for upload a file to the specified folder!
+     * User with Create Entity permission can access this method.
+     * @param {String} id Identifier of folder
+     * @param {File} fileContent 
+     * @param {Object} opts Optional parameters
+     * @param {Array.<String>} opts.tags 
+     * @param {File} opts.icon 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/TemplateVM} and HTTP response
+     */
+    templatesUploadFileV2WithHttpInfo(id, fileContent, opts) {
+      opts = opts || {};
+      let postBody = null;
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling templatesUploadFileV2");
+      }
+      // verify the required parameter 'fileContent' is set
+      if (fileContent === undefined || fileContent === null) {
+        throw new Error("Missing the required parameter 'fileContent' when calling templatesUploadFileV2");
+      }
+
+      let pathParams = {
+        'id': id
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+        'Tags': this.apiClient.buildCollectionParam(opts['tags'], 'multi'),
+        'Icon': opts['icon'],
+        'FileContent': fileContent
+      };
+
+      let authNames = ['ApiKey', 'JWT'];
+      let contentTypes = ['multipart/form-data'];
+      let accepts = ['application/json'];
+      let returnType = TemplateVM;
+      if(!returnType) returnType = 'Blob';
+      return this.apiClient.callApi(
+        '/api/rp/v2/Templates/Folder/{id}/File', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Alternative api for upload a file to the specified folder!
+     * User with Create Entity permission can access this method.
+     * @param {String} id Identifier of folder
+     * @param {File} fileContent 
+     * @param {Object} opts Optional parameters
+     * @param {Array.<String>} opts.tags 
+     * @param {File} opts.icon 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/TemplateVM}
+     */
+    templatesUploadFileV2(id, fileContent, opts) {
+      return this.templatesUploadFileV2WithHttpInfo(id, fileContent, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

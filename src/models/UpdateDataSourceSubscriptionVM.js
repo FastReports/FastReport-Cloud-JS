@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import CloudBaseVM from './CloudBaseVM';
 
 /**
  * The UpdateDataSourceSubscriptionVM model module.
@@ -22,11 +23,13 @@ class UpdateDataSourceSubscriptionVM {
     /**
      * Constructs a new <code>UpdateDataSourceSubscriptionVM</code>.
      * @alias module:models/UpdateDataSourceSubscriptionVM
-     * @param subscriptionId {String} 
+     * @extends module:models/CloudBaseVM
+     * @implements module:models/CloudBaseVM
+     * @param t {String} 
      */
-    constructor(subscriptionId) { 
-        
-        UpdateDataSourceSubscriptionVM.initialize(this, subscriptionId);
+    constructor(t) { 
+        CloudBaseVM.initialize(this, t);
+        UpdateDataSourceSubscriptionVM.initialize(this, t);
     }
 
     /**
@@ -34,8 +37,9 @@ class UpdateDataSourceSubscriptionVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, subscriptionId) { 
+    static initialize(obj, t) { 
         obj['subscriptionId'] = subscriptionId;
+        obj['$t'] = t;
     }
 
     /**
@@ -48,9 +52,14 @@ class UpdateDataSourceSubscriptionVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new UpdateDataSourceSubscriptionVM();
+            CloudBaseVM.constructFromObject(data, obj);
+            CloudBaseVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('subscriptionId')) {
                 obj['subscriptionId'] = ApiClient.convertToType(data['subscriptionId'], 'String');
+            }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
             }
         }
         return obj;
@@ -64,13 +73,17 @@ class UpdateDataSourceSubscriptionVM {
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
         for (const property of UpdateDataSourceSubscriptionVM.RequiredProperties) {
-            if (!data[property]) {
+            if (!data.hasOwnProperty(property)) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
         // ensure the json data is a string
         if (data['subscriptionId'] && !(typeof data['subscriptionId'] === 'string' || data['subscriptionId'] instanceof String)) {
             throw new Error("Expected the field `subscriptionId` to be a primitive type in the JSON string but got " + data['subscriptionId']);
+        }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
         }
 
         return true;
@@ -79,14 +92,24 @@ class UpdateDataSourceSubscriptionVM {
 
 }
 
-UpdateDataSourceSubscriptionVM.RequiredProperties = ["subscriptionId"];
+UpdateDataSourceSubscriptionVM.RequiredProperties = ["subscriptionId", "$t"];
 
 /**
  * @member {String} subscriptionId
  */
 UpdateDataSourceSubscriptionVM.prototype['subscriptionId'] = undefined;
 
+/**
+ * @member {String} $t
+ */
+UpdateDataSourceSubscriptionVM.prototype['$t'] = undefined;
 
+
+// Implement CloudBaseVM interface:
+/**
+ * @member {String} $t
+ */
+CloudBaseVM.prototype['$t'] = undefined;
 
 
 

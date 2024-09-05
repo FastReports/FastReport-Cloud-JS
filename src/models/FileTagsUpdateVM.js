@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import CloudBaseVM from './CloudBaseVM';
 
 /**
  * The FileTagsUpdateVM model module.
@@ -22,10 +23,13 @@ class FileTagsUpdateVM {
     /**
      * Constructs a new <code>FileTagsUpdateVM</code>.
      * @alias module:models/FileTagsUpdateVM
+     * @extends module:models/CloudBaseVM
+     * @implements module:models/CloudBaseVM
+     * @param t {String} 
      */
-    constructor() { 
-        
-        FileTagsUpdateVM.initialize(this);
+    constructor(t) { 
+        CloudBaseVM.initialize(this, t);
+        FileTagsUpdateVM.initialize(this, t);
     }
 
     /**
@@ -33,7 +37,8 @@ class FileTagsUpdateVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -46,9 +51,14 @@ class FileTagsUpdateVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new FileTagsUpdateVM();
+            CloudBaseVM.constructFromObject(data, obj);
+            CloudBaseVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('tags')) {
                 obj['tags'] = ApiClient.convertToType(data['tags'], ['String']);
+            }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
             }
         }
         return obj;
@@ -60,9 +70,19 @@ class FileTagsUpdateVM {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>FileTagsUpdateVM</code>.
      */
     static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of FileTagsUpdateVM.RequiredProperties) {
+            if (!data.hasOwnProperty(property)) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
         // ensure the json data is an array
         if (!Array.isArray(data['tags'])) {
             throw new Error("Expected the field `tags` to be an array in the JSON data but got " + data['tags']);
+        }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
         }
 
         return true;
@@ -71,14 +91,24 @@ class FileTagsUpdateVM {
 
 }
 
-
+FileTagsUpdateVM.RequiredProperties = ["$t"];
 
 /**
  * @member {Array.<String>} tags
  */
 FileTagsUpdateVM.prototype['tags'] = undefined;
 
+/**
+ * @member {String} $t
+ */
+FileTagsUpdateVM.prototype['$t'] = undefined;
 
+
+// Implement CloudBaseVM interface:
+/**
+ * @member {String} $t
+ */
+CloudBaseVM.prototype['$t'] = undefined;
 
 
 

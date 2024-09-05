@@ -5,5 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **locale** | **String** |  | 
+**t** | **String** |  | 
 
 

@@ -12,8 +12,9 @@
  */
 
 import ApiClient from '../ApiClient';
+import CloudBaseVM from './CloudBaseVM';
 import SubscriptionAdministrate from './SubscriptionAdministrate';
-import SubscriptionPermissions from './SubscriptionPermissions';
+import SubscriptionPermissionsCRUDVM from './SubscriptionPermissionsCRUDVM';
 
 /**
  * The UpdateSubscriptionPermissionsVM model module.
@@ -24,12 +25,13 @@ class UpdateSubscriptionPermissionsVM {
     /**
      * Constructs a new <code>UpdateSubscriptionPermissionsVM</code>.
      * @alias module:models/UpdateSubscriptionPermissionsVM
-     * @param newPermissions {module:models/SubscriptionPermissions} 
-     * @param administrate {module:models/SubscriptionAdministrate} 
+     * @extends module:models/CloudBaseVM
+     * @implements module:models/CloudBaseVM
+     * @param t {String} 
      */
-    constructor(newPermissions, administrate) { 
-        
-        UpdateSubscriptionPermissionsVM.initialize(this, newPermissions, administrate);
+    constructor(t) { 
+        CloudBaseVM.initialize(this, t);
+        UpdateSubscriptionPermissionsVM.initialize(this, t);
     }
 
     /**
@@ -37,9 +39,10 @@ class UpdateSubscriptionPermissionsVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, newPermissions, administrate) { 
+    static initialize(obj, t) { 
         obj['newPermissions'] = newPermissions;
         obj['administrate'] = administrate;
+        obj['$t'] = t;
     }
 
     /**
@@ -52,12 +55,17 @@ class UpdateSubscriptionPermissionsVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new UpdateSubscriptionPermissionsVM();
+            CloudBaseVM.constructFromObject(data, obj);
+            CloudBaseVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('newPermissions')) {
-                obj['newPermissions'] = SubscriptionPermissions.constructFromObject(data['newPermissions']);
+                obj['newPermissions'] = SubscriptionPermissionsCRUDVM.constructFromObject(data['newPermissions']);
             }
             if (data.hasOwnProperty('administrate')) {
                 obj['administrate'] = SubscriptionAdministrate.constructFromObject(data['administrate']);
+            }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
             }
         }
         return obj;
@@ -71,13 +79,17 @@ class UpdateSubscriptionPermissionsVM {
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
         for (const property of UpdateSubscriptionPermissionsVM.RequiredProperties) {
-            if (!data[property]) {
+            if (!data.hasOwnProperty(property)) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
         // validate the optional field `newPermissions`
         if (data['newPermissions']) { // data not null
-          SubscriptionPermissions.validateJSON(data['newPermissions']);
+          SubscriptionPermissionsCRUDVM.validateJSON(data['newPermissions']);
+        }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
         }
 
         return true;
@@ -86,10 +98,10 @@ class UpdateSubscriptionPermissionsVM {
 
 }
 
-UpdateSubscriptionPermissionsVM.RequiredProperties = ["newPermissions", "administrate"];
+UpdateSubscriptionPermissionsVM.RequiredProperties = ["newPermissions", "administrate", "$t"];
 
 /**
- * @member {module:models/SubscriptionPermissions} newPermissions
+ * @member {module:models/SubscriptionPermissionsCRUDVM} newPermissions
  */
 UpdateSubscriptionPermissionsVM.prototype['newPermissions'] = undefined;
 
@@ -98,7 +110,17 @@ UpdateSubscriptionPermissionsVM.prototype['newPermissions'] = undefined;
  */
 UpdateSubscriptionPermissionsVM.prototype['administrate'] = undefined;
 
+/**
+ * @member {String} $t
+ */
+UpdateSubscriptionPermissionsVM.prototype['$t'] = undefined;
 
+
+// Implement CloudBaseVM interface:
+/**
+ * @member {String} $t
+ */
+CloudBaseVM.prototype['$t'] = undefined;
 
 
 

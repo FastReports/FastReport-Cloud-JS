@@ -4,7 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**newPermissions** | [**SubscriptionPermissions**](SubscriptionPermissions.md) |  | 
+**newPermissions** | [**SubscriptionPermissionsCRUDVM**](SubscriptionPermissionsCRUDVM.md) |  | 
 **administrate** | [**SubscriptionAdministrate**](SubscriptionAdministrate.md) |  | 
+**t** | **String** |  | 
 
 

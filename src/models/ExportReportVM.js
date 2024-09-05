@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import CloudBaseVM from './CloudBaseVM';
 import ExportFormat from './ExportFormat';
 
 /**
@@ -23,10 +24,13 @@ class ExportReportVM {
     /**
      * Constructs a new <code>ExportReportVM</code>.
      * @alias module:models/ExportReportVM
+     * @extends module:models/CloudBaseVM
+     * @implements module:models/CloudBaseVM
+     * @param t {String} 
      */
-    constructor() { 
-        
-        ExportReportVM.initialize(this);
+    constructor(t) { 
+        CloudBaseVM.initialize(this, t);
+        ExportReportVM.initialize(this, t);
     }
 
     /**
@@ -34,7 +38,8 @@ class ExportReportVM {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, t) { 
+        obj['$t'] = t;
     }
 
     /**
@@ -47,6 +52,8 @@ class ExportReportVM {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new ExportReportVM();
+            CloudBaseVM.constructFromObject(data, obj);
+            CloudBaseVM.constructFromObject(data, obj);
 
             if (data.hasOwnProperty('fileName')) {
                 obj['fileName'] = ApiClient.convertToType(data['fileName'], 'String');
@@ -66,6 +73,9 @@ class ExportReportVM {
             if (data.hasOwnProperty('exportParameters')) {
                 obj['exportParameters'] = ApiClient.convertToType(data['exportParameters'], {'String': 'String'});
             }
+            if (data.hasOwnProperty('$t')) {
+                obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
+            }
         }
         return obj;
     }
@@ -76,6 +86,12 @@ class ExportReportVM {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>ExportReportVM</code>.
      */
     static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of ExportReportVM.RequiredProperties) {
+            if (!data.hasOwnProperty(property)) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
         // ensure the json data is a string
         if (data['fileName'] && !(typeof data['fileName'] === 'string' || data['fileName'] instanceof String)) {
             throw new Error("Expected the field `fileName` to be a primitive type in the JSON string but got " + data['fileName']);
@@ -88,6 +104,10 @@ class ExportReportVM {
         if (data['locale'] && !(typeof data['locale'] === 'string' || data['locale'] instanceof String)) {
             throw new Error("Expected the field `locale` to be a primitive type in the JSON string but got " + data['locale']);
         }
+        // ensure the json data is a string
+        if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
+            throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
+        }
 
         return true;
     }
@@ -95,7 +115,7 @@ class ExportReportVM {
 
 }
 
-
+ExportReportVM.RequiredProperties = ["$t"];
 
 /**
  * @member {String} fileName
@@ -127,7 +147,17 @@ ExportReportVM.prototype['format'] = undefined;
  */
 ExportReportVM.prototype['exportParameters'] = undefined;
 
+/**
+ * @member {String} $t
+ */
+ExportReportVM.prototype['$t'] = undefined;
 
+
+// Implement CloudBaseVM interface:
+/**
+ * @member {String} $t
+ */
+CloudBaseVM.prototype['$t'] = undefined;
 
 
 
