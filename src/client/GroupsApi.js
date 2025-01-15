@@ -14,6 +14,7 @@
 
 import ApiClient from "../ApiClient";
 import CreateGroupVM from '../models/CreateGroupVM';
+import GroupPermissionCRUDVM from '../models/GroupPermissionCRUDVM';
 import GroupPermissionsVM from '../models/GroupPermissionsVM';
 import GroupVM from '../models/GroupVM';
 import GroupsVM from '../models/GroupsVM';
@@ -223,6 +224,53 @@ export default class GroupsApi {
      */
     groupsGetGroupList(opts) {
       return this.groupsGetGroupListWithHttpInfo(opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Get current user's permissions to group
+     * @param {String} id Identifier of group
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/GroupPermissionCRUDVM} and HTTP response
+     */
+    groupsGetMyPermissionsWithHttpInfo(id) {
+      let postBody = null;
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling groupsGetMyPermissions");
+      }
+
+      let pathParams = {
+        'id': id
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKey', 'JWT'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = GroupPermissionCRUDVM;
+      if(!returnType) returnType = 'Blob';
+      return this.apiClient.callApi(
+        '/api/manage/v1/Groups/{id}/mypermissions', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Get current user's permissions to group
+     * @param {String} id Identifier of group
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/GroupPermissionCRUDVM}
+     */
+    groupsGetMyPermissions(id) {
+      return this.groupsGetMyPermissionsWithHttpInfo(id)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

@@ -59,6 +59,9 @@ class ServerConfigurationVM {
             if (data.hasOwnProperty('title')) {
                 obj['title'] = ApiClient.convertToType(data['title'], 'String');
             }
+            if (data.hasOwnProperty('companyName')) {
+                obj['companyName'] = ApiClient.convertToType(data['companyName'], 'String');
+            }
             if (data.hasOwnProperty('logoLink')) {
                 obj['logoLink'] = ApiClient.convertToType(data['logoLink'], 'String');
             }
@@ -131,6 +134,10 @@ class ServerConfigurationVM {
             throw new Error("Expected the field `title` to be a primitive type in the JSON string but got " + data['title']);
         }
         // ensure the json data is a string
+        if (data['companyName'] && !(typeof data['companyName'] === 'string' || data['companyName'] instanceof String)) {
+            throw new Error("Expected the field `companyName` to be a primitive type in the JSON string but got " + data['companyName']);
+        }
+        // ensure the json data is a string
         if (data['logoLink'] && !(typeof data['logoLink'] === 'string' || data['logoLink'] instanceof String)) {
             throw new Error("Expected the field `logoLink` to be a primitive type in the JSON string but got " + data['logoLink']);
         }
@@ -191,6 +198,11 @@ ServerConfigurationVM.RequiredProperties = ["$t"];
  * @member {String} title
  */
 ServerConfigurationVM.prototype['title'] = undefined;
+
+/**
+ * @member {String} companyName
+ */
+ServerConfigurationVM.prototype['companyName'] = undefined;
 
 /**
  * @member {String} logoLink

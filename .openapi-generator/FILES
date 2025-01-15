@@ -187,6 +187,8 @@ docs/ReportCreateFormVM.md
 docs/ReportCreateVM.md
 docs/ReportFolderCreateVM.md
 docs/ReportInfo.md
+docs/ReportParameter.md
+docs/ReportParametersVM.md
 docs/ReportVM.md
 docs/ReportsApi.md
 docs/ReportsVM.md
@@ -505,6 +507,8 @@ src/models/ReportCreateFormVM.js
 src/models/ReportCreateVM.js
 src/models/ReportFolderCreateVM.js
 src/models/ReportInfo.js
+src/models/ReportParameter.js
+src/models/ReportParametersVM.js
 src/models/ReportVM.js
 src/models/ReportsVM.js
 src/models/RestOfSpaceVM.js
@@ -807,6 +811,8 @@ test/model/ReportCreateFormVM.spec.js
 test/model/ReportCreateVM.spec.js
 test/model/ReportFolderCreateVM.spec.js
 test/model/ReportInfo.spec.js
+test/model/ReportParameter.spec.js
+test/model/ReportParametersVM.spec.js
 test/model/ReportVM.spec.js
 test/model/ReportsVM.spec.js
 test/model/RestOfSpaceVM.spec.js

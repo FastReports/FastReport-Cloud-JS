@@ -185,6 +185,8 @@ import ReportCreateFormVM from './models/ReportCreateFormVM';
 import ReportCreateVM from './models/ReportCreateVM';
 import ReportFolderCreateVM from './models/ReportFolderCreateVM';
 import ReportInfo from './models/ReportInfo';
+import ReportParameter from './models/ReportParameter';
+import ReportParametersVM from './models/ReportParametersVM';
 import ReportVM from './models/ReportVM';
 import ReportsVM from './models/ReportsVM';
 import RestOfSpaceVM from './models/RestOfSpaceVM';
@@ -1386,6 +1388,18 @@ export {
      * @property {module:models/ReportInfo}
      */
     ReportInfo,
+
+    /**
+     * The ReportParameter model constructor.
+     * @property {module:models/ReportParameter}
+     */
+    ReportParameter,
+
+    /**
+     * The ReportParametersVM model constructor.
+     * @property {module:models/ReportParametersVM}
+     */
+    ReportParametersVM,
 
     /**
      * The ReportVM model constructor.

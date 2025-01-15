@@ -92,6 +92,7 @@ Class | Method | HTTP request | Description
 *FastreportCloudSdk.DataSourcesApi* | [**dataSourcesFetchData**](docs/DataSourcesApi.md#dataSourcesFetchData) | **GET** /api/data/v1/DataSources/{id}/fetch | This should connect to a database and set data structure
 *FastreportCloudSdk.DataSourcesApi* | [**dataSourcesGetAvailableDataSources**](docs/DataSourcesApi.md#dataSourcesGetAvailableDataSources) | **GET** /api/data/v1/DataSources | Returns all of the data sources, that current user have permission for in a subscription &lt;br /&gt;  The method will return minimal infomration about the datasources: &lt;br /&gt;  id, name, editedTime, status.
 *FastreportCloudSdk.DataSourcesApi* | [**dataSourcesGetDataSource**](docs/DataSourcesApi.md#dataSourcesGetDataSource) | **GET** /api/data/v1/DataSources/{id} | Get data source by id
+*FastreportCloudSdk.DataSourcesApi* | [**dataSourcesGetMyPermissions**](docs/DataSourcesApi.md#dataSourcesGetMyPermissions) | **GET** /api/data/v1/DataSources/{id}/mypermissions | Get current user&#39;s permissions to Data source
 *FastreportCloudSdk.DataSourcesApi* | [**dataSourcesGetParameterTypes**](docs/DataSourcesApi.md#dataSourcesGetParameterTypes) | **GET** /api/data/v1/DataSources/parameterTypes/{dataSourceType} | Get data source parameter DataType&#39;s
 *FastreportCloudSdk.DataSourcesApi* | [**dataSourcesGetPermissions**](docs/DataSourcesApi.md#dataSourcesGetPermissions) | **GET** /api/data/v1/DataSources/{id}/permissions | Get all Data source permissions
 *FastreportCloudSdk.DataSourcesApi* | [**dataSourcesRenameDataSource**](docs/DataSourcesApi.md#dataSourcesRenameDataSource) | **PUT** /api/data/v1/DataSources/{id}/rename | Rename data source by id
@@ -127,6 +128,7 @@ Class | Method | HTTP request | Description
 *FastreportCloudSdk.ExportsApi* | [**exportFoldersGetFolder**](docs/ExportsApi.md#exportFoldersGetFolder) | **GET** /api/rp/v1/Exports/Folder/{id} | Get specified folder
 *FastreportCloudSdk.ExportsApi* | [**exportFoldersGetFolders**](docs/ExportsApi.md#exportFoldersGetFolders) | **GET** /api/rp/v1/Exports/Folder/{id}/ListFolders | Get all folders from specified folder
 *FastreportCloudSdk.ExportsApi* | [**exportFoldersGetFoldersCount**](docs/ExportsApi.md#exportFoldersGetFoldersCount) | **GET** /api/rp/v1/Exports/Folder/{id}/CountFolders | Get count of folders what contains in a specified folder
+*FastreportCloudSdk.ExportsApi* | [**exportFoldersGetMyPermissions**](docs/ExportsApi.md#exportFoldersGetMyPermissions) | **GET** /api/rp/v1/Exports/Folder/{folderId}/mypermissions | Get user&#39;s permissions for a folder by id
 *FastreportCloudSdk.ExportsApi* | [**exportFoldersGetOrCreate**](docs/ExportsApi.md#exportFoldersGetOrCreate) | **GET** /api/rp/v1/Exports/Folder/getOrCreate | Get specified folder
 *FastreportCloudSdk.ExportsApi* | [**exportFoldersGetPermissions**](docs/ExportsApi.md#exportFoldersGetPermissions) | **GET** /api/rp/v1/Exports/Folder/{id}/permissions | Get all folder permissions
 *FastreportCloudSdk.ExportsApi* | [**exportFoldersGetRootFolder**](docs/ExportsApi.md#exportFoldersGetRootFolder) | **GET** /api/rp/v1/Exports/Root | Get user&#39;s root folder (without parents)
@@ -142,10 +144,13 @@ Class | Method | HTTP request | Description
 *FastreportCloudSdk.ExportsApi* | [**exportsCreateSharingKey**](docs/ExportsApi.md#exportsCreateSharingKey) | **POST** /api/rp/v1/Exports/File/{id}/sharingKey | Create a new key, that can be used to share access to a file  (You need Administrate.Anon permission to create a new key)
 *FastreportCloudSdk.ExportsApi* | [**exportsDeleteFile**](docs/ExportsApi.md#exportsDeleteFile) | **DELETE** /api/rp/v1/Exports/File/{id} | Delete specified file
 *FastreportCloudSdk.ExportsApi* | [**exportsDeleteSharingKey**](docs/ExportsApi.md#exportsDeleteSharingKey) | **DELETE** /api/rp/v1/Exports/File/{id}/sharingKey | Deletes a sharing key, making links, that utilizing it no longer work
+*FastreportCloudSdk.ExportsApi* | [**exportsGetByTaskId**](docs/ExportsApi.md#exportsGetByTaskId) | **GET** /api/rp/v1/Exports/File/Task/{taskId} | Get exports by specified task id
+*FastreportCloudSdk.ExportsApi* | [**exportsGetByTaskMessageId**](docs/ExportsApi.md#exportsGetByTaskMessageId) | **GET** /api/rp/v1/Exports/File/TaskMessage/{taskMessageId} | Get export by specified task message id
 *FastreportCloudSdk.ExportsApi* | [**exportsGetFile**](docs/ExportsApi.md#exportsGetFile) | **GET** /api/rp/v1/Exports/File/{id} | Get export by specified id
 *FastreportCloudSdk.ExportsApi* | [**exportsGetFileHistory**](docs/ExportsApi.md#exportsGetFileHistory) | **GET** /api/rp/v1/Exports/File/{id}/History | Returns list of actions, performed on this file
 *FastreportCloudSdk.ExportsApi* | [**exportsGetFilesCount**](docs/ExportsApi.md#exportsGetFilesCount) | **GET** /api/rp/v1/Exports/Folder/{id}/CountFiles | Get count of files what contains in a specified folder
 *FastreportCloudSdk.ExportsApi* | [**exportsGetFilesList**](docs/ExportsApi.md#exportsGetFilesList) | **GET** /api/rp/v1/Exports/Folder/{id}/ListFiles | Get all files from specified folder. &lt;br /&gt;  User with Get Entity permission can access this method. &lt;br /&gt;  The method will returns minimal infomration about the file: &lt;br /&gt;  id, name, size, editedTime, createdTime, tags, status, statusReason.
+*FastreportCloudSdk.ExportsApi* | [**exportsGetMyPermissions**](docs/ExportsApi.md#exportsGetMyPermissions) | **GET** /api/rp/v1/Exports/File/{id}/mypermissions | Get current user&#39;s permissions to file
 *FastreportCloudSdk.ExportsApi* | [**exportsGetPermissions**](docs/ExportsApi.md#exportsGetPermissions) | **GET** /api/rp/v1/Exports/File/{id}/permissions | 
 *FastreportCloudSdk.ExportsApi* | [**exportsGetSharingKeys**](docs/ExportsApi.md#exportsGetSharingKeys) | **GET** /api/rp/v1/Exports/File/{id}/sharingKeys | Returns all sharing keys, associated with the file
 *FastreportCloudSdk.ExportsApi* | [**exportsMoveFile**](docs/ExportsApi.md#exportsMoveFile) | **POST** /api/rp/v1/Exports/File/{id}/Move/{folderId} | Move file to a specified folder
@@ -163,6 +168,7 @@ Class | Method | HTTP request | Description
 *FastreportCloudSdk.GroupsApi* | [**groupsDeleteGroup**](docs/GroupsApi.md#groupsDeleteGroup) | **DELETE** /api/manage/v1/Groups/{id} | Delete group by identifier
 *FastreportCloudSdk.GroupsApi* | [**groupsGetGroup**](docs/GroupsApi.md#groupsGetGroup) | **GET** /api/manage/v1/Groups/{id} | Gets group by identifier
 *FastreportCloudSdk.GroupsApi* | [**groupsGetGroupList**](docs/GroupsApi.md#groupsGetGroupList) | **GET** /api/manage/v1/Groups | Returns a list of current user&#39;s groups&lt;br /&gt;  This method will return following data about groups : &lt;br /&gt;  Id, Name, Created time (UTC), Edited time (UTC), creator id, &lt;br /&gt;  editor id, subscription id
+*FastreportCloudSdk.GroupsApi* | [**groupsGetMyPermissions**](docs/GroupsApi.md#groupsGetMyPermissions) | **GET** /api/manage/v1/Groups/{id}/mypermissions | Get current user&#39;s permissions to group
 *FastreportCloudSdk.GroupsApi* | [**groupsGetPermissions**](docs/GroupsApi.md#groupsGetPermissions) | **GET** /api/manage/v1/Groups/{id}/permissions | Gets group permissions by identifier
 *FastreportCloudSdk.GroupsApi* | [**groupsRenameGroup**](docs/GroupsApi.md#groupsRenameGroup) | **PUT** /api/manage/v1/Groups/{id}/rename | Rename group by identifier
 *FastreportCloudSdk.GroupsApi* | [**groupsUpdatePermissions**](docs/GroupsApi.md#groupsUpdatePermissions) | **POST** /api/manage/v1/Groups/{id}/permissions | Update permissions
@@ -186,6 +192,7 @@ Class | Method | HTTP request | Description
 *FastreportCloudSdk.ReportsApi* | [**reportFoldersGetFolder**](docs/ReportsApi.md#reportFoldersGetFolder) | **GET** /api/rp/v1/Reports/Folder/{id} | Get specified folder
 *FastreportCloudSdk.ReportsApi* | [**reportFoldersGetFolders**](docs/ReportsApi.md#reportFoldersGetFolders) | **GET** /api/rp/v1/Reports/Folder/{id}/ListFolders | Get all folders from specified folder
 *FastreportCloudSdk.ReportsApi* | [**reportFoldersGetFoldersCount**](docs/ReportsApi.md#reportFoldersGetFoldersCount) | **GET** /api/rp/v1/Reports/Folder/{id}/CountFolders | Get count of folders what contains in a specified folder
+*FastreportCloudSdk.ReportsApi* | [**reportFoldersGetMyPermissions**](docs/ReportsApi.md#reportFoldersGetMyPermissions) | **GET** /api/rp/v1/Reports/Folder/{folderId}/mypermissions | Get user&#39;s permissions for a folder by id
 *FastreportCloudSdk.ReportsApi* | [**reportFoldersGetOrCreate**](docs/ReportsApi.md#reportFoldersGetOrCreate) | **GET** /api/rp/v1/Reports/Folder/getOrCreate | Get specified folder
 *FastreportCloudSdk.ReportsApi* | [**reportFoldersGetPermissions**](docs/ReportsApi.md#reportFoldersGetPermissions) | **GET** /api/rp/v1/Reports/Folder/{id}/permissions | Get all folder permissions
 *FastreportCloudSdk.ReportsApi* | [**reportFoldersGetRootFolder**](docs/ReportsApi.md#reportFoldersGetRootFolder) | **GET** /api/rp/v1/Reports/Root | Get user&#39;s root folder (without parents)
@@ -202,10 +209,13 @@ Class | Method | HTTP request | Description
 *FastreportCloudSdk.ReportsApi* | [**reportsDeleteFile**](docs/ReportsApi.md#reportsDeleteFile) | **DELETE** /api/rp/v1/Reports/File/{id} | Delete specified file
 *FastreportCloudSdk.ReportsApi* | [**reportsDeleteSharingKey**](docs/ReportsApi.md#reportsDeleteSharingKey) | **DELETE** /api/rp/v1/Reports/File/{id}/sharingKey | Deletes a sharing key, making links, that utilizing it no longer work
 *FastreportCloudSdk.ReportsApi* | [**reportsExport**](docs/ReportsApi.md#reportsExport) | **POST** /api/rp/v1/Reports/File/{id}/Export | Export specified report to a specified format
+*FastreportCloudSdk.ReportsApi* | [**reportsGetByTaskId**](docs/ReportsApi.md#reportsGetByTaskId) | **GET** /api/rp/v1/Reports/File/Task/{taskId} | Get reports by specified task id
+*FastreportCloudSdk.ReportsApi* | [**reportsGetByTaskMessageId**](docs/ReportsApi.md#reportsGetByTaskMessageId) | **GET** /api/rp/v1/Reports/File/TaskMessage/{taskMessageId} | Get report by specified task message id
 *FastreportCloudSdk.ReportsApi* | [**reportsGetFile**](docs/ReportsApi.md#reportsGetFile) | **GET** /api/rp/v1/Reports/File/{id} | Get specified file
 *FastreportCloudSdk.ReportsApi* | [**reportsGetFileHistory**](docs/ReportsApi.md#reportsGetFileHistory) | **GET** /api/rp/v1/Reports/File/{id}/History | Returns list of actions, performed on this file
 *FastreportCloudSdk.ReportsApi* | [**reportsGetFilesCount**](docs/ReportsApi.md#reportsGetFilesCount) | **GET** /api/rp/v1/Reports/Folder/{id}/CountFiles | Get count of files what contains in a specified folder
 *FastreportCloudSdk.ReportsApi* | [**reportsGetFilesList**](docs/ReportsApi.md#reportsGetFilesList) | **GET** /api/rp/v1/Reports/Folder/{id}/ListFiles | Get all files from specified folder. &lt;br /&gt;  User with Get Entity permission can access this method. &lt;br /&gt;  The method will returns minimal infomration about the file: &lt;br /&gt;  id, name, size, editedTime, createdTime, tags, status, statusReason.
+*FastreportCloudSdk.ReportsApi* | [**reportsGetMyPermissions**](docs/ReportsApi.md#reportsGetMyPermissions) | **GET** /api/rp/v1/Reports/File/{id}/mypermissions | Get current user&#39;s permissions to file
 *FastreportCloudSdk.ReportsApi* | [**reportsGetPermissions**](docs/ReportsApi.md#reportsGetPermissions) | **GET** /api/rp/v1/Reports/File/{id}/permissions | 
 *FastreportCloudSdk.ReportsApi* | [**reportsGetSharingKeys**](docs/ReportsApi.md#reportsGetSharingKeys) | **GET** /api/rp/v1/Reports/File/{id}/sharingKeys | Returns all sharing keys, associated with the file
 *FastreportCloudSdk.ReportsApi* | [**reportsMoveFile**](docs/ReportsApi.md#reportsMoveFile) | **POST** /api/rp/v1/Reports/File/{id}/Move/{folderId} | Move file to a specified folder
@@ -244,6 +254,7 @@ Class | Method | HTTP request | Description
 *FastreportCloudSdk.TasksApi* | [**tasksDeleteTask**](docs/TasksApi.md#tasksDeleteTask) | **DELETE** /api/tasks/v1/Tasks/{taskId} | Delete a task from a storage
 *FastreportCloudSdk.TasksApi* | [**tasksGet**](docs/TasksApi.md#tasksGet) | **GET** /api/tasks/v1/Tasks/{taskId} | Get a task by a specified id
 *FastreportCloudSdk.TasksApi* | [**tasksGetList**](docs/TasksApi.md#tasksGetList) | **GET** /api/tasks/v1/Tasks | Get tasks list
+*FastreportCloudSdk.TasksApi* | [**tasksGetMyPermissions**](docs/TasksApi.md#tasksGetMyPermissions) | **GET** /api/tasks/v1/Tasks/{id}/mypermissions | Get current user&#39;s permissions to Task
 *FastreportCloudSdk.TasksApi* | [**tasksGetPermissions**](docs/TasksApi.md#tasksGetPermissions) | **GET** /api/tasks/v1/Tasks/{id}/permissions | Get all Task permissions
 *FastreportCloudSdk.TasksApi* | [**tasksRenameTask**](docs/TasksApi.md#tasksRenameTask) | **PUT** /api/tasks/v1/Tasks/{taskId}/rename | Rename a task
 *FastreportCloudSdk.TasksApi* | [**tasksRunTask**](docs/TasksApi.md#tasksRunTask) | **POST** /api/tasks/v1/Tasks/run | Run a task from request body
@@ -269,6 +280,7 @@ Class | Method | HTTP request | Description
 *FastreportCloudSdk.TemplatesApi* | [**templateFoldersGetFolder**](docs/TemplatesApi.md#templateFoldersGetFolder) | **GET** /api/rp/v1/Templates/Folder/{id} | Get specified folder
 *FastreportCloudSdk.TemplatesApi* | [**templateFoldersGetFolders**](docs/TemplatesApi.md#templateFoldersGetFolders) | **GET** /api/rp/v1/Templates/Folder/{id}/ListFolders | Get all folders from specified folder
 *FastreportCloudSdk.TemplatesApi* | [**templateFoldersGetFoldersCount**](docs/TemplatesApi.md#templateFoldersGetFoldersCount) | **GET** /api/rp/v1/Templates/Folder/{id}/CountFolders | Get count of folders what contains in a specified folder
+*FastreportCloudSdk.TemplatesApi* | [**templateFoldersGetMyPermissions**](docs/TemplatesApi.md#templateFoldersGetMyPermissions) | **GET** /api/rp/v1/Templates/Folder/{folderId}/mypermissions | Get user&#39;s permissions for a folder by id
 *FastreportCloudSdk.TemplatesApi* | [**templateFoldersGetOrCreate**](docs/TemplatesApi.md#templateFoldersGetOrCreate) | **GET** /api/rp/v1/Templates/Folder/getOrCreate | Get specified folder
 *FastreportCloudSdk.TemplatesApi* | [**templateFoldersGetPermissions**](docs/TemplatesApi.md#templateFoldersGetPermissions) | **GET** /api/rp/v1/Templates/Folder/{id}/permissions | Get all folder permissions
 *FastreportCloudSdk.TemplatesApi* | [**templateFoldersGetRootFolder**](docs/TemplatesApi.md#templateFoldersGetRootFolder) | **GET** /api/rp/v1/Templates/Root | Get user&#39;s root folder (without parents)
@@ -290,6 +302,7 @@ Class | Method | HTTP request | Description
 *FastreportCloudSdk.TemplatesApi* | [**templatesGetFileHistory**](docs/TemplatesApi.md#templatesGetFileHistory) | **GET** /api/rp/v1/Templates/File/{id}/History | Returns list of actions, performed on this file
 *FastreportCloudSdk.TemplatesApi* | [**templatesGetFilesCount**](docs/TemplatesApi.md#templatesGetFilesCount) | **GET** /api/rp/v1/Templates/Folder/{id}/CountFiles | Get count of files what contains in a specified folder
 *FastreportCloudSdk.TemplatesApi* | [**templatesGetFilesList**](docs/TemplatesApi.md#templatesGetFilesList) | **GET** /api/rp/v1/Templates/Folder/{id}/ListFiles | Get all files from specified folder. &lt;br /&gt;  User with Get Entity permission can access this method. &lt;br /&gt;  The method will returns minimal infomration about the file: &lt;br /&gt;  id, name, size, editedTime, createdTime, tags, status, statusReason.
+*FastreportCloudSdk.TemplatesApi* | [**templatesGetMyPermissions**](docs/TemplatesApi.md#templatesGetMyPermissions) | **GET** /api/rp/v1/Templates/File/{id}/mypermissions | Get current user&#39;s permissions to file
 *FastreportCloudSdk.TemplatesApi* | [**templatesGetPermissions**](docs/TemplatesApi.md#templatesGetPermissions) | **GET** /api/rp/v1/Templates/File/{id}/permissions | 
 *FastreportCloudSdk.TemplatesApi* | [**templatesGetSharingKeys**](docs/TemplatesApi.md#templatesGetSharingKeys) | **GET** /api/rp/v1/Templates/File/{id}/sharingKeys | Returns all sharing keys, associated with the file
 *FastreportCloudSdk.TemplatesApi* | [**templatesMoveFile**](docs/TemplatesApi.md#templatesMoveFile) | **POST** /api/rp/v1/Templates/File/{id}/Move/{folderId} | Move file to a specified folder
@@ -301,6 +314,7 @@ Class | Method | HTTP request | Description
 *FastreportCloudSdk.TemplatesApi* | [**templatesUpdateContent**](docs/TemplatesApi.md#templatesUpdateContent) | **PUT** /api/rp/v1/Templates/File/{id}/Content | Updates contnet of the template. The method is deprecated, use the UpdateContentV2 method instead!
 *FastreportCloudSdk.TemplatesApi* | [**templatesUpdateContentV2**](docs/TemplatesApi.md#templatesUpdateContentV2) | **PUT** /api/rp/v2/Templates/File/{id}/Content | Updates contnet of the template.
 *FastreportCloudSdk.TemplatesApi* | [**templatesUpdateIcon**](docs/TemplatesApi.md#templatesUpdateIcon) | **PUT** /api/rp/v1/Templates/File/{id}/Icon | Update a files&#39;s icon
+*FastreportCloudSdk.TemplatesApi* | [**templatesUpdateParameters**](docs/TemplatesApi.md#templatesUpdateParameters) | **PUT** /api/rp/v1/Templates/File/{id}/parameters | 
 *FastreportCloudSdk.TemplatesApi* | [**templatesUpdatePermissions**](docs/TemplatesApi.md#templatesUpdatePermissions) | **POST** /api/rp/v1/Templates/File/{id}/permissions | Update permissions
 *FastreportCloudSdk.TemplatesApi* | [**templatesUpdateTags**](docs/TemplatesApi.md#templatesUpdateTags) | **PUT** /api/rp/v1/Templates/File/{id}/UpdateTags | Update tags
 *FastreportCloudSdk.TemplatesApi* | [**templatesUploadFile**](docs/TemplatesApi.md#templatesUploadFile) | **POST** /api/rp/v1/Templates/Folder/{id}/File | Upload a file to the specified folder. The method is deprecated, use the UploadFileV2 method instead!
@@ -489,6 +503,8 @@ Class | Method | HTTP request | Description
  - [FastreportCloudSdk.ReportCreateVM](docs/ReportCreateVM.md)
  - [FastreportCloudSdk.ReportFolderCreateVM](docs/ReportFolderCreateVM.md)
  - [FastreportCloudSdk.ReportInfo](docs/ReportInfo.md)
+ - [FastreportCloudSdk.ReportParameter](docs/ReportParameter.md)
+ - [FastreportCloudSdk.ReportParametersVM](docs/ReportParametersVM.md)
  - [FastreportCloudSdk.ReportVM](docs/ReportVM.md)
  - [FastreportCloudSdk.ReportsVM](docs/ReportsVM.md)
  - [FastreportCloudSdk.RestOfSpaceVM](docs/RestOfSpaceVM.md)

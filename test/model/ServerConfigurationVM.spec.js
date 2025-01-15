@@ -60,6 +60,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property companyName (base name: "companyName")', function() {
+      // uncomment below and update the code to test the property companyName
+      //var instance = new FastreportCloudSdk.ServerConfigurationVM();
+      //expect(instance).to.be();
+    });
+
     it('should have the property logoLink (base name: "logoLink")', function() {
       // uncomment below and update the code to test the property logoLink
       //var instance = new FastreportCloudSdk.ServerConfigurationVM();

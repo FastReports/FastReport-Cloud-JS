@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **title** | **String** |  | [optional] 
+**companyName** | **String** |  | [optional] 
 **logoLink** | **String** |  | [optional] 
 **copyright** | **String** |  | [optional] 
 **corporateServerMode** | **Boolean** |  | [optional] 

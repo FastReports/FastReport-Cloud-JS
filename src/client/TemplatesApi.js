@@ -20,6 +20,7 @@ import CreateFileShareVM from '../models/CreateFileShareVM';
 import ExportTemplateVM from '../models/ExportTemplateVM';
 import ExportVM from '../models/ExportVM';
 import FileIconVM from '../models/FileIconVM';
+import FilePermissionCRUDVM from '../models/FilePermissionCRUDVM';
 import FilePermissionsVM from '../models/FilePermissionsVM';
 import FileRenameVM from '../models/FileRenameVM';
 import FileSharingKeysVM from '../models/FileSharingKeysVM';
@@ -34,6 +35,7 @@ import FolderTagsUpdateVM from '../models/FolderTagsUpdateVM';
 import PrepareTemplateVM from '../models/PrepareTemplateVM';
 import PreviewTemplateVM from '../models/PreviewTemplateVM';
 import ProblemDetails from '../models/ProblemDetails';
+import ReportParametersVM from '../models/ReportParametersVM';
 import ReportVM from '../models/ReportVM';
 import SelectedFilesVM from '../models/SelectedFilesVM';
 import TemplateCreateVM from '../models/TemplateCreateVM';
@@ -1106,6 +1108,53 @@ export default class TemplatesApi {
      */
     templateFoldersGetFoldersCount(id) {
       return this.templateFoldersGetFoldersCountWithHttpInfo(id)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Get user's permissions for a folder by id
+     * @param {String} folderId folder id
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/FilePermissionCRUDVM} and HTTP response
+     */
+    templateFoldersGetMyPermissionsWithHttpInfo(folderId) {
+      let postBody = null;
+      // verify the required parameter 'folderId' is set
+      if (folderId === undefined || folderId === null) {
+        throw new Error("Missing the required parameter 'folderId' when calling templateFoldersGetMyPermissions");
+      }
+
+      let pathParams = {
+        'folderId': folderId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKey', 'JWT'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = FilePermissionCRUDVM;
+      if(!returnType) returnType = 'Blob';
+      return this.apiClient.callApi(
+        '/api/rp/v1/Templates/Folder/{folderId}/mypermissions', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Get user's permissions for a folder by id
+     * @param {String} folderId folder id
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/FilePermissionCRUDVM}
+     */
+    templateFoldersGetMyPermissions(folderId) {
+      return this.templateFoldersGetMyPermissionsWithHttpInfo(folderId)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -2229,6 +2278,53 @@ export default class TemplatesApi {
 
 
     /**
+     * Get current user's permissions to file
+     * @param {String} id file id
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/FilePermissionCRUDVM} and HTTP response
+     */
+    templatesGetMyPermissionsWithHttpInfo(id) {
+      let postBody = null;
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling templatesGetMyPermissions");
+      }
+
+      let pathParams = {
+        'id': id
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKey', 'JWT'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = FilePermissionCRUDVM;
+      if(!returnType) returnType = 'Blob';
+      return this.apiClient.callApi(
+        '/api/rp/v1/Templates/File/{id}/mypermissions', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Get current user's permissions to file
+     * @param {String} id file id
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/FilePermissionCRUDVM}
+     */
+    templatesGetMyPermissions(id) {
+      return this.templatesGetMyPermissionsWithHttpInfo(id)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * @param {String} id 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/FilePermissionsVM} and HTTP response
      */
@@ -2794,6 +2890,57 @@ export default class TemplatesApi {
      */
     templatesUpdateIcon(id, opts) {
       return this.templatesUpdateIconWithHttpInfo(id, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * @param {String} id 
+     * @param {module:models/ReportParametersVM} reportParametersVM 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/TemplateVM} and HTTP response
+     */
+    templatesUpdateParametersWithHttpInfo(id, reportParametersVM) {
+      let postBody = reportParametersVM;
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling templatesUpdateParameters");
+      }
+      // verify the required parameter 'reportParametersVM' is set
+      if (reportParametersVM === undefined || reportParametersVM === null) {
+        throw new Error("Missing the required parameter 'reportParametersVM' when calling templatesUpdateParameters");
+      }
+
+      let pathParams = {
+        'id': id
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKey', 'JWT'];
+      let contentTypes = ['application/json', 'text/json', 'application/*+json'];
+      let accepts = ['application/json'];
+      let returnType = TemplateVM;
+      if(!returnType) returnType = 'Blob';
+      return this.apiClient.callApi(
+        '/api/rp/v1/Templates/File/{id}/parameters', 'PUT',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * @param {String} id 
+     * @param {module:models/ReportParametersVM} reportParametersVM 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/TemplateVM}
+     */
+    templatesUpdateParameters(id, reportParametersVM) {
+      return this.templatesUpdateParametersWithHttpInfo(id, reportParametersVM)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

@@ -238,6 +238,16 @@
         done();
       });
     });
+    describe('templateFoldersGetMyPermissions', function() {
+      it('should call templateFoldersGetMyPermissions successfully', function(done) {
+        //uncomment below and update the code to test templateFoldersGetMyPermissions
+        //instance.templateFoldersGetMyPermissions(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('templateFoldersGetOrCreate', function() {
       it('should call templateFoldersGetOrCreate successfully', function(done) {
         //uncomment below and update the code to test templateFoldersGetOrCreate
@@ -448,6 +458,16 @@
         done();
       });
     });
+    describe('templatesGetMyPermissions', function() {
+      it('should call templatesGetMyPermissions successfully', function(done) {
+        //uncomment below and update the code to test templatesGetMyPermissions
+        //instance.templatesGetMyPermissions(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('templatesGetPermissions', function() {
       it('should call templatesGetPermissions successfully', function(done) {
         //uncomment below and update the code to test templatesGetPermissions
@@ -552,6 +572,16 @@
       it('should call templatesUpdateIcon successfully', function(done) {
         //uncomment below and update the code to test templatesUpdateIcon
         //instance.templatesUpdateIcon(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('templatesUpdateParameters', function() {
+      it('should call templatesUpdateParameters successfully', function(done) {
+        //uncomment below and update the code to test templatesUpdateParameters
+        //instance.templatesUpdateParameters(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

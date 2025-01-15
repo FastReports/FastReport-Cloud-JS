@@ -12,29 +12,25 @@
  */
 
 import ApiClient from '../ApiClient';
-import FileStatus from './FileStatus';
-import FileStatusReason from './FileStatusReason';
-import FileType from './FileType';
-import FileVM from './FileVM';
-import ReportInfo from './ReportInfo';
+import CloudBaseVM from './CloudBaseVM';
 import ReportParameter from './ReportParameter';
 
 /**
- * The TemplateVM model module.
- * @module models/TemplateVM
+ * The ReportParametersVM model module.
+ * @module models/ReportParametersVM
  * @version v1
  */
-class TemplateVM {
+class ReportParametersVM {
     /**
-     * Constructs a new <code>TemplateVM</code>.
-     * @alias module:models/TemplateVM
-     * @extends module:models/FileVM
-     * @implements module:models/FileVM
+     * Constructs a new <code>ReportParametersVM</code>.
+     * @alias module:models/ReportParametersVM
+     * @extends module:models/CloudBaseVM
+     * @implements module:models/CloudBaseVM
      * @param t {String} 
      */
     constructor(t) { 
-        FileVM.initialize(this, t);
-        TemplateVM.initialize(this, t);
+        CloudBaseVM.initialize(this, t);
+        ReportParametersVM.initialize(this, t);
     }
 
     /**
@@ -47,21 +43,18 @@ class TemplateVM {
     }
 
     /**
-     * Constructs a <code>TemplateVM</code> from a plain JavaScript object, optionally creating a new instance.
+     * Constructs a <code>ReportParametersVM</code> from a plain JavaScript object, optionally creating a new instance.
      * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:models/TemplateVM} obj Optional instance to populate.
-     * @return {module:models/TemplateVM} The populated <code>TemplateVM</code> instance.
+     * @param {module:models/ReportParametersVM} obj Optional instance to populate.
+     * @return {module:models/ReportParametersVM} The populated <code>ReportParametersVM</code> instance.
      */
     static constructFromObject(data, obj) {
         if (data) {
-            obj = obj || new TemplateVM();
-            FileVM.constructFromObject(data, obj);
-            FileVM.constructFromObject(data, obj);
+            obj = obj || new ReportParametersVM();
+            CloudBaseVM.constructFromObject(data, obj);
+            CloudBaseVM.constructFromObject(data, obj);
 
-            if (data.hasOwnProperty('reportInfo')) {
-                obj['reportInfo'] = ReportInfo.constructFromObject(data['reportInfo']);
-            }
             if (data.hasOwnProperty('parameters')) {
                 obj['parameters'] = ApiClient.convertToType(data['parameters'], [ReportParameter]);
             }
@@ -73,20 +66,16 @@ class TemplateVM {
     }
 
     /**
-     * Validates the JSON data with respect to <code>TemplateVM</code>.
+     * Validates the JSON data with respect to <code>ReportParametersVM</code>.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>TemplateVM</code>.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>ReportParametersVM</code>.
      */
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
-        for (const property of TemplateVM.RequiredProperties) {
+        for (const property of ReportParametersVM.RequiredProperties) {
             if (!data.hasOwnProperty(property)) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
-        }
-        // validate the optional field `reportInfo`
-        if (data['reportInfo']) { // data not null
-          ReportInfo.validateJSON(data['reportInfo']);
         }
         if (data['parameters']) { // data not null
             // ensure the json data is an array
@@ -109,32 +98,27 @@ class TemplateVM {
 
 }
 
-TemplateVM.RequiredProperties = ["$t"];
-
-/**
- * @member {module:models/ReportInfo} reportInfo
- */
-TemplateVM.prototype['reportInfo'] = undefined;
+ReportParametersVM.RequiredProperties = ["$t"];
 
 /**
  * @member {Array.<module:models/ReportParameter>} parameters
  */
-TemplateVM.prototype['parameters'] = undefined;
+ReportParametersVM.prototype['parameters'] = undefined;
 
 /**
  * @member {String} $t
  */
-TemplateVM.prototype['$t'] = undefined;
+ReportParametersVM.prototype['$t'] = undefined;
 
 
-// Implement FileVM interface:
+// Implement CloudBaseVM interface:
 /**
  * @member {String} $t
  */
-FileVM.prototype['$t'] = undefined;
+CloudBaseVM.prototype['$t'] = undefined;
 
 
 
 
-export default TemplateVM;
+export default ReportParametersVM;
 

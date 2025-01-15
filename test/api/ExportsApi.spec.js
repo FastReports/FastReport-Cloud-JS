@@ -228,6 +228,16 @@
         done();
       });
     });
+    describe('exportFoldersGetMyPermissions', function() {
+      it('should call exportFoldersGetMyPermissions successfully', function(done) {
+        //uncomment below and update the code to test exportFoldersGetMyPermissions
+        //instance.exportFoldersGetMyPermissions(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('exportFoldersGetOrCreate', function() {
       it('should call exportFoldersGetOrCreate successfully', function(done) {
         //uncomment below and update the code to test exportFoldersGetOrCreate
@@ -378,6 +388,26 @@
         done();
       });
     });
+    describe('exportsGetByTaskId', function() {
+      it('should call exportsGetByTaskId successfully', function(done) {
+        //uncomment below and update the code to test exportsGetByTaskId
+        //instance.exportsGetByTaskId(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('exportsGetByTaskMessageId', function() {
+      it('should call exportsGetByTaskMessageId successfully', function(done) {
+        //uncomment below and update the code to test exportsGetByTaskMessageId
+        //instance.exportsGetByTaskMessageId(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('exportsGetFile', function() {
       it('should call exportsGetFile successfully', function(done) {
         //uncomment below and update the code to test exportsGetFile
@@ -412,6 +442,16 @@
       it('should call exportsGetFilesList successfully', function(done) {
         //uncomment below and update the code to test exportsGetFilesList
         //instance.exportsGetFilesList(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('exportsGetMyPermissions', function() {
+      it('should call exportsGetMyPermissions successfully', function(done) {
+        //uncomment below and update the code to test exportsGetMyPermissions
+        //instance.exportsGetMyPermissions(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

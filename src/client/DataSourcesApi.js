@@ -16,6 +16,7 @@ import ApiClient from "../ApiClient";
 import CreateDataSourceVM from '../models/CreateDataSourceVM';
 import DataSourceConnectionType from '../models/DataSourceConnectionType';
 import DataSourceParameterTypesVM from '../models/DataSourceParameterTypesVM';
+import DataSourcePermissionCRUDVM from '../models/DataSourcePermissionCRUDVM';
 import DataSourcePermissionsVM from '../models/DataSourcePermissionsVM';
 import DataSourceSorting from '../models/DataSourceSorting';
 import DataSourceVM from '../models/DataSourceVM';
@@ -332,6 +333,53 @@ export default class DataSourcesApi {
      */
     dataSourcesGetDataSource(id) {
       return this.dataSourcesGetDataSourceWithHttpInfo(id)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Get current user's permissions to Data source
+     * @param {String} id data source id
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/DataSourcePermissionCRUDVM} and HTTP response
+     */
+    dataSourcesGetMyPermissionsWithHttpInfo(id) {
+      let postBody = null;
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling dataSourcesGetMyPermissions");
+      }
+
+      let pathParams = {
+        'id': id
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKey', 'JWT'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = DataSourcePermissionCRUDVM;
+      if(!returnType) returnType = 'Blob';
+      return this.apiClient.callApi(
+        '/api/data/v1/DataSources/{id}/mypermissions', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Get current user's permissions to Data source
+     * @param {String} id data source id
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/DataSourcePermissionCRUDVM}
+     */
+    dataSourcesGetMyPermissions(id) {
+      return this.dataSourcesGetMyPermissionsWithHttpInfo(id)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

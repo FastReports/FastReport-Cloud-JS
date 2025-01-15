@@ -17,6 +17,7 @@ import CreateTaskBaseVM from '../models/CreateTaskBaseVM';
 import ProblemDetails from '../models/ProblemDetails';
 import RunTaskBaseVM from '../models/RunTaskBaseVM';
 import TaskBaseVM from '../models/TaskBaseVM';
+import TaskPermissionCRUDVM from '../models/TaskPermissionCRUDVM';
 import TaskPermissionsVM from '../models/TaskPermissionsVM';
 import TasksVM from '../models/TasksVM';
 import UpdateTaskBaseVM from '../models/UpdateTaskBaseVM';
@@ -45,7 +46,7 @@ export default class TasksApi {
     /**
      * Create a new task
      * @param {Object} opts Optional parameters
-     * @param {module:models/CreateTaskBaseVM} opts.createTaskBaseVM task's view model. You have to specify task type (type: \"ExportTemplate\")
+     * @param {module:models/CreateTaskBaseVM} opts.createTaskBaseVM task's view model. You have to specify task type by placing parameter \"$t\": \"Vm name\",              this parameters always must be on the first place
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/TaskBaseVM} and HTTP response
      */
     tasksCreateTaskWithHttpInfo(opts) {
@@ -76,7 +77,7 @@ export default class TasksApi {
     /**
      * Create a new task
      * @param {Object} opts Optional parameters
-     * @param {module:models/CreateTaskBaseVM} opts.createTaskBaseVM task's view model. You have to specify task type (type: \"ExportTemplate\")
+     * @param {module:models/CreateTaskBaseVM} opts.createTaskBaseVM task's view model. You have to specify task type by placing parameter \"$t\": \"Vm name\",              this parameters always must be on the first place
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/TaskBaseVM}
      */
     tasksCreateTask(opts) {
@@ -237,6 +238,53 @@ export default class TasksApi {
 
 
     /**
+     * Get current user's permissions to Task
+     * @param {String} id task id
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/TaskPermissionCRUDVM} and HTTP response
+     */
+    tasksGetMyPermissionsWithHttpInfo(id) {
+      let postBody = null;
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling tasksGetMyPermissions");
+      }
+
+      let pathParams = {
+        'id': id
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKey', 'JWT'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = TaskPermissionCRUDVM;
+      if(!returnType) returnType = 'Blob';
+      return this.apiClient.callApi(
+        '/api/tasks/v1/Tasks/{id}/mypermissions', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Get current user's permissions to Task
+     * @param {String} id task id
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/TaskPermissionCRUDVM}
+     */
+    tasksGetMyPermissions(id) {
+      return this.tasksGetMyPermissionsWithHttpInfo(id)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Get all Task permissions
      * @param {String} id task id
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/TaskPermissionsVM} and HTTP response
@@ -339,7 +387,7 @@ export default class TasksApi {
     /**
      * Run a task from request body
      * @param {Object} opts Optional parameters
-     * @param {module:models/RunTaskBaseVM} opts.runTaskBaseVM task's view model
+     * @param {module:models/RunTaskBaseVM} opts.runTaskBaseVM task's view model. You have to specify task type by placing parameter \"$t\": \"Vm name\",              this parameters always must be on the first place
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
     tasksRunTaskWithHttpInfo(opts) {
@@ -370,7 +418,7 @@ export default class TasksApi {
     /**
      * Run a task from request body
      * @param {Object} opts Optional parameters
-     * @param {module:models/RunTaskBaseVM} opts.runTaskBaseVM task's view model
+     * @param {module:models/RunTaskBaseVM} opts.runTaskBaseVM task's view model. You have to specify task type by placing parameter \"$t\": \"Vm name\",              this parameters always must be on the first place
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
     tasksRunTask(opts) {
@@ -432,7 +480,7 @@ export default class TasksApi {
      * Update permissions
      * @param {String} id task id
      * @param {Object} opts Optional parameters
-     * @param {module:models/UpdateTaskPermissionsVM} opts.updateTaskPermissionsVM new permissions
+     * @param {module:models/UpdateTaskPermissionsVM} opts.updateTaskPermissionsVM new permissions. You have to specify VM type by placing parameter \"$t\": \"Vm name\",              this parameters always must be on first place
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
     tasksUpdatePermissionsWithHttpInfo(id, opts) {
@@ -469,7 +517,7 @@ export default class TasksApi {
      * Update permissions
      * @param {String} id task id
      * @param {Object} opts Optional parameters
-     * @param {module:models/UpdateTaskPermissionsVM} opts.updateTaskPermissionsVM new permissions
+     * @param {module:models/UpdateTaskPermissionsVM} opts.updateTaskPermissionsVM new permissions. You have to specify VM type by placing parameter \"$t\": \"Vm name\",              this parameters always must be on first place
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
     tasksUpdatePermissions(id, opts) {
@@ -484,7 +532,7 @@ export default class TasksApi {
      * Update a task
      * @param {String} taskId updating task id
      * @param {Object} opts Optional parameters
-     * @param {module:models/UpdateTaskBaseVM} opts.updateTaskBaseVM task's view model. You have to specify task type (type: \"ExportTemplate\")
+     * @param {module:models/UpdateTaskBaseVM} opts.updateTaskBaseVM task's view model. You have to specify task type by placing parameter \"$t\": \"Vm name\",              this parameters always must be on first place
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/TaskBaseVM} and HTTP response
      */
     tasksUpdateTaskWithHttpInfo(taskId, opts) {
@@ -521,7 +569,7 @@ export default class TasksApi {
      * Update a task
      * @param {String} taskId updating task id
      * @param {Object} opts Optional parameters
-     * @param {module:models/UpdateTaskBaseVM} opts.updateTaskBaseVM task's view model. You have to specify task type (type: \"ExportTemplate\")
+     * @param {module:models/UpdateTaskBaseVM} opts.updateTaskBaseVM task's view model. You have to specify task type by placing parameter \"$t\": \"Vm name\",              this parameters always must be on first place
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/TaskBaseVM}
      */
     tasksUpdateTask(taskId, opts) {

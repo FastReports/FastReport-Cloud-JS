@@ -22,6 +22,7 @@ Method | HTTP request | Description
 [**exportFoldersGetFolder**](ExportsApi.md#exportFoldersGetFolder) | **GET** /api/rp/v1/Exports/Folder/{id} | Get specified folder
 [**exportFoldersGetFolders**](ExportsApi.md#exportFoldersGetFolders) | **GET** /api/rp/v1/Exports/Folder/{id}/ListFolders | Get all folders from specified folder
 [**exportFoldersGetFoldersCount**](ExportsApi.md#exportFoldersGetFoldersCount) | **GET** /api/rp/v1/Exports/Folder/{id}/CountFolders | Get count of folders what contains in a specified folder
+[**exportFoldersGetMyPermissions**](ExportsApi.md#exportFoldersGetMyPermissions) | **GET** /api/rp/v1/Exports/Folder/{folderId}/mypermissions | Get user&#39;s permissions for a folder by id
 [**exportFoldersGetOrCreate**](ExportsApi.md#exportFoldersGetOrCreate) | **GET** /api/rp/v1/Exports/Folder/getOrCreate | Get specified folder
 [**exportFoldersGetPermissions**](ExportsApi.md#exportFoldersGetPermissions) | **GET** /api/rp/v1/Exports/Folder/{id}/permissions | Get all folder permissions
 [**exportFoldersGetRootFolder**](ExportsApi.md#exportFoldersGetRootFolder) | **GET** /api/rp/v1/Exports/Root | Get user&#39;s root folder (without parents)
@@ -37,10 +38,13 @@ Method | HTTP request | Description
 [**exportsCreateSharingKey**](ExportsApi.md#exportsCreateSharingKey) | **POST** /api/rp/v1/Exports/File/{id}/sharingKey | Create a new key, that can be used to share access to a file  (You need Administrate.Anon permission to create a new key)
 [**exportsDeleteFile**](ExportsApi.md#exportsDeleteFile) | **DELETE** /api/rp/v1/Exports/File/{id} | Delete specified file
 [**exportsDeleteSharingKey**](ExportsApi.md#exportsDeleteSharingKey) | **DELETE** /api/rp/v1/Exports/File/{id}/sharingKey | Deletes a sharing key, making links, that utilizing it no longer work
+[**exportsGetByTaskId**](ExportsApi.md#exportsGetByTaskId) | **GET** /api/rp/v1/Exports/File/Task/{taskId} | Get exports by specified task id
+[**exportsGetByTaskMessageId**](ExportsApi.md#exportsGetByTaskMessageId) | **GET** /api/rp/v1/Exports/File/TaskMessage/{taskMessageId} | Get export by specified task message id
 [**exportsGetFile**](ExportsApi.md#exportsGetFile) | **GET** /api/rp/v1/Exports/File/{id} | Get export by specified id
 [**exportsGetFileHistory**](ExportsApi.md#exportsGetFileHistory) | **GET** /api/rp/v1/Exports/File/{id}/History | Returns list of actions, performed on this file
 [**exportsGetFilesCount**](ExportsApi.md#exportsGetFilesCount) | **GET** /api/rp/v1/Exports/Folder/{id}/CountFiles | Get count of files what contains in a specified folder
 [**exportsGetFilesList**](ExportsApi.md#exportsGetFilesList) | **GET** /api/rp/v1/Exports/Folder/{id}/ListFiles | Get all files from specified folder. &lt;br /&gt;  User with Get Entity permission can access this method. &lt;br /&gt;  The method will returns minimal infomration about the file: &lt;br /&gt;  id, name, size, editedTime, createdTime, tags, status, statusReason.
+[**exportsGetMyPermissions**](ExportsApi.md#exportsGetMyPermissions) | **GET** /api/rp/v1/Exports/File/{id}/mypermissions | Get current user&#39;s permissions to file
 [**exportsGetPermissions**](ExportsApi.md#exportsGetPermissions) | **GET** /api/rp/v1/Exports/File/{id}/permissions | 
 [**exportsGetSharingKeys**](ExportsApi.md#exportsGetSharingKeys) | **GET** /api/rp/v1/Exports/File/{id}/sharingKeys | Returns all sharing keys, associated with the file
 [**exportsMoveFile**](ExportsApi.md#exportsMoveFile) | **POST** /api/rp/v1/Exports/File/{id}/Move/{folderId} | Move file to a specified folder
@@ -1065,6 +1069,56 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
+## exportFoldersGetMyPermissions
+
+> FilePermissionCRUDVM exportFoldersGetMyPermissions(folderId)
+
+Get user&#39;s permissions for a folder by id
+
+### Example
+
+```javascript
+import FastreportCloudSdk from 'fastreport-cloud-sdk';
+let defaultClient = FastreportCloudSdk.ApiClient.instance;
+// Configure HTTP basic authorization: ApiKey
+let ApiKey = defaultClient.authentications['ApiKey'];
+ApiKey.username = 'YOUR USERNAME';
+ApiKey.password = 'YOUR PASSWORD';
+// Configure Bearer (JWT) access token for authorization: JWT
+let JWT = defaultClient.authentications['JWT'];
+JWT.accessToken = "YOUR ACCESS TOKEN"
+
+let apiInstance = new FastreportCloudSdk.ExportsApi();
+let folderId = "folderId_example"; // String | folder id
+apiInstance.exportFoldersGetMyPermissions(folderId).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **folderId** | **String**| folder id | 
+
+### Return type
+
+[**FilePermissionCRUDVM**](FilePermissionCRUDVM.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [JWT](../README.md#JWT)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## exportFoldersGetOrCreate
 
 > FileVM exportFoldersGetOrCreate(opts)
@@ -1877,6 +1931,106 @@ null (empty response body)
 - **Accept**: application/json
 
 
+## exportsGetByTaskId
+
+> ExportsVM exportsGetByTaskId(taskId)
+
+Get exports by specified task id
+
+### Example
+
+```javascript
+import FastreportCloudSdk from 'fastreport-cloud-sdk';
+let defaultClient = FastreportCloudSdk.ApiClient.instance;
+// Configure HTTP basic authorization: ApiKey
+let ApiKey = defaultClient.authentications['ApiKey'];
+ApiKey.username = 'YOUR USERNAME';
+ApiKey.password = 'YOUR PASSWORD';
+// Configure Bearer (JWT) access token for authorization: JWT
+let JWT = defaultClient.authentications['JWT'];
+JWT.accessToken = "YOUR ACCESS TOKEN"
+
+let apiInstance = new FastreportCloudSdk.ExportsApi();
+let taskId = "taskId_example"; // String | task id
+apiInstance.exportsGetByTaskId(taskId).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **taskId** | **String**| task id | 
+
+### Return type
+
+[**ExportsVM**](ExportsVM.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [JWT](../README.md#JWT)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## exportsGetByTaskMessageId
+
+> ExportVM exportsGetByTaskMessageId(taskMessageId)
+
+Get export by specified task message id
+
+### Example
+
+```javascript
+import FastreportCloudSdk from 'fastreport-cloud-sdk';
+let defaultClient = FastreportCloudSdk.ApiClient.instance;
+// Configure HTTP basic authorization: ApiKey
+let ApiKey = defaultClient.authentications['ApiKey'];
+ApiKey.username = 'YOUR USERNAME';
+ApiKey.password = 'YOUR PASSWORD';
+// Configure Bearer (JWT) access token for authorization: JWT
+let JWT = defaultClient.authentications['JWT'];
+JWT.accessToken = "YOUR ACCESS TOKEN"
+
+let apiInstance = new FastreportCloudSdk.ExportsApi();
+let taskMessageId = "taskMessageId_example"; // String | task message id
+apiInstance.exportsGetByTaskMessageId(taskMessageId).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **taskMessageId** | **String**| task message id | 
+
+### Return type
+
+[**ExportVM**](ExportVM.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [JWT](../README.md#JWT)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## exportsGetFile
 
 > ExportVM exportsGetFile(id)
@@ -2088,6 +2242,56 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ExportsVM**](ExportsVM.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [JWT](../README.md#JWT)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## exportsGetMyPermissions
+
+> FilePermissionCRUDVM exportsGetMyPermissions(id)
+
+Get current user&#39;s permissions to file
+
+### Example
+
+```javascript
+import FastreportCloudSdk from 'fastreport-cloud-sdk';
+let defaultClient = FastreportCloudSdk.ApiClient.instance;
+// Configure HTTP basic authorization: ApiKey
+let ApiKey = defaultClient.authentications['ApiKey'];
+ApiKey.username = 'YOUR USERNAME';
+ApiKey.password = 'YOUR PASSWORD';
+// Configure Bearer (JWT) access token for authorization: JWT
+let JWT = defaultClient.authentications['JWT'];
+JWT.accessToken = "YOUR ACCESS TOKEN"
+
+let apiInstance = new FastreportCloudSdk.ExportsApi();
+let id = "id_example"; // String | file id
+apiInstance.exportsGetMyPermissions(id).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| file id | 
+
+### Return type
+
+[**FilePermissionCRUDVM**](FilePermissionCRUDVM.md)
 
 ### Authorization
 

@@ -88,7 +88,7 @@ export default class ApiKeysApi {
     /**
      * Delete an apikey
      * @param {module:models/DeleteApiKeyVM} deleteApiKeyVM 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/ApiKeyVM} and HTTP response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
     apiKeysDeleteApiKeyWithHttpInfo(deleteApiKeyVM) {
       let postBody = deleteApiKeyVM;
@@ -109,7 +109,7 @@ export default class ApiKeysApi {
       let authNames = ['ApiKey', 'JWT'];
       let contentTypes = ['application/json', 'text/json', 'application/*+json'];
       let accepts = ['application/json'];
-      let returnType = ApiKeyVM;
+      let returnType = null;
       if(!returnType) returnType = 'Blob';
       return this.apiClient.callApi(
         '/api/manage/v1/ApiKeys', 'DELETE',
@@ -121,7 +121,7 @@ export default class ApiKeysApi {
     /**
      * Delete an apikey
      * @param {module:models/DeleteApiKeyVM} deleteApiKeyVM 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/ApiKeyVM}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
     apiKeysDeleteApiKey(deleteApiKeyVM) {
       return this.apiKeysDeleteApiKeyWithHttpInfo(deleteApiKeyVM)

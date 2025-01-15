@@ -108,6 +108,16 @@
         done();
       });
     });
+    describe('dataSourcesGetMyPermissions', function() {
+      it('should call dataSourcesGetMyPermissions successfully', function(done) {
+        //uncomment below and update the code to test dataSourcesGetMyPermissions
+        //instance.dataSourcesGetMyPermissions(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('dataSourcesGetParameterTypes', function() {
       it('should call dataSourcesGetParameterTypes successfully', function(done) {
         //uncomment below and update the code to test dataSourcesGetParameterTypes

@@ -238,6 +238,16 @@
         done();
       });
     });
+    describe('reportFoldersGetMyPermissions', function() {
+      it('should call reportFoldersGetMyPermissions successfully', function(done) {
+        //uncomment below and update the code to test reportFoldersGetMyPermissions
+        //instance.reportFoldersGetMyPermissions(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('reportFoldersGetOrCreate', function() {
       it('should call reportFoldersGetOrCreate successfully', function(done) {
         //uncomment below and update the code to test reportFoldersGetOrCreate
@@ -398,6 +408,26 @@
         done();
       });
     });
+    describe('reportsGetByTaskId', function() {
+      it('should call reportsGetByTaskId successfully', function(done) {
+        //uncomment below and update the code to test reportsGetByTaskId
+        //instance.reportsGetByTaskId(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('reportsGetByTaskMessageId', function() {
+      it('should call reportsGetByTaskMessageId successfully', function(done) {
+        //uncomment below and update the code to test reportsGetByTaskMessageId
+        //instance.reportsGetByTaskMessageId(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('reportsGetFile', function() {
       it('should call reportsGetFile successfully', function(done) {
         //uncomment below and update the code to test reportsGetFile
@@ -432,6 +462,16 @@
       it('should call reportsGetFilesList successfully', function(done) {
         //uncomment below and update the code to test reportsGetFilesList
         //instance.reportsGetFilesList(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('reportsGetMyPermissions', function() {
+      it('should call reportsGetMyPermissions successfully', function(done) {
+        //uncomment below and update the code to test reportsGetMyPermissions
+        //instance.reportsGetMyPermissions(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**dataSourcesFetchData**](DataSourcesApi.md#dataSourcesFetchData) | **GET** /api/data/v1/DataSources/{id}/fetch | This should connect to a database and set data structure
 [**dataSourcesGetAvailableDataSources**](DataSourcesApi.md#dataSourcesGetAvailableDataSources) | **GET** /api/data/v1/DataSources | Returns all of the data sources, that current user have permission for in a subscription &lt;br /&gt;  The method will return minimal infomration about the datasources: &lt;br /&gt;  id, name, editedTime, status.
 [**dataSourcesGetDataSource**](DataSourcesApi.md#dataSourcesGetDataSource) | **GET** /api/data/v1/DataSources/{id} | Get data source by id
+[**dataSourcesGetMyPermissions**](DataSourcesApi.md#dataSourcesGetMyPermissions) | **GET** /api/data/v1/DataSources/{id}/mypermissions | Get current user&#39;s permissions to Data source
 [**dataSourcesGetParameterTypes**](DataSourcesApi.md#dataSourcesGetParameterTypes) | **GET** /api/data/v1/DataSources/parameterTypes/{dataSourceType} | Get data source parameter DataType&#39;s
 [**dataSourcesGetPermissions**](DataSourcesApi.md#dataSourcesGetPermissions) | **GET** /api/data/v1/DataSources/{id}/permissions | Get all Data source permissions
 [**dataSourcesRenameDataSource**](DataSourcesApi.md#dataSourcesRenameDataSource) | **PUT** /api/data/v1/DataSources/{id}/rename | Rename data source by id
@@ -321,6 +322,56 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**DataSourceVM**](DataSourceVM.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [JWT](../README.md#JWT)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## dataSourcesGetMyPermissions
+
+> DataSourcePermissionCRUDVM dataSourcesGetMyPermissions(id)
+
+Get current user&#39;s permissions to Data source
+
+### Example
+
+```javascript
+import FastreportCloudSdk from 'fastreport-cloud-sdk';
+let defaultClient = FastreportCloudSdk.ApiClient.instance;
+// Configure HTTP basic authorization: ApiKey
+let ApiKey = defaultClient.authentications['ApiKey'];
+ApiKey.username = 'YOUR USERNAME';
+ApiKey.password = 'YOUR PASSWORD';
+// Configure Bearer (JWT) access token for authorization: JWT
+let JWT = defaultClient.authentications['JWT'];
+JWT.accessToken = "YOUR ACCESS TOKEN"
+
+let apiInstance = new FastreportCloudSdk.DataSourcesApi();
+let id = "id_example"; // String | data source id
+apiInstance.dataSourcesGetMyPermissions(id).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| data source id | 
+
+### Return type
+
+[**DataSourcePermissionCRUDVM**](DataSourcePermissionCRUDVM.md)
 
 ### Authorization
 

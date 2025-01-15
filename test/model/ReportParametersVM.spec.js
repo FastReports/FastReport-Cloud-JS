@@ -28,7 +28,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new FastreportCloudSdk.ReportVM();
+    instance = new FastreportCloudSdk.ReportParametersVM();
   });
 
   var getProperty = function(object, getter, property) {
@@ -47,40 +47,22 @@
       object[property] = value;
   }
 
-  describe('ReportVM', function() {
-    it('should create an instance of ReportVM', function() {
-      // uncomment below and update the code to test ReportVM
-      //var instance = new FastreportCloudSdk.ReportVM();
-      //expect(instance).to.be.a(FastreportCloudSdk.ReportVM);
+  describe('ReportParametersVM', function() {
+    it('should create an instance of ReportParametersVM', function() {
+      // uncomment below and update the code to test ReportParametersVM
+      //var instance = new FastreportCloudSdk.ReportParametersVM();
+      //expect(instance).to.be.a(FastreportCloudSdk.ReportParametersVM);
     });
 
-    it('should have the property templateId (base name: "templateId")', function() {
-      // uncomment below and update the code to test the property templateId
-      //var instance = new FastreportCloudSdk.ReportVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property reportInfo (base name: "reportInfo")', function() {
-      // uncomment below and update the code to test the property reportInfo
-      //var instance = new FastreportCloudSdk.ReportVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property taskId (base name: "taskId")', function() {
-      // uncomment below and update the code to test the property taskId
-      //var instance = new FastreportCloudSdk.ReportVM();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property taskMessageId (base name: "taskMessageId")', function() {
-      // uncomment below and update the code to test the property taskMessageId
-      //var instance = new FastreportCloudSdk.ReportVM();
+    it('should have the property parameters (base name: "parameters")', function() {
+      // uncomment below and update the code to test the property parameters
+      //var instance = new FastreportCloudSdk.ReportParametersVM();
       //expect(instance).to.be();
     });
 
     it('should have the property t (base name: "$t")', function() {
       // uncomment below and update the code to test the property t
-      //var instance = new FastreportCloudSdk.ReportVM();
+      //var instance = new FastreportCloudSdk.ReportParametersVM();
       //expect(instance).to.be();
     });
 

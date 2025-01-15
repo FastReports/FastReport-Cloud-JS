@@ -62,7 +62,7 @@ Name | Type | Description  | Notes
 
 ## apiKeysDeleteApiKey
 
-> ApiKeyVM apiKeysDeleteApiKey(deleteApiKeyVM)
+> apiKeysDeleteApiKey(deleteApiKeyVM)
 
 Delete an apikey
 
@@ -81,8 +81,8 @@ JWT.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new FastreportCloudSdk.ApiKeysApi();
 let deleteApiKeyVM = new FastreportCloudSdk.DeleteApiKeyVM(); // DeleteApiKeyVM | 
-apiInstance.apiKeysDeleteApiKey(deleteApiKeyVM).then((data) => {
-  console.log('API called successfully. Returned data: ' + data);
+apiInstance.apiKeysDeleteApiKey(deleteApiKeyVM).then(() => {
+  console.log('API called successfully.');
 }, (error) => {
   console.error(error);
 });
@@ -98,7 +98,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ApiKeyVM**](ApiKeyVM.md)
+null (empty response body)
 
 ### Authorization
 

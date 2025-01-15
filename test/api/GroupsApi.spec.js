@@ -88,6 +88,16 @@
         done();
       });
     });
+    describe('groupsGetMyPermissions', function() {
+      it('should call groupsGetMyPermissions successfully', function(done) {
+        //uncomment below and update the code to test groupsGetMyPermissions
+        //instance.groupsGetMyPermissions(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('groupsGetPermissions', function() {
       it('should call groupsGetPermissions successfully', function(done) {
         //uncomment below and update the code to test groupsGetPermissions

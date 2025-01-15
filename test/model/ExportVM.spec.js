@@ -72,6 +72,18 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property taskId (base name: "taskId")', function() {
+      // uncomment below and update the code to test the property taskId
+      //var instance = new FastreportCloudSdk.ExportVM();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property taskMessageId (base name: "taskMessageId")', function() {
+      // uncomment below and update the code to test the property taskMessageId
+      //var instance = new FastreportCloudSdk.ExportVM();
+      //expect(instance).to.be();
+    });
+
     it('should have the property t (base name: "$t")', function() {
       // uncomment below and update the code to test the property t
       //var instance = new FastreportCloudSdk.ExportVM();

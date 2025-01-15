@@ -64,6 +64,12 @@ class ReportVM {
             if (data.hasOwnProperty('reportInfo')) {
                 obj['reportInfo'] = ReportInfo.constructFromObject(data['reportInfo']);
             }
+            if (data.hasOwnProperty('taskId')) {
+                obj['taskId'] = ApiClient.convertToType(data['taskId'], 'String');
+            }
+            if (data.hasOwnProperty('taskMessageId')) {
+                obj['taskMessageId'] = ApiClient.convertToType(data['taskMessageId'], 'String');
+            }
             if (data.hasOwnProperty('$t')) {
                 obj['$t'] = ApiClient.convertToType(data['$t'], 'String');
             }
@@ -92,6 +98,14 @@ class ReportVM {
           ReportInfo.validateJSON(data['reportInfo']);
         }
         // ensure the json data is a string
+        if (data['taskId'] && !(typeof data['taskId'] === 'string' || data['taskId'] instanceof String)) {
+            throw new Error("Expected the field `taskId` to be a primitive type in the JSON string but got " + data['taskId']);
+        }
+        // ensure the json data is a string
+        if (data['taskMessageId'] && !(typeof data['taskMessageId'] === 'string' || data['taskMessageId'] instanceof String)) {
+            throw new Error("Expected the field `taskMessageId` to be a primitive type in the JSON string but got " + data['taskMessageId']);
+        }
+        // ensure the json data is a string
         if (data['$t'] && !(typeof data['$t'] === 'string' || data['$t'] instanceof String)) {
             throw new Error("Expected the field `$t` to be a primitive type in the JSON string but got " + data['$t']);
         }
@@ -113,6 +127,16 @@ ReportVM.prototype['templateId'] = undefined;
  * @member {module:models/ReportInfo} reportInfo
  */
 ReportVM.prototype['reportInfo'] = undefined;
+
+/**
+ * @member {String} taskId
+ */
+ReportVM.prototype['taskId'] = undefined;
+
+/**
+ * @member {String} taskMessageId
+ */
+ReportVM.prototype['taskMessageId'] = undefined;
 
 /**
  * @member {String} $t

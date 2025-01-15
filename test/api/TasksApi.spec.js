@@ -88,6 +88,16 @@
         done();
       });
     });
+    describe('tasksGetMyPermissions', function() {
+      it('should call tasksGetMyPermissions successfully', function(done) {
+        //uncomment below and update the code to test tasksGetMyPermissions
+        //instance.tasksGetMyPermissions(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('tasksGetPermissions', function() {
       it('should call tasksGetPermissions successfully', function(done) {
         //uncomment below and update the code to test tasksGetPermissions

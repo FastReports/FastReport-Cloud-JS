@@ -20,6 +20,7 @@ import CreateFileShareVM from '../models/CreateFileShareVM';
 import ExportReportVM from '../models/ExportReportVM';
 import ExportVM from '../models/ExportVM';
 import FileIconVM from '../models/FileIconVM';
+import FilePermissionCRUDVM from '../models/FilePermissionCRUDVM';
 import FilePermissionsVM from '../models/FilePermissionsVM';
 import FileRenameVM from '../models/FileRenameVM';
 import FileSharingKeysVM from '../models/FileSharingKeysVM';
@@ -1110,6 +1111,53 @@ export default class ReportsApi {
 
 
     /**
+     * Get user's permissions for a folder by id
+     * @param {String} folderId folder id
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/FilePermissionCRUDVM} and HTTP response
+     */
+    reportFoldersGetMyPermissionsWithHttpInfo(folderId) {
+      let postBody = null;
+      // verify the required parameter 'folderId' is set
+      if (folderId === undefined || folderId === null) {
+        throw new Error("Missing the required parameter 'folderId' when calling reportFoldersGetMyPermissions");
+      }
+
+      let pathParams = {
+        'folderId': folderId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKey', 'JWT'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = FilePermissionCRUDVM;
+      if(!returnType) returnType = 'Blob';
+      return this.apiClient.callApi(
+        '/api/rp/v1/Reports/Folder/{folderId}/mypermissions', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Get user's permissions for a folder by id
+     * @param {String} folderId folder id
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/FilePermissionCRUDVM}
+     */
+    reportFoldersGetMyPermissions(folderId) {
+      return this.reportFoldersGetMyPermissionsWithHttpInfo(folderId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Get specified folder
      * User with a Get Entity permission can access this method.
      * @param {Object} opts Optional parameters
@@ -1950,6 +1998,100 @@ export default class ReportsApi {
 
 
     /**
+     * Get reports by specified task id
+     * @param {String} taskId task id
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/ReportsVM} and HTTP response
+     */
+    reportsGetByTaskIdWithHttpInfo(taskId) {
+      let postBody = null;
+      // verify the required parameter 'taskId' is set
+      if (taskId === undefined || taskId === null) {
+        throw new Error("Missing the required parameter 'taskId' when calling reportsGetByTaskId");
+      }
+
+      let pathParams = {
+        'taskId': taskId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKey', 'JWT'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = ReportsVM;
+      if(!returnType) returnType = 'Blob';
+      return this.apiClient.callApi(
+        '/api/rp/v1/Reports/File/Task/{taskId}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Get reports by specified task id
+     * @param {String} taskId task id
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/ReportsVM}
+     */
+    reportsGetByTaskId(taskId) {
+      return this.reportsGetByTaskIdWithHttpInfo(taskId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Get report by specified task message id
+     * @param {String} taskMessageId task message id
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/ReportVM} and HTTP response
+     */
+    reportsGetByTaskMessageIdWithHttpInfo(taskMessageId) {
+      let postBody = null;
+      // verify the required parameter 'taskMessageId' is set
+      if (taskMessageId === undefined || taskMessageId === null) {
+        throw new Error("Missing the required parameter 'taskMessageId' when calling reportsGetByTaskMessageId");
+      }
+
+      let pathParams = {
+        'taskMessageId': taskMessageId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKey', 'JWT'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = ReportVM;
+      if(!returnType) returnType = 'Blob';
+      return this.apiClient.callApi(
+        '/api/rp/v1/Reports/File/TaskMessage/{taskMessageId}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Get report by specified task message id
+     * @param {String} taskMessageId task message id
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/ReportVM}
+     */
+    reportsGetByTaskMessageId(taskMessageId) {
+      return this.reportsGetByTaskMessageIdWithHttpInfo(taskMessageId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Get specified file
      * User with Get Entity permission can access this method.
      * @param {String} id file id
@@ -2165,6 +2307,53 @@ export default class ReportsApi {
      */
     reportsGetFilesList(id, opts) {
       return this.reportsGetFilesListWithHttpInfo(id, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Get current user's permissions to file
+     * @param {String} id file id
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:models/FilePermissionCRUDVM} and HTTP response
+     */
+    reportsGetMyPermissionsWithHttpInfo(id) {
+      let postBody = null;
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling reportsGetMyPermissions");
+      }
+
+      let pathParams = {
+        'id': id
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKey', 'JWT'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = FilePermissionCRUDVM;
+      if(!returnType) returnType = 'Blob';
+      return this.apiClient.callApi(
+        '/api/rp/v1/Reports/File/{id}/mypermissions', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Get current user's permissions to file
+     * @param {String} id file id
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:models/FilePermissionCRUDVM}
+     */
+    reportsGetMyPermissions(id) {
+      return this.reportsGetMyPermissionsWithHttpInfo(id)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

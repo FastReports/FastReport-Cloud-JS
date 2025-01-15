@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**tasksDeleteTask**](TasksApi.md#tasksDeleteTask) | **DELETE** /api/tasks/v1/Tasks/{taskId} | Delete a task from a storage
 [**tasksGet**](TasksApi.md#tasksGet) | **GET** /api/tasks/v1/Tasks/{taskId} | Get a task by a specified id
 [**tasksGetList**](TasksApi.md#tasksGetList) | **GET** /api/tasks/v1/Tasks | Get tasks list
+[**tasksGetMyPermissions**](TasksApi.md#tasksGetMyPermissions) | **GET** /api/tasks/v1/Tasks/{id}/mypermissions | Get current user&#39;s permissions to Task
 [**tasksGetPermissions**](TasksApi.md#tasksGetPermissions) | **GET** /api/tasks/v1/Tasks/{id}/permissions | Get all Task permissions
 [**tasksRenameTask**](TasksApi.md#tasksRenameTask) | **PUT** /api/tasks/v1/Tasks/{taskId}/rename | Rename a task
 [**tasksRunTask**](TasksApi.md#tasksRunTask) | **POST** /api/tasks/v1/Tasks/run | Run a task from request body
@@ -38,7 +39,7 @@ JWT.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new FastreportCloudSdk.TasksApi();
 let opts = {
-  'createTaskBaseVM': new FastreportCloudSdk.CreateTaskBaseVM() // CreateTaskBaseVM | task's view model. You have to specify task type (type: \"ExportTemplate\")
+  'createTaskBaseVM': new FastreportCloudSdk.CreateTaskBaseVM() // CreateTaskBaseVM | task's view model. You have to specify task type by placing parameter \"$t\": \"Vm name\",              this parameters always must be on the first place
 };
 apiInstance.tasksCreateTask(opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -53,7 +54,7 @@ apiInstance.tasksCreateTask(opts).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createTaskBaseVM** | [**CreateTaskBaseVM**](CreateTaskBaseVM.md)| task&#39;s view model. You have to specify task type (type: \&quot;ExportTemplate\&quot;) | [optional] 
+ **createTaskBaseVM** | [**CreateTaskBaseVM**](CreateTaskBaseVM.md)| task&#39;s view model. You have to specify task type by placing parameter \&quot;$t\&quot;: \&quot;Vm name\&quot;,              this parameters always must be on the first place | [optional] 
 
 ### Return type
 
@@ -227,6 +228,56 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
+## tasksGetMyPermissions
+
+> TaskPermissionCRUDVM tasksGetMyPermissions(id)
+
+Get current user&#39;s permissions to Task
+
+### Example
+
+```javascript
+import FastreportCloudSdk from 'fastreport-cloud-sdk';
+let defaultClient = FastreportCloudSdk.ApiClient.instance;
+// Configure HTTP basic authorization: ApiKey
+let ApiKey = defaultClient.authentications['ApiKey'];
+ApiKey.username = 'YOUR USERNAME';
+ApiKey.password = 'YOUR PASSWORD';
+// Configure Bearer (JWT) access token for authorization: JWT
+let JWT = defaultClient.authentications['JWT'];
+JWT.accessToken = "YOUR ACCESS TOKEN"
+
+let apiInstance = new FastreportCloudSdk.TasksApi();
+let id = "id_example"; // String | task id
+apiInstance.tasksGetMyPermissions(id).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| task id | 
+
+### Return type
+
+[**TaskPermissionCRUDVM**](TaskPermissionCRUDVM.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [JWT](../README.md#JWT)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## tasksGetPermissions
 
 > TaskPermissionsVM tasksGetPermissions(id)
@@ -352,7 +403,7 @@ JWT.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new FastreportCloudSdk.TasksApi();
 let opts = {
-  'runTaskBaseVM': new FastreportCloudSdk.RunTaskBaseVM() // RunTaskBaseVM | task's view model
+  'runTaskBaseVM': new FastreportCloudSdk.RunTaskBaseVM() // RunTaskBaseVM | task's view model. You have to specify task type by placing parameter \"$t\": \"Vm name\",              this parameters always must be on the first place
 };
 apiInstance.tasksRunTask(opts).then(() => {
   console.log('API called successfully.');
@@ -367,7 +418,7 @@ apiInstance.tasksRunTask(opts).then(() => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **runTaskBaseVM** | [**RunTaskBaseVM**](RunTaskBaseVM.md)| task&#39;s view model | [optional] 
+ **runTaskBaseVM** | [**RunTaskBaseVM**](RunTaskBaseVM.md)| task&#39;s view model. You have to specify task type by placing parameter \&quot;$t\&quot;: \&quot;Vm name\&quot;,              this parameters always must be on the first place | [optional] 
 
 ### Return type
 
@@ -455,7 +506,7 @@ JWT.accessToken = "YOUR ACCESS TOKEN"
 let apiInstance = new FastreportCloudSdk.TasksApi();
 let id = "id_example"; // String | task id
 let opts = {
-  'updateTaskPermissionsVM': new FastreportCloudSdk.UpdateTaskPermissionsVM() // UpdateTaskPermissionsVM | new permissions
+  'updateTaskPermissionsVM': new FastreportCloudSdk.UpdateTaskPermissionsVM() // UpdateTaskPermissionsVM | new permissions. You have to specify VM type by placing parameter \"$t\": \"Vm name\",              this parameters always must be on first place
 };
 apiInstance.tasksUpdatePermissions(id, opts).then(() => {
   console.log('API called successfully.');
@@ -471,7 +522,7 @@ apiInstance.tasksUpdatePermissions(id, opts).then(() => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| task id | 
- **updateTaskPermissionsVM** | [**UpdateTaskPermissionsVM**](UpdateTaskPermissionsVM.md)| new permissions | [optional] 
+ **updateTaskPermissionsVM** | [**UpdateTaskPermissionsVM**](UpdateTaskPermissionsVM.md)| new permissions. You have to specify VM type by placing parameter \&quot;$t\&quot;: \&quot;Vm name\&quot;,              this parameters always must be on first place | [optional] 
 
 ### Return type
 
@@ -509,7 +560,7 @@ JWT.accessToken = "YOUR ACCESS TOKEN"
 let apiInstance = new FastreportCloudSdk.TasksApi();
 let taskId = "taskId_example"; // String | updating task id
 let opts = {
-  'updateTaskBaseVM': new FastreportCloudSdk.UpdateTaskBaseVM() // UpdateTaskBaseVM | task's view model. You have to specify task type (type: \"ExportTemplate\")
+  'updateTaskBaseVM': new FastreportCloudSdk.UpdateTaskBaseVM() // UpdateTaskBaseVM | task's view model. You have to specify task type by placing parameter \"$t\": \"Vm name\",              this parameters always must be on first place
 };
 apiInstance.tasksUpdateTask(taskId, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -525,7 +576,7 @@ apiInstance.tasksUpdateTask(taskId, opts).then((data) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **taskId** | **String**| updating task id | 
- **updateTaskBaseVM** | [**UpdateTaskBaseVM**](UpdateTaskBaseVM.md)| task&#39;s view model. You have to specify task type (type: \&quot;ExportTemplate\&quot;) | [optional] 
+ **updateTaskBaseVM** | [**UpdateTaskBaseVM**](UpdateTaskBaseVM.md)| task&#39;s view model. You have to specify task type by placing parameter \&quot;$t\&quot;: \&quot;Vm name\&quot;,              this parameters always must be on first place | [optional] 
 
 ### Return type
 
